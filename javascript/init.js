@@ -36,6 +36,7 @@ head.innerHTML += `<link href="${rootPath}/styles/code.css" rel="stylesheet" typ
 
 //#region INITIALIZE_BODY
 
+
 //#region INITIALIZE_NAVIGATION
 body.innerHTML =
 `
@@ -95,7 +96,7 @@ body.innerHTML +=
       <div class="footer-title">Community</div>
       <a href="https://github.com/the-xlang">GitHub Organization</a> <br>
       <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
-      <a href="">Code of Conduct</a> <br>
+      <a href="${rootPath}/pages/code_of_conduct.html">Code of Conduct</a> <br>
       <a href="">License</a> <br>
       <a href=""></a>
     </td>
