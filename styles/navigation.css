@@ -1,0 +1,47 @@
+/*
+  Navigation bar stylesheet.
+*/
+
+.navigation {
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 50px;
+  display: flex;
+  position: absolute;
+  text-align: center;
+  user-select: none;
+  overflow: hidden;
+  top: 0;
+	left: 0;
+	right: 0;
+  z-index: -1;
+}
+
+.navigation-logo {
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 40px;
+}
+
+.navigation a {
+  margin-left: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: 200ms;
+  font-family: 'OpenSans-Light';
+  font-weight: bold;
+  font-size: large;
+  color: rgb(200, 116, 221);
+}
+
+.navigation a:hover {
+  transition: 200ms;
+  color: rgb(255, 255, 255);
+}
+
+.navigation-marginer {
+  margin-bottom: 50px;
+}

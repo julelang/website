@@ -1,0 +1,32 @@
+/*
+  Index page stylesheet.
+*/
+
+#startup-panel {
+  color: rgb(196, 138, 255);
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.startup-panel-content {
+  margin-top: 80px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: 'OpenSans-Light';
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.startup-panel-seperator {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  z-index: 0;
+  padding-top: 25%;
+  background-color: rgb(30, 30, 30);
+}

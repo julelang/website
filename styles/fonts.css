@@ -1,0 +1,159 @@
+/*
+  Font face stylesheet.
+*/
+
+@font-face {
+  font-family: 'Code';
+  src: url('../fonts/SourceCodePro-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-Black';
+  src: url('../fonts/SourceCodePro-Black.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-BlackItalic';
+  src: url('../fonts/SourceCodePro-BlackItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-Bold';
+  src: url('../fonts/SourceCodePro-Bold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-BoldItalic';
+  src: url('../fonts/SourceCodePro-BoldItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-ExtraLight';
+  src: url('../fonts/SourceCodePro-ExtraLight.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-ExtraLightItalic';
+  src: url('../fonts/SourceCodePro-ExtraLightItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-Italic';
+  src: url('../fonts/SourceCodePro-Italic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-Light';
+  src: url('../fonts/SourceCodePro-Light.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-LightItalic';
+  src: url('../fonts/SourceCodePro-LightItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-Medium';
+  src: url('../fonts/SourceCodePro-Medium.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-MediumItalic';
+  src: url('../fonts/SourceCodePro-MediumItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-SemiBold';
+  src: url('../fonts/SourceCodePro-SemiBold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-SemiBoldItalic';
+  src: url('../fonts/SourceCodePro-SemiBoldItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-Bold';
+  src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-BoldItalic';
+  src: url('../fonts/OpenSans-BoldItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-ExtraBold';
+  src: url('../fonts/OpenSans-ExtraBold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-ExtraBoldItalic';
+  src: url('../fonts/OpenSans-ExtraBoldItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-Italic';
+  src: url('../fonts/OpenSans-Italic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-LightItalic';
+  src: url('../fonts/OpenSans-LightItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-Medium';
+  src: url('../fonts/OpenSans-Medium.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-MediumItalic';
+  src: url('../fonts/OpenSans-MediumItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-SemiBold';
+  src: url('../fonts/OpenSans-SemiBold.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-SemiBoldItalic';
+  src: url('../fonts/OpenSans-SemiBoldItalic.ttf') format('truetype');
+  font-style: normal;
+}
