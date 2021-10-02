@@ -12,7 +12,7 @@ body {
   position: content;
   color: rgb(255, 255, 255);
   background-color: rgb(30, 30, 30);
-  font-family: 'OpenSans';
+  font-family: 'OpenSans-Light';
   font-size: medium;
   overflow: auto;
   /* Padding for footer height. */

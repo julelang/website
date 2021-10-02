@@ -97,7 +97,7 @@ body.innerHTML +=
       <a href="https://github.com/the-xlang">GitHub Organization</a> <br>
       <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
       <a href="${rootPath}/pages/code_of_conduct.html">Code of Conduct</a> <br>
-      <a href="">License</a> <br>
+      <a href="${rootPath}/pages/license.html"">License</a> <br>
       <a href=""></a>
     </td>
     </tr>

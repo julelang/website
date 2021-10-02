@@ -3,7 +3,7 @@
 */
 
 #copyright {
-  font-family: 'OpenSans';
+  font-family: 'OpenSans-Light';
   font-weight: normal;
   font-size: medium;
   margin-top: 20px;
@@ -35,8 +35,8 @@
 }
 
 .text {
-  font-family: 'OpenSans';
-  font-size: 18px;
+  font-family: 'OpenSans-Light';
+  font-size: 20px;
   font-weight: normal;
   text-align: center;
 }
