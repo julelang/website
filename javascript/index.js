@@ -17,7 +17,7 @@ X is the <x style="font-weight: bold;">simplified, transpiled<br> and compiled</
 `;
 const entry_descriptionHTML =
 `
-<div style="margin-right: 40px;">
+<div style="margin-right: 40px; font-family: 'OpenSans'; font-size: 20px;">
   <div class="sub-title" style="margin-bottom: 30px;">C++ and More</div>
     <div class="text">
       The X source code <strong>transpiles to human readable C++</strong> code.

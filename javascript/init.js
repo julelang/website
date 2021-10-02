@@ -36,7 +36,6 @@ head.innerHTML += `<link href="${rootPath}/styles/code.css" rel="stylesheet" typ
 
 //#region INITIALIZE_BODY
 
-
 //#region INITIALIZE_NAVIGATION
 body.innerHTML =
 `
@@ -51,7 +50,7 @@ body.innerHTML =
   <a href="https://github.com/the-xlang/x/releases">Download</a>
   <a href="">Docs</a>
   <a href="">Community</a>
-  <a href="">Contribute</a>
+  <a href="${rootPath}/pages/contributing.html">Contribute</a>
 </div>
 <div class="navigation-marginer"></div>
 ` + body.innerHTML
@@ -90,7 +89,7 @@ body.innerHTML +=
       <a href="https://github.com/the-xlang/x/fork">Fork Project</a> <br>
       <a href="https://github.com/the-xlang/x/issues">Issues</a> <br>
       <a href="https://github.com/the-xlang/x/discussions">Discussions</a> <br>
-      <a href="">Guideline</a>
+      <a href="${rootPath}/pages/contributing.html">Guideline</a>
     </td>
     <td>
       <div class="footer-title">Community</div>
