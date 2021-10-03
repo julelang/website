@@ -49,7 +49,7 @@ body.innerHTML =
   </a>
   <a href="https://github.com/the-xlang/x/releases">Download</a>
   <a href="">Docs</a>
-  <a href="">Community</a>
+  <a href="${rootPath}/pages/community.html">Community</a>
   <a href="${rootPath}/pages/contributing.html">Contribute</a>
 </div>
 <div class="navigation-marginer"></div>
@@ -78,7 +78,7 @@ body.innerHTML +=
     <td>
       <div class="footer-title">Using X</div>
       <a href="https://github.com/the-xlang/x/releases">Download</a> <br>
-      <a href="">Community</a> <br>
+      <a href="${rootPath}/pages/community.html">Community</a> <br>
       <a href="">Docs</a> <br>
       <a href="">Code Samples</a> <br>
       <a href=""></a>
