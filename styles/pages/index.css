@@ -6,8 +6,9 @@
   color: rgb(196, 138, 255);
   background-color: rgb(30, 30, 30);
   display: flex;
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
+  padding-bottom: 80px;
   left: 0px;
   right: 0px;
   z-index: 1;
@@ -20,13 +21,4 @@
   font-family: 'OpenSans-Light';
   font-size: 30px;
   font-weight: normal;
-}
-
-.startup-panel-seperator {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  z-index: 0;
-  padding-top: 25%;
-  background-color: rgb(30, 30, 30);
 }
