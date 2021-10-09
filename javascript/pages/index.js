@@ -3,7 +3,7 @@ const page_title = `The X Programming Language`;
 const code_hello_world =
 `// Say hello to X.
 
-fun main() {
+main() {
   outln("Hello, World!");
 }`;
 const startup_panel_contentHTML =

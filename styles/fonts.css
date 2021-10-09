@@ -2,6 +2,8 @@
   Font face stylesheet.
 */
 
+/* SourceCodePro Font */
+/*
 @font-face {
   font-family: 'Code';
   src: url('../fonts/SourceCodePro-Regular.ttf') format('truetype');
@@ -83,6 +85,31 @@
 @font-face {
   font-family: 'Code-SemiBoldItalic';
   src: url('../fonts/SourceCodePro-SemiBoldItalic.ttf') format('truetype');
+  font-style: normal;
+}
+*/
+
+@font-face {
+  font-family: 'Code';
+  src: url('../fonts/CascadiaMono.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CodePL';
+  src: url('../fonts/CascadiaMonoPL.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Code-Italic';
+  src: url('../fonts/CascadiaMonoItalic.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CodePL-Italic';
+  src: url('../fonts/CascadiaMonoPLItalic.ttf') format('truetype');
   font-style: normal;
 }
 

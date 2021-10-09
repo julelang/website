@@ -12,7 +12,7 @@ const body = document.body;
 
 //#region SET_TITLE
 if (document.title == "") {
-  head.innerHTML += `<title>The X Programming Language</title>`
+  head.innerHTML += `<title>The X Programming Language</title>`;
 }
 //#endregion SET_TITLE
 
@@ -20,16 +20,16 @@ if (document.title == "") {
 head.innerHTML +=
 `<link
   rel="icon"
-  href="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">`
+  href="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">`;
 //#endregion SET_ICON
 
 //#region SET_STYLES
-head.innerHTML += `<link href="${rootPath}/styles/theme.css" rel="stylesheet" type="text/css">`
-head.innerHTML += `<link href="${rootPath}/styles/fonts.css" rel="stylesheet" type="text/css">`
-head.innerHTML += `<link href="${rootPath}/styles/navigation.css" rel="stylesheet" type="text/css">`
-head.innerHTML += `<link href="${rootPath}/styles/footer.css" rel="stylesheet" type="text/css">`
-head.innerHTML += `<link href="${rootPath}/styles/ui.css" rel="stylesheet" type="text/css">`
-head.innerHTML += `<link href="${rootPath}/styles/code.css" rel="stylesheet" type="text/css">`
+head.innerHTML = `<link href="${rootPath}/styles/theme.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/fonts.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/navigation.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/footer.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/ui.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/code.css" rel="stylesheet" type="text/css">` + head.innerHTML;
 //#endregion SET_STYLES
 
 //#endregion INITIALIZE HEAD
@@ -37,23 +37,20 @@ head.innerHTML += `<link href="${rootPath}/styles/code.css" rel="stylesheet" typ
 //#region INITIALIZE_BODY
 
 //#region INITIALIZE_NAVIGATION
-body.innerHTML =
+document.getElementById('navigation').innerHTML =
 `
-<!-- Navigation bar. -->
-<div id="navigation" class="navigation">
-  <!-- Logo. -->
-  <a href="${rootPath}/index.html">
-  <img
-    class="navigation-logo"
-    src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
-  </a>
-  <a href="https://github.com/the-xlang/x/releases">Download</a>
-  <a href="">Docs</a>
-  <a href="${rootPath}/pages/community.html">Community</a>
-  <a href="${rootPath}/pages/contributing.html">Contribute</a>
-</div>
-<div class="navigation-marginer"></div>
-` + body.innerHTML
+<!-- Logo. -->
+<a href="${rootPath}/index.html">
+<img
+  class="navigation-logo"
+  src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
+</a>
+<a href="https://github.com/the-xlang/x/releases">Download</a>
+<a href="${rootPath}/pages/docs.html">Documentations</a>
+<a href="${rootPath}/pages/community.html">Community</a>
+<a href="${rootPath}/pages/contributing.html">Contribute</a>
+`;
+body.innerHTML = `<div class="navigation-marginer"></div>` + body.innerHTML;
 //#endregion INITIALIZE_NAVIGATION
 
 //#region INITIALIZE_FOOTER
@@ -79,8 +76,8 @@ body.innerHTML +=
       <div class="footer-title">Using X</div>
       <a href="https://github.com/the-xlang/x/releases">Download</a> <br>
       <a href="${rootPath}/pages/community.html">Community</a> <br>
-      <a href="">Docs</a> <br>
-      <a href="">Code Samples</a> <br>
+      <a href="${rootPath}/pages/docs.html">Documentations</a> <br>
+      <a href=""></a> <br>
       <a href=""></a>
     </td>
     <td>
@@ -104,7 +101,7 @@ body.innerHTML +=
   </div>
 </div>
 </div>
-`
+`;
 //#endregion INITIALIZE_FOOTER
 
 //#endregion INITIALIZE_BODY

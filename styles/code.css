@@ -10,6 +10,24 @@
   font-family: 'Code';
   font-size: 15px;
   border: 2px solid rgb(60, 60, 60);
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.inline_code {
+  color: gainsboro;
+  background-color: rgb(24, 24, 24);
+  white-space: pre-wrap;
+  overflow: auto;
+  font-family: 'Code';
+  border: 0px none transparent;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+  display: inline-flex;
+  position: inline-block;
+  padding: 4px;
 }

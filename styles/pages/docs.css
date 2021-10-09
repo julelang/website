@@ -1,0 +1,42 @@
+.title {
+  text-align: left;
+  font-family: 'OpenSans-SemiBold';
+}
+
+.sub-title {
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: 'OpenSans-SemiBold';
+}
+
+.sub-sub-title {
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: 'OpenSans-SemiBold';
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: 'OpenSans-SemiBold';
+}
+
+.text {
+  font-family: 'OpenSans-Medium';
+  font-weight: normal;
+  font-size: 16px;
+  text-align: left;
+}
+
+a {
+  color: fuchsia;
+  text-decoration: none;
+  transition: 250ms;
+}
+
+a:hover {
+  color: darkorchid;
+  transition: 250ms;
+}

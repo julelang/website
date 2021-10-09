@@ -29,6 +29,17 @@
   text-align: center;
 }
 
+.sub-sub-title {
+  font-family: 'OpenSans-Light';
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.title-seperator {
+  margin-top: 50px;
+}
+
 .content-body {
   margin-left: 10%;
   margin-right: 10%;
@@ -84,4 +95,113 @@ button {
 button:hover {
   transition: 250ms;
   background-color: rgb(100, 50, 168);
+}
+
+#side-navigation {
+  background-color: rgb(17, 17, 17);
+  width: 280px;
+  min-width: 280px;
+  height: calc(100% - 41px);
+  margin-right: auto;
+  padding: 20px;
+  overflow: auto;
+  display: inline-block;
+  position: fixed;
+  user-select: none;
+  left: 0px;
+  top: 0px;
+}
+
+#side-navigation .topic {
+  transition: 200ms;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+  width: fit-content;
+  height: fit-content;
+  font-family: 'OpenSans';
+  font-size: large;
+  font-weight: normal;
+  user-select: none;
+  margin-bottom: 5px;
+}
+
+#side-navigation * {
+  display: inline-block;
+}
+
+#side-navigation .topic:hover {
+  transition: 200ms;
+  color: blueviolet;
+  cursor: pointer;
+}
+
+#side-navigation .sub-topic {
+  transition: 200ms;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+  width: fit-content;
+  height: fit-content;
+  font-family: 'OpenSans';
+  font-size: medium;
+  font-weight: normal;
+  user-select: none;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+#side-navigation .sub-topic:hover {
+  transition: 250ms;
+  color: blueviolet;
+  cursor: pointer;
+}
+
+#side-navigation-content {
+  font-family: 'OpenSans';
+  font-weight: normal;
+  font-size: medium;
+  width: calc(100% - 320px); /* f(x) = 100% - (navigation width + C) */
+  min-width: calc(100% - 320px);
+  height: fit-content;
+  float: right;
+  margin-left: auto;
+  display: contents;
+  position: relative;
+}
+
+#side-navigation-content-body {
+  margin-left: 320px; /* f(x) = navigation width + C */
+  padding-top: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 100px;
+}
+
+.info {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-radius: 10px;
+  border-color: blueviolet;
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  font-family: 'OpenSans-LightItalic';
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.warn {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-radius: 10px;
+  border-color: rgb(175, 158, 0);
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  font-family: 'OpenSans-LightItalic';
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

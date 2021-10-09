@@ -18,3 +18,66 @@ body {
   /* Padding for footer height. */
   padding-bottom: 300px;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: purple transparent;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th {
+  border: 1px solid rgb(200, 200, 200);
+  font-family: 'OpenSans';
+  font-weight: bold;
+  font-style: normal;
+  font-size: medium;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: purple;
+  color: white;
+}
+
+.table td {
+  border: 1px solid rgb(200, 200, 200);
+  padding: 8px;
+}
+
+.table tr:nth-child(even) {
+  background-color: rgb(25, 25, 25);
+}
+
+.table tr:hover {
+  background-color: rgb(17, 17, 17);
+}
+
+::-moz-selection {
+  color: rgb(255, 255, 255);
+  background-color: blueviolet;
+}
+
+::selection {
+  color: rgb(255, 255, 255);
+  background-color: blueviolet;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0px 0px 0px transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: purple;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: indigo;
+}
