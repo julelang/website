@@ -1113,6 +1113,7 @@ const NAV_common_concepts_variables = document.getElementById('common-concepts-v
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
 const NAV_end = document.getElementById('end');
 
+const side_navigation = document.getElementById('side-navigation');
 const content_body = document.getElementById('side-navigation-content-body');
 
 //#endregion GET_ELEMENTS
@@ -1194,5 +1195,6 @@ function select_topic_index(index) {
   }
   html += `</div>`;
   content_body.innerHTML = html;
+  nav.scrollIntoView();
   window.scrollTo(0, 0);
 }
