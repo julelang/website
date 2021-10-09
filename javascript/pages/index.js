@@ -1,18 +1,12 @@
 const page_title = `The X Programming Language`;
 
-const code_hello_world =
-`// Say hello to X.
-
-main() {
-  outln("Hello, World!");
-}`;
 const startup_panel_contentHTML =
 `
-X is the <x style="font-weight: bold;">simplified, transpiled<br> and compiled</x> programming language.
-<div style="font-size: 20px;">
-  <br>
-  X is reliable, maintainable, simple and readable <br>
-  strongly typed programming language for any scale project.
+<div style="font-size: 40px; font-family: 'OpenSans-Bold'; font-weight: bold;">
+  The X Programming Language
+</div>
+<div style="color: rebeccablue; margin-top: 10px; font-size: 25px;">
+X is the <x style="font-family: 'OpenSans-Bold'; font-weight: bold;">simplified, strongly typed<br> and compiled</x> programming language.
 </div>
 `;
 const entry_descriptionHTML =
@@ -64,7 +58,6 @@ document.title = page_title;
 
 //#region GET_ELEMENTS
 
-const codebox = document.getElementById('code-example');
 const startup_panel_content = document.getElementById('startup-panel-content');
 const entry_description = document.getElementById('entry-description');
 const pretty_transpile_title = document.getElementById('pretty-transpile-title');
@@ -74,7 +67,6 @@ const pretty_transpile_content = document.getElementById('pretty-transpile-conte
 
 //#region SET_CONTENT
 
-codebox.innerHTML = code_hello_world;
 startup_panel_content.innerHTML = startup_panel_contentHTML;
 entry_description.innerHTML = entry_descriptionHTML;
 pretty_transpile_title.innerHTML = pretty_transpile_titleHTML;

@@ -56,22 +56,30 @@
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
   width: 100%;
+  height: 150px;
   left: 0px;
   right: 0px;
   position: absolute;
-  display: flex;
+  display: block;
+  overflow: hidden;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
 .section {
   color: rgb(255, 255, 255);
-  background-color: blueviolet;
+  background-color: purple;
   height: auto;
   display: flex;
   font-family: 'OpenSans-Light';
   font-weight: normal;
   font-size: 18px;
+  border-radius: 20px;
+}
+
+.section div, .section img {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 button {

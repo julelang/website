@@ -18,13 +18,18 @@
 }
 
 .navigation-logo {
+  margin-left: 20px;
   margin-right: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
   height: 40px;
 }
 
-.navigation a {
+.navigation #navigation-links {
+  display: flex;
+}
+
+.navigation #navigation-links a {
   margin-left: 20px;
   margin-top: auto;
   margin-bottom: auto;
@@ -37,7 +42,7 @@
   color: rgb(200, 116, 221);
 }
 
-.navigation a:hover {
+.navigation #navigation-links a:hover {
   transition: 200ms;
   color: rgb(255, 255, 255);
 }
