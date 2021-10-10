@@ -97,6 +97,8 @@
   border-radius: 100000000000000px;
   z-index: 1000000000;
   transition: 250ms;
+  text-decoration: none;
+  color: white;
 }
 
 .navigate-link:hover {
