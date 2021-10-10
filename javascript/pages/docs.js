@@ -427,11 +427,6 @@ const basics_data_typesHTML =
       <th>Typical Range</th>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">any</td>
-      <td style="text-align: center;">-</td>
-      <td>Any type, generic.</td>
-    </tr>
-    <tr>
       <td style="text-align: center; font-family: 'Code';">int8</td>
       <td style="text-align: center;">1byte</td>
       <td>-127 to 127</td>
@@ -489,12 +484,12 @@ const basics_data_typesHTML =
     <tr>
       <td style="text-align: center; font-family: 'Code';">rune</td>
       <td style="text-align: center;">4bytes</td>
-      <td>Single UTF-16 character.</td>
+      <td>Single UTF-8 character.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
       <td style="text-align: center;">-</td>
-      <td>UTF-16 character array.</td>
+      <td>UTF-8 character array.</td>
     </tr>
   </table>
 
@@ -504,10 +499,6 @@ const basics_data_typesHTML =
     <tr>
       <th>Type</th>
       <th>Compatible Types</th>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">any</td>
-      <td>All types.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">int8</td>
