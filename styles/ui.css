@@ -69,7 +69,7 @@
 .section {
   color: rgb(255, 255, 255);
   background-color: purple;
-  height: auto;
+  height: 500px;
   display: flex;
   font-family: 'OpenSans-Light';
   font-weight: normal;
