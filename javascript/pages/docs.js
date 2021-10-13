@@ -558,7 +558,7 @@ const basics_data_typesHTML =
   <div class="sub-title">Integers</div>
   <div class="sub-sub-title">Classic - Decimal</div>
   <div class="code">12345</div>
-  <div class="sub-sub-title">Hexdecimal</div>
+  <div class="sub-sub-title">Hexadecimal</div>
   <div class="code">0xDFF90</div>
 
   <div class="title-seperator"></div>
@@ -1048,6 +1048,46 @@ Of course this has advantages and disadvantages.
 </div>
 `;
 
+const itemsHTML =
+`
+<div class="title" style="margin-bottom: 20px;">Items</div>
+<div class="text">
+  Definable and usable elements of X.
+</div>
+`;
+
+const items_type_aliasesHTML =
+`
+<div class="page-title" style="margin-bottom: 20px;">Type Aliases</div>
+<div class="text">
+Type aliases is an alias for existing types defined by developer.
+When these aliases are used, they qualify the types they represent.
+<br>
+For example;
+<div class="code">type i32 int32;
+
+main() {
+  var my_int i32 = 100;
+  outln(my_int);
+}</div>
+As seen in the example above, there is an alias definition of <x class="inline_code">i32</x> for the <x class="inline_code">int32</x> data type.
+The keyword <x class="inline_code">type</x> comes first to define an alias.
+Then comes the name you want to give and which type it will represent.
+This alias will now represent <x class="inline_code">int32</x> when used.
+<br><br>
+In addition, it seems that this alias is used in variable definition.
+This is because the X compiler recognizes the default types built-in.
+If your type alias represents a built-in definition, your type alias will not be detected as a type.
+For this reason, it is a more useful approach to specify specifically.
+<div class="title-seperator"></div>
+When defining a type alias, only the following types can be given as the type to represent:
+<ul>
+  <li>Built-in Data Types</li>
+  <li>Type Aliases</li>
+</ul>
+</div>
+`;
+
 const endHTML =
 `
 <div class="title" style="margin-bottom: 20px;">End</div>
@@ -1102,6 +1142,8 @@ const NAV_basics_attributes = document.getElementById('basics-attributes');
 const NAV_common_concepts = document.getElementById('common-concepts');
 const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
+const NAV_items = document.getElementById('items');
+const NAV_items_type_aliases = document.getElementById('items-type-aliases');
 const NAV_end = document.getElementById('end');
 
 const side_navigation = document.getElementById('side-navigation');
@@ -1133,6 +1175,8 @@ const navigations = [
   [NAV_common_concepts,                     common_conceptsHTML],
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
+  [NAV_items,                               itemsHTML],
+  [NAV_items_type_aliases,                  items_type_aliasesHTML],
   [NAV_end,                                 endHTML],
 ];
 
