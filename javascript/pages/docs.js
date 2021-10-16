@@ -636,6 +636,11 @@ const basics_data_typesHTML =
       <td>Octal</td>
     </tr>
   </table>
+
+  <div class="title-seperator"></div>
+  <div class="sub-title">Null</div>
+  Zero value for pointers and function data typed defines.
+  <div class="code">null</div>
 </div>
 `;
 
@@ -828,6 +833,22 @@ cube(s int32) {
 <div class="warn">
 Not all attributes can be applied to all definitions.
 Each definition has valid attributes for it.
+</div>
+`;
+
+const basics_expressions_as_statementHTML =
+`
+<div class="page-title" style="margin-bottom: 20px;">Expressions as Statement</div>
+<div class="text">
+You may want to write an expression as a statement for several reasons.
+It is possible.
+Instead of presenting it directly, X has adopted it to be written between parentheses in order to contribute to readability.
+An expression must be surrounded by parentheses to be used as a statement.
+<br><br>
+For example;
+<div class="code">main() {
+  (100);
+}</div>
 </div>
 `;
 
@@ -1045,6 +1066,17 @@ Of course this has advantages and disadvantages.
   <li>Too much inlining can also reduce your instruction cache hit rate, thus reducing the speed of instruction fetch from that of cache memory to that of primary memory.</li>
   <li>Inline functions may not be useful for many embedded systems. Because code size is often more important than speed in embedded systems.</li>
 </ul>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Using Function as Data Type</div>
+Functions can be used as data type.
+It is similar to defining a function.
+Just parameters and return value are necessary.
+<br><br>
+For example;
+<div class="code">var my_function (int32, int32) int32;</div>
+The example at above, is a variable definition with function data type.
+The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
 </div>
 `;
 
@@ -1139,6 +1171,7 @@ const NAV_basics_entry_point = document.getElementById('basics-entry-point');
 const NAV_basics_data_types = document.getElementById('basics-data-types');
 const NAV_basics_operators = document.getElementById('basics-operators');
 const NAV_basics_attributes = document.getElementById('basics-attributes');
+const NAV_basics_expressions_as_statement = document.getElementById('basics-expressions-as-statement');
 const NAV_common_concepts = document.getElementById('common-concepts');
 const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
@@ -1172,6 +1205,7 @@ const navigations = [
   [NAV_basics_data_types,                   basics_data_typesHTML],
   [NAV_basics_operators,                    basics_operatorsHTML],
   [NAV_basics_attributes,                   basics_attributesHTML],
+  [NAV_basics_expressions_as_statement,     basics_expressions_as_statementHTML],
   [NAV_common_concepts,                     common_conceptsHTML],
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
