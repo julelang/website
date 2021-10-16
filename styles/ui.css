@@ -77,6 +77,15 @@
   border-radius: 20px;
 }
 
+.topic-seperator {
+  background-color: rgb(100, 100, 100);
+  user-select: none;
+  height: 1px;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 .section div, .section img {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;

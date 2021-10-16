@@ -1077,6 +1077,35 @@ For example;
 <div class="code">var my_function (int32, int32) int32;</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Anonymous Functions</div>
+Anonymous functions are like standard functions, but they are anonymous and are usually defined as a value.
+Anonymous functions is not have any name.
+Defining anonymous function is like declaring a function as a value type.
+Just in addition, the block of the function must be written.
+<br><br>
+For example;
+<div class="code">main() {
+  var make_hello = (name str) str {
+    < "Hello " + name + "!";
+  };
+  outln(make_hello("X"));
+}</div>
+
+<div class="topic-seperator"></div>
+Anonymous functions can access the definitions of the block in which they are defined.
+<br><br>
+For example;
+<div class="code">main() {
+  var message = "Hello, World!";
+  var func = () {
+    outln(message);
+  };
+  func();
+}</div>
+The anonymous function defined in the example above uses the <x class="inline_code">message</x> variable belonging to the block it is defined in.
+Definitions used from outer blocks can be shadowed within the anonymous function.
 </div>
 `;
 
