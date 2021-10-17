@@ -1243,12 +1243,6 @@ const navigations = [
   [NAV_end,                                 endHTML],
 ];
 
-//#region SET_CONTENT
-
-select_topic_index(0);
-
-//#endregion SET_CONTENT
-
 //#region EVENTS
 
 function next_page_click() {
@@ -1266,6 +1260,25 @@ navigations.forEach((element, index) => {
 });
 
 //#endregion EVENTS
+
+//#region SET_CONTENT
+
+//#region SET_CONTENT QUERIES
+const url = new URL(window.location.href);
+const query_page = url.searchParams.get('page');
+if (query_page != null) {
+  const selected_page = document.getElementById(query_page);
+  if (selected_page != null) {
+    selected_page.click();
+  } else {
+    select_topic_index(0);
+  }
+} else {
+  select_topic_index(0);
+}
+//#endregion SET_CONTENT QUERIES
+
+//#endregion SET_CONTENT
 
 function select_topic(nav) {
   navigations.forEach((element, index) => {
@@ -1293,6 +1306,8 @@ function select_topic_index(index) {
   }
   html += `</div>`;
   content_body.innerHTML = html;
+  url.searchParams.set('page', nav.id);
+  window.history.replaceState(null, null, "?" +url.searchParams.toString());
   nav.scrollIntoView();
   window.scrollTo(0, 0);
 }
