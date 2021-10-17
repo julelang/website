@@ -243,3 +243,25 @@ button:hover {
   color: darkorchid;
   transition: 250ms;
 }
+
+.search-predictions {
+  display: inline-flex;
+}
+
+.search-predictions a {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: 250ms;
+  color: orchid;
+}
+
+.search-predictions a:hover {
+  transition: 250ms;
+  cursor: pointer;
+  color: darkorchid;
+  transition: 250ms;
+}

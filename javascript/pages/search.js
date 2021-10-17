@@ -37,7 +37,7 @@ const contents = [
   // [[Keyword(s)], "Result Title", "Description Text", "URL"]
   [["home", "main"],                                                                  "Home Page",                                                       "Go to home page.",                                                          `${root_path}/index.html`],
   [["license", "copyright"],                                                          "License",                                                         "Open source license text of project.",                                      `${root_path}/pages/license.html`],
-  [["code of conduct", "rule", "community", "git"],                                   "Code of Conduct",                                                 "Code of conduct for contributors and community.",                           `${root_path}/pages/code_of_conduct.html`],
+  [["code", "conduct", "rule", "community", "git"],                                   "Code of Conduct",                                                 "Code of conduct for contributors and community.",                           `${root_path}/pages/code_of_conduct.html`],
   [["git", "community", "stack overflow", "stackoverflow"],                           "Community",                                                       "Community, help, report and more.",                                         `${root_path}/pages/community.html`],
   [["contribute", "contributing", "guide", "fork"],                                   "Contributing",                                                    "Contribution guidelines for contributing to the X programming language.",   `${root_path}/pages/contributing.html`],
   [["guide", "doc", "info", "learn"],                                                 "Documentations",                                                  "Documentations of the X programming language for every developer.",         `${root_path}/pages/docs.html`],
@@ -71,24 +71,88 @@ const contents = [
   /* [["doc", "info", "guide", "learn"],                       "Documentations - <strong></strong> ", "",                                    `${root_path}/pages/docs.html?page=`], */
 ];
 
-let results = "";
+function string_diff(s1, s2) {
+  var longer = s1;
+  var shorter = s2;
+  if (s1.length < s2.length) {
+    longer = s2;
+    shorter = s1;
+  }
+  var longerLength = longer.length;
+  if (longerLength == 0) {
+    return 1.0;
+  }
+  return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+}
+
+function editDistance(s1, s2) {
+  s1 = s1.toLowerCase();
+  s2 = s2.toLowerCase();
+  var costs = new Array();
+  for (var i = 0; i <= s1.length; i++) {
+    var lastValue = i;
+    for (var j = 0; j <= s2.length; j++) {
+      if (i == 0) {
+        costs[j] = j;
+      } else {
+        if (j > 0) {
+          var newValue = costs[j - 1];
+          if (s1.charAt(i - 1) != s2.charAt(j - 1)) {
+            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+          }
+          costs[j - 1] = lastValue;
+          lastValue = newValue;
+        }
+      }
+    }
+    if (i > 0) {
+      costs[s2.length] = lastValue;
+    }
+  }
+  return costs[s2.length];
+}
+
+let results      = "";
 let result_count = 0;
+let predictions  = [];
 
 contents.forEach((value) => {
   const keywords = value[0];
   for (let index = 0; index < keywords.length; index++) {
-    if (searched.includes(keywords[index])) {
+    const keyword = keywords[index];
+    if (searched.includes(keyword)) {
       results +=
-`
-<div class="search-result">
-  <a href="${value[3]}">${value[1]}</a>
-  <div style="margin-top: 5px;">${value[2]}</div>
-<div>`;
+      `
+      <div class="search-result">
+      <a href="${value[3]}">${value[1]}</a>
+      <div style="margin-top: 5px;">${value[2]}</div>
+      <div>`;
       result_count++;
       break;
     }
+    if (string_diff(searched, keyword) >= 0.5) {
+      if (!predictions.includes(keyword)) {
+        predictions.push(keyword);
+      }
+    }
   }
 });
+
+let prediction_links = "";
+predictions.forEach((value) => {
+  prediction_links += `<a href="${root_path}/search.html?searched=${value}">"${value}"</a>,`;
+});
+if (prediction_links != "") {
+  prediction_links = prediction_links.substring(0, prediction_links.length-1);
+}
+
+let predictionsHTML =
+`
+<div class="search-predictions">
+  <div class="sub-title">May helpful:</div>
+  <div>${prediction_links}</div>
+</div>
+`;
 
 if (results == "") {
   body_div.innerHTML =
@@ -100,6 +164,7 @@ if (results == "") {
     src="./resources/magnifying_glass.png"
     style="margin-top: 100px; margin-bottom: 50px">
   <div class="title">No result for: "${searched}"</div>
+  ${prediction_links == "" ? "" : predictionsHTML}
 </center>
 `;
 } else {
