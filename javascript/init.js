@@ -24,12 +24,13 @@ head.innerHTML +=
 //#endregion SET_ICON
 
 //#region SET_STYLES
-head.innerHTML = `<link href="${rootPath}/styles/theme.css" rel="stylesheet" type="text/css">` + head.innerHTML;
-head.innerHTML = `<link href="${rootPath}/styles/fonts.css" rel="stylesheet" type="text/css">` + head.innerHTML;
-head.innerHTML = `<link href="${rootPath}/styles/navigation.css" rel="stylesheet" type="text/css">` + head.innerHTML;
-head.innerHTML = `<link href="${rootPath}/styles/footer.css" rel="stylesheet" type="text/css">` + head.innerHTML;
-head.innerHTML = `<link href="${rootPath}/styles/ui.css" rel="stylesheet" type="text/css">` + head.innerHTML;
 head.innerHTML = `<link href="${rootPath}/styles/code.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/fonts.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/footer.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/navigation.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/searchbox.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/theme.css" rel="stylesheet" type="text/css">` + head.innerHTML;
+head.innerHTML = `<link href="${rootPath}/styles/ui.css" rel="stylesheet" type="text/css">` + head.innerHTML;
 //#endregion SET_STYLES
 
 //#endregion INITIALIZE HEAD
@@ -50,6 +51,12 @@ document.getElementById('navigation').innerHTML =
   <a href="${rootPath}/pages/docs.html">Documentations</a>
   <a href="${rootPath}/pages/community.html">Community</a>
   <a href="${rootPath}/pages/contributing.html">Contribute</a>
+</div>
+<div class="searchbox">
+  <img
+    class="searchbox-icon"
+    src="${rootPath}/resources/magnifying_glass.png">
+  <input id="searchbox-input" class="searchbox-input" type="text" placeholder="Type to Search"/>
 </div>
 `;
 body.innerHTML = `<div class="navigation-marginer"></div>` + body.innerHTML;

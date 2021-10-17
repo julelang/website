@@ -1,0 +1,54 @@
+/*
+  Search-box stylesheet.
+*/
+
+.searchbox {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 180px;
+  height: 30px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: blueviolet;
+  border-radius: 100000000000000000000000px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.searchbox:focus {
+  border-width: 2px;
+}
+
+.searchbox-input {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-size: medium;
+  font-weight: normal;
+  width: 100%;
+  height: 90%;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
+  text-decoration: none;
+  outline: none;
+  caret-color: blueviolet;
+  border-width: 0px;
+  border-style: none;
+  border-color: transparent;
+}
+
+.searchbox-input::placeholder {
+  color: rgb(180, 180, 180);
+}
+
+.searchbox-icon {
+  width: 15px;
+  height: 15px;
+  margin-top: auto;
+  margin-left: 10px;
+  margin-bottom: auto;
+  margin-right: 10px;
+  float: left;
+}

@@ -145,3 +145,7 @@
   width: 50%;
   height: 280px;
 }
+
+.searchbox-input::placeholder {
+  color: rgb(220, 220, 220);
+}

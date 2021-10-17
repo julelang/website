@@ -17,14 +17,6 @@
   z-index: 10000000000000000000000000000000;
 }
 
-.navigation-logo {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  height: 40px;
-}
-
 .navigation #navigation-links {
   display: flex;
 }
@@ -45,6 +37,20 @@
 .navigation #navigation-links a:hover {
   transition: 200ms;
   color: rgb(255, 255, 255);
+}
+
+.navigation .searchbox {
+  margin-left: auto;
+  float: right;
+  margin-right: 20px;
+}
+
+.navigation-logo {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 40px;
 }
 
 .navigation-marginer {
