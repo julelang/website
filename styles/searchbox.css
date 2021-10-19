@@ -19,6 +19,23 @@
   border-width: 2px;
 }
 
+.searchbox-page {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 50%;
+  height: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: blueviolet;
+  border-radius: 100000000000000000000000px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.searchbox-page:focus {
+  border-width: 2px;
+}
+
 .searchbox-input {
   font-family: 'OpenSans';
   font-style: normal;

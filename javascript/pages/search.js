@@ -4,9 +4,19 @@ const root_path = location.href.substr(0,
   location.href.indexOf('website')+'website'.length);
 
 const url = new URL(window.location.href);
-const searched = url.searchParams.get('searched').toLowerCase();
+let searched = url.searchParams.get('searched');
 
 const body_div = document.getElementById('body-div');
+
+const searchbox_html =
+`
+<div class="searchbox-page">
+  <img
+    class="searchbox-icon"
+    src="./resources/magnifying_glass.png">
+  <input id="searchbox-input" class="searchbox-input" type="text" placeholder="Type to Search"/>
+</div>
+`;
 
 if (searched == null) {
   body_div.innerHTML =
@@ -17,10 +27,11 @@ if (searched == null) {
     height="200px"
     src="./resources/magnifying_glass.png"
     style="margin-top: 100px; margin-bottom: 50px">
-  <div class="title">You don't search anything!</div>
+    ${searchbox_html}
 </center>
 `;
 } else {
+  searched = searched.toLowerCase();
 body_div.innerHTML =
 `
 <center>
@@ -36,6 +47,7 @@ body_div.innerHTML =
 const contents = [
   // [[Keyword(s)], "Result Title", "Description Text", "URL"]
   [["home", "main"],                                                                  "Home Page",                                                       "Go to home page.",                                                          `${root_path}/index.html`],
+  [["search", "filter", "find", "found"],                                             "Search Page",                                                     "Go to search page.",                                                        `${root_path}/search.html`],
   [["license", "copyright"],                                                          "License",                                                         "Open source license text of project.",                                      `${root_path}/pages/license.html`],
   [["code", "conduct", "rule", "community", "git"],                                   "Code of Conduct",                                                 "Code of conduct for contributors and community.",                           `${root_path}/pages/code_of_conduct.html`],
   [["git", "community", "stack overflow", "stackoverflow"],                           "Community",                                                       "Community, help, report and more.",                                         `${root_path}/pages/community.html`],
@@ -116,11 +128,18 @@ let results      = "";
 let result_count = 0;
 let predictions  = [];
 
+searched = searched
+          .replace('\t', ' ')
+          .replace('\v', ' ')
+          .replace('\n', '')
+          .replace('\r', '');
+const words = searched.split(' ');
+
 contents.forEach((value) => {
   const keywords = value[0];
   for (let index = 0; index < keywords.length; index++) {
     const keyword = keywords[index];
-    if (searched.includes(keyword)) {
+    if (words.filter(word => word.startsWith(keyword)).length > 0) {
       results +=
       `
       <div class="search-result">
@@ -130,7 +149,8 @@ contents.forEach((value) => {
       result_count++;
       break;
     }
-    if (string_diff(searched, keyword) >= 0.5) {
+    if (words.filter(word => string_diff(word, keyword) >= 0.5 ||
+        word.includes(keyword)).length > 0) {
       if (!predictions.includes(keyword)) {
         predictions.push(keyword);
       }
@@ -163,8 +183,10 @@ if (results == "") {
     height="200px"
     src="./resources/magnifying_glass.png"
     style="margin-top: 100px; margin-bottom: 50px">
-  <div class="title">No result for: "${searched}"</div>
+  <div class="title" style="word-wrap: break-word;">No result for: "${searched}"</div>
   ${prediction_links == "" ? "" : predictionsHTML}
+  <div style="margin-bottom: 50px;"></div>
+  ${searchbox_html}
 </center>
 `;
 } else {
@@ -176,7 +198,8 @@ if (results == "") {
     height="200px"
     src="./resources/magnifying_glass.png"
     style="margin-top: 100px; margin-bottom: 50px">
-  <div class="title" style="margin-bottom: 150px;">${result_count} matched results for: "${searched}"</div>
+  <div class="title" style="word-wrap: break-word; margin-bottom: 50px;">${result_count} matched results for: "${searched}"</div>
+  ${searchbox_html}
 </center>
 <div style="margin-left: 20%; margin-right: 20%;">
 ${results}
