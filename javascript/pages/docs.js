@@ -4,18 +4,18 @@ const prev_page =
 `
 <button
   onclick="prev_page_click()"
-  style="float: left; font-weight: bold; font-size: larger;"><</button>
+  style="float: left; font-weight: bold; font-size: larger;">⯇</button>
 `;
 const next_page =
 `
 <button
   onclick="next_page_click()"
-  style="float: right; font-weight: bold; font-size: larger;">></button>
+  style="float: right; font-weight: bold; font-size: larger;">⯈</button>
 `;
 
 const the_xlangHTML =
 `
-<div class="title">The X Programming Language</div>
+<div class="title">The <x style="color: rgb(180, 52, 235);">X</x> Programming Language</div>
 <br>
 <div class="text" style="font-weight: normal; font-style: italic;">by Mertcan Davulcu with contributors from community</div>
 <div class="text">
@@ -1109,6 +1109,72 @@ Definitions used from outer blocks can be shadowed within the anonymous function
 </div>
 `;
 
+const common_concepts_arraysHTML =
+`
+<div class="page-title" style="margin-bottom: 20px;">Arrays</div>
+<div class="text">
+Arrays is a heap allocated memory fields.
+Arrays can store multiple values.
+<br><br>
+Example to arrays;
+<div class="code">main() {
+  var my_array []str;
+  my_array = []str{"Hello", "X", "arrays!"};
+  outln(my_array);
+}</div>
+The null is the auto value of arrays.
+But the important point: empty array and null setted array is the same thing.
+The example at above, auto value is given (so null) at first statement.
+<x class="inline_code">my_array</x> is equals to <x class="inline_code">null</x> or <x class="inline_code">[]str{}</x>.
+Second statement is set value of <x class="inline_code">my_array</x> variable as <x class="inline_code">[]str{"Hello", "X", "arrays!"}</x>.
+Seen at second statement, arrays is should be define with data type.
+Last statement is prints to console the <x class="inline_code">my_array</x> variable.
+<br><br>
+Output of program;
+<div class="code">[Hello, X, arrays!]</div>
+</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Access to Elements and Indexing</div>
+Index system is simple.
+Starts at <x class="inline_code">0</x> and continue step by step, it is never not be negative and float.
+<br><br>
+Arrays is use indexes for access and elements value setting.
+<br>
+For example;
+<div class="code">main() {
+  var my_array = []str{"Hello", "arrays", "indexes"};
+  outln(my_array[0]);
+  my_array[0] = "Hi";
+  outln(my_array);
+}</div>
+For element access, index is written between brackets (<x class="inline_code">[]</x>).
+First statement is declares our array.
+Second statement prints first element of our array.
+Next statement sets first element of our array as <x class="inline_code">"Hi"</x>.
+The last statement prints our array to console.
+<br><br>
+Output of program;
+<div class="code">Hello
+[Hi, arrays, indexes]</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Nested Arrays</div>
+Nested arrays is array storing arrays.
+<br>
+For example;
+<div class="code">main() {
+  var my_array = [][]str{
+    []str{"Apple", "Banana"},
+    []str{"Bred", "Cheese"},
+  };
+  outln(my_array);
+}</div>
+<br>
+Output of program;
+<div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
+`;
+
 const itemsHTML =
 `
 <div class="title" style="margin-bottom: 20px;">Items</div>
@@ -1204,6 +1270,7 @@ const NAV_basics_expressions_as_statement = document.getElementById('basics-expr
 const NAV_common_concepts = document.getElementById('common-concepts');
 const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
+const NAV_common_concepts_arrays = document.getElementById('common-concepts-arrays');
 const NAV_items = document.getElementById('items');
 const NAV_items_type_aliases = document.getElementById('items-type-aliases');
 const NAV_end = document.getElementById('end');
@@ -1238,6 +1305,7 @@ const navigations = [
   [NAV_common_concepts,                     common_conceptsHTML],
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
+  [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
   [NAV_items,                               itemsHTML],
   [NAV_items_type_aliases,                  items_type_aliasesHTML],
   [NAV_end,                                 endHTML],
