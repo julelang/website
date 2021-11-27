@@ -24,7 +24,7 @@
   font-family: 'OpenSans';
   font-size: 20px;
   /*color: rgb(174, 0, 255);*/
-  color: rgb(150, 62, 233)
+  color: rgb(130, 36, 218)
 }
 
 .navigation #navigation-links a:hover {
@@ -56,6 +56,23 @@
   height: 580px;
 }
 
+#startup-background-canvas {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  position: absolute;
+  width: 100%;
+  height: 580px;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgb(255, 255, 255);
+  background: rgb(33, 0, 36);
+  background: -moz-linear-gradient(0deg, rgba(33,0,36,1) 0%, rgba(137,0,221,1) 0%, rgba(255,255,255,1) 5%);
+  background: -webkit-linear-gradient(0deg, rgba(33,0,36,1) 0%, rgba(137,0,221,1) 0%, rgba(255,255,255,1) 5%);
+  background: linear-gradient(0deg, rgba(33,0,36,1) 0%, rgba(137,0,221,1) 0%, rgba(255,255,255,1) 5%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#210024",endColorstr="#ffffff",GradientType=1);
+}
+
 .startup-panel-content {
   color: rgb(174, 0, 255);
   margin-top: 50px;
@@ -64,6 +81,8 @@
   font-family: 'OpenSans-SemiBold';
   font-size: 30px;
   font-weight: normal;
+  z-index: 1000000;
+  user-select: none;
 }
 
 #navigate-logo {
@@ -76,6 +95,7 @@
   top: 0px;
   margin-top: 455px;
   z-index: 1000000000000000000000;
+  user-select: none;
 }
 
 .navigate-link {
@@ -146,6 +166,10 @@
   height: 280px;
 }
 
+.searchbox-input {
+  color: rgb(0, 0, 0);
+}
+
 .searchbox-input::placeholder {
-  color: rgb(220, 220, 220);
+  color: rgb(100, 100, 100);
 }
