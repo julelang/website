@@ -86,11 +86,6 @@
   margin-bottom: 25px;
 }
 
-.section div, .section img {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
 button {
   font-family: 'OpenSans';
   font-style: normal;
@@ -264,4 +259,22 @@ button:hover {
   cursor: pointer;
   color: darkorchid;
   transition: 250ms;
+}
+
+.marked-ul li:before {
+  content: '✔';
+  display: inline-flex;
+  color: rebeccapurple;
+  padding: 0 6px 0 0;
+}
+
+.marked-ul li {
+  list-style-type: none;
+  font-size: 1em;
+}
+
+.marked-ul li desc {
+  color: blueviolet;
+  font-size: 19px;
+  font-weight: bolder;
 }

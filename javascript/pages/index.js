@@ -6,7 +6,12 @@ const startup_panel_contentHTML =
   The X Programming Language
 </div>
 <div style="color: rebeccablue; margin-top: 10px; font-size: 25px;">
-X is the <x style="font-family: 'OpenSans-Bold'; font-weight: bold;">simplified, strongly typed<br> and compiled</x> programming language.
+X is the <x style="font-family: 'OpenSans-Bold'; font-weight: bold;">simplified, strongly typed<br> and compiled</x> programming language
+<div class="marked-ul" style="margin-top: 20px;">
+  <li><desc>X is an open source and free programming language</desc></li>
+  <li><desc>Easy to learn and get started with</desc></li>
+  <li><desc>Efficient and fast as C++</desc></li>
+</div>
 </div>
 `;
 const entry_descriptionHTML =
@@ -73,4 +78,3 @@ pretty_transpile_title.innerHTML = pretty_transpile_titleHTML;
 pretty_transpile_content.innerHTML = pretty_transpile_contentHTML;
 
 //#endregion SET_CONTENT
-

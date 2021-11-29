@@ -2,6 +2,10 @@
   Index page stylesheet.
 */
 
+body {
+  background-color: rgb(24, 24, 24);
+}
+
 .navigation {
   margin-top: 20px;
   background-color: transparent;
@@ -172,4 +176,13 @@
 
 .searchbox-input::placeholder {
   color: rgb(100, 100, 100);
+}
+
+.line-section.last {
+  background-color: rgb(255, 255, 255);
+  background: rgb(33, 0, 36);
+  background: -moz-linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(40,40,40,1) 0%, rgba(255,255,255,1) 5%);
+  background: -webkit-linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(40,40,40,1) 0%, rgba(255,255,255,1) 5%);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(40,40,40,1) 0%, rgba(255,255,255,1) 5%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#210024",endColorstr="#ffffff",GradientType=1);
 }

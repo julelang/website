@@ -47,7 +47,6 @@ document.getElementById('navigation').innerHTML =
   src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
 </a>
 <div id="navigation-links">
-  <a href="https://github.com/the-xlang/x/releases">Download</a>
   <a href="${rootPath}/pages/docs.html">Documentations</a>
   <a href="${rootPath}/pages/community.html">Community</a>
   <a href="${rootPath}/pages/contributing.html">Contribute</a>
