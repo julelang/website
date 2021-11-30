@@ -869,13 +869,13 @@ const common_concepts_variablesHTML =
 There is more than one way in X to define a variable.
 We can call it multi-paradigm.
 <br><br>
-The keyword <x class="inline_code">var</x> is used to define a variable.
-Hard to guess, but this is short for variable.
-When you just use <x class="inline_code">var</x> you report you want the data type to be detect automatically.
+X is not use any keyword for declaring variable.
+X uses the <x class="inline_code">:</x> operator.
+When you just use <x class="inline_code">:</x> you report you want the data type to be detect automatically.
 The data type is set by the X compiler based on the data.
 <br><br>
 For example;
-<div class="code">var age = 18;</div>
+<div class="code">age: = 18;</div>
 The data type of the above variable is defaulted to <x class="inline_code">int32</x>.
 <div class="warn">
 In this method, the variable must be given a value, otherwise the X compiler will show an error.
@@ -887,7 +887,7 @@ You may want to specify the data type, it is possible.
 It also brings you advantages.
 <br><br>
 For example;
-<div class="code">var age int32 = 18;</div>
+<div class="code">age:int32 = 18;</div>
 This is equivalent to the one shown above.
 However, you specified the data type.
 So what exactly is the difference?
@@ -916,8 +916,8 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example;
 <div class="code">sub example() {
-  var a int32 = 10; // Value is 10.
-  a = 200; // New value is 200.
+  a:int32 = 10; // Value is 10.
+  a = 200;      // New value is 200.
 }</div>
 
 <div class="title-seperator"></div>
@@ -925,8 +925,8 @@ For example;
 Constant variables are declared same method, the only difference being that the keyword <x class="inline_code">const</x> is used when defining them.
 <br><br>
 For example;
-<div class="code">const age = 18;</div>
-<div class="code">const age int32 = 18;</div>
+<div class="code">const age: = 18;</div>
+<div class="code">const age:int32 = 18;</div>
 <div class="warn">
 No matter which method the constant variables are defined by, a value must be given.
 </div>
@@ -949,7 +949,7 @@ If you give the name of one of the global definitions to the function's paramete
 However, a global definition that you define or shadow once within the block cannot be shaded within the block and in sub-blocks.
 <br><br>
 For example;
-<div class="code">var a = 100;
+<div class="code">a: = 100;
 
 my_func(a bool) {
   outln(a);
@@ -962,10 +962,10 @@ Well, we said that a definition that is already defined or shadowed in the block
 What exactly does this mean?
 <br><br>
 For example;
-<div class="code">var a = 100;
+<div class="code">a: = 100;
 
 my_func(a bool) {
-  var a = 0.10;
+  a: = 0.10;
   outln(a);
 }
 </div>
@@ -1074,7 +1074,7 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example;
-<div class="code">var my_function (int32, int32) int32;</div>
+<div class="code">my_function:(int32, int32) int32;</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
 
@@ -1087,7 +1087,7 @@ Just in addition, the block of the function must be written.
 <br><br>
 For example;
 <div class="code">main() {
-  var make_hello = (name str) str {
+  make_hello: = (name str) str {
     < "Hello " + name + "!";
   };
   outln(make_hello("X"));
@@ -1098,8 +1098,8 @@ Anonymous functions can access the definitions of the block in which they are de
 <br><br>
 For example;
 <div class="code">main() {
-  var message = "Hello, World!";
-  var func = () {
+  message: = "Hello, World!";
+  func: = () {
     outln(message);
   };
   func();
@@ -1118,7 +1118,7 @@ Arrays can store multiple values.
 <br><br>
 Example to arrays;
 <div class="code">main() {
-  var my_array []str;
+  my_array:[]str;
   my_array = []str{"Hello", "X", "arrays!"};
   outln(my_array);
 }</div>
@@ -1143,7 +1143,7 @@ Arrays is use indexes for access and elements value setting.
 <br>
 For example;
 <div class="code">main() {
-  var my_array = []str{"Hello", "arrays", "indexes"};
+  my_array: = []str{"Hello", "arrays", "indexes"};
   outln(my_array[0]);
   my_array[0] = "Hi";
   outln(my_array);
@@ -1164,7 +1164,7 @@ Nested arrays is array storing arrays.
 <br>
 For example;
 <div class="code">main() {
-  var my_array = [][]str{
+  my_array: = [][]str{
     []str{"Apple", "Banana"},
     []str{"Bred", "Cheese"},
   };
@@ -1194,7 +1194,7 @@ For example;
 <div class="code">type i32 int32;
 
 main() {
-  var my_int i32 = 100;
+  my_int:i32 = 100;
   outln(my_int);
 }</div>
 As seen in the example above, there is an alias definition of <x class="inline_code">i32</x> for the <x class="inline_code">int32</x> data type.
