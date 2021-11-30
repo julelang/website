@@ -278,3 +278,54 @@ button:hover {
   font-size: 19px;
   font-weight: bolder;
 }
+
+.link-card-section {
+  user-select: none;
+  justify-content: space-around;
+}
+
+.link-card-section a {
+  text-decoration: none;
+  user-select: none;
+}
+
+.link-card {
+  display: inline-block;
+  text-decoration: none;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  width: 200px;
+  height: 300px;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+  user-select: none;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color:rgb(100, 50, 168);
+  border-style: solid;
+  transition: 200ms;
+}
+
+.link-card:hover {
+  transition: 200ms;
+  background-color: rgb(100, 50, 168);
+}
+
+.link-card-body {
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  margin-left: 5px;
+  text-align: left;
+  font-family: 'OpenSans';
+}
+
+.link-card-body * {
+  text-align: left;
+}
