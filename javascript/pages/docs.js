@@ -638,9 +638,9 @@ const basics_data_typesHTML =
   </table>
 
   <div class="title-seperator"></div>
-  <div class="sub-title">Null</div>
+  <div class="sub-title">Nil</div>
   Zero value for pointers and function data typed defines.
-  <div class="code">null</div>
+  <div class="code">nil</div>
 </div>
 `;
 
@@ -1122,10 +1122,10 @@ Example to arrays;
   my_array = []str{"Hello", "X", "arrays!"};
   outln(my_array);
 }</div>
-The null is the auto value of arrays.
-But the important point: empty array and null setted array is the same thing.
-The example at above, auto value is given (so null) at first statement.
-<x class="inline_code">my_array</x> is equals to <x class="inline_code">null</x> or <x class="inline_code">[]str{}</x>.
+The nil is the auto value of arrays.
+But the important point: empty array and nil setted array is the same thing.
+The example at above, auto value is given (so nil) at first statement.
+<x class="inline_code">my_array</x> is equals to <x class="inline_code">nil</x> or <x class="inline_code">[]str{}</x>.
 Second statement is set value of <x class="inline_code">my_array</x> variable as <x class="inline_code">[]str{"Hello", "X", "arrays!"}</x>.
 Seen at second statement, arrays is should be define with data type.
 Last statement is prints to console the <x class="inline_code">my_array</x> variable.
