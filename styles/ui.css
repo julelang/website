@@ -329,3 +329,32 @@ button:hover {
 .link-card-body * {
   text-align: left;
 }
+
+.arrow {
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 3px;
+}
+
+.arrow.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.arrow.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.arrow.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.arrpw.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}

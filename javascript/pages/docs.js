@@ -2,15 +2,15 @@ const page_title = `X - Documentations`;
 const navigation_avtive_color = 'rgb(200, 116, 221)';
 const prev_page =
 `
-<button
-  onclick="prev_page_click()"
-  style="float: left; font-weight: bold; font-size: larger;">⯇</button>
+<button onclick="prev_page_click()" style="float: left;">
+  <x class="arrow left" style="margin-top: 5px; margin-left: 5px;"></x>
+</button>
 `;
 const next_page =
 `
-<button
-  onclick="next_page_click()"
-  style="float: right; font-weight: bold; font-size: larger;">⯈</button>
+<button onclick="next_page_click()" style="float: right;">
+  <x class="arrow right" style="margin-top: 5px; margin-right: 5px;"></x>
+</button>
 `;
 
 const the_xlangHTML =
@@ -232,6 +232,8 @@ The name of the configuration file should be <x class="inline_code">x.set</x>.
 In fact, you can start working right away, leaving it as default.
 Generally you don't need to do any special configuration here.
 <br><br>
+Configuration format is JSON, and you can delete any key for use default value.
+<br><br>
 Fields in configuration files have specific purposes.
 <br><br>
 <table class="table">
@@ -304,7 +306,7 @@ Nice names for source of your project; <br>
 
 The source directory is the directory where your project's source codes are located.
 It is recommended that you keep the source code of the language or languages you are using in this directory.
-If your project has more than one language, you can separate the languages ​​in different directories in this directory.
+If your project has more than one language, you can separate the languages in different directories in this directory.
 The same method can be applied if you have more than one program.
 
 <div class="title-seperator"></div>
