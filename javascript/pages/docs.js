@@ -815,10 +815,10 @@ const basics_attributesHTML =
 <div class="page-title" style="margin-bottom: 20px;">Attributes</div>
 <div class="text">
 Attributes are used to mark definitions for specific reasons and to report them to the compiler.
-Each attribute is defined in brackets before the corresponding definition.
+Each attribute is defined with <x class="inline_code">@</x>, the attribute itself must come immediately after this operator.
 <br><br>
 For example:
-<div class="code">[attribute_a]
+<div class="code">@attribute_a
 cube(s int32) {
   ret s*s*s;
 }</div>
@@ -828,7 +828,7 @@ If you are giving more than one attribute, you should write each one in the same
 Note that an attribute cannot be given repeatedly.
 <br><br>
 For example:
-<div class="code">[attribute_a] [attribute_b]
+<div class="code">@attribute_a @attribute_b
 cube(s int32) {
   ret s*s*s;
 }</div>
@@ -917,7 +917,7 @@ The values of the variables can be changed later.
 The value given must be the same as the data type of the variable.
 <br><br>
 For example;
-<div class="code">sub example() {
+<div class="code">example() {
   a:int32 = 10; // Value is 10.
   a = 200;      // New value is 200.
 }</div>
