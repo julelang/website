@@ -1017,6 +1017,18 @@ The name of the parameter is written first, followed by the data type.
 <br><br>
 When calling the function, as seen in the example in the entry point, arguments are written in parentheses, and if they are more than one, they are separated from each other with commas.
 The given arguments must be compatible with the data type of the corresponding parameters.
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Constant Parameters</div>
+The function parameters can constant.
+Constant parameters is similar to constant variables, actually they are same.
+Constant variables and parameters, acts same.
+<br><br>
+For example;
+<div class="code">print_sum(const a int32, const b int32) {
+  add: = a + b;
+  outln(add);
+}
+</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Functions with Return Values</div>
