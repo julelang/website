@@ -939,6 +939,43 @@ The value of the variables can change, then they can be updated with a different
 Constants take a single value and never change again.
 
 <div class="title-seperator"></div>
+<div class="sub-title">Multiple Variable Update / Declaration</div>
+You can multiple variable update or declaration.
+What? Sure, you can use two type in same statement.
+You know how to declare variable, okay it is same.
+The single difference, identifiers and expressions separate with comma.
+<br><br>
+For example;
+<div class="code">x:, y:, z: = true, 1, -400;</div>
+Yes, there is we declare three new variable named as <x class="inline_code">x</x>, <x class="inline_code">y</x> and <x class="inline_code">z</x> with auto-type detection.
+Variable values are; <x class="inline_code">x</x> is <x class="inline_code">true</x>, <x class="inline_code">y</x> is <x class="inline_code">1</x> and <x class="inline_code">y</x> is <x class="inline_code">-400</x>.
+As you can see, the order in which the variable is defined is associated with the expression in the same order.
+Remember that if you have given a data type, the value you have shown must also be compatible with this data type.
+<br><br>
+So how do we do the update thing?
+<br>
+We're essentially just removing the colon operator (and type representation, if any) that indicates that the variable is a new variable.
+Actually, only the name of the variable needs to remain, remember value update statement.
+<br><br>
+For example;
+<div class="code">x, y, z = true, 1, -400;</div>
+The logic remains the same. Let's not forget that these variables must already exist, of course, due to static type principles, the value you show to it must be compatible with the data type of the variable.
+<br><br>
+Well, how to we use combined the update and declaration?
+<br>
+You learned update and declaration statements. Okay, combine.
+<br><br>
+For example;
+<div class="code">x, y:, z = true, 1, -400;</div>
+Here is the combination of these two methods.
+<br><br>
+Additionally, you can skip some values with ignore operator.
+<br>
+For example;
+<div class="code">x, _, z = true, 1, -400;</div>
+This way you ignore some values.
+
+<div class="title-seperator"></div>
 <div class="sub-title">Shadowing</div>
 Normally, shading allows to suppress previous definitions with the same name for each block.
 But X does not adopt it.
