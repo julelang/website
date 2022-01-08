@@ -429,52 +429,52 @@ const basics_data_typesHTML =
       <th>Typical Range</th>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int8</td>
+      <td style="text-align: center; font-family: 'Code';">i8</td>
       <td style="text-align: center;">1byte</td>
       <td>-127 to 127</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int16</td>
+      <td style="text-align: center; font-family: 'Code';">16</td>
       <td style="text-align: center;">2bytes</td>
     <td>-32768 to 32767</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int32</td>
+      <td style="text-align: center; font-family: 'Code';">i32</td>
       <td style="text-align: center;">4bytes</td>
       <td>-2147483648 to 2147483647</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int64</td>
+      <td style="text-align: center; font-family: 'Code';">i64</td>
       <td style="text-align: center;">8bytes</td>
       <td>-9223372036854775808 to 9223372036854775807</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint8</td>
+      <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1byte</td>
       <td>0 to 255</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint16</td>
+      <td style="text-align: center; font-family: 'Code';">u16</td>
       <td style="text-align: center;">2bytes</td>
       <td>0 to 65535</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint32</td>
+      <td style="text-align: center; font-family: 'Code';">u32</td>
       <td style="text-align: center;">4bytes</td>
       <td>0 to 4294967295</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint64</td>
+      <td style="text-align: center; font-family: 'Code';">u64</td>
       <td style="text-align: center;">8bytes</td>
       <td>0 to 18446744073709551615</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">float32</td>
+      <td style="text-align: center; font-family: 'Code';">f32</td>
       <td style="text-align: center;">4bytes</td>
     <td></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">float64</td>
+      <td style="text-align: center; font-family: 'Code';">f64</td>
       <td style="text-align: center;">8bytes</td>
       <td></td>
     </tr>
@@ -503,44 +503,44 @@ const basics_data_typesHTML =
       <th>Compatible Types</th>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int8</td>
-      <td>int8, int16, int32, int64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">i8</td>
+      <td>i8, i16, i32, i64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int16</td>
-      <td>int16, int32, int64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">i16</td>
+      <td>i16, i32, i64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int32</td>
-      <td>int32, int64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">i32</td>
+      <td>i32, i64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">int64</td>
-      <td>int64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">i64</td>
+      <td>i64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint8</td>
-      <td>uint8, uint16, uint32, uint64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">u8</td>
+      <td>u8, u16, u32, u64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint16</td>
-      <td>uin16, uint32, uint64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">u16</td>
+      <td>u16, u32, u64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint32</td>
-      <td>uint32, uint64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">u32</td>
+      <td>u32, u64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">uint64</td>
-      <td>uint64, float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">u64</td>
+      <td>u64, f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">float32</td>
-      <td>float32, float64</td>
+      <td style="text-align: center; font-family: 'Code';">f32</td>
+      <td>f32, f64</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">float64</td>
-      <td>float64</td>
+      <td style="text-align: center; font-family: 'Code';">f64</td>
+      <td>f64</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
@@ -819,8 +819,8 @@ Each attribute is defined with <x class="inline_code">@</x>, the attribute itsel
 <br><br>
 For example:
 <div class="code">@attribute_a
-cube(s int32) {
-  ret s*s*s;
+cube(s i32) i32 {
+  // Body ...
 }</div>
 </div>
 <br><br>
@@ -829,8 +829,8 @@ Note that an attribute cannot be given repeatedly.
 <br><br>
 For example:
 <div class="code">@attribute_a @attribute_b
-cube(s int32) {
-  ret s*s*s;
+cube(s i32) i32 {
+  // Body...
 }</div>
 <div class="warn">
 Not all attributes can be applied to all definitions.
@@ -878,7 +878,7 @@ The data type is set by the X compiler based on the data.
 <br><br>
 For example;
 <div class="code">age: = 18;</div>
-The data type of the above variable is defaulted to <x class="inline_code">int32</x>.
+The data type of the above variable is defaulted to <x class="inline_code">i32</x>.
 <div class="warn">
 In this method, the variable must be given a value, otherwise the X compiler will show an error.
 </div>
@@ -889,7 +889,7 @@ You may want to specify the data type, it is possible.
 It also brings you advantages.
 <br><br>
 For example;
-<div class="code">age:int32 = 18;</div>
+<div class="code">age:i32 = 18;</div>
 This is equivalent to the one shown above.
 However, you specified the data type.
 So what exactly is the difference?
@@ -918,8 +918,8 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example;
 <div class="code">example() {
-  a:int32 = 10; // Value is 10.
-  a = 200;      // New value is 200.
+  a:i32 = 10; // Value is 10.
+  a = 200;    // New value is 200.
 }</div>
 
 <div class="title-seperator"></div>
@@ -928,7 +928,7 @@ Constant variables are declared same method, the only difference being that the 
 <br><br>
 For example;
 <div class="code">const age: = 18;</div>
-<div class="code">const age:int32 = 18;</div>
+<div class="code">const age:i32 = 18;</div>
 <div class="warn">
 No matter which method the constant variables are defined by, a value must be given.
 </div>
@@ -1044,7 +1044,7 @@ For example;
   print_int(50);
 }
 
-print_int(i int32) {
+print_int(i i32) {
   outln(i);
 }</div>
 It is similar to normal function definition.
@@ -1061,7 +1061,7 @@ Constant parameters is similar to constant variables, actually they are same.
 Constant variables and parameters, acts same.
 <br><br>
 For example;
-<div class="code">print_sum(const a int32, const b int32) {
+<div class="code">print_sum(const a i32, const b i32) {
   add: = a + b;
   outln(add);
 }
@@ -1076,7 +1076,7 @@ For example;
   outln(div(10, 2));
 }
 
-div(a float64, b float64) float64 {
+div(a f64, b f64) f64 {
   ret a / b;
 }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
@@ -1089,7 +1089,7 @@ Although the keyword <x class="inline_code">return</x> is widely used, <x class=
 <br><br>
 However, there is an additional alternative syntax.
 An alternative use is offered with a small operator, since writing the return value directly will not be good for readability.
-<div class="code">div(a float64, b float64) float64 {
+<div class="code">div(a f64, b f64) f64 {
   < a / b;
 }</div>
 The alternative use of the above code is as follows. The <x class="inline_code">ret</x> keyword is replaced by the <x class="inline_code"><</x> operator.
@@ -1125,7 +1125,7 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example;
-<div class="code">my_function:(int32, int32) int32;</div>
+<div class="code">my_function:(i32, i32) i32;</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
 
@@ -1242,16 +1242,16 @@ Type aliases is an alias for existing types defined by developer.
 When these aliases are used, they qualify the types they represent.
 <br>
 For example;
-<div class="code">type i32 int32;
+<div class="code">type int32 i32;
 
 main() {
-  my_int:i32 = 100;
+  my_int:int32 = 100;
   outln(my_int);
 }</div>
-As seen in the example above, there is an alias definition of <x class="inline_code">i32</x> for the <x class="inline_code">int32</x> data type.
+As seen in the example above, there is an alias definition of <x class="inline_code">int32</x> for the <x class="inline_code">i32</x> data type.
 The keyword <x class="inline_code">type</x> comes first to define an alias.
 Then comes the name you want to give and which type it will represent.
-This alias will now represent <x class="inline_code">int32</x> when used.
+This alias will now represent <x class="inline_code">i32</x> when used.
 <br><br>
 In addition, it seems that this alias is used in variable definition.
 This is because the X compiler recognizes the default types built-in.
