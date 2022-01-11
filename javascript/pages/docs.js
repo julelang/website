@@ -265,7 +265,7 @@ Let's start with a simple hello world program and learn compiling from this prog
 <br><br>
 We have a <x class="inline_code">main.xx</x> file:
 <div class="code">main() {
-  outln("Hello, World!");
+  outln("Hello, World!")
 }</div>
 
 We will use already created settings file with <x class="inline_code">x init</x> command.
@@ -838,10 +838,32 @@ Each definition has valid attributes for it.
 </div>
 `;
 
-const basics_expressions_as_statementHTML =
+const basics_statementsHTML =
 `
-<div class="page-title" style="margin-bottom: 20px;">Expressions as Statement</div>
+<div class="page-title" style="margin-bottom: 20px;">Statements</div>
 <div class="text">
+Statements separates with statement terminator.
+<br>
+The statement terminator of X is the semicolon (<x class="inline_code">;</x>).
+<br>
+Also, we sayed each statement separates with statement terminator and it is true.
+But statement terminator is always necessary? No.
+<br>
+You can use statement terminator if you want write two or more statement as side-by-side.
+Except that, not necessary.
+<br>
+Well, how we separate statements? Easy, please skip to next line or finish write.
+<br><br>
+For example;
+<div class="code">main() {
+  [STATEMENT_1]; [STATEMENT_2]
+  [STATEMENT_3]
+  [STATEMENT_4]
+}</div>
+
+
+<div class="title-seperator"></div>
+<div class="sub-title">Expressions as Statement</div>
 You may want to write an expression as a statement for several reasons.
 It is possible.
 Instead of presenting it directly, X has adopted it to be written between parentheses in order to contribute to readability.
@@ -849,7 +871,7 @@ An expression must be surrounded by parentheses to be used as a statement.
 <br><br>
 For example;
 <div class="code">main() {
-  (100);
+  (100)
 }</div>
 </div>
 `;
@@ -877,7 +899,7 @@ When you just use <x class="inline_code">:</x> you report you want the data type
 The data type is set by the X compiler based on the data.
 <br><br>
 For example;
-<div class="code">age: = 18;</div>
+<div class="code">age: = 18</div>
 The data type of the above variable is defaulted to <x class="inline_code">i32</x>.
 <div class="warn">
 In this method, the variable must be given a value, otherwise the X compiler will show an error.
@@ -889,7 +911,7 @@ You may want to specify the data type, it is possible.
 It also brings you advantages.
 <br><br>
 For example;
-<div class="code">age:i32 = 18;</div>
+<div class="code">age:i32 = 18</div>
 This is equivalent to the one shown above.
 However, you specified the data type.
 So what exactly is the difference?
@@ -918,8 +940,8 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example;
 <div class="code">example() {
-  a:i32 = 10; // Value is 10.
-  a = 200;    // New value is 200.
+  a:i32 = 10 // Value is 10.
+  a = 200    // New value is 200.
 }</div>
 
 <div class="title-seperator"></div>
@@ -927,8 +949,8 @@ For example;
 Constant variables are declared same method, the only difference being that the keyword <x class="inline_code">const</x> is used when defining them.
 <br><br>
 For example;
-<div class="code">const age: = 18;</div>
-<div class="code">const age:i32 = 18;</div>
+<div class="code">const age: = 18</div>
+<div class="code">const age:i32 = 18</div>
 <div class="warn">
 No matter which method the constant variables are defined by, a value must be given.
 </div>
@@ -946,7 +968,7 @@ You know how to declare variable, okay it is same.
 The single difference, identifiers and expressions separate with comma.
 <br><br>
 For example;
-<div class="code">x:, y:, z: = true, 1, -400;</div>
+<div class="code">x:, y:, z: = true, 1, -400</div>
 Yes, there is we declare three new variable named as <x class="inline_code">x</x>, <x class="inline_code">y</x> and <x class="inline_code">z</x> with auto-type detection.
 Variable values are; <x class="inline_code">x</x> is <x class="inline_code">true</x>, <x class="inline_code">y</x> is <x class="inline_code">1</x> and <x class="inline_code">y</x> is <x class="inline_code">-400</x>.
 As you can see, the order in which the variable is defined is associated with the expression in the same order.
@@ -958,7 +980,7 @@ We're essentially just removing the colon operator (and type representation, if 
 Actually, only the name of the variable needs to remain, remember value update statement.
 <br><br>
 For example;
-<div class="code">x, y, z = true, 1, -400;</div>
+<div class="code">x, y, z = true, 1, -400</div>
 The logic remains the same. Let's not forget that these variables must already exist, of course, due to static type principles, the value you show to it must be compatible with the data type of the variable.
 <br><br>
 Well, how to we use combined the update and declaration?
@@ -966,13 +988,13 @@ Well, how to we use combined the update and declaration?
 You learned update and declaration statements. Okay, combine.
 <br><br>
 For example;
-<div class="code">x, y:, z = true, 1, -400;</div>
+<div class="code">x, y:, z = true, 1, -400</div>
 Here is the combination of these two methods.
 <br><br>
 Additionally, you can skip some values with ignore operator.
 <br>
 For example;
-<div class="code">x, _, z = true, 1, -400;</div>
+<div class="code">x, _, z = true, 1, -400</div>
 This way you ignore some values.
 
 <div class="title-seperator"></div>
@@ -988,10 +1010,10 @@ If you give the name of one of the global definitions to the function's paramete
 However, a global definition that you define or shadow once within the block cannot be shaded within the block and in sub-blocks.
 <br><br>
 For example;
-<div class="code">a: = 100;
+<div class="code">a: = 100
 
 my_func(a bool) {
-  outln(a);
+  outln(a)
 }
 </div>
 In the code above, the function's parameter is the same as the name of a global definition.
@@ -1001,11 +1023,11 @@ Well, we said that a definition that is already defined or shadowed in the block
 What exactly does this mean?
 <br><br>
 For example;
-<div class="code">a: = 100;
+<div class="code">a: = 100
 
 my_func(a bool) {
-  a: = 0.10;
-  outln(a);
+  a: = 0.10
+  outln(a)
 }
 </div>
 Let's go over the previous example. In the block, the parameter <x class="inline_code">a</x> was taken with shadowing.
@@ -1031,7 +1053,7 @@ The curly braces indicate the block of the function.
 <br><br>
 So how can we call this function? <br>
 For Example;
-<div class="code">example();</div>
+<div class="code">example()</div>
 The name of the function comes first and then the parentheses again.
 
 <div class="title-seperator"></div>
@@ -1041,11 +1063,11 @@ These parameters must be specified with arguments at the time the function is ca
 <br><br>
 For example;
 <div class="code">main() {
-  print_int(50);
+  print_int(50)
 }
 
 print_int(i i32) {
-  outln(i);
+  outln(i)
 }</div>
 It is similar to normal function definition.
 Parameters are written between parentheses
@@ -1062,8 +1084,8 @@ Constant variables and parameters, acts same.
 <br><br>
 For example;
 <div class="code">print_sum(const a i32, const b i32) {
-  add: = a + b;
-  outln(add);
+  add: = a + b
+  outln(add)
 }
 </div>
 
@@ -1073,11 +1095,11 @@ Functions can return values.
 <br><br>
 For example;
 <div class="code">main() {
-  outln(div(10, 2));
+  outln(div(10, 2))
 }
 
 div(a f64, b f64) f64 {
-  ret a / b;
+  ret a / b
 }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
 To return a value, the function must have the data type for the return.
@@ -1090,7 +1112,7 @@ Although the keyword <x class="inline_code">return</x> is widely used, <x class=
 However, there is an additional alternative syntax.
 An alternative use is offered with a small operator, since writing the return value directly will not be good for readability.
 <div class="code">div(a f64, b f64) f64 {
-  < a / b;
+  < a / b
 }</div>
 The alternative use of the above code is as follows. The <x class="inline_code">ret</x> keyword is replaced by the <x class="inline_code"><</x> operator.
 
@@ -1125,7 +1147,7 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example;
-<div class="code">my_function:(i32, i32) i32;</div>
+<div class="code">my_function:(i32, i32) i32</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
 
@@ -1139,9 +1161,9 @@ Just in addition, the block of the function must be written.
 For example;
 <div class="code">main() {
   make_hello: = (name str) str {
-    < "Hello " + name + "!";
+    < "Hello " + name + "!"
   };
-  outln(make_hello("X"));
+  outln(make_hello("X"))
 }</div>
 
 <div class="topic-seperator"></div>
@@ -1149,9 +1171,9 @@ Anonymous functions can access the definitions of the block in which they are de
 <br><br>
 For example;
 <div class="code">main() {
-  message: = "Hello, World!";
+  message: = "Hello, World!"
   func: = () {
-    outln(message);
+    outln(message)
   };
   func();
 }</div>
@@ -1169,9 +1191,9 @@ Arrays can store multiple values.
 <br><br>
 Example to arrays;
 <div class="code">main() {
-  my_array:[]str;
-  my_array = []str{"Hello", "X", "arrays!"};
-  outln(my_array);
+  my_array:[]str
+  my_array = []str{"Hello", "X", "arrays!"}
+  outln(my_array)
 }</div>
 The nil is the auto value of arrays.
 But the important point: empty array and nil setted array is the same thing.
@@ -1194,10 +1216,10 @@ Arrays is use indexes for access and elements value setting.
 <br>
 For example;
 <div class="code">main() {
-  my_array: = []str{"Hello", "arrays", "indexes"};
-  outln(my_array[0]);
-  my_array[0] = "Hi";
-  outln(my_array);
+  my_array: = []str{"Hello", "arrays", "indexes"}
+  outln(my_array[0])
+  my_array[0] = "Hi"
+  outln(my_array)
 }</div>
 For element access, index is written between brackets (<x class="inline_code">[]</x>).
 First statement is declares our array.
@@ -1218,8 +1240,8 @@ For example;
   my_array: = [][]str{
     []str{"Apple", "Banana"},
     []str{"Bred", "Cheese"},
-  };
-  outln(my_array);
+  }
+  outln(my_array)
 }</div>
 <br>
 Output of program;
@@ -1242,11 +1264,11 @@ Type aliases is an alias for existing types defined by developer.
 When these aliases are used, they qualify the types they represent.
 <br>
 For example;
-<div class="code">type int32 i32;
+<div class="code">type int32 i32
 
 main() {
-  my_int:int32 = 100;
-  outln(my_int);
+  my_int:int32 = 100
+  outln(my_int)
 }</div>
 As seen in the example above, there is an alias definition of <x class="inline_code">int32</x> for the <x class="inline_code">i32</x> data type.
 The keyword <x class="inline_code">type</x> comes first to define an alias.
@@ -1317,7 +1339,7 @@ const NAV_basics_entry_point = document.getElementById('basics-entry-point');
 const NAV_basics_data_types = document.getElementById('basics-data-types');
 const NAV_basics_operators = document.getElementById('basics-operators');
 const NAV_basics_attributes = document.getElementById('basics-attributes');
-const NAV_basics_expressions_as_statement = document.getElementById('basics-expressions-as-statement');
+const NAV_basics_statements = document.getElementById('basics-statements');
 const NAV_common_concepts = document.getElementById('common-concepts');
 const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
@@ -1352,7 +1374,7 @@ const navigations = [
   [NAV_basics_data_types,                   basics_data_typesHTML],
   [NAV_basics_operators,                    basics_operatorsHTML],
   [NAV_basics_attributes,                   basics_attributesHTML],
-  [NAV_basics_expressions_as_statement,     basics_expressions_as_statementHTML],
+  [NAV_basics_statements,                   basics_statementsHTML],
   [NAV_common_concepts,                     common_conceptsHTML],
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
