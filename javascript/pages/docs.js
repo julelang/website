@@ -1180,6 +1180,46 @@ For example;
 The anonymous function defined in the example above uses the <x class="inline_code">message</x> variable belonging to the block it is defined in.
 Definitions used from outer blocks can be shadowed within the anonymous function.
 </div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Multiple Returnable Functions</div>
+Functions can returns more then one values.
+For that, specify return data-type with multiple type.
+<br><br>
+For example;
+<div class="code">my_func() [i32, i32] {
+  < 18, 96
+}</div>
+Brackets are used to specify multiple data types, seen as example at above.
+This option, only valid for function returns.
+
+<div class="topic-seperator"></div>
+What happens when specified single data-type with brackets?
+Nothing, you not see compiler error.
+But not compile as multi-type, compiles single data-type.
+<br><br>
+For example;
+<div class="code">less_than(x i32, y i32) [bool] {
+  ret x < y
+}</div>
+The example at above, accepted as one type return.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Multiple Assignment with Multiple Returned Functions</div>
+It's too similar to normal assignment.
+Give much identifier same count with function return values and give function call as value.
+<br><br>
+For example;
+<div class="code">compare_int(x i32, y i32) [bool, bool] {
+  return x < y, x == y,
+}
+
+main() {
+  less:, equals: = compare_int(10, 20)
+  outln(less)
+  outln(equals)
+}</div>
+<div class="warn">You can't use multiple returnable functions combined with normal multiple assignments.</div>
 `;
 
 const common_concepts_arraysHTML =
