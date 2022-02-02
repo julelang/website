@@ -75,7 +75,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: purple;
+  background: indigo;
 }
 
 ::-webkit-scrollbar-thumb:hover {

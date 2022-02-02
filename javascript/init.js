@@ -75,7 +75,6 @@ body.innerHTML +=
         <img
           class="footer-logo"
           src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
-        <div class="footer-desc">Made with in Turkey.</div>
         <div id="copyright"></div>
       </center>
       </div>

@@ -17,6 +17,8 @@
   right: 0px;
   bottom: 0px;
   z-index: 9000000000000000000000000000;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .footer a {

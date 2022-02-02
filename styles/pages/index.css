@@ -13,6 +13,13 @@ body {
 
 .navigation-logo {
   margin-left: 50px;
+  border-radius: 250px;
+  transition: 200ms;
+}
+
+.navigation-logo:hover {
+  background: rgba(71, 0, 95, 0.15);
+  transition: 250ms;
 }
 
 .navigation #navigation-links {
@@ -60,7 +67,7 @@ body {
   height: 580px;
 }
 
-#startup-background-canvas {
+.neuralcanvas {
   left: 0px;
   right: 0px;
   top: 0px;
@@ -125,10 +132,29 @@ body {
   color: white;
 }
 
+.navigate-link.left {
+  margin-left: calc(50% - 350px);
+  text-align: left;
+}
+
+.navigate-link.right {
+  margin-left: 50%;
+  text-align: right;
+}
+
 .navigate-link:hover {
   transition: 250ms;
   background-color: rgb(174, 0, 255);
   cursor: pointer;
+}
+
+.navigate-link.left:hover {
+  padding-left: 30px;
+}
+
+.navigate-link.right:hover {
+  padding-left: 70px;
+  padding-right: 30px;
 }
 
 .navigate-link a {

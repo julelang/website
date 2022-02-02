@@ -17,7 +17,6 @@ const the_xlangHTML =
 `
 <div class="title">The <x style="color: rgb(180, 52, 235);">X</x> Programming Language</div>
 <br>
-<div class="text" style="font-weight: normal; font-style: italic;">by Mertcan Davulcu with contributors from community</div>
 <div class="text">
   <br><br>
   This version of the text assumes you're using X compiler (compiled from source) 3.10.2021 (DD/MM/YYYY) or later.
@@ -1426,18 +1425,14 @@ const navigations = [
 
 //#region EVENTS
 
-function next_page_click() {
-  select_topic_index(navigation_index+1);
-}
+function next_page_click()
+{ select_topic_index(navigation_index+1); }
 
-function prev_page_click() {
-  select_topic_index(navigation_index-1);
-}
+function prev_page_click()
+{ select_topic_index(navigation_index-1); }
 
 navigations.forEach((element, index) => {
-  element[0].addEventListener('click', () => {
-    select_topic_index(index);
-  });
+  element[0].addEventListener('click', () => { select_topic_index(index); });
 });
 
 //#endregion EVENTS
@@ -1449,11 +1444,8 @@ const url = new URL(window.location.href);
 const query_page = url.searchParams.get('page');
 if (query_page != null) {
   const selected_page = document.getElementById(query_page);
-  if (selected_page != null) {
-    selected_page.click();
-  } else {
-    select_topic_index(0);
-  }
+  if (selected_page != null) { selected_page.click(); }
+  else                       { select_topic_index(0); }
 } else {
   select_topic_index(0);
 }
@@ -1473,8 +1465,10 @@ function select_topic(nav) {
 function select_topic_index(index) {
   let nav = navigations[index][0];
   let html = navigations[index][1];
-  navigations[navigation_index][0].style = nav.style;
+  let old = navigations[navigation_index][0];
+  old.style = nav.style;
   nav.style.color = navigation_avtive_color;
+  nav.style.fontWeight = "bold";
   navigation_index = index;
   html += `<div style="margin-top: 150px;">`;
   if (index == 0) {

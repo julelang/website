@@ -67,6 +67,7 @@
 }
 
 .section {
+  max-width: 1200px;
   color: rgb(255, 255, 255);
   background-color: purple;
   height: 500px;
@@ -146,6 +147,8 @@ button:hover {
   transition: 200ms;
   color: blueviolet;
   cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 #side-navigation .sub-topic {
@@ -167,6 +170,8 @@ button:hover {
   transition: 250ms;
   color: blueviolet;
   cursor: pointer;
+  margin-left: 30px;
+  font-weight: bold;
 }
 
 #side-navigation-content {
