@@ -1287,6 +1287,134 @@ Output of program;
 <div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
 `;
 
+const memory_managementHTML =
+`
+<div class="title" style="margin-bottom: 20px;">Memory Management</div>
+<div class="text">
+  Memory Management in X.
+
+  <div class="title-seperator"></div>
+  <div class="sub-title">Pointers</div>
+  Each location at memory have an address.
+  These addresses points to location at memory.
+  Pointers are variables can store this memory addresses.
+  <br><br>
+  To declare a pointer data-type, use <x class="inline_code">*</x> operator.
+  <br>
+  Example;
+  <div class="code">x:*i32</div>
+  That's pointer for <x class="inline_code">i32</x> type.
+  <div class="info">Default value of pointers is nil.</div>
+
+  <div class="title-seperator"></div>
+  <div class="sub-sub-title">Getting Pointer of Variables</div>
+  The <x class="inline_code">&</x> operator used to get pointer of variable.
+  <br>
+  For example;
+  <div class="code">main() {
+  x:i32 = 10
+  y:*i32 = &x
+}</div>
+  The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
+
+  <div class="title-seperator"></div>
+  <div class="sub-sub-title">Accessing Values on Pointers</div>
+  The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
+  For example;
+  <div class="code">main() {
+  x:i32 = 10
+  y:*i32 = &x
+  outln(y)  // Prints stored address
+  outln(*y) // Prints value at address (so 10)
+}</div>
+
+  <div class="title-seperator"></div>
+  <div class="sub-sub-title">Assign Values to Pointers</div>
+  Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
+  <br>
+  For example;
+  <div class="code">main() {
+  x:i32 = 10
+  z:*i32 = &x // The 'z' store now memory address of the 'x' variable.
+  y:i32 = 98
+  z = &y      // The 'z' store now memory address of the 'y' variable.
+}</div>
+  <div class="topic-seperator"></div>
+  Additionally, pointers can set the value of the memory address they store.
+  <br>
+  The <x class="inline_code">*</x> operator used for that too.
+  <br>
+  For example;
+  <div class="code">main() {
+  x:i32 = 10
+  y:*i32 = &x
+  *y = 59  // Assign value
+  outln(x) // Prints 59
+}</div>
+
+  <div class="title-seperator"></div>
+  <div class="sub-title">Heap Allocations</div>
+  The <x class="inline_code">new</x> keyword allocate new section up to size of data-type from heap of system's memory by specified data-type.
+  Returns pointer of allocated section, returns <x class="inline_code">nil</x> if allocation failed.
+  For example;
+  <div class="code">x:*i32 = new i32</div>
+  <div class="warn">This allocations isn't frees automatically, must freed by developer with <a href="#free"><x class="inline_code">free</x></a> keyword.</div>
+
+  <div class="title-seperator"></div>
+  <div id="free" class="sub-title">Free Allocations</div>
+  The <x class="inline_code">free</x> keyword frees heap-allocated allocations.
+  You can just free pointers.
+  For example;
+  <div class="code">main() {
+  x: = new i32 // Allocate from heap
+  free x       // Free allocation
+}</div>
+  <div class="warn">If you use stack-allocation pointer, this is a undefined behavior.</div>
+
+  <div class="title-seperator"></div>
+  <div class="sub-title">Dangling Pointers</div>
+  Dangling pointers are isn't point to valid object at memory.
+  <br>
+  Example;
+  <div class="code">main() {
+  x:*i32 = new i32
+  *x = 10
+  free x  // Frees x, x now becomes a dangling pointer
+  x = nil // x is not dangling now
+}</div>
+  Reason of that after freed allocations pointers isn't setted as nil.
+  So data is freed but pointer still points to the address, but address not have any value.
+  Set pointer as nil after freed is a good option.
+  <div class="topic-seperator"></div>
+  Function example;
+  <div class="code">get_pointer() *i32 {
+  x: = 10
+  < &x // Returns address of x
+       // but x is out of scope, so pointer is dangling
+}
+
+main() {
+    p:*i32 = get_pointer()
+    outln(*p) // Used dangling pointer
+}</div>
+  If you want return any pointer of defined at body of function from function, you can return this pointer as heap-allocated.
+  <br>
+  For example with example at above;
+  <div class="code">get_pointer() *i32 {
+  x: = 10
+  y:*i32 = new i32
+  *y = x
+  < y
+}
+
+main() {
+  p:*i32 = get_pointer()
+  outln(*p)
+  free p
+}</div>
+</div>
+`;
+
 const itemsHTML =
 `
 <div class="title" style="margin-bottom: 20px;">Items</div>
@@ -1383,6 +1511,7 @@ const NAV_common_concepts = document.getElementById('common-concepts');
 const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
 const NAV_common_concepts_arrays = document.getElementById('common-concepts-arrays');
+const NAV_memory_management = document.getElementById('memory-management');
 const NAV_items = document.getElementById('items');
 const NAV_items_type_aliases = document.getElementById('items-type-aliases');
 const NAV_end = document.getElementById('end');
@@ -1418,6 +1547,7 @@ const navigations = [
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
+  [NAV_memory_management,                   memory_managementHTML],
   [NAV_items,                               itemsHTML],
   [NAV_items_type_aliases,                  items_type_aliasesHTML],
   [NAV_end,                                 endHTML],
