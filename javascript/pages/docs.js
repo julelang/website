@@ -62,10 +62,8 @@ const forewordHTML =
   <br><br>
   With this documentation, it is possible to improve your X knowledge, programming and analytical thinking skills.
   If you're just starting out to programming, it could be a pretty good start for you.
-  <br>
-  Welcome to X community!
   <br><br>
-  - Mertcan Davulcu
+  Welcome to X community!
 </div>
 `;
 
@@ -101,10 +99,6 @@ const introductionHTML =
   When you develop with X, you use a simple and straightforward syntax.
   The X code is then converted to stable and safe C++ code.
   Everything happens much more easily and comfortably.
-
-  <div class="title-seperator"></div>
-  <div class="sub-title">Source Code</div>
-  The source code files is accessable from <a href="https://github.com/the-xlang/website">GitHub</a> website repository.
 </div>
 `;
 
@@ -1455,6 +1449,41 @@ When defining a type alias, only the following types can be given as the type to
 </div>
 `;
 
+const standard_libraryHTML =
+`
+<div class="title" style="margin-bottom: 20px;">Standard Libray</div>
+<div class="text">
+  The standard library is language's own library.
+  Usually each programming language have a standard library.
+  This libraries, provides common functions to developer.
+  Free time!
+  <br><br>
+  Developers can write functions of standard library if they want.
+  But they usually prefer to use the standard library.
+  Because usually every developer learns the standard library while learning a language.
+  For this reason, standard library provides readability for developers.
+  Since developers do not rewrite their functions every time, developers who already know the standard library can understand the code more easily.
+  <br><br>
+  At below, you can see all content of standard library of the X programming language;
+  <br><br><br>
+  <li><a onclick="std_builtin_click()">Built-In</a></li>
+</div>
+`;
+
+const standard_library_builtinHTML =
+`
+<div class="title" style="margin-bottom: 20px;">Standard Library: Built-In Defines</div>
+<div class="text">
+Built-In defines are provided from the language by directly without any import operation.
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-builtin-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content">
+</div>
+</div>
+`;
+
 const endHTML =
 `
 <div class="title" style="margin-bottom: 20px;">End</div>
@@ -1471,7 +1500,24 @@ Support us to improve the documentation.
 <a href="https://github.com/the-xlang/website/issues/new/choose">Open Issue</a> <br>
 <a href="https://github.com/the-xlang/website/fork">Fork project</a>
 
+<div class="title-seperator"></div>
+  <div class="sub-title">Source Code this Website</div>
+  The source code files is accessible from <a href="https://github.com/the-xlang/website">GitHub</a> website repository.
 </div>
+`;
+
+// ------------------------------------------------------------------------------
+
+const TAB_builtin_functions =
+`
+<div class="sub-sub-title"><x class="inline_code">out(value any)</x></div>
+Prints value to command line.
+Can take any data-type as argument.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">outln(value any)</x></div>
+This function same with <x class="inline_code">out</x> function.
+One difference, prints new line after print.
 `;
 
 //#region SET_PAGE
@@ -1514,6 +1560,8 @@ const NAV_common_concepts_arrays = document.getElementById('common-concepts-arra
 const NAV_memory_management = document.getElementById('memory-management');
 const NAV_items = document.getElementById('items');
 const NAV_items_type_aliases = document.getElementById('items-type-aliases');
+const NAV_standard_library = document.getElementById('standard-library');
+const NAV_standard_library_builtin = document.getElementById('standard-library-builtin');
 const NAV_end = document.getElementById('end');
 
 const side_navigation = document.getElementById('side-navigation');
@@ -1550,8 +1598,14 @@ const navigations = [
   [NAV_memory_management,                   memory_managementHTML],
   [NAV_items,                               itemsHTML],
   [NAV_items_type_aliases,                  items_type_aliasesHTML],
+  [NAV_standard_library,                    standard_libraryHTML],
+  [NAV_standard_library_builtin,            standard_library_builtinHTML],
   [NAV_end,                                 endHTML],
 ];
+
+const tabs = [
+  ["tab-builtin-functions", TAB_builtin_functions],
+]
 
 //#region EVENTS
 
@@ -1560,6 +1614,9 @@ function next_page_click()
 
 function prev_page_click()
 { select_topic_index(navigation_index-1); }
+
+function std_builtin_click()
+{ select_topic(NAV_standard_library_builtin); }
 
 navigations.forEach((element, index) => {
   element[0].addEventListener('click', () => { select_topic_index(index); });
@@ -1582,6 +1639,34 @@ if (query_page != null) {
 //#endregion SET_CONTENT QUERIES
 
 //#endregion SET_CONTENT
+
+function select_tab_index(tabcontrol, index) {
+  let divs = tabcontrol.getElementsByTagName('div');
+  for (let index = 0; index < divs.length; ++index) {
+    let element = divs[index];
+    element.classList.remove('active');
+  }
+  let element = divs[index];
+  element.classList.add('active');
+  let content;
+  for (let index = 0; index < tabs.length; ++index) {
+    let tab = tabs[index];
+    let id = tab[0];
+    if (id != element.id) { continue; }
+    content = tab[1];
+    break;
+  };
+  divs = document.getElementsByClassName('tabcontrol-content');
+  for (let index = 0; index < divs.length; ++index) {
+    let element = divs[index];
+    element.innerHTML = content;
+  }
+}
+
+function select_tab_event(index) {
+  let tabcontrol = document.getElementsByClassName('tabcontrol')[0];
+  select_tab_index(tabcontrol, index);
+}
 
 function select_topic(nav) {
   navigations.forEach((element, index) => {
@@ -1611,6 +1696,11 @@ function select_topic_index(index) {
   }
   html += `</div>`;
   content_body.innerHTML = html;
+  let tabcontrols = document.getElementsByClassName('tabcontrol');
+  for (let index = 0; index < tabcontrols.length; ++index) {
+    let tabcontrol = tabcontrols[index];
+    select_tab_index(tabcontrol, 0);
+  }
   url.searchParams.set('page', nav.id);
   window.history.replaceState(null, null, "?" +url.searchParams.toString());
   nav.scrollIntoView();
