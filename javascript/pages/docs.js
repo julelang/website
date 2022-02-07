@@ -2,13 +2,13 @@ const page_title = `X - Documentations`;
 const navigation_avtive_color = 'rgb(200, 116, 221)';
 const prev_page =
 `
-<button onclick="prev_page_click()" style="float: left;">
+<button onclick="prev_page_click()" style="float: left; padding: 15px;">
   <x class="arrow left" style="margin-top: 5px; margin-left: 5px;"></x>
 </button>
 `;
 const next_page =
 `
-<button onclick="next_page_click()" style="float: right;">
+<button onclick="next_page_click()" style="float: right; padding: 15px;">
   <x class="arrow right" style="margin-top: 5px; margin-right: 5px;"></x>
 </button>
 `;
@@ -1281,6 +1281,22 @@ Output of program;
 <div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
 `;
 
+const common_concepts_control_flowHTML =
+`
+<div class="title" style="margin-bottom: 20px;">Control Flow</div>
+<div class="text">
+We may want to guide the progress of the program with various conditions or repeat certain commands.
+That's what control flowers are for.
+Many programming languages have their control flows.
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-common-concepts-iterations" class="tab" onclick="select_tab_event(0)">Iterations</div>
+</div>
+<div class="tabcontrol-content">
+</div>
+</div>
+`;
+
 const memory_managementHTML =
 `
 <div class="title" style="margin-bottom: 20px;">Memory Management</div>
@@ -1520,6 +1536,73 @@ This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 `;
 
+const TAB_common_concepts_iterations =
+`
+Iterations are used to iterate commands.
+The <x class="inline_code">iter</x> keyword use for iterations in X.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Infinity Iterations</div>
+Infinite iterations keep repeating endlessly until the loop is somehow broken.
+<br>
+For example;
+<div class="code">main() {
+  iter {
+    outln("Hello, iterations")
+  }
+}</div>
+The above example prints <x class="inline_code">Hello, iterations</x> repeatedly.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">While Iterations</div>
+The while iterations are iterations that repeat as long as a certain condition is met.
+It is not much different from defining an infinite iteration.
+<br>
+For example;
+<div class="code">main() {
+  counter: = 0
+  iter counter <= 5 {
+    outln(counter)
+    counter += 10
+  }
+}</div>
+The While loops use boolean expressions.
+As seen in the example above, the expression is written between the keyword and the block.
+This expression is evaluated before each loop, and if it returns true, the loop is iterated.
+This example just prints <x class="inline_code">0</x>.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Iteration Controlling</div>
+We may want to check for iterations, this is normal and common.
+There are two ways to do this in X; The <x class="inline_code">continue</x> and <x class="inline_code">break</x> keywords.
+<br><br>
+If you want break the iteration, use the <x class="inline_code">break</x> keyword.
+<br>
+For example;
+<div class="code">main() {
+  iter {
+    outln("Hello, World")
+    break
+  }
+}</div>
+The example at above, normally prints <x class="inline_code">Hello, World</x> again and again.
+But just prints one time, because <x class="inline_code">break</x> keyword is breaks iteration.
+
+<div class="topic-seperator"></div>
+If you want continue to next iteration, use the <x class="inline_code">continue</x> keyword.
+<br>
+For example;
+<div class="code">main() {
+  iter {
+    continue
+    outln("Hello, World")
+  }
+}</div>
+The example at above, normally prints <x class="inline_code">Hello, World</x> again and again.
+But prints nothing, because <x class="inline_code">continue</x> keyword is continue to next iteration.
+So print operation is the unreachable code.
+`;
+
 //#region SET_PAGE
 
 document.title = page_title;
@@ -1557,6 +1640,7 @@ const NAV_common_concepts = document.getElementById('common-concepts');
 const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
 const NAV_common_concepts_arrays = document.getElementById('common-concepts-arrays');
+const NAV_common_concepts_control_flow = document.getElementById('common-concepts-control-flow');
 const NAV_memory_management = document.getElementById('memory-management');
 const NAV_items = document.getElementById('items');
 const NAV_items_type_aliases = document.getElementById('items-type-aliases');
@@ -1595,6 +1679,7 @@ const navigations = [
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
+  [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
   [NAV_memory_management,                   memory_managementHTML],
   [NAV_items,                               itemsHTML],
   [NAV_items_type_aliases,                  items_type_aliasesHTML],
@@ -1604,7 +1689,8 @@ const navigations = [
 ];
 
 const tabs = [
-  ["tab-builtin-functions", TAB_builtin_functions],
+  ["tab-builtin-functions",          TAB_builtin_functions],
+  ["tab-common-concepts-iterations", TAB_common_concepts_iterations],
 ]
 
 //#region EVENTS
