@@ -22,7 +22,7 @@
   <div class="navigate-shadow"></div>
   <div class="navigate-large-shadow"></div>
   <div class="line-section last" style="padding-top: 200px;">
-  <div class="content-body" style="border-radius: 10000px;">
+  <div class="content-body">
     <div id="entry-description" style="margin: auto; display: flex;"></div>
   </div>
   </div>
@@ -36,45 +36,50 @@
     </div>
   </div>
   <div style="margin-top: 200px;"></div>
+  <div style="margin-top: 100px; margin-left: 20px; margin-right: 100px;">
+    <div style="width: 70%; height: 100px; margin-left: auto; margin-right: auto;">
+      <div id="preview-code" class="code" style="height: 250px;"></div>
+      <div id="preview-dropdown" class="dropdown">
+        <button class="dropbutton" style="min-width: 250px;"><x id="preview-dropdown-text">Select Algorithm</x> <div class="arrow down" style="float: right;"></div></button>
+        <div class="dropdown-content">
+          <a id="preview-code-helloworld">Hello World</a>
+          <a id="preview-code-fibonacci-closure">Fibonacci Closure</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 400px;"></div>
   <div class="title">Get Started</div>
   <div class="link-card-section" style="padding: 50px;">
   <center>
   <a href="https://github.com/the-xlang/x/releases" class="link-card">
-  <img
-    class="getstarted-linkcard-image"
-    src="./resources/download.png">
+  <img class="getstarted-linkcard-image" src="./resources/download.png">
   <div class="link-card-body">
     <div class="sub-sub-title">Download</div>
     Install X Compiler
-    <svg width="14" height="23" viewBox="0 0 14 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 2L11 11.5L2 21" stroke="white" stroke-width="4"></path>
-    </svg>
+    <div class="arrow right"></div>
   </div></a>
   <a href="./pages/docs.html" class="link-card">
   <img class="getstarted-linkcard-image" src="./resources/cap.png">
   <div class="link-card-body">
     <div class="sub-sub-title">Documentations</div>
     Learn the language
-    <svg width="14" height="23" viewBox="0 0 14 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 2L11 11.5L2 21" stroke="white" stroke-width="4"></path>
-    </svg>
+    <div class="arrow right"></div>
   </div></a>
   <a href="./pages/community.html" class="link-card">
   <img class="getstarted-linkcard-image" src="./resources/community.png">
   <div class="link-card-body">
     <div class="sub-sub-title">Community</div>
     Join community
-    <svg width="14" height="23" viewBox="0 0 14 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 2L11 11.5L2 21" stroke="white" stroke-width="4"></path>
-    </svg>
+    <div class="arrow right"></div>
   </div></a>
   </center>
   </div>
 </div>
 </body>
 <!-- Scripts. -->
-<script src="./javascript/pages/index.js" type="text/javascript"></script>
 <script src="./javascript/init.js" type="text/javascript"></script>
+<script src="./javascript/pages/index.js" type="text/javascript"></script>
 <script src="./javascript/copyright.js" type="text/javascript"></script>
 <script src="./javascript/searchbox.js" type="text/javascript"></script>
 <script src="./javascript/neuralcanvas.js"></script>

@@ -54,6 +54,32 @@ You don't need to waste time editing the transpiled code.
 </ul>
 `;
 
+const preview_code_helloworldHTML =
+`// Hello World in three different language
+
+main() {
+  outln("Hello, world")
+  outln("Merhaba, dünya")
+  outln("你好世界!")
+}`;
+
+const preview_code_fibonacci_closureHTML =
+`fibo() () i32 {
+  a:, b: = 0, 1
+  < () i32 {
+    a, b = b, a+b
+    < a
+  }
+}
+
+main() {
+  f: = fibo()
+  outln(f())
+  outln(f())
+  outln(f())
+  outln(f())
+  outln(f())
+}`;
 
 //#region SET_PAGE
 
@@ -63,18 +89,34 @@ document.title = page_title;
 
 //#region GET_ELEMENTS
 
-const startup_panel_content = document.getElementById('startup-panel-content');
-const entry_description = document.getElementById('entry-description');
-const pretty_transpile_title = document.getElementById('pretty-transpile-title');
-const pretty_transpile_content = document.getElementById('pretty-transpile-content');
+const startup_panel_content          = document.getElementById('startup-panel-content');
+const entry_description              = document.getElementById('entry-description');
+const pretty_transpile_title         = document.getElementById('pretty-transpile-title');
+const pretty_transpile_content       = document.getElementById('pretty-transpile-content');
+const preview_code                   = document.getElementById('preview-code')
+const preview_dropdown_text          = document.getElementById('preview-dropdown-text');
+const preview_code_helloworld        = document.getElementById('preview-code-helloworld');
+const preview_code_fibonacci_closure = document.getElementById('preview-code-fibonacci-closure');
 
 //#endregion GET_ELEMENTS
 
 //#region SET_CONTENT
 
-startup_panel_content.innerHTML = startup_panel_contentHTML;
-entry_description.innerHTML = entry_descriptionHTML;
-pretty_transpile_title.innerHTML = pretty_transpile_titleHTML;
+startup_panel_content.innerHTML    = startup_panel_contentHTML;
+entry_description.innerHTML        = entry_descriptionHTML;
+pretty_transpile_title.innerHTML   = pretty_transpile_titleHTML;
 pretty_transpile_content.innerHTML = pretty_transpile_contentHTML;
 
 //#endregion SET_CONTENT
+
+preview_code_helloworld.addEventListener("click", () => {
+  preview_dropdown_text.innerHTML = preview_code_helloworld.innerHTML;
+  preview_code.innerHTML = preview_code_helloworldHTML;
+});
+
+preview_code_fibonacci_closure.addEventListener("click", () => {
+  preview_dropdown_text.innerHTML = preview_code_fibonacci_closure.innerHTML;
+  preview_code.innerHTML = preview_code_fibonacci_closureHTML;
+})
+
+preview_code_helloworld.click();
