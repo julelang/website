@@ -39,7 +39,7 @@ body {
 }
 
 .navigation #navigation-links a:hover {
-  background-color: rebeccapurple;
+  background-color: rgb(160, 75, 245);
   color: rgb(255, 255, 255);
 }
 

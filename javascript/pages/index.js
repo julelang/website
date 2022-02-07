@@ -60,7 +60,7 @@ const preview_code_helloworldHTML =
 main() {
   outln("Hello, world")
   outln("Merhaba, dünya")
-  outln("你好世界!")
+  outln("你好世界")
 }`;
 
 const preview_code_fibonacci_closureHTML =

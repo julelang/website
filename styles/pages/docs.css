@@ -1,3 +1,11 @@
+body {
+  background-color: rgb(22, 22, 22);
+}
+
+#side-navigation {
+  background-color: rgb(15, 15, 15);
+}
+
 .navigation-logo {
   margin-left: 15px;
 }
