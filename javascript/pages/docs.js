@@ -1572,6 +1572,52 @@ This expression is evaluated before each loop, and if it returns true, the loop 
 This example just prints <x class="inline_code">0</x>.
 
 <div class="title-seperator"></div>
+<div class="sub-sub-title">Foreach Iterations</div>
+Foreach or for-each can be summarized as an iteration standard for collections.
+It repeats itself by looping through the elements of the collection.
+<br>
+For example;
+<div class="code">main() {
+  mystr:str = "Hello"
+  iter index: in mystr {
+    outln(index)
+  }
+}
+
+// OUTPUT
+// 0
+// 1
+// 2
+// 3
+// 4</div>
+Seen as the example at above, this is a foreach iteration.
+The <x class="inline_code">index:</x> part of iteration, declares a new variable for iteration.
+<br>
+Iterations can have two variables: Current index and current element.
+<br><br>
+This example, just shows index. Let's see foreach iteration with element.
+<br>
+For example;
+<div class="code">main() {
+  mystr:str = "Hello"
+  iter _, run:rune in mystr {
+    outln(run)
+  }
+}
+
+// OUTPUT
+// H
+// e
+// l
+// l
+// o</div>
+As you can see, it is possible to use the ignore operator for unused fields.
+
+<div class="info">If you don't use declaration with data-type, X assign variables data-types by automatically by collection.
+Similar to auto-type variables.
+If the index variable is be numeric, X's auto data-type is <x class="inline_code">i32</x> type.</div>
+
+<div class="title-seperator"></div>
 <div class="sub-sub-title">Iteration Controlling</div>
 We may want to check for iterations, this is normal and common.
 There are two ways to do this in X; The <x class="inline_code">continue</x> and <x class="inline_code">break</x> keywords.
