@@ -1,3 +1,7 @@
+// Copyright 2021 The X Programming Language.
+// Use of this source code is governed by a BSD 3-Clause
+// license that can be found in the LICENSE file.
+
 const page_title = `The X Programming Language`;
 
 const startup_panel_contentHTML =

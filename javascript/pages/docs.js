@@ -1,3 +1,7 @@
+// Copyright 2021 The X Programming Language.
+// Use of this source code is governed by a BSD 3-Clause
+// license that can be found in the LICENSE file.
+
 const page_title = `X - Documentations`;
 const navigation_avtive_color = 'rgb(200, 116, 221)';
 const prev_page =

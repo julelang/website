@@ -1,3 +1,7 @@
+// Copyright 2021 The X Programming Language.
+// Use of this source code is governed by a BSD 3-Clause
+// license that can be found in the LICENSE file.
+
 // Search engine.
 
 const root_path = location.href.substr(0,
