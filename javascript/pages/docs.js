@@ -1295,6 +1295,7 @@ Many programming languages have their control flows.
 
 <div class="tabcontrol" style="margin-top: 50px;">
   <div id="tab-common-concepts-iterations" class="tab" onclick="select_tab_event(0)">Iterations</div>
+  <div id="tab-common-concepts-if-expressions" class="tab" onclick="select_tab_event(1)">If Expressions</div>
 </div>
 <div class="tabcontrol-content">
 </div>
@@ -1542,7 +1543,7 @@ One difference, prints new line after print.
 
 const TAB_common_concepts_iterations =
 `
-Iterations are used to iterate commands.
+Iterations allow you to repeat the algorithm according to certain conditions.
 The <x class="inline_code">iter</x> keyword use for iterations in X.
 
 <div class="title-seperator"></div>
@@ -1650,7 +1651,58 @@ For example;
 }</div>
 The example at above, normally prints <x class="inline_code">Hello, World</x> again and again.
 But prints nothing, because <x class="inline_code">continue</x> keyword is continue to next iteration.
-So print operation is the unreachable code.
+(So print operation is the unreachable code.
+`;
+
+const TAB_common_concepts_if_expression =
+`
+If expressions allow you to manipulate the algorithm according to certain conditions.
+The <x class="inline_code">if</x> and <x class="inline_code">else</x> keywords use for if expressions in X.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">if</x> Expressions</div>
+If the provided condition is <x class="inline_code">true</x> the block is executed, otherwise it is not executed.
+It is also the beginning of a new chain of conditions.
+<br><br>
+For example;
+<div class="code">main() {
+  x: = new i32
+  if x == nil {
+    outln("memory allocation is failed")
+  }
+}</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">else if</x> Expressions</div>
+If the preceding <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions have not been fulfilled, it is a condition presented as an alternative to them.
+<br><br>
+For example;
+<div class="code">main() {
+  x: = 100
+  if x > 1000 {
+    outln("greater than thousand")
+  } else if x < 100 {
+    outln("less than hundred")
+  } else if x == 100 {
+    outln("equals to hundred")
+  }
+}
+
+// OUTPUT: equals to hundred</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">else</x> Blocks</div>
+It is the block that will be executed unconditionally if the previous <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions are not fulfilled.
+<br><br>
+For example;
+<div class="code">main() {
+  x: = new i32
+  if x == nil {
+    outln("memory allocation is failed")
+  } else {
+    outln("memory allocation is success")
+  }
+}</div>
 `;
 
 //#region SET_PAGE
@@ -1739,8 +1791,9 @@ const navigations = [
 ];
 
 const tabs = [
-  ["tab-builtin-functions",          TAB_builtin_functions],
-  ["tab-common-concepts-iterations", TAB_common_concepts_iterations],
+  ["tab-builtin-functions",              TAB_builtin_functions],
+  ["tab-common-concepts-iterations",     TAB_common_concepts_iterations],
+  ["tab-common-concepts-if-expressions", TAB_common_concepts_if_expression],
 ]
 
 //#region EVENTS
