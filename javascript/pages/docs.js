@@ -1046,7 +1046,7 @@ To remember:
   // ...
 }</div>
 For functions, the name of the function comes first, followed by the parentheses.
-The curly braces indicate the block of the function.
+The braces indicate the block of the function.
 <br><br>
 So how can we call this function? <br>
 For Example;
@@ -1069,10 +1069,23 @@ print_int(i i32) {
 It is similar to normal function definition.
 Parameters are written between parentheses
 If there is more than one parameter, they are separated by commas.
-The name of the parameter is written first, followed by the data type.
+The name of the parameter is written first, followed by the data-type.
 <br><br>
 When calling the function, as seen in the example in the entry point, arguments are written in parentheses, and if they are more than one, they are separated from each other with commas.
-The given arguments must be compatible with the data type of the corresponding parameters.
+The given arguments must be compatible with the data-type of the corresponding parameters.
+
+<div class="topic-seperator"></div>
+There is alternative syntax for specifying parameters and data types.
+<br>
+For example;
+<div class="code">print_sum(a, b i32) {
+  add: = a + b
+  outln(add)
+}</div>
+As seen in the example above, if there is more than one parameter that must have the same data-type, the data-type can be specified in the last parameter.
+When this is done, all parameters that have not been given the previous data-type will have the same data-type.
+
+
 <div class="title-seperator"></div>
 <div class="sub-sub-title">Constant Parameters</div>
 The function parameters can constant.
@@ -1080,11 +1093,10 @@ Constant parameters is similar to constant variables, actually they are same.
 Constant variables and parameters, acts same.
 <br><br>
 For example;
-<div class="code">print_sum(const a i32, const b i32) {
-  add: = a + b
-  outln(add)
-}
-</div>
+<div class="code">print_sum(const a, const b i32) {
+  sum: = a + b
+  outln(sum)
+}</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Functions with Return Values</div>
@@ -1095,7 +1107,7 @@ For example;
   outln(div(10, 2))
 }
 
-div(a f64, b f64) f64 {
+div(a, b f64) f64 {
   ret a / b
 }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
@@ -1108,7 +1120,7 @@ Although the keyword <x class="inline_code">return</x> is widely used, <x class=
 <br><br>
 However, there is an additional alternative syntax.
 An alternative use is offered with a small operator, since writing the return value directly will not be good for readability.
-<div class="code">div(a f64, b f64) f64 {
+<div class="code">div(a, b f64) f64 {
   < a / b
 }</div>
 The alternative use of the above code is as follows. The <x class="inline_code">ret</x> keyword is replaced by the <x class="inline_code"><</x> operator.
@@ -1196,7 +1208,7 @@ Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
 <br><br>
 For example;
-<div class="code">less_than(x i32, y i32) [bool] {
+<div class="code">less_than(x, y i32) [bool] {
   ret x < y
 }</div>
 The example at above, accepted as one type return.
@@ -1207,7 +1219,7 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example;
-<div class="code">compare_int(x i32, y i32) [bool, bool] {
+<div class="code">compare_int(x, y i32) [bool, bool] {
   return x < y, x == y,
 }
 
