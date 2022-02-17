@@ -1099,6 +1099,35 @@ For example;
 }</div>
 
 <div class="title-seperator"></div>
+<div class="sub-sub-title">Variadic Parameters</div>
+Variadic parameters can contain more than one value.
+The <x class="inline_code">...</x> operator is used for this.
+<br>
+For example;
+<div class="code">str_out(...values str) {
+  iter _, s: in values {
+    out(s)
+  }
+}
+
+main() {
+  str_out("Hello", "World", "Variadic")
+}</div>
+As seen in the example above, many arguments could be given to the function even though it was a single parameter.
+This is a result of the variadic parameter.
+Putting the <x class="inline_code">...</x> operator before its name makes parameter variadic.
+
+<div class="info">
+  <li>Each variadic parameter, actually is an array.</li>
+  <li>Variadic parameters is not must have an argument in calling.</li>
+</div>
+
+<div class="warn">
+  <li>A function, can have only one variadic parameter.</li>
+  <li>Variadic parameters must be defined as last parameter.</li>
+</div>
+
+<div class="title-seperator"></div>
 <div class="sub-title">Functions with Return Values</div>
 Functions can return values.
 <br><br>
@@ -1281,8 +1310,8 @@ Output of program;
 [Hi, arrays, indexes]</div>
 
 <div class="title-seperator"></div>
-<div class="sub-title">Nested Arrays</div>
-Nested arrays is array storing arrays.
+<div class="sub-title">Multidimensional Arrays</div>
+Multidimensional arrays is array storing arrays.
 <br>
 For example;
 <div class="code">main() {
@@ -1295,6 +1324,36 @@ For example;
 <br>
 Output of program;
 <div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Passing Arrays to Variadic Parameter</div>
+We know that <x class="inline_code">...</x> is used for Variadic parameters.
+We also know that each variadic parameter is actually an array.
+<br>
+So can we pass an array to a variadic parameter?
+Yes.
+Again, the <x class="inline_code">...</x> operator is used for this.
+<br>
+<br>
+For example;
+<div class="code">sum(...values i32) i32 {
+  total:i32
+  iter _, i: in values {
+    total += i
+  }
+  < total
+}
+
+main() {
+  my_arr: = []i32{90, 32, 6, 53}
+  result: = sum(my_arr...)
+  outln(result)
+}</div>
+As seen in the example above, the owned variable <x class="inline_code">my_arr</x> holds an array.
+Its elements are compatible with the variadic parameter.
+To send, it is sufficient to follow the <x class="inline_code">...</x> operator.
+
+<div class="warn">If you pass array to variadic parameter, you can't pass more value.</div>
 `;
 
 const common_concepts_control_flowHTML =
