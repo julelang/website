@@ -863,12 +863,11 @@ For example;
 <div class="sub-title">Expressions as Statement</div>
 You may want to write an expression as a statement for several reasons.
 It is possible.
-Instead of presenting it directly, X has adopted it to be written between parentheses in order to contribute to readability.
-An expression must be surrounded by parentheses to be used as a statement.
+X tends to treat every statement it can't classify on a subject as an expression.
 <br><br>
 For example;
 <div class="code">main() {
-  (100)
+  100
 }</div>
 </div>
 `;
