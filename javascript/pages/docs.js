@@ -941,7 +941,7 @@ For example;
 }</div>
 
 <div class="title-seperator"></div>
-<div class="sub-title">Constants</div>
+<div class="sub-title">Constant Variable</div>
 Constant variables are declared same method, the only difference being that the keyword <x class="inline_code">const</x> is used when defining them.
 <br><br>
 For example;
@@ -952,9 +952,20 @@ No matter which method the constant variables are defined by, a value must be gi
 </div>
 
 <div class="title-seperator"></div>
-<div class="sub-sub-title">Differences Between Variables and Constants</div>
+<div class="sub-sub-title">Differences Between Variables and Constants Variables</div>
 The value of the variables can change, then they can be updated with a different value to match the data type.
 Constants take a single value and never change again.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Volatile Variable</div>
+The <x class="inline_code">volatile</x> keyword kind of tells the compiler not to optimize for this definition.
+This is a useful method when a definition can be changed from anywhere and is unknowable.
+The compiler does not optimize.
+For example, the definition will never be cached, allowing you to manipulate the actual value in memory each time.
+Even if it doesn't appear to have been changed, it indicates that it may have changed, so it avoids processing with incorrect/old values.
+<br><br>
+For example;
+<div class="code">volatile tickrate: = 128</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Multiple Variable Update / Declaration</div>
@@ -1086,13 +1097,12 @@ When this is done, all parameters that have not been given the previous data-typ
 
 
 <div class="title-seperator"></div>
-<div class="sub-sub-title">Constant Parameters</div>
-The function parameters can constant.
-Constant parameters is similar to constant variables, actually they are same.
-Constant variables and parameters, acts same.
+<div class="sub-sub-title">Constant and Volatile Parameters</div>
+The function parameters can constant and volatile.
+These parameters is similar to variable versions, actually they are same, acts same.
 <br><br>
 For example;
-<div class="code">print_sum(const a, const b i32) {
+<div class="code">print_sum(const a, volatile const b i32) {
   sum: = a + b
   outln(sum)
 }</div>
