@@ -958,11 +958,9 @@ Constants take a single value and never change again.
 
 <div class="title-seperator"></div>
 <div class="sub-title">Volatile Variable</div>
-The <x class="inline_code">volatile</x> keyword kind of tells the compiler not to optimize for this definition.
-This is a useful method when a definition can be changed from anywhere and is unknowable.
-The compiler does not optimize.
-For example, the definition will never be cached, allowing you to manipulate the actual value in memory each time.
-Even if it doesn't appear to have been changed, it indicates that it may have changed, so it avoids processing with incorrect/old values.
+The <x class="inline_code">volatile</x> keyword makes memory access atomic.
+An important point here is that it doesn't make operations to memory atomic, only access to it.
+While writing and reading data, they see the old or last value, but never the intermediate value.
 <br><br>
 For example;
 <div class="code">volatile tickrate: = 128</div>
