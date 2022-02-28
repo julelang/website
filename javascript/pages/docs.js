@@ -4,21 +4,18 @@
 
 const page_title = `X - Documentations`;
 const navigation_avtive_color = 'rgb(200, 116, 221)';
-const prev_page =
-`
+const prev_page = `
 <button onclick="prev_page_click()" style="float: left; padding: 15px;">
   <x class="arrow left" style="margin-top: 5px; margin-left: 5px;"></x>
 </button>
 `;
-const next_page =
-`
+const next_page = `
 <button onclick="next_page_click()" style="float: right; padding: 15px;">
   <x class="arrow right" style="margin-top: 5px; margin-right: 5px;"></x>
 </button>
 `;
 
-const the_xlangHTML =
-`
+const the_xlangHTML = `
 <div class="title">The <x style="color: rgb(180, 52, 235);">X</x> Programming Language</div>
 <br>
 <div class="text">
@@ -42,8 +39,7 @@ const the_xlangHTML =
 </div>
 `;
 
-const forewordHTML =
-`
+const forewordHTML = `
 <div class="title" style="margin-bottom: 20px;">Foreword</div>
 <div class="text">
   The X programming language facilitates C++ development in general.
@@ -71,8 +67,7 @@ const forewordHTML =
 </div>
 `;
 
-const introductionHTML =
-`
+const introductionHTML = `
 <div class="title" style="margin-bottom: 20px;">Introduction</div>
 <div class="text">
   <div class="sub-title">Who Documentation is For</div>
@@ -106,8 +101,7 @@ const introductionHTML =
 </div>
 `;
 
-const getting_startedHTML =
-`
+const getting_startedHTML = `
 <div class="title" style="margin-bottom: 20px;">Getting Started</div>
 <div class="text">
   You are about to start X.
@@ -116,8 +110,7 @@ const getting_startedHTML =
 </div>
 `;
 
-const getting_started_downloadsHTML =
-`
+const getting_started_downloadsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Downloads</div>
 <div class="text">
   <div class="sub-title">Releases</div>
@@ -129,8 +122,7 @@ const getting_started_downloadsHTML =
 </div>
 `;
 
-const getting_started_install_from_sourceHTML =
-`
+const getting_started_install_from_sourceHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Install from Source</div>
 <div class="text">
   Ok! We install X compiler from source code.
@@ -184,8 +176,7 @@ const getting_started_install_from_sourceHTML =
 </div>
 `;
 
-const compilerHTML =
-`
+const compilerHTML = `
 <div class="title" style="margin-bottom: 20px;">Compiler</div>
 <div class="text">
   In this part of the documentation you will explore the compiler and understand how to compile X code.
@@ -194,8 +185,7 @@ const compilerHTML =
 </div>
 `;
 
-const compiler_basic_commandsHTML =
-`
+const compiler_basic_commandsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Basic Commands</div>
 <div class="text">
 The basics of compiler commands.
@@ -218,8 +208,7 @@ Initialize new project in working directory.
 </div>
 `;
 
-const compiler_config_filesHTML =
-`
+const compiler_config_filesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Config Files</div>
 <div class="text">
 Your config file shows your X compiler how it will work and lets you choose things for yourself.
@@ -254,8 +243,7 @@ Fields in configuration files have specific purposes.
 </div>
 `;
 
-const compiler_compilingHTML =
-`
+const compiler_compilingHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Compiling</div>
 <div class="text">
 Let's start with a simple hello world program and learn compiling from this program.
@@ -277,8 +265,7 @@ As result we have a executable machine code or C++ result of our program.
 </div>
 `;
 
-const projectHTML =
-`
+const projectHTML = `
 <div class="title" style="margin-bottom: 20px;">Project</div>
 <div class="text">
 In this chapter you understand the proposed project layout, their names and the purpose of the directories.
@@ -287,8 +274,7 @@ These are recommendations and are not obligatory to follow.
 </div>
 `;
 
-const project_directory_orderHTML =
-`
+const project_directory_orderHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Directory Order</div>
 <div class="text">
 Recommended work pattern and use of project directories for X;
@@ -344,8 +330,7 @@ If you have resources for your project (png, jpg, gif etc.), it is recommended t
 </div>
 `;
 
-const project_namingHTML =
-`
+const project_namingHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Naming</div>
 <div class="text">
 It is recommended to name your files and directories in your projects with the snake_case standard.
@@ -359,8 +344,7 @@ With that in mind, it's also preferable to adopt splitting each function and oth
 </div>
 `;
 
-const basicsHTML =
-`
+const basicsHTML = `
 <div class="title" style="margin-bottom: 20px;">Basics</div>
 <div class="text">
   The basics of the X programming language. <br>
@@ -368,8 +352,7 @@ const basicsHTML =
 </div>
 `;
 
-const basics_commentsHTML =
-`
+const basics_commentsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Comments</div>
 <div class="text">
   Comments are useful for understanding code, making comments and explanations, taking notes, and sometimes writing little jokes.
@@ -391,8 +374,7 @@ const basics_commentsHTML =
 </div>
 `;
 
-const basics_entry_pointHTML =
-`
+const basics_entry_pointHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Entry Point</div>
 <div class="text">
   The entry point is the first routine that starts running when the program runs. <br>
@@ -409,8 +391,7 @@ const basics_entry_pointHTML =
 </div>
 `;
 
-const basics_data_typesHTML =
-`
+const basics_data_typesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Data Types</div>
 <div class="text">
   X is designed strongly typed.
@@ -643,8 +624,7 @@ const basics_data_typesHTML =
 </div>
 `;
 
-const basics_operatorsHTML =
-`
+const basics_operatorsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Operators</div>
 <div class="text">
   Operators are symbols that describe and specify arithmetic or logical tasks.
@@ -807,8 +787,7 @@ const basics_operatorsHTML =
 </div>
 `;
 
-const basics_attributesHTML =
-`
+const basics_attributesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Attributes</div>
 <div class="text">
 Attributes are used to mark definitions for specific reasons and to report them to the compiler.
@@ -835,8 +814,7 @@ Each definition has valid attributes for it.
 </div>
 `;
 
-const basics_statementsHTML =
-`
+const basics_statementsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Statements</div>
 <div class="text">
 Statements separates with statement terminator.
@@ -872,8 +850,7 @@ For example;
 </div>
 `;
 
-const common_conceptsHTML =
-`
+const common_conceptsHTML = `
 <div class="title" style="margin-bottom: 20px;">Common Concepts</div>
 <div class="text">
   Common programming concepts. <br>
@@ -882,8 +859,7 @@ const common_conceptsHTML =
 </div>
 `;
 
-const common_concepts_variablesHTML =
-`
+const common_concepts_variablesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Variables</div>
 <div class="text">
 There is more than one way in X to define a variable.
@@ -1041,8 +1017,7 @@ So this code will result in compiler error.
 </div>
 `;
 
-const common_concepts_functionsHTML =
-`
+const common_concepts_functionsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Functions</div>
 <div class="text">
 Functions are common in X code.
@@ -1267,8 +1242,7 @@ main() {
 <div class="warn">You can't use multiple returnable functions combined with normal multiple assignments.</div>
 `;
 
-const common_concepts_arraysHTML =
-`
+const common_concepts_arraysHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Arrays</div>
 <div class="text">
 Arrays is a heap allocated memory fields.
@@ -1363,8 +1337,7 @@ To send, it is sufficient to follow the <x class="inline_code">...</x> operator.
 <div class="warn">If you pass array to variadic parameter, you can't pass more value.</div>
 `;
 
-const common_concepts_control_flowHTML =
-`
+const common_concepts_control_flowHTML = `
 <div class="title" style="margin-bottom: 20px;">Control Flow</div>
 <div class="text">
 We may want to guide the progress of the program with various conditions or repeat certain commands.
@@ -1380,8 +1353,7 @@ Many programming languages have their control flows.
 </div>
 `;
 
-const memory_managementHTML =
-`
+const memory_managementHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory Management</div>
 <div class="text">
   Memory Management in X.
@@ -1508,17 +1480,15 @@ main() {
 </div>
 `;
 
-const itemsHTML =
-`
-<div class="title" style="margin-bottom: 20px;">Items</div>
+const typesHTML = `
+<div class="title" style="margin-bottom: 20px;">Types</div>
 <div class="text">
-  Definable and usable elements of X.
+  Types and type manuplation in X.
 </div>
 `;
 
-const items_type_aliasesHTML =
-`
-<div class="page-title" style="margin-bottom: 20px;">Type Aliases</div>
+const types_aliasingHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Aliasing</div>
 <div class="text">
 Type aliases is an alias for existing types defined by developer.
 When these aliases are used, they qualify the types they represent.
@@ -1548,8 +1518,41 @@ When defining a type alias, only the following types can be given as the type to
 </div>
 `;
 
-const standard_libraryHTML =
-`
+const types_castingHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Casting</div>
+<div class="text">
+Casting is an explicit conversion from one type to another between supported types.
+<br><br>
+To make a cast, you need to write the target data type you want to cast in parentheses, then again you need to write the expression you want to cast in parentheses.
+<br>
+Example: <x class="inline_code">(i32)(3.14)</x>
+<br><br>
+For code example; <br>
+<div class="code">main() {
+  x:f32 = 3.14
+  y:i32 = (i32)(x) // Casting
+  outln(x)         // Prints 3.14
+  outln(y)         // Prints 3
+}</div>
+</div>
+As you can see, the variable <x class="inline_code">x</x> is of type <x class="inline_code">f32</x> and the variable <x class="inline_code">y</x> is of type <x class="inline_code">i32</x>.
+Normally, variable <x class="inline_code">y</x> cannot take variable <x class="inline_code">x</x> as a value.
+However, as seen for example, we can accept the value as <x class="inline_code">i32</x> by explicitly casting.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Constant Ignoring</div>
+You can ignore constant with casting.
+<br><br>
+For example;
+<div class="code">main() {
+  const ptr0: = new i32
+  ptr1: = (*i32)(ptr0)
+  *ptr1 = 200
+  outln(*ptr0) // Prints 200
+}</div>
+`;
+
+const standard_libraryHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Libray</div>
 <div class="text">
   The standard library is language's own library.
@@ -1569,8 +1572,7 @@ const standard_libraryHTML =
 </div>
 `;
 
-const standard_library_builtinHTML =
-`
+const standard_library_builtinHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: Built-In Defines</div>
 <div class="text">
 Built-In defines are provided from the language by directly without any import operation.
@@ -1583,8 +1585,7 @@ Built-In defines are provided from the language by directly without any import o
 </div>
 `;
 
-const endHTML =
-`
+const endHTML = `
 <div class="title" style="margin-bottom: 20px;">End</div>
 <div class="text">
 Thanks for reading.
@@ -1822,8 +1823,9 @@ const NAV_common_concepts_functions = document.getElementById('common-concepts-f
 const NAV_common_concepts_arrays = document.getElementById('common-concepts-arrays');
 const NAV_common_concepts_control_flow = document.getElementById('common-concepts-control-flow');
 const NAV_memory_management = document.getElementById('memory-management');
-const NAV_items = document.getElementById('items');
-const NAV_items_type_aliases = document.getElementById('items-type-aliases');
+const NAV_types = document.getElementById('types');
+const NAV_types_aliasing = document.getElementById('types-aliasing');
+const NAV_types_casting = document.getElementById('types-casting');
 const NAV_standard_library = document.getElementById('standard-library');
 const NAV_standard_library_builtin = document.getElementById('standard-library-builtin');
 const NAV_end = document.getElementById('end');
@@ -1861,8 +1863,9 @@ const navigations = [
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
   [NAV_memory_management,                   memory_managementHTML],
-  [NAV_items,                               itemsHTML],
-  [NAV_items_type_aliases,                  items_type_aliasesHTML],
+  [NAV_types,                               typesHTML],
+  [NAV_types_aliasing,                      types_aliasingHTML],
+  [NAV_types_casting,                       types_castingHTML],
   [NAV_standard_library,                    standard_libraryHTML],
   [NAV_standard_library_builtin,            standard_library_builtinHTML],
   [NAV_end,                                 endHTML],
