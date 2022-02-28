@@ -10,7 +10,7 @@
   font-family: 'Code';
   font-size: 15px;
   border-style: solid;
-  border-color: rgb(90, 90, 90);;
+  border-color: rgb(60, 60, 60);
   border-width: 1px;
   border-radius: 5px;
   padding: 10px;
@@ -20,13 +20,13 @@
 
 .inline_code {
   color: gainsboro;
-  background-color: rgb(24, 24, 24);
+  background-color: #1d1d1d;
   white-space: pre-wrap;
   overflow: auto;
   font-family: 'Code';
-  border-style: none;
-  border-color: transparent;
-  border-width: 0px;
+  border-style: solid;
+  border-color: rgb(40, 40, 40);
+  border-width: 1px;
   border-radius: 5px;
   width: fit-content;
   height: fit-content;

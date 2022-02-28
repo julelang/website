@@ -31,10 +31,10 @@ const the_xlangHTML = `
   It is a suitable language for developers of all levels.
   <br><br>
   The fact that X is simple does not diminish its power. X is a pretty powerful language.
-  The fact that it evolves directly to C++ and compiles from C++ means an environment familiar to C/C++ developers.
+  The fact that it evolves directly to Cxx and compiles from Cxx means an environment familiar to C/Cxx developers.
   <br><br>
-  X is also a good choice for the simpler way to write C++.
-  At the developer's request, X can be translated or compiled into C++.
+  X is also a good choice for the simpler way to write Cxx.
+  At the developer's request, X can be translated or compiled into Cxx.
   This choice is the developer's.
 </div>
 `;
@@ -42,7 +42,7 @@ const the_xlangHTML = `
 const forewordHTML = `
 <div class="title" style="margin-bottom: 20px;">Foreword</div>
 <div class="text">
-  The X programming language facilitates C++ development in general.
+  The X programming language facilitates Cxx development in general.
   In addition, this language is actually more than an interface.
   Although it acts as a bridge between two languages, it is designed as a language itself.
   <br><br>
@@ -50,10 +50,10 @@ const forewordHTML = `
   Some content maybe is not released yet, so it may be here, but not in the compiler you have.
   <br><br>
   X syntactically and structurally encourages code to be readable.
-  It aims to transform C++ code as safely as possible.
+  It aims to transform Cxx code as safely as possible.
   Optimizes for a secure code.
   With this documentation you will see the basics and some subtleties of X and you will understand X.
-  You don't actually need to know C++ to learn and understand X.
+  You don't actually need to know Cxx to learn and understand X.
   <br><br>
   X is plain and simple.
   Suitable for developers of all levels.
@@ -82,7 +82,7 @@ const introductionHTML = `
 
   <div class="title-seperator"></div>
   <div class="sub-sub-title">Students</div>
-  X is suitable both for learning programming and for learning C++.
+  X is suitable both for learning programming and for learning Cxx.
   X's simple structure and easy-to-understand, readable code encourage both effortless writing and understanding.
   In this way, students can learn without difficulty.
   Confusing syntax does not stand in their way.
@@ -96,7 +96,7 @@ const introductionHTML = `
   <div class="sub-sub-title">Developers Who Value Speed, Stability and Simplicity</div>
   X is a good choice for those looking for simplicity, stability and performance.
   When you develop with X, you use a simple and straightforward syntax.
-  The X code is then converted to stable and safe C++ code.
+  The X code is then converted to stable and safe Cxx code.
   Everything happens much more easily and comfortably.
 </div>
 `;
@@ -233,11 +233,11 @@ Fields in configuration files have specific purposes.
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">cxx_out_dir</td>
-    <td>Directory of C++ transpile file.</td>
+    <td>Directory of Cxx transpile file.</td>
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">cxx_out_name</td>
-    <td>Name of C++ transpile file.</td>
+    <td>Name of Cxx transpile file.</td>
   </tr>
 </table>
 </div>
@@ -258,10 +258,10 @@ We will use already created settings file with <x class="inline_code">x init</x>
 <br>
 For compile X code, we just give filename to compiler:
 <div class="code">x main.xx</div>
-And compiler is transpile our X code to C++ code. <br>
+And compiler is transpile our X code to Cxx code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 <br><br>
-As result we have a executable machine code or C++ result of our program.
+As result we have a executable machine code or Cxx result of our program.
 </div>
 `;
 
@@ -1518,6 +1518,33 @@ When defining a type alias, only the following types can be given as the type to
 </div>
 `;
 
+const cxxHTML = `
+<div class="title" style="margin-bottom: 20px;">Cxx</div>
+<div class="text">
+Cxx documentations of X.
+<br><br>
+In this section, the information necessary to use X and Cxx effectively and the possibilities offered by X are included.
+<br><br>
+<div class="warn">This documentation is accepts you know basic cxx.</div>
+</div>
+`;
+
+const cxx_cxxapiHTML = `
+<div class="title" style="margin-bottom: 20px;">CxxAPI</div>
+<div class="text">
+API of X for Cxx.
+<br><br>
+This API consists of built-in cxx definitions that can be used inside the transpiled X code.
+
+<div class="tabcontrol" style="margin-top: 50px;">
+<div id="cxx-cxxapi-preprocessor-defines" class="tab" onclick="select_tab_event(0)">Preprocessor Defines</div>
+<div id="cxx-cxxapi-defines" class="tab" onclick="select_tab_event(1)">Defines</div>
+</div>
+<div class="tabcontrol-content">
+</div>
+</div>
+`;
+
 const types_castingHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Casting</div>
 <div class="text">
@@ -1784,6 +1811,59 @@ For example;
 }</div>
 `;
 
+const TAB_cxx_cxxapi_preprocessor_defines = `
+<div class="code">XALLOC(_Alloc)</div>
+The <x class="inline_code">_Alloc</x> is an allocation expression.
+Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
+<br>
+For example: <x class="inline_code">XALLOC(i32)</x>
+
+<div class="title-seperator"></div>
+<div class="code">XPANIC(_Msg)</div>
+Prints <x class="inline_code">_Msg</x> with new-line and exist program with failure exit code.
+<br>
+For example: <x class="inline_code">XPANIC("operation failed")</x>
+
+<div class="title-seperator"></div>
+<div class="code">_out(_Obj)</div>
+Built-in <x class="inline_code">out</x> function of X.
+
+<div class="title-seperator"></div>
+<div class="code">_outln(_Obj)</div>
+Built-in <x class="inline_code">outln</x> function of X.
+
+<div class="title-seperator"></div>
+<div class="code">nil</div>
+Built-in <x class="inline_code">nil</x> value of X.
+`;
+
+const TAB_cxx_cxxapi_defines = `
+<li><a href="#cxxapi-datatypes">Data-Types</a></li>
+<li><a href="#cxxapi-functions">Functions</a></li>
+
+<div class="title-seperator"></div>
+<div class="title-seperator"></div>
+<div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
+<div class="info">The primitive data-types in X, have same names in cxx output.</div>
+<div class="title-seperator"></div>
+<div class="code">class str</div>
+The <x class="inline_code">str</x> data-type of X.
+<div class="title-seperator"></div>
+<div class="code">template<typename _Item_t>
+class array</div>
+Array type class.
+
+<div class="title-seperator"></div>
+<div id="cxxapi-functions" class="sub-sub-title">Functions</div>
+<div class="code">template &lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
+static inline void foreach(const _Enum_t _Enum,
+                           const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
+<div class="code">template &lt;typename _Enum_t, typename _Index_t&gt;
+static inline void foreach(const _Enum_t _Enum,
+                           const std::function&lt;void(_Index_t)&gt; _Body)</div>
+Foreach iterations of X that Cxx doesn't support.
+`;
+
 //#region SET_PAGE
 
 document.title = page_title;
@@ -1826,6 +1906,8 @@ const NAV_memory_management = document.getElementById('memory-management');
 const NAV_types = document.getElementById('types');
 const NAV_types_aliasing = document.getElementById('types-aliasing');
 const NAV_types_casting = document.getElementById('types-casting');
+const NAV_cxx = document.getElementById('cxx');
+const NAV_cxx_cxxapi = document.getElementById('cxx-cxxapi');
 const NAV_standard_library = document.getElementById('standard-library');
 const NAV_standard_library_builtin = document.getElementById('standard-library-builtin');
 const NAV_end = document.getElementById('end');
@@ -1865,6 +1947,8 @@ const navigations = [
   [NAV_memory_management,                   memory_managementHTML],
   [NAV_types,                               typesHTML],
   [NAV_types_aliasing,                      types_aliasingHTML],
+  [NAV_cxx,                                 cxxHTML],
+  [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
   [NAV_types_casting,                       types_castingHTML],
   [NAV_standard_library,                    standard_libraryHTML],
   [NAV_standard_library_builtin,            standard_library_builtinHTML],
@@ -1872,9 +1956,12 @@ const navigations = [
 ];
 
 const tabs = [
+  // ID - HTML
   ["tab-builtin-functions",              TAB_builtin_functions],
   ["tab-common-concepts-iterations",     TAB_common_concepts_iterations],
   ["tab-common-concepts-if-expressions", TAB_common_concepts_if_expression],
+  ["cxx-cxxapi-preprocessor-defines",    TAB_cxx_cxxapi_preprocessor_defines],
+  ["cxx-cxxapi-defines",                 TAB_cxx_cxxapi_defines],
 ]
 
 //#region EVENTS

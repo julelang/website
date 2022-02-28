@@ -14,31 +14,31 @@ X is the <x style="font-family: 'OpenSans-Bold'; font-weight: bold;">simplified,
 <div class="marked-ul" style="margin-top: 20px;">
   <li><desc>X is an open source and free programming language</desc></li>
   <li><desc>Easy to learn and get started with</desc></li>
-  <li><desc>Efficient and fast as C++</desc></li>
+  <li><desc>Efficient and fast as Cxx</desc></li>
 </div>
 </div>
 `;
 const entry_descriptionHTML =
 `
 <div style="margin-right: 40px; font-family: 'OpenSans'; font-size: 20px;">
-  <div class="sub-title" style="margin-bottom: 30px;">C++ and More</div>
+  <div class="sub-title" style="margin-bottom: 30px;">Cxx and More</div>
     <div class="text">
-      The X source code <strong>transpiles to human readable C++</strong> code.
-      A familiar environment for C++ developers, a comfortable start for new developers.
+      The X source code <strong>transpiles to human readable Cxx</strong> code.
+      A familiar environment for Cxx developers, a comfortable start for new developers.
     </div>
   </div>
 </div>
 <div style="margin-right: 40px;">
   <div class="sub-title" style="margin-bottom: 30px;">Trust and Compliance</div>
   <div class="text">
-    The generated C++ code is code that works everywhere and is compatible with all C++ stuff.
-    <strong>Develop C++ in a simpler and more readable way.</strong>
+    The generated Cxx code is code that works everywhere and is compatible with all Cxx stuff.
+    <strong>Develop Cxx in a simpler and more readable way.</strong>
   </div>
 </div>
 <div>
   <div class="sub-title" style="margin-bottom: 30px;">Simplicity</div>
   <div class="text">
-    More modern, readable and comfortable than C++ syntax.
+    More modern, readable and comfortable than Cxx syntax.
     <strong>Simple and maintainable code</strong>, simplicity and functionality.
   </div>
 </div>
@@ -46,7 +46,7 @@ const entry_descriptionHTML =
 const pretty_transpile_titleHTML = `Pretty Transpile`;
 const pretty_transpile_contentHTML =
 `
-X produces C++ code that's great, readable, and pretty neat.<br>
+X produces Cxx code that's great, readable, and pretty neat.<br>
 You don't need to waste time editing the transpiled code.
 <br><br>
 <ul>
