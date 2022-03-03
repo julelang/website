@@ -1859,14 +1859,6 @@ Prints <x class="inline_code">_Msg</x> with new-line and exist program with fail
 For example: <x class="inline_code">XPANIC("operation failed")</x>
 
 <div class="title-seperator"></div>
-<div class="code">_out(_Obj)</div>
-Built-in <x class="inline_code">out</x> function of X.
-
-<div class="title-seperator"></div>
-<div class="code">_outln(_Obj)</div>
-Built-in <x class="inline_code">outln</x> function of X.
-
-<div class="title-seperator"></div>
 <div class="code">nil</div>
 Built-in <x class="inline_code">nil</x> value of X.
 `;
@@ -1896,6 +1888,16 @@ static inline void foreach(const _Enum_t _Enum,
 static inline void foreach(const _Enum_t _Enum,
                            const std::function&lt;void(_Index_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
+
+<div class="title-seperator"></div>
+<div class="code">template &lt;typename _Obj_t&gt;
+static inline void _out(_Obj_t _Obj)</div>
+Built-in <x class="inline_code">out</x> function of X.
+
+<div class="title-seperator"></div>
+<div class="code">template &lt;typename _Obj_t&gt;
+static inline void _outln(_Obj_t _Obj)</div>
+Built-in <x class="inline_code">outln</x> function of X.
 `;
 
 //#region SET_PAGE
