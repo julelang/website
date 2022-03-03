@@ -1353,69 +1353,103 @@ Many programming languages have their control flows.
 </div>
 `;
 
-const memory_managementHTML = `
+const memoryHTML = `
+<div class="title" style="margin-bottom: 20px;">Memory</div>
+<div class="text">
+  Memory skills of X. <br><br>
+  Pointers, memory management, allocations...
+</div>
+`;
+
+const memory_pointersHTML = `
+<div class="title" style="margin-bottom: 20px;">Pointers</div>
+<div class="text">
+<div class="title-seperator"></div>
+Each location at memory have an address.
+These addresses points to location at memory.
+Pointers are variables can store this memory addresses.
+<br><br>
+To declare a pointer data-type, use <x class="inline_code">*</x> operator.
+<br>
+Example;
+<div class="code">x:*i32</div>
+That's pointer for <x class="inline_code">i32</x> type.
+<div class="info">Default value of pointers is nil.</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Getting Pointer of Variables</div>
+The <x class="inline_code">&</x> operator used to get pointer of variable.
+<br>
+For example;
+<div class="code">main() {
+x:i32 = 10
+y:*i32 = &x
+}</div>
+The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Accessing Values on Pointers</div>
+The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
+For example;
+<div class="code">main() {
+x:i32 = 10
+y:*i32 = &x
+outln(y)  // Prints stored address
+outln(*y) // Prints value at address (so 10)
+}</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Assign Values to Pointers</div>
+Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
+<br>
+For example;
+<div class="code">main() {
+x:i32 = 10
+z:*i32 = &x // The 'z' store now memory address of the 'x' variable.
+y:i32 = 98
+z = &y      // The 'z' store now memory address of the 'y' variable.
+}</div>
+<div class="topic-seperator"></div>
+Additionally, pointers can set the value of the memory address they store.
+<br>
+The <x class="inline_code">*</x> operator used for that too.
+<br>
+For example;
+<div class="code">main() {
+x:i32 = 10
+y:*i32 = &x
+*y = 59  // Assign value
+outln(x) // Prints 59
+}</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Pointer Arithmetic</div>
+Since memory addresses are ultimately numeric data and the pointer holds that address, it supports arithmetic operations.
+But not supports all common arithmetic operations like integers or floats, just supports addition and subtraction.
+<br><br>
+An addition expression for pointer, means next memory location.
+<br>
+A subtraction expression for pointer, means previous memory location.
+<br><br>
+For exaple;
+<div class="code">main() {
+  arr: = []i32{1, 200, 53, 635, 903}
+  ptr: = &arr[0]
+  outln(*ptr) // 1
+  ptr += 1
+  outln(*ptr) // 200
+}</div>
+As seen in the example above, when the pointer pointing to the first element of the array is increased by 1, it becomes pointing to the second element of the array.
+</div>
+`;
+
+const memory_memory_managementHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory Management</div>
 <div class="text">
   Memory Management in X.
-
-  <div class="title-seperator"></div>
-  <div class="sub-title">Pointers</div>
-  Each location at memory have an address.
-  These addresses points to location at memory.
-  Pointers are variables can store this memory addresses.
   <br><br>
-  To declare a pointer data-type, use <x class="inline_code">*</x> operator.
-  <br>
-  Example;
-  <div class="code">x:*i32</div>
-  That's pointer for <x class="inline_code">i32</x> type.
-  <div class="info">Default value of pointers is nil.</div>
-
-  <div class="title-seperator"></div>
-  <div class="sub-sub-title">Getting Pointer of Variables</div>
-  The <x class="inline_code">&</x> operator used to get pointer of variable.
-  <br>
-  For example;
-  <div class="code">main() {
-  x:i32 = 10
-  y:*i32 = &x
-}</div>
-  The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
-
-  <div class="title-seperator"></div>
-  <div class="sub-sub-title">Accessing Values on Pointers</div>
-  The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
-  For example;
-  <div class="code">main() {
-  x:i32 = 10
-  y:*i32 = &x
-  outln(y)  // Prints stored address
-  outln(*y) // Prints value at address (so 10)
-}</div>
-
-  <div class="title-seperator"></div>
-  <div class="sub-sub-title">Assign Values to Pointers</div>
-  Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
-  <br>
-  For example;
-  <div class="code">main() {
-  x:i32 = 10
-  z:*i32 = &x // The 'z' store now memory address of the 'x' variable.
-  y:i32 = 98
-  z = &y      // The 'z' store now memory address of the 'y' variable.
-}</div>
-  <div class="topic-seperator"></div>
-  Additionally, pointers can set the value of the memory address they store.
-  <br>
-  The <x class="inline_code">*</x> operator used for that too.
-  <br>
-  For example;
-  <div class="code">main() {
-  x:i32 = 10
-  y:*i32 = &x
-  *y = 59  // Assign value
-  outln(x) // Prints 59
-}</div>
+  The heap allocations should be free manually because X not have any garbage collector or auto free system.
+  For this reason, memory management is important in X.
 
   <div class="title-seperator"></div>
   <div class="sub-title">Heap Allocations</div>
@@ -1902,7 +1936,9 @@ const NAV_common_concepts_variables = document.getElementById('common-concepts-v
 const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
 const NAV_common_concepts_arrays = document.getElementById('common-concepts-arrays');
 const NAV_common_concepts_control_flow = document.getElementById('common-concepts-control-flow');
-const NAV_memory_management = document.getElementById('memory-management');
+const NAV_memory = document.getElementById('memory');
+const NAV_memory_pointers = document.getElementById('memory-pointers');
+const NAV_memory_memory_management = document.getElementById('memory-memory-management');
 const NAV_types = document.getElementById('types');
 const NAV_types_aliasing = document.getElementById('types-aliasing');
 const NAV_types_casting = document.getElementById('types-casting');
@@ -1944,7 +1980,9 @@ const navigations = [
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
-  [NAV_memory_management,                   memory_managementHTML],
+  [NAV_memory,                              memoryHTML],
+  [NAV_memory_pointers,                     memory_pointersHTML],
+  [NAV_memory_memory_management,            memory_memory_managementHTML],
   [NAV_types,                               typesHTML],
   [NAV_types_aliasing,                      types_aliasingHTML],
   [NAV_cxx,                                 cxxHTML],
