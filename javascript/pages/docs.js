@@ -427,6 +427,11 @@ const basics_data_typesHTML = `
       <td>-9223372036854775808 to 9223372036854775807</td>
     </tr>
     <tr>
+      <td style="text-align: center; font-family: 'Code';">ssize</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>Platform dependent (signed)</td>
+    </tr>
+    <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1byte</td>
       <td>0 to 255</td>
@@ -445,6 +450,11 @@ const basics_data_typesHTML = `
       <td style="text-align: center; font-family: 'Code';">u64</td>
       <td style="text-align: center;">8bytes</td>
       <td>0 to 18446744073709551615</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">size</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>Platform dependent (unsigned)</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
@@ -482,35 +492,35 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i8</td>
-      <td>i8, i16, i32, i64, f32, f64</td>
+      <td>i8, i16, i32, i64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
-      <td>i16, i32, i64, f32, f64</td>
+      <td>i16, i32, i64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td>i32, i64, f32, f64</td>
+      <td>i32, i64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i64, f32, f64</td>
+      <td>i64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
-      <td>u8, u16, u32, u64, f32, f64</td>
+      <td>u8, u16, u32, u64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
-      <td>u16, u32, u64, f32, f64</td>
+      <td>u16, u32, u64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u32</td>
-      <td>u32, u64, f32, f64</td>
+      <td>u32, u64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u64, f32, f64</td>
+      <td>u64, f32, f64, size, ssize</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
@@ -863,7 +873,6 @@ const common_concepts_variablesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Variables</div>
 <div class="text">
 There is more than one way in X to define a variable.
-We can call it multi-paradigm.
 <br><br>
 X is not use any keyword for declaring variable.
 X uses the <x class="inline_code">:</x> operator.
@@ -906,7 +915,7 @@ We mentioned that it has advantages, let's take a look;
 </ul>
 
 <div class="title-seperator"></div>
-<div class="sub-title">Updating Value</div>
+<div class="sub-title">Assignment</div>
 The values of the variables can be changed later.
 The value given must be the same as the data type of the variable.
 <br><br>
@@ -942,7 +951,7 @@ For example;
 <div class="code">volatile tickrate: = 128</div>
 
 <div class="title-seperator"></div>
-<div class="sub-title">Multiple Variable Update / Declaration</div>
+<div class="sub-title">Multiple Assignment / Declaration</div>
 You can multiple variable update or declaration.
 What? Sure, you can use two type in same statement.
 You know how to declare variable, okay it is same.
@@ -977,6 +986,23 @@ Additionally, you can skip some values with ignore operator.
 For example;
 <div class="code">x, _, z = true, 1, -400</div>
 This way you ignore some values.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Assignment Expressions</div>
+You can perform an assignment in an expressions.
+<br><br>
+For example;
+<div class="code">main() {
+  x: = 10
+  outln((x*=10)) // Prints 100
+  outln(x)       // Prints 100 because x assigned as 100
+}</div>
+To assign in Expression, the entire assignment statement must be in parentheses.
+The value it affects Expression is evaluated after the assignment has taken place.
+<div class="warn">
+  <li>You can't multiple assignment</li>
+  <li>You can't declaration</li>
+</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Shadowing</div>
@@ -1382,8 +1408,8 @@ The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
 For example;
 <div class="code">main() {
-x:i32 = 10
-y:*i32 = &x
+  x:i32 = 10
+  y:*i32 = &x
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
@@ -1392,10 +1418,10 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
 For example;
 <div class="code">main() {
-x:i32 = 10
-y:*i32 = &x
-outln(y)  // Prints stored address
-outln(*y) // Prints value at address (so 10)
+  x:i32 = 10
+  y:*i32 = &x
+  outln(y)  // Prints stored address
+  outln(*y) // Prints value at address (so 10)
 }</div>
 
 <div class="title-seperator"></div>
@@ -1404,10 +1430,10 @@ Pointers can take on value assignment just like a variable, with values of the a
 <br>
 For example;
 <div class="code">main() {
-x:i32 = 10
-z:*i32 = &x // The 'z' store now memory address of the 'x' variable.
-y:i32 = 98
-z = &y      // The 'z' store now memory address of the 'y' variable.
+  x:i32 = 10
+  z:*i32 = &x // The 'z' store now memory address of the 'x' variable.
+  y:i32 = 98
+  z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-seperator"></div>
 Additionally, pointers can set the value of the memory address they store.
@@ -1416,10 +1442,10 @@ The <x class="inline_code">*</x> operator used for that too.
 <br>
 For example;
 <div class="code">main() {
-x:i32 = 10
-y:*i32 = &x
-*y = 59  // Assign value
-outln(x) // Prints 59
+  x:i32 = 10
+  y:*i32 = &x
+  *y = 59  // Assign value
+  outln(x) // Prints 59
 }</div>
 
 <div class="title-seperator"></div>

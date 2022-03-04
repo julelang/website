@@ -33,9 +33,11 @@ main() {
 
 const preview_code_pointersHTML =
 `main() {
-  mystr: = "Hello X Pointers"
-  ptr: = &mystr[0]
-  iter ptr {
+  myarr: = []i32{10, 50, 24, -43, 63}
+  const myarr_size:size = 5
+  counter: = 0
+  ptr: = &myarr[0]
+  iter (counter+=1) <= myarr_size {
     outln(*ptr)
     ptr += 1
   }
