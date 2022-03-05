@@ -412,6 +412,11 @@ const basics_data_typesHTML = `
       <td>-127 to 127</td>
     </tr>
     <tr>
+      <td style="text-align: center; font-family: 'Code';">sbyte</td>
+      <td style="text-align: center;">- alias for i8 -</td>
+      <td>- alias for i8 -</td>
+    </tr>
+    <tr>
       <td style="text-align: center; font-family: 'Code';">16</td>
       <td style="text-align: center;">2bytes</td>
     <td>-32768 to 32767</td>
@@ -435,6 +440,11 @@ const basics_data_typesHTML = `
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1byte</td>
       <td>0 to 255</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">byte</td>
+      <td style="text-align: center;">- alias for u8 -</td>
+      <td>- alias for u8 -</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
@@ -495,6 +505,10 @@ const basics_data_typesHTML = `
       <td>i8, i16, i32, i64, f32, f64, size, ssize</td>
     </tr>
     <tr>
+      <td style="text-align: center; font-family: 'Code';">sbyte</td>
+      <td>- alias for i8 -</td>
+    </tr>
+    <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
       <td>i16, i32, i64, f32, f64, size, ssize</td>
     </tr>
@@ -509,6 +523,10 @@ const basics_data_typesHTML = `
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td>u8, u16, u32, u64, f32, f64, size, ssize</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">byte</td>
+      <td>- alias for u8 -</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
