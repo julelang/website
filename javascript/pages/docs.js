@@ -626,6 +626,15 @@ const basics_data_typesHTML = `
       <td>Octal</td>
     </tr>
   </table>
+  <div class="title-seperator"></div>
+  <div class="sub-sub-title">Raw String Literals</div>
+  Raw strings do not contain escape sequences and are not required to be defined in a single line.
+  They are represents with <x class="inline_code">\`</x>.
+  <div class="code">\`Raw String literal of X.\`</div>
+  <div class="code">\`Raw String literal of X
+with
+new
+    lines.\`</div>
 
   <div class="title-seperator"></div>
   <div class="sub-title">Nil</div>
