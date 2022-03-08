@@ -68,15 +68,16 @@ license that can be found in the LICENSE file.
     <div style="padding: 50px;">
     <div id="pretty-transpile-title" class="title" style="text-align: unset;">Pretty Transpile</div>
     <div id="pretty-transpile-content" style="margin-bottom: 20px;">
+      <br>
       X produces Cxx code that's great, readable, and pretty neat.<br>
       You don't need to waste time editing the transpiled code.
       <br><br>
       <ul>
-        <li>Adds information about the transpilation.</li>
-        <li>Human readable.</li>
-        <li>Splits the code into regions.</li>
-        <li>Groups codes by rearranging them.</li>
-        <li>Single output file.</li>
+        <li>Adds information about the transpilation</li>
+        <li>Human readable</li>
+        <li>Splits the code into regions</li>
+        <li>Groups codes by rearranging them</li>
+        <li>Single output file</li>
       </ul>
     </div>
     </div>
@@ -173,6 +174,269 @@ int main() {
 // endregion X_ENTRY_POINT_END_STANDARD_CODES
 }
 // endregion X_ENTRY_POINT</div>
+</div>
+  <div class="section" style="
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 150px;
+  background: white;
+  color: black;
+  border-color: rgb(76, 66, 136);
+  border-width: 2px;
+  border-style: solid;">
+    <div style="padding: 50px;">
+    <div id="pretty-transpile-title" class="title" style="text-align: unset;">Documenter</div>
+    <div id="pretty-transpile-content" style="margin-bottom: 20px;">
+      <br>
+      The X compiler has a documenter internally. <br>
+      It makes clear documentation for your code.
+      <br><br>
+      <ul>
+        <li>JSON format</li>
+        <li>Human readable</li>
+        <li>Defines only</li>
+        <li>Single output file per file</li>
+        <li>Easy to process</li>
+      </ul>
+    </div>
+    </div>
+    <div class="code" style="
+    margin-left:  auto;
+    width:        60%;
+    display:      flex;
+    border-style: none;
+    background:   transparent;
+    margin-right: 5px;
+    color:      mediumslateblue;
+    user-select:  none;
+    ">{
+  "types": [
+    {
+      "id": "TEST_TYPEDEF",
+      "alias": "i32"
+    }
+  ],
+  "globals": [
+    {
+      "id": "TEST_GLOBAL",
+      "type": "i32",
+      "constant": false,
+      "volatile": false
+    },
+    {
+      "id": "TEST_CONST",
+      "type": "i32",
+      "constant": true,
+      "volatile": false
+    },
+    {
+      "id": "TEST_VOLATILE_CONST",
+      "type": "bool",
+      "constant": true,
+      "volatile": true
+    },
+    {
+      "id": "TEST_VOLATILE",
+      "type": "i32",
+      "constant": false,
+      "volatile": true
+    }
+  ],
+  "functions": [
+    {
+      "id": "test_inline_function",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_string_concat",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_variable",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_assignment",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_array",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_anonymous_function",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_multiple_variable",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_multiple_return",
+      "ret": "[i32,i32,bool]",
+      "parameters": []
+    },
+    {
+      "id": "test_heap_allocation",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_free_allocation",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_iter",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_if_expressions",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_parameters",
+      "ret": "",
+      "parameters": [
+        {
+          "id": "a",
+          "type": "i32",
+          "constant": false,
+          "volatile": false
+        },
+        {
+          "id": "b",
+          "type": "bool",
+          "constant": true,
+          "volatile": false
+        }
+      ]
+    },
+    {
+      "id": "test_parameters_2",
+      "ret": "",
+      "parameters": [
+        {
+          "id": "a",
+          "type": "i32",
+          "constant": false,
+          "volatile": false
+        },
+        {
+          "id": "b",
+          "type": "i32",
+          "constant": false,
+          "volatile": false
+        },
+        {
+          "id": "c",
+          "type": "bool",
+          "constant": false,
+          "volatile": false
+        },
+        {
+          "id": "d",
+          "type": "bool",
+          "constant": true,
+          "volatile": false
+        }
+      ]
+    },
+    {
+      "id": "test_expression_as_statement",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_variadic_parameters",
+      "ret": "",
+      "parameters": [
+        {
+          "id": "ln_every",
+          "type": "bool",
+          "constant": false,
+          "volatile": false
+        },
+        {
+          "id": "values",
+          "type": "i32",
+          "constant": false,
+          "volatile": false
+        }
+      ]
+    },
+    {
+      "id": "test_variadic_parameters_2",
+      "ret": "",
+      "parameters": [
+        {
+          "id": "",
+          "type": "str",
+          "constant": false,
+          "volatile": false
+        }
+      ]
+    },
+    {
+      "id": "test_volatile_parameters",
+      "ret": "",
+      "parameters": [
+        {
+          "id": "a",
+          "type": "i32",
+          "constant": false,
+          "volatile": true
+        },
+        {
+          "id": "b",
+          "type": "i32",
+          "constant": true,
+          "volatile": true
+        },
+        {
+          "id": "c",
+          "type": "i32",
+          "constant": true,
+          "volatile": true
+        }
+      ]
+    },
+    {
+      "id": "test_casting",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_pointer_arithmetic",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_assignment_expression",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "test_raw_string",
+      "ret": "",
+      "parameters": []
+    },
+    {
+      "id": "main",
+      "ret": "",
+      "parameters": []
+    }
+  ]
+}</div>
 </div>
   <div style="margin-top: 200px;"></div>
   <div style="margin-top: 100px; margin-left: 20px; margin-right: 100px;">

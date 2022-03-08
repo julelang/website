@@ -2,13 +2,16 @@
 // Use of this source code is governed by a BSD 3-Clause
 // license that can be found in the LICENSE file.
 
-const page_title = `X - Documentations`;
 const navigation_avtive_color = 'rgb(200, 116, 221)';
+
+const page_title = `X - Documentations`;
+
 const prev_page = `
 <button onclick="prev_page_click()" style="float: left; padding: 15px;">
   <x class="arrow left" style="margin-top: 5px; margin-left: 5px;"></x>
 </button>
 `;
+
 const next_page = `
 <button onclick="next_page_click()" style="float: right; padding: 15px;">
   <x class="arrow right" style="margin-top: 5px; margin-right: 5px;"></x>
@@ -167,12 +170,12 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-seperator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">PS @DIR> go build -o x.exe -v cmd/x/main.go</div>
+  <div class="code">PS @DIR> go build -o xxc.exe -v cmd/x/main.go</div>
 
   <div class="title-seperator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o x.out -v cmd/x/main.go</div>
+  <div class="code">$ go build -o xxc.out -v cmd/x/main.go</div>
 </div>
 `;
 
@@ -193,17 +196,23 @@ The basics of compiler commands.
 <div class="title-seperator"></div>
 <div class="sub-title">help</div>
 Shows help about of commands.
-<div class="code">$ x help</div>
+<div class="code">$ xxc help</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">version</div>
 Shows version of the X compiler.
-<div class="code">$ x version</div>
+<div class="code">$ xxc version</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">doc</div>
+Documentize X source code.
+See the Documenting for more information.
+<div class="code">$ xxc doc main.xx</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">init</div>
 Initialize new project in working directory.
-<div class="code">$ x init</div>
+<div class="code">$ xxc init</div>
 
 </div>
 `;
@@ -233,11 +242,11 @@ Fields in configuration files have specific purposes.
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">cxx_out_dir</td>
-    <td>Directory of Cxx transpile file.</td>
+    <td>Directory of transpiled Cxx file.</td>
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">cxx_out_name</td>
-    <td>Name of Cxx transpile file.</td>
+    <td>Name of transpiled Cxx file.</td>
   </tr>
 </table>
 </div>
@@ -257,7 +266,7 @@ We will use already created settings file with <x class="inline_code">x init</x>
 <br>
 <br>
 For compile X code, we just give filename to compiler:
-<div class="code">x main.xx</div>
+<div class="code">xxc main.xx</div>
 And compiler is transpile our X code to Cxx code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 <br><br>
@@ -1699,6 +1708,42 @@ Built-In defines are provided from the language by directly without any import o
 </div>
 `;
 
+const documentingHTML = `
+<div class="title" style="margin-bottom: 20px;">Documenting</div>
+<div class="text">
+It is important to document the code.
+X makes it easy to have documented code.
+The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your X source code.
+<br><br>
+The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cxx_out_dir</x> field.
+The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.xdoc</x>.
+<br><br>
+The <x class="inline_code">xdoc</x> file is in JSON format and contains only metadata about definitions.
+</div>
+`;
+
+const documenting_using_documenterHTML = `
+<div class="title" style="margin-bottom: 20px;">Using Documenter</div>
+<div class="text">
+The <x class="inline_code">doc</x> command is used to use the documenter.
+<br><br>
+The <x class="inline_code">doc</x> command works quite simply.
+Show only the X source files you want to document.
+<br><br>
+For example;
+<div class="code">$DIR xxc doc main.xx</div>
+Documentize the <x class="inline_code">main.xx</x> file.
+<br><br>
+<div class="code">$DIR xxc doc main.xx test.xx</div>
+Documentize the <x class="inline_code">main.xx</x> and <x class="inline_code">test.xx</x> files.
+
+<div class="title-seperator"></div>
+<div class="warn">
+The <x class="inline_code">doc</x> command does not document if the source code contains a non-logical (syntax, etc.) error.
+</div>
+</div>
+`;
+
 const endHTML = `
 <div class="title" style="margin-bottom: 20px;">End</div>
 <div class="text">
@@ -1906,10 +1951,10 @@ Returns pointer of allocation from heap if allocation success, returns <x class=
 For example: <x class="inline_code">XALLOC(i32)</x>
 
 <div class="title-seperator"></div>
-<div class="code">XPANIC(_Msg)</div>
-Prints <x class="inline_code">_Msg</x> with new-line and exist program with failure exit code.
+<div class="code">XTHROW(_Msg)</div>
+Throws X exception.
 <br>
-For example: <x class="inline_code">XPANIC("operation failed")</x>
+For example: <x class="inline_code">XTHROW("operation failed")</x>
 
 <div class="title-seperator"></div>
 <div class="code">nil</div>
@@ -1966,45 +2011,47 @@ navigation.remove();
 //#region GET_ELEMENTS
 
 // Navigation.
-const NAV_the_xlang = document.getElementById('the-xlang');
-const NAV_foreword = document.getElementById('foreword');
-const NAV_introduction = document.getElementById('introduction');
-const NAV_getting_started = document.getElementById('getting-started');
-const NAV_getting_started_downloads = document.getElementById('getting-started-downloads');
+const NAV_the_xlang                           = document.getElementById('the-xlang');
+const NAV_foreword                            = document.getElementById('foreword');
+const NAV_introduction                        = document.getElementById('introduction');
+const NAV_getting_started                     = document.getElementById('getting-started');
+const NAV_getting_started_downloads           = document.getElementById('getting-started-downloads');
 const NAV_getting_started_install_from_source = document.getElementById('getting-started-install-from-source');
-const NAV_compiler = document.getElementById('compiler');
-const NAV_compiler_basic_commands = document.getElementById('compiler-basic-commands');
-const NAV_compiler_config_files = document.getElementById('compiler-config-files');
-const NAV_compiler_compiling = document.getElementById('compiler-compiling');
-const NAV_project = document.getElementById('project');
-const NAV_project_directory_order = document.getElementById('project-directory-order');
-const NAV_project_naming = document.getElementById('project-naming');
-const NAV_basics = document.getElementById('basics');
-const NAV_basics_comments = document.getElementById('basics-comments');
-const NAV_basics_entry_point = document.getElementById('basics-entry-point');
-const NAV_basics_data_types = document.getElementById('basics-data-types');
-const NAV_basics_operators = document.getElementById('basics-operators');
-const NAV_basics_attributes = document.getElementById('basics-attributes');
-const NAV_basics_statements = document.getElementById('basics-statements');
-const NAV_common_concepts = document.getElementById('common-concepts');
-const NAV_common_concepts_variables = document.getElementById('common-concepts-variables');
-const NAV_common_concepts_functions = document.getElementById('common-concepts-functions');
-const NAV_common_concepts_arrays = document.getElementById('common-concepts-arrays');
-const NAV_common_concepts_control_flow = document.getElementById('common-concepts-control-flow');
-const NAV_memory = document.getElementById('memory');
-const NAV_memory_pointers = document.getElementById('memory-pointers');
-const NAV_memory_memory_management = document.getElementById('memory-memory-management');
-const NAV_types = document.getElementById('types');
-const NAV_types_aliasing = document.getElementById('types-aliasing');
-const NAV_types_casting = document.getElementById('types-casting');
-const NAV_cxx = document.getElementById('cxx');
-const NAV_cxx_cxxapi = document.getElementById('cxx-cxxapi');
-const NAV_standard_library = document.getElementById('standard-library');
-const NAV_standard_library_builtin = document.getElementById('standard-library-builtin');
-const NAV_end = document.getElementById('end');
+const NAV_compiler                            = document.getElementById('compiler');
+const NAV_compiler_basic_commands             = document.getElementById('compiler-basic-commands');
+const NAV_compiler_config_files               = document.getElementById('compiler-config-files');
+const NAV_compiler_compiling                  = document.getElementById('compiler-compiling');
+const NAV_project                             = document.getElementById('project');
+const NAV_project_directory_order             = document.getElementById('project-directory-order');
+const NAV_project_naming                      = document.getElementById('project-naming');
+const NAV_basics                              = document.getElementById('basics');
+const NAV_basics_comments                     = document.getElementById('basics-comments');
+const NAV_basics_entry_point                  = document.getElementById('basics-entry-point');
+const NAV_basics_data_types                   = document.getElementById('basics-data-types');
+const NAV_basics_operators                    = document.getElementById('basics-operators');
+const NAV_basics_attributes                   = document.getElementById('basics-attributes');
+const NAV_basics_statements                   = document.getElementById('basics-statements');
+const NAV_common_concepts                     = document.getElementById('common-concepts');
+const NAV_common_concepts_variables           = document.getElementById('common-concepts-variables');
+const NAV_common_concepts_functions           = document.getElementById('common-concepts-functions');
+const NAV_common_concepts_arrays              = document.getElementById('common-concepts-arrays');
+const NAV_common_concepts_control_flow        = document.getElementById('common-concepts-control-flow');
+const NAV_memory                              = document.getElementById('memory');
+const NAV_memory_pointers                     = document.getElementById('memory-pointers');
+const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
+const NAV_types                               = document.getElementById('types');
+const NAV_types_aliasing                      = document.getElementById('types-aliasing');
+const NAV_types_casting                       = document.getElementById('types-casting');
+const NAV_cxx                                 = document.getElementById('cxx');
+const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxxapi');
+const NAV_standard_library                    = document.getElementById('standard-library');
+const NAV_standard_library_builtin            = document.getElementById('standard-library-builtin');
+const NAV_documenting                         = document.getElementById("documenting");
+const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
+const NAV_end                                 = document.getElementById('end');
 
 const side_navigation = document.getElementById('side-navigation');
-const content_body = document.getElementById('side-navigation-content-body');
+const content_body    = document.getElementById('side-navigation-content-body');
 
 //#endregion GET_ELEMENTS
 
@@ -2045,6 +2092,8 @@ const navigations = [
   [NAV_types_casting,                       types_castingHTML],
   [NAV_standard_library,                    standard_libraryHTML],
   [NAV_standard_library_builtin,            standard_library_builtinHTML],
+  [NAV_documenting,                         documentingHTML],
+  [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
   [NAV_end,                                 endHTML],
 ];
 
