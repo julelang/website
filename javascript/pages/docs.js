@@ -1722,6 +1722,27 @@ The <x class="inline_code">xdoc</x> file is in JSON format and contains only met
 </div>
 `;
 
+const documenting_documentation_commentsHTML = `
+<div class="title" style="margin-bottom: 20px;">Documentation Comments</div>
+<div class="text">
+If you want your personal comments to be in the output created with the <x class="inline_code">doc</x> command, you can do this with the documentation comments.
+<br><br>
+To create a documentation comment, simply start it with <x class="inline_code">doc:</x>.
+The documenter will treat that and subsequent comment lines as documentation comments.
+<br><br>
+For example;
+<div class="code">// doc:
+// Divides specified floats.
+// THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
+div(const a, const b f64) f64 { < a / b }</div>
+
+<div class="warn">
+  <li>The documentation comments should be single-line comments.</li>
+  <li>The documentation comments should be full line.</li>
+</div>
+</div>
+`;
+
 const documenting_using_documenterHTML = `
 <div class="title" style="margin-bottom: 20px;">Using Documenter</div>
 <div class="text">
@@ -1731,10 +1752,10 @@ The <x class="inline_code">doc</x> command works quite simply.
 Show only the X source files you want to document.
 <br><br>
 For example;
-<div class="code">$DIR xxc doc main.xx</div>
+<div class="code">$ xxc doc main.xx</div>
 Documentize the <x class="inline_code">main.xx</x> file.
 <br><br>
-<div class="code">$DIR xxc doc main.xx test.xx</div>
+<div class="code">$ xxc doc main.xx test.xx</div>
 Documentize the <x class="inline_code">main.xx</x> and <x class="inline_code">test.xx</x> files.
 
 <div class="title-seperator"></div>
@@ -2047,6 +2068,7 @@ const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxx
 const NAV_standard_library                    = document.getElementById('standard-library');
 const NAV_standard_library_builtin            = document.getElementById('standard-library-builtin');
 const NAV_documenting                         = document.getElementById("documenting");
+const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
 const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
 const NAV_end                                 = document.getElementById('end');
 
@@ -2093,6 +2115,7 @@ const navigations = [
   [NAV_standard_library,                    standard_libraryHTML],
   [NAV_standard_library_builtin,            standard_library_builtinHTML],
   [NAV_documenting,                         documentingHTML],
+  [NAV_documenting_documentation_comments,  documenting_documentation_commentsHTML],
   [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
   [NAV_end,                                 endHTML],
 ];
