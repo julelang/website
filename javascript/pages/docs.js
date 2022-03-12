@@ -1696,7 +1696,7 @@ const standard_libraryHTML = `
 `;
 
 const standard_library_builtinHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: Built-In Defines</div>
+<div class="title" style="margin-bottom: 20px;">Standard Library: Built-In</div>
 <div class="text">
 Built-In defines are provided from the language by directly without any import operation.
 
@@ -1762,6 +1762,47 @@ Documentize the <x class="inline_code">main.xx</x> and <x class="inline_code">te
 <div class="warn">
 The <x class="inline_code">doc</x> command does not document if the source code contains a non-logical (syntax, etc.) error.
 </div>
+</div>
+`;
+
+const use_declarationsHTML = `
+<div class="title" style="margin-bottom: 20px;">Use Declarations</div>
+The use declarations act as importing other packages for use in your code. <br>
+Declared with the <x class="inline_code">use</x> keyword.
+
+<div class="text">
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Use Declaration for Standard Library</div>
+To use standard library, standard path is used.
+It is quite plain and simple.
+You write the name of a package you want to use, if you want to use a sub-package, you separate it with a dot.
+<br><br>
+For example;
+<div class="code">use pkg</div>
+<div class="code">use pkg.subpkg</div>
+
+<div class="warn">
+  <li>You can't use already used packages.</li>
+  <li>You must declare uses at the beginning of code.</li>
+</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Packages</div>
+X treats each directory as a package.
+Each package has the ability to use its own defines.
+<br><br>
+For example;
+<div class="code">// file: ./hello_print.xx
+
+@inline hello_print(const name str) {
+  outln("Hello " + name)
+}</div>
+<div class="code">// file: ./main.xx
+
+main() {
+  hello_print("Packages")
+}</div>
+As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
 </div>
 `;
 
@@ -2070,6 +2111,7 @@ const NAV_standard_library_builtin            = document.getElementById('standar
 const NAV_documenting                         = document.getElementById("documenting");
 const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
 const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
+const NAV_use_declarations                    = document.getElementById("use-declarations");
 const NAV_end                                 = document.getElementById('end');
 
 const side_navigation = document.getElementById('side-navigation');
@@ -2117,6 +2159,7 @@ const navigations = [
   [NAV_documenting,                         documentingHTML],
   [NAV_documenting_documentation_comments,  documenting_documentation_commentsHTML],
   [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
+  [NAV_use_declarations,                    use_declarationsHTML],
   [NAV_end,                                 endHTML],
 ];
 
