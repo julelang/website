@@ -353,6 +353,26 @@ With that in mind, it's also preferable to adopt splitting each function and oth
 </div>
 `;
 
+const project_definesHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Defines</div>
+<div class="text">
+Definitions only allow the use of declarations that have been declared before them.
+<br><br>
+You might see something similar in some programming languages;
+<div class="code">This is a pseudocode!
+
+DEFINE A = B + 100
+DEFINE B = 100
+</div>
+
+In the above example, the <x class="inline_code">A</x> variable uses the <x class="inline_code">B</x> variable while getting the value.
+As can be seen, the <x class="inline_code">B</x> variable is declared after the <x class="inline_code">A</x> variable.
+In this case, the X compiler will throw an error.
+In the X source code, <x class="inline_code">B</x> must have been declared before.
+
+</div>
+`;
+
 const basicsHTML = `
 <div class="title" style="margin-bottom: 20px;">Basics</div>
 <div class="text">
@@ -2086,6 +2106,7 @@ const NAV_compiler_compiling                  = document.getElementById('compile
 const NAV_project                             = document.getElementById('project');
 const NAV_project_directory_order             = document.getElementById('project-directory-order');
 const NAV_project_naming                      = document.getElementById('project-naming');
+const NAV_project_defines                     = document.getElementById("project-defines");
 const NAV_basics                              = document.getElementById('basics');
 const NAV_basics_comments                     = document.getElementById('basics-comments');
 const NAV_basics_entry_point                  = document.getElementById('basics-entry-point');
@@ -2134,6 +2155,7 @@ const navigations = [
   [NAV_project,                             projectHTML],
   [NAV_project_directory_order,             project_directory_orderHTML],
   [NAV_project_naming,                      project_namingHTML],
+  [NAV_project_defines,                     project_definesHTML],
   [NAV_basics,                              basicsHTML],
   [NAV_basics_comments,                     basics_commentsHTML],
   [NAV_basics_entry_point,                  basics_entry_pointHTML],
