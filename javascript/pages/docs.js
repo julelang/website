@@ -1815,6 +1815,7 @@ For example;
 <div class="warn">
   <li>You can't use already used packages.</li>
   <li>You must declare uses at the beginning of code.</li>
+  <li>Packages used by used packages are not included for use.</li>
 </div>
 
 <div class="title-seperator"></div>
