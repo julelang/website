@@ -1656,10 +1656,55 @@ In this section, the information necessary to use X and Cxx effectively and the 
 </div>
 `;
 
+const cxx_cxx_embeddingHTML = `
+<div class="title" style="margin-bottom: 20px;">Cxx Embedding</div>
+<div class="text">
+You can embed cxx code in your X code.
+For this, show the comment line as a cxx content;
+<div class="code">// cxx: #include "my_library.h"
+
+main() {
+  // ...
+}
+</div>
+<div class="warn">
+  <li>The comments should be single-line comments.</li>
+  <li>The comments should be full line.</li>
+</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Using definitions of X</div>
+Definitions start with <x class="inline_code">_</x>when translating X.
+For example, a variable named <x class="inline_code">rate</x> in X is called <x class="inline_code">_rate</x> in cxx output.
+So, using the correct data types and definition names, you can include X definitions in your embed code.
+<br><br>
+For example;
+<div class="code">@inline
+cxx_wcout(const msg str) {
+  // cxx: std::wcout << _msg << std::endl;
+}
+
+main() {
+  cxx_wcout("Hello World")
+}</div>
+
+<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
+<div class="title-seperator"></div>
+Any cxx code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
+
+<div class="warn">
+  X does not check whether the embed code you write is incorrect or will affect compilation.
+  This is entirely the developer's responsibility.
+</div>
+</div>
+`;
+
 const cxx_cxxapiHTML = `
 <div class="title" style="margin-bottom: 20px;">CxxAPI</div>
 <div class="text">
 API of X for Cxx.
+You can this API your transpiled X code or cxx embedding code.
 <br><br>
 This API consists of built-in cxx definitions that can be used inside the transpiled X code.
 
@@ -2072,7 +2117,7 @@ const TAB_cxx_cxxapi_defines = `
 <div class="code">class str</div>
 The <x class="inline_code">str</x> data-type of X.
 <div class="title-seperator"></div>
-<div class="code">template<typename _Item_t>
+<div class="code">template&lt;typename _Item_t&gt;
 class array</div>
 Array type class.
 
@@ -2143,6 +2188,7 @@ const NAV_types                               = document.getElementById('types')
 const NAV_types_aliasing                      = document.getElementById('types-aliasing');
 const NAV_types_casting                       = document.getElementById('types-casting');
 const NAV_cxx                                 = document.getElementById('cxx');
+const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
 const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxxapi');
 const NAV_standard_library                    = document.getElementById('standard-library');
 const NAV_standard_library_builtin            = document.getElementById('standard-library-builtin');
@@ -2191,6 +2237,7 @@ const navigations = [
   [NAV_types,                               typesHTML],
   [NAV_types_aliasing,                      types_aliasingHTML],
   [NAV_cxx,                                 cxxHTML],
+  [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
   [NAV_types_casting,                       types_castingHTML],
   [NAV_standard_library,                    standard_libraryHTML],
