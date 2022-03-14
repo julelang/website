@@ -370,6 +370,17 @@ As can be seen, the <x class="inline_code">B</x> variable is declared after the 
 In this case, the X compiler will throw an error.
 In the X source code, <x class="inline_code">B</x> must have been declared before.
 
+<div class="title-seperator"></div>
+<div class="sub-title">Define Order</div>
+The example seen above is due to the definition order logic.
+X has a priority queue that it uses to process definitions.
+It is useful to pay attention to this.
+<br><br>
+<strong>Order (High to Low);</strong>
+<div style="margin-top: 5px;"></div>
+<li>Use Declarations</li>
+<li>Type Aliases, Globals</li>
+<li>Functions</li>
 </div>
 `;
 
@@ -1823,6 +1834,11 @@ main() {
   hello_print("Packages")
 }</div>
 As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
+<br><br>
+Packages' use declarations are common, so collecting all the package's use declarations in a single file like <x class="inline_code">uses.xx</x> can be a good option for readability and easy maintenance.
+
+<div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
+
 </div>
 `;
 
