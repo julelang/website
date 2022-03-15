@@ -1884,7 +1884,29 @@ As shown in the example above, since both files are located in the same director
 Packages' use declarations are common, so collecting all the package's use declarations in a single file like <x class="inline_code">uses.xx</x> can be a good option for readability and easy maintenance.
 
 <div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
+</div>
+`;
 
+const preprocessorHTML = `
+<div class="title" style="margin-bottom: 20px;">Preprocessor</div>
+<div class="text">
+The compile's preprocessor processes the source code before the parser.
+Before the compiler parses the code, the preprocessor processes the preprocessor instructions above the code, and the parser parses the code processed by this preprocessor.
+</div>
+`;
+
+const preprocessor_directivesHTML = `
+<div class="title" style="margin-bottom: 20px;">Directives</div>
+<div class="text">
+Directives tell the compiler how to process the code. <br>
+Directives are denoted by <x class="inline_code">pragma</x> identifier to preprocessor. <br>
+For example;
+<div class="code">#pragma enofi</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">enofi</x></div>
+When importing a package or local package, this directive ensures that the code is split on import.
+When the preprocessor sees this directive, it discards the rest of the code.
 </div>
 `;
 
@@ -2196,6 +2218,8 @@ const NAV_documenting                         = document.getElementById("documen
 const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
 const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
 const NAV_use_declarations                    = document.getElementById("use-declarations");
+const NAV_preprocessor                        = document.getElementById("preprocessor");
+const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
 const NAV_end                                 = document.getElementById('end');
 
 const side_navigation = document.getElementById('side-navigation');
@@ -2246,6 +2270,8 @@ const navigations = [
   [NAV_documenting_documentation_comments,  documenting_documentation_commentsHTML],
   [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
   [NAV_use_declarations,                    use_declarationsHTML],
+  [NAV_preprocessor,                        preprocessorHTML],
+  [NAV_preprocessor_directives,             preprocessor_directivesHTML],
   [NAV_end,                                 endHTML],
 ];
 

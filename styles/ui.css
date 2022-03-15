@@ -69,7 +69,7 @@
 .section {
   max-width: 1200px;
   color: rgb(255, 255, 255);
-  background-color: purple;
+  background-color: slategray;
   height: 500px;
   display: flex;
   font-family: 'OpenSans-Light';
@@ -136,7 +136,7 @@ button:hover {
   font-size: large;
   font-weight: normal;
   user-select: none;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 #side-navigation * {
@@ -163,7 +163,7 @@ button:hover {
   font-weight: normal;
   user-select: none;
   margin-left: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 #side-navigation .sub-topic:hover {
