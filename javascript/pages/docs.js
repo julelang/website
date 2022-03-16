@@ -1655,6 +1655,16 @@ const types_strHTML = `
 </div>
 `;
 
+const types_arraysHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Arrays</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-types-arrays-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const cxxHTML = `
 <div class="title" style="margin-bottom: 20px;">Cxx</div>
 <div class="text">
@@ -1957,7 +1967,12 @@ Support us to improve the documentation.
 
 const TAB_types_str_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
-Length of string.
+Rune count of string.
+`;
+
+const TAB_types_arrays_constants = `
+<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+Length of array.
 `;
 
 const TAB_std_builtin_functions = `
@@ -2244,6 +2259,7 @@ const NAV_memory_memory_management            = document.getElementById('memory-
 const NAV_types                               = document.getElementById('types');
 const NAV_types_aliasing                      = document.getElementById('types-aliasing');
 const NAV_types_str                           = document.getElementById("types-str");
+const NAV_types_arrays                        = document.getElementById("types-arrays");
 const NAV_types_casting                       = document.getElementById('types-casting');
 const NAV_cxx                                 = document.getElementById('cxx');
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
@@ -2299,6 +2315,7 @@ const navigations = [
   [NAV_types_aliasing,                      types_aliasingHTML],
   [NAV_types_casting,                       types_castingHTML],
   [NAV_types_str,                           types_strHTML],
+  [NAV_types_arrays,                        types_arraysHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
@@ -2317,6 +2334,7 @@ const navigations = [
 const tabs = [
   // ID - HTML
   ["tab-types-str-constants",            TAB_types_str_constants],
+  ["tab-types-arrays-constants",         TAB_types_arrays_constants],
   ["tab-std-builtin-functions",          TAB_std_builtin_functions],
   ["tab-std-io-functions",               TAB_std_io_functions],
   ["tab-common-concepts-iterations",     TAB_common_concepts_iterations],
