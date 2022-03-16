@@ -1645,6 +1645,16 @@ When defining a type alias, only the following types can be given as the type to
 </div>
 `;
 
+const types_strHTML = `
+<div class="page-title" style="margin-bottom: 20px;">The <x class="inline_code">str</x> Type</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-types-str-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const cxxHTML = `
 <div class="title" style="margin-bottom: 20px;">Cxx</div>
 <div class="text">
@@ -1749,39 +1759,6 @@ For example;
   *ptr1 = 200
   outln(*ptr0) // Prints 200
 }</div>
-`;
-
-const standard_libraryHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Libray</div>
-<div class="text">
-  The standard library is language's own library.
-  Usually each programming language have a standard library.
-  This libraries, provides common functions to developer.
-  Free time!
-  <br><br>
-  Developers can write functions of standard library if they want.
-  But they usually prefer to use the standard library.
-  Because usually every developer learns the standard library while learning a language.
-  For this reason, standard library provides readability for developers.
-  Since developers do not rewrite their functions every time, developers who already know the standard library can understand the code more easily.
-  <br><br>
-  At below, you can see all content of standard library of the X programming language;
-  <br><br><br>
-  <li><a onclick="std_builtin_click()">Built-In</a></li>
-</div>
-`;
-
-const standard_library_builtinHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: Built-In</div>
-<div class="text">
-Built-In defines are provided from the language by directly without any import operation.
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-builtin-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
-</div>
-<div class="tabcontrol-content">
-</div>
-</div>
 `;
 
 const documentingHTML = `
@@ -1910,6 +1887,51 @@ When the preprocessor sees this directive, it discards the rest of the code.
 </div>
 `;
 
+const standard_libraryHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Libray</div>
+<div class="text">
+  The standard library is language's own library.
+  Usually each programming language have a standard library.
+  This libraries, provides common functions to developer.
+  Free time!
+  <br><br>
+  Developers can write functions of standard library if they want.
+  But they usually prefer to use the standard library.
+  Because usually every developer learns the standard library while learning a language.
+  For this reason, standard library provides readability for developers.
+  Since developers do not rewrite their functions every time, developers who already know the standard library can understand the code more easily.
+  <br><br>
+  At below, you can see all content of standard library of the X programming language;
+  <br><br><br>
+  <li><a onclick="std_builtin_click()">Built-In</a></li>
+  <li><a onclick="std_io_click()">io</a></li>
+</div>
+`;
+
+const standard_library_builtinHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: Built-In</div>
+<div class="text">
+Built-In defines are provided from the language by directly without any import operation.
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-std-builtin-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const standard_library_ioHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">io</x></div>
+<div class="text">
+Input/Output operations.
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-std-io-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const endHTML = `
 <div class="title" style="margin-bottom: 20px;">End</div>
 <div class="text">
@@ -1933,8 +1955,12 @@ Support us to improve the documentation.
 
 // ------------------------------------------------------------------------------
 
-const TAB_builtin_functions =
-`
+const TAB_types_str_constants = `
+<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+Length of string.
+`;
+
+const TAB_std_builtin_functions = `
 <div class="sub-sub-title"><x class="inline_code">out(value any)</x></div>
 Prints value to command line.
 Can take any data-type as argument.
@@ -1945,8 +1971,18 @@ This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 `;
 
-const TAB_common_concepts_iterations =
-`
+const TAB_std_io_functions = `
+<div class="code">@inline
+pub readln() str</div>
+Reads full-complete line from command-line.
+
+<div class="topic-seperator"></div>
+<div class="code">@inline
+pub readin() str</div>
+Read first part of line from command-line.
+`;
+
+const TAB_common_concepts_iterations = `
 Iterations allow you to repeat the algorithm according to certain conditions.
 The <x class="inline_code">iter</x> keyword use for iterations in X.
 
@@ -2058,8 +2094,7 @@ But prints nothing, because <x class="inline_code">continue</x> keyword is conti
 (So print operation is the unreachable code.
 `;
 
-const TAB_common_concepts_if_expression =
-`
+const TAB_common_concepts_if_expression = `
 If expressions allow you to manipulate the algorithm according to certain conditions.
 The <x class="inline_code">if</x> and <x class="inline_code">else</x> keywords use for if expressions in X.
 
@@ -2208,18 +2243,20 @@ const NAV_memory_pointers                     = document.getElementById('memory-
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
 const NAV_types                               = document.getElementById('types');
 const NAV_types_aliasing                      = document.getElementById('types-aliasing');
+const NAV_types_str                           = document.getElementById("types-str");
 const NAV_types_casting                       = document.getElementById('types-casting');
 const NAV_cxx                                 = document.getElementById('cxx');
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
 const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxxapi');
-const NAV_standard_library                    = document.getElementById('standard-library');
-const NAV_standard_library_builtin            = document.getElementById('standard-library-builtin');
 const NAV_documenting                         = document.getElementById("documenting");
 const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
 const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
 const NAV_use_declarations                    = document.getElementById("use-declarations");
 const NAV_preprocessor                        = document.getElementById("preprocessor");
 const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
+const NAV_standard_library                    = document.getElementById('standard-library');
+const NAV_standard_library_builtin            = document.getElementById('standard-library-builtin');
+const NAV_standard_library_io                 = document.getElementById("standard-library-io");
 const NAV_end                                 = document.getElementById('end');
 
 const side_navigation = document.getElementById('side-navigation');
@@ -2260,24 +2297,28 @@ const navigations = [
   [NAV_memory_memory_management,            memory_memory_managementHTML],
   [NAV_types,                               typesHTML],
   [NAV_types_aliasing,                      types_aliasingHTML],
+  [NAV_types_casting,                       types_castingHTML],
+  [NAV_types_str,                           types_strHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
-  [NAV_types_casting,                       types_castingHTML],
-  [NAV_standard_library,                    standard_libraryHTML],
-  [NAV_standard_library_builtin,            standard_library_builtinHTML],
   [NAV_documenting,                         documentingHTML],
   [NAV_documenting_documentation_comments,  documenting_documentation_commentsHTML],
   [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
   [NAV_use_declarations,                    use_declarationsHTML],
   [NAV_preprocessor,                        preprocessorHTML],
   [NAV_preprocessor_directives,             preprocessor_directivesHTML],
+  [NAV_standard_library,                    standard_libraryHTML],
+  [NAV_standard_library_builtin,            standard_library_builtinHTML],
+  [NAV_standard_library_io,                 standard_library_ioHTML],
   [NAV_end,                                 endHTML],
 ];
 
 const tabs = [
   // ID - HTML
-  ["tab-builtin-functions",              TAB_builtin_functions],
+  ["tab-types-str-constants",            TAB_types_str_constants],
+  ["tab-std-builtin-functions",          TAB_std_builtin_functions],
+  ["tab-std-io-functions",               TAB_std_io_functions],
   ["tab-common-concepts-iterations",     TAB_common_concepts_iterations],
   ["tab-common-concepts-if-expressions", TAB_common_concepts_if_expression],
   ["cxx-cxxapi-preprocessor-defines",    TAB_cxx_cxxapi_preprocessor_defines],
@@ -2286,14 +2327,10 @@ const tabs = [
 
 //#region EVENTS
 
-function next_page_click()
-{ select_topic_index(navigation_index+1); }
-
-function prev_page_click()
-{ select_topic_index(navigation_index-1); }
-
-function std_builtin_click()
-{ select_topic(NAV_standard_library_builtin); }
+function next_page_click()   { select_topic_index(navigation_index+1); }
+function prev_page_click()   { select_topic_index(navigation_index-1); }
+function std_builtin_click() { select_topic(NAV_standard_library_builtin); }
+function std_io_click()      { select_topic(NAV_standard_library_io); }
 
 navigations.forEach((element, index) => {
   element[0].addEventListener('click', () => { select_topic_index(index); });
