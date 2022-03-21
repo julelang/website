@@ -117,11 +117,11 @@ const getting_started_downloadsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Downloads</div>
 <div class="text">
   <div class="sub-title">Releases</div>
-  You can see X compiler in easy setup form at <a target="_blank" href="https://github.com/the-xlang/x/releases">releases</a>.
+  You can see X compiler in easy setup form at <a target="_blank" href="https://github.com/the-xlang/xxc/releases">releases</a>.
 
   <div class="title-seperator"></div>
   <div class="sub-title">Source Code</div>
-  You can download source code of the X compiler at <a target="_blank" href="https://github.com/the-xlang/x">repository</a>.
+  You can download source code of the X compiler at <a target="_blank" href="https://github.com/the-xlang/xxc">repository</a>.
 </div>
 `;
 
@@ -170,12 +170,12 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-seperator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">PS @DIR> go build -o xxc.exe -v cmd/x/main.go</div>
+  <div class="code">PS @DIR> go build -o xxc.exe -v cmd/xxc/main.go</div>
 
   <div class="title-seperator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o xxc.out -v cmd/x/main.go</div>
+  <div class="code">$ go build -o xxc.out -v cmd/xxc/main.go</div>
 </div>
 `;
 

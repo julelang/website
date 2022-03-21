@@ -81,7 +81,7 @@ body.innerHTML +=
     </td>
     <td>
       <div class="footer-title">Using X</div>
-      <a href="https://github.com/the-xlang/x/releases">Download</a> <br>
+      <a href="https://github.com/the-xlang/xxc/releases">Download</a> <br>
       <a href="${rootPath}/pages/community.html">Community</a> <br>
       <a href="${rootPath}/pages/docs.html">Documentations</a> <br>
       <a href=""></a> <br>
@@ -89,10 +89,10 @@ body.innerHTML +=
     </td>
     <td>
       <div class="footer-title">Contribute</div>
-      <a href="https://github.com/the-xlang/x">Source Code</a> <br>
-      <a href="https://github.com/the-xlang/x/fork">Fork Project</a> <br>
-      <a href="https://github.com/the-xlang/x/issues">Issues</a> <br>
-      <a href="https://github.com/the-xlang/x/discussions">Discussions</a> <br>
+      <a href="https://github.com/the-xlang/xxc">Source Code</a> <br>
+      <a href="https://github.com/the-xlang/xxc/fork">Fork Project</a> <br>
+      <a href="https://github.com/the-xlang/xxc/issues">Issues</a> <br>
+      <a href="https://github.com/the-xlang/xxc/discussions">Discussions</a> <br>
       <a href="${rootPath}/pages/contributing.html">Guideline</a>
     </td>
     <td>

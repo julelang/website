@@ -14,7 +14,7 @@ const rules_contentHTML =
 const getfork_titleHTML = `Get Fork`;
 const getfork_contentHTML =
 `
-<a href="https://github.com/the-xlang/x/fork" target="_blank"><button>Fork</button></a>
+<a href="https://github.com/the-xlang/xxc/fork" target="_blank"><button>Fork</button></a>
 <br><br>
 
 Once you have your fork, you can work directly. But to make things easier, you can open a branch in your own name.

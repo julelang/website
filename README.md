@@ -1,5 +1,5 @@
 # X-Lang Official Website
-The official website of [the X programming language](https://github.com/the-xlang/x).
+The official website of [the X programming language](https://github.com/the-xlang/xxc).
 
 <h2 id="license">License</h2>
 
