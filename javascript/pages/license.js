@@ -1,10 +1,8 @@
-const page_title = `X - License`;
-
-const content_titleHTML = `LICENSE`;
-const license_textHTML =
-`
-Copyright (c) ${new Date().getFullYear()}, The X Programming Language
-All rights reserved.
+const license_textHTML = `
+BSD 3-Clause License
+<br><br>
+Copyright (c) ${new Date().getFullYear()}, The X Programming Language <br>
+All rights reserved. <br>
 <br><br>
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -29,25 +27,7 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
 SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-`;
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`;
 
-//#region SET_PAGE
-
-document.title = page_title;
-
-//#endregion SET_PAGE
-
-//#region GET_ELEMENTS
-
-const contentTitle = document.getElementById('content-title');
 const licenseText = document.getElementById('license-text');
-
-//#endregion GET_ELEMENTS
-
-//#region SET_CONTENT
-
-contentTitle.innerHTML = content_titleHTML;
 licenseText.innerHTML = license_textHTML;
-
-//#endregion SET_CONTENT
