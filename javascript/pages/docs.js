@@ -248,6 +248,13 @@ Fields in configuration files have specific purposes.
     <td style="text-align: center; font-family: 'Code';">cxx_out_name</td>
     <td>Name of transpiled Cxx file.</td>
   </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">language</td>
+    <td>
+      Name of language-pack to use.
+      Set empty for default language-pack.
+    </td>
+  </tr>
 </table>
 </div>
 `;
