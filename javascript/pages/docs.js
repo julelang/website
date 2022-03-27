@@ -1706,6 +1706,17 @@ const types_arraysHTML = `
 </div>
 `;
 
+const types_mapsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Maps</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-types-maps-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-types-maps-functions" class="tab" onclick="select_tab_event(1)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const cxxHTML = `
 <div class="title" style="margin-bottom: 20px;">Cxx</div>
 <div class="text">
@@ -2016,6 +2027,20 @@ const TAB_types_arrays_constants = `
 Length of array.
 `;
 
+const TAB_types_maps_constants = `
+<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+Length of key-value pairs.
+`;
+
+const TAB_types_maps_functions = `
+<div class="sub-sub-title"><x class="inline_code">keys() []KEY_TYPE</x></div>
+Returns keys of key-value pairs as array.
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">values() []VALUE_TYPE</x></div>
+Returns values of key-value pairs as array.
+`;
+
 const TAB_std_builtin_functions = `
 <div class="sub-sub-title"><x class="inline_code">out(value any)</x></div>
 Prints value to command line.
@@ -2323,9 +2348,10 @@ const NAV_memory_pointers                     = document.getElementById('memory-
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
 const NAV_types                               = document.getElementById('types');
 const NAV_types_aliasing                      = document.getElementById('types-aliasing');
+const NAV_types_casting                       = document.getElementById('types-casting');
 const NAV_types_str                           = document.getElementById("types-str");
 const NAV_types_arrays                        = document.getElementById("types-arrays");
-const NAV_types_casting                       = document.getElementById('types-casting');
+const NAV_types_maps                          = document.getElementById("types-maps");
 const NAV_cxx                                 = document.getElementById('cxx');
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
 const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxxapi');
@@ -2382,6 +2408,7 @@ const navigations = [
   [NAV_types_casting,                       types_castingHTML],
   [NAV_types_str,                           types_strHTML],
   [NAV_types_arrays,                        types_arraysHTML],
+  [NAV_types_maps,                          types_mapsHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
@@ -2401,6 +2428,8 @@ const tabs = [
   // ID - HTML
   ["tab-types-str-constants",            TAB_types_str_constants],
   ["tab-types-arrays-constants",         TAB_types_arrays_constants],
+  ["tab-types-maps-constants",           TAB_types_maps_constants],
+  ["tab-types-maps-functions",           TAB_types_maps_functions],
   ["tab-std-builtin-functions",          TAB_std_builtin_functions],
   ["tab-std-io-functions",               TAB_std_io_functions],
   ["tab-common-concepts-iterations",     TAB_common_concepts_iterations],
