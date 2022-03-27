@@ -479,11 +479,6 @@ const basics_data_typesHTML = `
       <td>-9223372036854775808 to 9223372036854775807</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">ssize</td>
-      <td style="text-align: center;">Platform dependent</td>
-      <td>Platform dependent (signed)</td>
-    </tr>
-    <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1byte</td>
       <td>0 to 255</td>
@@ -549,7 +544,7 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i8</td>
-      <td>i8, i16, i32, i64, f32, f64, size, ssize</td>
+      <td>i8, i16, i32, i64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">sbyte</td>
@@ -557,19 +552,19 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
-      <td>i16, i32, i64, f32, f64, size, ssize</td>
+      <td>i16, i32, i64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td>i32, i64, f32, f64, size, ssize</td>
+      <td>i32, i64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i64, f32, f64, size, ssize</td>
+      <td>i64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
-      <td>u8, u16, u32, u64, f32, f64, size, ssize</td>
+      <td>u8, u16, u32, u64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">byte</td>
@@ -577,15 +572,15 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
-      <td>u16, u32, u64, f32, f64, size, ssize</td>
+      <td>u16, u32, u64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u32</td>
-      <td>u32, u64, f32, f64, size, ssize</td>
+      <td>u32, u64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u64, f32, f64, size, ssize</td>
+      <td>u64, f32, f64, size</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
@@ -1437,6 +1432,45 @@ To send, it is sufficient to follow the <x class="inline_code">...</x> operator.
 <div class="warn">If you pass array to variadic parameter, you can't pass more value.</div>
 `;
 
+const common_concepts_mapsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Maps</div>
+<div class="text">
+Maps is a hashmap. Maps a unique key value to a value.
+<br><br>
+Example to maps;
+<div class="code">main() {
+  mymap:[i8:str] = [i8:str]{
+    0: "CPU",
+    1: "RAM",
+    2: "GPU"
+  }
+}</div>
+The example above shows how a map is defined and its data-type representation.
+To describe a map, curly braces are opened after the data type.
+Each key-value pair is separated by a comma.
+Keys and values are separated by colons, the key comes first, then the value.
+<div class="info">In iterations, the first variable is the key and the second variable is the value.</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Access to Elements and Indexing</div>
+To get the value of a key, it is sufficient to index it with the key. <br>
+For example;
+<div class="code">mymap[1]</div>
+The example at above, gives <x class="inline_code">"RAM"</x> value. <br>
+If you try to access a key that does not exist, it will return the default value.
+
+<div class="topic-seperator"></div>
+To change the value of a key, it is sufficient to do a classic assignment by indexing the key. <br>
+For example;
+<div class="code">mymap[1] = "SSD"</div>
+<br><br>
+To add a key-value pair that doesn't exist, it's still just a classic assignment. <br>
+For example;
+<div class="code">mymap[3] = "HDD"</div>
+If the key does not exist when you assign it, the key is generated and matched with the value you assigned.
+</div>
+`;
+
 const common_concepts_control_flowHTML = `
 <div class="title" style="margin-bottom: 20px;">Control Flow</div>
 <div class="text">
@@ -2167,6 +2201,10 @@ For example;
 `;
 
 const TAB_cxx_cxxapi_preprocessor_defines = `
+<div class="code">func</div>
+Like alias for <x class="inline_code">std::function</x>.
+
+<div class="title-seperator"></div>
 <div class="code">XALLOC(_Alloc)</div>
 The <x class="inline_code">_Alloc</x> is an allocation expression.
 Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
@@ -2185,20 +2223,33 @@ Built-in <x class="inline_code">nil</x> value of X.
 `;
 
 const TAB_cxx_cxxapi_defines = `
+<li><a href="#cxxapi-misc">Misc</a></li>
 <li><a href="#cxxapi-datatypes">Data-Types</a></li>
 <li><a href="#cxxapi-functions">Functions</a></li>
 
 <div class="title-seperator"></div>
 <div class="title-seperator"></div>
+<div id="cxxapi-misc" class="sub-sub-title">Misc</div>
+<div class="code">class exception</div>
+Exception instance of X.
+
+<div class="title-seperator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
 <div class="info">The primitive data-types in X, have same names in cxx output.</div>
+
 <div class="title-seperator"></div>
 <div class="code">class str</div>
 The <x class="inline_code">str</x> data-type of X.
+
 <div class="title-seperator"></div>
 <div class="code">template&lt;typename _Item_t&gt;
 class array</div>
 Array type class.
+
+<div class="title-seperator"></div>
+<div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
+class map</div>
+Map type class.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
@@ -2208,6 +2259,12 @@ static inline void foreach(const _Enum_t _Enum,
 <div class="code">template &lt;typename _Enum_t, typename _Index_t&gt;
 static inline void foreach(const _Enum_t _Enum,
                            const std::function&lt;void(_Index_t)&gt; _Body)</div>
+<div class="code">template &lt;typename _Key_t, typename _Value_t&gt;
+static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
+                           const func&lt;void(_Key_t)&gt; _Body)</div>
+<div class="code">template &lt;typename _Key_t, typename _Value_t&gt;
+static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
+                           const func&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
 
 <div class="title-seperator"></div>
@@ -2259,6 +2316,7 @@ const NAV_common_concepts                     = document.getElementById('common-
 const NAV_common_concepts_variables           = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions           = document.getElementById('common-concepts-functions');
 const NAV_common_concepts_arrays              = document.getElementById('common-concepts-arrays');
+const NAV_common_concepts_maps                = document.getElementById("common-concepts-maps");
 const NAV_common_concepts_control_flow        = document.getElementById('common-concepts-control-flow');
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
@@ -2314,6 +2372,7 @@ const navigations = [
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
+  [NAV_common_concepts_maps,                common_concepts_mapsHTML],
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
