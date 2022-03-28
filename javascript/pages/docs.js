@@ -1297,6 +1297,29 @@ Definitions used from outer blocks can be shadowed within the anonymous function
 </div>
 
 <div class="title-seperator"></div>
+<div class="sub-sub-title">Captures</div>
+Anonymous functions work a little differently, although they seem to access the block's definitions directly.
+Each definition is copied with the same identifier.
+Captures becomes important in this case.
+<br><br>
+
+There are two captures; copying and referencing.
+<li>Copying</li>
+The default capture of anonymous functions.
+All definitions in Scope are copied with the same identifier.
+
+<li>Referencing</li>
+Definitions in scope are copied by referencing.
+To make an anonymous function use referencing, the <x class="inline_code">&</x> operator must be used. <br>
+For example;
+<div class="code">&() { /* body... */ }</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Dangling Capturues</div>
+Variables are captured at the point where the anonymous function is defined.
+If a variable captured by reference dies before the anonymous function, the anonymous function will be left holding a dangling reference.
+
+<div class="title-seperator"></div>
 <div class="sub-title">Multiple Returnable Functions</div>
 Functions can returns more then one values.
 For that, specify return data-type with multiple type.

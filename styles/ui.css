@@ -447,3 +447,8 @@ a:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+li {
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
