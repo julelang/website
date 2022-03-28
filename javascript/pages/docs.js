@@ -2334,21 +2334,21 @@ Foreach iterations of X that Cxx doesn't support.
 
 <div class="title-seperator"></div>
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t, size_t ... _I_t&gt;
-auto tuple_as_args(_Function_t _Function,
+inline auto tuple_as_args(_Function_t _Function,
                    _Tuple_t _Tuple,
                    std::index_sequence&lt;_I_t ...&gt;)</div>
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t&gt;
-auto tuple_as_args(_Function_t _Function, _Tuple_t _Tuple)</div>
+inline auto tuple_as_args(_Function_t _Function, _Tuple_t _Tuple)</div>
 Push tuple as argument(s) to function.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
-static inline void _out(_Obj_t _Obj)</div>
+static inline void _out(_Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
-static inline void _outln(_Obj_t _Obj)</div>
+static inline void _outln(_Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
 `;
 
