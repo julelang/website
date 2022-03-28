@@ -1335,6 +1335,38 @@ main() {
   outln(equals)
 }</div>
 <div class="warn">You can't use multiple returnable functions combined with normal multiple assignments.</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Multiple Returns as Argument(s)</div>
+When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
+X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
+For example;
+<div class="code">multi_ret_func() [i32, str, rune] { < 143, "STR", 'W' }
+
+my_print(a i32, b str, c rune) {
+  outln(a)
+  outln(b)
+  outln(c)
+}
+
+main() {
+  my_print(multi_ret_func())
+}</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Multiple Returns as Multiple Return</div>
+When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
+X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
+For example;
+<div class="code">example1() [i32, str, rune] { < 143, "STR", 'W' }
+example2() [i32, str, rune] { < example1() }
+
+main() {
+  a:, b:, c: = test2()
+  outln(a)
+  outln(b)
+  outln(c)
+}</div>
 `;
 
 const common_concepts_arraysHTML = `
@@ -2299,6 +2331,15 @@ static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
 static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
                            const func&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
+
+<div class="title-seperator"></div>
+<div class="code">template&lt;typename _Function_t, typename _Tuple_t, size_t ... _I_t&gt;
+auto tuple_as_args(_Function_t _Function,
+                   _Tuple_t _Tuple,
+                   std::index_sequence&lt;_I_t ...&gt;)</div>
+<div class="code">template&lt;typename _Function_t, typename _Tuple_t&gt;
+auto tuple_as_args(_Function_t _Function, _Tuple_t _Tuple)</div>
+Push tuple as argument(s) to function.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
