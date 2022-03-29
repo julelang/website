@@ -2293,13 +2293,6 @@ const TAB_cxx_cxxapi_preprocessor_defines = `
 Like alias for <x class="inline_code">std::function</x>.
 
 <div class="title-seperator"></div>
-<div class="code">XALLOC(_Alloc)</div>
-The <x class="inline_code">_Alloc</x> is an allocation expression.
-Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
-<br>
-For example: <x class="inline_code">XALLOC(i32)</x>
-
-<div class="title-seperator"></div>
 <div class="code">XTHROW(_Msg)</div>
 Throws X exception.
 <br>
@@ -2341,6 +2334,11 @@ Map type class.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
+<div class="code">template&lt;typename _Alloc_t&gt;
+static inline _Alloc_t *xalloc()</div>
+Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
+
+<div class="title-seperator"></div>
 <div class="code">template &lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
 static inline void foreach(const _Enum_t _Enum,
                            const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
