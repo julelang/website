@@ -524,9 +524,9 @@ const basics_data_typesHTML = `
       <td>true or false</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">rune</td>
+      <td style="text-align: center; font-family: 'Code';">char</td>
       <td style="text-align: center;">4bytes</td>
-      <td>Single UTF-8 character.</td>
+      <td>Single ASCII character.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
@@ -595,8 +595,8 @@ const basics_data_typesHTML = `
       <td>bool</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">rune</td>
-      <td>rune</td>
+      <td style="text-align: center; font-family: 'Code';">char</td>
+      <td>char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
@@ -1364,9 +1364,9 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example;
-<div class="code">multi_ret_func() [i32, str, rune] { < 143, "STR", 'W' }
+<div class="code">multi_ret_func() [i32, str, char] { < 143, "STR", 'W' }
 
-my_print(a i32, b str, c rune) {
+my_print(a i32, b str, c char) {
   outln(a)
   outln(b)
   outln(c)
@@ -1381,8 +1381,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example;
-<div class="code">example1() [i32, str, rune] { < 143, "STR", 'W' }
-example2() [i32, str, rune] { < example1() }
+<div class="code">example1() [i32, str, char] { < 143, "STR", 'W' }
+example2() [i32, str, char] { < example1() }
 
 main() {
   a:, b:, c: = test2()
@@ -2074,7 +2074,7 @@ Support us to improve the documentation.
 
 const TAB_types_str_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
-Rune count of string.
+Char count of string.
 `;
 
 const TAB_types_arrays_constants = `
@@ -2189,8 +2189,8 @@ This example, just shows index. Let's see foreach iteration with element.
 For example;
 <div class="code">main() {
   mystr:str = "Hello"
-  iter _, run:rune in mystr {
-    outln(run)
+  iter _, c:char in mystr {
+    outln(c)
   }
 }
 
@@ -2355,21 +2355,21 @@ Foreach iterations of X that Cxx doesn't support.
 
 <div class="title-seperator"></div>
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t, size_t ... _I_t&gt;
-inline auto tuple_as_args(_Function_t _Function,
-                   _Tuple_t _Tuple,
-                   std::index_sequence&lt;_I_t ...&gt;)</div>
+inline auto tuple_as_args(const _Function_t _Function,
+                          const _Tuple_t _Tuple,
+                          const std::index_sequence&lt;_I_t ...&gt;)</div>
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t&gt;
-inline auto tuple_as_args(_Function_t _Function, _Tuple_t _Tuple)</div>
+inline auto tuple_as_args(const _Function_t _Function, const _Tuple_t _Tuple)</div>
 Push tuple as argument(s) to function.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
-static inline void _out(_Obj_t _Obj) noexcept</div>
+static inline void _out(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
-static inline void _outln(_Obj_t _Obj) noexcept</div>
+static inline void _outln(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
 `;
 

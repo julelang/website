@@ -5,12 +5,8 @@
 const page_title = `The X Programming Language`;
 
 const preview_code_helloworldHTML =
-`// Hello World in three different language
-
-main() {
+`main() {
   outln("Hello, world")
-  outln("Merhaba, dünya")
-  outln("你好世界")
 }`;
 
 const preview_code_fibonacci_closureHTML =
