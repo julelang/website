@@ -357,6 +357,28 @@ It is in the interest of you and other developers that any name you give is rele
 Additionally, a directory is considered a module.
 Therefore, when imported, all source code files in the directory will be imported.
 With that in mind, it's also preferable to adopt splitting each function and other things into files one by one.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Naming Examples</div>
+<div class="code">push</div>
+<div class="code">get_env</div>
+<div class="code">save_as_article</div>
+</div>
+`;
+
+const project_declarationsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Declarations</div>
+<div class="text">
+Each unused statement is tried not to be included in the cxx output.
+This does not pose much of a problem with global declarations and should not be a hindrance to compilation.
+But you have to use the declarations you make in your code blocks, if you don't the compiler will throw an error for each one.
+<br><br>
+For example;
+<div class="code">main() {
+  a:i32
+}</div>
+The variable <x class="inline_code">a</x> seen is declared but unused.
+This will cause you to get an error by the compiler and not be able to compile the code.
 </div>
 `;
 
@@ -2399,6 +2421,7 @@ const NAV_compiler_compiling                  = document.getElementById('compile
 const NAV_project                             = document.getElementById('project');
 const NAV_project_directory_order             = document.getElementById('project-directory-order');
 const NAV_project_naming                      = document.getElementById('project-naming');
+const NAV_project_declarations                = document.getElementById("project-declarations");
 const NAV_project_defines                     = document.getElementById("project-defines");
 const NAV_basics                              = document.getElementById('basics');
 const NAV_basics_comments                     = document.getElementById('basics-comments');
@@ -2456,6 +2479,7 @@ const navigations = [
   [NAV_project,                             projectHTML],
   [NAV_project_directory_order,             project_directory_orderHTML],
   [NAV_project_naming,                      project_namingHTML],
+  [NAV_project_declarations,                project_declarationsHTML],
   [NAV_project_defines,                     project_definesHTML],
   [NAV_basics,                              basicsHTML],
   [NAV_basics_comments,                     basics_commentsHTML],

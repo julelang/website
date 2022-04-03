@@ -270,12 +270,15 @@ button:hover {
   content: '✔';
   display: inline-flex;
   color: rebeccapurple;
-  padding: 0 6px 0 0;
+  padding: 0px 6px 0px 0px;
+  margin: 0px;
 }
 
 .marked-ul li {
   list-style-type: none;
   font-size: 1em;
+  padding: 0px;
+  margin: 0px;
 }
 
 .marked-ul li desc {
