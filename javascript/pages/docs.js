@@ -2339,6 +2339,12 @@ const TAB_cxx_cxxapi_preprocessor_defines = `
 Like alias for <x class="inline_code">std::function</x>.
 
 <div class="title-seperator"></div>
+<div class="code">XID(_Identifier)</div>
+Returns the form of the given identifier to use when translating the X code.
+<br>
+For example: <x class="inline_code">const double XID(PI) = 3.14;</x>
+
+<div class="title-seperator"></div>
 <div class="code">XTHROW(_Msg)</div>
 Throws X exception.
 <br>
@@ -2426,12 +2432,12 @@ Push tuple as argument(s) to function.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
-static inline void _out(const _Obj_t _Obj) noexcept</div>
+static inline void XID(out)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
 <div class="title-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
-static inline void _outln(const _Obj_t _Obj) noexcept</div>
+static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
 `;
 
