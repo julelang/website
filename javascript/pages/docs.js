@@ -1412,6 +1412,30 @@ main() {
   outln(b)
   outln(c)
 }</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Deferred Calls</div>
+Deferred calls are not executed until they go out of scope.
+Calls are invoked in reverse.
+The keyword <x class="inline_code">defer</x> is used for a deferred call.
+<br><br>
+For example;
+<div class="code">main() {
+  defer outln("Defer 1")
+  defer outln("Defer 2")
+  outln("Hello Deferred Calls")
+}
+
+// OUTPUT
+// Hello Deferred Calls
+// Defer 2
+// Defer 1</div>
+As seen in the example above, the effect of a normal call is seen first in the output.
+This is because calls made before it is deferred.
+In the continuation of the output, a reverse execution is seen from the last deferred call to the first deferred call.
+This is exactly why.
+Deferred calls when out of scope are executed from the most recent deferred call to the first deferred call.
+</div>
 `;
 
 const common_concepts_arraysHTML = `
@@ -2321,6 +2345,18 @@ Throws X exception.
 For example: <x class="inline_code">XTHROW("operation failed")</x>
 
 <div class="title-seperator"></div>
+<div class="code">CONCAT(_A, _B)</div>
+Concatenate specified arguments.
+
+<div class="title-seperator"></div>
+<div class="code">_CONCAT(_A, _B)</div>
+Source define for <x class="inline_code">CONCAT(_A, _B)</x>
+
+<div class="title-seperator"></div>
+<div class="code">DEFER(_Expr)</div>
+Deferred call specified expression.
+
+<div class="title-seperator"></div>
 <div class="code">nil</div>
 Built-in <x class="inline_code">nil</x> value of X.
 `;
@@ -2335,6 +2371,10 @@ const TAB_cxx_cxxapi_defines = `
 <div id="cxxapi-misc" class="sub-sub-title">Misc</div>
 <div class="code">class exception</div>
 Exception instance of X.
+
+<div class="title-seperator"></div>
+<div class="code">struct defer</div>
+Source struct for deferred calls.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
