@@ -1582,6 +1582,7 @@ Many programming languages have their control flows.
 <div class="tabcontrol" style="margin-top: 50px;">
   <div id="tab-common-concepts-iterations" class="tab" onclick="select_tab_event(0)">Iterations</div>
   <div id="tab-common-concepts-if-expressions" class="tab" onclick="select_tab_event(1)">If Expressions</div>
+  <div id="tab-common-concepts-goto-statements" class="tab" onclick="select_tab_event(2)">Goto Statements</div>
 </div>
 <div class="tabcontrol-content">
 </div>
@@ -2334,6 +2335,31 @@ For example;
 }</div>
 `;
 
+const TAB_common_concepts_goto_statements = `
+The goto statements allow you to jump to any part of the algorithm.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Labels</div>
+Goto statements need labels to jump somewhere in the algorithm.
+To declare a label, simply put the name of the tag followed by a colon. <br>
+For example; <x class="inline_code">repeat:</x>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Going to Labels</div>
+The <x class="inline_code">goto</x> keyword is used for a goto statement.
+Jumping to a label is as simple as defining a label.
+First comes the keyword, then the label you want to jump to. <br>
+For example; <x class="inline_code">goto repeat</x>
+<div class="info">
+<li>You can jump to any label without breaking the rules.</li>
+<li>Labels are only valid for the function block you are in.</li>
+</div>
+<div class="warn">
+<li>If your jumps over any declaration you will get a compiler error.</li>
+<li>Each label declared and not used causes a compiler error.</li>
+</div>
+`;
+
 const TAB_cxx_cxxapi_preprocessor_defines = `
 <div class="code">func</div>
 Like alias for <x class="inline_code">std::function</x>.
@@ -2385,10 +2411,6 @@ Source struct for deferred calls.
 <div class="title-seperator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
 <div class="info">The primitive data-types in X, have same names in cxx output.</div>
-
-<div class="title-seperator"></div>
-<div class="code">class str</div>
-The <x class="inline_code">str</x> data-type of X.
 
 <div class="title-seperator"></div>
 <div class="code">template&lt;typename _Item_t&gt;
@@ -2566,16 +2588,17 @@ const navigations = [
 
 const tabs = [
   // ID - HTML
-  ["tab-types-str-constants",            TAB_types_str_constants],
-  ["tab-types-arrays-constants",         TAB_types_arrays_constants],
-  ["tab-types-maps-constants",           TAB_types_maps_constants],
-  ["tab-types-maps-functions",           TAB_types_maps_functions],
-  ["tab-std-builtin-functions",          TAB_std_builtin_functions],
-  ["tab-std-io-functions",               TAB_std_io_functions],
-  ["tab-common-concepts-iterations",     TAB_common_concepts_iterations],
-  ["tab-common-concepts-if-expressions", TAB_common_concepts_if_expression],
-  ["cxx-cxxapi-preprocessor-defines",    TAB_cxx_cxxapi_preprocessor_defines],
-  ["cxx-cxxapi-defines",                 TAB_cxx_cxxapi_defines],
+  ["tab-types-str-constants",             TAB_types_str_constants],
+  ["tab-types-arrays-constants",          TAB_types_arrays_constants],
+  ["tab-types-maps-constants",            TAB_types_maps_constants],
+  ["tab-types-maps-functions",            TAB_types_maps_functions],
+  ["tab-std-builtin-functions",           TAB_std_builtin_functions],
+  ["tab-std-io-functions",                TAB_std_io_functions],
+  ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
+  ["tab-common-concepts-if-expressions",  TAB_common_concepts_if_expression],
+  ["tab-common-concepts-goto-statements", TAB_common_concepts_goto_statements],
+  ["cxx-cxxapi-preprocessor-defines",     TAB_cxx_cxxapi_preprocessor_defines],
+  ["cxx-cxxapi-defines",                  TAB_cxx_cxxapi_defines],
 ]
 
 //#region EVENTS
