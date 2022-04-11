@@ -255,6 +255,19 @@ Fields in configuration files have specific purposes.
       Set empty for default language-pack.
     </td>
   </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">mode</td>
+    <td>
+      Set the mod of compiler as <x class="inline_code">compile</x> or <x class="inline_code">transpile</x>.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">post_commands</td>
+    <td>
+    Terminal commands to be executed after compilation.
+    All processes are separated by a space, and the first part is the process name, the next ones are treated as arguments.
+    </td>
+  </tr>
 </table>
 </div>
 `;
