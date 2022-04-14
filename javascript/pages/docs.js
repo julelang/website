@@ -1300,6 +1300,7 @@ For example;
 <div class="code">my_function:(i32, i32) i32</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
+<div class="warn">Default arguments specified in the data-type are not valid.</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Anonymous Functions</div>
@@ -1427,6 +1428,31 @@ main() {
 }</div>
 
 <div class="title-seperator"></div>
+<div class="sub-title">Default Arguments</div>
+Default arguments are pre-given arguments for the function when the parameter is not given a value when calling it. <br>
+Default arguments are specified after the identifier of a parameter, between braces. <br>
+For example;
+<div class="code">@inline
+sum(a{10}, b{50} i32) i32 { < a+b }
+
+main() {
+  outln(sum()) // Prints 60
+  outln(25)    // Prints 75
+}</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Argumet Targetting</div>
+Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
+To target, a syntax similar to assignment is used. <br>
+For example;
+<div class="code">sub(a, b i32) i32 { < a-b }
+
+main() {
+  outln(sub(190, 10))     // Prints 180
+  outln(sub(b=190, a=10)) // Prints -180
+}</div>
+
+<div class="title-seperator"></div>
 <div class="sub-title">Deferred Calls</div>
 Deferred calls are not executed until they go out of scope.
 Calls are invoked in reverse.
@@ -1448,6 +1474,7 @@ This is because calls made before it is deferred.
 In the continuation of the output, a reverse execution is seen from the last deferred call to the first deferred call.
 This is exactly why.
 Deferred calls when out of scope are executed from the most recent deferred call to the first deferred call.
+
 </div>
 `;
 
