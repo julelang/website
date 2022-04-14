@@ -490,7 +490,7 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i8</td>
-      <td style="text-align: center;">1byte</td>
+      <td style="text-align: center;">1 byte</td>
       <td>-127 to 127</td>
     </tr>
     <tr>
@@ -500,22 +500,22 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">16</td>
-      <td style="text-align: center;">2bytes</td>
+      <td style="text-align: center;">2 bytes</td>
     <td>-32768 to 32767</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td style="text-align: center;">4bytes</td>
+      <td style="text-align: center;">4 bytes</td>
       <td>-2147483648 to 2147483647</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td style="text-align: center;">8bytes</td>
+      <td style="text-align: center;">8 bytes</td>
       <td>-9223372036854775808 to 9223372036854775807</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
-      <td style="text-align: center;">1byte</td>
+      <td style="text-align: center;">1 byte</td>
       <td>0 to 255</td>
     </tr>
     <tr>
@@ -525,17 +525,17 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
-      <td style="text-align: center;">2bytes</td>
+      <td style="text-align: center;">2 bytes</td>
       <td>0 to 65535</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u32</td>
-      <td style="text-align: center;">4bytes</td>
+      <td style="text-align: center;">4 bytes</td>
       <td>0 to 4294967295</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td style="text-align: center;">8bytes</td>
+      <td style="text-align: center;">8 bytes</td>
       <td>0 to 18446744073709551615</td>
     </tr>
     <tr>
@@ -545,23 +545,23 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
-      <td style="text-align: center;">4bytes</td>
+      <td style="text-align: center;">4 bytes</td>
     <td></td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f64</td>
-      <td style="text-align: center;">8bytes</td>
+      <td style="text-align: center;">8 bytes</td>
       <td></td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
-      <td style="text-align: center;">1bytes</td>
+      <td style="text-align: center;">1 byte</td>
       <td>true or false</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">char</td>
-      <td style="text-align: center;">4bytes</td>
-      <td>Single ASCII character.</td>
+      <td style="text-align: center; font-family: 'Code';">rune</td>
+      <td style="text-align: center;">1 byte</td>
+      <td>Single UTF-8 character.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
@@ -630,8 +630,8 @@ const basics_data_typesHTML = `
       <td>bool</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">char</td>
-      <td>char</td>
+      <td style="text-align: center; font-family: 'Code';">rune</td>
+      <td>rune</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
@@ -1400,9 +1400,9 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example;
-<div class="code">multi_ret_func() [i32, str, char] { < 143, "STR", 'W' }
+<div class="code">multi_ret_func() [i32, str, rune] { < 143, "STR", 'W' }
 
-my_print(a i32, b str, c char) {
+my_print(a i32, b str, c rune) {
   outln(a)
   outln(b)
   outln(c)
@@ -1417,8 +1417,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example;
-<div class="code">example1() [i32, str, char] { < 143, "STR", 'W' }
-example2() [i32, str, char] { < example1() }
+<div class="code">example1() [i32, str, rune] { < 143, "STR", 'W' }
+example2() [i32, str, rune] { < example1() }
 
 main() {
   a:, b:, c: = test2()
@@ -2161,7 +2161,7 @@ Support us to improve the documentation.
 
 const TAB_types_str_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
-Char count of string.
+Rune count of string.
 `;
 
 const TAB_types_arrays_constants = `
@@ -2276,8 +2276,8 @@ This example, just shows index. Let's see foreach iteration with element.
 For example;
 <div class="code">main() {
   mystr:str = "Hello"
-  iter _, c:char in mystr {
-    outln(c)
+  iter _, r:rune in mystr {
+    outln(r)
   }
 }
 

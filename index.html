@@ -143,7 +143,7 @@ void _test_casting(void) {
 
 void _test_pointer_arithmetic(void) {
   str _mystr; _mystr=str(L"Hello Pointer Arithmetic");
-  char* _ptr; _ptr=&_mystr[0];
+  rune* _ptr; _ptr=&_mystr[0];
   while (_ptr) {
     _outln(*_ptr);
     _ptr+=1;
