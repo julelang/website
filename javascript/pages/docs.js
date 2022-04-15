@@ -2431,11 +2431,18 @@ Deferred call specified expression.
 <div class="title-seperator"></div>
 <div class="code">nil</div>
 Built-in <x class="inline_code">nil</x> value of X.
+
+<div class="title-seperator"></div>
+<div class="code">_WINDOWS</div>
+Defined this if operating system if is Windows.
 `;
 
 const TAB_cxx_cxxapi_defines = `
 <li><a href="#cxxapi-misc">Misc</a></li>
 <li><a href="#cxxapi-datatypes">Data-Types</a></li>
+<li><a href="#cxxapi-constants">Constants</a></li>
+<li><a href="#cxxapi-globals">Globals</a></li>
+<li><a href="#cxxapi-structs">Structs</a></li>
 <li><a href="#cxxapi-functions">Functions</a></li>
 
 <div class="title-seperator"></div>
@@ -2444,7 +2451,7 @@ const TAB_cxx_cxxapi_defines = `
 <div class="code">class exception</div>
 Exception instance of X.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">struct defer</div>
 Source struct for deferred calls.
 
@@ -2452,15 +2459,60 @@ Source struct for deferred calls.
 <div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
 <div class="info">The primitive data-types in X, have same names in cxx output.</div>
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">template&lt;typename _Item_t&gt;
 class array</div>
 Array type class.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
 class map</div>
 Map type class.
+
+<div class="topic-seperator"></div>
+<div class="code">class rune</div>
+The <x class="inline_code">rune</x> data-type of X.
+
+<div class="topic-seperator"></div>
+<div class="code">class str</div>
+The <x class="inline_code">str</x> data-type of X.
+
+<div class="title-seperator"></div>
+<div id="cxxapi-constants" class="sub-sub-title">Constants</div>
+<div class="code">constexpr u8 xx</div>
+<div class="code">constexpr u8 as</div>
+<div class="code">constexpr u8 s1</div>
+<div class="code">constexpr u8 s2</div>
+<div class="code">constexpr u8 s3</div>
+<div class="code">constexpr u8 s4</div>
+<div class="code">constexpr u8 s5</div>
+<div class="code">constexpr u8 s6</div>
+<div class="code">constexpr u8 s7</div>
+<div class="code">constexpr u8 locb</div>
+<div class="code">constexpr u8 hicb</div>
+<div class="code">constexpr u8 maskx</div>
+<div class="code">constexpr u8 mask2</div>
+<div class="code">constexpr u8 mask3</div>
+<div class="code">constexpr u8 mask4</div>
+Some constants for UTF-8 encoding.
+
+<div class="title-seperator"></div>
+<div id="cxxapi-globals" class="sub-sub-title">Globals</div>
+<div class="code">u8 first[256]</div>
+Information about the first byte in a UTF-8 sequence.
+
+<div class="topic-seperator"></div>
+<div class="code">acceptRange acceptRanges[16]</div>
+Has size 16 to avoid bounds checks in the code that uses it.
+
+<div class="title-seperator">
+<div id="cxxapi-structs" class="sub-sub-title">Structs</div>
+<div class="code">struct acceptRange {
+public:
+  u8 lo;
+  u8 hi;
+};</div>
+Gives the range of valid values for the second byte in a UTF-8 sequence.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
@@ -2468,13 +2520,13 @@ Map type class.
 static inline _Alloc_t *xalloc()</div>
 Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">template &lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
 static inline void foreach(const _Enum_t _Enum,
-                           const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
+                           const func&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
 <div class="code">template &lt;typename _Enum_t, typename _Index_t&gt;
 static inline void foreach(const _Enum_t _Enum,
-                           const std::function&lt;void(_Index_t)&gt; _Body)</div>
+                           const func&lt;void(_Index_t)&gt; _Body)</div>
 <div class="code">template &lt;typename _Key_t, typename _Value_t&gt;
 static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
                            const func&lt;void(_Key_t)&gt; _Body)</div>
@@ -2483,7 +2535,7 @@ static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
                            const func&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t, size_t ... _I_t&gt;
 inline auto tuple_as_args(const _Function_t _Function,
                           const _Tuple_t _Tuple,
@@ -2492,15 +2544,19 @@ inline auto tuple_as_args(const _Function_t _Function,
 inline auto tuple_as_args(const _Function_t _Function, const _Tuple_t _Tuple)</div>
 Push tuple as argument(s) to function.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
 static inline void XID(out)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="code">template &lt;typename _Obj_t&gt;
 static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
+
+<div class="topic-seperator"></div>
+<div class="code">const size runelen(const char *_Src) noexcept</div>
+Returns length of first rune of char pointer.
 `;
 
 //#region SET_PAGE
