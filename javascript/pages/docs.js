@@ -1859,6 +1859,62 @@ const types_mapsHTML = `
 </div>
 `;
 
+const namespacesHTML = `
+<div class="title" style="margin-bottom: 20px;">Namespaces</div>
+<div class="text">
+
+Namespaces are a good way to organize definitions.
+The <x class="inline_code">::</x> operator is used to access a namespace.
+A separate operator was not required for this, but it was thought to be more readable and away from shadowing this way.
+<br><br>
+A block after the identifier is sufficient to declare a namespace. <br>
+For example;
+<div class="code">math {
+  @inline
+  sum(const a, const b i32) i32 { < a+b }
+}
+
+main() {
+  result: = math::sum(10, 9)
+  outln(result)
+}</div>
+The example above contains a namespace with the identifier <x class="inline_code">math</x> and a function with the identifier <x class="inline_code">sum</x>.
+You can see how this namespace is used in the main function.
+You use <x class="inline_code">::</x> to access the definitions of a namespace.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Nested Namespaces</div>
+A namespace can contain namespaces, here is an example;
+<div class="code">math {
+  flat {
+    const pi: = 3
+  }
+}
+
+main() {
+  outln(math::flat:pi)
+}</div>
+In the example above you see a nested namespace declaration.
+How to access this is also seen in the main function.
+We know that we use the <x class="inline_code">::</x> operator to access the definitions of a namespace.
+After accessing the <x class="inline_code">flat</x> namespace inside the <x class="inline_code">math</x> namespace, we use this operator again to access its definitions.
+
+<div class="topic-seperator"></div>
+
+You don't have to write nested to define sub namespaces. <br>
+Here is an alternative to the above example;
+<div class="code">math::flat {
+  const pi: = 3
+}
+
+main() {
+  outln(math::flat:pi)
+}</div>
+
+</div>
+
+`;
+
 const cxxHTML = `
 <div class="title" style="margin-bottom: 20px;">Cxx</div>
 <div class="text">
@@ -2127,7 +2183,8 @@ Built-In defines are provided from the language by directly without any import o
 const standard_library_ioHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">io</x></div>
 <div class="text">
-Input/Output operations.
+Input/Output operations. <br>
+All defines into at the <x class="inline_code">io</x> namespace.
 
 <div class="tabcontrol" style="margin-top: 50px;">
   <div id="tab-std-io-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
@@ -2609,6 +2666,7 @@ const NAV_types_casting                       = document.getElementById('types-c
 const NAV_types_str                           = document.getElementById("types-str");
 const NAV_types_arrays                        = document.getElementById("types-arrays");
 const NAV_types_maps                          = document.getElementById("types-maps");
+const NAV_namespaces                          = document.getElementById("namespaces");
 const NAV_cxx                                 = document.getElementById('cxx');
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
 const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxxapi');
@@ -2667,6 +2725,7 @@ const navigations = [
   [NAV_types_str,                           types_strHTML],
   [NAV_types_arrays,                        types_arraysHTML],
   [NAV_types_maps,                          types_mapsHTML],
+  [NAV_namespaces,                          namespacesHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
