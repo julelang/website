@@ -1912,7 +1912,6 @@ main() {
 }</div>
 
 </div>
-
 `;
 
 const cxxHTML = `
@@ -2249,12 +2248,12 @@ Returns values of key-value pairs as array.
 `;
 
 const TAB_std_builtin_functions = `
-<div class="sub-sub-title"><x class="inline_code">out(value any)</x></div>
+<div class="sub-sub-title"><x class="inline_code">out(const value{""} any)</x></div>
 Prints value to command line.
 Can take any data-type as argument.
 
 <div class="topic-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">outln(value any)</x></div>
+<div class="sub-sub-title"><x class="inline_code">outln(const value{""} any)</x></div>
 This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 `;
