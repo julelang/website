@@ -568,6 +568,11 @@ const basics_data_typesHTML = `
       <td style="text-align: center;">-</td>
       <td>UTF-8 character array.</td>
     </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">voidptr</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>Any pointer type.</td>
+    </tr>
   </table>
 
   <div class="title-seperator"></div>
@@ -636,6 +641,10 @@ const basics_data_typesHTML = `
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
       <td>str</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">voidptr</td>
+      <td>Any pointer.</td>
     </tr>
   </table>
 
