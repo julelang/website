@@ -2248,6 +2248,10 @@ Removes all key-value pairs.
 Return true if specified key value is exist in map, returns false if not.
 
 <div class="title-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">del(KEY_TYPE)</x></div>
+Deletes key if exist.
+
+<div class="title-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">keys() []KEY_TYPE</x></div>
 Returns keys of key-value pairs as array.
 
