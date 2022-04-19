@@ -47,9 +47,9 @@ document.getElementById('navigation').innerHTML =
   src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
 </a>
 <div id="navigation-links">
-  <a href="${rootPath}/pages/docs.html">Documentations</a>
-  <a href="${rootPath}/pages/community.html">Community</a>
-  <a href="${rootPath}/pages/contributing.html">Contribute</a>
+  <a href="${rootPath}/pages/docs.html">DOCUMENTATIONS</a>
+  <a href="${rootPath}/pages/community.html">COMMUNITY</a>
+  <a href="${rootPath}/pages/contributing.html">CONTRIBUTE</a>
 </div>
 <div class="searchbox">
   <img

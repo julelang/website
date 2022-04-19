@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD 3-Clause
 // license that can be found in the LICENSE file.
 
-const page_title = `The X Programming Language`;
-
 const preview_code_helloworldHTML =
 `main() {
   outln("Hello, world")
@@ -38,12 +36,6 @@ const preview_code_pointersHTML =
     ptr += 1
   }
 }`;
-
-//#region SET_PAGE
-
-document.title = page_title;
-
-//#endregion SET_PAGE
 
 //#region GET_ELEMENTS
 

@@ -17,6 +17,7 @@ body {
   overflow: auto;
   /* Padding for footer height. */
   padding-bottom: 300px;
+  overflow-x: hidden;
 }
 
 * {

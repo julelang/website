@@ -133,10 +133,10 @@ button:hover {
   width: fit-content;
   height: fit-content;
   font-family: 'OpenSans';
-  font-size: large;
+  font-size: medium;
   font-weight: normal;
   user-select: none;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 #side-navigation * {
@@ -163,7 +163,7 @@ button:hover {
   font-weight: normal;
   user-select: none;
   margin-left: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 #side-navigation .sub-topic:hover {

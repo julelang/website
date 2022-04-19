@@ -28,8 +28,7 @@
   text-align: center;
   text-decoration: none;
   transition: 200ms;
-  font-family: 'OpenSans-Light';
-  font-weight: bold;
+  font-family: 'OpenSans-Bold';
   font-size: large;
   color: rgb(200, 116, 221);
 }
