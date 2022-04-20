@@ -624,11 +624,11 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
-      <td>f32, f64</td>
+      <td>f32, i8, i16, i32, u8, u16, u32</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f64</td>
-      <td>f64</td>
+      <td>f64, f32, i8, i16, i32, u8, u16, u32</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
