@@ -636,7 +636,7 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">rune</td>
-      <td>rune, i8, i16, i32, i64, u8, u16, u32, u64</td>
+      <td>rune, u8</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
