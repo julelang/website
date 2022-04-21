@@ -1852,6 +1852,7 @@ const types_arraysHTML = `
 <div class="text">
 <div class="tabcontrol">
   <div id="tab-types-arrays-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-types-arrays-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -1862,7 +1863,7 @@ const types_mapsHTML = `
 <div class="text">
 <div class="tabcontrol">
   <div id="tab-types-maps-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
-  <div id="tab-types-maps-functions" class="tab" onclick="select_tab_event(1)">Functions</div>
+  <div id="tab-types-maps-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2234,28 +2235,60 @@ const TAB_types_arrays_constants = `
 Length of array.
 `;
 
+const TAB_types_arrays_methods = `
+<div class="sub-sub-title"><x class="inline_code">clear()</x></div>
+Removes all items.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">find(value ITEM_TYPE) *ITEM_TYPE</x></div>
+Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">find_last(value ITEM_TYPE) *ITEM_TYPE</x></div>
+Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
+Starts searching at end of array to beginning.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">erase(value ITEM_TYPE)</x></div>
+Removes first matched item with specified value.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">erase_all(value ITEM_TYPE)</x></div>
+Removes all matched item(s) with specified value.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">append(...values ITEM_TYPE)</x></div>
+Appends specified items to end of array.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">insert(start size, ...values ITEM_TYPE) bool</x></div>
+Inserts specified values to array start at specified position. <br>
+Returns true if insertion is success, false if not. <br>
+What time is it does fail? For example, start position is out of bounds.
+`;
+
 const TAB_types_maps_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
 Length of key-value pairs.
 `;
 
-const TAB_types_maps_functions = `
+const TAB_types_maps_methods = `
 <div class="sub-sub-title"><x class="inline_code">clear()</x></div>
 Removes all key-value pairs.
 
-<div class="title-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">has(KEY_TYPE) bool</x></div>
-Return true if specified key value is exist in map, returns false if not.
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">has(key KEY_TYPE) bool</x></div>
+Returns true if specified key value is exist in map, returns false if not.
 
-<div class="title-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">del(KEY_TYPE)</x></div>
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">del(key KEY_TYPE)</x></div>
 Deletes key if exist.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">keys() []KEY_TYPE</x></div>
 Returns keys of key-value pairs as array.
 
-<div class="title-seperator"></div>
+<div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">values() []VALUE_TYPE</x></div>
 Returns values of key-value pairs as array.
 `;
@@ -2757,8 +2790,9 @@ const tabs = [
   // ID - HTML
   ["tab-types-str-constants",             TAB_types_str_constants],
   ["tab-types-arrays-constants",          TAB_types_arrays_constants],
+  ["tab-types-arrays-methods",            TAB_types_arrays_methods],
   ["tab-types-maps-constants",            TAB_types_maps_constants],
-  ["tab-types-maps-functions",            TAB_types_maps_functions],
+  ["tab-types-maps-methods",              TAB_types_maps_methods],
   ["tab-std-builtin-functions",           TAB_std_builtin_functions],
   ["tab-std-io-functions",                TAB_std_io_functions],
   ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
