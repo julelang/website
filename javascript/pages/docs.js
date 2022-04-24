@@ -2658,8 +2658,8 @@ Built-in <x class="inline_code">outln</x> function of X.
 document.title = page_title;
 
 document.body.style.paddingBottom = "0px";
-const navigation = document.getElementById('navigation');
-navigation.remove();
+const footer = document.getElementById('footer');
+footer.remove();
 
 //#endregion SET_PAGE
 

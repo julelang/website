@@ -6,11 +6,6 @@ body {
   background-color: rgb(24, 24, 24);
 }
 
-.navigation {
-  margin-top: 20px;
-  background-color: transparent;
-}
-
 .navigation-logo {
   margin-left: 50px;
   border-radius: 250px;

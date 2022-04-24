@@ -111,7 +111,6 @@ button:hover {
 }
 
 #side-navigation {
-  background-color: rgb(17, 17, 17);
   width: 280px;
   min-width: 280px;
   height: calc(100% - 41px);
@@ -180,19 +179,26 @@ button:hover {
   font-size: medium;
   width: calc(100% - 320px); /* f(x) = 100% - (navigation width + C) */
   min-width: calc(100% - 320px);
-  height: fit-content;
   float: right;
   margin-left: auto;
-  display: contents;
   position: relative;
 }
 
 #side-navigation-content-body {
-  margin-left: 320px; /* f(x) = navigation width + C */
+  position: fixed;
   padding-top: 20px;
   padding-left: 10%;
   padding-right: 10%;
   padding-bottom: 100px;
+  top: 60px;
+  bottom: 0px;
+  right: 0px;
+  left: 325px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-left-style: solid;
+  border-left-color: gray;
+  border-left-width: 1px;
 }
 
 .info {
