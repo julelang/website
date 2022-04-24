@@ -559,14 +559,14 @@ const basics_data_typesHTML = `
       <td>true or false</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">rune</td>
+      <td style="text-align: center; font-family: 'Code';">char</td>
       <td style="text-align: center;">1 byte</td>
-      <td>Single UTF-8 character.</td>
+      <td>Single ASCII character.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
       <td style="text-align: center;">-</td>
-      <td>UTF-8 character array.</td>
+      <td>ASCII character array.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">voidptr</td>
@@ -584,7 +584,7 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i8</td>
-      <td>i8, i16, i32, i64, f32, f64, size</td>
+      <td>i8, i16, i32, i64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">sbyte</td>
@@ -592,19 +592,19 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
-      <td>i16, i32, i64, f32, f64, size</td>
+      <td>i16, i32, i64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td>i32, i64, f32, f64, size</td>
+      <td>i32, i64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i64, f32, f64, size</td>
+      <td>i64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
-      <td>u8, u16, u32, u64, f32, f64, size</td>
+      <td>u8, u16, u32, u64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">byte</td>
@@ -612,31 +612,31 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
-      <td>u16, u32, u64, f32, f64, size</td>
+      <td>u16, u32, u64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u32</td>
-      <td>u32, u64, f32, f64, size</td>
+      <td>u32, u64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u64, f32, f64, size</td>
+      <td>u64, f32, f64, size, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
-      <td>f32, i8, i16, i32, u8, u16, u32</td>
+      <td>f32, i8, i16, i32, u8, u16, u32, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f64</td>
-      <td>f64, f32, i8, i16, i32, u8, u16, u32</td>
+      <td>f64, f32, i8, i16, i32, u8, u16, u32, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
       <td>bool</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">rune</td>
-      <td>rune, u8</td>
+      <td style="text-align: center; font-family: 'Code';">char</td>
+      <td>char, u8</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
@@ -1409,9 +1409,9 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example;
-<div class="code">multi_ret_func() [i32, str, rune] { < 143, "STR", 'W' }
+<div class="code">multi_ret_func() [i32, str, char] { < 143, "STR", 'W' }
 
-my_print(a i32, b str, c rune) {
+my_print(a i32, b str, c char) {
   outln(a)
   outln(b)
   outln(c)
@@ -1426,8 +1426,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example;
-<div class="code">example1() [i32, str, rune] { < 143, "STR", 'W' }
-example2() [i32, str, rune] { < example1() }
+<div class="code">example1() [i32, str, char] { < 143, "STR", 'W' }
+example2() [i32, str, char] { < example1() }
 
 main() {
   a:, b:, c: = test2()
@@ -2227,7 +2227,7 @@ Support us to improve the documentation.
 
 const TAB_types_str_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
-Rune count of string.
+Character count of string.
 `;
 
 const TAB_types_arrays_constants = `
@@ -2378,7 +2378,7 @@ This example, just shows index. Let's see foreach iteration with element.
 For example;
 <div class="code">main() {
   mystr:str = "Hello"
-  iter _, r:rune in mystr {
+  iter _, r:char in mystr {
     outln(r)
   }
 }
@@ -2572,49 +2572,8 @@ class map</div>
 Map type class.
 
 <div class="topic-seperator"></div>
-<div class="code">class rune</div>
-The <x class="inline_code">rune</x> data-type of X.
-
-<div class="topic-seperator"></div>
 <div class="code">class str</div>
 The <x class="inline_code">str</x> data-type of X.
-
-<div class="title-seperator"></div>
-<div id="cxxapi-constants" class="sub-sub-title">Constants</div>
-<div class="code">constexpr u8 xx</div>
-<div class="code">constexpr u8 as</div>
-<div class="code">constexpr u8 s1</div>
-<div class="code">constexpr u8 s2</div>
-<div class="code">constexpr u8 s3</div>
-<div class="code">constexpr u8 s4</div>
-<div class="code">constexpr u8 s5</div>
-<div class="code">constexpr u8 s6</div>
-<div class="code">constexpr u8 s7</div>
-<div class="code">constexpr u8 locb</div>
-<div class="code">constexpr u8 hicb</div>
-<div class="code">constexpr u8 maskx</div>
-<div class="code">constexpr u8 mask2</div>
-<div class="code">constexpr u8 mask3</div>
-<div class="code">constexpr u8 mask4</div>
-Some constants for UTF-8 encoding.
-
-<div class="title-seperator"></div>
-<div id="cxxapi-globals" class="sub-sub-title">Globals</div>
-<div class="code">u8 first[256]</div>
-Information about the first byte in a UTF-8 sequence.
-
-<div class="topic-seperator"></div>
-<div class="code">acceptRange acceptRanges[16]</div>
-Has size 16 to avoid bounds checks in the code that uses it.
-
-<div class="title-seperator">
-<div id="cxxapi-structs" class="sub-sub-title">Structs</div>
-<div class="code">struct acceptRange {
-public:
-  u8 lo;
-  u8 hi;
-};</div>
-Gives the range of valid values for the second byte in a UTF-8 sequence.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
@@ -2655,10 +2614,6 @@ Built-in <x class="inline_code">out</x> function of X.
 <div class="code">template &lt;typename _Obj_t&gt;
 static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
-
-<div class="topic-seperator"></div>
-<div class="code">const size runelen(const char *_Src) noexcept</div>
-Returns length of first rune of char pointer.
 `;
 
 //#region SET_PAGE
