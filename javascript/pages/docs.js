@@ -2573,8 +2573,6 @@ Defined this if operating system if is Windows.
 const TAB_cxx_cxxapi_defines = `
 <li><a href="#cxxapi-misc">Misc</a></li>
 <li><a href="#cxxapi-datatypes">Data-Types</a></li>
-<li><a href="#cxxapi-constants">Constants</a></li>
-<li><a href="#cxxapi-globals">Globals</a></li>
 <li><a href="#cxxapi-structs">Structs</a></li>
 <li><a href="#cxxapi-functions">Functions</a></li>
 
@@ -2605,6 +2603,14 @@ Map type class.
 <div class="topic-seperator"></div>
 <div class="code">class str</div>
 The <x class="inline_code">str</x> data-type of X.
+
+<div class="title-seperator"></div>
+<div id="cxxapi-structs" class="sub-sub-title">Structs</div>
+<div class="code">template&lt;typename Type, unsigned N, unsigned Last&gt;
+struct tuple_ostream</div>
+<div class="code">template&lt;typename Type, unsigned N&gt;
+struct tuple_ostream&lt;Type, N, N&gt;</div>
+Implementation of tuple available for std::ostream.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
