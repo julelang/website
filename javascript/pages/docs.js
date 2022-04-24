@@ -959,17 +959,6 @@ For example;
   [STATEMENT_4]
 }</div>
 
-
-<div class="title-seperator"></div>
-<div class="sub-title">Expressions as Statement</div>
-You may want to write an expression as a statement for several reasons.
-It is possible.
-X tends to treat every statement it can't classify on a subject as an expression.
-<br><br>
-For example;
-<div class="code">main() {
-  100
-}</div>
 </div>
 `;
 
@@ -1269,11 +1258,14 @@ Return values are written with the <x class="inline_code">ret</x> keyword.
 Although the keyword <x class="inline_code">return</x> is widely used, <x class="inline_code">ret</x> was considered as an alternative to this keyword, which is both shorter and without losing its meaning.
 <br><br>
 However, there is an additional alternative syntax.
-An alternative use is offered with a small operator, since writing the return value directly will not be good for readability.
-<div class="code">div(a, b f64) f64 {
-  < a / b
-}</div>
-The alternative use of the above code is as follows. The <x class="inline_code">ret</x> keyword is replaced by the <x class="inline_code"><</x> operator.
+Writing any expression means return statement.
+<div class="code">div(a, b f64) f64 { a/b }</div>
+The example above is an example of this.
+<br><br>
+What if a function return is desired? <br>
+X does not treat function calls as return expressions. <br>
+If you want to send a function as a return expression, try enclosing it in parentheses. <br>
+For exmaple; <x class="inline_code">(my_func())</x> or use the <x class="inline_code">ret</x> keyword.
 
 <div class="title-seperator"></div>
 <div class="sub-title">Attributes</div>
@@ -1320,9 +1312,7 @@ Just in addition, the block of the function must be written.
 <br><br>
 For example;
 <div class="code">main() {
-  make_hello: = (name str) str {
-    < "Hello " + name + "!"
-  };
+  make_hello: = (name str) str { "Hello " + name + "!" };
   outln(make_hello("X"))
 }</div>
 
@@ -1332,9 +1322,7 @@ Anonymous functions can access the definitions of the block in which they are de
 For example;
 <div class="code">main() {
   message: = "Hello, World!"
-  func: = () {
-    outln(message)
-  };
+  func: = () { outln(message) };
   func();
 }</div>
 The anonymous function defined in the example above uses the <x class="inline_code">message</x> variable belonging to the block it is defined in.
@@ -1370,9 +1358,7 @@ Functions can returns more then one values.
 For that, specify return data-type with multiple type.
 <br><br>
 For example;
-<div class="code">my_func() [i32, i32] {
-  < 18, 96
-}</div>
+<div class="code">my_func() [i32, i32] { 18, 96 }</div>
 Brackets are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
 
@@ -1382,9 +1368,7 @@ Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
 <br><br>
 For example;
-<div class="code">less_than(x, y i32) [bool] {
-  ret x < y
-}</div>
+<div class="code">less_than(x, y i32) [bool] { x < y }</div>
 The example at above, accepted as one type return.
 
 <div class="title-seperator"></div>
@@ -1393,9 +1377,7 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example;
-<div class="code">compare_int(x, y i32) [bool, bool] {
-  return x < y, x == y,
-}
+<div class="code">compare_int(x, y i32) [bool, bool] { x < y, x == y }
 
 main() {
   less:, equals: = compare_int(10, 20)
@@ -1409,7 +1391,7 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example;
-<div class="code">multi_ret_func() [i32, str, char] { < 143, "STR", 'W' }
+<div class="code">multi_ret_func() [i32, str, char] { 143, "STR", 'W' }
 
 my_print(a i32, b str, c char) {
   outln(a)
@@ -1426,8 +1408,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example;
-<div class="code">example1() [i32, str, char] { < 143, "STR", 'W' }
-example2() [i32, str, char] { < example1() }
+<div class="code">example1() [i32, str, char] { 143, "STR", 'W' }
+example2() [i32, str, char] { (example1()) }
 
 main() {
   a:, b:, c: = test2()
@@ -1442,7 +1424,7 @@ Default arguments are pre-given arguments for the function when the parameter is
 Default arguments are specified after the identifier of a parameter, between braces. <br>
 For example;
 <div class="code">@inline
-sum(a{10}, b{50} i32) i32 { < a+b }
+sum(a{10}, b{50} i32) i32 { a+b }
 
 main() {
   outln(sum()) // Prints 60
@@ -1454,7 +1436,7 @@ main() {
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
 For example;
-<div class="code">sub(a, b i32) i32 { < a-b }
+<div class="code">sub(a, b i32) i32 { a-b }
 
 main() {
   outln(sub(190, 10))     // Prints 180
@@ -1567,7 +1549,7 @@ For example;
   iter _, i: in values {
     total += i
   }
-  < total
+  total
 }
 
 main() {
@@ -1773,8 +1755,8 @@ const memory_memory_managementHTML = `
   Function example;
   <div class="code">get_pointer() *i32 {
   x: = 10
-  < &x // Returns address of x
-       // but x is out of scope, so pointer is dangling
+  &x // Returns address of x
+     // but x is out of scope, so pointer is dangling
 }
 
 main() {
@@ -1788,7 +1770,7 @@ main() {
   x: = 10
   y:*i32 = new i32
   *y = x
-  < y
+  y
 }
 
 main() {
@@ -1882,7 +1864,7 @@ A block after the identifier is sufficient to declare a namespace. <br>
 For example;
 <div class="code">math {
   @inline
-  sum(const a, const b i32) i32 { < a+b }
+  sum(const a, const b i32) i32 { a+b }
 }
 
 main() {
@@ -2057,7 +2039,7 @@ For example;
 <div class="code">// doc:
 // Divides specified floats.
 // THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
-div(const a, const b f64) f64 { < a / b }</div>
+div(const a, const b f64) f64 { a/b }</div>
 
 <div class="warn">
   <li>The documentation comments should be single-line comments.</li>

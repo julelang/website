@@ -10,10 +10,10 @@ const preview_code_helloworldHTML =
 const preview_code_fibonacci_closureHTML =
 `fibo() () i32 {
   a:, b: = 0, 1
-  < () i32 {
+  (() i32 {
     a, b = b, a+b
-    < a
-  }
+    a
+  })
 }
 
 main() {
