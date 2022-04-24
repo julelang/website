@@ -1842,6 +1842,7 @@ const types_strHTML = `
 <div class="text">
 <div class="tabcontrol">
   <div id="tab-types-str-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-types-str-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2230,23 +2231,67 @@ const TAB_types_str_constants = `
 Character count of string.
 `;
 
+const TAB_types_str_methods = `
+<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+Reports string is empty or not.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">has_prefix(sub str) bool</x></div>
+Reports string has prefix as specified substring or not.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">has_suffix(sub str) bool</x></div>
+Reports string has suffix as specified substring or not.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">find(sub str) size</x></div>
+Returns index of first matched item with specified substring, returns length of string if not exist any match. <br>
+Starts searching at left of string to right.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">rfind(sub str) size</x></div>
+Returns index of first matched item with specified substring, returns length of string if not exist any match. <br>
+Starts searching at right of string to left.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">trim(bytes str) str</x></div>
+Trims string by specified bytes at left.
+Each character is each byte.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">rtrim(bytes str) str</x></div>
+Trims string by specified bytes at right.
+Each character is each byte.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">split(sub str, n i64) []str</x></div>
+Splits the string into the specified number of parts to the specified substring. <br>
+Returns empty array if <x class="inline_code">n</x> is equals to zero. <br>
+Returns all parts if <x class="inline_code">n</x> less than zero.
+`;
+
 const TAB_types_arrays_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
 Length of array.
 `;
 
 const TAB_types_arrays_methods = `
+<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+Reports array is empty or not.
+
+<div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">clear()</x></div>
 Removes all items.
 
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">find(value ITEM_TYPE) *ITEM_TYPE</x></div>
-Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match.
+Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
+Starts searching at left of array to right.
 
 <div class="topic-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">find_last(value ITEM_TYPE) *ITEM_TYPE</x></div>
+<div class="sub-sub-title"><x class="inline_code">rfind(value ITEM_TYPE) *ITEM_TYPE</x></div>
 Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
-Starts searching at end of array to beginning.
+Starts searching at right of array to left.
 
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">erase(value ITEM_TYPE)</x></div>
@@ -2273,6 +2318,10 @@ Length of key-value pairs.
 `;
 
 const TAB_types_maps_methods = `
+<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+Reports map is empty or not.
+
+<div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">clear()</x></div>
 Removes all key-value pairs.
 
@@ -2744,6 +2793,7 @@ const navigations = [
 const tabs = [
   // ID - HTML
   ["tab-types-str-constants",             TAB_types_str_constants],
+  ["tab-types-str-methods",               TAB_types_str_methods],
   ["tab-types-arrays-constants",          TAB_types_arrays_constants],
   ["tab-types-arrays-methods",            TAB_types_arrays_methods],
   ["tab-types-maps-constants",            TAB_types_maps_constants],
