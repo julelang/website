@@ -1852,6 +1852,133 @@ const types_mapsHTML = `
 </div>
 `;
 
+const type_staticsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Type Statics</div>
+<div class="text">
+
+</div>
+`;
+
+const type_statics_i8HTML = `
+<div class="page-title" style="margin-bottom: 20px;">i8</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-i8-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_i16HTML = `
+<div class="page-title" style="margin-bottom: 20px;">i16</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-i16-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_i32HTML = `
+<div class="page-title" style="margin-bottom: 20px;">i32</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-i32-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_i64HTML = `
+<div class="page-title" style="margin-bottom: 20px;">i64</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-i64-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_u8HTML = `
+<div class="page-title" style="margin-bottom: 20px;">u8</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-u8-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_u16HTML = `
+<div class="page-title" style="margin-bottom: 20px;">u16</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-u16-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_u32HTML = `
+<div class="page-title" style="margin-bottom: 20px;">u32</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-u32-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_u64HTML = `
+<div class="page-title" style="margin-bottom: 20px;">u64</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-u64-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_f32HTML = `
+<div class="page-title" style="margin-bottom: 20px;">f32</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-f32_constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_f64HTML = `
+<div class="page-title" style="margin-bottom: 20px;">f64</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-f64-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_sizeHTML = `
+<div class="page-title" style="margin-bottom: 20px;">size</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-size-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_strHTML = `
+<div class="page-title" style="margin-bottom: 20px;">str</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-str-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const namespacesHTML = `
 <div class="title" style="margin-bottom: 20px;">Namespaces</div>
 <div class="text">
@@ -2227,12 +2354,12 @@ Reports string has suffix as specified substring or not.
 
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">find(sub str) size</x></div>
-Returns index of first matched item with specified substring, returns length of string if not exist any match. <br>
+Returns index of first matched item with specified substring, returns <x class="inline_code">str.npos</x> if not exist any match. <br>
 Starts searching at left of string to right.
 
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">rfind(sub str) size</x></div>
-Returns index of first matched item with specified substring, returns length of string if not exist any match. <br>
+Returns index of first matched item with specified substring, returns <x class="inline_code">str.npos</x> if not exist any match. <br>
 Starts searching at right of string to left.
 
 <div class="topic-seperator"></div>
@@ -2246,7 +2373,7 @@ Trims string by specified bytes at right.
 Each character is each byte.
 
 <div class="topic-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">split(sub str, n i64) []str</x></div>
+<div class="sub-sub-title"><x class="inline_code">split(sub str, n{-1} i64) []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty array if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
@@ -2322,6 +2449,90 @@ Returns keys of key-value pairs as array.
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">values() []VALUE_TYPE</x></div>
 Returns values of key-value pairs as array.
+`;
+
+const TAB_type_statics_i8_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:i8</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:i8</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_i16_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:i16</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:i16</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_i32_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:i32</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:i32</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_i64_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:i64</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:i64</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_u8_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:u8</x></div>
+Maximum value of type.
+`;
+
+const TAB_type_statics_u16_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:u16</x></div>
+Maximum value of type.
+`;
+
+const TAB_type_statics_u32_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:u32</x></div>
+Maximum value of type.
+`;
+
+const TAB_type_statics_u64_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:u64</x></div>
+Maximum value of type.
+`;
+
+const TAB_type_statics_f32_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:f32</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:f32</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_f64_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:f64</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:f64</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_size_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:size</x></div>
+Maximum value of type.
+`;
+
+const TAB_type_statics_str_constants = `
+Greatest possible value for an element of type <x class="inline_code">size</x>. <br>
+As a return value, it is usually used to indicate no matches.
 `;
 
 const TAB_std_builtin_functions = `
@@ -2703,6 +2914,19 @@ const NAV_types_casting                       = document.getElementById('types-c
 const NAV_types_str                           = document.getElementById("types-str");
 const NAV_types_arrays                        = document.getElementById("types-arrays");
 const NAV_types_maps                          = document.getElementById("types-maps");
+const NAV_type_statics                        = document.getElementById("type-statics");
+const NAV_type_statics_i8                     = document.getElementById("type-statics-i8");
+const NAV_type_statics_i16                    = document.getElementById("type-statics-i16");
+const NAV_type_statics_i32                    = document.getElementById("type-statics-i32");
+const NAV_type_statics_i64                    = document.getElementById("type-statics-i64");
+const NAV_type_statics_u8                     = document.getElementById("type-statics-u8");
+const NAV_type_statics_u16                    = document.getElementById("type-statics-u16");
+const NAV_type_statics_u32                    = document.getElementById("type-statics-u32");
+const NAV_type_statics_u64                    = document.getElementById("type-statics-u64");
+const NAV_type_statics_f32                    = document.getElementById("type-statics-f32");
+const NAV_type_statics_f64                    = document.getElementById("type-statics-f64");
+const NAV_type_statics_size                   = document.getElementById("type-statics-size");
+const NAV_type_statics_str                    = document.getElementById("type-statics-str");
 const NAV_namespaces                          = document.getElementById("namespaces");
 const NAV_cxx                                 = document.getElementById('cxx');
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
@@ -2762,6 +2986,19 @@ const navigations = [
   [NAV_types_str,                           types_strHTML],
   [NAV_types_arrays,                        types_arraysHTML],
   [NAV_types_maps,                          types_mapsHTML],
+  [NAV_type_statics,                        type_staticsHTML],
+  [NAV_type_statics_i8,                     type_statics_i8HTML],
+  [NAV_type_statics_i16,                    type_statics_i16HTML],
+  [NAV_type_statics_i32,                    type_statics_i32HTML],
+  [NAV_type_statics_i64,                    type_statics_i64HTML],
+  [NAV_type_statics_u8,                     type_statics_u8HTML],
+  [NAV_type_statics_u16,                    type_statics_u16HTML],
+  [NAV_type_statics_u32,                    type_statics_u32HTML],
+  [NAV_type_statics_u64,                    type_statics_u64HTML],
+  [NAV_type_statics_f32,                    type_statics_f32HTML],
+  [NAV_type_statics_f64,                    type_statics_f64HTML],
+  [NAV_type_statics_size,                   type_statics_sizeHTML],
+  [NAV_type_statics_str,                    type_statics_strHTML],
   [NAV_namespaces,                          namespacesHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
@@ -2786,6 +3023,18 @@ const tabs = [
   ["tab-types-arrays-methods",            TAB_types_arrays_methods],
   ["tab-types-maps-constants",            TAB_types_maps_constants],
   ["tab-types-maps-methods",              TAB_types_maps_methods],
+  ["tab-type-statics-i8-constants",       TAB_type_statics_i8_constants],
+  ["tab-type-statics-i16-constants",      TAB_type_statics_i16_constants],
+  ["tab-type-statics-i32-constants",      TAB_type_statics_i32_constants],
+  ["tab-type-statics-i64-constants",      TAB_type_statics_i64_constants],
+  ["tab-type-statics-u8-constants",       TAB_type_statics_u8_constants],
+  ["tab-type-statics-u16-constants",      TAB_type_statics_u16_constants],
+  ["tab-type-statics-u32-constants",      TAB_type_statics_u32_constants],
+  ["tab-type-statics-u64-constants",      TAB_type_statics_u64_constants],
+  ["tab-type-statics-f32-constants",      TAB_type_statics_f32_constants],
+  ["tab-type-statics-f64-constants",      TAB_type_statics_f64_constants],
+  ["tab-type-statics-size-constants",     TAB_type_statics_size_constants],
+  ["tab-type-statics-str-constants",      TAB_type_statics_str_constants],
   ["tab-std-builtin-functions",           TAB_std_builtin_functions],
   ["tab-std-io-functions",                TAB_std_io_functions],
   ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
