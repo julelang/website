@@ -1620,6 +1620,52 @@ Many programming languages have their control flows.
 </div>
 `;
 
+const common_concepts_enumsHTML = `
+<div class="title" style="margin-bottom: 20px;">Enums</div>
+<div class="text">
+Enumerations are a structure that allows to collect numeric constant values together.
+This increases the readability of the code and makes it easier to maintain.
+The keyword <x class="inline_code">enum</x> is used to declare an enum. <br>
+For exmaple;
+<div class="code">enum filemode {
+  read  = 35,
+  write = 89,
+  both,
+}
+
+main() {
+  outln(filemode.read)
+}</div>
+As seen in the example above, there is an enumeration definition.
+If you do not assign a value to the enumeration elements, the index value is automatically assigned.
+In this case, the element <x class="inline_code">both</x> in the example above has the value <x class="inline_code">2</x>.
+
+<div class="info">
+  <li>You can use an element before them as a value in enumerations.</li>
+  <li>Enumerations has <x class="inline_code">i64</x> data-type by default.</li>
+</div>
+<div class="warn">You can't use any global, function or etc. in custom value expressions.</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Custom Data-Types</div>
+If you want to give enums a data-type other than the default, it is possible to do so. <br>
+For example;
+<div class="code">enum filemode:u8 {
+  read  = 35,
+  write = 89,
+  both,
+}
+
+main() {
+  outln(filemode.read)
+}</div>
+The above enumeration has the data-type <x class="inline_code">u8</x>.
+
+<div class="warn">You can use only integer data-types.</div>
+
+</div>
+`;
+
 const memoryHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory</div>
 <div class="text">
@@ -2377,6 +2423,12 @@ Each character is each byte.
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty array if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">replace(sub str, new str, n{-1} i64) str</x></div>
+Replaces all substrings matching <x class="inline_code">sub</x> in the string with <x class="inline_code">new</x>. <br>
+Returns same string if <x class="inline_code">n</x> is equals to zero. <br>
+Replaces all matches if <x class="inline_code">n</x> less than zero.
 `;
 
 const TAB_types_arrays_constants = `
@@ -2905,6 +2957,7 @@ const NAV_common_concepts_functions           = document.getElementById('common-
 const NAV_common_concepts_arrays              = document.getElementById('common-concepts-arrays');
 const NAV_common_concepts_maps                = document.getElementById("common-concepts-maps");
 const NAV_common_concepts_control_flow        = document.getElementById('common-concepts-control-flow');
+const NAV_common_concepts_enums               = document.getElementById("common-concepts-enums");
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
@@ -2977,6 +3030,7 @@ const navigations = [
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
   [NAV_common_concepts_maps,                common_concepts_mapsHTML],
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
+  [NAV_common_concepts_enums,               common_concepts_enumsHTML],
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
