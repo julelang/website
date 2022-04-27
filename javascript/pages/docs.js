@@ -1773,6 +1773,14 @@ const memory_memory_managementHTML = `
   <div class="warn">This allocations isn't frees automatically, must freed by developer with <a href="#free"><x class="inline_code">free</x></a> keyword.</div>
 
   <div class="title-seperator"></div>
+  <div class="sub-sub-title">Heap Allocations with Initializers</div>
+  You may want to assign a value at the same time as you do a heap allocation.
+  You can use initializers for this. <br>
+  For example;
+  <div class="code">x:*i32 = new i32(225)</div>
+  The above allocation will have a value of <x class="inline_code">255</x> after being allocated.
+
+  <div class="title-seperator"></div>
   <div id="free" class="sub-title">Free Allocations</div>
   The <x class="inline_code">free</x> keyword frees heap-allocated allocations.
   You can just free pointers.
