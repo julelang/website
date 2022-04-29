@@ -1666,6 +1666,60 @@ The above enumeration has the data-type <x class="inline_code">u8</x>.
 </div>
 `;
 
+const common_concepts_structuresHTML = `
+<div class="title" style="margin-bottom: 20px;">Structures</div>
+<div class="text">
+Structures (aka structs) are a good way to collect many variables in one spot.
+Every declaration within the structure is called a member (aka field).
+The difference from an array is that arrays contain values of the same data-type, while each of the struct members can have a different data type.
+Also, unlike an array, the fields of structures are accessed with an identifier.
+<br><br>
+For example to declaration a struct;
+<div class="code">struct employee {
+  name   :str
+  age    :u8
+  title  :str
+  salary :u32
+}</div>
+Members of structs are the same as a variable definition.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Assigning Default Values to Members</div>
+When instances of struct members are initialized, they are initialized using the default value of the data-type.
+But you can custom default values. <br>
+For example;
+<div class="code">struct employee {
+  name   :str = "Anonymous"
+  age    :u8  = 18
+  title  :str = "Engineer"
+  salary :u32 = 2500
+}</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Creating a Instances of Structures</div>
+You use the constructor method of the struct to initialize an instance of structs.
+Constructor methods, in turn, take the struct members themselves as parameters with the same identifier and same data-type.
+Each parameter also has a default argument.
+Default arguments are based on default member values that you specify.
+<br><br>
+For example;
+<div class="code">struct employee {
+  name   :str = "Anonymous"
+  age    :u8  = 18
+  title  :str = "-"
+  salary :u32 = 2500
+}
+
+main() {
+  anon: = employee()
+  emma: = employee("Emma Blake", 27, "Data Scientist", 4750)
+  outln(anon)
+  outln(emma)
+}</div>
+
+</div>
+`;
+
 const memoryHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory</div>
 <div class="text">
@@ -2966,6 +3020,7 @@ const NAV_common_concepts_arrays              = document.getElementById('common-
 const NAV_common_concepts_maps                = document.getElementById("common-concepts-maps");
 const NAV_common_concepts_control_flow        = document.getElementById('common-concepts-control-flow');
 const NAV_common_concepts_enums               = document.getElementById("common-concepts-enums");
+const NAV_common_concepts_structures          = document.getElementById("common-concepts-structures");
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
@@ -3039,6 +3094,7 @@ const navigations = [
   [NAV_common_concepts_maps,                common_concepts_mapsHTML],
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
   [NAV_common_concepts_enums,               common_concepts_enumsHTML],
+  [NAV_common_concepts_structures,          common_concepts_structuresHTML],
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
