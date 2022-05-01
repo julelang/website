@@ -1466,6 +1466,25 @@ In the continuation of the output, a reverse execution is seen from the last def
 This is exactly why.
 Deferred calls when out of scope are executed from the most recent deferred call to the first deferred call.
 
+<div class="title-seperator"></div>
+<div class="sub-title">Concurrent Calls</div>
+Concurrency works on performing multiple tasks at the same time.
+This means that you are working on multiple tasks simultaneously in one time frame.
+However, you can only do one task for the same time.
+This tends to happen in programs where a task is waiting and the program has determined to run another task at idle time.
+<br><br>
+The keyword <x class="inline_code">co</x> is used to do a concurrent call. <br>
+For exmaple;
+<div class="code">hello_world() {
+  outln("Hello World")
+}
+
+main() {
+  co hello_world()
+}</div>
+
+<div class="warn">The program does not automatically wait for the execution of concurrent calls to terminate.</div>
+
 </div>
 `;
 
@@ -1931,8 +1950,9 @@ const types_strHTML = `
 <div class="page-title" style="margin-bottom: 20px;">The <x class="inline_code">str</x> Type</div>
 <div class="text">
 <div class="tabcontrol">
-  <div id="tab-types-str-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
-  <div id="tab-types-str-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
+  <div id="tab-types-str-constructor" class="tab" onclick="select_tab_event(0)">Constructor</div>
+  <div id="tab-types-str-constants" class="tab" onclick="select_tab_event(1)">Constants</div>
+  <div id="tab-types-str-methods" class="tab" onclick="select_tab_event(2)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2443,6 +2463,11 @@ Support us to improve the documentation.
 
 // ------------------------------------------------------------------------------
 
+const TAB_types_str_constructor = `
+<div class="sub-sub-title"><x class="inline_code">str(obj any) str</x></div>
+Returns string value of given object.
+`;
+
 const TAB_types_str_constants = `
 <div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
 Character count of string.
@@ -2944,16 +2969,16 @@ static inline _Alloc_t *xalloc()</div>
 Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
 
 <div class="topic-seperator"></div>
-<div class="code">template &lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
+<div class="code">template&lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
 static inline void foreach(const _Enum_t _Enum,
                            const func&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
-<div class="code">template &lt;typename _Enum_t, typename _Index_t&gt;
+<div class="code">template&lt;typename _Enum_t, typename _Index_t&gt;
 static inline void foreach(const _Enum_t _Enum,
                            const func&lt;void(_Index_t)&gt; _Body)</div>
-<div class="code">template &lt;typename _Key_t, typename _Value_t&gt;
+<div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
 static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
                            const func&lt;void(_Key_t)&gt; _Body)</div>
-<div class="code">template &lt;typename _Key_t, typename _Value_t&gt;
+<div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
 static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
                            const func&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
@@ -2968,12 +2993,12 @@ inline auto tuple_as_args(const _Function_t _Function, const _Tuple_t _Tuple)</d
 Push tuple as argument(s) to function.
 
 <div class="topic-seperator"></div>
-<div class="code">template &lt;typename _Obj_t&gt;
+<div class="code">template&lt;typename _Obj_t&gt;
 static inline void XID(out)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
 <div class="topic-seperator"></div>
-<div class="code">template &lt;typename _Obj_t&gt;
+<div class="code">template&lt;typename _Obj_t&gt;
 static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
 `;
@@ -3135,6 +3160,7 @@ const navigations = [
 
 const tabs = [
   // ID - HTML
+  ["tab-types-str-constructor",           TAB_types_str_constructor],
   ["tab-types-str-constants",             TAB_types_str_constants],
   ["tab-types-str-methods",               TAB_types_str_methods],
   ["tab-types-arrays-constants",          TAB_types_arrays_constants],

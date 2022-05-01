@@ -388,7 +388,7 @@ a:hover {
   padding-bottom: 10px;
   user-select: none;
   color: rgb(220, 220, 220);
-  font-size: 24px;
+  font-size: larger;
   font-weight: normal;
   display: inline-flex;
 }
