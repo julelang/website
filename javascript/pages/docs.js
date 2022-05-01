@@ -2909,7 +2909,11 @@ Source define for <x class="inline_code">CONCAT(_A, _B)</x>
 
 <div class="title-seperator"></div>
 <div class="code">DEFER(_Expr)</div>
-Deferred call specified expression.
+Calls given expressions as deferred call.
+
+<div class="title-seperator"></div>
+<div class="code">CO(_Expr)</div>
+Calls given expressions as concurrent call.
 
 <div class="title-seperator"></div>
 <div class="code">nil</div>
