@@ -494,11 +494,6 @@ const basics_data_typesHTML = `
       <td>-127 to 127</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">sbyte</td>
-      <td style="text-align: center;">- alias for i8 -</td>
-      <td>- alias for i8 -</td>
-    </tr>
-    <tr>
       <td style="text-align: center; font-family: 'Code';">16</td>
       <td style="text-align: center;">2 bytes</td>
     <td>-32768 to 32767</td>
@@ -517,11 +512,6 @@ const basics_data_typesHTML = `
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1 byte</td>
       <td>0 to 255</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">byte</td>
-      <td style="text-align: center;">- alias for u8 -</td>
-      <td>- alias for u8 -</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
@@ -587,10 +577,6 @@ const basics_data_typesHTML = `
       <td>i8, i16, i32, i64, f32, f64, size, char</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">sbyte</td>
-      <td>- alias for i8 -</td>
-    </tr>
-    <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
       <td>i16, i32, i64, f32, f64, size, char</td>
     </tr>
@@ -605,10 +591,6 @@ const basics_data_typesHTML = `
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td>u8, u16, u32, u64, f32, f64, size, char</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">byte</td>
-      <td>- alias for u8 -</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
@@ -650,14 +632,18 @@ const basics_data_typesHTML = `
 
   <div class="title-seperator"></div>
   <div class="sub-title">Integers</div>
-  <div class="sub-sub-title">Classic - Decimal</div>
+  <div class="sub-sub-title">Decimal</div>
   <div class="code">12345</div>
+  <div class="sub-sub-title">Binary</div>
+  <div class="code">0b0001010101</div>
+  <div class="sub-sub-title">Octal</div>
+  <div class="code">0455</div>
   <div class="sub-sub-title">Hexadecimal</div>
   <div class="code">0xDFF90</div>
 
   <div class="title-seperator"></div>
   <div class="sub-title">Floats</div>
-  <div class="sub-sub-title">Classic - Decimal</div>
+  <div class="sub-sub-title">Decimal</div>
   <div class="code">3.14</div>
   <div class="sub-sub-title">Scientific</div>
   <div class="code">3.148797963502462594e+005</div>
@@ -1045,12 +1031,26 @@ Constants take a single value and never change again.
 
 <div class="title-seperator"></div>
 <div class="sub-title">Volatile Variable</div>
-The <x class="inline_code">volatile</x> keyword makes memory access atomic.
-An important point here is that it doesn't make operations to memory atomic, only access to it.
-While writing and reading data, they see the old or last value, but never the intermediate value.
+The <x class="inline_code">volatile</x> keyword tells the compiler not to optimize this definition.
+<br><br>
+Here is an example;
+<div class="code">iter:i32 = 100
+
+iter x == 100 {
+  // Your code...
+}</div>
+In the example above, the compiler can optimize the iteration to return unconditionally if it detects that <x class="inline_code">x</x> never changes.
+It does this because it is slower to read from memory and compare each time, it is pointless to do this every time as the value will not change.
+However, <x class="inline_code">x</x> may be replaced by a different program in a way that is not understood by the compiler.
+In this case, the optimization will prevent getting the desired result.
+The <x class="inline_code">volatile</x> keyword is a tool that prevents the compiler from optimizing when these reasons occur.
 <br><br>
 For example;
-<div class="code">volatile tickrate: = 128</div>
+<div class="code">volatile iter:i32 = 100
+
+iter x == 100 {
+  // Your code...
+}</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Multiple Assignment / Declaration</div>
@@ -2421,7 +2421,9 @@ const standard_library_builtinHTML = `
 Built-In defines are provided from the language by directly without any import operation.
 
 <div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-std-builtin-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+  <div id="tab-std-builtin-type-aliases" class="tab" onclick="select_tab_event(0)">Type Aliases</div>
+  <div id="tab-std-builtin-structures" class="tab" onclick="select_tab_event(1)">Structures</div>
+  <div id="tab-std-builtin-functions" class="tab" onclick="select_tab_event(2)">Functions</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2672,6 +2674,28 @@ Maximum value of type.
 const TAB_type_statics_str_constants = `
 Greatest possible value for an element of type <x class="inline_code">size</x>. <br>
 As a return value, it is usually used to indicate no matches.
+`;
+
+const TAB_std_builtin_type_aliases = `
+<div class="sub-sub-title"><x class="inline_code">type byte u8</x></div>
+<div class="sub-sub-title"><x class="inline_code">type sbyte i8</x></div>
+`;
+
+const TAB_std_builtin_structures = `
+<div class="code">struct error {
+  message:str
+}</div>
+
+This is a error handling structure of standard library. <br>
+It is used for error handling and panics.
+<br><br>
+Example to error handling: <br>
+You have a <x class="inline_code">compute</x> method have two <x class="inline_code">f64</x> parameter: <x class="inline_code">x</x> and <x class="inline_code">y</x>. <br>
+This function returns division of given arguments. <br>
+Actually returns: <x class="inline_code">[f64, *error]</x> <br>
+The first return value naturally result of computation. <br>
+Returns result and nil pointer for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to 0. <br>
+If not, returns 0 and returns heap-allocated error instance.
 `;
 
 const TAB_std_builtin_functions = `
@@ -3005,6 +3029,11 @@ Built-in <x class="inline_code">out</x> function of X.
 <div class="code">template&lt;typename _Obj_t&gt;
 static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
+
+<div class="topic-seperator"></div>
+<div class="code">template&lt;typename _Obj_t&gt;
+str tostr(const _Obj_t &_Obj) noexcept</div>
+Returns string form of given object.
 `;
 
 //#region SET_PAGE
@@ -3183,6 +3212,8 @@ const tabs = [
   ["tab-type-statics-f64-constants",      TAB_type_statics_f64_constants],
   ["tab-type-statics-size-constants",     TAB_type_statics_size_constants],
   ["tab-type-statics-str-constants",      TAB_type_statics_str_constants],
+  ["tab-std-builtin-type-aliases",        TAB_std_builtin_type_aliases],
+  ["tab-std-builtin-structures",          TAB_std_builtin_structures],
   ["tab-std-builtin-functions",           TAB_std_builtin_functions],
   ["tab-std-io-functions",                TAB_std_io_functions],
   ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
