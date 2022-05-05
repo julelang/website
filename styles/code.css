@@ -33,5 +33,6 @@
   text-align: center;
   display: inline-flex;
   position: inline-block;
-  padding: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
 }

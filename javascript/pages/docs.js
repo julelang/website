@@ -1,4 +1,4 @@
-// Copyright 2021 The X Programming Language.
+// Copyright 2022 The X Programming Language.
 // Use of this source code is governed by a BSD 3-Clause
 // license that can be found in the LICENSE file.
 
@@ -1908,6 +1908,127 @@ main() {
 </div>
 `;
 
+const error_handlingHTML = `
+<div class="title" style="margin-bottom: 20px;">Error Handling</div>
+<div class="text">
+
+The program should naturally generate and check for errors in some cases.
+This core topic deals with error handling.
+X uses panics and the error structure.
+Catching panics and handling errors happens through them. It is plain and simple.
+
+</div>
+`;
+
+const error_handling_error_structureHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Error Structure</div>
+<div class="text">
+
+The error structure is a built-in definition.
+It is a way of catching errors.
+While the program is executing, if the functions are designed to return this structure when a problem occurs, providing error catching.
+<br><br>
+For example;
+<div class="code">safe_div(a, b f32) [f32, *error] {
+  if a == 0 || b == 0 {
+    ret 0, new error("division with zero")
+  }
+  ret a/b, nil
+}
+
+main() {
+  result:, err: = safe_div(5, 0)
+  if err {
+    outln(err.message)
+    ret
+  }
+  outln(result)
+}</div>
+In the example above, a potential error is catched with the error structure.
+It is recommended that the returned structure instance be heap-allocated.
+
+</div>
+`;
+
+const error_handling_panicsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Panics</div>
+<div class="text">
+
+Panics abruptly stop program execution and "abort" it.
+If you're talking about an issue that will cause the program to crash while executing, using panic would be a good choice.
+You can only panic with error structure.
+<br><br>
+For example;
+<div class="code">counter:u32 = 0
+
+add_counter(const rate i32) {
+  if counter == 0 {
+    panic(error("counter is zero"))
+  }
+  counter += rate
+}
+
+main() {
+  add_counter(-1)
+}</div>
+The code above is an example of panicking.
+
+</div>
+`;
+
+const error_handling_handling_panicsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Handling Panics</div>
+<div class="text">
+
+When the code panics, you may not want the program to be stopped and want to continue execution.
+The <x class="inline_code">try</x> block is used for this.
+<br><br>
+For example;
+<div class="code">main() {
+  try {
+    panic(error("example panic"))
+  }
+  outln("Hello World")
+}</div>
+In the above code example, you cannot normally reach the <x class="inline_code">Hello World</x> result.
+However, when we enclose the panic in a <x class="inline_code">try</x> block, you will see that the execution of the program is no longer stopped.
+When the block encounters a panic in it, it leaves the block without executing the remaining statements of the block.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Catching Panics</div>
+Just as you want program execution to continue, you may also want to catch the panic attempting to stop it.
+What you need in this case is a <x class="inline_code">catch</x> block.
+<br><br>
+For example;
+<div class="code">main() {
+  try {
+    panic(error("example panic"))
+  } catch e {
+    outln("program panicked: " + e.message)
+  }
+}</div>
+In the above example, when the <x class="inline_code">try</x>block encounters a panic, the <x class="inline_code">catch</x> block runs before exiting the block.
+The variable of the catch block has always taken the error structure as its data type and can never be used as an existing variable, it is always newly created.
+The <x class="inline_code">e</x> variable in the example above is an example of this.
+
+<div class="topic-seperator"></div>
+What if you just want to catch the panic instead of catching the error?
+For example, you just want to be notified when you panic.
+In these cases, you can use an empty catch block.
+<br><br>
+For example;
+<div class="code">main() {
+  try {
+    panic(error("example panic"))
+  } catch {
+    outln("program panicked")
+  }
+}</div>
+In this example you catch the panic, but not the error that caused it.
+
+</div>
+`;
+
 const typesHTML = `
 <div class="title" style="margin-bottom: 20px;">Types</div>
 <div class="text">
@@ -2707,6 +2828,10 @@ Can take any data-type as argument.
 <div class="sub-sub-title"><x class="inline_code">outln(const value{""} any)</x></div>
 This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">panic(const err error)</x></div>
+Panics program with given error instance.
 `;
 
 const TAB_std_io_functions = `
@@ -3034,6 +3159,15 @@ Built-in <x class="inline_code">outln</x> function of X.
 <div class="code">template&lt;typename _Obj_t&gt;
 str tostr(const _Obj_t &_Obj) noexcept</div>
 Returns string form of given object.
+
+<div class="topic-seperator"></div>
+<div class="code">static inline void XID(panic)(const struct XID(error) &_Error)</div>
+Built-in <x class="inline_code">panic</x> function of X.
+
+<div class="topic-seperator"></div>
+<div class="code">void x_terminate_handler(void) noexcept</div>
+Cxx terminate handler of X.
+
 `;
 
 //#region SET_PAGE
@@ -3082,6 +3216,10 @@ const NAV_common_concepts_structures          = document.getElementById("common-
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
+const NAV_error_handling                      = document.getElementById("error-handling");
+const NAV_error_handling_error_structure      = document.getElementById("error-handling-error-structure");
+const NAV_error_handling_panics               = document.getElementById("error-handling-panics");
+const NAV_error_handling_handling_panics      = document.getElementById("error-handling-handling-panics");
 const NAV_types                               = document.getElementById('types');
 const NAV_types_aliasing                      = document.getElementById('types-aliasing');
 const NAV_types_casting                       = document.getElementById('types-casting');
@@ -3156,6 +3294,10 @@ const navigations = [
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
+  [NAV_error_handling,                      error_handlingHTML],
+  [NAV_error_handling_error_structure,      error_handling_error_structureHTML],
+  [NAV_error_handling_panics,               error_handling_panicsHTML],
+  [NAV_error_handling_handling_panics,      error_handling_handling_panicsHTML],
   [NAV_types,                               typesHTML],
   [NAV_types_aliasing,                      types_aliasingHTML],
   [NAV_types_casting,                       types_castingHTML],
