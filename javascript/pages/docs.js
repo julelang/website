@@ -2299,7 +2299,7 @@ const cxx_cxx_embeddingHTML = `
 <div class="text">
 You can embed cxx code in your X code.
 For this, show the comment line as a cxx content;
-<div class="code">// cxx: #include "my_library.h"
+<div class="code">//cxx: #include "my_library.h"
 
 main() {
   // ...
@@ -2312,14 +2312,15 @@ main() {
 
 <div class="title-seperator"></div>
 <div class="sub-title">Using definitions of X</div>
-Definitions start with <x class="inline_code">_</x>when translating X.
-For example, a variable named <x class="inline_code">rate</x> in X is called <x class="inline_code">_rate</x> in cxx output.
-So, using the correct data types and definition names, you can include X definitions in your embed code.
+If you want to use definitions in embed codes, you can indicate the identifier you want to reach with <x class="inline_code">@</x>.
+If there is a definition for which you have written the identifier, its identifier will appear there, if not, the relevant section will not be change.
+X detects the identifier you are using in the embed code and does not give an error that you do not use it.
+You can use only block identifiers.
 <br><br>
 For example;
 <div class="code">@inline
 cxx_wcout(const msg str) {
-  // cxx: std::wcout << _msg << std::endl;
+  //cxx: std::wcout << @msg << std::endl;
 }
 
 main() {
@@ -3038,15 +3039,7 @@ Like alias for <x class="inline_code">std::function</x>.
 
 <div class="title-seperator"></div>
 <div class="code">XID(_Identifier)</div>
-Returns the form of the given identifier to use when translating the X code.
-<br>
-For example: <x class="inline_code">const double XID(PI) = 3.14;</x>
-
-<div class="title-seperator"></div>
-<div class="code">XTHROW(_Msg)</div>
-Throws X exception.
-<br>
-For example: <x class="inline_code">XTHROW("operation failed")</x>
+Appends the prefix that the identifiers have in the CXX output to the identifier you supplied.
 
 <div class="title-seperator"></div>
 <div class="code">CONCAT(_A, _B)</div>
