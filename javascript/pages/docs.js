@@ -2516,7 +2516,7 @@ When the preprocessor sees this directive, it discards the rest of the code.
 </div>
 `;
 
-const standard_libraryHTML = `
+const stdlibHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Libray</div>
 <div class="text">
   The standard library is language's own library.
@@ -2537,28 +2537,66 @@ const standard_libraryHTML = `
 </div>
 `;
 
-const standard_library_builtinHTML = `
+const stdlib_builtinHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: Built-In</div>
 <div class="text">
 Built-In defines are provided from the language by directly without any import operation.
 
 <div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-std-builtin-type-aliases" class="tab" onclick="select_tab_event(0)">Type Aliases</div>
-  <div id="tab-std-builtin-structures" class="tab" onclick="select_tab_event(1)">Structures</div>
-  <div id="tab-std-builtin-functions" class="tab" onclick="select_tab_event(2)">Functions</div>
+  <div id="tab-stdlib-builtin-type-aliases" class="tab" onclick="select_tab_event(0)">Type Aliases</div>
+  <div id="tab-stdlib-builtin-structures" class="tab" onclick="select_tab_event(1)">Structures</div>
+  <div id="tab-stdlib-builtin-functions" class="tab" onclick="select_tab_event(2)">Functions</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
 `;
 
-const standard_library_ioHTML = `
+const stdlib_debugHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">debug</x></div>
+<div class="text">
+General debugging library. <br>
+
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-stdlib-debug-globals" class="tab" onclick="select_tab_event(0)">Globals</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const stdlib_debug_assertHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">debug.assert</x></div>
+<div class="text">
+Assertion functionalites. <br>
+
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-stdlib-debug-assert-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const stdlib_ioHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">io</x></div>
 <div class="text">
 Input/Output operations. <br>
-All defines into at the <x class="inline_code">io</x> namespace.
 
 <div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-std-io-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+  <div id="tab-stdlib-io-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const stdlib_osHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">os</x></div>
+<div class="text">
+Platform-independent interface to operating system functionality. <br>
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-stdlib-os-globals" class="tab" onclick="select_tab_event(0)">Globals</div>
+  <div id="tab-stdlib-os-functions" class="tab" onclick="select_tab_event(1)">Functions</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2798,12 +2836,12 @@ Greatest possible value for an element of type <x class="inline_code">size</x>. 
 As a return value, it is usually used to indicate no matches.
 `;
 
-const TAB_std_builtin_type_aliases = `
+const TAB_stdlib_builtin_type_aliases = `
 <div class="sub-sub-title"><x class="inline_code">type byte u8</x></div>
 <div class="sub-sub-title"><x class="inline_code">type sbyte i8</x></div>
 `;
 
-const TAB_std_builtin_structures = `
+const TAB_stdlib_builtin_structures = `
 <div class="code">struct error {
   message:str
 }</div>
@@ -2820,7 +2858,7 @@ Returns result and nil pointer for if the <x class="inline_code">x</x> and <x cl
 If not, returns 0 and returns heap-allocated error instance.
 `;
 
-const TAB_std_builtin_functions = `
+const TAB_stdlib_builtin_functions = `
 <div class="sub-sub-title"><x class="inline_code">out(const value{""} any)</x></div>
 Prints value to command line.
 Can take any data-type as argument.
@@ -2835,7 +2873,26 @@ One difference, prints new line after print.
 Panics program with given error instance.
 `;
 
-const TAB_std_io_functions = `
+const TAB_stdlib_debug_globals = `
+<div class="sub-sub-title"><x class="inline_code">debugging:bool</x></div>
+If this is enabled, debug and all subpackages assume that the program has been compiled for debugging.
+In this case the debugging tools work.
+However, if it is not enabled, the debugging tools will not work because it assumes that the program was not compiled for debugging.
+`;
+
+const TAB_stdlib_debug_assert_functions = `
+<div class="code">@inline
+pub assert(const expr bool, const msg{"assertion failed"} str)</div>
+Writes fail message to <x class="inline_code">cerr</x> and exit failure if assertion failed.
+
+<div class="topic-seperator"></div>
+<div class="code">@inline
+pub assert_panic(const expr bool,
+                 const err{error("assertion failed")} error)</div>
+Panics with given error if assertion failed.
+`;
+
+const TAB_stdlib_io_functions = `
 <div class="code">@inline
 pub readln() str</div>
 Reads full-complete line from command-line.
@@ -2844,6 +2901,21 @@ Reads full-complete line from command-line.
 <div class="code">@inline
 pub readin() str</div>
 Read first part of line from command-line.
+`;
+
+const TAB_stdlib_os_globals = `
+<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:i32</x></div>
+Exit code for success.
+
+<div class="topic-seperator">
+<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:i32</x></div>
+Exit code for failure.
+`;
+
+const TAB_stdlib_os_functions = `
+<div class="code">@inline
+pub exit(const code{EXIT_SUCCESS} i32)</div>
+Exit program with given exit code.
 `;
 
 const TAB_common_concepts_iterations = `
@@ -3233,22 +3305,25 @@ const NAV_type_statics_f64                    = document.getElementById("type-st
 const NAV_type_statics_size                   = document.getElementById("type-statics-size");
 const NAV_type_statics_str                    = document.getElementById("type-statics-str");
 const NAV_namespaces                          = document.getElementById("namespaces");
-const NAV_cxx                                 = document.getElementById('cxx');
+const NAV_cxx                                 = document.getElementById("cxx");
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
-const NAV_cxx_cxxapi                          = document.getElementById('cxx-cxxapi');
+const NAV_cxx_cxxapi                          = document.getElementById("cxx-cxxapi");
 const NAV_documenting                         = document.getElementById("documenting");
 const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
 const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
 const NAV_use_declarations                    = document.getElementById("use-declarations");
 const NAV_preprocessor                        = document.getElementById("preprocessor");
 const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
-const NAV_standard_library                    = document.getElementById('standard-library');
-const NAV_standard_library_builtin            = document.getElementById('standard-library-builtin');
-const NAV_standard_library_io                 = document.getElementById("standard-library-io");
-const NAV_end                                 = document.getElementById('end');
+const NAV_stdlib                              = document.getElementById("stdlib");
+const NAV_stdlib_builtin                      = document.getElementById("stdlib-builtin");
+const NAV_stdlib_debug                        = document.getElementById("stdlib-debug");
+const NAV_stdlib_debug_assert                 = document.getElementById("stdlib-debug-assert");
+const NAV_stdlib_io                           = document.getElementById("stdlib-io");
+const NAV_stdlib_os                           = document.getElementById("stdlib-os");
+const NAV_end                                 = document.getElementById("end");
 
-const side_navigation = document.getElementById('side-navigation');
-const content_body    = document.getElementById('side-navigation-content-body');
+const side_navigation = document.getElementById("side-navigation");
+const content_body    = document.getElementById("side-navigation-content-body");
 
 //#endregion GET_ELEMENTS
 
@@ -3320,9 +3395,12 @@ const navigations = [
   [NAV_use_declarations,                    use_declarationsHTML],
   [NAV_preprocessor,                        preprocessorHTML],
   [NAV_preprocessor_directives,             preprocessor_directivesHTML],
-  [NAV_standard_library,                    standard_libraryHTML],
-  [NAV_standard_library_builtin,            standard_library_builtinHTML],
-  [NAV_standard_library_io,                 standard_library_ioHTML],
+  [NAV_stdlib,                              stdlibHTML],
+  [NAV_stdlib_builtin,                      stdlib_builtinHTML],
+  [NAV_stdlib_debug,                        stdlib_debugHTML],
+  [NAV_stdlib_debug_assert,                 stdlib_debug_assertHTML],
+  [NAV_stdlib_io,                           stdlib_ioHTML],
+  [NAV_stdlib_os,                           stdlib_osHTML],
   [NAV_end,                                 endHTML],
 ];
 
@@ -3347,10 +3425,14 @@ const tabs = [
   ["tab-type-statics-f64-constants",      TAB_type_statics_f64_constants],
   ["tab-type-statics-size-constants",     TAB_type_statics_size_constants],
   ["tab-type-statics-str-constants",      TAB_type_statics_str_constants],
-  ["tab-std-builtin-type-aliases",        TAB_std_builtin_type_aliases],
-  ["tab-std-builtin-structures",          TAB_std_builtin_structures],
-  ["tab-std-builtin-functions",           TAB_std_builtin_functions],
-  ["tab-std-io-functions",                TAB_std_io_functions],
+  ["tab-stdlib-builtin-type-aliases",     TAB_stdlib_builtin_type_aliases],
+  ["tab-stdlib-builtin-structures",       TAB_stdlib_builtin_structures],
+  ["tab-stdlib-builtin-functions",        TAB_stdlib_builtin_functions],
+  ["tab-stdlib-debug-globals",            TAB_stdlib_debug_globals],
+  ["tab-stdlib-debug-assert-functions",   TAB_stdlib_debug_assert_functions],
+  ["tab-stdlib-io-functions",             TAB_stdlib_io_functions],
+  ["tab-stdlib-os-globals",               TAB_stdlib_os_globals],
+  ["tab-stdlib-os-functions",             TAB_stdlib_os_functions],
   ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
   ["tab-common-concepts-if-expressions",  TAB_common_concepts_if_expression],
   ["tab-common-concepts-goto-statements", TAB_common_concepts_goto_statements],
@@ -3362,8 +3444,8 @@ const tabs = [
 
 function next_page_click()   { select_topic_index(navigation_index+1); }
 function prev_page_click()   { select_topic_index(navigation_index-1); }
-function std_builtin_click() { select_topic(NAV_standard_library_builtin); }
-function std_io_click()      { select_topic(NAV_standard_library_io); }
+function std_builtin_click() { select_topic(NAV_stdlib_builtin); }
+function std_io_click()      { select_topic(NAV_stdlib_io); }
 
 navigations.forEach((element, index) => {
   element[0].addEventListener('click', () => { select_topic_index(index); });

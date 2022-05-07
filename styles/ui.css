@@ -173,6 +173,29 @@ button:hover {
   font-weight: bold;
 }
 
+#side-navigation .sub-sub-topic {
+  transition: 200ms;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+  width: fit-content;
+  height: fit-content;
+  font-family: 'OpenSans';
+  font-size: medium;
+  font-weight: normal;
+  user-select: none;
+  margin-left: 40px;
+  margin-bottom: 8px;
+}
+
+#side-navigation .sub-sub-topic:hover {
+  transition: 250ms;
+  color: blueviolet;
+  cursor: pointer;
+  margin-left: 50px;
+  font-weight: bold;
+}
+
 #side-navigation-content {
   font-family: 'OpenSans';
   font-weight: normal;
