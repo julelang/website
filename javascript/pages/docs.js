@@ -601,7 +601,11 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i8, i16, i32, i64, int, char</td>
+      <td>i8, i16, i32, i64, int, intptr, char</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">intptr</td>
+      <td>Platform dependent (signed)</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
@@ -617,7 +621,11 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u8, u16, u32, u64, uint, char</td>
+      <td>u8, u16, u32, u64, uint, uintptr, char</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">uintptr</td>
+      <td>Platform dependent (unsigned)</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
