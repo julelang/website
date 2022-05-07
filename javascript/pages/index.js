@@ -8,9 +8,9 @@ const preview_code_helloworldHTML =
 }`;
 
 const preview_code_fibonacci_closureHTML =
-`fibo() () i32 {
+`fibo() () int {
   a:, b: = 0, 1
-  (() i32 {
+  (() int {
     a, b = b, a+b
     a
   })
@@ -27,7 +27,7 @@ main() {
 
 const preview_code_pointersHTML =
 `main() {
-  myarr: = []i32{10, 50, 24, -43, 63}
+  myarr: = []int{10, 50, 24, -43, 63}
   const myarr_size:size = 5
   counter: = 0
   ptr: = &myarr[0]

@@ -388,7 +388,7 @@ But you have to use the declarations you make in your code blocks, if you don't 
 <br><br>
 For example;
 <div class="code">main() {
-  a:i32
+  a:int
 }</div>
 The variable <x class="inline_code">a</x> seen is declared but unused.
 This will cause you to get an error by the compiler and not be able to compile the code.
@@ -477,7 +477,7 @@ const basics_data_typesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Data Types</div>
 <div class="text">
   X is designed strongly typed.
-  Therefore, the data types of all values must be specified during compilation.
+  Therefore, the data-types of all values must be specified during compilation.
   In this section we will look at the built-in types offered by the compiler.
 
   <div class="title-seperator"></div>
@@ -509,6 +509,11 @@ const basics_data_typesHTML = `
       <td>-9223372036854775808 to 9223372036854775807</td>
     </tr>
     <tr>
+      <td style="text-align: center; font-family: 'Code';">int</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>Platform dependent (signed)</td>
+    </tr>
+    <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1 byte</td>
       <td>0 to 255</td>
@@ -529,7 +534,7 @@ const basics_data_typesHTML = `
       <td>0 to 18446744073709551615</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">size</td>
+      <td style="text-align: center; font-family: 'Code';">uint</td>
       <td style="text-align: center;">Platform dependent</td>
       <td>Platform dependent (unsigned)</td>
     </tr>
@@ -574,35 +579,35 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i8</td>
-      <td>i8, i16, i32, i64, f32, f64, size, char</td>
+      <td>i8</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
-      <td>i16, i32, i64, f32, f64, size, char</td>
+      <td>i16, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td>i32, i64, f32, f64, size, char</td>
+      <td>i8, i16, i32, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i64, f32, f64, size, char</td>
+      <td>i8, i16, i32, i64, int, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
-      <td>u8, u16, u32, u64, f32, f64, size, char</td>
+      <td>u8, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
-      <td>u16, u32, u64, f32, f64, size, char</td>
+      <td>u8, u16, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u32</td>
-      <td>u32, u64, f32, f64, size, char</td>
+      <td>u8, u16, u32, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u64, f32, f64, size, char</td>
+      <td>u8, u16, u32, u64, uint, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
@@ -610,7 +615,7 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f64</td>
-      <td>f64, f32, i8, i16, i32, u8, u16, u32, char</td>
+      <td>f32, f64, i8, i16, i32, u8, u16, u32, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
@@ -904,7 +909,7 @@ Each attribute is defined with <x class="inline_code">@</x>, the attribute itsel
 <br><br>
 For example:
 <div class="code">@attribute_a
-cube(s i32) i32 {
+cube(s int) int {
   // Body ...
 }</div>
 </div>
@@ -914,7 +919,7 @@ Note that an attribute cannot be given repeatedly.
 <br><br>
 For example:
 <div class="code">@attribute_a @attribute_b
-cube(s i32) i32 {
+cube(s int) int {
   // Body...
 }</div>
 <div class="warn">
@@ -969,7 +974,7 @@ The data type is set by the X compiler based on the data.
 <br><br>
 For example;
 <div class="code">age: = 18</div>
-The data type of the above variable is defaulted to <x class="inline_code">i32</x>.
+The data type of the above variable is defaulted to <x class="inline_code">int</x>.
 <div class="warn">
 In this method, the variable must be given a value, otherwise the X compiler will show an error.
 </div>
@@ -980,7 +985,7 @@ You may want to specify the data type, it is possible.
 It also brings you advantages.
 <br><br>
 For example;
-<div class="code">age:i32 = 18</div>
+<div class="code">age:int = 18</div>
 This is equivalent to the one shown above.
 However, you specified the data type.
 So what exactly is the difference?
@@ -1009,7 +1014,7 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example;
 <div class="code">example() {
-  a:i32 = 10 // Value is 10.
+  a:int = 10 // Value is 10.
   a = 200    // New value is 200.
 }</div>
 
@@ -1019,7 +1024,7 @@ Constant variables are declared same method, the only difference being that the 
 <br><br>
 For example;
 <div class="code">const age: = 18</div>
-<div class="code">const age:i32 = 18</div>
+<div class="code">const age:int = 18</div>
 <div class="warn">
 No matter which method the constant variables are defined by, a value must be given.
 </div>
@@ -1034,7 +1039,7 @@ Constants take a single value and never change again.
 The <x class="inline_code">volatile</x> keyword tells the compiler not to optimize this definition.
 <br><br>
 Here is an example;
-<div class="code">iter:i32 = 100
+<div class="code">iter:int = 100
 
 iter x == 100 {
   // Your code...
@@ -1046,7 +1051,7 @@ In this case, the optimization will prevent getting the desired result.
 The <x class="inline_code">volatile</x> keyword is a tool that prevents the compiler from optimizing when these reasons occur.
 <br><br>
 For example;
-<div class="code">volatile iter:i32 = 100
+<div class="code">volatile iter:int = 100
 
 iter x == 100 {
   // Your code...
@@ -1170,12 +1175,12 @@ Functions can have parameters.
 These parameters must be specified with arguments at the time the function is called.
 <br><br>
 For example;
-<div class="code">main() {
-  print_int(50)
+<div class="code">print_int(i int) {
+  outln(i)
 }
 
-print_int(i i32) {
-  outln(i)
+main() {
+  print_int(50)
 }</div>
 It is similar to normal function definition.
 Parameters are written between parentheses
@@ -1189,7 +1194,7 @@ The given arguments must be compatible with the data-type of the corresponding p
 There is alternative syntax for specifying parameters and data types.
 <br>
 For example;
-<div class="code">print_sum(a, b i32) {
+<div class="code">print_sum(a, b int) {
   add: = a + b
   outln(add)
 }</div>
@@ -1203,7 +1208,7 @@ The function parameters can constant and volatile.
 These parameters is similar to variable versions, actually they are same, acts same.
 <br><br>
 For example;
-<div class="code">print_sum(const a, volatile const b i32) {
+<div class="code">print_sum(const a, volatile const b int) {
   sum: = a + b
   outln(sum)
 }</div>
@@ -1298,9 +1303,9 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example;
-<div class="code">my_function:(i32, i32) i32</div>
+<div class="code">my_function:(int, int) int</div>
 The example at above, is a variable definition with function data type.
-The compatible function values is a have two <x class="inline_code">int32</x> parameter and returns <x class="inline_code">int32</x> value.
+The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
 <div class="warn">Default arguments specified in the data-type are not valid.</div>
 
 <div class="title-seperator"></div>
@@ -1358,7 +1363,7 @@ Functions can returns more then one values.
 For that, specify return data-type with multiple type.
 <br><br>
 For example;
-<div class="code">my_func() [i32, i32] { 18, 96 }</div>
+<div class="code">my_func() [int, int] { 18, 96 }</div>
 Brackets are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
 
@@ -1368,7 +1373,7 @@ Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
 <br><br>
 For example;
-<div class="code">less_than(x, y i32) [bool] { x < y }</div>
+<div class="code">less_than(x, y int) [bool] { x < y }</div>
 The example at above, accepted as one type return.
 
 <div class="title-seperator"></div>
@@ -1377,7 +1382,7 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example;
-<div class="code">compare_int(x, y i32) [bool, bool] { x < y, x == y }
+<div class="code">compare_int(x, y int) [bool, bool] { x < y, x == y }
 
 main() {
   less:, equals: = compare_int(10, 20)
@@ -1391,9 +1396,9 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example;
-<div class="code">multi_ret_func() [i32, str, char] { 143, "STR", 'W' }
+<div class="code">multi_ret_func() [int, str, char] { 143, "STR", 'W' }
 
-my_print(a i32, b str, c char) {
+my_print(a int, b str, c char) {
   outln(a)
   outln(b)
   outln(c)
@@ -1408,8 +1413,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example;
-<div class="code">example1() [i32, str, char] { 143, "STR", 'W' }
-example2() [i32, str, char] { (example1()) }
+<div class="code">example1() [int, str, char] { 143, "STR", 'W' }
+example2() [int, str, char] { (example1()) }
 
 main() {
   a:, b:, c: = test2()
@@ -1424,7 +1429,7 @@ Default arguments are pre-given arguments for the function when the parameter is
 Default arguments are specified after the identifier of a parameter, between braces. <br>
 For example;
 <div class="code">@inline
-sum(a{10}, b{50} i32) i32 { a+b }
+sum(a{10}, b{50} int) int { a+b }
 
 main() {
   outln(sum()) // Prints 60
@@ -1436,7 +1441,7 @@ main() {
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
 For example;
-<div class="code">sub(a, b i32) i32 { a-b }
+<div class="code">sub(a, b int) int { a-b }
 
 main() {
   outln(sub(190, 10))     // Prints 180
@@ -1563,8 +1568,8 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 <br>
 For example;
-<div class="code">sum(...values i32) i32 {
-  total:i32
+<div class="code">sum(...values int) int {
+  total:int
   iter _, i: in values {
     total += i
   }
@@ -1572,7 +1577,7 @@ For example;
 }
 
 main() {
-  my_arr: = []i32{90, 32, 6, 53}
+  my_arr: = []int{90, 32, 6, 53}
   result: = sum(my_arr...)
   outln(result)
 }</div>
@@ -1758,8 +1763,8 @@ Pointers are variables can store this memory addresses.
 To declare a pointer data-type, use <x class="inline_code">*</x> operator.
 <br>
 Example;
-<div class="code">x:*i32</div>
-That's pointer for <x class="inline_code">i32</x> type.
+<div class="code">x:*int</div>
+That's pointer for <x class="inline_code">int</x> type.
 <div class="info">Default value of pointers is nil.</div>
 
 <div class="title-seperator"></div>
@@ -1768,8 +1773,8 @@ The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
 For example;
 <div class="code">main() {
-  x:i32 = 10
-  y:*i32 = &x
+  x:int = 10
+  y:*int = &x
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
@@ -1778,8 +1783,8 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
 For example;
 <div class="code">main() {
-  x:i32 = 10
-  y:*i32 = &x
+  x:int = 10
+  y:*int = &x
   outln(y)  // Prints stored address
   outln(*y) // Prints value at address (so 10)
 }</div>
@@ -1790,9 +1795,9 @@ Pointers can take on value assignment just like a variable, with values of the a
 <br>
 For example;
 <div class="code">main() {
-  x:i32 = 10
-  z:*i32 = &x // The 'z' store now memory address of the 'x' variable.
-  y:i32 = 98
+  x:int = 10
+  z:*int = &x // The 'z' store now memory address of the 'x' variable.
+  y:int = 98
   z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-seperator"></div>
@@ -1802,8 +1807,8 @@ The <x class="inline_code">*</x> operator used for that too.
 <br>
 For example;
 <div class="code">main() {
-  x:i32 = 10
-  y:*i32 = &x
+  x:int = 10
+  y:*int = &x
   *y = 59  // Assign value
   outln(x) // Prints 59
 }</div>
@@ -1819,7 +1824,7 @@ A subtraction expression for pointer, means previous memory location.
 <br><br>
 For exaple;
 <div class="code">main() {
-  arr: = []i32{1, 200, 53, 635, 903}
+  arr: = []int{1, 200, 53, 635, 903}
   ptr: = &arr[0]
   outln(*ptr) // 1
   ptr += 1
@@ -1842,7 +1847,7 @@ const memory_memory_managementHTML = `
   The <x class="inline_code">new</x> keyword allocate new section up to size of data-type from heap of system's memory by specified data-type.
   Returns pointer of allocated section, returns <x class="inline_code">nil</x> if allocation failed.
   For example;
-  <div class="code">x:*i32 = new i32</div>
+  <div class="code">x:*int = new int</div>
   <div class="warn">This allocations isn't frees automatically, must freed by developer with <a href="#free"><x class="inline_code">free</x></a> keyword.</div>
 
   <div class="title-seperator"></div>
@@ -1850,7 +1855,7 @@ const memory_memory_managementHTML = `
   You may want to assign a value at the same time as you do a heap allocation.
   You can use initializers for this. <br>
   For example;
-  <div class="code">x:*i32 = new i32(225)</div>
+  <div class="code">x:*int = new int(225)</div>
   The above allocation will have a value of <x class="inline_code">255</x> after being allocated.
 
   <div class="title-seperator"></div>
@@ -1859,7 +1864,7 @@ const memory_memory_managementHTML = `
   You can just free pointers.
   For example;
   <div class="code">main() {
-  x: = new i32 // Allocate from heap
+  x: = new int // Allocate from heap
   free x       // Free allocation
 }</div>
   <div class="warn">If you use stack-allocation pointer, this is a undefined behavior.</div>
@@ -1870,7 +1875,7 @@ const memory_memory_managementHTML = `
   <br>
   Example;
   <div class="code">main() {
-  x:*i32 = new i32
+  x:*int = new int
   *x = 10
   free x  // Frees x, x now becomes a dangling pointer
   x = nil // x is not dangling now
@@ -1880,28 +1885,28 @@ const memory_memory_managementHTML = `
   Set pointer as nil after freed is a good option.
   <div class="topic-seperator"></div>
   Function example;
-  <div class="code">get_pointer() *i32 {
+  <div class="code">get_pointer() *int {
   x: = 10
   &x // Returns address of x
      // but x is out of scope, so pointer is dangling
 }
 
 main() {
-    p:*i32 = get_pointer()
+    p:*int = get_pointer()
     outln(*p) // Used dangling pointer
 }</div>
   If you want return any pointer of defined at body of function from function, you can return this pointer as heap-allocated.
   <br>
   For example with example at above;
-  <div class="code">get_pointer() *i32 {
+  <div class="code">get_pointer() *int {
   x: = 10
-  y:*i32 = new i32
+  y:*int = new int
   *y = x
   y
 }
 
 main() {
-  p:*i32 = get_pointer()
+  p:*int = get_pointer()
   outln(*p)
   free p
 }</div>
@@ -1961,7 +1966,7 @@ You can only panic with error structure.
 For example;
 <div class="code">counter:u32 = 0
 
-add_counter(const rate i32) {
+add_counter(const rate int) {
   if counter == 0 {
     panic(error("counter is zero"))
   }
@@ -2208,11 +2213,21 @@ const type_statics_f64HTML = `
 </div>
 `;
 
-const type_statics_sizeHTML = `
-<div class="page-title" style="margin-bottom: 20px;">size</div>
+const type_statics_intHTML = `
+<div class="page-title" style="margin-bottom: 20px;">int</div>
 <div class="text">
 <div class="tabcontrol">
-  <div id="tab-type-statics-size-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-type-statics-int-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const type_statics_uintHTML = `
+<div class="page-title" style="margin-bottom: 20px;">uint</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-type-statics-uint-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2240,7 +2255,7 @@ A block after the identifier is sufficient to declare a namespace. <br>
 For example;
 <div class="code">math {
   @inline
-  sum(const a, const b i32) i32 { a+b }
+  sum(const a, const b int) int { a+b }
 }
 
 main() {
@@ -2363,19 +2378,19 @@ Casting is an explicit conversion from one type to another between supported typ
 <br><br>
 To make a cast, you need to write the target data type you want to cast in parentheses, then again you need to write the expression you want to cast in parentheses.
 <br>
-Example: <x class="inline_code">(i32)(3.14)</x>
+Example: <x class="inline_code">(int)(3.14)</x>
 <br><br>
 For code example; <br>
 <div class="code">main() {
   x:f32 = 3.14
-  y:i32 = (i32)(x) // Casting
+  y:int = (int)(x) // Casting
   outln(x)         // Prints 3.14
   outln(y)         // Prints 3
 }</div>
 </div>
-As you can see, the variable <x class="inline_code">x</x> is of type <x class="inline_code">f32</x> and the variable <x class="inline_code">y</x> is of type <x class="inline_code">i32</x>.
+As you can see, the variable <x class="inline_code">x</x> is of type <x class="inline_code">f32</x> and the variable <x class="inline_code">y</x> is of type <x class="inline_code">int</x>.
 Normally, variable <x class="inline_code">y</x> cannot take variable <x class="inline_code">x</x> as a value.
-However, as seen for example, we can accept the value as <x class="inline_code">i32</x> by explicitly casting.
+However, as seen for example, we can accept the value as <x class="inline_code">int</x> by explicitly casting.
 
 <div class="title-seperator"></div>
 <div class="sub-title">Constant Ignoring</div>
@@ -2383,8 +2398,8 @@ You can ignore constant with casting.
 <br><br>
 For example;
 <div class="code">main() {
-  const ptr0: = new i32
-  ptr1: = (*i32)(ptr0)
+  const ptr0: = new int
+  ptr1: = (*int)(ptr0)
   *ptr1 = 200
   outln(*ptr0) // Prints 200
 }</div>
@@ -2826,8 +2841,17 @@ Maximum value of type.
 Minimum value of type.
 `;
 
-const TAB_type_statics_size_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:size</x></div>
+const TAB_type_statics_int_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:int</x></div>
+Maximum value of type.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">const min:int</x></div>
+Minimum value of type.
+`;
+
+const TAB_type_statics_uint_constants = `
+<div class="sub-sub-title"><x class="inline_code">const max:uint</x></div>
 Maximum value of type.
 `;
 
@@ -2904,17 +2928,17 @@ Read first part of line from command-line.
 `;
 
 const TAB_stdlib_os_globals = `
-<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:int</x></div>
 Exit code for success.
 
 <div class="topic-seperator">
-<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:int</x></div>
 Exit code for failure.
 `;
 
 const TAB_stdlib_os_functions = `
 <div class="code">@inline
-pub exit(const code{EXIT_SUCCESS} i32)</div>
+pub exit(const code{EXIT_SUCCESS} int)</div>
 Exit program with given exit code.
 `;
 
@@ -2996,7 +3020,7 @@ As you can see, it is possible to use the ignore operator for unused fields.
 
 <div class="info">If you don't use declaration with data-type, X assign variables data-types by automatically by collection.
 Similar to auto-type variables.
-If the index variable is be numeric, X's auto data-type is <x class="inline_code">i32</x> type.</div>
+If the index variable is be numeric, X's auto data-type is <x class="inline_code">int</x> type.</div>
 
 <div class="title-seperator"></div>
 <div class="sub-sub-title">Iteration Controlling</div>
@@ -3041,7 +3065,7 @@ It is also the beginning of a new chain of conditions.
 <br><br>
 For example;
 <div class="code">main() {
-  x: = new i32
+  x: = new int
   if x == nil {
     outln("memory allocation is failed")
   }
@@ -3071,7 +3095,7 @@ It is the block that will be executed unconditionally if the previous <x class="
 <br><br>
 For example;
 <div class="code">main() {
-  x: = new i32
+  x: = new int
   if x == nil {
     outln("memory allocation is failed")
   } else {
@@ -3156,7 +3180,10 @@ Source struct for deferred calls.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
-<div class="info">The primitive data-types in X, have same names in cxx output.</div>
+<div class="info">
+The primitive data-types in X, have same names in cxx output.
+But have <x class="inline_code">_xt</x> suffix.
+</div>
 
 <div class="topic-seperator"></div>
 <div class="code">template&lt;typename _Item_t&gt;
@@ -3169,7 +3196,7 @@ class map</div>
 Map type class.
 
 <div class="topic-seperator"></div>
-<div class="code">class str</div>
+<div class="code">class str_xt</div>
 The <x class="inline_code">str</x> data-type of X.
 
 <div class="title-seperator"></div>
@@ -3302,7 +3329,8 @@ const NAV_type_statics_u32                    = document.getElementById("type-st
 const NAV_type_statics_u64                    = document.getElementById("type-statics-u64");
 const NAV_type_statics_f32                    = document.getElementById("type-statics-f32");
 const NAV_type_statics_f64                    = document.getElementById("type-statics-f64");
-const NAV_type_statics_size                   = document.getElementById("type-statics-size");
+const NAV_type_statics_int                    = document.getElementById("type-statics-int");
+const NAV_type_statics_uint                   = document.getElementById("type-statics-uint");
 const NAV_type_statics_str                    = document.getElementById("type-statics-str");
 const NAV_namespaces                          = document.getElementById("namespaces");
 const NAV_cxx                                 = document.getElementById("cxx");
@@ -3383,7 +3411,8 @@ const navigations = [
   [NAV_type_statics_u64,                    type_statics_u64HTML],
   [NAV_type_statics_f32,                    type_statics_f32HTML],
   [NAV_type_statics_f64,                    type_statics_f64HTML],
-  [NAV_type_statics_size,                   type_statics_sizeHTML],
+  [NAV_type_statics_int,                    type_statics_intHTML],
+  [NAV_type_statics_uint,                   type_statics_uintHTML],
   [NAV_type_statics_str,                    type_statics_strHTML],
   [NAV_namespaces,                          namespacesHTML],
   [NAV_cxx,                                 cxxHTML],
@@ -3423,7 +3452,8 @@ const tabs = [
   ["tab-type-statics-u64-constants",      TAB_type_statics_u64_constants],
   ["tab-type-statics-f32-constants",      TAB_type_statics_f32_constants],
   ["tab-type-statics-f64-constants",      TAB_type_statics_f64_constants],
-  ["tab-type-statics-size-constants",     TAB_type_statics_size_constants],
+  ["tab-type-statics-int-constants",      TAB_type_statics_int_constants],
+  ["tab-type-statics-uint-constants",      TAB_type_statics_uint_constants],
   ["tab-type-statics-str-constants",      TAB_type_statics_str_constants],
   ["tab-stdlib-builtin-type-aliases",     TAB_stdlib_builtin_type_aliases],
   ["tab-stdlib-builtin-structures",       TAB_stdlib_builtin_structures],
