@@ -568,6 +568,16 @@ const basics_data_typesHTML = `
       <td style="text-align: center;">Platform dependent</td>
       <td>Any pointer type.</td>
     </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">intptr</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>It is a signed integer type that is big enough to hold a pointer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">uintptr</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>It is a unsigned integer type that is big enough to hold a pointer.</td>
+    </tr>
   </table>
 
   <div class="title-seperator"></div>
