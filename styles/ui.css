@@ -146,7 +146,7 @@ button:hover {
   transition: 200ms;
   color: blueviolet;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 5px;
   font-weight: bold;
 }
 
@@ -161,7 +161,7 @@ button:hover {
   font-size: medium;
   font-weight: normal;
   user-select: none;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-bottom: 8px;
 }
 
@@ -169,7 +169,7 @@ button:hover {
   transition: 250ms;
   color: blueviolet;
   cursor: pointer;
-  margin-left: 30px;
+  margin-left: 15px;
   font-weight: bold;
 }
 
@@ -184,7 +184,7 @@ button:hover {
   font-size: medium;
   font-weight: normal;
   user-select: none;
-  margin-left: 40px;
+  margin-left: 30px;
   margin-bottom: 8px;
 }
 
@@ -192,7 +192,7 @@ button:hover {
   transition: 250ms;
   color: blueviolet;
   cursor: pointer;
-  margin-left: 50px;
+  margin-left: 35px;
   font-weight: bold;
 }
 

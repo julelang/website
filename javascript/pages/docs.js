@@ -2394,7 +2394,9 @@ const types_castingHTML = `
 <div class="text">
 Casting is an explicit conversion from one type to another between supported types.
 <br><br>
-To make a cast, you need to write the target data type you want to cast in parentheses, then again you need to write the expression you want to cast in parentheses.
+To make a cast, you need to write the target data type you want to cast in parentheses, then you need to write the expression you want to cast.
+A casting expression evaluates all subsequent expressions for itself.
+For this reason, it may be a good approach to write the expressions in parentheses as well.
 <br>
 Example: <x class="inline_code">(int)(3.14)</x>
 <br><br>
@@ -2913,6 +2915,11 @@ One difference, prints new line after print.
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">panic(const err error)</x></div>
 Panics program with given error instance.
+
+<div class="topic-seperator"></div>
+<div class="sub-sub-title"><x class="inline_code">sizeof(type) uint</x></div>
+<x class="inline_code">sizeof</x> is actually a keyword, but used as function.
+Returns byte size of given data-type.
 `;
 
 const TAB_stdlib_debug_globals = `
@@ -3471,7 +3478,7 @@ const tabs = [
   ["tab-type-statics-f32-constants",      TAB_type_statics_f32_constants],
   ["tab-type-statics-f64-constants",      TAB_type_statics_f64_constants],
   ["tab-type-statics-int-constants",      TAB_type_statics_int_constants],
-  ["tab-type-statics-uint-constants",      TAB_type_statics_uint_constants],
+  ["tab-type-statics-uint-constants",     TAB_type_statics_uint_constants],
   ["tab-type-statics-str-constants",      TAB_type_statics_str_constants],
   ["tab-stdlib-builtin-type-aliases",     TAB_stdlib_builtin_type_aliases],
   ["tab-stdlib-builtin-structures",       TAB_stdlib_builtin_structures],
