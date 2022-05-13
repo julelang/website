@@ -279,7 +279,7 @@ Let's start with a simple hello world program and learn compiling from this prog
 <br><br>
 We have a <x class="inline_code">main.xx</x> file:
 <div class="code">main() {
-  outln("Hello, World!")
+    outln("Hello, World!")
 }</div>
 
 We will use already created settings file with <x class="inline_code">x init</x> command.
@@ -388,7 +388,7 @@ But you have to use the declarations you make in your code blocks, if you don't 
 <br><br>
 For example;
 <div class="code">main() {
-  a:int
+    a:int
 }</div>
 The variable <x class="inline_code">a</x> seen is declared but unused.
 This will cause you to get an error by the compiler and not be able to compile the code.
@@ -468,7 +468,7 @@ const basics_entry_pointHTML = `
   <div class="title-seperator"></div>
   <div class="sub-title">For Example</div>
   <div class="code">main() {
-  // Your entry point function body.
+    // Your entry point function body.
 }</div>
 </div>
 `;
@@ -593,15 +593,19 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
-      <td>i16, char</td>
+      <td>i8, i16, u8, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td>i8, i16, i32, char</td>
+      <td>i8, i16, i32, u8, u16, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i8, i16, i32, i64, int, intptr, char</td>
+      <td>i8, i16, i32, i64, u8, u16, u32, char</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">int</td>
+      <td>Platform dependent (signed)</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">intptr</td>
@@ -621,7 +625,11 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u8, u16, u32, u64, uint, uintptr, char</td>
+      <td>u8, u16, u32, u64, char</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">uint</td>
+      <td>Platform dependent (unsigned)</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">uintptr</td>
@@ -629,11 +637,11 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
-      <td>f32, i8, i16, i32, u8, u16, u32, char</td>
+      <td>f32, i8, i16, i32, i64, u8, u16, u32, u64, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f64</td>
-      <td>f32, f64, i8, i16, i32, u8, u16, u32, char</td>
+      <td>f32, f64, i8, i16, i32, i64, u8, u16, u32, u64, char</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
@@ -928,7 +936,7 @@ Each attribute is defined with <x class="inline_code">@</x>, the attribute itsel
 For example:
 <div class="code">@attribute_a
 cube(s int) int {
-  // Body ...
+    // Body ...
 }</div>
 </div>
 <br><br>
@@ -938,7 +946,7 @@ Note that an attribute cannot be given repeatedly.
 For example:
 <div class="code">@attribute_a @attribute_b
 cube(s int) int {
-  // Body...
+    // Body...
 }</div>
 <div class="warn">
 Not all attributes can be applied to all definitions.
@@ -963,9 +971,9 @@ Well, how we separate statements? Easy, please skip to next line or finish write
 <br><br>
 For example;
 <div class="code">main() {
-  [STATEMENT_1]; [STATEMENT_2]
-  [STATEMENT_3]
-  [STATEMENT_4]
+    [STATEMENT_1]; [STATEMENT_2]
+    [STATEMENT_3]
+    [STATEMENT_4]
 }</div>
 
 </div>
@@ -1032,8 +1040,8 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example;
 <div class="code">example() {
-  a:int = 10 // Value is 10.
-  a = 200    // New value is 200.
+    a:int = 10 // Value is 10.
+    a = 200    // New value is 200.
 }</div>
 
 <div class="title-seperator"></div>
@@ -1060,7 +1068,7 @@ Here is an example;
 <div class="code">iter:int = 100
 
 iter x == 100 {
-  // Your code...
+    // Your code...
 }</div>
 In the example above, the compiler can optimize the iteration to return unconditionally if it detects that <x class="inline_code">x</x> never changes.
 It does this because it is slower to read from memory and compare each time, it is pointless to do this every time as the value will not change.
@@ -1072,7 +1080,7 @@ For example;
 <div class="code">volatile iter:int = 100
 
 iter x == 100 {
-  // Your code...
+    // Your code...
 }</div>
 
 <div class="title-seperator"></div>
@@ -1118,9 +1126,9 @@ You can perform an assignment in an expressions.
 <br><br>
 For example;
 <div class="code">main() {
-  x: = 10
-  outln((x*=10)) // Prints 100
-  outln(x)       // Prints 100 because x assigned as 100
+    x: = 10
+    outln((x*=10)) // Prints 100
+    outln(x)       // Prints 100 because x assigned as 100
 }</div>
 To assign in Expression, the entire assignment statement must be in parentheses.
 The value it affects Expression is evaluated after the assignment has taken place.
@@ -1145,7 +1153,7 @@ For example;
 <div class="code">a: = 100
 
 my_func(a bool) {
-  outln(a)
+    outln(a)
 }
 </div>
 In the code above, the function's parameter is the same as the name of a global definition.
@@ -1158,8 +1166,8 @@ For example;
 <div class="code">a: = 100
 
 my_func(a bool) {
-  a: = 0.10
-  outln(a)
+    a: = 0.10
+    outln(a)
 }
 </div>
 Let's go over the previous example. In the block, the parameter <x class="inline_code">a</x> was taken with shadowing.
@@ -1177,7 +1185,7 @@ We have seen partially there how to define a function.
 <br><br>
 To remember:
 <div class="code">example() {
-  // ...
+    // ...
 }</div>
 For functions, the name of the function comes first, followed by the parentheses.
 The braces indicate the block of the function.
@@ -1194,11 +1202,11 @@ These parameters must be specified with arguments at the time the function is ca
 <br><br>
 For example;
 <div class="code">print_int(i int) {
-  outln(i)
+    outln(i)
 }
 
 main() {
-  print_int(50)
+    print_int(50)
 }</div>
 It is similar to normal function definition.
 Parameters are written between parentheses
@@ -1213,8 +1221,8 @@ There is alternative syntax for specifying parameters and data types.
 <br>
 For example;
 <div class="code">print_sum(a, b int) {
-  add: = a + b
-  outln(add)
+    add: = a + b
+    outln(add)
 }</div>
 As seen in the example above, if there is more than one parameter that must have the same data-type, the data-type can be specified in the last parameter.
 When this is done, all parameters that have not been given the previous data-type will have the same data-type.
@@ -1227,8 +1235,8 @@ These parameters is similar to variable versions, actually they are same, acts s
 <br><br>
 For example;
 <div class="code">print_sum(const a, volatile const b int) {
-  sum: = a + b
-  outln(sum)
+    sum: = a + b
+    outln(sum)
 }</div>
 
 <div class="title-seperator"></div>
@@ -1238,13 +1246,13 @@ The <x class="inline_code">...</x> operator is used for this.
 <br>
 For example;
 <div class="code">str_out(...values str) {
-  iter _, s: in values {
-    out(s)
-  }
+    iter _, s: in values {
+        out(s)
+    }
 }
 
 main() {
-  str_out("Hello", "World", "Variadic")
+    str_out("Hello", "World", "Variadic")
 }</div>
 As seen in the example above, many arguments could be given to the function even though it was a single parameter.
 This is a result of the variadic parameter.
@@ -1266,11 +1274,11 @@ Functions can return values.
 <br><br>
 For example;
 <div class="code">main() {
-  outln(div(10, 2))
+    outln(div(10, 2))
 }
 
 div(a, b f64) f64 {
-  ret a / b
+    ret a / b
 }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
 To return a value, the function must have the data type for the return.
@@ -1335,8 +1343,8 @@ Just in addition, the block of the function must be written.
 <br><br>
 For example;
 <div class="code">main() {
-  make_hello: = (name str) str { "Hello " + name + "!" };
-  outln(make_hello("X"))
+    make_hello: = (name str) str { "Hello " + name + "!" };
+    outln(make_hello("X"))
 }</div>
 
 <div class="topic-seperator"></div>
@@ -1344,9 +1352,9 @@ Anonymous functions can access the definitions of the block in which they are de
 <br><br>
 For example;
 <div class="code">main() {
-  message: = "Hello, World!"
-  func: = () { outln(message) };
-  func();
+    message: = "Hello, World!"
+    func: = () { outln(message) };
+    func();
 }</div>
 The anonymous function defined in the example above uses the <x class="inline_code">message</x> variable belonging to the block it is defined in.
 Definitions used from outer blocks can be shadowed within the anonymous function.
@@ -1403,9 +1411,9 @@ For example;
 <div class="code">compare_int(x, y int) [bool, bool] { x < y, x == y }
 
 main() {
-  less:, equals: = compare_int(10, 20)
-  outln(less)
-  outln(equals)
+    less:, equals: = compare_int(10, 20)
+    outln(less)
+    outln(equals)
 }</div>
 <div class="warn">You can't use multiple returnable functions combined with normal multiple assignments.</div>
 
@@ -1417,13 +1425,13 @@ For example;
 <div class="code">multi_ret_func() [int, str, char] { 143, "STR", 'W' }
 
 my_print(a int, b str, c char) {
-  outln(a)
-  outln(b)
-  outln(c)
+    outln(a)
+    outln(b)
+    outln(c)
 }
 
 main() {
-  my_print(multi_ret_func())
+    my_print(multi_ret_func())
 }</div>
 
 <div class="title-seperator"></div>
@@ -1435,10 +1443,10 @@ For example;
 example2() [int, str, char] { (example1()) }
 
 main() {
-  a:, b:, c: = test2()
-  outln(a)
-  outln(b)
-  outln(c)
+    a:, b:, c: = test2()
+    outln(a)
+    outln(b)
+    outln(c)
 }</div>
 
 <div class="title-seperator"></div>
@@ -1450,8 +1458,8 @@ For example;
 sum(a{10}, b{50} int) int { a+b }
 
 main() {
-  outln(sum()) // Prints 60
-  outln(25)    // Prints 75
+    outln(sum()) // Prints 60
+    outln(25)    // Prints 75
 }</div>
 
 <div class="title-seperator"></div>
@@ -1462,8 +1470,8 @@ For example;
 <div class="code">sub(a, b int) int { a-b }
 
 main() {
-  outln(sub(190, 10))     // Prints 180
-  outln(sub(b=190, a=10)) // Prints -180
+    outln(sub(190, 10))     // Prints 180
+    outln(sub(b=190, a=10)) // Prints -180
 }</div>
 
 <div class="title-seperator"></div>
@@ -1474,9 +1482,9 @@ The keyword <x class="inline_code">defer</x> is used for a deferred call.
 <br><br>
 For example;
 <div class="code">main() {
-  defer outln("Defer 1")
-  defer outln("Defer 2")
-  outln("Hello Deferred Calls")
+    defer outln("Defer 1")
+    defer outln("Defer 2")
+    outln("Hello Deferred Calls")
 }
 
 // OUTPUT
@@ -1499,11 +1507,11 @@ This tends to happen in programs where a task is waiting and the program has det
 The keyword <x class="inline_code">co</x> is used to do a concurrent call. <br>
 For exmaple;
 <div class="code">hello_world() {
-  outln("Hello World")
+    outln("Hello World")
 }
 
 main() {
-  co hello_world()
+    co hello_world()
 }</div>
 
 <div class="warn">The program does not automatically wait for the execution of concurrent calls to terminate.</div>
@@ -1519,9 +1527,9 @@ Arrays can store multiple values.
 <br><br>
 Example to arrays;
 <div class="code">main() {
-  my_array:[]str
-  my_array = []str{"Hello", "X", "arrays!"}
-  outln(my_array)
+    my_array:[]str
+    my_array = []str{"Hello", "X", "arrays!"}
+    outln(my_array)
 }</div>
 The nil is the auto value of arrays.
 But the important point: empty array and nil setted array is the same thing.
@@ -1544,10 +1552,10 @@ Arrays is use indexes for access and elements value setting.
 <br>
 For example;
 <div class="code">main() {
-  my_array: = []str{"Hello", "arrays", "indexes"}
-  outln(my_array[0])
-  my_array[0] = "Hi"
-  outln(my_array)
+    my_array: = []str{"Hello", "arrays", "indexes"}
+    outln(my_array[0])
+    my_array[0] = "Hi"
+    outln(my_array)
 }</div>
 For element access, index is written between brackets (<x class="inline_code">[]</x>).
 First statement is declares our array.
@@ -1565,11 +1573,11 @@ Multidimensional arrays is array storing arrays.
 <br>
 For example;
 <div class="code">main() {
-  my_array: = [][]str{
-    []str{"Apple", "Banana"},
-    []str{"Bred", "Cheese"},
-  }
-  outln(my_array)
+    my_array: = [][]str{
+        []str{"Apple", "Banana"},
+        []str{"Bred", "Cheese"},
+    }
+    outln(my_array)
 }</div>
 <br>
 Output of program;
@@ -1587,17 +1595,17 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 For example;
 <div class="code">sum(...values int) int {
-  total:int
-  iter _, i: in values {
-    total += i
-  }
-  total
+    total:int
+    iter _, i: in values {
+        total += i
+    }
+    total
 }
 
 main() {
-  my_arr: = []int{90, 32, 6, 53}
-  result: = sum(my_arr...)
-  outln(result)
+    my_arr: = []int{90, 32, 6, 53}
+    result: = sum(my_arr...)
+    outln(result)
 }</div>
 As seen in the example above, the owned variable <x class="inline_code">my_arr</x> holds an array.
 Its elements are compatible with the variadic parameter.
@@ -1613,11 +1621,11 @@ Maps is a hashmap. Maps a unique key value to a value.
 <br><br>
 Example to maps;
 <div class="code">main() {
-  mymap:[i8:str] = [i8:str]{
-    0: "CPU",
-    1: "RAM",
-    2: "GPU"
-  }
+    mymap:[i8:str] = [i8:str]{
+        0: "CPU",
+        1: "RAM",
+        2: "GPU"
+    }
 }</div>
 The example above shows how a map is defined and its data-type representation.
 To describe a map, curly braces are opened after the data type.
@@ -1670,13 +1678,13 @@ This increases the readability of the code and makes it easier to maintain.
 The keyword <x class="inline_code">enum</x> is used to declare an enum. <br>
 For exmaple;
 <div class="code">enum filemode {
-  read  = 35,
-  write = 89,
-  both,
+    read  = 35,
+    write = 89,
+    both,
 }
 
 main() {
-  outln(filemode.read)
+    outln(filemode.read)
 }</div>
 As seen in the example above, there is an enumeration definition.
 If you do not assign a value to the enumeration elements, the index value is automatically assigned.
@@ -1693,13 +1701,13 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 If you want to give enums a data-type other than the default, it is possible to do so. <br>
 For example;
 <div class="code">enum filemode:u8 {
-  read  = 35,
-  write = 89,
-  both,
+    read  = 35,
+    write = 89,
+    both,
 }
 
 main() {
-  outln(filemode.read)
+    outln(filemode.read)
 }</div>
 The above enumeration has the data-type <x class="inline_code">u8</x>.
 
@@ -1718,10 +1726,10 @@ Also, unlike an array, the fields of structures are accessed with an identifier.
 <br><br>
 For example to declaration a struct;
 <div class="code">struct employee {
-  name   :str
-  age    :u8
-  title  :str
-  salary :u32
+    name   :str
+    age    :u8
+    title  :str
+    salary :u32
 }</div>
 Members of structs are the same as a variable definition.
 
@@ -1731,10 +1739,10 @@ When instances of struct members are initialized, they are initialized using the
 But you can custom default values. <br>
 For example;
 <div class="code">struct employee {
-  name   :str = "Anonymous"
-  age    :u8  = 18
-  title  :str = "Engineer"
-  salary :u32 = 2500
+    name   :str = "Anonymous"
+    age    :u8  = 18
+    title  :str = "Engineer"
+    salary :u32 = 2500
 }</div>
 
 <div class="title-seperator"></div>
@@ -1746,17 +1754,17 @@ Default arguments are based on default member values that you specify.
 <br><br>
 For example;
 <div class="code">struct employee {
-  name   :str = "Anonymous"
-  age    :u8  = 18
-  title  :str = "-"
-  salary :u32 = 2500
+    name   :str = "Anonymous"
+    age    :u8  = 18
+    title  :str = "-"
+    salary :u32 = 2500
 }
 
 main() {
-  anon: = employee()
-  emma: = employee("Emma Blake", 27, "Data Scientist", 4750)
-  outln(anon)
-  outln(emma)
+    anon: = employee()
+    emma: = employee("Emma Blake", 27, "Data Scientist", 4750)
+    outln(anon)
+    outln(emma)
 }</div>
 
 </div>
@@ -1791,8 +1799,8 @@ The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
 For example;
 <div class="code">main() {
-  x:int = 10
-  y:*int = &x
+    x:int = 10
+    y:*int = &x
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
@@ -1801,10 +1809,10 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
 For example;
 <div class="code">main() {
-  x:int = 10
-  y:*int = &x
-  outln(y)  // Prints stored address
-  outln(*y) // Prints value at address (so 10)
+    x:int = 10
+    y:*int = &x
+    outln(y)  // Prints stored address
+    outln(*y) // Prints value at address (so 10)
 }</div>
 
 <div class="title-seperator"></div>
@@ -1813,10 +1821,10 @@ Pointers can take on value assignment just like a variable, with values of the a
 <br>
 For example;
 <div class="code">main() {
-  x:int = 10
-  z:*int = &x // The 'z' store now memory address of the 'x' variable.
-  y:int = 98
-  z = &y      // The 'z' store now memory address of the 'y' variable.
+    x:int = 10
+    z:*int = &x // The 'z' store now memory address of the 'x' variable.
+    y:int = 98
+    z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-seperator"></div>
 Additionally, pointers can set the value of the memory address they store.
@@ -1825,10 +1833,10 @@ The <x class="inline_code">*</x> operator used for that too.
 <br>
 For example;
 <div class="code">main() {
-  x:int = 10
-  y:*int = &x
-  *y = 59  // Assign value
-  outln(x) // Prints 59
+    x:int = 10
+    y:*int = &x
+    *y = 59  // Assign value
+    outln(x) // Prints 59
 }</div>
 
 <div class="title-seperator"></div>
@@ -1842,11 +1850,11 @@ A subtraction expression for pointer, means previous memory location.
 <br><br>
 For exaple;
 <div class="code">main() {
-  arr: = []int{1, 200, 53, 635, 903}
-  ptr: = &arr[0]
-  outln(*ptr) // 1
-  ptr += 1
-  outln(*ptr) // 200
+    arr: = []int{1, 200, 53, 635, 903}
+    ptr: = &arr[0]
+    outln(*ptr) // 1
+    ptr += 1
+    outln(*ptr) // 200
 }</div>
 As seen in the example above, when the pointer pointing to the first element of the array is increased by 1, it becomes pointing to the second element of the array.
 </div>
@@ -1882,8 +1890,8 @@ const memory_memory_managementHTML = `
   You can just free pointers.
   For example;
   <div class="code">main() {
-  x: = new int // Allocate from heap
-  free x       // Free allocation
+    x: = new int // Allocate from heap
+    free x       // Free allocation
 }</div>
   <div class="warn">If you use stack-allocation pointer, this is a undefined behavior.</div>
 
@@ -1893,10 +1901,10 @@ const memory_memory_managementHTML = `
   <br>
   Example;
   <div class="code">main() {
-  x:*int = new int
-  *x = 10
-  free x  // Frees x, x now becomes a dangling pointer
-  x = nil // x is not dangling now
+    x:*int = new int
+    *x = 10
+    free x  // Frees x, x now becomes a dangling pointer
+    x = nil // x is not dangling now
 }</div>
   Reason of that after freed allocations pointers isn't setted as nil.
   So data is freed but pointer still points to the address, but address not have any value.
@@ -1904,9 +1912,9 @@ const memory_memory_managementHTML = `
   <div class="topic-seperator"></div>
   Function example;
   <div class="code">get_pointer() *int {
-  x: = 10
-  &x // Returns address of x
-     // but x is out of scope, so pointer is dangling
+    x: = 10
+    &x // Returns address of x
+       // but x is out of scope, so pointer is dangling
 }
 
 main() {
@@ -1917,16 +1925,16 @@ main() {
   <br>
   For example with example at above;
   <div class="code">get_pointer() *int {
-  x: = 10
-  y:*int = new int
-  *y = x
-  y
+    x: = 10
+    y:*int = new int
+    *y = x
+    y
 }
 
 main() {
-  p:*int = get_pointer()
-  outln(*p)
-  free p
+    p:*int = get_pointer()
+    outln(*p)
+    free p
 }</div>
 </div>
 `;
@@ -1953,19 +1961,19 @@ While the program is executing, if the functions are designed to return this str
 <br><br>
 For example;
 <div class="code">safe_div(a, b f32) [f32, *error] {
-  if a == 0 || b == 0 {
-    ret 0, new error("division with zero")
-  }
-  ret a/b, nil
+    if a == 0 || b == 0 {
+        ret 0, new error("division with zero")
+    }
+    ret a/b, nil
 }
 
 main() {
-  result:, err: = safe_div(5, 0)
-  if err {
-    outln(err.message)
-    ret
-  }
-  outln(result)
+    result:, err: = safe_div(5, 0)
+    if err {
+      outln(err.message)
+      ret
+    }
+    outln(result)
 }</div>
 In the example above, a potential error is catched with the error structure.
 It is recommended that the returned structure instance be heap-allocated.
@@ -1985,14 +1993,14 @@ For example;
 <div class="code">counter:u32 = 0
 
 add_counter(const rate int) {
-  if counter == 0 {
-    panic(error("counter is zero"))
-  }
-  counter += rate
+    if counter == 0 {
+        panic(error("counter is zero"))
+    }
+    counter += rate
 }
 
 main() {
-  add_counter(-1)
+    add_counter(-1)
 }</div>
 The code above is an example of panicking.
 
@@ -2008,10 +2016,10 @@ The <x class="inline_code">try</x> block is used for this.
 <br><br>
 For example;
 <div class="code">main() {
-  try {
-    panic(error("example panic"))
-  }
-  outln("Hello World")
+    try {
+        panic(error("example panic"))
+    }
+    outln("Hello World")
 }</div>
 In the above code example, you cannot normally reach the <x class="inline_code">Hello World</x> result.
 However, when we enclose the panic in a <x class="inline_code">try</x> block, you will see that the execution of the program is no longer stopped.
@@ -2024,11 +2032,11 @@ What you need in this case is a <x class="inline_code">catch</x> block.
 <br><br>
 For example;
 <div class="code">main() {
-  try {
-    panic(error("example panic"))
-  } catch e {
-    outln("program panicked: " + e.message)
-  }
+    try {
+        panic(error("example panic"))
+    } catch e {
+        outln("program panicked: " + e.message)
+    }
 }</div>
 In the above example, when the <x class="inline_code">try</x>block encounters a panic, the <x class="inline_code">catch</x> block runs before exiting the block.
 The variable of the catch block has always taken the error structure as its data type and can never be used as an existing variable, it is always newly created.
@@ -2041,11 +2049,11 @@ In these cases, you can use an empty catch block.
 <br><br>
 For example;
 <div class="code">main() {
-  try {
-    panic(error("example panic"))
-  } catch {
-    outln("program panicked")
-  }
+    try {
+        panic(error("example panic"))
+    } catch {
+        outln("program panicked")
+    }
 }</div>
 In this example you catch the panic, but not the error that caused it.
 
@@ -2069,8 +2077,8 @@ For example;
 <div class="code">type int32 i32
 
 main() {
-  my_int:int32 = 100
-  outln(my_int)
+    my_int:int32 = 100
+    outln(my_int)
 }</div>
 As seen in the example above, there is an alias definition of <x class="inline_code">int32</x> for the <x class="inline_code">i32</x> data type.
 The keyword <x class="inline_code">type</x> comes first to define an alias.
@@ -2272,13 +2280,13 @@ A separate operator was not required for this, but it was thought to be more rea
 A block after the identifier is sufficient to declare a namespace. <br>
 For example;
 <div class="code">math {
-  @inline
-  sum(const a, const b int) int { a+b }
+    @inline
+    sum(const a, const b int) int { a+b }
 }
 
 main() {
-  result: = math::sum(10, 9)
-  outln(result)
+    result: = math::sum(10, 9)
+    outln(result)
 }</div>
 The example above contains a namespace with the identifier <x class="inline_code">math</x> and a function with the identifier <x class="inline_code">sum</x>.
 You can see how this namespace is used in the main function.
@@ -2288,13 +2296,13 @@ You use <x class="inline_code">::</x> to access the definitions of a namespace.
 <div class="sub-title">Nested Namespaces</div>
 A namespace can contain namespaces, here is an example;
 <div class="code">math {
-  flat {
-    const pi: = 3
-  }
+    flat {
+        const pi: = 3
+    }
 }
 
 main() {
-  outln(math::flat:pi)
+    outln(math::flat:pi)
 }</div>
 In the example above you see a nested namespace declaration.
 How to access this is also seen in the main function.
@@ -2306,11 +2314,11 @@ After accessing the <x class="inline_code">flat</x> namespace inside the <x clas
 You don't have to write nested to define sub namespaces. <br>
 Here is an alternative to the above example;
 <div class="code">math::flat {
-  const pi: = 3
+    const pi: = 3
 }
 
 main() {
-  outln(math::flat:pi)
+    outln(math::flat:pi)
 }</div>
 
 </div>
@@ -2335,7 +2343,7 @@ For this, show the comment line as a cxx content;
 <div class="code">//cxx: #include "my_library.h"
 
 main() {
-  // ...
+    // ...
 }
 </div>
 <div class="warn">
@@ -2353,11 +2361,11 @@ You can use only block identifiers.
 For example;
 <div class="code">@inline
 cxx_wcout(const msg str) {
-  //cxx: std::wcout << @msg << std::endl;
+    //cxx: std::wcout << @msg << std::endl;
 }
 
 main() {
-  cxx_wcout("Hello World")
+    cxx_wcout("Hello World")
 }</div>
 
 <div class="title-seperator"></div>
@@ -2402,10 +2410,10 @@ Example: <x class="inline_code">(int)(3.14)</x>
 <br><br>
 For code example; <br>
 <div class="code">main() {
-  x:f32 = 3.14
-  y:int = (int)(x) // Casting
-  outln(x)         // Prints 3.14
-  outln(y)         // Prints 3
+    x:f32 = 3.14
+    y:int = (int)(x) // Casting
+    outln(x)         // Prints 3.14
+    outln(y)         // Prints 3
 }</div>
 </div>
 As you can see, the variable <x class="inline_code">x</x> is of type <x class="inline_code">f32</x> and the variable <x class="inline_code">y</x> is of type <x class="inline_code">int</x>.
@@ -2418,11 +2426,62 @@ You can ignore constant with casting.
 <br><br>
 For example;
 <div class="code">main() {
-  const ptr0: = new int
-  ptr1: = (*int)(ptr0)
-  *ptr1 = 200
-  outln(*ptr0) // Prints 200
+    const ptr0: = new int
+    ptr1: = (*int)(ptr0)
+    *ptr1 = 200
+    outln(*ptr0) // Prints 200
 }</div>
+
+</div>
+`;
+
+const types_genericsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Generics</div>
+<div class="text">
+Generic programming is an approach that offers instantiation for more than one type, using a generic static type system.
+The compiler checks the script for every combination you use and checks for errors.
+<br><br>
+If you don't use a generic function at all, you'll only get AST generation errors and will not be included in compilation like other unused definitions.
+<br><br>
+There are no restrictions; default arguments support const and volatile parameters, variadic parameters, or recursive calls.
+It behaves like a normal function.
+<br><br>
+No new keyword has been introduced to denote generic types, it is possible to add generic types with the syntax difference of an existing feature type aliases.
+<br><br>
+
+<div class="info">
+Generic types are also assumed to be local in-scope type aliases.
+Therefore, they can be used as specific types in variable and similar definitions in scope.
+</div>
+<br>
+For example;
+<div class="code">type[T]
+sum(a, b T) T {
+    x:T = a + b
+    x
+}
+
+main() {
+    outln(sum[int](10, 20))  // 30
+    outln(sum[f32](10, 4.2)) // 14.2
+    outln(sum[f64](4.67, 2)) // 6.67
+}</div>
+
+There is a use for a generic type specification, as seen in the example above.
+Use the <x class="inline_code">type</x> keyword with brackets and write the identifier of the generic type.
+To specify a type for a generic type, you specify the data-type in brackets.
+
+<div class="topic-seperator"></div>
+
+To specify multiple different generic types, sequential specification or comma-separation syntaxes are available;
+<div class="code">type[T1]
+type[T2]
+example_func(a T1, b T2) {}</div>
+
+<div class="code">type[T1, T2]
+example_func1(a T1, b T2) {}</div>
+
+</div>
 `;
 
 const documentingHTML = `
@@ -2454,8 +2513,8 @@ For example;
 div(const a, const b f64) f64 { a/b }</div>
 
 <div class="warn">
-  <li>The documentation comments should be single-line comments.</li>
-  <li>The documentation comments should be full line.</li>
+    <li>The documentation comments should be single-line comments.</li>
+    <li>The documentation comments should be full line.</li>
 </div>
 </div>
 `;
@@ -2513,12 +2572,12 @@ For example;
 <div class="code">// file: ./hello_print.xx
 
 @inline hello_print(const name str) {
-  outln("Hello " + name)
+    outln("Hello " + name)
 }</div>
 <div class="code">// file: ./main.xx
 
 main() {
-  hello_print("Packages")
+    hello_print("Packages")
 }</div>
 As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
 <br><br>
@@ -2887,7 +2946,7 @@ const TAB_stdlib_builtin_type_aliases = `
 
 const TAB_stdlib_builtin_structures = `
 <div class="code">struct error {
-  message:str
+    message:str
 }</div>
 
 This is a error handling structure of standard library. <br>
@@ -2977,9 +3036,9 @@ Infinite iterations keep repeating endlessly until the loop is somehow broken.
 <br>
 For example;
 <div class="code">main() {
-  iter {
-    outln("Hello, iterations")
-  }
+    iter {
+        outln("Hello, iterations")
+    }
 }</div>
 The above example prints <x class="inline_code">Hello, iterations</x> repeatedly.
 
@@ -2990,11 +3049,11 @@ It is not much different from defining an infinite iteration.
 <br>
 For example;
 <div class="code">main() {
-  counter: = 0
-  iter counter <= 5 {
-    outln(counter)
-    counter += 10
-  }
+    counter: = 0
+    iter counter <= 5 {
+        outln(counter)
+        counter += 10
+    }
 }</div>
 The While loops use boolean expressions.
 As seen in the example above, the expression is written between the keyword and the block.
@@ -3008,10 +3067,10 @@ It repeats itself by looping through the elements of the collection.
 <br>
 For example;
 <div class="code">main() {
-  mystr:str = "Hello"
-  iter index: in mystr {
-    outln(index)
-  }
+    mystr:str = "Hello"
+    iter index: in mystr {
+        outln(index)
+    }
 }
 
 // OUTPUT
@@ -3029,10 +3088,10 @@ This example, just shows index. Let's see foreach iteration with element.
 <br>
 For example;
 <div class="code">main() {
-  mystr:str = "Hello"
-  iter _, r:char in mystr {
-    outln(r)
-  }
+    mystr:str = "Hello"
+    iter _, r:char in mystr {
+        outln(r)
+    }
 }
 
 // OUTPUT
@@ -3056,10 +3115,10 @@ If you want break the iteration, use the <x class="inline_code">break</x> keywor
 <br>
 For example;
 <div class="code">main() {
-  iter {
-    outln("Hello, World")
-    break
-  }
+    iter {
+        outln("Hello, World")
+        break
+    }
 }</div>
 The example at above, normally prints <x class="inline_code">Hello, World</x> again and again.
 But just prints one time, because <x class="inline_code">break</x> keyword is breaks iteration.
@@ -3069,10 +3128,10 @@ If you want continue to next iteration, use the <x class="inline_code">continue<
 <br>
 For example;
 <div class="code">main() {
-  iter {
-    continue
-    outln("Hello, World")
-  }
+    iter {
+        continue
+        outln("Hello, World")
+    }
 }</div>
 The example at above, normally prints <x class="inline_code">Hello, World</x> again and again.
 But prints nothing, because <x class="inline_code">continue</x> keyword is continue to next iteration.
@@ -3090,10 +3149,10 @@ It is also the beginning of a new chain of conditions.
 <br><br>
 For example;
 <div class="code">main() {
-  x: = new int
-  if x == nil {
-    outln("memory allocation is failed")
-  }
+    x: = new int
+    if x == nil {
+        outln("memory allocation is failed")
+    }
 }</div>
 
 <div class="title-seperator"></div>
@@ -3102,14 +3161,14 @@ If the preceding <x class="inline_code">if</x> and <x class="inline_code">else i
 <br><br>
 For example;
 <div class="code">main() {
-  x: = 100
-  if x > 1000 {
-    outln("greater than thousand")
-  } else if x < 100 {
-    outln("less than hundred")
-  } else if x == 100 {
-    outln("equals to hundred")
-  }
+    x: = 100
+    if x > 1000 {
+        outln("greater than thousand")
+    } else if x < 100 {
+        outln("less than hundred")
+    } else if x == 100 {
+        outln("equals to hundred")
+    }
 }
 
 // OUTPUT: equals to hundred</div>
@@ -3120,12 +3179,12 @@ It is the block that will be executed unconditionally if the previous <x class="
 <br><br>
 For example;
 <div class="code">main() {
-  x: = new int
-  if x == nil {
-    outln("memory allocation is failed")
-  } else {
-    outln("memory allocation is success")
-  }
+    x: = new int
+    if x == nil {
+        outln("memory allocation is failed")
+    } else {
+        outln("memory allocation is success")
+    }
 }</div>
 `;
 
@@ -3340,6 +3399,7 @@ const NAV_error_handling_handling_panics      = document.getElementById("error-h
 const NAV_types                               = document.getElementById('types');
 const NAV_types_aliasing                      = document.getElementById('types-aliasing');
 const NAV_types_casting                       = document.getElementById('types-casting');
+const NAV_types_generics                      = document.getElementById("types-generics");
 const NAV_types_str                           = document.getElementById("types-str");
 const NAV_types_arrays                        = document.getElementById("types-arrays");
 const NAV_types_maps                          = document.getElementById("types-maps");
@@ -3422,6 +3482,7 @@ const navigations = [
   [NAV_types,                               typesHTML],
   [NAV_types_aliasing,                      types_aliasingHTML],
   [NAV_types_casting,                       types_castingHTML],
+  [NAV_types_generics,                      types_genericsHTML],
   [NAV_types_str,                           types_strHTML],
   [NAV_types_arrays,                        types_arraysHTML],
   [NAV_types_maps,                          types_mapsHTML],

@@ -4,37 +4,37 @@
 
 const preview_code_helloworldHTML =
 `main() {
-  outln("Hello, world")
+    outln("Hello, world")
 }`;
 
 const preview_code_fibonacci_closureHTML =
 `fibo() () int {
-  a:, b: = 0, 1
-  (() int {
-    a, b = b, a+b
-    a
-  })
+    a:, b: = 0, 1
+    (() int {
+        a, b = b, a+b
+        a
+    })
 }
 
 main() {
-  f: = fibo()
-  outln(f())
-  outln(f())
-  outln(f())
-  outln(f())
-  outln(f())
+    f: = fibo()
+    outln(f())
+    outln(f())
+    outln(f())
+    outln(f())
+    outln(f())
 }`;
 
 const preview_code_pointersHTML =
 `main() {
-  myarr: = []int{10, 50, 24, -43, 63}
-  const myarr_size:size = 5
-  counter: = 0
-  ptr: = &myarr[0]
-  iter (counter+=1) <= myarr_size {
-    outln(*ptr)
-    ptr += 1
-  }
+    myarr: = []int{10, 50, 24, -43, 63}
+    const myarr_size:size = 5
+    co  unter: = 0
+    ptr: = &myarr[0]
+    iter (counter+=1) <= myarr_size {
+        outln(*ptr)
+        ptr += 1
+    }
 }`;
 
 //#region GET_ELEMENTS
