@@ -2683,6 +2683,18 @@ Input/Output operations. <br>
 </div>
 `;
 
+const stdlib_memHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">mem</x></div>
+<div class="text">
+
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-stdlib-mem-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const stdlib_osHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">os</x></div>
 <div class="text">
@@ -2942,6 +2954,7 @@ As a return value, it is usually used to indicate no matches.
 const TAB_stdlib_builtin_type_aliases = `
 <div class="sub-sub-title"><x class="inline_code">type byte u8</x></div>
 <div class="sub-sub-title"><x class="inline_code">type sbyte i8</x></div>
+<div class="sub-sub-title"><x class="inline_code">type size uint</x></div>
 `;
 
 const TAB_stdlib_builtin_structures = `
@@ -3009,6 +3022,42 @@ Reads full-complete line from command-line.
 <div class="code">@inline
 pub readin() str</div>
 Read first part of line from command-line.
+`;
+
+const TAB_stdlib_mem_functions = `
+<div class="code">type[Alloc_T]
+pub calloc(const n size) *Alloc_T</div>
+Allocates n memory by sizeof specified data-type. <br>
+The allocated memory initialized with zero (0) value.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">calloc[Alloc_T](n) = nil if n == 0</x></li>
+<li><x class="inline_code">calloc[Alloc_T](n) = nil if allocation failed</x></li>
+
+<div class="topic-seperator"></div>
+<div class="code">pub malloc(const size size) voidptr</div>
+Allocates memory by specified size. <br>
+The allocated memory is not initialized.
+<br><br>
+Special cases are;
+<li><x class="inline_code">malloc(size) = nil if n == 0</x></li>
+<li><x class="inline_code">malloc(size) = nil if allocation failed</x></li>
+
+<div class="topic-seperator"></div>
+<div class="code">pub realloc(ptr voidptr, const size size) voidptr</div>
+Resizes the allocation based on the given size.
+<br><br>
+Special cases are;
+<li><x class="inline_code">realloc(ptr, size) = nil if ptr == nil</x></li>
+<li><x class="inline_code">realloc(ptr, size) = nil if allocation failed</x></li>
+
+<div class="topic-seperator"></div>
+<div class="code">type[Alloc_T]
+pub memset(ptr *Alloc_T, expr Alloc_T, const n size)</div>
+Sets n value of pointer segments to specified expression.
+<br><br>
+Special case is:
+<li><x class="inline_code">memset[Alloc_T](ptr, expr, n) = does nothing if n == 0</x></li>
 `;
 
 const TAB_stdlib_os_globals = `
@@ -3432,6 +3481,7 @@ const NAV_stdlib_builtin                      = document.getElementById("stdlib-
 const NAV_stdlib_debug                        = document.getElementById("stdlib-debug");
 const NAV_stdlib_debug_assert                 = document.getElementById("stdlib-debug-assert");
 const NAV_stdlib_io                           = document.getElementById("stdlib-io");
+const NAV_stdlib_mem                          = document.getElementById("stdlib-mem");
 const NAV_stdlib_os                           = document.getElementById("stdlib-os");
 const NAV_end                                 = document.getElementById("end");
 
@@ -3515,6 +3565,7 @@ const navigations = [
   [NAV_stdlib_debug,                        stdlib_debugHTML],
   [NAV_stdlib_debug_assert,                 stdlib_debug_assertHTML],
   [NAV_stdlib_io,                           stdlib_ioHTML],
+  [NAV_stdlib_mem,                          stdlib_memHTML],
   [NAV_stdlib_os,                           stdlib_osHTML],
   [NAV_end,                                 endHTML],
 ];
@@ -3547,6 +3598,7 @@ const tabs = [
   ["tab-stdlib-debug-globals",            TAB_stdlib_debug_globals],
   ["tab-stdlib-debug-assert-functions",   TAB_stdlib_debug_assert_functions],
   ["tab-stdlib-io-functions",             TAB_stdlib_io_functions],
+  ["tab-stdlib-mem-functions",            TAB_stdlib_mem_functions],
   ["tab-stdlib-os-globals",               TAB_stdlib_os_globals],
   ["tab-stdlib-os-functions",             TAB_stdlib_os_functions],
   ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
