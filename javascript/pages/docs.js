@@ -1936,6 +1936,30 @@ main() {
     outln(*p)
     free p
 }</div>
+
+</div>
+`;
+
+const memory_referencesHTML = `
+<div class="title" style="margin-bottom: 20px;">References</div>
+<div class="text">
+References are like pointers but less powerful.
+References are definitions that refer to a definition.
+The <x class="inline_code">&</x> operator must be used to represent a reference.
+
+<div class="title-seperator"></div>
+<div class="sub-title">Reference Paramaters</div>
+Example for referenced parameters;
+<div class="code">sum(&i, val int) { i += val }
+
+main() {
+  a: = 10
+  sum(a, 100)
+  outln(a)
+}</div>
+The example at above, prints <x class="inline_code">110</x>.
+Since the reference of the variable is used, it acts directly on the parent value.
+
 </div>
 `;
 
@@ -3452,6 +3476,7 @@ const NAV_common_concepts_structures          = document.getElementById("common-
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
+const NAV_memory_references                   = document.getElementById("memory-references");
 const NAV_error_handling                      = document.getElementById("error-handling");
 const NAV_error_handling_error_structure      = document.getElementById("error-handling-error-structure");
 const NAV_error_handling_panics               = document.getElementById("error-handling-panics");
@@ -3536,6 +3561,7 @@ const navigations = [
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
+  [NAV_memory_references,                   memory_referencesHTML],
   [NAV_error_handling,                      error_handlingHTML],
   [NAV_error_handling_error_structure,      error_handling_error_structureHTML],
   [NAV_error_handling_panics,               error_handling_panicsHTML],
