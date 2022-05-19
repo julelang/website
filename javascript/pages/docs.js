@@ -3339,12 +3339,15 @@ const TAB_cxx_cxxapi_defines = `
 <div class="title-seperator"></div>
 <div class="title-seperator"></div>
 <div id="cxxapi-misc" class="sub-sub-title">Misc</div>
-<div class="code">class exception</div>
-Exception instance of X.
-
-<div class="topic-seperator"></div>
 <div class="code">struct defer</div>
 Source struct for deferred calls.
+
+<div class="topic-seperator"></div>
+<div class="code">template&lt;typename Type, unsigned N, unsigned Last&gt;
+struct tuple_ostream</div>
+<div class="code">template&lt;typename Type, unsigned N&gt;
+struct tuple_ostream&lt;Type, N, N&gt;</div>
+Implementation of tuple available for std::ostream.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
@@ -3369,11 +3372,8 @@ The <x class="inline_code">str</x> data-type of X.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-structs" class="sub-sub-title">Structs</div>
-<div class="code">template&lt;typename Type, unsigned N, unsigned Last&gt;
-struct tuple_ostream</div>
-<div class="code">template&lt;typename Type, unsigned N&gt;
-struct tuple_ostream&lt;Type, N, N&gt;</div>
-Implementation of tuple available for std::ostream.
+<div class="code">struct XID(error)</div>
+The built-in <x class="inline_code">error</x> structure.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
@@ -3423,6 +3423,10 @@ Returns string form of given object.
 <div class="topic-seperator"></div>
 <div class="code">static inline void XID(panic)(const struct XID(error) &_Error)</div>
 Built-in <x class="inline_code">panic</x> function of X.
+
+<div class="topic-seperator"></div>
+<div class="code">static inline void XID(panic)(const char *_Error)</div>
+Altenative of built-in <x class="inline_code">panic</x> function of X.
 
 <div class="topic-seperator"></div>
 <div class="code">void x_terminate_handler(void) noexcept</div>
