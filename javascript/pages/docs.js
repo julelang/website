@@ -2669,6 +2669,19 @@ Built-In defines are provided from the language by directly without any import o
 </div>
 `;
 
+const stdlib_arrayHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">array</x></div>
+<div class="text">
+Array utilities. <br>
+
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-stdlib-array-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const stdlib_debugHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">debug</x></div>
 <div class="text">
@@ -3016,6 +3029,23 @@ Panics program with given error instance.
 <div class="sub-sub-title"><x class="inline_code">sizeof(type) uint</x></div>
 <x class="inline_code">sizeof</x> is actually a keyword, but used as function.
 Returns byte size of given data-type.
+`;
+
+const TAB_stdlib_array_functions = `
+<div class="code">type[Item_T]
+pub copy(&dest, &src []Item_T)</div>
+Copies source items to destination.
+<br><br>
+Special cases are;<br>
+<li><x class="inline_code">copy[Item_T](dest, src) = does nothing if src.empty()</x></li>
+<li><x class="inline_code">copy[Item_T](dest, src) = does nothing id dest.empty()</x></li>
+<li><x class="inline_code">copy[Item_T](dest, src) = length accepts as src.len if dest.len > src.len</x></li>
+<li><x class="inline_code">copy[Item_T](dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
+
+<div class="topic-seperator"></div>
+<div class="code">type[Item_T]
+pub make(const n size) []Item_T</div>
+Makes an array have n elements with default values of related data-type.
 `;
 
 const TAB_stdlib_debug_globals = `
@@ -3518,6 +3548,7 @@ const NAV_preprocessor                        = document.getElementById("preproc
 const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
 const NAV_stdlib                              = document.getElementById("stdlib");
 const NAV_stdlib_builtin                      = document.getElementById("stdlib-builtin");
+const NAV_stdlib_array                        = document.getElementById("stdlib-array");
 const NAV_stdlib_debug                        = document.getElementById("stdlib-debug");
 const NAV_stdlib_debug_assert                 = document.getElementById("stdlib-debug-assert");
 const NAV_stdlib_io                           = document.getElementById("stdlib-io");
@@ -3603,6 +3634,7 @@ const navigations = [
   [NAV_preprocessor_directives,             preprocessor_directivesHTML],
   [NAV_stdlib,                              stdlibHTML],
   [NAV_stdlib_builtin,                      stdlib_builtinHTML],
+  [NAV_stdlib_array,                        stdlib_arrayHTML],
   [NAV_stdlib_debug,                        stdlib_debugHTML],
   [NAV_stdlib_debug_assert,                 stdlib_debug_assertHTML],
   [NAV_stdlib_io,                           stdlib_ioHTML],
@@ -3636,6 +3668,7 @@ const tabs = [
   ["tab-stdlib-builtin-type-aliases",     TAB_stdlib_builtin_type_aliases],
   ["tab-stdlib-builtin-structures",       TAB_stdlib_builtin_structures],
   ["tab-stdlib-builtin-functions",        TAB_stdlib_builtin_functions],
+  ["tab-stdlib-array-functions",          TAB_stdlib_array_functions],
   ["tab-stdlib-debug-globals",            TAB_stdlib_debug_globals],
   ["tab-stdlib-debug-assert-functions",   TAB_stdlib_debug_assert_functions],
   ["tab-stdlib-io-functions",             TAB_stdlib_io_functions],
