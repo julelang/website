@@ -141,7 +141,6 @@ const getting_started_install_from_sourceHTML = `
   You can use them.
   This scripts written for compile the X compiler.
   If you execute script, result is be compilation error or complete message.
-  If you have a compilation errors, probably source code is in active development.
 
   <div class="warn">These examples assume you are in the root directory of the X project.</div>
 
@@ -159,7 +158,7 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally shellscripts (.sh).
   </div>
   Using example for Bash;
-  <div class="code">$ scripts/build.sh</div>
+  <div class="code">$ sudo sh scripts/build.sh</div>
 
   <div class="title-seperator"></div>
   <div class="sub-title">Manuel</div>
@@ -175,7 +174,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-seperator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o xxc.out -v cmd/xxc/main.go</div>
+  <div class="code">$ go build -o xxc -v cmd/xxc/main.go</div>
 </div>
 `;
 
