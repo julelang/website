@@ -267,6 +267,14 @@ Fields in configuration files have specific purposes.
     All processes are separated by a space, and the first part is the process name, the next ones are treated as arguments.
     </td>
   </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">indent</td>
+    <td>Indention string.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">indent_count</td>
+    <td>Indention string repetition count per one indention.</td>
+  </tr>
 </table>
 </div>
 `;
@@ -2374,6 +2382,14 @@ main() {
   <li>The comments should be full line.</li>
 </div>
 
+<div class="topic-seperator"></div>
+Any cxx code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
+
+<div class="warn">
+  X does not check whether the embed code you write is incorrect or will affect compilation.
+  This is entirely the developer's responsibility.
+</div>
+
 <div class="title-seperator"></div>
 <div class="sub-title">Using definitions of X</div>
 If you want to use definitions in embed codes, you can indicate the identifier you want to reach with <x class="inline_code">@</x>.
@@ -2392,14 +2408,16 @@ main() {
 }</div>
 
 <div class="title-seperator"></div>
-<div class="topic-seperator"></div>
-<div class="title-seperator"></div>
-Any cxx code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
+<div class="sub-title">Return Statements</div>
+In Cxx embedding codes, a return expression is treated as a return made within the function.
+So XXC does not give an error that you should write return statement.
+For a return statement to be recognized correctly, the return statement must simply be included as the first keyword in the embed code.
+<br><br>
+For example;
+<div class="code">two() int {
+    //cxx: return 2;
+}</div>
 
-<div class="warn">
-  X does not check whether the embed code you write is incorrect or will affect compilation.
-  This is entirely the developer's responsibility.
-</div>
 </div>
 `;
 
