@@ -2522,6 +2522,30 @@ example_func(a T1, b T2) {}</div>
 <div class="code">type[T1, T2]
 example_func1(a T1, b T2) {}</div>
 
+<div class="title-seperator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Generics for Structure</div>
+Structs support generics.
+There is no additional syntax to use it. Combine only what you know with the struct declaration.
+<br><br>
+For example;
+<div class="code">type[T]
+struct position {
+    x:T
+    y:T
+}</div>
+
+<div class="info">
+Calling the constructor method will be no different than calling a function that uses generics.
+</div>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title" style="margin-bottom: 20px;">Genericed Structure Type Representation</div>
+Generic types must also be specified to specify an instance of a specific type of the position structure.
+Doing this is like calling a function.
+<br><br>
+For example;
+<div class="code">pos:position[int]</div>
+
 </div>
 `;
 
