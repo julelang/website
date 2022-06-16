@@ -2444,8 +2444,8 @@ const types_castingHTML = `
 Casting is an explicit conversion from one type to another between supported types.
 <br><br>
 To make a cast, you need to write the target data type you want to cast in parentheses, then you need to write the expression you want to cast.
-A casting expression evaluates all subsequent expressions for itself.
-For this reason, it may be a good approach to write the expressions in parentheses as well.
+The expression to be cast should be declared in parentheses.
+A casting expression evaluates expression of between parentheses for itself.
 <br>
 Example: <x class="inline_code">(int)(3.14)</x>
 <br><br>
