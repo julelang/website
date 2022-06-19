@@ -3087,6 +3087,15 @@ Special cases are;<br>
 <div class="code">type[Item_T]
 pub make(const n size) []Item_T</div>
 Makes an array have n elements with default values of related data-type.
+
+<div class="topic-seperator"></div>
+<div class="code">type[Item_T]
+pub map(&dest []Item_T, func (Item_T)Item_T)</div>
+Applies function to each element of destination array.
+<br><br>
+Special cases are;<br>
+<li><x class="inline_code">map[Item_T](dest, func) = does nothing id dest.empty()</x></li>
+
 `;
 
 const TAB_stdlib_debug_globals = `
