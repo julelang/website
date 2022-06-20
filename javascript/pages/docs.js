@@ -377,12 +377,38 @@ It is in the interest of you and other developers that any name you give is rele
 Additionally, a directory is considered a module.
 Therefore, when imported, all source code files in the directory will be imported.
 With that in mind, it's also preferable to adopt splitting each function and other things into files one by one.
+<br><br>
+Likewise, it is recommended to give identifiers in the code accordingly.
 
 <div class="title-seperator"></div>
 <div class="sub-title">Naming Examples</div>
 <div class="code">push</div>
 <div class="code">get_env</div>
 <div class="code">save_as_article</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Specifications</div>
+Certain specifications can be made to include only certain files in the compilation.
+For this, simply give a matching specification after the underscore.
+<br><br>
+For example; <x class="inline_code">example_amd64.xx</x>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Operating System Specification</div>
+
+Supported operating systems; <br>
+<li class="inline_code">windows</li>
+<li class="inline_code">darwin</li>
+<li class="inline_code">linux</li>
+
+<div class="title-seperator"></div>
+<div class="sub-sub-title">Architecture Specification</div>
+Supported architectures; <br>
+<li class="inline_code">i386</li>
+<li class="inline_code">amd64</li>
+<li class="inline_code">arm</li>
+<li class="inline_code">arm64</li>
+
 </div>
 `;
 
