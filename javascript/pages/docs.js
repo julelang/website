@@ -161,7 +161,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="code">$ sudo sh scripts/build.sh</div>
 
   <div class="title-seperator"></div>
-  <div class="sub-title">Manuel</div>
+  <div class="sub-title">Manual</div>
   X compiler is written in Go, for now!
 
   <div class="warn">You should have Go compiler for this option.</div>
@@ -1039,7 +1039,7 @@ In this method, the variable must be given a value, otherwise the X compiler wil
 </div>
 
 <div class="title-seperator"></div>
-<div class="sub-title">Manuel Data Type Specification</div>
+<div class="sub-title">Manual Data Type Specification</div>
 You may want to specify the data type, it is possible.
 It also brings you advantages.
 <br><br>
