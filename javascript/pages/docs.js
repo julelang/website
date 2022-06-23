@@ -422,8 +422,8 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Generic Type</td>
-    <td>PascalCase and _T extension.</td>
-    <td>Generic_T, MyGeneric_T</td>
+    <td>PascalCase and _T extension or starts with T and continue with numbers.</td>
+    <td>Generic_T, MyGeneric_T, T1, T2</td>
   </tr>
 </table>
 
