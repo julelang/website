@@ -369,22 +369,63 @@ If you have resources for your project (png, jpg, gif etc.), it is recommended t
 const project_namingHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Naming</div>
 <div class="text">
-It is recommended to name your files and directories in your projects with the snake_case standard.
-You might also consider following X's naming conventions.
-It is in the interest of you and other developers that any name you give is relevant and understandable.
-<br>
-<br>
-Additionally, a directory is considered a module.
-Therefore, when imported, all source code files in the directory will be imported.
-With that in mind, it's also preferable to adopt splitting each function and other things into files one by one.
-<br><br>
-Likewise, it is recommended to give identifiers in the code accordingly.
+
+<div class="warn">These examples are the recommended style, not mandatory.</div>
 
 <div class="title-seperator"></div>
-<div class="sub-title">Naming Examples</div>
-<div class="code">push</div>
-<div class="code">get_env</div>
-<div class="code">save_as_article</div>
+<div class="sub-title">Styles</div>
+<table class="table">
+  <tr>
+    <th style="text-align: center;">Type</th>
+    <th>Naming Case</th>
+    <th>Examples</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Source File</td>
+    <td>camelCase</td>
+    <td>file.xx, my_file.xx</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Constant</td>
+    <td>Capital letters and underscore separator.</td>
+    <td>CONSTANT, MY_CONSTANT</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Variable</td>
+    <td>camelCase</td>
+    <td>variable, my_variable</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Field</td>
+    <td>camelCase</td>
+    <td>field, my_field</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Function</td>
+    <td>camelCase</td>
+    <td>function, my_function</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Method</td>
+    <td>camelCase</td>
+    <td>method, my_method</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Struct</td>
+    <td>PascalCase</td>
+    <td>Struct, MyStruct</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Type</td>
+    <td>Full lowercase and not separated or PascalCase</td>
+    <td>mytype, Type, MyType</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Generic Type</td>
+    <td>PascalCase and _T extension.</td>
+    <td>Generic_T, MyGeneric_T</td>
+  </tr>
+</table>
 
 <div class="title-seperator"></div>
 <div class="sub-title">Specifications</div>
@@ -3078,7 +3119,7 @@ const TAB_stdlib_builtin_type_aliases = `
 `;
 
 const TAB_stdlib_builtin_structures = `
-<div class="code">struct error {
+<div class="code">struct Error {
     message:str
 }</div>
 
@@ -3088,7 +3129,7 @@ It is used for error handling and panics.
 Example to error handling: <br>
 You have a <x class="inline_code">compute</x> method have two <x class="inline_code">f64</x> parameter: <x class="inline_code">x</x> and <x class="inline_code">y</x>. <br>
 This function returns division of given arguments. <br>
-Actually returns: <x class="inline_code">[f64, *error]</x> <br>
+Actually returns: <x class="inline_code">[f64, *Error]</x> <br>
 The first return value naturally result of computation. <br>
 Returns result and nil pointer for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to 0. <br>
 If not, returns 0 and returns heap-allocated error instance.
@@ -3105,7 +3146,7 @@ This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">panic(const err error)</x></div>
+<div class="sub-sub-title"><x class="inline_code">panic(const error Error)</x></div>
 Panics program with given error instance.
 
 <div class="topic-seperator"></div>
@@ -3155,7 +3196,7 @@ Writes fail message to <x class="inline_code">cerr</x> and exit failure if asser
 <div class="topic-seperator"></div>
 <div class="code">@inline
 pub assert_panic(const expr bool,
-                 const err{error("assertion failed")} error)</div>
+                 const error{Error("assertion failed")} Error)</div>
 Panics with given error if assertion failed.
 `;
 
@@ -3454,7 +3495,7 @@ Defined this if operating system if is Windows.
 
 const TAB_cxx_cxxapi_defines = `
 <li><a href="#cxxapi-misc">Misc</a></li>
-<li><a href="#cxxapi-datatypes">Data-Types</a></li>
+<li><a href="#cxxapi-datatypes">Data Types</a></li>
 <li><a href="#cxxapi-structs">Structs</a></li>
 <li><a href="#cxxapi-functions">Functions</a></li>
 
@@ -3472,7 +3513,7 @@ struct tuple_ostream&lt;Type, N, N&gt;</div>
 Implementation of tuple available for std::ostream.
 
 <div class="title-seperator"></div>
-<div id="cxxapi-datatypes" class="sub-sub-title">Data-Types</div>
+<div id="cxxapi-datatypes" class="sub-sub-title">Data Types</div>
 <div class="info">
 The primitive data-types in X, have same names in cxx output.
 But have <x class="inline_code">_xt</x> suffix.
@@ -3494,8 +3535,8 @@ The <x class="inline_code">str</x> data-type of X.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-structs" class="sub-sub-title">Structs</div>
-<div class="code">struct XID(error)</div>
-The built-in <x class="inline_code">error</x> structure.
+<div class="code">struct XID(Error)</div>
+The built-in <x class="inline_code">Error</x> structure.
 
 <div class="title-seperator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
@@ -3543,12 +3584,12 @@ str tostr(const _Obj_t &_Obj) noexcept</div>
 Returns string form of given object.
 
 <div class="topic-seperator"></div>
-<div class="code">static inline void XID(panic)(const struct XID(error) &_Error)</div>
+<div class="code">static inline void XID(panic)(const struct XID(Error) &_Error)</div>
 Built-in <x class="inline_code">panic</x> function of X.
 
 <div class="topic-seperator"></div>
-<div class="code">static inline void XID(panic)(const char *_Error)</div>
-Altenative of built-in <x class="inline_code">panic</x> function of X.
+<div class="code">static inline void XID(panic)(const char *_Message)</div>
+Altenative of built-in <x class="inline_code">panic</x> function of X for embed cxx developers.
 
 <div class="topic-seperator"></div>
 <div class="code">void x_terminate_handler(void) noexcept</div>
