@@ -547,6 +547,11 @@ const basics_data_typesHTML = `
       <td>Platform dependent (signed)</td>
     </tr>
     <tr>
+      <td style="text-align: center; font-family: 'Code';">intptr</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>It is a signed integer type that is big enough to hold a pointer.</td>
+    </tr>
+    <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
       <td style="text-align: center;">1 byte</td>
       <td>0 to 255</td>
@@ -570,6 +575,11 @@ const basics_data_typesHTML = `
       <td style="text-align: center; font-family: 'Code';">uint</td>
       <td style="text-align: center;">Platform dependent</td>
       <td>Platform dependent (unsigned)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">uintptr</td>
+      <td style="text-align: center;">Platform dependent</td>
+      <td>It is a unsigned integer type that is big enough to hold a pointer.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
@@ -602,14 +612,9 @@ const basics_data_typesHTML = `
       <td>Any pointer type.</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">intptr</td>
-      <td style="text-align: center;">Platform dependent</td>
-      <td>It is a signed integer type that is big enough to hold a pointer.</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">uintptr</td>
-      <td style="text-align: center;">Platform dependent</td>
-      <td>It is a unsigned integer type that is big enough to hold a pointer.</td>
+      <td style="text-align: center; font-family: 'Code';">any</td>
+      <td style="text-align: center;">-</td>
+      <td>Any data.</td>
     </tr>
   </table>
 
@@ -691,6 +696,10 @@ const basics_data_typesHTML = `
     <tr>
       <td style="text-align: center; font-family: 'Code';">voidptr</td>
       <td>Any pointer.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">any</td>
+      <td>Any.</td>
     </tr>
   </table>
 
@@ -794,6 +803,16 @@ new
   <div class="sub-title">Nil</div>
   Zero value for pointers and function data typed defines.
   <div class="code">nil</div>
+
+  <div class="title-seperator"></div>
+  <div class="sub-title">any</div>
+  It can hold any value and can be nil.
+  Supports equals (==) and not equals (!=) operators.
+  It stores data as heap-allocated and holds it with a pointer.
+  This allocation is managed by the data type and is automatically freed.
+  <br><br>
+  NOTICE;<br>
+  If you comparing two any data-type value, you get true if you compared same any instances, false if not.
 </div>
 `;
 
@@ -2487,17 +2506,13 @@ As you can see, the variable <x class="inline_code">x</x> is of type <x class="i
 Normally, variable <x class="inline_code">y</x> cannot take variable <x class="inline_code">x</x> as a value.
 However, as seen for example, we can accept the value as <x class="inline_code">int</x> by explicitly casting.
 
-<div class="title-seperator"></div>
-<div class="sub-title">Constant Ignoring</div>
-You can ignore constant with casting.
+<div class="topic-seperator"></div>
+There is an alternative syntax for single data types.
+It consists of using it like a constructor.
 <br><br>
-For example;
-<div class="code">main() {
-    const ptr0: = new int
-    ptr1: = (*int)(ptr0)
-    *ptr1 = 200
-    outln(*ptr0) // Prints 200
-}</div>
+For example; <x class="inline_code">u64(10)</x>
+
+<div class="warn">If the data type has a constructor, its constructor is called instead of being considered casting.</div>
 
 </div>
 `;
@@ -3051,7 +3066,8 @@ Maximum value of type.
 `;
 
 const TAB_type_statics_str_constants = `
-Greatest possible value for an element of type <x class="inline_code">size</x>. <br>
+<div class="sub-sub-title"><x class="inline_code">const npos:uint</x></div>
+Greatest possible value for an element of type <x class="inline_code">uint</x>. <br>
 As a return value, it is usually used to indicate no matches.
 `;
 
