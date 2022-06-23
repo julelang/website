@@ -3148,11 +3148,6 @@ One difference, prints new line after print.
 <div class="topic-seperator"></div>
 <div class="sub-sub-title"><x class="inline_code">panic(const error Error)</x></div>
 Panics program with given error instance.
-
-<div class="topic-seperator"></div>
-<div class="sub-sub-title"><x class="inline_code">sizeof(type) uint</x></div>
-<x class="inline_code">sizeof</x> is actually a keyword, but used as function.
-Returns byte size of given data-type.
 `;
 
 const TAB_stdlib_array_functions = `
@@ -3214,7 +3209,7 @@ Read first part of line from command-line.
 const TAB_stdlib_mem_functions = `
 <div class="code">type[Alloc_T]
 pub calloc(const n size) *Alloc_T</div>
-Allocates n memory by sizeof specified data-type. <br>
+Allocates n memory by size of specified data-type. <br>
 The allocated memory initialized with zero (0) value.
 <br><br>
 Special cases are; <br>
