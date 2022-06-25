@@ -1392,30 +1392,6 @@ If you want to send a function as a return expression, try enclosing it in paren
 For exmaple; <x class="inline_code">(my_func())</x> or use the <x class="inline_code">ret</x> keyword.
 
 <div class="title-seperator"></div>
-<div class="sub-title">Attributes</div>
-<div class="sub-sub-title"><x class="inline_code">inline</x></div>
-Function calls has a cost.
-Inline functions, if function body small, can be a good way to avoid this call cost.
-Inline functions are expanded or modified where they are called.
-So the function is not actually called.
-However, it should be noted that this is not a command, it is a request to the compiler.
-The compiler can choose not to compile it inline even if the function is marked as inline.
-Of course this has advantages and disadvantages.
-<br><br>
-<strong style="font-family: 'OpenSans-Light'">Advantages;</strong>
-<ul>
-  <li>Function call overhead doesn't occur.</li>
-  <li>Saves overhead of a return call from a function.</li>
-  <li>Saves the overhead of push/pop variables on the stack when function is called.</li>
-</ul>
-<strong style="font-family: 'OpenSans-Light'">Disadvantages;</strong>
-<ul>
-  <li>If you use too many inline functions then the size of the binary executable file will be more large than normally, because of the duplication of same code.</li>
-  <li>Too much inlining can also reduce your instruction cache hit rate, thus reducing the speed of instruction fetch from that of cache memory to that of primary memory.</li>
-  <li>Inline functions may not be useful for many embedded systems. Because code size is often more important than speed in embedded systems.</li>
-</ul>
-
-<div class="title-seperator"></div>
 <div class="sub-title">Using Function as Data Type</div>
 Functions can be used as data type.
 It is similar to defining a function.
@@ -1608,6 +1584,43 @@ main() {
 }</div>
 
 <div class="warn">The program does not automatically wait for the execution of concurrent calls to terminate.</div>
+
+<div class="title-seperator"></div>
+<div class="sub-title">Attributes</div>
+<div class="sub-sub-title"><x class="inline_code">inline</x></div>
+Function calls has a cost.
+Inline functions, if function body small, can be a good way to avoid this call cost.
+Inline functions are expanded or modified where they are called.
+So the function is not actually called.
+However, it should be noted that this is not a command, it is a request to the compiler.
+The compiler can choose not to compile it inline even if the function is marked as inline.
+Of course this has advantages and disadvantages.
+<br><br>
+<strong style="font-family: 'OpenSans-Light'">Advantages;</strong>
+<ul>
+  <li>Function call overhead doesn't occur.</li>
+  <li>Saves overhead of a return call from a function.</li>
+  <li>Saves the overhead of push/pop variables on the stack when function is called.</li>
+</ul>
+<strong style="font-family: 'OpenSans-Light'">Disadvantages;</strong>
+<ul>
+  <li>If you use too many inline functions then the size of the binary executable file will be more large than normally, because of the duplication of same code.</li>
+  <li>Too much inlining can also reduce your instruction cache hit rate, thus reducing the speed of instruction fetch from that of cache memory to that of primary memory.</li>
+  <li>Inline functions may not be useful for many embedded systems. Because code size is often more important than speed in embedded systems.</li>
+</ul>
+
+<div class="sub-sub-title"><x class="inline_code">type_param</x></div>
+This accepts generic types as parameter of function.
+This attribute only used for functions with generics.
+<br><br>
+<strong style="font-family: 'OpenSans-Light'">Advantages;</strong>
+<ul>
+  <li>Increase readability.</li>
+</ul>
+<strong style="font-family: 'OpenSans-Light'">Disadvantages;</strong>
+<ul>
+  <li>Function cannot have parameters.</li>
+</ul>
 
 </div>
 `;
