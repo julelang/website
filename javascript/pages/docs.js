@@ -849,8 +849,6 @@ new
   <div class="sub-title">any</div>
   It can hold any value and can be nil.
   Supports equals (==) and not equals (!=) operators.
-  It stores data as heap-allocated and holds it with a pointer.
-  This allocation is managed by the data type and is automatically freed.
   <br><br>
   NOTICE;<br>
   If you comparing two any data-type value, you get true if you compared same any instances, false if not.
@@ -1309,7 +1307,7 @@ The name of the parameter is written first, followed by the data-type.
 When calling the function, as seen in the example in the entry point, arguments are written in parentheses, and if they are more than one, they are separated from each other with commas.
 The given arguments must be compatible with the data-type of the corresponding parameters.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 There is alternative syntax for specifying parameters and data types.
 <br>
 For example;
@@ -1416,7 +1414,7 @@ For example;
     outln(make_hello("X"))
 }</div>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 Anonymous functions can access the definitions of the block in which they are defined.
 <br><br>
 For example;
@@ -1462,7 +1460,7 @@ For example;
 Brackets are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 What happens when specified single data-type with brackets?
 Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
@@ -1609,6 +1607,7 @@ Of course this has advantages and disadvantages.
   <li>Inline functions may not be useful for many embedded systems. Because code size is often more important than speed in embedded systems.</li>
 </ul>
 
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">type_param</x></div>
 This accepts generic types as parameter of function.
 This attribute only used for functions with generics.
@@ -1747,7 +1746,7 @@ For example;
 The example at above, gives <x class="inline_code">"RAM"</x> value. <br>
 If you try to access a key that does not exist, it will return the default value.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 To change the value of a key, it is sufficient to do a classic assignment by indexing the key. <br>
 For example;
 <div class="code">mymap[1] = "SSD"</div>
@@ -1837,7 +1836,7 @@ For example to declaration a struct;
     title  :str
     salary :u32
 }</div>
-Members of structs are the same as a variable definition.
+Members of structures are the same as a variable definition.
 
 <div class="title-seperator"></div>
 <div class="sub-title">Assigning Default Values to Members</div>
@@ -1853,7 +1852,7 @@ For example;
 
 <div class="title-seperator"></div>
 <div class="sub-title">Creating a Instances of Structures</div>
-You use the constructor method of the struct to initialize an instance of structs.
+You use the constructor method of the struct to initialize an instance of structures.
 Constructor methods, in turn, take the struct members themselves as parameters with the same identifier and same data-type.
 Each parameter also has a default argument.
 Default arguments are based on default member values that you specify.
@@ -1932,7 +1931,7 @@ For example;
     y:int = 98
     z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 Additionally, pointers can set the value of the memory address they store.
 <br>
 The <x class="inline_code">*</x> operator used for that too.
@@ -2015,7 +2014,7 @@ const memory_memory_managementHTML = `
   Reason of that after freed allocations pointers isn't setted as nil.
   So data is freed but pointer still points to the address, but address not have any value.
   Set pointer as nil after freed is a good option.
-  <div class="topic-seperator"></div>
+  <div class="topic-separator"></div>
   Function example;
   <div class="code">get_pointer() *int {
     x: = 10
@@ -2172,7 +2171,7 @@ In the above example, when the <x class="inline_code">try</x>block encounters a 
 The variable of the catch block has always taken the error structure as its data type and can never be used as an existing variable, it is always newly created.
 The <x class="inline_code">e</x> variable in the example above is an example of this.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 What if you just want to catch the panic instead of catching the error?
 For example, you just want to be notified when you panic.
 In these cases, you can use an empty catch block.
@@ -2439,7 +2438,7 @@ How to access this is also seen in the main function.
 We know that we use the <x class="inline_code">::</x> operator to access the definitions of a namespace.
 After accessing the <x class="inline_code">flat</x> namespace inside the <x class="inline_code">math</x> namespace, we use this operator again to access its definitions.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 
 You don't have to write nested to define sub namespaces. <br>
 Here is an alternative to the above example;
@@ -2481,7 +2480,7 @@ main() {
   <li>The comments should be full line.</li>
 </div>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 Any cxx code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
 
 <div class="warn">
@@ -2560,7 +2559,7 @@ As you can see, the variable <x class="inline_code">x</x> is of type <x class="i
 Normally, variable <x class="inline_code">y</x> cannot take variable <x class="inline_code">x</x> as a value.
 However, as seen for example, we can accept the value as <x class="inline_code">int</x> by explicitly casting.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 There is an alternative syntax for single data types.
 It consists of using it like a constructor.
 <br><br>
@@ -2607,7 +2606,7 @@ There is a use for a generic type specification, as seen in the example above.
 Use the <x class="inline_code">type</x> keyword with brackets and write the identifier of the generic type.
 To specify a type for a generic type, you specify the data-type in brackets.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 
 To specify multiple different generic types, sequential specification or comma-separation syntaxes are available;
 <div class="code">type[T1]
@@ -2619,7 +2618,7 @@ example_func1(a T1, b T2) {}</div>
 
 <div class="title-seperator"></div>
 <div class="sub-title" style="margin-bottom: 20px;">Generics for Structure</div>
-Structs support generics.
+Structures support generics.
 There is no additional syntax to use it. Combine only what you know with the struct declaration.
 <br><br>
 For example;
@@ -2881,6 +2880,18 @@ Platform-independent interface to operating system functionality. <br>
 </div>
 `;
 
+const stdlib_reflectHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">reflect</x></div>
+<div class="text">
+Library for reflection. <br>
+
+<div class="tabcontrol" style="margin-top: 50px;">
+  <div id="tab-stdlib-reflect-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const endHTML = `
 <div class="title" style="margin-bottom: 20px;">End</div>
 <div class="text">
@@ -2918,41 +2929,41 @@ const TAB_types_str_methods = `
 <div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
 Reports string is empty or not.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">has_prefix(sub str) bool</x></div>
 Reports string has prefix as specified substring or not.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">has_suffix(sub str) bool</x></div>
 Reports string has suffix as specified substring or not.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">find(sub str) size</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">str.npos</x> if not exist any match. <br>
 Starts searching at left of string to right.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">rfind(sub str) size</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">str.npos</x> if not exist any match. <br>
 Starts searching at right of string to left.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">trim(bytes str) str</x></div>
 Trims string by specified bytes at left.
 Each character is each byte.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">rtrim(bytes str) str</x></div>
 Trims string by specified bytes at right.
 Each character is each byte.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">split(sub str, n{-1} i64) []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty array if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">replace(sub str, new str, n{-1} i64) str</x></div>
 Replaces all substrings matching <x class="inline_code">sub</x> in the string with <x class="inline_code">new</x>. <br>
 Returns same string if <x class="inline_code">n</x> is equals to zero. <br>
@@ -2968,33 +2979,33 @@ const TAB_types_arrays_methods = `
 <div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
 Reports array is empty or not.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">clear()</x></div>
 Removes all items.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">find(value ITEM_TYPE) *ITEM_TYPE</x></div>
 Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
 Starts searching at left of array to right.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">rfind(value ITEM_TYPE) *ITEM_TYPE</x></div>
 Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
 Starts searching at right of array to left.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">erase(value ITEM_TYPE)</x></div>
 Removes first matched item with specified value.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">erase_all(value ITEM_TYPE)</x></div>
 Removes all matched item(s) with specified value.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">append(...values ITEM_TYPE)</x></div>
 Appends specified items to end of array.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">insert(start size, ...values ITEM_TYPE) bool</x></div>
 Inserts specified values to array start at specified position. <br>
 Returns true if insertion is success, false if not. <br>
@@ -3010,23 +3021,23 @@ const TAB_types_maps_methods = `
 <div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
 Reports map is empty or not.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">clear()</x></div>
 Removes all key-value pairs.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">has(key KEY_TYPE) bool</x></div>
 Returns true if specified key value is exist in map, returns false if not.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">del(key KEY_TYPE)</x></div>
 Deletes key if exist.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">keys() []KEY_TYPE</x></div>
 Returns keys of key-value pairs as array.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">values() []VALUE_TYPE</x></div>
 Returns values of key-value pairs as array.
 `;
@@ -3035,7 +3046,7 @@ const TAB_type_statics_i8_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:i8</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:i8</x></div>
 Minimum value of type.
 `;
@@ -3044,7 +3055,7 @@ const TAB_type_statics_i16_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:i16</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:i16</x></div>
 Minimum value of type.
 `;
@@ -3053,7 +3064,7 @@ const TAB_type_statics_i32_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:i32</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:i32</x></div>
 Minimum value of type.
 `;
@@ -3062,7 +3073,7 @@ const TAB_type_statics_i64_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:i64</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:i64</x></div>
 Minimum value of type.
 `;
@@ -3091,7 +3102,7 @@ const TAB_type_statics_f32_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:f32</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:f32</x></div>
 Minimum value of type.
 `;
@@ -3100,7 +3111,7 @@ const TAB_type_statics_f64_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:f64</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:f64</x></div>
 Minimum value of type.
 `;
@@ -3109,7 +3120,7 @@ const TAB_type_statics_int_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max:int</x></div>
 Maximum value of type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const min:int</x></div>
 Minimum value of type.
 `;
@@ -3153,12 +3164,12 @@ const TAB_stdlib_builtin_functions = `
 Prints value to command line.
 Can take any data-type as argument.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">outln(const value{""} any)</x></div>
 This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">panic(const error Error)</x></div>
 Panics program with given error instance.
 `;
@@ -3174,12 +3185,12 @@ Special cases are;<br>
 <li><x class="inline_code">copy[Item_T](dest, src) = length accepts as src.len if dest.len > src.len</x></li>
 <li><x class="inline_code">copy[Item_T](dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">type[Item_T]
 pub make(const n size) []Item_T</div>
 Makes an array have n elements with default values of related data-type.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">type[Item_T]
 pub map(&dest []Item_T, func (Item_T)Item_T)</div>
 Applies function to each element of destination array.
@@ -3201,7 +3212,7 @@ const TAB_stdlib_debug_assert_functions = `
 pub assert(const expr bool, const msg{"assertion failed"} str)</div>
 Writes fail message to <x class="inline_code">cerr</x> and exit failure if assertion failed.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">@inline
 pub assert_panic(const expr bool,
                  const error{Error("assertion failed")} Error)</div>
@@ -3213,7 +3224,7 @@ const TAB_stdlib_io_functions = `
 pub readln() str</div>
 Reads full-complete line from command-line.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">@inline
 pub readin() str</div>
 Read first part of line from command-line.
@@ -3229,7 +3240,7 @@ Special cases are; <br>
 <li><x class="inline_code">calloc[Alloc_T](n) = nil if n == 0</x></li>
 <li><x class="inline_code">calloc[Alloc_T](n) = nil if allocation failed</x></li>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">pub malloc(const size size) voidptr</div>
 Allocates memory by specified size. <br>
 The allocated memory is not initialized.
@@ -3238,7 +3249,7 @@ Special cases are;
 <li><x class="inline_code">malloc(size) = nil if n == 0</x></li>
 <li><x class="inline_code">malloc(size) = nil if allocation failed</x></li>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">pub realloc(ptr voidptr, const size size) voidptr</div>
 Resizes the allocation based on the given size.
 <br><br>
@@ -3246,7 +3257,7 @@ Special cases are;
 <li><x class="inline_code">realloc(ptr, size) = nil if ptr == nil</x></li>
 <li><x class="inline_code">realloc(ptr, size) = nil if allocation failed</x></li>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">type[Alloc_T]
 pub memset(ptr *Alloc_T, expr Alloc_T, const n size)</div>
 Sets n value of pointer segments to specified expression.
@@ -3255,7 +3266,7 @@ Special case is:
 <li><x class="inline_code">memset[Alloc_T](ptr, expr, n) = does nothing if n == 0</x></li>
 <li><x class="inline_code">memset[Alloc_T](ptr, expr, n) = does nothing if ptr == nil</x></li>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">type[Alloc_T]
 pub memcopy(dest, src *Alloc_T, const n size)</div>
 Copies n value from source allocation to destination allocation.
@@ -3270,7 +3281,7 @@ const TAB_stdlib_os_globals = `
 <div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:int</x></div>
 Exit code for success.
 
-<div class="topic-seperator">
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:int</x></div>
 Exit code for failure.
 `;
@@ -3279,6 +3290,28 @@ const TAB_stdlib_os_functions = `
 <div class="code">@inline
 pub exit(const code{EXIT_SUCCESS} int)</div>
 Exit program with given exit code.
+`;
+
+const TAB_stdlib_reflect_functions = `
+<div class="code">@inline
+@type_param
+type[T]
+pub sizeof() size</div>
+Returns the size of the data type in bytes.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+@type_param
+type[T1, T2]
+pub is_same() bool</div>
+Reports the given data types are same or not.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+type[T]
+pub any_is(const src any) bool</div>
+Reports the data type of the given any type value is the same as the generic type or not.
+
 `;
 
 const TAB_common_concepts_iterations = `
@@ -3378,7 +3411,7 @@ For example;
 The example at above, normally prints <x class="inline_code">Hello, World</x> again and again.
 But just prints one time, because <x class="inline_code">break</x> keyword is breaks iteration.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 If you want continue to next iteration, use the <x class="inline_code">continue</x> keyword.
 <br>
 For example;
@@ -3504,7 +3537,7 @@ Defined this if operating system if is Windows.
 const TAB_cxx_cxxapi_defines = `
 <li><a href="#cxxapi-misc">Misc</a></li>
 <li><a href="#cxxapi-datatypes">Data Types</a></li>
-<li><a href="#cxxapi-structs">Structs</a></li>
+<li><a href="#cxxapi-structures">Structures</a></li>
 <li><a href="#cxxapi-functions">Functions</a></li>
 
 <div class="title-seperator"></div>
@@ -3513,7 +3546,7 @@ const TAB_cxx_cxxapi_defines = `
 <div class="code">struct defer</div>
 Source struct for deferred calls.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename Type, unsigned N, unsigned Last&gt;
 struct tuple_ostream</div>
 <div class="code">template&lt;typename Type, unsigned N&gt;
@@ -3527,22 +3560,26 @@ The primitive data-types in X, have same names in cxx output.
 But have <x class="inline_code">_xt</x> suffix.
 </div>
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Item_t&gt;
 class array</div>
 Array type class.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
 class map</div>
 Map type class.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">class str_xt</div>
 The <x class="inline_code">str</x> data-type of X.
 
+<div class="topic-separator"></div>
+<div class="code">struct any_xt</div>
+The <x class="inline_code">any</x> data-type of X.
+
 <div class="title-seperator"></div>
-<div id="cxxapi-structs" class="sub-sub-title">Structs</div>
+<div id="cxxapi-structures" class="sub-sub-title">Structures</div>
 <div class="code">struct XID(Error)</div>
 The built-in <x class="inline_code">Error</x> structure.
 
@@ -3552,7 +3589,7 @@ The built-in <x class="inline_code">Error</x> structure.
 static inline _Alloc_t *xalloc()</div>
 Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
 static inline void foreach(const _Enum_t _Enum,
                            const func&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
@@ -3567,7 +3604,7 @@ static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
                            const func&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t, size_t ... _I_t&gt;
 inline auto tuple_as_args(const _Function_t _Function,
                           const _Tuple_t _Tuple,
@@ -3576,30 +3613,30 @@ inline auto tuple_as_args(const _Function_t _Function,
 inline auto tuple_as_args(const _Function_t _Function, const _Tuple_t _Tuple)</div>
 Push tuple as argument(s) to function.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Obj_t&gt;
 static inline void XID(out)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Obj_t&gt;
 static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename _Obj_t&gt;
 str tostr(const _Obj_t &_Obj) noexcept</div>
 Returns string form of given object.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">static inline void XID(panic)(const struct XID(Error) &_Error)</div>
 Built-in <x class="inline_code">panic</x> function of X.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">static inline void XID(panic)(const char *_Message)</div>
 Altenative of built-in <x class="inline_code">panic</x> function of X for embed cxx developers.
 
-<div class="topic-seperator"></div>
+<div class="topic-separator"></div>
 <div class="code">void x_terminate_handler(void) noexcept</div>
 Cxx terminate handler of X.
 
@@ -3695,6 +3732,7 @@ const NAV_stdlib_debug_assert                 = document.getElementById("stdlib-
 const NAV_stdlib_io                           = document.getElementById("stdlib-io");
 const NAV_stdlib_mem                          = document.getElementById("stdlib-mem");
 const NAV_stdlib_os                           = document.getElementById("stdlib-os");
+const NAV_stdlib_reflect                      = document.getElementById("stdlib-reflect");
 const NAV_end                                 = document.getElementById("end");
 
 const side_navigation = document.getElementById("side-navigation");
@@ -3781,6 +3819,7 @@ const navigations = [
   [NAV_stdlib_io,                           stdlib_ioHTML],
   [NAV_stdlib_mem,                          stdlib_memHTML],
   [NAV_stdlib_os,                           stdlib_osHTML],
+  [NAV_stdlib_reflect,                      stdlib_reflectHTML],
   [NAV_end,                                 endHTML],
 ];
 
@@ -3816,6 +3855,7 @@ const tabs = [
   ["tab-stdlib-mem-functions",            TAB_stdlib_mem_functions],
   ["tab-stdlib-os-globals",               TAB_stdlib_os_globals],
   ["tab-stdlib-os-functions",             TAB_stdlib_os_functions],
+  ["tab-stdlib-reflect-functions",        TAB_stdlib_reflect_functions],
   ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
   ["tab-common-concepts-if-expressions",  TAB_common_concepts_if_expression],
   ["tab-common-concepts-goto-statements", TAB_common_concepts_goto_statements],
