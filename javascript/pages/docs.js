@@ -1525,8 +1525,19 @@ For example;
 sum(a{10}, b{50} int) int { a+b }
 
 main() {
-    outln(sum()) // Prints 60
-    outln(25)    // Prints 75
+    outln(sum())   // Prints 60
+    outln(sum(25)) // Prints 75
+}</div>
+
+<div class="topic-separator"></div>
+If you want give default value with default value of data type, give empty expression.
+<br>
+For example;
+<div class="code">@inline
+sum(a{}, b{} int) int { a+b }
+
+main() {
+    outln(sum()) // Prints 0
 }</div>
 
 <div class="title-seperator"></div>
