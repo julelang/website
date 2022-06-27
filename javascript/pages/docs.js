@@ -2855,6 +2855,19 @@ Input/Output operations. <br>
 </div>
 `;
 
+const stdlib_mathHTML = `
+<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">math</x></div>
+<div class="text">
+Math library. <br>
+
+<div class="tabcontrol" style="margin-top: 50px;">
+<div id="tab-stdlib-math-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-stdlib-math-functions" class="tab" onclick="select_tab_event(1)">Functions</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
 const stdlib_memHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">mem</x></div>
 <div class="text">
@@ -3228,6 +3241,118 @@ Reads full-complete line from command-line.
 <div class="code">@inline
 pub readin() str</div>
 Read first part of line from command-line.
+`;
+
+const TAB_stdlib_math_constants = `
+<div class="sub-sub-title"><x class="inline_code">pub const E:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const PI:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const PHI:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT2:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT_E:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PI:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PHI:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LN2:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LOG_2E:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LN10:f64</x></div>
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LOG_10E:f64</x></div>
+`;
+
+const TAB_stdlib_math_functions = `
+<div class="code">@inline
+pub abs(const x f64) f64</div>
+Returns the absolute value of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">abs(±inf) = inf</x></li>
+<li><x class="inline_code">abs(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub nan() f64</div>
+Returns an IEEE 754 “not-a-number” value.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub isnan(const f f64) bool</div>
+Reports whether f is an IEEE 754 “not-a-number” value.
+
+<div class="topic-separator"></div>
+<div class="code">pub inf(const sign int) f64</div>
+Returns positive infinity if sign >= 0, negative infinity if !sign < 0.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub isinf(const f f64, const sign int) bool</div>
+Reports whether f is an infinity, according to sign. <br>
+If sign > 0, IsInf reports whether f is positive infinity. <br>
+If sign < 0, IsInf reports whether f is negative infinity. <br>
+If sign == 0, IsInf reports whether f is either infinity. <br>
+
+<div class="topic-separator"></div>
+<div class="code">pub copysign(const f, const sign f64) f64</div>
+Returns a value with the magnitude of f and the sign of sign.
+
+<div class="topic-separator"></div>
+<div class="code">pub pow10(const n int) f64</div>
+Returns 10**n, the base-10 exponential of n.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">pow10(n) = 0 for n < -323</x></li>
+<li><x class="inline_code">pow10(n) = inf for n > 308</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub signbit(const x f64) bool</div>
+Reports whether x is negative or negative zero.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub f32_bits(const f f32) u32</div>
+Returns the IEEE 754 binary representation of f, with the sign bit of f and the result in the same bit position. <br>
+<x class="inline_code">f32_bits(f32_from_bits(x)) == x</x>.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub f32_from_bits(const b u32) f32</div>
+Returns the floating-point number corresponding
+to the IEEE 754 binary representation b, with the sign bit of b and the result in the same bit position.
+<x class="inline_code">f32_from_bits(f32_bits(x)) == x</x>.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub f64_bits(const f f64) u64</div>
+Returns the IEEE 754 binary representation of f,
+with the sign bit of f and the result in the same bit position,
+and <x class="inline_code">f64_bits(f64_from_bits(x)) == x</x>.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub f64_from_bits(const b u64) f64</div>
+Returns the floating-point number corresponding
+to the IEEE 754 binary representation b, with the sign bit of b
+and the result in the same bit position.
+<x class="inline_code">f64_from_bits(Float64bits(x)) == x</x>.
+
 `;
 
 const TAB_stdlib_mem_functions = `
@@ -3730,6 +3855,7 @@ const NAV_stdlib_array                        = document.getElementById("stdlib-
 const NAV_stdlib_debug                        = document.getElementById("stdlib-debug");
 const NAV_stdlib_debug_assert                 = document.getElementById("stdlib-debug-assert");
 const NAV_stdlib_io                           = document.getElementById("stdlib-io");
+const NAV_stdlib_math                         = document.getElementById("stdlib-math");
 const NAV_stdlib_mem                          = document.getElementById("stdlib-mem");
 const NAV_stdlib_os                           = document.getElementById("stdlib-os");
 const NAV_stdlib_reflect                      = document.getElementById("stdlib-reflect");
@@ -3817,6 +3943,7 @@ const navigations = [
   [NAV_stdlib_debug,                        stdlib_debugHTML],
   [NAV_stdlib_debug_assert,                 stdlib_debug_assertHTML],
   [NAV_stdlib_io,                           stdlib_ioHTML],
+  [NAV_stdlib_math,                         stdlib_mathHTML],
   [NAV_stdlib_mem,                          stdlib_memHTML],
   [NAV_stdlib_os,                           stdlib_osHTML],
   [NAV_stdlib_reflect,                      stdlib_reflectHTML],
@@ -3852,6 +3979,8 @@ const tabs = [
   ["tab-stdlib-debug-globals",            TAB_stdlib_debug_globals],
   ["tab-stdlib-debug-assert-functions",   TAB_stdlib_debug_assert_functions],
   ["tab-stdlib-io-functions",             TAB_stdlib_io_functions],
+  ["tab-stdlib-math-constants",           TAB_stdlib_math_constants],
+  ["tab-stdlib-math-functions",           TAB_stdlib_math_functions],
   ["tab-stdlib-mem-functions",            TAB_stdlib_mem_functions],
   ["tab-stdlib-os-globals",               TAB_stdlib_os_globals],
   ["tab-stdlib-os-functions",             TAB_stdlib_os_functions],
