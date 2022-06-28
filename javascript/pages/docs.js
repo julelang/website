@@ -991,28 +991,48 @@ const basics_operatorsHTML = `
   <div class="sub-title">Precedences</div>
   <table class="table">
     <tr>
-      <th style="text-align: center;">Precedence</th>
-      <th>Operator(s)</th>
-    </tr>
-    <tr>
-      <td style="text-align: center;">5</td>
-      <td style="font-family: 'Code';">* / % << >> &</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">4</td>
-      <td style="font-family: 'Code';">+ - | ^</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">3</td>
-      <td style="font-family: 'Code';">== != < <= > >=</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;">2</td>
-      <td style="font-family: 'Code';">&&</td>
+      <th style="text-align: center">Precedence (Descending)</th>
+      <th style="text-align: center;">Operator(s)</th>
     </tr>
     <tr>
       <td style="text-align: center;">1</td>
-      <td style="font-family: 'Code';">||</td>
+      <td style="text-align: center; font-family: 'Code';"> << >> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center; font-family: 'Code';"> * / % </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">3</td>
+      <td style="text-align: center; font-family: 'Code';"> & </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">4</td>
+      <td style="text-align: center; font-family: 'Code';"> ^ </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center; font-family: 'Code';"> | </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">6</td>
+      <td style="text-align: center; font-family: 'Code';"> + - </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">7</td>
+      <td style="text-align: center; font-family: 'Code';"> == != </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">8</td>
+      <td style="text-align: center; font-family: 'Code';"> < <= >= > </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">9</td>
+      <td style="text-align: center; font-family: 'Code';">&&</td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center; font-family: 'Code';">||</td>
     </tr>
   </table>
 </div>
