@@ -3386,6 +3386,34 @@ If sign == 0, IsInf reports whether f is either infinity. <br>
 Returns a value with the magnitude of f and the sign of sign.
 
 <div class="topic-separator"></div>
+<div class="code">pub dim(const x, const y f64) f64</div>
+Returns the maximum of x-y or 0.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">dim(inf, inf) = nan</x></li>
+<li><x class="inline_code">dim(-inf, -inf) = nan</x></li>
+<li><x class="inline_code">dim(x, nan) = dim(nan, x) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub max(const x, const y f64) f64</div>
+Returns the larger of x or y.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">max(x, inf) = max(inf, x) = inf</x></li>
+<li><x class="inline_code">max(x, nan) = max(nan, x) = nan</x></li>
+<li><x class="inline_code">max(+0, ±0) = max(±0, +0) = +0</x></li>
+<li><x class="inline_code">max(-0, -0) = -0</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub min(const x, const y f64) f64</div>
+Returns the smaller of x or y.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">min(x, -inf) = min(-inf, x) = -inf</x></li>
+<li><x class="inline_code">min(x, nan)  = min(nan, x) = nan</x></li>
+<li><x class="inline_code">min(-0, ±0)  = min(±0, -0) = -0</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
@@ -3397,6 +3425,16 @@ Special cases are; <br>
 <div class="code">@inline
 pub signbit(const x f64) bool</div>
 Reports whether x is negative or negative zero.
+
+<div class="topic-separator"></div>
+<div class="code">pub sqrt(const x f64) f64</div>
+Returns the square root of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">sqrt(inf) = inf</x></li>
+<li><x class="inline_code">sqrt(±0) = ±0</x></li>
+<li><x class="inline_code">sqrt(x < 0) = nan</x></li>
+<li><x class="inline_code">sqrt(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
 <div class="code">@inline
