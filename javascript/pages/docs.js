@@ -79,23 +79,23 @@ const introductionHTML = `
   If you are completely new to programming, it may be better to learn programming from the most basic sources.
   If you already know programming, you can easily learn X with this documentation.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Who X is For</div>
   X is good for a few groups of developers for many reasons. Some of those;
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Students</div>
   X is suitable both for learning programming and for learning Cxx.
   X's simple structure and easy-to-understand, readable code encourage both effortless writing and understanding.
   In this way, students can learn without difficulty.
   Confusing syntax does not stand in their way.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Open Source Developers</div>
   X is a project open to community contributions.
   Thank you for every tool, library, framework and program you make open source.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Developers Who Value Speed, Stability and Simplicity</div>
   X is a good choice for those looking for simplicity, stability and performance.
   When you develop with X, you use a simple and straightforward syntax.
@@ -119,7 +119,7 @@ const getting_started_downloadsHTML = `
   <div class="sub-title">Releases</div>
   You can see X compiler in easy setup form at <a target="_blank" href="https://github.com/the-xlang/xxc/releases">releases</a>.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Source Code</div>
   You can download source code of the X compiler at <a target="_blank" href="https://github.com/the-xlang/xxc">repository</a>.
 </div>
@@ -135,7 +135,7 @@ const getting_started_install_from_sourceHTML = `
   <br><br>
   We accept you have already X source code.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Build Scripts</div>
   Project has scripts for build/compile project.
   You can use them.
@@ -144,7 +144,7 @@ const getting_started_install_from_sourceHTML = `
 
   <div class="warn">These examples assume you are in the root directory of the X project.</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   <div class="info">
     Ideal scripts for Windows: usally batchfiles (.bat).
@@ -152,7 +152,7 @@ const getting_started_install_from_sourceHTML = `
   Using example for PowerShell;
   <div class="code">PS @DIR> scripts/build.bat</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   <div class="info">
     Ideal scripts for Windows: usally shellscripts (.sh).
@@ -160,18 +160,18 @@ const getting_started_install_from_sourceHTML = `
   Using example for Bash;
   <div class="code">$ sudo sh scripts/build.sh</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Manual</div>
   X compiler is written in Go, for now!
 
   <div class="warn">You should have Go compiler for this option.</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
   <div class="code">PS @DIR> go build -o xxc.exe -v cmd/xxc/main.go</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
   <div class="code">$ go build -o xxc -v cmd/xxc/main.go</div>
@@ -192,23 +192,23 @@ const compiler_basic_commandsHTML = `
 <div class="text">
 The basics of compiler commands.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">help</div>
 Shows help about of commands.
 <div class="code">$ xxc help</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">version</div>
 Shows version of the X compiler.
 <div class="code">$ xxc version</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">doc</div>
 Documentize X source code.
 See the Documenting for more information.
 <div class="code">$ xxc doc main.xx</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">init</div>
 Initialize new project in working directory.
 <div class="code">$ xxc init</div>
@@ -315,7 +315,7 @@ const project_directory_orderHTML = `
 <div class="text">
 Recommended work pattern and use of project directories for X;
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Source files</div>
 Nice names for source of your project; <br>
 <ul>
@@ -328,7 +328,7 @@ It is recommended that you keep the source code of the language or languages you
 If your project has more than one language, you can separate the languages in different directories in this directory.
 The same method can be applied if you have more than one program.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Scripts</div>
 Nice names for scripts of your project; <br>
 <ul>
@@ -341,7 +341,7 @@ It's better to have these scripts in a directory rather than having them clutter
 If your scripts are applied for different directories, you can create a sub-order by creating those directories inside the script directory.
 Or you can create a new script directory in the corresponding directory.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Documentations</div>
 Nice names for documentations of your project; <br>
 <ul>
@@ -353,7 +353,7 @@ Nice names for documentations of your project; <br>
 
 It is recommended to keep the documents and explanations of your projects in this directory.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Resources</div>
 Nice names for resources of your project; <br>
 <ul>
@@ -372,7 +372,7 @@ const project_namingHTML = `
 
 <div class="warn">These examples are the recommended style, not mandatory.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Styles</div>
 <table class="table">
   <tr>
@@ -427,14 +427,14 @@ const project_namingHTML = `
   </tr>
 </table>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Specifications</div>
 Certain specifications can be made to include only certain files in the compilation.
 For this, simply give a matching specification after the underscore.
 <br><br>
 For example; <x class="inline_code">example_amd64.xx</x>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Operating System Specification</div>
 
 Supported operating systems; <br>
@@ -442,7 +442,7 @@ Supported operating systems; <br>
 <li class="inline_code">darwin</li>
 <li class="inline_code">linux</li>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Architecture Specification</div>
 Supported architectures; <br>
 <li class="inline_code">i386</li>
@@ -486,7 +486,7 @@ As can be seen, the <x class="inline_code">B</x> variable is declared after the 
 In this case, the X compiler will throw an error.
 In the X source code, <x class="inline_code">B</x> must have been declared before.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Define Order</div>
 The example seen above is due to the definition order logic.
 X has a priority queue that it uses to process definitions.
@@ -517,11 +517,11 @@ const basics_commentsHTML = `
   Some programming languages only support one.
   X supports both of these common approaches.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Inline Comments</div>
   <div class="code">// Inline comment</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Multiline Comments</div>
   <div class="code">/*
   Multiline
@@ -539,7 +539,7 @@ const basics_entry_pointHTML = `
   X's entry point function is <x class="inline_code">main</x> function. <br>
   Entry point is should be void and not have any parameter.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">For Example</div>
   <div class="code">main() {
     // Your entry point function body.
@@ -554,7 +554,7 @@ const basics_data_typesHTML = `
   Therefore, the data-types of all values must be specified during compilation.
   In this section we will look at the built-in types offered by the compiler.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Primitive Types</div>
   <table class="table">
     <tr>
@@ -659,7 +659,7 @@ const basics_data_typesHTML = `
     </tr>
   </table>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Type Compability</div>
   <table class="table">
     <tr>
@@ -744,7 +744,7 @@ const basics_data_typesHTML = `
     </tr>
   </table>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Integers</div>
   <div class="sub-sub-title">Decimal</div>
   <div class="code">12345</div>
@@ -755,14 +755,14 @@ const basics_data_typesHTML = `
   <div class="sub-sub-title">Hexadecimal</div>
   <div class="code">0xDFF90</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Floats</div>
   <div class="sub-sub-title">Decimal</div>
   <div class="code">3.14</div>
   <div class="sub-sub-title">Scientific</div>
   <div class="code">3.148797963502462594e+005</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Strings</div>
   <div class="sub-sub-title">String Literals</div>
   <div class="code">"String literal of X."</div>
@@ -830,7 +830,7 @@ const basics_data_typesHTML = `
       <td>Octal</td>
     </tr>
   </table>
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Raw String Literals</div>
   Raw strings do not contain escape sequences and are not required to be defined in a single line.
   They are represents with <x class="inline_code">\`</x>.
@@ -840,12 +840,12 @@ with
 new
     lines.\`</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Nil</div>
   Zero value for pointers and function data typed defines.
   <div class="code">nil</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">any</div>
   It can hold any value and can be nil.
   Supports equals (==) and not equals (!=) operators.
@@ -860,7 +860,7 @@ const basics_operatorsHTML = `
 <div class="text">
   Operators are symbols that describe and specify arithmetic or logical tasks.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Arithmetic Operators</div>
   Arithmetic operators are used to perform common mathematical operations.
   And some times it is also used for non-numeric types.
@@ -908,7 +908,7 @@ const basics_operatorsHTML = `
     </tr>
   </table>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Comparison Operators</div>
   <table class="table">
     <tr>
@@ -941,7 +941,7 @@ const basics_operatorsHTML = `
     </tr>
   </table>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Bitwise Operators</div>
   <table class="table">
     <tr>
@@ -966,7 +966,7 @@ const basics_operatorsHTML = `
     </tr>
   </table>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Comparison Operators</div>
   <table class="table">
     <tr>
@@ -987,7 +987,7 @@ const basics_operatorsHTML = `
     </tr>
   </table>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Precedences</div>
   <table class="table">
     <tr>
@@ -1096,7 +1096,7 @@ The data type of the above variable is defaulted to <x class="inline_code">int</
 In this method, the variable must be given a value, otherwise the X compiler will show an error.
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Manual Data Type Specification</div>
 You may want to specify the data type, it is possible.
 It also brings you advantages.
@@ -1124,7 +1124,7 @@ We mentioned that it has advantages, let's take a look;
   </li>
 </ul>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Assignment</div>
 The values of the variables can be changed later.
 The value given must be the same as the data type of the variable.
@@ -1135,7 +1135,7 @@ For example;
     a = 200    // New value is 200.
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Constant Variable</div>
 Constant variables are declared same method, the only difference being that the keyword <x class="inline_code">const</x> is used when defining them.
 <br><br>
@@ -1146,12 +1146,12 @@ For example;
 No matter which method the constant variables are defined by, a value must be given.
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Differences Between Variables and Constants Variables</div>
 The value of the variables can change, then they can be updated with a different value to match the data type.
 Constants take a single value and never change again.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Volatile Variable</div>
 The <x class="inline_code">volatile</x> keyword tells the compiler not to optimize this definition.
 <br><br>
@@ -1174,7 +1174,7 @@ iter x == 100 {
     // Your code...
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Multiple Assignment / Declaration</div>
 You can multiple variable update or declaration.
 What? Sure, you can use two type in same statement.
@@ -1211,7 +1211,7 @@ For example;
 <div class="code">x, _, z = true, 1, -400</div>
 This way you ignore some values.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Assignment Expressions</div>
 You can perform an assignment in an expressions.
 <br><br>
@@ -1228,7 +1228,7 @@ The value it affects Expression is evaluated after the assignment has taken plac
   <li>You can't declaration</li>
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Shadowing</div>
 Normally, shading allows to suppress previous definitions with the same name for each block.
 But X does not adopt it.
@@ -1286,7 +1286,7 @@ For Example;
 <div class="code">example()</div>
 The name of the function comes first and then the parentheses again.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Function Parameters</div>
 Functions can have parameters.
 These parameters must be specified with arguments at the time the function is called.
@@ -1319,7 +1319,7 @@ As seen in the example above, if there is more than one parameter that must have
 When this is done, all parameters that have not been given the previous data-type will have the same data-type.
 
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Constant and Volatile Parameters</div>
 The function parameters can constant and volatile.
 These parameters is similar to variable versions, actually they are same, acts same.
@@ -1330,7 +1330,7 @@ For example;
     outln(sum)
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Variadic Parameters</div>
 Variadic parameters can contain more than one value.
 The <x class="inline_code">...</x> operator is used for this.
@@ -1359,7 +1359,7 @@ Putting the <x class="inline_code">...</x> operator before its name makes parame
   <li>Variadic parameters must be defined as last parameter.</li>
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Functions with Return Values</div>
 Functions can return values.
 <br><br>
@@ -1389,7 +1389,7 @@ X does not treat function calls as return expressions. <br>
 If you want to send a function as a return expression, try enclosing it in parentheses. <br>
 For exmaple; <x class="inline_code">(my_func())</x> or use the <x class="inline_code">ret</x> keyword.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Using Function as Data Type</div>
 Functions can be used as data type.
 It is similar to defining a function.
@@ -1401,7 +1401,7 @@ The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
 <div class="warn">Default arguments specified in the data-type are not valid.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Anonymous Functions</div>
 Anonymous functions are like standard functions, but they are anonymous and are usually defined as a value.
 Anonymous functions is not have any name.
@@ -1427,7 +1427,7 @@ The anonymous function defined in the example above uses the <x class="inline_co
 Definitions used from outer blocks can be shadowed within the anonymous function.
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Captures</div>
 Anonymous functions work a little differently, although they seem to access the block's definitions directly.
 Each definition is copied with the same identifier.
@@ -1445,12 +1445,12 @@ To make an anonymous function use referencing, the <x class="inline_code">&</x> 
 For example;
 <div class="code">&() { /* body... */ }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Dangling Capturues</div>
 Variables are captured at the point where the anonymous function is defined.
 If a variable captured by reference dies before the anonymous function, the anonymous function will be left holding a dangling reference.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Multiple Returnable Functions</div>
 Functions can returns more then one values.
 For that, specify return data-type with multiple type.
@@ -1469,7 +1469,42 @@ For example;
 <div class="code">less_than(x, y int) [bool] { x < y }</div>
 The example at above, accepted as one type return.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
+<div class="sub-sub-title">Return Type Identifiers</div>
+To give an identifier to the return types, it's enough to make them look like multiple returns.
+The only addition is to give that return value an identifier before the return type.
+<br><br>
+For example;
+<div class="code">example() [x int, y int] {
+  x = 10
+  y = 20
+  ret x, y
+}</div>
+As in the example above.
+These identifiers also cause a variable to be created.
+For each identifier, the function has a variable initialized in its scope.
+
+<div class="topic-separator"></div>
+Also, a function that has at least one return type identifier does not have to have a return expression.
+<br><br>
+For example;
+<div class="code">example() [x int, y int] {
+  x = 10
+  y = 20
+  ret
+}</div>
+Respectively the related variables will be treated as the return statement.
+
+<div class="topic-separator"></div>
+If you provide a return expression while there are return identifiers, the expressions you provide as the expression of the identifiers will be accepted.
+
+<br><br>
+For example;
+<div class="code">example() [x int, y int] {
+  ret 90, 100
+}</div>
+
+<div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Assignment with Multiple Returned Functions</div>
 It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
@@ -1484,7 +1519,7 @@ main() {
 }</div>
 <div class="warn">You can't use multiple returnable functions combined with normal multiple assignments.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Returns as Argument(s)</div>
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
@@ -1501,7 +1536,7 @@ main() {
     my_print(multi_ret_func())
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Returns as Multiple Return</div>
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
@@ -1516,7 +1551,7 @@ main() {
     outln(c)
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Default Arguments</div>
 Default arguments are pre-given arguments for the function when the parameter is not given a value when calling it. <br>
 Default arguments are specified after the identifier of a parameter, between braces. <br>
@@ -1540,7 +1575,7 @@ main() {
     outln(sum()) // Prints 0
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Argumet Targetting</div>
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
@@ -1552,7 +1587,7 @@ main() {
     outln(sub(b=190, a=10)) // Prints -180
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Deferred Calls</div>
 Deferred calls are not executed until they go out of scope.
 Calls are invoked in reverse.
@@ -1575,7 +1610,7 @@ In the continuation of the output, a reverse execution is seen from the last def
 This is exactly why.
 Deferred calls when out of scope are executed from the most recent deferred call to the first deferred call.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Concurrent Calls</div>
 Concurrency works on performing multiple tasks at the same time.
 This means that you are working on multiple tasks simultaneously in one time frame.
@@ -1594,7 +1629,7 @@ main() {
 
 <div class="warn">The program does not automatically wait for the execution of concurrent calls to terminate.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Attributes</div>
 <div class="sub-sub-title"><x class="inline_code">inline</x></div>
 Function calls has a cost.
@@ -1659,7 +1694,7 @@ Output of program;
 <div class="code">[Hello, X, arrays!]</div>
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Access to Elements and Indexing</div>
 Index system is simple.
 Starts at <x class="inline_code">0</x> and continue step by step, it is never not be negative and float.
@@ -1683,7 +1718,7 @@ Output of program;
 <div class="code">Hello
 [Hi, arrays, indexes]</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Multidimensional Arrays</div>
 Multidimensional arrays is array storing arrays.
 <br>
@@ -1699,7 +1734,7 @@ For example;
 Output of program;
 <div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Passing Arrays to Variadic Parameter</div>
 We know that <x class="inline_code">...</x> is used for Variadic parameters.
 We also know that each variadic parameter is actually an array.
@@ -1749,7 +1784,7 @@ Each key-value pair is separated by a comma.
 Keys and values are separated by colons, the key comes first, then the value.
 <div class="info">In iterations, the first variable is the key and the second variable is the value.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Access to Elements and Indexing</div>
 To get the value of a key, it is sufficient to index it with the key. <br>
 For example;
@@ -1812,7 +1847,7 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 </div>
 <div class="warn">You can't use any global, function or etc. in custom value expressions.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Custom Data-Types</div>
 If you want to give enums a data-type other than the default, it is possible to do so. <br>
 For example;
@@ -1849,7 +1884,7 @@ For example to declaration a struct;
 }</div>
 Members of structures are the same as a variable definition.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Assigning Default Values to Members</div>
 When instances of struct members are initialized, they are initialized using the default value of the data-type.
 But you can custom default values. <br>
@@ -1861,7 +1896,7 @@ For example;
     salary :u32 = 2500
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Creating a Instances of Structures</div>
 You use the constructor method of the struct to initialize an instance of structures.
 Constructor methods, in turn, take the struct members themselves as parameters with the same identifier and same data-type.
@@ -1897,7 +1932,7 @@ const memoryHTML = `
 const memory_pointersHTML = `
 <div class="title" style="margin-bottom: 20px;">Pointers</div>
 <div class="text">
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 Each location at memory have an address.
 These addresses points to location at memory.
 Pointers are variables can store this memory addresses.
@@ -1909,7 +1944,7 @@ Example;
 That's pointer for <x class="inline_code">int</x> type.
 <div class="info">Default value of pointers is nil.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Getting Pointer of Variables</div>
 The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
@@ -1920,7 +1955,7 @@ For example;
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Accessing Values on Pointers</div>
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
 For example;
@@ -1931,7 +1966,7 @@ For example;
     outln(*y) // Prints value at address (so 10)
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Assign Values to Pointers</div>
 Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
 <br>
@@ -1955,7 +1990,7 @@ For example;
     outln(x) // Prints 59
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Pointer Arithmetic</div>
 Since memory addresses are ultimately numeric data and the pointer holds that address, it supports arithmetic operations.
 But not supports all common arithmetic operations like integers or floats, just supports addition and subtraction.
@@ -1984,43 +2019,42 @@ const memory_memory_managementHTML = `
   The heap allocations should be free manually because X not have any garbage collector or auto free system.
   For this reason, memory management is important in X.
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Heap Allocations</div>
-  The <x class="inline_code">new</x> keyword allocate new section up to size of data-type from heap of system's memory by specified data-type.
+  The <x class="inline_code">new</x> function allocate new section up to size of data type from heap of system's memory by specified data-type.
   Returns pointer of allocated section, returns <x class="inline_code">nil</x> if allocation failed.
   For example;
-  <div class="code">x:*int = new int</div>
-  <div class="warn">This allocations isn't frees automatically, must freed by developer with <a href="#free"><x class="inline_code">free</x></a> keyword.</div>
+  <div class="code">x:*int = new(int)</div>
+  <div class="warn">This allocations isn't frees automatically, must freed by developer with the <a href="#free"><x class="inline_code">free</x></a> function.</div>
 
-  <div class="title-seperator"></div>
-  <div class="sub-sub-title">Heap Allocations with Initializers</div>
-  You may want to assign a value at the same time as you do a heap allocation.
-  You can use initializers for this. <br>
-  For example;
-  <div class="code">x:*int = new int(225)</div>
-  The above allocation will have a value of <x class="inline_code">255</x> after being allocated.
+  <div class="info">The <x class="inline_code">new</x> function is provided by the <x class="inline_code">mem</x> stdlib.</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div id="free" class="sub-title">Free Allocations</div>
-  The <x class="inline_code">free</x> keyword frees heap-allocated allocations.
+  The <x class="inline_code">free</x> function deallocates heap-allocated allocations.
   You can just free pointers.
   For example;
-  <div class="code">main() {
-    x: = new int // Allocate from heap
-    free x       // Free allocation
+  <div class="code">use mem
+
+main() {
+    x: = new(int) // Allocate from heap
+    free(x)       // Free allocation
 }</div>
   <div class="warn">If you use stack-allocation pointer, this is a undefined behavior.</div>
+  <div class="info">The <x class="inline_code">free</x> function is provided by the <x class="inline_code">mem</x> stdlib.</div>
 
-  <div class="title-seperator"></div>
+  <div class="title-separator"></div>
   <div class="sub-title">Dangling Pointers</div>
   Dangling pointers are isn't point to valid object at memory.
   <br>
   Example;
-  <div class="code">main() {
-    x:*int = new int
+  <div class="code">use mem
+
+main() {
+    x:*int = new(int)
     *x = 10
-    free x  // Frees x, x now becomes a dangling pointer
-    x = nil // x is not dangling now
+    free(x)  // Frees x, x now becomes a dangling pointer
+    x = nil  // x is not dangling now
 }</div>
   Reason of that after freed allocations pointers isn't setted as nil.
   So data is freed but pointer still points to the address, but address not have any value.
@@ -2040,17 +2074,19 @@ main() {
   If you want return any pointer of defined at body of function from function, you can return this pointer as heap-allocated.
   <br>
   For example with example at above;
-  <div class="code">get_pointer() *int {
+  <div class="code">use mem
+
+get_pointer() *int {
     x: = 10
-    y:*int = new int
+    y:*int = new(int)
     *y = x
-    y
+    ret y
 }
 
 main() {
     p:*int = get_pointer()
     outln(*p)
-    free p
+    free(p)
 }</div>
 
 </div>
@@ -2063,7 +2099,7 @@ References are like pointers but less powerful.
 References are definitions that refer to a definition.
 The <x class="inline_code">&</x> operator must be used to represent a reference.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Reference Paramaters</div>
 Example for referenced parameters;
 <div class="code">sum(&i, val int) { i += val }
@@ -2102,7 +2138,9 @@ While the program is executing, if the functions are designed to return this str
 For example;
 <div class="code">safe_div(a, b f32) [f32, *error] {
     if a == 0 || b == 0 {
-        ret 0, new error("division with zero")
+        error = new(Error)
+        *error = Error("division with zero")
+        ret 0, error
     }
     ret a/b, nil
 }
@@ -2165,7 +2203,7 @@ In the above code example, you cannot normally reach the <x class="inline_code">
 However, when we enclose the panic in a <x class="inline_code">try</x> block, you will see that the execution of the program is no longer stopped.
 When the block encounters a panic in it, it leaves the block without executing the remaining statements of the block.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Catching Panics</div>
 Just as you want program execution to continue, you may also want to catch the panic attempting to stop it.
 What you need in this case is a <x class="inline_code">catch</x> block.
@@ -2229,7 +2267,7 @@ In addition, it seems that this alias is used in variable definition.
 This is because the X compiler recognizes the default types built-in.
 If your type alias represents a built-in definition, your type alias will not be detected as a type.
 For this reason, it is a more useful approach to specify specifically.
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 When defining a type alias, only the following types can be given as the type to represent:
 <ul>
   <li>Built-in Data Types</li>
@@ -2432,7 +2470,7 @@ The example above contains a namespace with the identifier <x class="inline_code
 You can see how this namespace is used in the main function.
 You use <x class="inline_code">::</x> to access the definitions of a namespace.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Nested Namespaces</div>
 A namespace can contain namespaces, here is an example;
 <div class="code">math {
@@ -2499,7 +2537,7 @@ Any cxx code that you don't embed in a code block is appended to the top when tr
   This is entirely the developer's responsibility.
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Using definitions of X</div>
 If you want to use definitions in embed codes, you can indicate the identifier you want to reach with <x class="inline_code">@</x>.
 If there is a definition for which you have written the identifier, its identifier will appear there, if not, the relevant section will not be change.
@@ -2516,7 +2554,7 @@ main() {
     cxx_wcout("Hello World")
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Return Statements</div>
 In Cxx embedding codes, a return expression is treated as a return made within the function.
 So XXC does not give an error that you should write return statement.
@@ -2627,7 +2665,7 @@ example_func(a T1, b T2) {}</div>
 <div class="code">type[T1, T2]
 example_func1(a T1, b T2) {}</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title" style="margin-bottom: 20px;">Generics for Structure</div>
 Structures support generics.
 There is no additional syntax to use it. Combine only what you know with the struct declaration.
@@ -2643,7 +2681,7 @@ struct position {
 Calling the constructor method will be no different than calling a function that uses generics.
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title" style="margin-bottom: 20px;">Genericed Structure Type Representation</div>
 Generic types must also be specified to specify an instance of a specific type of the position structure.
 Doing this is like calling a function.
@@ -2704,7 +2742,7 @@ Documentize the <x class="inline_code">main.xx</x> file.
 <div class="code">$ xxc doc main.xx test.xx</div>
 Documentize the <x class="inline_code">main.xx</x> and <x class="inline_code">test.xx</x> files.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="warn">
 The <x class="inline_code">doc</x> command does not document if the source code contains a non-logical (syntax, etc.) error.
 </div>
@@ -2717,7 +2755,7 @@ The use declarations act as importing other packages for use in your code. <br>
 Declared with the <x class="inline_code">use</x> keyword.
 
 <div class="text">
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Use Declaration for Standard Library</div>
 To use standard library, standard path is used.
 It is quite plain and simple.
@@ -2733,7 +2771,7 @@ For example;
   <li>Packages used by used packages are not included for use.</li>
 </div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Packages</div>
 X treats each directory as a package.
 Each package has the ability to use its own defines.
@@ -2773,7 +2811,7 @@ Directives are denoted by <x class="inline_code">pragma</x> identifier to prepro
 For example;
 <div class="code">#pragma enofi</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">enofi</x></div>
 When importing a package or local package, this directive ensures that the code is split on import.
 When the preprocessor sees this directive, it discards the rest of the code.
@@ -2921,7 +2959,7 @@ const endHTML = `
 <div class="text">
 Thanks for reading.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Feedback</div>
 Please tell us, share with us your ideas and experiences.
 <br>
@@ -2931,7 +2969,7 @@ Support us to improve the documentation.
 <a href="https://github.com/the-xlang/website/issues/new/choose">Open Issue</a> <br>
 <a href="https://github.com/the-xlang/website/fork">Fork project</a>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
   <div class="sub-title">Source Code this Website</div>
   The source code files is accessible from <a href="https://github.com/the-xlang/website">GitHub</a> website repository.
 </div>
@@ -3162,13 +3200,17 @@ As a return value, it is usually used to indicate no matches.
 
 const TAB_stdlib_builtin_type_aliases = `
 <div class="sub-sub-title"><x class="inline_code">type byte u8</x></div>
+
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">type sbyte i8</x></div>
+
+<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">type size uint</x></div>
 `;
 
 const TAB_stdlib_builtin_structures = `
-<div class="code">struct Error {
-    message:str
+<div class="code">pub struct Error {
+    pub message:str
 }</div>
 
 This is a error handling structure of standard library. <br>
@@ -3411,6 +3453,19 @@ Special case is:
 <li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if n == 0</x></li>
 <li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if dest == nil</x></li>
 <li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if src == nil</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+@type_param
+type[T]
+pub new() *T</div>
+Returns pointer to new allocation of data type if allocation is success, nil if not.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+pub free(ptr voidptr)</div>
+Deallocates given heap-allocated pointer.
+
 `;
 
 const TAB_stdlib_os_globals = `
@@ -3454,7 +3509,7 @@ const TAB_common_concepts_iterations = `
 Iterations allow you to repeat the algorithm according to certain conditions.
 The <x class="inline_code">iter</x> keyword use for iterations in X.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Infinity Iterations</div>
 Infinite iterations keep repeating endlessly until the loop is somehow broken.
 <br>
@@ -3466,7 +3521,7 @@ For example;
 }</div>
 The above example prints <x class="inline_code">Hello, iterations</x> repeatedly.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">While Iterations</div>
 The while iterations are iterations that repeat as long as a certain condition is met.
 It is not much different from defining an infinite iteration.
@@ -3484,7 +3539,7 @@ As seen in the example above, the expression is written between the keyword and 
 This expression is evaluated before each loop, and if it returns true, the loop is iterated.
 This example just prints <x class="inline_code">0</x>.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Foreach Iterations</div>
 Foreach or for-each can be summarized as an iteration standard for collections.
 It repeats itself by looping through the elements of the collection.
@@ -3530,7 +3585,7 @@ As you can see, it is possible to use the ignore operator for unused fields.
 Similar to auto-type variables.
 If the index variable is be numeric, X's auto data-type is <x class="inline_code">int</x> type.</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title">Iteration Controlling</div>
 We may want to check for iterations, this is normal and common.
 There are two ways to do this in X; The <x class="inline_code">continue</x> and <x class="inline_code">break</x> keywords.
@@ -3566,20 +3621,22 @@ const TAB_common_concepts_if_expression = `
 If expressions allow you to manipulate the algorithm according to certain conditions.
 The <x class="inline_code">if</x> and <x class="inline_code">else</x> keywords use for if expressions in X.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">if</x> Expressions</div>
 If the provided condition is <x class="inline_code">true</x> the block is executed, otherwise it is not executed.
 It is also the beginning of a new chain of conditions.
 <br><br>
 For example;
-<div class="code">main() {
-    x: = new int
+<div class="code">use mem
+
+main() {
+    x: = new(int)
     if x == nil {
         outln("memory allocation is failed")
     }
 }</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">else if</x> Expressions</div>
 If the preceding <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions have not been fulfilled, it is a condition presented as an alternative to them.
 <br><br>
@@ -3597,13 +3654,15 @@ For example;
 
 // OUTPUT: equals to hundred</div>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">else</x> Blocks</div>
 It is the block that will be executed unconditionally if the previous <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions are not fulfilled.
 <br><br>
 For example;
-<div class="code">main() {
-    x: = new int
+<div class="code">use mem
+
+main() {
+    x: = new(int)
     if x == nil {
         outln("memory allocation is failed")
     } else {
@@ -3615,13 +3674,13 @@ For example;
 const TAB_common_concepts_goto_statements = `
 The goto statements allow you to jump to any part of the algorithm.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Labels</div>
 Goto statements need labels to jump somewhere in the algorithm.
 To declare a label, simply put the name of the tag followed by a colon. <br>
 For example; <x class="inline_code">repeat:</x>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="sub-title">Going to Labels</div>
 The <x class="inline_code">goto</x> keyword is used for a goto statement.
 Jumping to a label is as simple as defining a label.
@@ -3641,31 +3700,31 @@ const TAB_cxx_cxxapi_preprocessor_defines = `
 <div class="code">func</div>
 Like alias for <x class="inline_code">std::function</x>.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">XID(_Identifier)</div>
 Appends the prefix that the identifiers have in the CXX output to the identifier you supplied.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">CONCAT(_A, _B)</div>
 Concatenate specified arguments.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">_CONCAT(_A, _B)</div>
 Source define for <x class="inline_code">CONCAT(_A, _B)</x>
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">DEFER(_Expr)</div>
 Calls given expressions as deferred call.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">CO(_Expr)</div>
 Calls given expressions as concurrent call.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">nil</div>
 Built-in <x class="inline_code">nil</x> value of X.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div class="code">_WINDOWS</div>
 Defined this if operating system if is Windows.
 `;
@@ -3676,8 +3735,8 @@ const TAB_cxx_cxxapi_defines = `
 <li><a href="#cxxapi-structures">Structures</a></li>
 <li><a href="#cxxapi-functions">Functions</a></li>
 
-<div class="title-seperator"></div>
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
+<div class="title-separator"></div>
 <div id="cxxapi-misc" class="sub-sub-title">Misc</div>
 <div class="code">struct defer</div>
 Source struct for deferred calls.
@@ -3689,7 +3748,7 @@ struct tuple_ostream</div>
 struct tuple_ostream&lt;Type, N, N&gt;</div>
 Implementation of tuple available for std::ostream.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data Types</div>
 <div class="info">
 The primitive data-types in X, have same names in cxx output.
@@ -3714,17 +3773,13 @@ The <x class="inline_code">str</x> data-type of X.
 <div class="code">struct any_xt</div>
 The <x class="inline_code">any</x> data-type of X.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div id="cxxapi-structures" class="sub-sub-title">Structures</div>
 <div class="code">struct XID(Error)</div>
 The built-in <x class="inline_code">Error</x> structure.
 
-<div class="title-seperator"></div>
+<div class="title-separator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
-<div class="code">template&lt;typename _Alloc_t&gt;
-static inline _Alloc_t *xalloc()</div>
-Returns pointer of allocation from heap if allocation success, returns <x class="inline_code">nil</x> if failed.
-
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
 static inline void foreach(const _Enum_t _Enum,
