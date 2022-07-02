@@ -1020,11 +1020,11 @@ const basics_operatorsHTML = `
     </tr>
     <tr>
       <td style="text-align: center;">7</td>
-      <td style="text-align: center; font-family: 'Code';"> == != </td>
+      <td style="text-align: center; font-family: 'Code';"> < <= >= > </td>
     </tr>
     <tr>
       <td style="text-align: center;">8</td>
-      <td style="text-align: center; font-family: 'Code';"> < <= >= > </td>
+      <td style="text-align: center; font-family: 'Code';"> == != </td>
     </tr>
     <tr>
       <td style="text-align: center;">9</td>
