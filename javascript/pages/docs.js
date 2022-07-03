@@ -1596,7 +1596,7 @@ main() {
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Argumet Targetting</div>
+<div class="sub-title">Argumet Targeting</div>
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
 For example;
