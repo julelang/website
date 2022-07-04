@@ -906,6 +906,16 @@ const basics_operatorsHTML = `
       <td>Right shift</td>
       <td>integer >> unsigned integer</td>
     </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';">++</td>
+      <td>Equals to += 1 as suffix</td>
+      <td>lvalue arithmetic++</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: 'Code';"> --</td>
+      <td>Equals to -= 1 as suffix</td>
+      <td>lvalue arithmetic--</td>
+    </tr>
   </table>
 
   <div class="title-separator"></div>
