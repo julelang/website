@@ -638,14 +638,9 @@ const basics_data_typesHTML = `
       <td>true or false</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">char</td>
-      <td style="text-align: center;">1 byte</td>
-      <td>Single ASCII character.</td>
-    </tr>
-    <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
       <td style="text-align: center;">-</td>
-      <td>ASCII character array.</td>
+      <td>UTF-8 Byte String</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">voidptr</td>
@@ -672,15 +667,15 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i16</td>
-      <td>i8, i16, u8, char</td>
+      <td>i8, i16, u8</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i32</td>
-      <td>i8, i16, i32, u8, u16, char</td>
+      <td>i8, i16, i32, u8, u16</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">i64</td>
-      <td>i8, i16, i32, i64, u8, u16, u32, char</td>
+      <td>i8, i16, i32, i64, u8, u16, u32</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">int</td>
@@ -692,19 +687,19 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
-      <td>u8, char</td>
+      <td>u8</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u16</td>
-      <td>u8, u16, char</td>
+      <td>u8, u16</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u32</td>
-      <td>u8, u16, u32, char</td>
+      <td>u8, u16, u32</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u64</td>
-      <td>u8, u16, u32, u64, char</td>
+      <td>u8, u16, u32, u64</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">uint</td>
@@ -716,19 +711,15 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f32</td>
-      <td>f32, i8, i16, i32, i64, u8, u16, u32, u64, char</td>
+      <td>f32, i8, i16, i32, i64, u8, u16, u32, u64</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">f64</td>
-      <td>f32, f64, i8, i16, i32, i64, u8, u16, u32, u64, char</td>
+      <td>f32, f64, i8, i16, i32, i64, u8, u16, u32, u64</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">bool</td>
       <td>bool</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">char</td>
-      <td>char, u8</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
@@ -1554,9 +1545,9 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example;
-<div class="code">multi_ret_func() [int, str, char] { 143, "STR", 'W' }
+<div class="code">multi_ret_func() [int, str, byte] { 143, "STR", 'W' }
 
-my_print(a int, b str, c char) {
+my_print(a int, b str, c byte) {
     outln(a)
     outln(b)
     outln(c)
@@ -1571,8 +1562,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example;
-<div class="code">example1() [int, str, char] { 143, "STR", 'W' }
-example2() [int, str, char] { (example1()) }
+<div class="code">example1() [int, str, byte] { 143, "STR", 'W' }
+example2() [int, str, byte] { (example1()) }
 
 main() {
     a:, b:, c: = test2()
@@ -3636,8 +3627,8 @@ This example, just shows index. Let's see foreach iteration with element.
 For example;
 <div class="code">main() {
     mystr:str = "Hello"
-    iter _, r:char in mystr {
-        outln(r)
+    iter _, c:byte in mystr {
+        outln(c)
     }
 }
 
