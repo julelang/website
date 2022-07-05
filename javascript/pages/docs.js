@@ -748,9 +748,7 @@ const basics_data_typesHTML = `
 
   <div class="title-separator"></div>
   <div class="sub-title">Floats</div>
-  <div class="sub-sub-title">Decimal</div>
   <div class="code">3.14</div>
-  <div class="sub-sub-title">Scientific</div>
   <div class="code">3.148797963502462594e+005</div>
 
   <div class="title-separator"></div>
@@ -805,20 +803,20 @@ const basics_data_typesHTML = `
       <td>Double quote.</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">\\xA4</td>
-      <td>2-digit hex</td>
+      <td style="text-align: center; font-family: 'Code';">\\x<i>hh</i></td>
+      <td>The byte whose numerical value is given by hh… interpreted as a hexadecimal number.</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">\\uDDF0</td>
-      <td>4-digit hex</td>
+      <td style="text-align: center; font-family: 'Code';">\\u<i>hhhh</i></td>
+      <td>Unicode code point below 10000 hexadecimal.</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">\\U903UB2FF</td>
-      <td>8-digit hex</td>
+      <td style="text-align: center; font-family: 'Code';">\\U<i>hhhhhhhh</i></td>
+      <td>Unicode code point where </i>h</i> is a hexadecimal digit.</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: 'Code';">\\278</td>
-      <td>Octal</td>
+      <td style="text-align: center; font-family: 'Code';">\\<i>nnn</i></td>
+      <td>The byte whose numerical value is given by nnn interpreted as an octal number.</td>
     </tr>
   </table>
   <div class="title-separator"></div>
@@ -3220,13 +3218,26 @@ As a return value, it is usually used to indicate no matches.
 `;
 
 const TAB_stdlib_builtin_type_aliases = `
-<div class="sub-sub-title"><x class="inline_code">type byte u8</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub type byte u8</x></div>
+Is an alias for u8.
+It is used, by convention, to distinguish byte values from 8-bit unsigned integer values.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">type sbyte i8</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub type sbyte i8</x></div>
+Is an alias for i8.
+It is used, by convention, to distinguish byte values from 8-bit signed integer values.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">type size uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub type rune i32</x></div>
+Is an alias for i32.
+It is used, by convention, to distinguish character values from integer values.
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">pub type size uint</x></div>
+Is an Type for uint.
+The size type can store the maximum size of a theoretically possible object of any type.
+This type is safe way for indexing, loop counting, etc.
+
 `;
 
 const TAB_stdlib_builtin_structures = `
