@@ -10,16 +10,14 @@ const preview_code_helloworldHTML =
 const preview_code_fibonacci_closureHTML =
 `fibo() () int {
     a:, b: = 0, 1
-    (() int {
+    ret () int {
         a, b = b, a+b
-        a
-    })
+        ret a
+    }
 }
 
 main() {
     f: = fibo()
-    outln(f())
-    outln(f())
     outln(f())
     outln(f())
     outln(f())
@@ -28,12 +26,11 @@ main() {
 const preview_code_pointersHTML =
 `main() {
     myarr: = []int{10, 50, 24, -43, 63}
-    const myarr_size:size = 5
     counter: = 0
     ptr: = &myarr[0]
-    iter (counter+=1) <= myarr_size {
+    iter (counter++) < myarr.len {
         outln(*ptr)
-        ptr += 1
+        ptr++
     }
 }`;
 
