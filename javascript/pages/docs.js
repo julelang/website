@@ -2787,7 +2787,6 @@ For example;
 <div class="warn">
   <li>You can't use already used packages.</li>
   <li>You must declare uses at the beginning of code.</li>
-  <li>Packages used by used packages are not included for use.</li>
 </div>
 
 <div class="title-separator"></div>
@@ -2807,8 +2806,6 @@ main() {
     hello_print("Packages")
 }</div>
 As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
-<br><br>
-Packages' use declarations are common, so collecting all the package's use declarations in a single file like <x class="inline_code">uses.xx</x> can be a good option for readability and easy maintenance.
 
 <div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
 </div>
