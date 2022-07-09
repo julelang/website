@@ -3474,6 +3474,15 @@ Special cases are; <br>
 <li><x class="inline_code">logb(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub ilogb(const x f64) int</div>
+Returns the binary exponent of x as an integer.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">ilogb(±inf) = i32.max</x></li>
+<li><x class="inline_code">ilogb(0) = i32.min</x></li>
+<li><x class="inline_code">ilogb(nan) = i32.max</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
