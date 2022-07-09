@@ -3433,6 +3433,16 @@ Special cases are; <br>
 <li><x class="inline_code">frexp(nan) = nan, 0</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub log(const x f64) f64</div>
+Returns the natural logarithm of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">log(inf) = inf</x></li>
+<li><x class="inline_code">log(0) = -inf</x></li>
+<li><x class="inline_code">log(x < 0) = nan</x></li>
+<li><x class="inline_code">log(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
