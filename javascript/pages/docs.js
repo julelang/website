@@ -3433,6 +3433,16 @@ Special cases are; <br>
 <li><x class="inline_code">frexp(nan) = nan, 0</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub ldexp(frac f64, exp int) f64</div>
+Is the inverse of frexp.
+It returns frac × 2**exp.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">ldexp(±0, exp) = ±0</x></li>
+<li><x class="inline_code">ldexp(±inf, exp) = ±inf</x></li>
+<li><x class="inline_code">ldexp(nan, exp) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub log(const x f64) f64</div>
 Returns the natural logarithm of x.
 <br><br>
