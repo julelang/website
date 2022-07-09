@@ -3423,6 +3423,16 @@ Special cases are; <br>
 <li><x class="inline_code">min(-0, ±0)  = min(±0, -0) = -0</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub frexp(f f64) [frac f64, exp int]</div>
+Breaks f into a normalized fraction and an integral power of two.
+It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">frexp(±0) = ±0, 0</x></li>
+<li><x class="inline_code">frexp(±inf) = ±inf, 0</x></li>
+<li><x class="inline_code">frexp(nan) = nan, 0</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
