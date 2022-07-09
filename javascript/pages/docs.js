@@ -3453,6 +3453,18 @@ Special cases are; <br>
 <li><x class="inline_code">log(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub log1p(const x f64) f64</div>
+Returns the natural logarithm of 1 plus its argument x.
+It is more accurate than log(1 + x) when x is near zero.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">log1p(+inf) = +inf</x></li>
+<li><x class="inline_code">log1p(±0) = ±0</x></li>
+<li><x class="inline_code">log1p(-1) = -inf</x></li>
+<li><x class="inline_code">log1p(x < -1) = nan</x></li>
+<li><x class="inline_code">log1p(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
