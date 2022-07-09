@@ -3465,6 +3465,15 @@ Special cases are; <br>
 <li><x class="inline_code">log1p(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub logb(const x f64) f64</div>
+Returns the binary exponent of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">logb(±inf) = +inf</x></li>
+<li><x class="inline_code">logb(0) = -inf</x></li>
+<li><x class="inline_code">logb(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
