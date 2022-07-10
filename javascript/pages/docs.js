@@ -3369,6 +3369,15 @@ Special cases are; <br>
 <li><x class="inline_code">abs(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub acosh(const x f64) f64</div>
+Returns the inverse hyperbolic cosine of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">acosh(+inf) = +inf</x></li>
+<li><x class="inline_code">acosh(x) = nan if x < 1</x></li>
+<li><x class="inline_code">acosh(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">@inline
 pub nan() f64</div>
 Returns an IEEE 754 “not-a-number” value.
