@@ -3373,9 +3373,20 @@ Special cases are; <br>
 Returns the inverse hyperbolic cosine of x.
 <br><br>
 Special cases are; <br>
-<li><x class="inline_code">acosh(+inf) = +inf</x></li>
+<li><x class="inline_code">acosh(inf) = inf</x></li>
 <li><x class="inline_code">acosh(x) = nan if x < 1</x></li>
 <li><x class="inline_code">acosh(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub atanh(x f64) f64</div>
+Returns the inverse hyperbolic tangent of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">atanh(1) = inf</x></li>
+<li><x class="inline_code">atanh(±0) = ±0</x></li>
+<li><x class="inline_code">atanh(-1) = -inf</x></li>
+<li><x class="inline_code">atanh(x) = nan if x < -1 or x > 1</x></li>
+<li><x class="inline_code">atanh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
 <div class="code">@inline
@@ -3476,7 +3487,7 @@ Returns the natural logarithm of 1 plus its argument x.
 It is more accurate than log(1 + x) when x is near zero.
 <br><br>
 Special cases are; <br>
-<li><x class="inline_code">log1p(+inf) = +inf</x></li>
+<li><x class="inline_code">log1p(inf) = inf</x></li>
 <li><x class="inline_code">log1p(±0) = ±0</x></li>
 <li><x class="inline_code">log1p(-1) = -inf</x></li>
 <li><x class="inline_code">log1p(x < -1) = nan</x></li>
@@ -3487,7 +3498,7 @@ Special cases are; <br>
 Returns the binary exponent of x.
 <br><br>
 Special cases are; <br>
-<li><x class="inline_code">logb(±inf) = +inf</x></li>
+<li><x class="inline_code">logb(±inf) = inf</x></li>
 <li><x class="inline_code">logb(0) = -inf</x></li>
 <li><x class="inline_code">logb(nan) = nan</x></li>
 
