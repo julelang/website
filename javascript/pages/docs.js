@@ -3400,6 +3400,15 @@ If sign < 0, IsInf reports whether f is negative infinity. <br>
 If sign == 0, IsInf reports whether f is either infinity. <br>
 
 <div class="topic-separator"></div>
+<div class="code">pub cbrt(x f64) f64</div>
+Returns the cube root of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">cbrt(±0) = ±0</x></li>
+<li><x class="inline_code">cbrt(±inf) = ±inf</x></li>
+<li><x class="inline_code">cbrt(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub copysign(const f, const sign f64) f64</div>
 Returns a value with the magnitude of f and the sign of sign.
 
