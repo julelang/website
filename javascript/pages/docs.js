@@ -3456,9 +3456,18 @@ Special cases are; <br>
 Returns the error function of x.
 <br><br>
 Special cases are; <br>
-<li><x class="inline_code">erf(+inf) = 1</x></li>
+<li><x class="inline_code">erf(inf) = 1</x></li>
 <li><x class="inline_code">erf(-inf) = -1</x></li>
 <li><x class="inline_code">erf(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub erfc(x f64) f64</div>
+Returns the complementary error function of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">erfc(inf) = 0</x></li>
+<li><x class="inline_code">erfc(-inf) = 2</x></li>
+<li><x class="inline_code">erfc(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
 <div class="code">pub exp(const x f64) f64</div>
