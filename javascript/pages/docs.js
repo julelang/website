@@ -3452,9 +3452,21 @@ Special cases are; <br>
 <li><x class="inline_code">min(-0, ±0)  = min(±0, -0) = -0</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub exp(const x f64) f64</div>
+Returns e**x, the base-e exponential of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">exp(inf) = inf</x></li>
+<li><x class="inline_code">exp(nan) = nan</x></li>
+<div class="warn">
+  <li>Very large values overflow to 0 or inf.</li>
+  <li>Very small values underflow to 1.</li>
+</div>
+
+<div class="topic-separator"></div>
 <div class="code">pub expm1(x f64) f64</div>
 Returns e**x - 1, the base-e exponential of x minus 1.
-It is more accurate than Exp(x) - 1 when x is near zero.
+It is more accurate than exp(x) - 1 when x is near zero.
 <br><br>
 Special cases are; <br>
 <li><x class="inline_code">expm1(inf) = inf</x></li>
