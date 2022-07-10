@@ -3473,6 +3473,16 @@ Special cases are; <br>
 <li><x class="inline_code">frexp(nan) = nan, 0</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub hypot(p, q f64) f64</div>
+Returns sqrt(p*p + q*q), taking care to avoid unnecessary overflow and underflow.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">hypot(±inf, q) = inf</x></li>
+<li><x class="inline_code">hypot(p, ±inf) = inf</x></li>
+<li><x class="inline_code">hypot(nan, q) = nan</x></li>
+<li><x class="inline_code">hypot(p, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub ldexp(frac f64, exp int) f64</div>
 Is the inverse of frexp.
 It returns frac × 2**exp.
