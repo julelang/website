@@ -3544,6 +3544,18 @@ Special cases are; <br>
 <li><x class="inline_code">ilogb(nan) = i32.max</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub mod(const x, y f64) f64</div>
+Returns the floating-point remainder of x/y.
+The magnitude of the result is less than y and its sign agrees with that of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">mod(±inf, y) = nan</x></li>
+<li><x class="inline_code">mod(nan, y) = nan</x></li>
+<li><x class="inline_code">mod(x, 0) = nan</x></li>
+<li><x class="inline_code">mod(x, ±inf) = x</x></li>
+<li><x class="inline_code">mod(x, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
