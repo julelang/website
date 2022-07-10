@@ -3515,6 +3515,11 @@ Special cases are; <br>
 <li><x class="inline_code">log1p(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub log10(const x f64) f64</div>
+Returns the decimal logarithm of x.
+The special cases are the same as for log.
+
+<div class="topic-separator"></div>
 <div class="code">pub logb(const x f64) f64</div>
 Returns the binary exponent of x.
 <br><br>
