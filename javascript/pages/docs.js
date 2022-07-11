@@ -3632,6 +3632,15 @@ Special cases are; <br>
 <li><x class="inline_code">sqrt(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub tanh(const x f64) f64</div>
+Returns the hyperbolic tangent of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">tanh(±0) = ±0</x></li>
+<li><x class="inline_code">tanh(±inf) = ±1</x></li>
+<li><x class="inline_code">tanh(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">@inline
 pub f32_bits(const f f32) u32</div>
 Returns the IEEE 754 binary representation of f, with the sign bit of f and the result in the same bit position. <br>
