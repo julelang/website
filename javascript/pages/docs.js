@@ -3507,6 +3507,16 @@ Special cases are; <br>
 <li><x class="inline_code">floor(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">@inline
+pub ceil(const x f64) f64</div>
+Returns the least integer value greater than or equal to x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">ceil(±0) = ±0</x></li>
+<li><x class="inline_code">ceil(±inf) = ±inf</x></li>
+<li><x class="inline_code">ceil(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub frexp(f f64) [frac f64, exp int]</div>
 Breaks f into a normalized fraction and an integral power of two.
 It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
