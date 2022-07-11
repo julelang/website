@@ -3604,6 +3604,15 @@ pub signbit(const x f64) bool</div>
 Reports whether x is negative or negative zero.
 
 <div class="topic-separator"></div>
+<div class="code">pub sinh(x f64) f64</div>
+Returns the hyperbolic sine of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">sinh(±0) = ±0</x></li>
+<li><x class="inline_code">sinh(±inf) = ±inf</x></li>
+<li><x class="inline_code">sinh(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub sqrt(const x f64) f64</div>
 Returns the square root of x.
 <br><br>
