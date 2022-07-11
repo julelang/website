@@ -3378,6 +3378,14 @@ Special cases are; <br>
 <li><x class="inline_code">acosh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub asin(x f64) f64</div>
+Returns the arcsine, in radians, of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">asin(±0) = ±0</x></li>
+<li><x class="inline_code">asin(x) = nan if x < -1 or x > 1</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub asinh(x f64) f64</div>
 Returns the inverse hyperbolic sine of x.
 <br><br>
