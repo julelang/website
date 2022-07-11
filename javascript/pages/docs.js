@@ -3535,6 +3535,15 @@ Special cases are; <br>
 <li><x class="inline_code">round(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub round_even(const x f64) f64</div>
+Returns the nearest integer, rounding ties to even.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">round_even(±0) = ±0</x></li>
+<li><x class="inline_code">round_even(±inf) = ±inf</x></li>
+<li><x class="inline_code">round_even(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub frexp(f f64) [frac f64, exp int]</div>
 Breaks f into a normalized fraction and an integral power of two.
 It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
