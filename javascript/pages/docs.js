@@ -3517,6 +3517,15 @@ Special cases are; <br>
 <li><x class="inline_code">ceil(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub trunc(const x f64) f64</div>
+Returns the integer value of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">trunc(±0) = ±0</x></li>
+<li><x class="inline_code">trunc(±inf) = ±inf</x></li>
+<li><x class="inline_code">trunc(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub frexp(f f64) [frac f64, exp int]</div>
 Breaks f into a normalized fraction and an integral power of two.
 It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
