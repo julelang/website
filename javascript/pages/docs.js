@@ -3411,6 +3411,30 @@ Special cases are; <br>
 <li><x class="inline_code">atan(±inf) = ±PI/2</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub atan2(const y, const x f64) f64</div>
+Returns the arc tangent of y/x, using
+the signs of the two to determine the quadrant of the return value.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">atan2(y, nan) = nan</x></li>
+<li><x class="inline_code">atan2(nan, x) = nan</x></li>
+<li><x class="inline_code">atan2(+0, x>=0) = +0</x></li>
+<li><x class="inline_code">atan2(-0, x>=0) = -0</x></li>
+<li><x class="inline_code">atan2(+0, x<=-0) = +PI</x></li>
+<li><x class="inline_code">atan2(-0, x<=-0) = -PI</x></li>
+<li><x class="inline_code">atan2(y>0, 0) = +PI/2</x></li>
+<li><x class="inline_code">atan2(y<0, 0) = -PI/2</x></li>
+<li><x class="inline_code">atan2(inf, inf) = +PI/4</x></li>
+<li><x class="inline_code">atan2(-inf, inf) = -PI/4</x></li>
+<li><x class="inline_code">atan2(inf, -inf) = 3PI/4</x></li>
+<li><x class="inline_code">atan2(-inf, -inf) = -3PI/4</x></li>
+<li><x class="inline_code">atan2(y, inf) = 0</x></li>
+<li><x class="inline_code">atan2(y>0, -inf) = +PI</x></li>
+<li><x class="inline_code">atan2(y<0, -inf) = -PI</x></li>
+<li><x class="inline_code">atan2(inf, x) = +PI/2</x></li>
+<li><x class="inline_code">atan2(-inf, x) = -PI/2</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub atanh(x f64) f64</div>
 Returns the inverse hyperbolic tangent of x.
 <br><br>
