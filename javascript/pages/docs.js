@@ -3498,6 +3498,15 @@ Special cases are; <br>
 <div class="warn">Very large values overflow to -1 or inf.</div>
 
 <div class="topic-separator"></div>
+<div class="code">pub floor(const x f64) f64</div>
+Returns the greatest integer value less than or equal to x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">floor(±0) = ±0</x></li>
+<li><x class="inline_code">floor(±inf) = ±inf</x></li>
+<li><x class="inline_code">floor(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub frexp(f f64) [frac f64, exp int]</div>
 Breaks f into a normalized fraction and an integral power of two.
 It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
