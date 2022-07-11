@@ -3471,6 +3471,17 @@ Special cases are; <br>
 <li><x class="inline_code">erfinv(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">@inline
+pub erfcinv(const x f64) f64</div>
+Returns the inverse of erfc(x).
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">erfcinv(0) = inf</x></li>
+<li><x class="inline_code">erfcinv(2) = -inf</x></li>
+<li><x class="inline_code">erfcinv(x) = nan if x < 0 or x > 2</x></li>
+<li><x class="inline_code">erfcinv(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub erfc(x f64) f64</div>
 Returns the complementary error function of x.
 <br><br>
