@@ -3591,6 +3591,15 @@ Special cases are; <br>
 <li><x class="inline_code">mod(x, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub modf(const f f64) [integer f64, frac f64]</div>
+Returns integer and fractional floating-point numbers that sum to f.
+Both values have the same sign as f.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">modf(±inf) = ±inf, nan</x></li>
+<li><x class="inline_code">modf(nan) = nan, nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub nextafter32(const x, const y f32) [r f32]</div>
 Returns the next representable f32 value after x towards y.
 <br><br>
