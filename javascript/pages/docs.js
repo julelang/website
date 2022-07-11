@@ -3387,6 +3387,14 @@ Special cases are; <br>
 <li><x class="inline_code">asinh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub atan(const x f64) f64</div>
+Returns the arctangent, in radians, of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">atan(±0) = ±0</x></li>
+<li><x class="inline_code">atan(±inf) = ±PI/2</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub atanh(x f64) f64</div>
 Returns the inverse hyperbolic tangent of x.
 <br><br>
