@@ -3613,6 +3613,15 @@ Special cases are; <br>
 <li><x class="inline_code">sinh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub cosh(x f64) f64</div>
+Returns the hyperbolic cosine of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">cosh(±0) = 1</x></li>
+<li><x class="inline_code">cosh(±inf) = inf</x></li>
+<li><x class="inline_code">cosh(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub sqrt(const x f64) f64</div>
 Returns the square root of x.
 <br><br>
