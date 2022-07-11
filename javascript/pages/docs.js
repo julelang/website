@@ -3378,6 +3378,15 @@ Special cases are; <br>
 <li><x class="inline_code">acosh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub asinh(x f64) f64</div>
+Returns the inverse hyperbolic sine of x.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">asinh(±0) = ±0</x></li>
+<li><x class="inline_code">asinh(±inf) = ±inf</x></li>
+<li><x class="inline_code">asinh(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub atanh(x f64) f64</div>
 Returns the inverse hyperbolic tangent of x.
 <br><br>
