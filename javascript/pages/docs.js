@@ -3664,6 +3664,32 @@ Special cases are; <br>
 <li><x class="inline_code">nextafter(x, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub pow(const x, const y f64) f64</div>
+Returns x**y, the base-x exponential of y.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">pow(x, ±0) = 1 for any x</x></li>
+<li><x class="inline_code">pow(1, y) = 1 for any y</x></li>
+<li><x class="inline_code">pow(x, 1) = x for any x</x></li>
+<li><x class="inline_code">pow(nan, y) = nan</x></li>
+<li><x class="inline_code">pow(x, nan) = nan</x></li>
+<li><x class="inline_code">pow(±0, y) = ±inf for y an odd integer < 0</x></li>
+<li><x class="inline_code">pow(±0, -inf) = inf</x></li>
+<li><x class="inline_code">pow(±0, inf) = +0</x></li>
+<li><x class="inline_code">pow(±0, y) = inf for finite y < 0 and not an odd integer</x></li>
+<li><x class="inline_code">pow(±0, y) = ±0 for y an odd integer > 0</x></li>
+<li><x class="inline_code">pow(±0, y) = +0 for finite y > 0 and not an odd integer</x></li>
+<li><x class="inline_code">pow(-1, ±inf) = 1</x></li>
+<li><x class="inline_code">pow(x, inf) = inf for |x| > 1</x></li>
+<li><x class="inline_code">pow(x, -inf) = +0 for |x| > 1</x></li>
+<li><x class="inline_code">pow(x, inf) = +0 for |x| < 1</x></li>
+<li><x class="inline_code">pow(x, -inf) = inf for |x| < 1</x></li>
+<li><x class="inline_code">pow(inf, y) = inf for y > 0</x></li>
+<li><x class="inline_code">pow(inf, y) = +0 for y < 0</x></li>
+<li><x class="inline_code">pow(-inf, y) = pow(-0, -y)</x></li>
+<li><x class="inline_code">pow(x, y) = nan for finite x < 0 and finite non-integer y</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
