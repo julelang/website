@@ -3591,6 +3591,24 @@ Special cases are; <br>
 <li><x class="inline_code">mod(x, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub nextafter32(const x, const y f32) [r f32]</div>
+Returns the next representable f32 value after x towards y.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">nextafter32(x, x)   = x</x></li>
+<li><x class="inline_code">nextafter32(nan, y) = nan</x></li>
+<li><x class="inline_code">nextafter32(x, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub nextafter(const x, const y f64) [r f64]</div>
+Returns the next representable f64 value after x towards y.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">nextafter(x, x) = x</x></li>
+<li><x class="inline_code">nextafter(nan, y) = nan</x></li>
+<li><x class="inline_code">nextafter(x, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub pow10(const n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
