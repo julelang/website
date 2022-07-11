@@ -3599,6 +3599,17 @@ Special cases are; <br>
 <li><x class="inline_code">pow10(n) = inf for n > 308</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub remainder(x, y f64) f64</div>
+Returns the IEEE 754 floating-point remainder of x/y.
+<br><br>
+Special cases are; <br>
+<li><x class="inline_code">remainder(±inf, y) = nan</x></li>
+<li><x class="inline_code">remainder(nan, y) = nan</x></li>
+<li><x class="inline_code">remainder(x, 0) = nan</x></li>
+<li><x class="inline_code">remainder(x, ±inf) = x</x></li>
+<li><x class="inline_code">remainder(x, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">@inline
 pub signbit(const x f64) bool</div>
 Reports whether x is negative or negative zero.
