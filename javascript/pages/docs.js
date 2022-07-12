@@ -2,21 +2,7 @@
 // Use of this source code is governed by a BSD 3-Clause
 // license that can be found in the LICENSE file.
 
-const navigation_avtive_color = 'rgb(200, 116, 221)';
-
 const page_title = `X - Documentations`;
-
-const prev_page = `
-<button onclick="prev_page_click()" style="float: left; padding: 15px;">
-  <x class="arrow left" style="margin-top: 5px; margin-left: 5px;"></x>
-</button>
-`;
-
-const next_page = `
-<button onclick="next_page_click()" style="float: right; padding: 15px;">
-  <x class="arrow right" style="margin-top: 5px; margin-right: 5px;"></x>
-</button>
-`;
 
 const the_xlangHTML = `
 <div class="title">The <x style="color: rgb(180, 52, 235);">X</x> Programming Language</div>
@@ -530,8 +516,11 @@ const basics_commentsHTML = `
 </div>
 `;
 
-const basics_entry_pointHTML = `
-<div class="page-title" style="margin-bottom: 20px;">Entry Point</div>
+const basics_reserved_functionsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Reserved Functions</div>
+
+<div class="title-separator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Entry Point</div>
 <div class="text">
   The entry point is the first routine that starts running when the program runs. <br>
   You must have a entry point. If you not have, code does not compile.
@@ -540,10 +529,25 @@ const basics_entry_pointHTML = `
   Entry point is should be void and not have any parameter.
 
   <div class="title-separator"></div>
-  <div class="sub-title">For Example</div>
+  <div class="sub-sub-title">For Example</div>
   <div class="code">main() {
     // Your entry point function body.
 }</div>
+
+<div class="title-separator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Initialize Function</div>
+It is a one-time initialize function when a package is imported.<br>
+If you use it in your main program package, it will be executed before the entry point.
+<br><br>
+X's initialize function is <x class="inline_code">init</x> function. <br>
+Initialize function is should be void and not have any parameter.
+
+<div class="title-separator"></div>
+  <div class="sub-sub-title">For Example</div>
+  <div class="code">init() {
+    // Your initialize function body.
+}</div>
+
 </div>
 `;
 
@@ -1833,7 +1837,8 @@ Many programming languages have their control flows.
 <div class="tabcontrol" style="margin-top: 50px;">
   <div id="tab-common-concepts-iterations" class="tab" onclick="select_tab_event(0)">Iterations</div>
   <div id="tab-common-concepts-if-expressions" class="tab" onclick="select_tab_event(1)">If Expressions</div>
-  <div id="tab-common-concepts-goto-statements" class="tab" onclick="select_tab_event(2)">Goto Statements</div>
+  <div id="tab-common-concepts-match-expressions" class="tab" onclick="select_tab_event(2)">Match Expressions</div>
+  <div id="tab-common-concepts-goto-statements" class="tab" onclick="select_tab_event(3)">Goto Statements</div>
 </div>
 <div class="tabcontrol-content">
 </div>
@@ -2850,123 +2855,15 @@ const stdlibHTML = `
   <br><br>
   At below, you can see all content of standard library of the X programming language;
   <br><br><br>
-  <li><a onclick="std_builtin_click()">Built-In</a></li>
-  <li><a onclick="std_io_click()">io</a></li>
-</div>
-`;
-
-const stdlib_builtinHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: Built-In</div>
-<div class="text">
-Built-In defines are provided from the language by directly without any import operation.
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-builtin-type-aliases" class="tab" onclick="select_tab_event(0)">Type Aliases</div>
-  <div id="tab-stdlib-builtin-structures" class="tab" onclick="select_tab_event(1)">Structures</div>
-  <div id="tab-stdlib-builtin-functions" class="tab" onclick="select_tab_event(2)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_arrayHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">array</x></div>
-<div class="text">
-Array utilities. <br>
-
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-array-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_debugHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">debug</x></div>
-<div class="text">
-General debugging library. <br>
-
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-debug-globals" class="tab" onclick="select_tab_event(0)">Globals</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_debug_assertHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">debug.assert</x></div>
-<div class="text">
-Assertion functionalites. <br>
-
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-debug-assert-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_ioHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">io</x></div>
-<div class="text">
-Input/Output operations. <br>
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-io-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_mathHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">math</x></div>
-<div class="text">
-Math library. <br>
-
-<div class="tabcontrol" style="margin-top: 50px;">
-<div id="tab-stdlib-math-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
-  <div id="tab-stdlib-math-functions" class="tab" onclick="select_tab_event(1)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_memHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">mem</x></div>
-<div class="text">
-
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-mem-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_osHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">os</x></div>
-<div class="text">
-Platform-independent interface to operating system functionality. <br>
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-os-globals" class="tab" onclick="select_tab_event(0)">Globals</div>
-  <div id="tab-stdlib-os-functions" class="tab" onclick="select_tab_event(1)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
-const stdlib_reflectHTML = `
-<div class="title" style="margin-bottom: 20px;">Standard Library: <x class="inline_code">reflect</x></div>
-<div class="text">
-Library for reflection. <br>
-
-<div class="tabcontrol" style="margin-top: 50px;">
-  <div id="tab-stdlib-reflect-functions" class="tab" onclick="select_tab_event(0)">Functions</div>
-</div>
-<div class="tabcontrol-content"></div>
+  <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
+  <li><a href="../pages/stdlib/array.html">array</a></li>
+  <li><a href="../pages/stdlib/debug.html">debug</a></li>
+  <li><a href="../pages/stdlib/debug_assert.html">debug.assert</a></li>
+  <li><a href="../pages/stdlib/io.html">io</a></li>
+  <li><a href="../pages/stdlib/math.html">math</a></li>
+  <li><a href="../pages/stdlib/mem.html">mem</a></li>
+  <li><a href="../pages/stdlib/os.html">os</a></li>
+  <li><a href="../pages/stdlib/reflect.html">reflect</a></li>
 </div>
 `;
 
@@ -3214,747 +3111,6 @@ Greatest possible value for an element of type <x class="inline_code">uint</x>. 
 As a return value, it is usually used to indicate no matches.
 `;
 
-const TAB_stdlib_builtin_type_aliases = `
-<div class="sub-sub-title"><x class="inline_code">pub type byte u8</x></div>
-Is an alias for u8.
-It is used, by convention, to distinguish byte values from 8-bit unsigned integer values.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub type sbyte i8</x></div>
-Is an alias for i8.
-It is used, by convention, to distinguish byte values from 8-bit signed integer values.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub type rune i32</x></div>
-Is an alias for i32.
-It is used, by convention, to distinguish character values from integer values.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub type size uint</x></div>
-Is an Type for uint.
-The size type can store the maximum size of a theoretically possible object of any type.
-This type is safe way for indexing, loop counting, etc.
-
-`;
-
-const TAB_stdlib_builtin_structures = `
-<div class="code">pub struct Error {
-    pub message:str
-}</div>
-
-This is a error handling structure of standard library. <br>
-It is used for error handling and panics.
-<br><br>
-Example to error handling: <br>
-You have a <x class="inline_code">compute</x> method have two <x class="inline_code">f64</x> parameter: <x class="inline_code">x</x> and <x class="inline_code">y</x>. <br>
-This function returns division of given arguments. <br>
-Actually returns: <x class="inline_code">[f64, *Error]</x> <br>
-The first return value naturally result of computation. <br>
-Returns result and nil pointer for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to 0. <br>
-If not, returns 0 and returns heap-allocated error instance.
-`;
-
-const TAB_stdlib_builtin_functions = `
-<div class="sub-sub-title"><x class="inline_code">out(const value{""} any)</x></div>
-Prints value to command line.
-Can take any data-type as argument.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">outln(const value{""} any)</x></div>
-This function same with <x class="inline_code">out</x> function.
-One difference, prints new line after print.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">panic(const error Error)</x></div>
-Panics program with given error instance.
-`;
-
-const TAB_stdlib_array_functions = `
-<div class="code">type[Item_T]
-pub copy(&dest, &src []Item_T)</div>
-Copies source items to destination.
-<br><br>
-Special cases are;<br>
-<li><x class="inline_code">copy[Item_T](dest, src) = does nothing if src.empty()</x></li>
-<li><x class="inline_code">copy[Item_T](dest, src) = does nothing id dest.empty()</x></li>
-<li><x class="inline_code">copy[Item_T](dest, src) = length accepts as src.len if dest.len > src.len</x></li>
-<li><x class="inline_code">copy[Item_T](dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">type[Item_T]
-pub make(const n size) []Item_T</div>
-Makes an array have n elements with default values of related data-type.
-
-<div class="topic-separator"></div>
-<div class="code">type[Item_T]
-pub map(&dest []Item_T, func (Item_T)Item_T)</div>
-Applies function to each element of destination array.
-<br><br>
-Special cases are;<br>
-<li><x class="inline_code">map[Item_T](dest, func) = does nothing id dest.empty()</x></li>
-
-`;
-
-const TAB_stdlib_debug_globals = `
-<div class="sub-sub-title"><x class="inline_code">debugging:bool</x></div>
-If this is enabled, debug and all subpackages assume that the program has been compiled for debugging.
-In this case the debugging tools work.
-However, if it is not enabled, the debugging tools will not work because it assumes that the program was not compiled for debugging.
-`;
-
-const TAB_stdlib_debug_assert_functions = `
-<div class="code">@inline
-pub assert(const expr bool, const msg{"assertion failed"} str)</div>
-Writes fail message to <x class="inline_code">cerr</x> and exit failure if assertion failed.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub assert_panic(const expr bool,
-                 const error{Error("assertion failed")} Error)</div>
-Panics with given error if assertion failed.
-`;
-
-const TAB_stdlib_io_functions = `
-<div class="code">@inline
-pub readln() str</div>
-Reads full-complete line from command-line.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub readin() str</div>
-Read first part of line from command-line.
-`;
-
-const TAB_stdlib_math_constants = `
-<div class="sub-sub-title"><x class="inline_code">pub const E:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const PI:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const PHI:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT2:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT_E:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PI:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PHI:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LN2:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LOG_2E:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LN10:f64</x></div>
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LOG_10E:f64</x></div>
-`;
-
-const TAB_stdlib_math_functions = `
-<div class="code">@inline
-pub abs(const x f64) f64</div>
-Returns the absolute value of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">abs(±inf) = inf</x></li>
-<li><x class="inline_code">abs(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub acosh(const x f64) f64</div>
-Returns the inverse hyperbolic cosine of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">acosh(inf) = inf</x></li>
-<li><x class="inline_code">acosh(x) = nan if x < 1</x></li>
-<li><x class="inline_code">acosh(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub asin(x f64) f64</div>
-Returns the arcsine, in radians, of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">asin(±0) = ±0</x></li>
-<li><x class="inline_code">asin(x) = nan if x < -1 or x > 1</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub acos(const x f64) f64</div>
-Returns the arccosine, in radians, of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">acos(x) = nan if x < -1 or x > 1</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub asinh(x f64) f64</div>
-Returns the inverse hyperbolic sine of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">asinh(±0) = ±0</x></li>
-<li><x class="inline_code">asinh(±inf) = ±inf</x></li>
-<li><x class="inline_code">asinh(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub atan(const x f64) f64</div>
-Returns the arctangent, in radians, of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">atan(±0) = ±0</x></li>
-<li><x class="inline_code">atan(±inf) = ±PI/2</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub atan2(const y, const x f64) f64</div>
-Returns the arc tangent of y/x, using
-the signs of the two to determine the quadrant of the return value.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">atan2(y, nan) = nan</x></li>
-<li><x class="inline_code">atan2(nan, x) = nan</x></li>
-<li><x class="inline_code">atan2(+0, x>=0) = +0</x></li>
-<li><x class="inline_code">atan2(-0, x>=0) = -0</x></li>
-<li><x class="inline_code">atan2(+0, x<=-0) = +PI</x></li>
-<li><x class="inline_code">atan2(-0, x<=-0) = -PI</x></li>
-<li><x class="inline_code">atan2(y>0, 0) = +PI/2</x></li>
-<li><x class="inline_code">atan2(y<0, 0) = -PI/2</x></li>
-<li><x class="inline_code">atan2(inf, inf) = +PI/4</x></li>
-<li><x class="inline_code">atan2(-inf, inf) = -PI/4</x></li>
-<li><x class="inline_code">atan2(inf, -inf) = 3PI/4</x></li>
-<li><x class="inline_code">atan2(-inf, -inf) = -3PI/4</x></li>
-<li><x class="inline_code">atan2(y, inf) = 0</x></li>
-<li><x class="inline_code">atan2(y>0, -inf) = +PI</x></li>
-<li><x class="inline_code">atan2(y<0, -inf) = -PI</x></li>
-<li><x class="inline_code">atan2(inf, x) = +PI/2</x></li>
-<li><x class="inline_code">atan2(-inf, x) = -PI/2</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub atanh(x f64) f64</div>
-Returns the inverse hyperbolic tangent of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">atanh(1) = inf</x></li>
-<li><x class="inline_code">atanh(±0) = ±0</x></li>
-<li><x class="inline_code">atanh(-1) = -inf</x></li>
-<li><x class="inline_code">atanh(x) = nan if x < -1 or x > 1</x></li>
-<li><x class="inline_code">atanh(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub nan() f64</div>
-Returns an IEEE 754 “not-a-number” value.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub isnan(const f f64) bool</div>
-Reports whether f is an IEEE 754 “not-a-number” value.
-
-<div class="topic-separator"></div>
-<div class="code">pub inf(const sign int) f64</div>
-Returns positive infinity if sign >= 0, negative infinity if !sign < 0.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub isinf(const f f64, const sign int) bool</div>
-Reports whether f is an infinity, according to sign. <br>
-If sign > 0, IsInf reports whether f is positive infinity. <br>
-If sign < 0, IsInf reports whether f is negative infinity. <br>
-If sign == 0, IsInf reports whether f is either infinity. <br>
-
-<div class="topic-separator"></div>
-<div class="code">pub cbrt(x f64) f64</div>
-Returns the cube root of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">cbrt(±0) = ±0</x></li>
-<li><x class="inline_code">cbrt(±inf) = ±inf</x></li>
-<li><x class="inline_code">cbrt(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub copysign(const f, const sign f64) f64</div>
-Returns a value with the magnitude of f and the sign of sign.
-
-<div class="topic-separator"></div>
-<div class="code">pub dim(const x, const y f64) f64</div>
-Returns the maximum of x-y or 0.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">dim(inf, inf) = nan</x></li>
-<li><x class="inline_code">dim(-inf, -inf) = nan</x></li>
-<li><x class="inline_code">dim(x, nan) = dim(nan, x) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub max(const x, const y f64) f64</div>
-Returns the larger of x or y.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">max(x, inf) = max(inf, x) = inf</x></li>
-<li><x class="inline_code">max(x, nan) = max(nan, x) = nan</x></li>
-<li><x class="inline_code">max(+0, ±0) = max(±0, +0) = +0</x></li>
-<li><x class="inline_code">max(-0, -0) = -0</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub min(const x, const y f64) f64</div>
-Returns the smaller of x or y.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">min(x, -inf) = min(-inf, x) = -inf</x></li>
-<li><x class="inline_code">min(x, nan)  = min(nan, x) = nan</x></li>
-<li><x class="inline_code">min(-0, ±0)  = min(±0, -0) = -0</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub erf(x f64) f64</div>
-Returns the error function of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">erf(inf) = 1</x></li>
-<li><x class="inline_code">erf(-inf) = -1</x></li>
-<li><x class="inline_code">erf(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub erfinv(x f64) f64</div>
-Returns the inverse error function of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">erfinv(1) = inf</x></li>
-<li><x class="inline_code">erfinv(-1) = -inf</x></li>
-<li><x class="inline_code">erfinv(x) = nan if x < -1 or x > 1</x></li>
-<li><x class="inline_code">erfinv(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub erfcinv(const x f64) f64</div>
-Returns the inverse of erfc(x).
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">erfcinv(0) = inf</x></li>
-<li><x class="inline_code">erfcinv(2) = -inf</x></li>
-<li><x class="inline_code">erfcinv(x) = nan if x < 0 or x > 2</x></li>
-<li><x class="inline_code">erfcinv(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub erfc(x f64) f64</div>
-Returns the complementary error function of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">erfc(inf) = 0</x></li>
-<li><x class="inline_code">erfc(-inf) = 2</x></li>
-<li><x class="inline_code">erfc(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub exp(const x f64) f64</div>
-Returns e**x, the base-e exponential of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">exp(inf) = inf</x></li>
-<li><x class="inline_code">exp(nan) = nan</x></li>
-<div class="warn">
-  <li>Very large values overflow to 0 or inf.</li>
-  <li>Very small values underflow to 1.</li>
-</div>
-
-<div class="topic-separator"></div>
-<div class="code">pub exp2(const x f64) f64</div>
-Returns 2**x, the base-2 exponential of x.
-Special cases are the same as exp.
-
-<div class="topic-separator"></div>
-<div class="code">pub expm1(x f64) f64</div>
-Returns e**x - 1, the base-e exponential of x minus 1.
-It is more accurate than exp(x) - 1 when x is near zero.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">expm1(inf) = inf</x></li>
-<li><x class="inline_code">expm1(-inf) = -1</x></li>
-<li><x class="inline_code">expm1(nan) = nan</x></li>
-<div class="warn">Very large values overflow to -1 or inf.</div>
-
-<div class="topic-separator"></div>
-<div class="code">pub floor(const x f64) f64</div>
-Returns the greatest integer value less than or equal to x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">floor(±0) = ±0</x></li>
-<li><x class="inline_code">floor(±inf) = ±inf</x></li>
-<li><x class="inline_code">floor(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub ceil(const x f64) f64</div>
-Returns the least integer value greater than or equal to x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">ceil(±0) = ±0</x></li>
-<li><x class="inline_code">ceil(±inf) = ±inf</x></li>
-<li><x class="inline_code">ceil(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub trunc(const x f64) f64</div>
-Returns the integer value of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">trunc(±0) = ±0</x></li>
-<li><x class="inline_code">trunc(±inf) = ±inf</x></li>
-<li><x class="inline_code">trunc(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub round(const x f64) f64</div>
-Returns the nearest integer, rounding half away from zero.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">round(±0) = ±0</x></li>
-<li><x class="inline_code">round(±inf) = ±inf</x></li>
-<li><x class="inline_code">round(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub round_even(const x f64) f64</div>
-Returns the nearest integer, rounding ties to even.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">round_even(±0) = ±0</x></li>
-<li><x class="inline_code">round_even(±inf) = ±inf</x></li>
-<li><x class="inline_code">round_even(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub frexp(f f64) [frac f64, exp int]</div>
-Breaks f into a normalized fraction and an integral power of two.
-It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">frexp(±0) = ±0, 0</x></li>
-<li><x class="inline_code">frexp(±inf) = ±inf, 0</x></li>
-<li><x class="inline_code">frexp(nan) = nan, 0</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub hypot(p, q f64) f64</div>
-Returns sqrt(p*p + q*q), taking care to avoid unnecessary overflow and underflow.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">hypot(±inf, q) = inf</x></li>
-<li><x class="inline_code">hypot(p, ±inf) = inf</x></li>
-<li><x class="inline_code">hypot(nan, q) = nan</x></li>
-<li><x class="inline_code">hypot(p, nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub ldexp(frac f64, exp int) f64</div>
-Is the inverse of frexp.
-It returns frac × 2**exp.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">ldexp(±0, exp) = ±0</x></li>
-<li><x class="inline_code">ldexp(±inf, exp) = ±inf</x></li>
-<li><x class="inline_code">ldexp(nan, exp) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub log(const x f64) f64</div>
-Returns the natural logarithm of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">log(inf) = inf</x></li>
-<li><x class="inline_code">log(0) = -inf</x></li>
-<li><x class="inline_code">log(x < 0) = nan</x></li>
-<li><x class="inline_code">log(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub log1p(const x f64) f64</div>
-Returns the natural logarithm of 1 plus its argument x.
-It is more accurate than log(1 + x) when x is near zero.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">log1p(inf) = inf</x></li>
-<li><x class="inline_code">log1p(±0) = ±0</x></li>
-<li><x class="inline_code">log1p(-1) = -inf</x></li>
-<li><x class="inline_code">log1p(x < -1) = nan</x></li>
-<li><x class="inline_code">log1p(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub log10(const x f64) f64</div>
-Returns the decimal logarithm of x.
-The special cases are the same as for log.
-
-<div class="topic-separator"></div>
-<div class="code">pub log2(const x f64) f64</div>
-Returns the binary logarithm of x.
-The special cases are the same as for log.
-
-<div class="topic-separator"></div>
-<div class="code">pub logb(const x f64) f64</div>
-Returns the binary exponent of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">logb(±inf) = inf</x></li>
-<li><x class="inline_code">logb(0) = -inf</x></li>
-<li><x class="inline_code">logb(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub ilogb(const x f64) int</div>
-Returns the binary exponent of x as an integer.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">ilogb(±inf) = i32.max</x></li>
-<li><x class="inline_code">ilogb(0) = i32.min</x></li>
-<li><x class="inline_code">ilogb(nan) = i32.max</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub mod(const x, y f64) f64</div>
-Returns the floating-point remainder of x/y.
-The magnitude of the result is less than y and its sign agrees with that of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">mod(±inf, y) = nan</x></li>
-<li><x class="inline_code">mod(nan, y) = nan</x></li>
-<li><x class="inline_code">mod(x, 0) = nan</x></li>
-<li><x class="inline_code">mod(x, ±inf) = x</x></li>
-<li><x class="inline_code">mod(x, nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub modf(const f f64) [integer f64, frac f64]</div>
-Returns integer and fractional floating-point numbers that sum to f.
-Both values have the same sign as f.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">modf(±inf) = ±inf, nan</x></li>
-<li><x class="inline_code">modf(nan) = nan, nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub nextafter32(const x, const y f32) [r f32]</div>
-Returns the next representable f32 value after x towards y.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">nextafter32(x, x)   = x</x></li>
-<li><x class="inline_code">nextafter32(nan, y) = nan</x></li>
-<li><x class="inline_code">nextafter32(x, nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub nextafter(const x, const y f64) [r f64]</div>
-Returns the next representable f64 value after x towards y.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">nextafter(x, x) = x</x></li>
-<li><x class="inline_code">nextafter(nan, y) = nan</x></li>
-<li><x class="inline_code">nextafter(x, nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub pow(const x, const y f64) f64</div>
-Returns x**y, the base-x exponential of y.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">pow(x, ±0) = 1 for any x</x></li>
-<li><x class="inline_code">pow(1, y) = 1 for any y</x></li>
-<li><x class="inline_code">pow(x, 1) = x for any x</x></li>
-<li><x class="inline_code">pow(nan, y) = nan</x></li>
-<li><x class="inline_code">pow(x, nan) = nan</x></li>
-<li><x class="inline_code">pow(±0, y) = ±inf for y an odd integer < 0</x></li>
-<li><x class="inline_code">pow(±0, -inf) = inf</x></li>
-<li><x class="inline_code">pow(±0, inf) = +0</x></li>
-<li><x class="inline_code">pow(±0, y) = inf for finite y < 0 and not an odd integer</x></li>
-<li><x class="inline_code">pow(±0, y) = ±0 for y an odd integer > 0</x></li>
-<li><x class="inline_code">pow(±0, y) = +0 for finite y > 0 and not an odd integer</x></li>
-<li><x class="inline_code">pow(-1, ±inf) = 1</x></li>
-<li><x class="inline_code">pow(x, inf) = inf for |x| > 1</x></li>
-<li><x class="inline_code">pow(x, -inf) = +0 for |x| > 1</x></li>
-<li><x class="inline_code">pow(x, inf) = +0 for |x| < 1</x></li>
-<li><x class="inline_code">pow(x, -inf) = inf for |x| < 1</x></li>
-<li><x class="inline_code">pow(inf, y) = inf for y > 0</x></li>
-<li><x class="inline_code">pow(inf, y) = +0 for y < 0</x></li>
-<li><x class="inline_code">pow(-inf, y) = pow(-0, -y)</x></li>
-<li><x class="inline_code">pow(x, y) = nan for finite x < 0 and finite non-integer y</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub pow10(const n int) f64</div>
-Returns 10**n, the base-10 exponential of n.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">pow10(n) = 0 for n < -323</x></li>
-<li><x class="inline_code">pow10(n) = inf for n > 308</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub remainder(x, y f64) f64</div>
-Returns the IEEE 754 floating-point remainder of x/y.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">remainder(±inf, y) = nan</x></li>
-<li><x class="inline_code">remainder(nan, y) = nan</x></li>
-<li><x class="inline_code">remainder(x, 0) = nan</x></li>
-<li><x class="inline_code">remainder(x, ±inf) = x</x></li>
-<li><x class="inline_code">remainder(x, nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub signbit(const x f64) bool</div>
-Reports whether x is negative or negative zero.
-
-<div class="topic-separator"></div>
-<div class="code">pub sinh(x f64) f64</div>
-Returns the hyperbolic sine of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">sinh(±0) = ±0</x></li>
-<li><x class="inline_code">sinh(±inf) = ±inf</x></li>
-<li><x class="inline_code">sinh(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub cosh(x f64) f64</div>
-Returns the hyperbolic cosine of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">cosh(±0) = 1</x></li>
-<li><x class="inline_code">cosh(±inf) = inf</x></li>
-<li><x class="inline_code">cosh(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub sqrt(const x f64) f64</div>
-Returns the square root of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">sqrt(inf) = inf</x></li>
-<li><x class="inline_code">sqrt(±0) = ±0</x></li>
-<li><x class="inline_code">sqrt(x < 0) = nan</x></li>
-<li><x class="inline_code">sqrt(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub tanh(const x f64) f64</div>
-Returns the hyperbolic tangent of x.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">tanh(±0) = ±0</x></li>
-<li><x class="inline_code">tanh(±inf) = ±1</x></li>
-<li><x class="inline_code">tanh(nan) = nan</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub f32_bits(const f f32) u32</div>
-Returns the IEEE 754 binary representation of f, with the sign bit of f and the result in the same bit position. <br>
-<x class="inline_code">f32_bits(f32_from_bits(x)) == x</x>.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub f32_from_bits(const b u32) f32</div>
-Returns the floating-point number corresponding
-to the IEEE 754 binary representation b, with the sign bit of b and the result in the same bit position.
-<x class="inline_code">f32_from_bits(f32_bits(x)) == x</x>.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub f64_bits(const f f64) u64</div>
-Returns the IEEE 754 binary representation of f,
-with the sign bit of f and the result in the same bit position,
-and <x class="inline_code">f64_bits(f64_from_bits(x)) == x</x>.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub f64_from_bits(const b u64) f64</div>
-Returns the floating-point number corresponding
-to the IEEE 754 binary representation b, with the sign bit of b
-and the result in the same bit position.
-<x class="inline_code">f64_from_bits(Float64bits(x)) == x</x>.
-
-`;
-
-const TAB_stdlib_mem_functions = `
-<div class="code">type[Alloc_T]
-pub calloc(const n size) *Alloc_T</div>
-Allocates n memory by size of specified data-type. <br>
-The allocated memory initialized with zero (0) value.
-<br><br>
-Special cases are; <br>
-<li><x class="inline_code">calloc[Alloc_T](n) = nil if n == 0</x></li>
-<li><x class="inline_code">calloc[Alloc_T](n) = nil if allocation failed</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub malloc(const size size) voidptr</div>
-Allocates memory by specified size. <br>
-The allocated memory is not initialized.
-<br><br>
-Special cases are;
-<li><x class="inline_code">malloc(size) = nil if n == 0</x></li>
-<li><x class="inline_code">malloc(size) = nil if allocation failed</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">pub realloc(ptr voidptr, const size size) voidptr</div>
-Resizes the allocation based on the given size.
-<br><br>
-Special cases are;
-<li><x class="inline_code">realloc(ptr, size) = nil if ptr == nil</x></li>
-<li><x class="inline_code">realloc(ptr, size) = nil if allocation failed</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">type[Alloc_T]
-pub memset(ptr *Alloc_T, expr Alloc_T, const n size)</div>
-Sets n value of pointer segments to specified expression.
-<br><br>
-Special case is:
-<li><x class="inline_code">memset[Alloc_T](ptr, expr, n) = does nothing if n == 0</x></li>
-<li><x class="inline_code">memset[Alloc_T](ptr, expr, n) = does nothing if ptr == nil</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">type[Alloc_T]
-pub memcopy(dest, src *Alloc_T, const n size)</div>
-Copies n value from source allocation to destination allocation.
-<br><br>
-Special case is:
-<li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if n == 0</x></li>
-<li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if dest == nil</x></li>
-<li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if src == nil</x></li>
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-@type_param
-type[T]
-pub new() *T</div>
-Returns pointer to new allocation of data type if allocation is success, nil if not.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-pub free(ptr voidptr)</div>
-Deallocates given heap-allocated pointer.
-
-`;
-
-const TAB_stdlib_os_globals = `
-<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:int</x></div>
-Exit code for success.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:int</x></div>
-Exit code for failure.
-`;
-
-const TAB_stdlib_os_functions = `
-<div class="code">@inline
-pub exit(const code{EXIT_SUCCESS} int)</div>
-Exit program with given exit code.
-`;
-
-const TAB_stdlib_reflect_functions = `
-<div class="code">@inline
-@type_param
-type[T]
-pub sizeof() size</div>
-Returns the size of the data type in bytes.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-@type_param
-type[T1, T2]
-pub is_same() bool</div>
-Reports the given data types are same or not.
-
-<div class="topic-separator"></div>
-<div class="code">@inline
-type[T]
-pub any_is(const src any) bool</div>
-Reports the data type of the given any type value is the same as the generic type or not.
-
-`;
-
 const TAB_common_concepts_iterations = `
 Iterations allow you to repeat the algorithm according to certain conditions.
 The <x class="inline_code">iter</x> keyword use for iterations in X.
@@ -4034,6 +3190,27 @@ As you can see, it is possible to use the ignore operator for unused fields.
 <div class="info">If you don't use declaration with data-type, X assign variables data-types by automatically by collection.
 Similar to auto-type variables.
 If the index variable is be numeric, X's auto data-type is <x class="inline_code">int</x> type.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">For Iterations</div>
+The for loop is a good choice for iterations from one point to another.
+<div class="title-separator"></div>
+<strong>Syntax</strong>
+<div class="code">iter STATEMENT1, EXPRESSION, STATEMENT2 { /* Body */ }</div>
+
+<strong>STATEMENT1</strong>: Executed once before block.
+<br>
+<strong>EXPRESSION</strong>: Iteration condition expression, it is should be bool expression.
+<br>
+<strong>STATEMENT2</strong>: Executes every time after the block executed.
+
+<br><br>
+For example;
+<div class="code">main() {
+    iter i: = 0, i < 10, i++ {
+        outln(i)
+    }
+}</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Iteration Controlling</div>
@@ -4119,6 +3296,101 @@ main() {
         outln("memory allocation is success")
     }
 }</div>
+`;
+
+const TAB_common_concepts_match_expression = `
+If you need to make a selection and run an algorithm based on that selection, <x class="inline_code">match</x> is a good choice.
+The keyword <x class="inline_code">case</x> is used for each case.
+For a block to be executed if not exist any match, the optional keyword <x class="inline_code">default</x> can be used.
+<br><br>
+
+<strong>Syntax</strong>
+<div class="code">match EXPRESSION {
+case CASE_EXPRESSION1:
+    // Body
+case CASE_EXPRESSION2:
+    // Body
+case CASE_EXPRESSION3:
+    // Body
+default:
+    // Body
+}</div>
+
+<strong>EXPRESSION</strong>: Expression to match.
+<br>
+<strong>CASE_EXPRESSION1</strong>: Expression for case.
+<br>
+<strong>CASE_EXPRESSION2</strong>: Expression for another case.
+<br>
+<strong>CASE_EXPRESSION3</strong>: Expression for another case.
+<br>
+<strong>default</strong>: Default block.
+
+<br><br>
+For example;
+<div class="code">match my_integer {
+case MY_INTEGER_MIN:
+    outln("Minimum")
+case MY_INTEGER_MAX:
+    outln("Maximum")
+default:
+    outln("Between or not")
+}</div>
+
+<div class="title-separator"><div>
+<div class="sub-title">Breaking Execution</div>
+As with iterations, you can break the execution of the block.
+The keyword <x class="inline_code">break</x> is sufficient for this.
+
+<br><br>
+For example;
+<div class="code">match X {
+case Y:
+    if Y == A {
+        break
+    }
+    // ...
+case Z:
+    // ...
+}</div>
+
+<div class="title-separator"><div>
+<div class="sub-title">Condition Chain</div>
+If a match expression is not given, match acts like an if-else chain.
+This might be a more readable option on long condition chains.
+
+<br><br>
+For example;
+<div class="code">match {
+case x > 10 || x < 90:
+    // Body
+case my_bool:
+    // Body
+case y == 100:
+    // Body
+default:
+    // Body
+}</div>
+
+<div class="title-separator"><div>
+<div class="sub-title">Multiple Case Expression</div>
+You can have a single algorithm for multiple cases.
+For this, you can give more than one expression for a case.
+The only addition in syntax is commas between statements.
+
+<br><br>
+For example;
+<div class="code">match X {
+case Y, Z, V:
+    // Body
+case A, B:
+    // Body
+case C:
+    // Body
+default:
+    // Body
+}</div>
+
 `;
 
 const TAB_common_concepts_goto_statements = `
@@ -4287,10 +3559,6 @@ Cxx terminate handler of X.
 
 document.title = page_title;
 
-document.body.style.paddingBottom = "0px";
-const footer = document.getElementById('footer');
-footer.remove();
-
 //#endregion SET_PAGE
 
 //#region GET_ELEMENTS
@@ -4313,7 +3581,7 @@ const NAV_project_declarations                = document.getElementById("project
 const NAV_project_defines                     = document.getElementById("project-defines");
 const NAV_basics                              = document.getElementById('basics');
 const NAV_basics_comments                     = document.getElementById('basics-comments');
-const NAV_basics_entry_point                  = document.getElementById('basics-entry-point');
+const NAV_basics_reserved_functions           = document.getElementById('basics-reserved-functions');
 const NAV_basics_data_types                   = document.getElementById('basics-data-types');
 const NAV_basics_operators                    = document.getElementById('basics-operators');
 const NAV_basics_attributes                   = document.getElementById('basics-attributes');
@@ -4366,24 +3634,14 @@ const NAV_use_declarations                    = document.getElementById("use-dec
 const NAV_preprocessor                        = document.getElementById("preprocessor");
 const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
 const NAV_stdlib                              = document.getElementById("stdlib");
-const NAV_stdlib_builtin                      = document.getElementById("stdlib-builtin");
-const NAV_stdlib_array                        = document.getElementById("stdlib-array");
-const NAV_stdlib_debug                        = document.getElementById("stdlib-debug");
-const NAV_stdlib_debug_assert                 = document.getElementById("stdlib-debug-assert");
-const NAV_stdlib_io                           = document.getElementById("stdlib-io");
-const NAV_stdlib_math                         = document.getElementById("stdlib-math");
-const NAV_stdlib_mem                          = document.getElementById("stdlib-mem");
-const NAV_stdlib_os                           = document.getElementById("stdlib-os");
-const NAV_stdlib_reflect                      = document.getElementById("stdlib-reflect");
 const NAV_end                                 = document.getElementById("end");
 
 const side_navigation = document.getElementById("side-navigation");
-const content_body    = document.getElementById("side-navigation-content-body");
 
 //#endregion GET_ELEMENTS
 
-var navigation_index = 0;
-const navigations = [
+const nav = new SideNavigator();
+nav.navigations = [
   [NAV_the_xlang,                           the_xlangHTML],
   [NAV_foreword,                            forewordHTML],
   [NAV_introduction,                        introductionHTML],
@@ -4401,7 +3659,7 @@ const navigations = [
   [NAV_project_defines,                     project_definesHTML],
   [NAV_basics,                              basicsHTML],
   [NAV_basics_comments,                     basics_commentsHTML],
-  [NAV_basics_entry_point,                  basics_entry_pointHTML],
+  [NAV_basics_reserved_functions,           basics_reserved_functionsHTML],
   [NAV_basics_data_types,                   basics_data_typesHTML],
   [NAV_basics_operators,                    basics_operatorsHTML],
   [NAV_basics_attributes,                   basics_attributesHTML],
@@ -4454,86 +3712,41 @@ const navigations = [
   [NAV_preprocessor,                        preprocessorHTML],
   [NAV_preprocessor_directives,             preprocessor_directivesHTML],
   [NAV_stdlib,                              stdlibHTML],
-  [NAV_stdlib_builtin,                      stdlib_builtinHTML],
-  [NAV_stdlib_array,                        stdlib_arrayHTML],
-  [NAV_stdlib_debug,                        stdlib_debugHTML],
-  [NAV_stdlib_debug_assert,                 stdlib_debug_assertHTML],
-  [NAV_stdlib_io,                           stdlib_ioHTML],
-  [NAV_stdlib_math,                         stdlib_mathHTML],
-  [NAV_stdlib_mem,                          stdlib_memHTML],
-  [NAV_stdlib_os,                           stdlib_osHTML],
-  [NAV_stdlib_reflect,                      stdlib_reflectHTML],
   [NAV_end,                                 endHTML],
 ];
 
 const tabs = [
   // ID - HTML
-  ["tab-types-str-constructor",           TAB_types_str_constructor],
-  ["tab-types-str-constants",             TAB_types_str_constants],
-  ["tab-types-str-methods",               TAB_types_str_methods],
-  ["tab-types-arrays-constants",          TAB_types_arrays_constants],
-  ["tab-types-arrays-methods",            TAB_types_arrays_methods],
-  ["tab-types-maps-constants",            TAB_types_maps_constants],
-  ["tab-types-maps-methods",              TAB_types_maps_methods],
-  ["tab-type-statics-i8-constants",       TAB_type_statics_i8_constants],
-  ["tab-type-statics-i16-constants",      TAB_type_statics_i16_constants],
-  ["tab-type-statics-i32-constants",      TAB_type_statics_i32_constants],
-  ["tab-type-statics-i64-constants",      TAB_type_statics_i64_constants],
-  ["tab-type-statics-u8-constants",       TAB_type_statics_u8_constants],
-  ["tab-type-statics-u16-constants",      TAB_type_statics_u16_constants],
-  ["tab-type-statics-u32-constants",      TAB_type_statics_u32_constants],
-  ["tab-type-statics-u64-constants",      TAB_type_statics_u64_constants],
-  ["tab-type-statics-f32-constants",      TAB_type_statics_f32_constants],
-  ["tab-type-statics-f64-constants",      TAB_type_statics_f64_constants],
-  ["tab-type-statics-int-constants",      TAB_type_statics_int_constants],
-  ["tab-type-statics-uint-constants",     TAB_type_statics_uint_constants],
-  ["tab-type-statics-str-constants",      TAB_type_statics_str_constants],
-  ["tab-stdlib-builtin-type-aliases",     TAB_stdlib_builtin_type_aliases],
-  ["tab-stdlib-builtin-structures",       TAB_stdlib_builtin_structures],
-  ["tab-stdlib-builtin-functions",        TAB_stdlib_builtin_functions],
-  ["tab-stdlib-array-functions",          TAB_stdlib_array_functions],
-  ["tab-stdlib-debug-globals",            TAB_stdlib_debug_globals],
-  ["tab-stdlib-debug-assert-functions",   TAB_stdlib_debug_assert_functions],
-  ["tab-stdlib-io-functions",             TAB_stdlib_io_functions],
-  ["tab-stdlib-math-constants",           TAB_stdlib_math_constants],
-  ["tab-stdlib-math-functions",           TAB_stdlib_math_functions],
-  ["tab-stdlib-mem-functions",            TAB_stdlib_mem_functions],
-  ["tab-stdlib-os-globals",               TAB_stdlib_os_globals],
-  ["tab-stdlib-os-functions",             TAB_stdlib_os_functions],
-  ["tab-stdlib-reflect-functions",        TAB_stdlib_reflect_functions],
-  ["tab-common-concepts-iterations",      TAB_common_concepts_iterations],
-  ["tab-common-concepts-if-expressions",  TAB_common_concepts_if_expression],
-  ["tab-common-concepts-goto-statements", TAB_common_concepts_goto_statements],
-  ["cxx-cxxapi-preprocessor-defines",     TAB_cxx_cxxapi_preprocessor_defines],
-  ["cxx-cxxapi-defines",                  TAB_cxx_cxxapi_defines],
+  ["tab-types-str-constructor",             TAB_types_str_constructor],
+  ["tab-types-str-constants",               TAB_types_str_constants],
+  ["tab-types-str-methods",                 TAB_types_str_methods],
+  ["tab-types-arrays-constants",            TAB_types_arrays_constants],
+  ["tab-types-arrays-methods",              TAB_types_arrays_methods],
+  ["tab-types-maps-constants",              TAB_types_maps_constants],
+  ["tab-types-maps-methods",                TAB_types_maps_methods],
+  ["tab-type-statics-i8-constants",         TAB_type_statics_i8_constants],
+  ["tab-type-statics-i16-constants",        TAB_type_statics_i16_constants],
+  ["tab-type-statics-i32-constants",        TAB_type_statics_i32_constants],
+  ["tab-type-statics-i64-constants",        TAB_type_statics_i64_constants],
+  ["tab-type-statics-u8-constants",         TAB_type_statics_u8_constants],
+  ["tab-type-statics-u16-constants",        TAB_type_statics_u16_constants],
+  ["tab-type-statics-u32-constants",        TAB_type_statics_u32_constants],
+  ["tab-type-statics-u64-constants",        TAB_type_statics_u64_constants],
+  ["tab-type-statics-f32-constants",        TAB_type_statics_f32_constants],
+  ["tab-type-statics-f64-constants",        TAB_type_statics_f64_constants],
+  ["tab-type-statics-int-constants",        TAB_type_statics_int_constants],
+  ["tab-type-statics-uint-constants",       TAB_type_statics_uint_constants],
+  ["tab-type-statics-str-constants",        TAB_type_statics_str_constants],
+  ["tab-common-concepts-iterations",        TAB_common_concepts_iterations],
+  ["tab-common-concepts-if-expressions",    TAB_common_concepts_if_expression],
+  ["tab-common-concepts-match-expressions", TAB_common_concepts_match_expression],
+  ["tab-common-concepts-goto-statements",   TAB_common_concepts_goto_statements],
+  ["cxx-cxxapi-preprocessor-defines",       TAB_cxx_cxxapi_preprocessor_defines],
+  ["cxx-cxxapi-defines",                    TAB_cxx_cxxapi_defines],
 ]
 
-//#region EVENTS
-
-function next_page_click()   { select_topic_index(navigation_index+1); }
-function prev_page_click()   { select_topic_index(navigation_index-1); }
-function std_builtin_click() { select_topic(NAV_stdlib_builtin); }
-function std_io_click()      { select_topic(NAV_stdlib_io); }
-
-navigations.forEach((element, index) => {
-  element[0].addEventListener('click', () => { select_topic_index(index); });
-});
-
-//#endregion EVENTS
-
-//#region SET_CONTENT
-
-//#region SET_CONTENT QUERIES
-const url = new URL(window.location.href);
-const query_page = url.searchParams.get('page');
-if (query_page != null) {
-  const selected_page = document.getElementById(query_page);
-  if (selected_page != null) { selected_page.click(); }
-  else                       { select_topic_index(0); }
-} else {
-  select_topic_index(0);
-}
-//#endregion SET_CONTENT QUERIES
+nav.set_events();
+nav.set_content_url();
 
 //#endregion SET_CONTENT
 
@@ -4563,43 +3776,4 @@ function select_tab_index(tabcontrol, index) {
 function select_tab_event(index) {
   let tabcontrol = document.getElementsByClassName('tabcontrol')[0];
   select_tab_index(tabcontrol, index);
-}
-
-function select_topic(nav) {
-  navigations.forEach((element, index) => {
-    if (element[0] == nav) {
-      select_topic_index(index);
-      return;
-    }
-  });
-}
-
-function select_topic_index(index) {
-  let nav = navigations[index][0];
-  let html = navigations[index][1];
-  let old = navigations[navigation_index][0];
-  old.style = nav.style;
-  nav.style.color = navigation_avtive_color;
-  nav.style.fontWeight = "bold";
-  navigation_index = index;
-  html += `<div style="margin-top: 150px;">`;
-  if (index == 0) {
-    html += next_page;
-  } else if (index == navigations.length-1) {
-    html += prev_page;
-  } else {
-    html += prev_page;
-    html += next_page;
-  }
-  html += `</div>`;
-  content_body.innerHTML = html;
-  let tabcontrols = document.getElementsByClassName('tabcontrol');
-  for (let index = 0; index < tabcontrols.length; ++index) {
-    let tabcontrol = tabcontrols[index];
-    select_tab_index(tabcontrol, 0);
-  }
-  url.searchParams.set('page', nav.id);
-  window.history.replaceState(null, null, "?" +url.searchParams.toString());
-  nav.scrollIntoView();
-  window.scrollTo(0, 0);
 }
