@@ -1677,7 +1677,7 @@ Of course this has advantages and disadvantages.
 </ul>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">type_param</x></div>
+<div class="sub-sub-title"><x class="inline_code">typearg</x></div>
 This accepts generic types as parameter of function.
 This attribute only used for functions with generics.
 <br><br>

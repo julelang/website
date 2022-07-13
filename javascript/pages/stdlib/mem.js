@@ -46,7 +46,7 @@ Special case is:
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-@type_param
+@typearg
 type[T]
 pub new() *T</div>
 Returns pointer to new allocation of data type if allocation is success, nil if not.
