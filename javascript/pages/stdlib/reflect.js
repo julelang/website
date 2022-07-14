@@ -1,13 +1,11 @@
 const stdlib_reflect_functionsHTML = `
-<div class="code">@inline
-@typearg
+<div class="code">@inline @typearg
 type[T]
 pub sizeof() size</div>
 Returns the size of the data type in bytes.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-@typearg
+<div class="code">@inline @typearg
 type[T1, T2]
 pub is_same() bool</div>
 Reports the given data types are same or not.

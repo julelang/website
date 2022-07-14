@@ -1900,7 +1900,7 @@ The difference from an array is that arrays contain values of the same data-type
 Also, unlike an array, the fields of structures are accessed with an identifier.
 <br><br>
 For example to declaration a struct;
-<div class="code">struct employee {
+<div class="code">struct Employee {
     name   :str
     age    :u8
     title  :str
@@ -1913,7 +1913,7 @@ Members of structures are the same as a variable definition.
 When instances of struct members are initialized, they are initialized using the default value of the data-type.
 But you can custom default values. <br>
 For example;
-<div class="code">struct employee {
+<div class="code">struct Employee {
     name   :str = "Anonymous"
     age    :u8  = 18
     title  :str = "Engineer"
@@ -1928,7 +1928,7 @@ Each parameter also has a default argument.
 Default arguments are based on default member values that you specify.
 <br><br>
 For example;
-<div class="code">struct employee {
+<div class="code">struct Employee {
     name   :str = "Anonymous"
     age    :u8  = 18
     title  :str = "-"
@@ -1936,11 +1936,50 @@ For example;
 }
 
 main() {
-    anon: = employee()
-    emma: = employee("Emma Blake", 27, "Data Scientist", 4750)
+    anon: = Employee()
+    emma: = Employee("Emma Blake", 27, "Data Scientist", 4750)
     outln(anon)
     outln(emma)
 }</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Functions for Structures</div>
+Structures can have special functions for themselves.
+Similar to class methods of object oriented programming.
+You can use structure generics in function and have generics for your function.
+
+<div class="warn">You can't shadow generics.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Receivers</div>
+Receivers indicate how instance the function will use.
+<br><br>
+There are two types of receivers;
+<br><br>
+<strong>Pointer Receiver</strong> <br>
+The value receiver is using a pointer to the instance from which the function was called.
+You can changes on original instance.
+
+<br><br>
+<strong>Value Receiver</strong> <br>
+The value receiver is using a copy of the instance from which the function was called.
+<div class="warn">Not deep copy.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Syntax</div>
+
+<div class="code">RECEIVER.IDENTIFIER(PARAMETERS) RET_TYPE {
+    // Body
+}</div>
+
+<br><br>
+For exmaples;
+<div class="code">// Pointer Receiver
+*MyStruct.my_function() str { /* Body */ }</div>
+<div class="code">// Value Receiver
+MyStruct.full_name() str { /* Body */ }</div>
+
+<div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
 
 </div>
 `;
@@ -2696,7 +2735,7 @@ There is no additional syntax to use it. Combine only what you know with the str
 <br><br>
 For example;
 <div class="code">type[T]
-struct position {
+struct Position {
     x:T
     y:T
 }</div>

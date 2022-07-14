@@ -45,8 +45,7 @@ Special case is:
 <li><x class="inline_code">memcopy[Alloc_T](dest, src, n) = does nothing if src == nil</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-@typearg
+<div class="code">@inline @typearg
 type[T]
 pub new() *T</div>
 Returns pointer to new allocation of data type if allocation is success, nil if not.
