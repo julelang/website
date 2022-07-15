@@ -1373,7 +1373,7 @@ This is a result of the variadic parameter.
 Putting the <x class="inline_code">...</x> operator before its name makes parameter variadic.
 
 <div class="info">
-  <li>Each variadic parameter, actually is an array.</li>
+  <li>Each variadic parameter, actually is an slice.</li>
   <li>Variadic parameters is not must have an argument in calling.</li>
 </div>
 
@@ -1696,37 +1696,31 @@ This attribute only used for functions with generics.
 const common_concepts_arraysHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Arrays</div>
 <div class="text">
-Arrays is a heap allocated memory fields.
-Arrays can store multiple values.
+The array for storing a fixed size sequence of elements.
+
 <br><br>
-Example to arrays;
-<div class="code">main() {
-    my_array:[]str
-    my_array = []str{"Hello", "X", "arrays!"}
-    outln(my_array)
-}</div>
-The nil is the auto value of arrays.
-But the important point: empty array and nil setted array is the same thing.
-The example at above, auto value is given (so nil) at first statement.
-<x class="inline_code">my_array</x> is equals to <x class="inline_code">nil</x> or <x class="inline_code">[]str{}</x>.
-Second statement is set value of <x class="inline_code">my_array</x> variable as <x class="inline_code">[]str{"Hello", "X", "arrays!"}</x>.
-Seen at second statement, arrays is should be define with data type.
-Last statement is prints to console the <x class="inline_code">my_array</x> variable.
+<div class="sub-title">Syntax</div>
+<div class="code">[CONST_SIZE_EXPRESSION]DATA_TYPE</div>
+For example;
+<div class="code">[50]int</div>
+
 <br><br>
-Output of program;
-<div class="code">[Hello, X, arrays!]</div>
-</div>
+<div class="sub-title">Triple Dot for Auto Computing Size of Array Literals</div>
+You can use <x class="inline_code">...</x> for auto computing size of array literal at compile time.
+<br><br>
+For example;
+<div class="code">[...]int{1, 2, 3, 4, 5} // [5]int</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Access to Elements and Indexing</div>
 Index system is simple.
 Starts at <x class="inline_code">0</x> and continue step by step, it is never not be negative and float.
 <br><br>
-Arrays is use indexes for access and elements value setting.
+Arrays is use indexes to access elements and assignment.
 <br>
 For example;
 <div class="code">main() {
-    my_array: = []str{"Hello", "arrays", "indexes"}
+    my_array: = [3]str{"Hello", "arrays", "indexes"}
     outln(my_array[0])
     my_array[0] = "Hi"
     outln(my_array)
@@ -1747,9 +1741,9 @@ Multidimensional arrays is array storing arrays.
 <br>
 For example;
 <div class="code">main() {
-    my_array: = [][]str{
-        []str{"Apple", "Banana"},
-        []str{"Bred", "Cheese"},
+    my_array: = [2][2]str{
+        [2]str{"Apple", "Banana"},
+        [2]str{"Bred", "Cheese"},
     }
     outln(my_array)
 }</div>
@@ -1757,12 +1751,38 @@ For example;
 Output of program;
 <div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
 
+</div>
+`;
+
+const common_concepts_slicesHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Slices</div>
+<div class="text">
+Slices is a dynamic allocated array, for this reason not has constant size expression.
+<br><br>
+Example to slices;
+<div class="code">main() {
+    my_slice:[]str
+    my_slice = []str{"Hello", "X", "slices!"}
+    outln(my_slice)
+}</div>
+The nil is the default value of slices.
+But the important point: empty slice and nil setted slice is the same thing.
+The example at above, auto value is given (so nil) at first statement.
+<x class="inline_code">my_slice</x> is equals to <x class="inline_code">nil</x> or <x class="inline_code">[]str{}</x>.
+Second statement is set value of <x class="inline_code">my_slice</x> variable as <x class="inline_code">[]str{"Hello", "X", "slices!"}</x>.
+Seen at second statement, slices is should be define with data type.
+Last statement is prints to console the <x class="inline_code">my_slice</x> variable.
+<br><br>
+Output of program;
+<div class="code">[Hello, X, slices!]</div>
+</div>
+
 <div class="title-separator"></div>
-<div class="sub-title">Passing Arrays to Variadic Parameter</div>
+<div class="sub-title">Passing Slices to Variadic Parameter</div>
 We know that <x class="inline_code">...</x> is used for Variadic parameters.
-We also know that each variadic parameter is actually an array.
+We also know that each variadic parameter is actually an slices.
 <br>
-So can we pass an array to a variadic parameter?
+So can we pass an slice to a variadic parameter?
 Yes.
 Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
@@ -1781,11 +1801,11 @@ main() {
     result: = sum(my_arr...)
     outln(result)
 }</div>
-As seen in the example above, the owned variable <x class="inline_code">my_arr</x> holds an array.
+As seen in the example above, the owned variable <x class="inline_code">my_arr</x> holds an slice.
 Its elements are compatible with the variadic parameter.
 To send, it is sufficient to follow the <x class="inline_code">...</x> operator.
 
-<div class="warn">If you pass array to variadic parameter, you can't pass more value.</div>
+<div class="warn">If you pass slice to variadic parameter, you can't pass more value.</div>
 `;
 
 const common_concepts_mapsHTML = `
@@ -1896,8 +1916,8 @@ const common_concepts_structuresHTML = `
 <div class="text">
 Structures (aka structs) are a good way to collect many variables in one spot.
 Every declaration within the structure is called a member (aka field).
-The difference from an array is that arrays contain values of the same data-type, while each of the struct members can have a different data type.
-Also, unlike an array, the fields of structures are accessed with an identifier.
+The difference from a slice is that slices contain values of the same data-type, while each of the struct members can have a different data type.
+Also, unlike a slice, the fields of structures are accessed with an identifier.
 <br><br>
 For example to declaration a struct;
 <div class="code">struct Employee {
@@ -2070,7 +2090,7 @@ For exaple;
     ptr += 1
     outln(*ptr) // 200
 }</div>
-As seen in the example above, when the pointer pointing to the first element of the array is increased by 1, it becomes pointing to the second element of the array.
+As seen in the example above, when the pointer pointing to the first element of the slice is increased by 1, it becomes pointing to the second element of the slice.
 </div>
 `;
 
@@ -2357,6 +2377,17 @@ const types_arraysHTML = `
 <div class="tabcontrol">
   <div id="tab-types-arrays-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
   <div id="tab-types-arrays-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
+</div>
+<div class="tabcontrol-content"></div>
+</div>
+`;
+
+const types_slicesHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Slices</div>
+<div class="text">
+<div class="tabcontrol">
+  <div id="tab-types-slices-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-types-slices-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2895,7 +2926,7 @@ const stdlibHTML = `
   At below, you can see all content of standard library of the X programming language;
   <br><br><br>
   <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
-  <li><a href="../pages/stdlib/array.html">array</a></li>
+  <li><a href="../pages/stdlib/slice.html">slice</a></li>
   <li><a href="../pages/stdlib/debug.html">debug</a></li>
   <li><a href="../pages/stdlib/debug_assert.html">debug.assert</a></li>
   <li><a href="../pages/stdlib/io.html">io</a></li>
@@ -2974,7 +3005,7 @@ Each character is each byte.
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">split(sub str, n{-1} i64) []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
-Returns empty array if <x class="inline_code">n</x> is equals to zero. <br>
+Returns empty slice if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
 
 <div class="topic-separator"></div>
@@ -2992,6 +3023,16 @@ Length of array.
 const TAB_types_arrays_methods = `
 <div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
 Reports array is empty or not.
+`;
+
+const TAB_types_slices_constants = `
+<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+Length of slice.
+`;
+
+const TAB_types_slices_methods = `
+<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+Reports slice is empty or not.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">clear()</x></div>
@@ -3000,12 +3041,12 @@ Removes all items.
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">find(value ITEM_TYPE) *ITEM_TYPE</x></div>
 Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
-Starts searching at left of array to right.
+Starts searching at left of slice to right.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">rfind(value ITEM_TYPE) *ITEM_TYPE</x></div>
 Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
-Starts searching at right of array to left.
+Starts searching at right of slice to left.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">erase(value ITEM_TYPE)</x></div>
@@ -3017,11 +3058,11 @@ Removes all matched item(s) with specified value.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">append(...values ITEM_TYPE)</x></div>
-Appends specified items to end of array.
+Appends specified items to end of slice.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">insert(start size, ...values ITEM_TYPE) bool</x></div>
-Inserts specified values to array start at specified position. <br>
+Inserts specified values to slice start at specified position. <br>
 Returns true if insertion is success, false if not. <br>
 What time is it does fail? For example, start position is out of bounds.
 `;
@@ -3049,11 +3090,11 @@ Deletes key if exist.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">keys() []KEY_TYPE</x></div>
-Returns keys of key-value pairs as array.
+Returns keys of key-value pairs as slice.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">values() []VALUE_TYPE</x></div>
-Returns values of key-value pairs as array.
+Returns values of key-value pairs as slice.
 `;
 
 const TAB_type_statics_i8_constants = `
@@ -3518,6 +3559,11 @@ But have <x class="inline_code">_xt</x> suffix.
 
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Item_t&gt;
+class slice</div>
+Slice type class.
+
+<div class="topic-separator"></div>
+<div class="code">template&lt;typename _Item_t, const uint_xt _N&gt;
 class array</div>
 Array type class.
 
@@ -3629,6 +3675,7 @@ const NAV_common_concepts                     = document.getElementById('common-
 const NAV_common_concepts_variables           = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions           = document.getElementById('common-concepts-functions');
 const NAV_common_concepts_arrays              = document.getElementById('common-concepts-arrays');
+const NAV_common_concepts_slices              = document.getElementById('common-concepts-slices');
 const NAV_common_concepts_maps                = document.getElementById("common-concepts-maps");
 const NAV_common_concepts_control_flow        = document.getElementById('common-concepts-control-flow');
 const NAV_common_concepts_enums               = document.getElementById("common-concepts-enums");
@@ -3647,6 +3694,7 @@ const NAV_types_casting                       = document.getElementById('types-c
 const NAV_types_generics                      = document.getElementById("types-generics");
 const NAV_types_str                           = document.getElementById("types-str");
 const NAV_types_arrays                        = document.getElementById("types-arrays");
+const NAV_types_slices                        = document.getElementById("types-slices");
 const NAV_types_maps                          = document.getElementById("types-maps");
 const NAV_type_statics                        = document.getElementById("type-statics");
 const NAV_type_statics_i8                     = document.getElementById("type-statics-i8");
@@ -3707,6 +3755,7 @@ nav.navigations = [
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
   [NAV_common_concepts_arrays,              common_concepts_arraysHTML],
+  [NAV_common_concepts_slices,              common_concepts_slicesHTML],
   [NAV_common_concepts_maps,                common_concepts_mapsHTML],
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
   [NAV_common_concepts_enums,               common_concepts_enumsHTML],
@@ -3725,6 +3774,7 @@ nav.navigations = [
   [NAV_types_generics,                      types_genericsHTML],
   [NAV_types_str,                           types_strHTML],
   [NAV_types_arrays,                        types_arraysHTML],
+  [NAV_types_slices,                        types_slicesHTML],
   [NAV_types_maps,                          types_mapsHTML],
   [NAV_type_statics,                        type_staticsHTML],
   [NAV_type_statics_i8,                     type_statics_i8HTML],
@@ -3761,6 +3811,8 @@ const tabs = [
   ["tab-types-str-methods",                 TAB_types_str_methods],
   ["tab-types-arrays-constants",            TAB_types_arrays_constants],
   ["tab-types-arrays-methods",              TAB_types_arrays_methods],
+  ["tab-types-slices-constants",            TAB_types_slices_constants],
+  ["tab-types-slices-methods",              TAB_types_slices_methods],
   ["tab-types-maps-constants",              TAB_types_maps_constants],
   ["tab-types-maps-methods",                TAB_types_maps_methods],
   ["tab-type-statics-i8-constants",         TAB_type_statics_i8_constants],
