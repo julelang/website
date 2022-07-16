@@ -1806,6 +1806,43 @@ Its elements are compatible with the variadic parameter.
 To send, it is sufficient to follow the <x class="inline_code">...</x> operator.
 
 <div class="warn">If you pass slice to variadic parameter, you can't pass more value.</div>
+
+<br><br>
+<div class="sub-title">Triple Dot for Auto Computing Size of Array Literals</div>
+You can use <x class="inline_code">...</x> for auto computing size of array literal at compile time.
+<br><br>
+For example;
+<div class="code">[...]int{1, 2, 3, 4, 5} // [5]int</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Slicing</div>
+You can slice compatible types with indexing.
+<br><br>
+<div class="sub-sub-title">Syntax</div>
+<div class="code">EXPRESSION[START_EXPRESSION:TO_EXPRESSION]</div>
+For example;
+<div class="code">my_slice[2:10]</div>
+The example at above, slices items starts at <x class="inline_code">2</x> to <x class="inline_code">10</x>
+The <x class="inline_code">10</x> index is not included.
+So if you want slice all components of slice after the index <x class="inline_code">2</x>, give length of slice.
+
+<br><br>
+<div class="sub-sub-title">Auto Indexing</div>
+If you don't give the start index expression, accepts as <x class="inline_code">0</x>. <br>
+If you don't give the to index expression, accepts as length.
+<br><br>
+For exmaple;
+<div class="code">main() {
+    my_slice: = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    outln(my_slice[2:5]) // [3, 4, 5]
+    outln(my_slice[:])   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    outln(my_slice[:10]) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    outln(my_slice[4:])  // [5, 6, 7, 8, 9, 10]
+}</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Supported Types</div>
+Arrays, slices and strings.
 `;
 
 const common_concepts_mapsHTML = `
@@ -2273,6 +2310,9 @@ const error_handling_handling_panicsHTML = `
 <div class="text">
 
 When the code panics, you may not want the program to be stopped and want to continue execution.
+
+<div class="warn">You can't handle aborts or cxx exceptions, only X panics.</div>
+
 The <x class="inline_code">try</x> block is used for this.
 <br><br>
 For example;
@@ -3499,9 +3539,6 @@ For example; <x class="inline_code">goto repeat</x>
 `;
 
 const TAB_cxx_cxxapi_preprocessor_defines = `
-<div class="code">func</div>
-Like alias for <x class="inline_code">std::function</x>.
-
 <div class="title-separator"></div>
 <div class="code">XID(_Identifier)</div>
 Appends the prefix that the identifiers have in the CXX output to the identifier you supplied.
@@ -3564,7 +3601,7 @@ Slice type class.
 
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Item_t, const uint_xt _N&gt;
-class array</div>
+struct array</div>
 Array type class.
 
 <div class="topic-separator"></div>
@@ -3590,16 +3627,16 @@ The built-in <x class="inline_code">Error</x> structure.
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
 static inline void foreach(const _Enum_t _Enum,
-                           const func&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
+                           const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
 <div class="code">template&lt;typename _Enum_t, typename _Index_t&gt;
 static inline void foreach(const _Enum_t _Enum,
-                           const func&lt;void(_Index_t)&gt; _Body)</div>
+                           const std::function&lt;void(_Index_t)&gt; _Body)</div>
 <div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
 static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
-                           const func&lt;void(_Key_t)&gt; _Body)</div>
+                           const std::function&lt;void(_Key_t)&gt; _Body)</div>
 <div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
 static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
-                           const func&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
+                           const std::function&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
 
 <div class="topic-separator"></div>
@@ -3610,6 +3647,13 @@ inline auto tuple_as_args(const _Function_t _Function,
 <div class="code">template&lt;typename _Function_t, typename _Tuple_t&gt;
 inline auto tuple_as_args(const _Function_t _Function, const _Tuple_t _Tuple)</div>
 Push tuple as argument(s) to function.
+
+<div class="topic-separator"></div>
+<div class="code">template&lt;typename _Slice_t, typename _Src_Ptr_T&gt;
+_Slice_t ___slice_type(_Src_Ptr_T _Src,
+                       const uint_xt &_Start,
+                       const uint_xt &_End)</div>
+For slicing supported types.
 
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Obj_t&gt;
