@@ -9,8 +9,14 @@ Exit code for failure.
 
 const stdlib_os_functionsHTML = `
 <div class="code">@inline
+pub abort()</div>
+Abort execution and generate a core-dump.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
 pub exit(const code{EXIT_SUCCESS} int)</div>
-Exit program with given exit code.
+Causes the current program to exit with the given status code. <br>
+Conventionally, code zero indicates success, non-zero an error.
 `;
 
 const NAV_stdlib_os_constants = document.getElementById("constants");
