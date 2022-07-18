@@ -76,11 +76,11 @@ class SideNavigator {
         nav.style.fontWeight = "bold";
         this.index = index;
         html += `<div style="margin-top: 150px;">`;
-        if (index == 0) {
+        if (index == 0 && this.navigations.length > 1) {
             html += this.next_page;
-        } else if (index == this.navigations.length-1) {
+        } else if (index > 0 && index == this.navigations.length-1) {
             html += this.prev_page;
-        } else {
+        } else if (index > 0 && index < this.navigations.length-1) {
             html += this.prev_page;
             html += this.next_page;
         }

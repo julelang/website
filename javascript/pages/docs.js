@@ -2971,6 +2971,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/debug_assert.html">debug.assert</a></li>
   <li><a href="../pages/stdlib/io.html">io</a></li>
   <li><a href="../pages/stdlib/math.html">math</a></li>
+  <li><a href="../pages/stdlib/math_bits.html">math.bits</a></li>
   <li><a href="../pages/stdlib/mem.html">mem</a></li>
   <li><a href="../pages/stdlib/os.html">os</a></li>
   <li><a href="../pages/stdlib/reflect.html">reflect</a></li>
