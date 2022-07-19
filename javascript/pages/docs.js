@@ -3540,6 +3540,9 @@ For example; <x class="inline_code">goto repeat</x>
 `;
 
 const TAB_cxx_cxxapi_preprocessor_defines = `
+<div class="code">X_EXIT_PANIC</div>
+Exit code for x panics.
+
 <div class="title-separator"></div>
 <div class="code">XID(_Identifier)</div>
 Appends the prefix that the identifiers have in the CXX output to the identifier you supplied.
@@ -3582,6 +3585,14 @@ const TAB_cxx_cxxapi_defines = `
 Source struct for deferred calls.
 
 <div class="topic-separator"></div>
+<div class="code">struct tracer</div>
+Tracer for panics.
+
+<div class="topic-separator"></div>
+<div class="code">tracer ___trace;</div>
+Instance of tracer for tracing.
+
+<div class="topic-separator"></div>
 <div class="code">template&lt;typename Type, unsigned N, unsigned Last&gt;
 struct tuple_ostream</div>
 <div class="code">template&lt;typename Type, unsigned N&gt;
@@ -3595,7 +3606,7 @@ The primitive data-types in X, have same names in cxx output.
 But have <x class="inline_code">_xt</x> suffix.
 </div>
 
-<div class="topic-separator"></div>
+
 <div class="code">template&lt;typename _Item_t&gt;
 class slice</div>
 Slice type class.
