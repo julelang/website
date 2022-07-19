@@ -32,6 +32,10 @@ One difference, prints new line after print.
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">panic(const error Error)</x></div>
 Panics program with given error instance.
+
+<div class="topic-separator"></div>
+<div class="sub-sub-title"><x class="inline_code">recover(handler (Error))</x></div>
+Recovers errors if exist and call given function with handled error instance.
 `;
 
 const stdlib_builtin_structuresHTML = `

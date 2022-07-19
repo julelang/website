@@ -2225,9 +2225,9 @@ Example for referenced parameters;
 <div class="code">sum(&i, val int) { i += val }
 
 main() {
-  a: = 10
-  sum(a, 100)
-  outln(a)
+    a: = 10
+    sum(a, 100)
+    outln(a)
 }</div>
 The example at above, prints <x class="inline_code">110</x>.
 Since the reference of the variable is used, it acts directly on the parent value.
@@ -2256,7 +2256,7 @@ It is a way of catching errors.
 While the program is executing, if the functions are designed to return this structure when a problem occurs, providing error catching.
 <br><br>
 For example;
-<div class="code">safe_div(a, b f32) [f32, *error] {
+<div class="code">safe_div(a, b f32) [f32, *Error] {
     if a == 0 || b == 0 {
         error = new(Error)
         *error = Error("division with zero")
@@ -2268,8 +2268,9 @@ For example;
 main() {
     result:, err: = safe_div(5, 0)
     if err {
-      outln(err.message)
-      ret
+        outln(err.message)
+        free(err)
+        ret
     }
     outln(result)
 }</div>
@@ -2288,17 +2289,15 @@ If you're talking about an issue that will cause the program to crash while exec
 You can only panic with error structure.
 <br><br>
 For example;
-<div class="code">counter:u32 = 0
-
-add_counter(const rate int) {
-    if counter == 0 {
-        panic(error("counter is zero"))
+<div class="code">add_pointer(rate int, ptr *int) {
+    if !ptr {
+        panic(Error("pointer is nil"))
     }
-    counter += rate
+    *ptr += rate
 }
 
 main() {
-    add_counter(-1)
+    add_pointer(nil, 10)
 }</div>
 The code above is an example of panicking.
 
@@ -2309,54 +2308,51 @@ const error_handling_handling_panicsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Handling Panics</div>
 <div class="text">
 
-When the code panics, you may not want the program to be stopped and want to continue execution.
+There is a built-in function that allows you to catch panics and keep your program running.
+The built-in <x class="inline_code">recover</x> function once used, it catches panics of ongoing codes.
+It just catch panics the codes of the scope it is in.
+It just catch panics of the codes of the scope it is in.
 
-<div class="warn">You can't handle aborts or cxx exceptions, only X panics.</div>
-
-The <x class="inline_code">try</x> block is used for this.
 <br><br>
 For example;
-<div class="code">main() {
-    try {
-        panic(error("example panic"))
-    }
-    outln("Hello World")
-}</div>
-In the above code example, you cannot normally reach the <x class="inline_code">Hello World</x> result.
-However, when we enclose the panic in a <x class="inline_code">try</x> block, you will see that the execution of the program is no longer stopped.
-When the block encounters a panic in it, it leaves the block without executing the remaining statements of the block.
+<div class="code">may_panic() {
+    panic(Error("a problem"))
+}
 
-<div class="title-separator"></div>
-<div class="sub-title">Catching Panics</div>
-Just as you want program execution to continue, you may also want to catch the panic attempting to stop it.
-What you need in this case is a <x class="inline_code">catch</x> block.
+main() {
+    may_panic()
+}</div>
+The example code above will panic.
+To be recovered it must be editing using the <x class="inline_code">recover</x> function.
+
 <br><br>
 For example;
-<div class="code">main() {
-    try {
-        panic(error("example panic"))
-    } catch e {
-        outln("program panicked: " + e.message)
-    }
+<div class="code">may_panic() {
+    panic(Error("a problem"))
+}
+
+main() {
+    recover((e Error) {
+        outln(e.message)
+    })
+    may_panic()
 }</div>
-In the above example, when the <x class="inline_code">try</x>block encounters a panic, the <x class="inline_code">catch</x> block runs before exiting the block.
-The variable of the catch block has always taken the error structure as its data type and can never be used as an existing variable, it is always newly created.
-The <x class="inline_code">e</x> variable in the example above is an example of this.
+Since the <x class="inline_code">recover</x> function is used,
+the panic of the <x class="inline_code">may_panic</x> function will be recovered.
+If the <x class="inline_code">recover</x> function had been used after <x class="inline_code">may_panic</x> was called,
+the <x class="inline_code">recover</x> function would not have recover the panic as it captures the codes that came after it was used.
 
 <div class="topic-separator"></div>
-What if you just want to catch the panic instead of catching the error?
-For example, you just want to be notified when you panic.
-In these cases, you can use an empty catch block.
-<br><br>
+You can use a function as recover handler. <br>
 For example;
-<div class="code">main() {
-    try {
-        panic(error("example panic"))
-    } catch {
-        outln("program panicked")
-    }
+<div class="code">handler(e Error) {
+    // ...
+}
+
+main() {
+    recover(handler)
+    // ...
 }</div>
-In this example you catch the panic, but not the error that caused it.
 
 </div>
 `;
