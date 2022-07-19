@@ -25,13 +25,13 @@ main() {
 
 const preview_code_pointersHTML =
 `main() {
-    myarr: = []int{10, 50, 24, -43, 63}
-    counter: = 0
-    ptr: = &myarr[0]
-    iter (counter++) < myarr.len {
-        outln(*ptr)
-        ptr++
-    }
+	myarr: = [...]int{10, 50, 24, -43, 63}
+	ptr: = &myarr[0]
+	end: = &myarr[myarr.len-1]
+	iter ptr <= end {
+		outln(*ptr)
+		ptr++
+	}
 }`;
 
 //#region GET_ELEMENTS
