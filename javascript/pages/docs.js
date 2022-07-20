@@ -25,16 +25,16 @@ const the_xlangHTML = `
   X is also a good choice for the simpler way to write Cxx.
   At the developer's request, X can be translated or compiled into Cxx.
   This choice is the developer's.
+  <br><br>
+  The purpose of X is to keep functionality high while maintaining a simple form and readability.
+  It is based on not having any content that restricts the developer.
+  That means manual memory management, unsafe memory operations and more.
 </div>
 `;
 
 const forewordHTML = `
 <div class="title" style="margin-bottom: 20px;">Foreword</div>
 <div class="text">
-  The X programming language facilitates Cxx development in general.
-  In addition, this language is actually more than an interface.
-  Although it acts as a bridge between two languages, it is designed as a language itself.
-  <br><br>
   This documentation is updated following the source code according to the latest version of X.
   Some content maybe is not released yet, so it may be here, but not in the compiler you have.
   <br><br>
@@ -70,8 +70,16 @@ const introductionHTML = `
   X is good for a few groups of developers for many reasons. Some of those;
 
   <div class="title-separator"></div>
+  <div class="sub-sub-title">System Developers</div>
+  X was designed as a systems programming language.
+  It leaves the control entirely to the developer.
+  When programming your program, you can develop exactly what you want to happen when you want it.
+  It can be a memory allocation or freeing.
+  X does not interfere with your business.
+
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Students</div>
-  X is suitable both for learning programming and for learning Cxx.
+  X is suitable for learning programming.
   X's simple structure and easy-to-understand, readable code encourage both effortless writing and understanding.
   In this way, students can learn without difficulty.
   Confusing syntax does not stand in their way.
@@ -82,11 +90,9 @@ const introductionHTML = `
   Thank you for every tool, library, framework and program you make open source.
 
   <div class="title-separator"></div>
-  <div class="sub-sub-title">Developers Who Value Speed, Stability and Simplicity</div>
+  <div class="sub-sub-title">Developers Who Value Performance, Stability and Simplicity</div>
   X is a good choice for those looking for simplicity, stability and performance.
   When you develop with X, you use a simple and straightforward syntax.
-  The X code is then converted to stable and safe Cxx code.
-  Everything happens much more easily and comfortably.
 </div>
 `;
 
@@ -481,7 +487,7 @@ It is useful to pay attention to this.
 <strong>Order (High to Low);</strong>
 <div style="margin-top: 5px;"></div>
 <li>Use Declarations</li>
-<li>Type Aliases, Globals</li>
+<li>Type Aliases, Globals, Structures, Enums</li>
 <li>Functions</li>
 </div>
 `;
@@ -837,6 +843,12 @@ new
   <div class="sub-title">Nil</div>
   Zero value for pointers and function data typed defines.
   <div class="code">nil</div>
+
+  <div class="title-separator"></div>
+  <div class="sub-title">Default</div>
+  Represents default value of related data type.
+  <div class="code">a:int = default</div>
+  <div class="code">my_func(default, default, X+Y, default)</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">any</div>
