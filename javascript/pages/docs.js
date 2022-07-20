@@ -845,12 +845,6 @@ new
   <div class="code">nil</div>
 
   <div class="title-separator"></div>
-  <div class="sub-title">Default</div>
-  Represents default value of related data type.
-  <div class="code">a:int = default</div>
-  <div class="code">my_func(default, default, X+Y, default)</div>
-
-  <div class="title-separator"></div>
   <div class="sub-title">any</div>
   It can hold any value and can be nil.
   Supports equals (==) and not equals (!=) operators.
