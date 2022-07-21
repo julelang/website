@@ -11,7 +11,7 @@ Special cases are;<br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item_T]
-pub make(const n size) []Item_T</div>
+pub make(n size) []Item_T</div>
 Makes an slice have n elements with default values of related data-type.
 
 <div class="topic-separator"></div>

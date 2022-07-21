@@ -1,6 +1,6 @@
 const stdlib_mem_functionsHTML = `
 <div class="code">type[Alloc_T]
-pub calloc(const n size) *Alloc_T</div>
+pub calloc(n size) *Alloc_T</div>
 Allocates n memory by size of specified data-type. <br>
 The allocated memory initialized with zero (0) value.
 <br><br>
@@ -9,7 +9,7 @@ Special cases are; <br>
 <li><x class="inline_code">calloc[Alloc_T](n) = nil if allocation failed</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub malloc(const size size) voidptr</div>
+<div class="code">pub malloc(size size) voidptr</div>
 Allocates memory by specified size. <br>
 The allocated memory is not initialized.
 <br><br>
@@ -18,7 +18,7 @@ Special cases are;
 <li><x class="inline_code">malloc(size) = nil if allocation failed</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub realloc(ptr voidptr, const size size) voidptr</div>
+<div class="code">pub realloc(ptr voidptr, size size) voidptr</div>
 Resizes the allocation based on the given size.
 <br><br>
 Special cases are;
@@ -27,7 +27,7 @@ Special cases are;
 
 <div class="topic-separator"></div>
 <div class="code">type[Alloc_T]
-pub memset(ptr *Alloc_T, expr Alloc_T, const n size)</div>
+pub memset(ptr *Alloc_T, expr Alloc_T, n size)</div>
 Sets n value of pointer segments to specified expression.
 <br><br>
 Special case is:
@@ -36,7 +36,7 @@ Special case is:
 
 <div class="topic-separator"></div>
 <div class="code">type[Alloc_T]
-pub memcopy(dest, src *Alloc_T, const n size)</div>
+pub memcopy(dest, src *Alloc_T, n size)</div>
 Copies n value from source allocation to destination allocation.
 <br><br>
 Special case is:

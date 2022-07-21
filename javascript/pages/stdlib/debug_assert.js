@@ -1,12 +1,11 @@
 const stdlib_debug_assert_functionsHTML = `
 <div class="code">@inline
-pub assert(const expr bool, const msg{"assertion failed"} str)</div>
+pub assert(expr bool, msg{"assertion failed"} str)</div>
 Writes fail message to <x class="inline_code">cerr</x> and exit failure if assertion failed.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-pub assert_panic(const expr bool,
-                 const error{Error("assertion failed")} Error)</div>
+pub assert_panic(expr bool, error{Error("assertion failed")} Error)</div>
 Panics with given error if assertion failed.
 `;
 

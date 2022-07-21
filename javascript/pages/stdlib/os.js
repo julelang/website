@@ -14,7 +14,7 @@ Abort execution and generate a core-dump.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-pub exit(const code{EXIT_SUCCESS} int)</div>
+pub exit(code{EXIT_SUCCESS} int)</div>
 Causes the current program to exit with the given status code. <br>
 Conventionally, code zero indicates success, non-zero an error.
 `;

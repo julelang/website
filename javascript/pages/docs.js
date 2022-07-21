@@ -417,6 +417,16 @@ const project_namingHTML = `
     <td>PascalCase and _T extension or starts with T and continue with numbers.</td>
     <td>Generic_T, MyGeneric_T, T1, T2</td>
   </tr>
+  <tr>
+    <td style="text-align: center;">Namespace</td>
+    <td>snake_case</td>
+    <td>namespace, my_namespace</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Namespace Constants</td>
+    <td>PascalCase</td>
+    <td>Constant, MyConstant</td>
+  </tr>
 </table>
 
 <div class="title-separator"></div>
@@ -1346,18 +1356,6 @@ For example;
 }</div>
 As seen in the example above, if there is more than one parameter that must have the same data-type, the data-type can be specified in the last parameter.
 When this is done, all parameters that have not been given the previous data-type will have the same data-type.
-
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">Constant and Volatile Parameters</div>
-The function parameters can constant and volatile.
-These parameters is similar to variable versions, actually they are same, acts same.
-<br><br>
-For example;
-<div class="code">print_sum(const a, volatile const b int) {
-    sum: = a + b
-    outln(sum)
-}</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Variadic Parameters</div>
@@ -2595,7 +2593,7 @@ A block after the identifier is sufficient to declare a namespace. <br>
 For example;
 <div class="code">math {
     @inline
-    sum(const a, const b int) int { a+b }
+    sum(a, b int) int { a+b }
 }
 
 main() {
@@ -2682,7 +2680,7 @@ You can use only block identifiers.
 <br><br>
 For example;
 <div class="code">@inline
-cxx_wcout(const msg str) {
+cxx_wcout(msg str) {
     //cxx: std::wcout << @msg << std::endl;
 }
 
@@ -2854,7 +2852,7 @@ For example;
 <div class="code">// doc:
 // Divides specified floats.
 // THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
-div(const a, const b f64) f64 { a/b }</div>
+div(a, b f64) f64 { a/b }</div>
 
 <div class="warn">
     <li>The documentation comments should be single-line comments.</li>
@@ -2914,7 +2912,7 @@ Each package has the ability to use its own defines.
 For example;
 <div class="code">// file: ./hello_print.xx
 
-@inline hello_print(const name str) {
+@inline hello_print(name str) {
     outln("Hello " + name)
 }</div>
 <div class="code">// file: ./main.xx

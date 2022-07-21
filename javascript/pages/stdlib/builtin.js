@@ -20,17 +20,17 @@ The size type can store the maximum size of a theoretically possible object of a
 This type is safe way for indexing, loop counting, etc.`;
 
 const stdlib_builtin_functionsHTML = `
-<div class="sub-sub-title"><x class="inline_code">out(const value{""} any)</x></div>
+<div class="sub-sub-title"><x class="inline_code">out(value{""} any)</x></div>
 Prints value to command line.
 Can take any data-type as argument.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">outln(const value{""} any)</x></div>
+<div class="sub-sub-title"><x class="inline_code">outln(value{""} any)</x></div>
 This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">panic(const error Error)</x></div>
+<div class="sub-sub-title"><x class="inline_code">panic(error Error)</x></div>
 Panics program with given error instance.
 
 <div class="topic-separator"></div>
