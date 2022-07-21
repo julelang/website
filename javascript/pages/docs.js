@@ -1182,13 +1182,14 @@ For example;
 <div class="code">const age: = 18</div>
 <div class="code">const age:int = 18</div>
 <div class="warn">
-No matter which method the constant variables are defined by, a value must be given.
+  <li>No matter which method the constant variables are defined by, a value must be given.</li>
+  <li>Constant variables can't be volatile.</li>
 </div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Differences Between Variables and Constants Variables</div>
 The value of the variables can change, then they can be updated with a different value to match the data type.
-Constants take a single value and never change again.
+Constants take a constant expressions and never change again.
 
 <div class="title-separator"></div>
 <div class="sub-title">Volatile Variable</div>
