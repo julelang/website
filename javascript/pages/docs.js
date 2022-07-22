@@ -1190,6 +1190,9 @@ For example;
 <div class="sub-sub-title">Differences Between Variables and Constants Variables</div>
 The value of the variables can change, then they can be updated with a different value to match the data type.
 Constants take a constant expressions and never change again.
+Constant expressions do not exist as a variable in memory at runtime.
+Constant expressions used are copied exactly where they are used.
+Constant expressions are all evaluated at compile time.
 
 <div class="title-separator"></div>
 <div class="sub-title">Volatile Variable</div>
@@ -1958,8 +1961,8 @@ const common_concepts_structuresHTML = `
 <div class="text">
 Structures (aka structs) are a good way to collect many variables in one spot.
 Every declaration within the structure is called a member (aka field).
-The difference from a slice is that slices contain values of the same data-type, while each of the struct members can have a different data type.
-Also, unlike a slice, the fields of structures are accessed with an identifier.
+The difference from a slice or aray is that contain values of the same data-type, while each of the struct fields can have a different data type.
+Also, the fields of structures are accessed with an identifier.
 <br><br>
 For example to declaration a struct;
 <div class="code">struct Employee {
@@ -1968,7 +1971,7 @@ For example to declaration a struct;
     title  :str
     salary :u32
 }</div>
-Members of structures are the same as a variable definition.
+Members of structures are the same as a variable definition except <x class="inline_code">const</x> and <x class="inline_code">volatile</x> keywords.
 
 <div class="title-separator"></div>
 <div class="sub-title">Assigning Default Values to Members</div>
@@ -2042,6 +2045,28 @@ For exmaples;
 MyStruct.full_name() str { /* Body */ }</div>
 
 <div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">The <x class="inline_code">self</x> Keyword</div>
+The <x class="inline_code">self</x> keyword represents the receiver a receiver function has.
+It is used to access and use the members of the structure.
+The data type is the same as the data type of the receiver.
+
+<br><br>
+For example;
+<div class="code">*Employee.get_name() str {
+    ret self.name
+}</div>
+In the example above, the <x class="inline_code">name</x> field of the "<x class="inline_code">Employee</x> structure instance is accessed with the <x class="inline_code">self</x> keyword.
+
+<div class="topic-separator"></div>
+A expression starting with dot can be used to access the fields and functions of the structure, without using the <x class="inline_code">self</x> keyword.
+The dot is <x class="inline_code">self.</x> evaluated as.
+<br><br>
+For example;
+<div class="code">*Employee.get_name() str {
+    ret .name
+}</div>
 
 </div>
 `;
