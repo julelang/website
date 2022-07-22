@@ -1125,8 +1125,8 @@ There is more than one way in X to define a variable.
 <br><br>
 X is not use any keyword for declaring variable.
 X uses the <x class="inline_code">:</x> operator.
-When you just use <x class="inline_code">:</x> you report you want the data type to be detect automatically.
-The data type is set by the X compiler based on the data.
+When you just use <x class="inline_code">:</x> you report you want the type to be detect automatically.
+The type is set by the X compiler based on the data.
 <br><br>
 For example;
 <div class="code">age: = 18</div>
@@ -1136,14 +1136,14 @@ In this method, the variable must be given a value, otherwise the X compiler wil
 </div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Manual Data Type Specification</div>
-You may want to specify the data type, it is possible.
+<div class="sub-title">Type Annotation</div>
+You may want to annotate the type, it is possible.
 It also brings you advantages.
 <br><br>
 For example;
 <div class="code">age:int = 18</div>
 This is equivalent to the one shown above.
-However, you specified the data type.
+However, you annotated the type.
 So what exactly is the difference?
 We mentioned that it has advantages, let's take a look;
 <ul>
@@ -2811,7 +2811,7 @@ main() {
     outln(sum[f64](4.67, 2)) // 6.67
 }</div>
 
-There is a use for a generic type specification, as seen in the example above.
+There is a use for a generic type annotation, as seen in the example above.
 Use the <x class="inline_code">type</x> keyword with brackets and write the identifier of the generic type.
 To specify a type for a generic type, you specify the data-type in brackets.
 
