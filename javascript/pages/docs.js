@@ -1962,22 +1962,26 @@ For example;
 
 <div class="title-separator"></div>
 <div class="sub-title">Creating a Instances of Structures</div>
-You use the constructor method of the struct to initialize an instance of structures.
-Constructor methods, in turn, take the struct members themselves as parameters with the same identifier and same data-type.
+To instantiate structs, you can either give the values of the fields using braces after the struct name, or create them with their default values.
 <br><br>
 For example;
-<div class="code">struct Employee {
+<div class="code">struct Character {
     name   :str = "Anonymous"
     age    :u8  = 18
     title  :str = "-"
-    salary :u32 = 2500
 }
 
 main() {
-    anon: = Employee()
-    emma: = Employee("Emma Blake", 27, "Data Scientist", 4750)
+    anon: = Character{}
+    frodo: = Character{"Frodo", 50, "Hobbit"}
+    gandalf: = Character{
+        name:  "Gandalf",
+        age:   24000,
+        title: "Wizard",
+    }
     outln(anon)
-    outln(emma)
+    outln(frodo)
+    outln(gandalf)
 }</div>
 
 <div class="title-separator"></div>
