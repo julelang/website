@@ -1981,12 +1981,30 @@ main() {
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Functions for Structures</div>
+<div class="sub-title">Methods for Structures</div>
 Structures can have special functions for themselves.
 Similar to class methods of object oriented programming.
 You can use structure generics in function and have generics for your function.
 
 <div class="warn">You can't shadow generics.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Implementing Methods</div>
+To implement method(s) to structure, the following syntax is applied;
+<div class="code">impl STRUCT_IDENTIFIER {
+    // Methods
+}</div>
+
+<div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
+
+<br>
+For example;
+<div class="code">impl Position {
+    is_origin() bool {
+      ret .x == 0 && .y == 0
+    }
+}</div>
+Implements <x class="is_origin() bool"> method to <x class="inline_code">Position</x> structure.
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Receivers</div>
@@ -1997,7 +2015,6 @@ There are two types of receivers;
 <strong>Pointer Receiver</strong> <br>
 The value receiver is using a pointer to the instance from which the function was called.
 You can changes on original instance.
-
 <br><br>
 <strong>Value Receiver</strong> <br>
 The value receiver is using a copy of the instance from which the function was called.
@@ -2006,18 +2023,16 @@ The value receiver is using a copy of the instance from which the function was c
 <div class="title-separator"></div>
 <div class="sub-sub-title">Syntax</div>
 
-<div class="code">RECEIVER.IDENTIFIER(PARAMETERS) RET_TYPE {
+<div class="code">[RECEIVER_OPERATOR]IDENTIFIER(PARAMETERS) RET_TYPE {
     // Body
 }</div>
 
 <br><br>
-For exmaples;
+For examples;
 <div class="code">// Pointer Receiver
-*MyStruct.my_function() str { /* Body */ }</div>
+&method() str { /* Body */ }</div>
 <div class="code">// Value Receiver
-MyStruct.full_name() str { /* Body */ }</div>
-
-<div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
+method() str { /* Body */ }</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">The <x class="inline_code">self</x> Keyword</div>
@@ -2027,8 +2042,11 @@ The data type is the same as the data type of the receiver.
 
 <br><br>
 For example;
-<div class="code">*Employee.get_name() str {
-    ret self.name
+<div class="code">impl Person {
+    &get_name() str {
+        // self: *Person
+        ret self.name
+    }
 }</div>
 In the example above, the <x class="inline_code">name</x> field of the "<x class="inline_code">Employee</x> structure instance is accessed with the <x class="inline_code">self</x> keyword.
 
@@ -2037,8 +2055,10 @@ A expression starting with dot can be used to access the fields and functions of
 The dot is <x class="inline_code">self.</x> evaluated as.
 <br><br>
 For example;
-<div class="code">*Employee.get_name() str {
-    ret .name
+<div class="code">impl Person {
+    &get_name() str {
+        ret .name
+    }
 }</div>
 
 </div>
@@ -2072,7 +2092,7 @@ All constructs that implement the trait above must have the methods <x class="in
 const traits_implementingHTML = `
 <div class="title" style="margin-bottom: 20px;">Implementing</div>
 <div class="text">
-To implement a trait to a structure, the following syntax is applied;
+To implement a trait to structure, the following syntax is applied;
 <div class="code">impl TRAIT in RECEIVER {
     // Implementations...
 }</div>
