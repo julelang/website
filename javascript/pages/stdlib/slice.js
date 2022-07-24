@@ -1,6 +1,6 @@
 const stdlib_slice_functionsHTML = `
 <div class="code">type[Item_T]
-pub copy(&dest, &src []Item_T)</div>
+pub copy(&dest, src []Item_T)</div>
 Copies source items to destination.
 <br><br>
 Special cases are;<br>

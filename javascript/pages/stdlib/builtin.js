@@ -46,13 +46,18 @@ const stdlib_builtin_structuresHTML = `
 This is a error handling structure of standard library. <br>
 It is used for error handling and panics.
 <br><br>
-Example to error handling: <br>
-You have a <x class="inline_code">compute</x> method have two <x class="inline_code">f64</x> parameter: <x class="inline_code">x</x> and <x class="inline_code">y</x>. <br>
+Example to error handling:<br>
+You have a <x class="inline_code">div</x> method have two <x class="inline_code">f64</x> parameter: <x class="inline_code">x</x> and <x class="inline_code">y</x>. <br>
 This function returns division of given arguments. <br>
-Actually returns: <x class="inline_code">[f64, *Error]</x> <br>
+Actually returns: <x class="inline_code">[f64, Error]</x> <br>
 The first return value naturally result of computation. <br>
-Returns result and nil pointer for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to 0. <br>
-If not, returns 0 and returns heap-allocated error instance.
+Returns result and empty Error for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to <x class="inline_code">0</x>. <br>
+If not, returns <x class="inline_code">0</x> and returns <x class="inline_code">Error</x> instance with error message. <br>
+You can handle errors like that; <br>
+<div class="code">result:, err: = div(x, y)
+if err { // Equals to !err.message.empty()
+    // If has error...
+}</div>
 `;
 
 const NAV_stdlib_builtin_type_aliases = document.getElementById("type-aliases");

@@ -1430,7 +1430,6 @@ For example;
 <div class="code">my_function:(int, int) int</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
-<div class="warn">Default arguments specified in the data-type are not valid.</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Anonymous Functions</div>
@@ -1580,30 +1579,6 @@ main() {
     outln(a)
     outln(b)
     outln(c)
-}</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">Default Arguments</div>
-Default arguments are pre-given arguments for the function when the parameter is not given a value when calling it. <br>
-Default arguments are specified after the identifier of a parameter, between braces. <br>
-For example;
-<div class="code">@inline
-sum(a{10}, b{50} int) int { a+b }
-
-main() {
-    outln(sum())   // Prints 60
-    outln(sum(25)) // Prints 75
-}</div>
-
-<div class="topic-separator"></div>
-If you want give default value with default value of data type, give empty expression.
-<br>
-For example;
-<div class="code">@inline
-sum(a{}, b{} int) int { a+b }
-
-main() {
-    outln(sum()) // Prints 0
 }</div>
 
 <div class="title-separator"></div>
@@ -1989,8 +1964,6 @@ For example;
 <div class="sub-title">Creating a Instances of Structures</div>
 You use the constructor method of the struct to initialize an instance of structures.
 Constructor methods, in turn, take the struct members themselves as parameters with the same identifier and same data-type.
-Each parameter also has a default argument.
-Default arguments are based on default member values that you specify.
 <br><br>
 For example;
 <div class="code">struct Employee {
@@ -2070,6 +2043,72 @@ For example;
 
 </div>
 `;
+
+const traitsHTML = `
+<div class="title" style="margin-bottom: 20px;">Traits</div>
+<div class="text">
+Traits can be used to represent common behaviors.
+As a result of the implementation of a trait by one or more structures that exhibit common behavior, the trait it applies becomes usable wherever it is used.
+Trait can only contain functions.
+Every definition it contains is marked as <x class="inline_code">pub</x>.
+A trait can be <x class="inline_code">nil</x>
+
+<div class="title-separator"></div>
+<div class="sub-title">Define a Trait</div>
+
+Functions in trait should only exist as prototypes.
+<br><br>
+For example;
+<div class="code">trait Person {
+    name() str
+    age() u8
+}</div>
+
+All constructs that implement the trait above must have the methods <x class="inline_code">name() str</x> and <x class="inline_code">age() u8</x>.
+
+</div>
+`
+
+const traits_implementingHTML = `
+<div class="title" style="margin-bottom: 20px;">Implementing</div>
+<div class="text">
+To implement a trait to a structure, the following syntax is applied;
+<div class="code">impl TRAIT in RECEIVER {
+    // Implementations...
+}</div>
+
+<x class="inline_code">TRAIT</x>: Trait to implement.<br>
+<x class="inline_code">RECEIVER</x>: Receiver of structure.<br>
+
+<br>
+For example;
+<div class="code">trait Person {
+    name() str
+    age() u8
+}
+
+struct Employee {
+    _name:str
+    _age:u8
+}
+
+impl Person in *Employee {
+    name() str {
+      ret ._name
+    }
+
+    age() u8 {
+        ret ._age
+    }
+}
+
+main() {
+    e:Person = Employee("Frodo", 50)
+    outln(e.name())
+}</div>
+
+</div>
+`
 
 const memoryHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory</div>
@@ -2281,31 +2320,27 @@ const error_handling_error_structureHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Error Structure</div>
 <div class="text">
 
-The error structure is a built-in definition.
-It is a way of catching errors.
-While the program is executing, if the functions are designed to return this structure when a problem occurs, providing error catching.
+The Error structure is a built-in definition.
+It is a way of handling errors.
+While the program is executing, if the functions are designed to return this structure when a problem occurs, providing error handling.
 <br><br>
 For example;
-<div class="code">safe_div(a, b f32) [f32, *Error] {
+<div class="code">my_div(a, b f64) [f64, Error] {
     if a == 0 || b == 0 {
-        error = new(Error)
-        *error = Error("division with zero")
-        ret 0, error
+        ret 0, Error("division with zero")
     }
     ret a/b, nil
 }
 
 main() {
-    result:, err: = safe_div(5, 0)
+    result:, err: = my_div(5, 0)
     if err {
-        outln(err.message)
-        free(err)
+        outln(err)
         ret
     }
     outln(result)
 }</div>
-In the example above, a potential error is catched with the error structure.
-It is recommended that the returned structure instance be heap-allocated.
+In the example above, a potential error is handled with the Error structure.
 
 </div>
 `;
@@ -2787,7 +2822,7 @@ The compiler checks the script for every combination you use and checks for erro
 <br><br>
 If you don't use a generic function at all, you'll only get AST generation errors and will not be included in compilation like other unused definitions.
 <br><br>
-There are no restrictions; default arguments support const and volatile parameters, variadic parameters, or recursive calls.
+There are no restrictions; variadic parameters or recursive calls.
 It behaves like a normal function.
 <br><br>
 No new keyword has been introduced to denote generic types, it is possible to add generic types with the syntax difference of an existing feature type aliases.
@@ -3664,17 +3699,17 @@ The built-in <x class="inline_code">Error</x> structure.
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
-static inline void foreach(const _Enum_t _Enum,
-                           const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
+inline void foreach(const _Enum_t _Enum,
+                    const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
 <div class="code">template&lt;typename _Enum_t, typename _Index_t&gt;
-static inline void foreach(const _Enum_t _Enum,
-                           const std::function&lt;void(_Index_t)&gt; _Body)</div>
+inline void foreach(const _Enum_t _Enum,
+                    const std::function&lt;void(_Index_t)&gt; _Body)</div>
 <div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
-static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
-                           const std::function&lt;void(_Key_t)&gt; _Body)</div>
+inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
+                    const std::function&lt;void(_Key_t)&gt; _Body)</div>
 <div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
-static inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
-                           const std::function&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
+inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
+                    const std::function&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
 Foreach iterations of X that Cxx doesn't support.
 
 <div class="topic-separator"></div>
@@ -3695,12 +3730,12 @@ For slicing supported types.
 
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Obj_t&gt;
-static inline void XID(out)(const _Obj_t _Obj) noexcept</div>
+inline void XID(out)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">out</x> function of X.
 
 <div class="topic-separator"></div>
 <div class="code">template&lt;typename _Obj_t&gt;
-static inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
+inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
 Built-in <x class="inline_code">outln</x> function of X.
 
 <div class="topic-separator"></div>
@@ -3709,11 +3744,11 @@ str tostr(const _Obj_t &_Obj) noexcept</div>
 Returns string form of given object.
 
 <div class="topic-separator"></div>
-<div class="code">static inline void XID(panic)(const struct XID(Error) &_Error)</div>
+<div class="code">inline void XID(panic)(const struct XID(Error) &_Error)</div>
 Built-in <x class="inline_code">panic</x> function of X.
 
 <div class="topic-separator"></div>
-<div class="code">static inline void XID(panic)(const char *_Message)</div>
+<div class="code">inline void XID(panic)(const char *_Message)</div>
 Altenative of built-in <x class="inline_code">panic</x> function of X for embed cxx developers.
 
 <div class="topic-separator"></div>
@@ -3762,6 +3797,8 @@ const NAV_common_concepts_maps                = document.getElementById("common-
 const NAV_common_concepts_control_flow        = document.getElementById('common-concepts-control-flow');
 const NAV_common_concepts_enums               = document.getElementById("common-concepts-enums");
 const NAV_common_concepts_structures          = document.getElementById("common-concepts-structures");
+const NAV_traits                              = document.getElementById("traits");
+const NAV_traits_implementing                 = document.getElementById("traits-implementing");
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
@@ -3842,6 +3879,8 @@ nav.navigations = [
   [NAV_common_concepts_control_flow,        common_concepts_control_flowHTML],
   [NAV_common_concepts_enums,               common_concepts_enumsHTML],
   [NAV_common_concepts_structures,          common_concepts_structuresHTML],
+  [NAV_traits,                              traitsHTML],
+  [NAV_traits_implementing,                 traits_implementingHTML],
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
