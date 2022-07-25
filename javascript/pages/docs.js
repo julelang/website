@@ -374,18 +374,18 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Constant</td>
-    <td>Capital letters and underscore separator.</td>
+    <td>Capital letters and underscore separator</td>
     <td>CONSTANT, MY_CONSTANT</td>
   </tr>
   <tr>
-    <td style="text-align: center;">Variable</td>
-    <td>camelCase</td>
-    <td>variable, my_variable</td>
+    <td style="text-align: center;">Global Variable</td>
+    <td>Capital letters and underscore separator</td>
+    <td>GLOBAL, MY_GLOBAL</td>
   </tr>
   <tr>
-    <td style="text-align: center;">Field</td>
+    <td style="text-align: center;">Local Variable</td>
     <td>camelCase</td>
-    <td>field, my_field</td>
+    <td>variable, my_variable</td>
   </tr>
   <tr>
     <td style="text-align: center;">Function</td>
@@ -393,14 +393,29 @@ const project_namingHTML = `
     <td>function, my_function</td>
   </tr>
   <tr>
+    <td style="text-align: center;">Struct</td>
+    <td>PascalCase</td>
+    <td>Struct, MyStruct</td>
+  </tr>
+  <tr>
     <td style="text-align: center;">Method</td>
     <td>camelCase</td>
     <td>method, my_method</td>
   </tr>
   <tr>
-    <td style="text-align: center;">Struct</td>
+    <td style="text-align: center;">Field</td>
+    <td>camelCase</td>
+    <td>field, my_field</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Enum</td>
     <td>PascalCase</td>
-    <td>Struct, MyStruct</td>
+    <td>Enum, MyEnum</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Enum Variants</td>
+    <td>PascalCase</td>
+    <td>Variand, MyVariant</td>
   </tr>
   <tr>
     <td style="text-align: center;">Type</td>
@@ -409,7 +424,7 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Generic Type</td>
-    <td>PascalCase and _T extension or starts with T and continue with numbers.</td>
+    <td>PascalCase and _T extension or starts with T and continue with numbers</td>
     <td>Generic_T, MyGeneric_T, T1, T2</td>
   </tr>
 </table>
@@ -1163,7 +1178,6 @@ For example;
 <div class="code">const age:int = 18</div>
 <div class="warn">
   <li>No matter which method the constant variables are defined by, a value must be given.</li>
-  <li>Constant variables can't be volatile.</li>
 </div>
 
 <div class="title-separator"></div>
@@ -1173,29 +1187,6 @@ Constants take a constant expressions and never change again.
 Constant expressions do not exist as a variable in memory at runtime.
 Constant expressions used are copied exactly where they are used.
 Constant expressions are all evaluated at compile time.
-
-<div class="title-separator"></div>
-<div class="sub-title">Volatile Variable</div>
-The <x class="inline_code">volatile</x> keyword tells the compiler not to optimize this definition.
-<br><br>
-Here is an example;
-<div class="code">iter:int = 100
-
-iter x == 100 {
-    // Your code...
-}</div>
-In the example above, the compiler can optimize the iteration to return unconditionally if it detects that <x class="inline_code">x</x> never changes.
-It does this because it is slower to read from memory and compare each time, it is pointless to do this every time as the value will not change.
-However, <x class="inline_code">x</x> may be replaced by a different program in a way that is not understood by the compiler.
-In this case, the optimization will prevent getting the desired result.
-The <x class="inline_code">volatile</x> keyword is a tool that prevents the compiler from optimizing when these reasons occur.
-<br><br>
-For example;
-<div class="code">volatile iter:int = 100
-
-iter x == 100 {
-    // Your code...
-}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Multiple Assignment / Declaration</div>
@@ -1872,14 +1863,14 @@ Enumerations are a structure that allows to collect numeric constant values toge
 This increases the readability of the code and makes it easier to maintain.
 The keyword <x class="inline_code">enum</x> is used to declare an enum. <br>
 For exmaple;
-<div class="code">enum filemode {
-    read  = 35,
-    write = 89,
-    both,
+<div class="code">enum FileMode {
+    Eead  = 35,
+    Write = 89,
+    Both,
 }
 
 main() {
-    outln(filemode.read)
+    outln(FileMode.Read)
 }</div>
 As seen in the example above, there is an enumeration definition.
 If you do not assign a value to the enumeration elements, the index value is automatically assigned.
@@ -1895,14 +1886,14 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 <div class="sub-title">Custom Data-Types</div>
 If you want to give enums a data-type other than the default, it is possible to do so. <br>
 For example;
-<div class="code">enum filemode:u8 {
-    read  = 35,
-    write = 89,
-    both,
+<div class="code">enum FileMode:u8 {
+    Read  = 35,
+    Write = 89,
+    Both,
 }
 
 main() {
-    outln(filemode.read)
+    outln(FileMode.Read)
 }</div>
 The above enumeration has the data-type <x class="inline_code">u8</x>.
 
@@ -1926,7 +1917,7 @@ For example to declaration a struct;
     title  :str
     salary :u32
 }</div>
-Members of structures are the same as a variable definition except <x class="inline_code">const</x> and <x class="inline_code">volatile</x> keywords.
+Members of structures are the same as a variable definition except <x class="inline_code">const</x> keyword.
 
 <div class="title-separator"></div>
 <div class="sub-title">Assigning Default Values to Members</div>
@@ -2904,24 +2895,80 @@ The <x class="inline_code">doc</x> command does not document if the source code 
 
 const use_declarationsHTML = `
 <div class="title" style="margin-bottom: 20px;">Use Declarations</div>
+<div class="text">
 The use declarations act as importing other packages for use in your code. <br>
 Declared with the <x class="inline_code">use</x> keyword.
 
-<div class="text">
 <div class="title-separator"></div>
 <div class="sub-sub-title">Use Declaration for Standard Library</div>
 To use standard library, standard path is used.
 It is quite plain and simple.
-You write the name of a package you want to use, if you want to use a sub-package, you separate it with a dot.
+You write the name of a package you want to use, if you want to use a sub-package, you separate it with a doouble colon.
+A reference to the standard library must begin with <x class="inline_code">std::</x>.
 <br><br>
 For example;
-<div class="code">use pkg</div>
-<div class="code">use pkg.subpkg</div>
+<div class="code">use std::pkg</div>
+<div class="code">use std::pkg::subpkg</div>
 
 <div class="warn">
   <li>You can't use already used packages.</li>
   <li>You must declare uses at the beginning of code.</li>
 </div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Using Use Declarations</div>
+The definitions that come with the use declaration are accessible with the namespaces.
+The namespace is same with use declaration.
+<br><br>
+For example;
+<div class="code">use std::pkg
+
+main() {
+    std::pkg::a_function()
+}</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Full Use Declarations</div>
+It is sufficient to add <x class="inline_code">::*</x> to the end of the use declaration that you want to import fully.
+The definitions of packages imported in this way can be used directly or optionally accessed with the classic namespace notation.
+<br><br>
+For example;
+<div class="code">use std::pkg::*
+
+main() {
+    a_function()
+    std::pkg::a_function()
+}</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Selector Use Declarations</div>
+You can only import identifiers for the definitions you want imported.
+If you don't provide an identifier, nothing is imported.
+Imported definitions can be used directly.
+By default, there is no namespace representation.
+<br><br>
+For example;
+<div class="code">use std::pkg::{a_function}
+
+main() {
+    a_function()
+}</div>
+
+<div class="topic-separator"></div>
+If you want to import with Namespace but want to make some definitions directly available, use the <x class="inline_code">self</x> keyword.
+<div class="code">use std::pkg::{self, a_function}
+
+main() {
+    a_function()
+    std::pkg::a_function()
+}</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Shadowing</div>
+When you import, definitions using the same identifier are shaded.
+When there is a conflict, the compiler will use the first imported definition.
+When a definition made and an imported definition have the same identifier, you will get a compiler error if it is not shadowable.
+One solution might be to use the namespace notation to access shaded definitions.
 
 <div class="title-separator"></div>
 <div class="sub-title">Packages</div>
@@ -2931,7 +2978,8 @@ Each package has the ability to use its own defines.
 For example;
 <div class="code">// file: ./hello_print.xx
 
-@inline hello_print(name str) {
+@inline
+hello_print(name str) {
     outln("Hello " + name)
 }</div>
 <div class="code">// file: ./main.xx
@@ -3394,9 +3442,7 @@ If the provided condition is <x class="inline_code">true</x> the block is execut
 It is also the beginning of a new chain of conditions.
 <br><br>
 For example;
-<div class="code">use mem
-
-main() {
+<div class="code">main() {
     x: = new(int)
     if x == nil {
         outln("memory allocation is failed")
@@ -3426,9 +3472,7 @@ For example;
 It is the block that will be executed unconditionally if the previous <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions are not fulfilled.
 <br><br>
 For example;
-<div class="code">use mem
-
-main() {
+<div class="code">main() {
     x: = new(int)
     if x == nil {
         outln("memory allocation is failed")

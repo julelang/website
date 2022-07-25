@@ -4,20 +4,9 @@ Is an alias for u8.
 It is used, by convention, to distinguish byte values from 8-bit unsigned integer values.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub type sbyte i8</x></div>
-Is an alias for i8.
-It is used, by convention, to distinguish byte values from 8-bit signed integer values.
-
-<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">pub type rune i32</x></div>
 Is an alias for i32.
-It is used, by convention, to distinguish character values from integer values.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub type size uint</x></div>
-Is an Type for uint.
-The size type can store the maximum size of a theoretically possible object of any type.
-This type is safe way for indexing, loop counting, etc.`;
+It is used, by convention, to distinguish character values from integer values.`;
 
 const stdlib_builtin_functionsHTML = `
 <div class="sub-sub-title"><x class="inline_code">out(value{""} any)</x></div>
