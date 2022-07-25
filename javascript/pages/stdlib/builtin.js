@@ -36,14 +36,20 @@ Panics program with given error instance.
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">recover(handler (Error))</x></div>
 Recovers errors if exist and call given function with handled error instance.
+
+<div class="topic-separator"></div>
+<div class="code">@inline @typearg
+type[T]
+pub new() *T</div>
+Returns pointer to new heap-allocation of data type if allocation is success, <x class="inline_code">nil</x> if not.
 `;
 
-const stdlib_builtin_structuresHTML = `
-<div class="code">pub struct Error {
-    pub message:str
+const stdlib_builtin_traitsHTML = `
+<div class="code">pub trait Error {
+    error() str
 }</div>
 
-This is a error handling structure of standard library. <br>
+This is a error handling trait of standard library. <br>
 It is used for error handling and panics.
 <br><br>
 Example to error handling:<br>
@@ -55,20 +61,20 @@ Returns result and empty Error for if the <x class="inline_code">x</x> and <x cl
 If not, returns <x class="inline_code">0</x> and returns <x class="inline_code">Error</x> instance with error message. <br>
 You can handle errors like that; <br>
 <div class="code">result:, err: = div(x, y)
-if err { // Equals to !err.message.empty()
+if err { // Equals to err != nil
     // If has error...
 }</div>
 `;
 
 const NAV_stdlib_builtin_type_aliases = document.getElementById("type-aliases");
 const NAV_stdlib_builtin_functions    = document.getElementById("functions");
-const NAV_stdlib_builtin_structures   = document.getElementById("structures");
+const NAV_stdlib_builtin_traits   = document.getElementById("traits");
 
 const stdlib_builtin_nav = new SideNavigator();
 stdlib_builtin_nav.navigations = [
     [NAV_stdlib_builtin_type_aliases, stdlib_builtin_type_aliasesHTML],
     [NAV_stdlib_builtin_functions,    stdlib_builtin_functionsHTML],
-    [NAV_stdlib_builtin_structures,   stdlib_builtin_structuresHTML],
+    [NAV_stdlib_builtin_traits,       stdlib_builtin_traitsHTML],
 ];
 
 stdlib_builtin_nav.set_events();

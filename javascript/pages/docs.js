@@ -27,8 +27,7 @@ const the_xlangHTML = `
   This choice is the developer's.
   <br><br>
   The purpose of X is to keep functionality high while maintaining a simple form and readability.
-  It is based on not having any content that restricts the developer.
-  That means manual memory management, unsafe memory operations and more.
+  It guarantees memory safety and does not contain undefined behavior.
 </div>
 `;
 
@@ -71,11 +70,7 @@ const introductionHTML = `
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">System Developers</div>
-  X was designed as a systems programming language.
-  It leaves the control entirely to the developer.
-  When programming your program, you can develop exactly what you want to happen when you want it.
-  It can be a memory allocation or freeing.
-  X does not interfere with your business.
+  X was designed as a system programming language.
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Students</div>
@@ -417,16 +412,6 @@ const project_namingHTML = `
     <td>PascalCase and _T extension or starts with T and continue with numbers.</td>
     <td>Generic_T, MyGeneric_T, T1, T2</td>
   </tr>
-  <tr>
-    <td style="text-align: center;">Namespace</td>
-    <td>snake_case</td>
-    <td>namespace, my_namespace</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">Namespace Constants</td>
-    <td>PascalCase</td>
-    <td>Constant, MyConstant</td>
-  </tr>
 </table>
 
 <div class="title-separator"></div>
@@ -606,11 +591,6 @@ const basics_data_typesHTML = `
       <td style="text-align: center; font-family: 'Code';">int</td>
       <td style="text-align: center;">Platform dependent</td>
       <td>Platform dependent (signed)</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">intptr</td>
-      <td style="text-align: center;">Platform dependent</td>
-      <td>It is a signed integer type that is big enough to hold a pointer.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">u8</td>
@@ -1957,7 +1937,7 @@ For example;
     name   :str = "Anonymous"
     age    :u8  = 18
     title  :str = "Engineer"
-    salary :u32 = 2500
+    salary :u32 = 6750
 }</div>
 
 <div class="title-separator"></div>
@@ -2127,7 +2107,7 @@ impl Person in *Employee {
 }
 
 main() {
-    e:Person = Employee("Frodo", 50)
+    e:Person = Employee{"Frodo", 50}
     outln(e.name())
 }</div>
 
@@ -2191,7 +2171,7 @@ For example;
     z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-separator"></div>
-Additionally, pointers can set the value of the memory address they store.
+Additionally, pointers can assign the value of the memory address they store.
 <br>
 The <x class="inline_code">*</x> operator used for that too.
 <br>
@@ -2202,104 +2182,71 @@ For example;
     *y = 59  // Assign value
     outln(x) // Prints 59
 }</div>
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">Pointer Arithmetic</div>
-Since memory addresses are ultimately numeric data and the pointer holds that address, it supports arithmetic operations.
-But not supports all common arithmetic operations like integers or floats, just supports addition and subtraction.
-<br><br>
-An addition expression for pointer, means next memory location.
-<br>
-A subtraction expression for pointer, means previous memory location.
-<br><br>
-For exaple;
-<div class="code">main() {
-    arr: = []int{1, 200, 53, 635, 903}
-    ptr: = &arr[0]
-    outln(*ptr) // 1
-    ptr += 1
-    outln(*ptr) // 200
-}</div>
-As seen in the example above, when the pointer pointing to the first element of the slice is increased by 1, it becomes pointing to the second element of the slice.
 </div>
 `;
 
 const memory_memory_managementHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory Management</div>
 <div class="text">
-  Memory Management in X.
-  <br><br>
-  The heap allocations should be free manually because X not have any garbage collector or auto free system.
-  For this reason, memory management is important in X.
+X does the memory management itself.
+It guarantees memory safety.
+It uses reference counting for heap allocations.
+It is automatically released when the reference count of the pointer reaches zero, that is, when it is certain that the heap allocation is no longer used.
 
-  <div class="title-separator"></div>
-  <div class="sub-title">Heap Allocations</div>
-  The <x class="inline_code">new</x> function allocate new section up to size of data type from heap of system's memory by specified data-type.
-  Returns pointer of allocated section, returns <x class="inline_code">nil</x> if allocation failed.
-  For example;
-  <div class="code">x:*int = new(int)</div>
-  <div class="warn">This allocations isn't frees automatically, must freed by developer with the <a href="#free"><x class="inline_code">free</x></a> function.</div>
-
-  <div class="info">The <x class="inline_code">new</x> function is provided by the <x class="inline_code">mem</x> stdlib.</div>
-
-  <div class="title-separator"></div>
-  <div id="free" class="sub-title">Free Allocations</div>
-  The <x class="inline_code">free</x> function deallocates heap-allocated allocations.
-  You can just free pointers.
-  For example;
-  <div class="code">use mem
-
-main() {
-    x: = new(int) // Allocate from heap
-    free(x)       // Free allocation
+<div class="title-separator"></div>
+<div class="sub-title">Heap Allocation</div>
+The <x class="inline_code">new</x> function is used to perform a heap allocation.
+It is a built-in function.
+Please refer to the built-in standard library documentation for this function.
+<br><br>
+For example;
+<div class="code">main() {
+    ptr: = new(int)
+    outln(ptr)
 }</div>
-  <div class="warn">If you use stack-allocation pointer, this is a undefined behavior.</div>
-  <div class="info">The <x class="inline_code">free</x> function is provided by the <x class="inline_code">mem</x> stdlib.</div>
+The <x class="inline_code">ptr</x> variable is a heap allocated pointer.
 
-  <div class="title-separator"></div>
-  <div class="sub-title">Dangling Pointers</div>
-  Dangling pointers are isn't point to valid object at memory.
-  <br>
-  Example;
-  <div class="code">use mem
+<div class="title-separator"></div>
+<div class="sub-title">Understanding Reference Counting</div>
+Only heap allocated pointers perform reference counting.
+A reference counting heap counts each time it gets a reference to a dedicated pointer.
+It is deducted from the count when it loses its references.
+When the reference count reaches zero, it releases the allocation as it is no longer used.
+<br><br>
+For example;
+<div class="code">main() {
+    my_int: = 100
 
-main() {
-    x:*int = new(int)
-    *x = 10
-    free(x)  // Frees x, x now becomes a dangling pointer
-    x = nil  // x is not dangling now
-}</div>
-  Reason of that after freed allocations pointers isn't setted as nil.
-  So data is freed but pointer still points to the address, but address not have any value.
-  Set pointer as nil after freed is a good option.
-  <div class="topic-separator"></div>
-  Function example;
-  <div class="code">get_pointer() *int {
-    x: = 10
-    &x // Returns address of x
-       // but x is out of scope, so pointer is dangling
-}
+    // Takes address of my_int but doesn't ref counting
+    ptr: = &my_int
 
-main() {
-    p:*int = get_pointer()
-    outln(*p) // Used dangling pointer
-}</div>
-  If you want return any pointer of defined at body of function from function, you can return this pointer as heap-allocated.
-  <br>
-  For example with example at above;
-  <div class="code">use mem
+    // Not free cause my_int is not heap-allocated
+    ptr = nil
 
-get_pointer() *int {
-    x: = 10
-    y:*int = new(int)
-    *y = x
-    ret y
-}
 
-main() {
-    p:*int = get_pointer()
-    outln(*p)
-    free(p)
+    // Make heap-allocation, returns heap-allocated *int
+    // Ref count is 1
+    ptr = new(int)
+    
+    // Assign 100 expression to allocation
+    *ptr = 100
+
+    // Prints 100
+    outln(*ptr)
+
+    // Make new heap-allocation, ref count is 1
+    // Frees old allocation cause ref count is 0 now
+    ptr = new(int)
+
+    // Ref count is 2 now of current allocation
+    // The ptr_a referencing to allocation of ptr
+    ptr_a: = ptr
+
+    // Just assign as nil, not frees. Ref count is 1 now
+    ptr = nil
+
+    // Frees allocation, ref count is 0 now
+    ptr_a = nil
 }</div>
 
 </div>
@@ -2340,31 +2287,67 @@ Catching panics and handling errors happens through them. It is plain and simple
 </div>
 `;
 
-const error_handling_error_structureHTML = `
-<div class="page-title" style="margin-bottom: 20px;">Error Structure</div>
+const error_handling_error_traitHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Error Trait</div>
 <div class="text">
 
-The Error structure is a built-in definition.
+The Error trait is a built-in definition.
 It is a way of handling errors.
 While the program is executing, if the functions are designed to return this structure when a problem occurs, providing error handling.
 <br><br>
+If a function does not panic when there is an error, it can return the error with the Error trait and provides handle it.
+Returns nil when there is no error.
+<br><br>
 For example;
-<div class="code">my_div(a, b f64) [f64, Error] {
+<div class="code">use errors
+
+my_div(a, b f64) [f64, Error] {
     if a == 0 || b == 0 {
-        ret 0, Error("division with zero")
+        ret 0, errors::new("divided with zero")
     }
     ret a/b, nil
 }
 
 main() {
     result:, err: = my_div(5, 0)
-    if err {
+    if err != nil {
         outln(err)
         ret
     }
     outln(result)
 }</div>
-In the example above, a potential error is handled with the Error structure.
+In the example above, a potential error is handled with the Error trait.
+
+<div class="title-separator"></div>
+<div class="sub-title">Creating Custom Errors</div>
+You can create your own error structure for error handling by implementing the Error trait.
+<br>
+For example;
+<div class="code">struct MyError {
+    message:str
+}
+
+impl Error in MyError {
+    error() str {
+        ret .message
+    }
+}
+
+my_div(a, b f64) [f64, Error] {
+    if a == 0 || b == 0 {
+        ret 0, MyError{"divided by zero"}
+    }
+    ret a/b, nil
+}
+
+main() {
+    result:, err: = my_div(10, 0)
+    if err != nil {
+        outln(err.error())
+        ret
+    }
+    outln(result)
+}</div>
 
 </div>
 `;
@@ -2378,9 +2361,11 @@ If you're talking about an issue that will cause the program to crash while exec
 You can only panic with error structure.
 <br><br>
 For example;
-<div class="code">add_pointer(rate int, ptr *int) {
+<div class="code">use errors
+
+add_pointer(rate int, ptr *int) {
     if !ptr {
-        panic(Error("pointer is nil"))
+        panic(errors::new("pointer is nil"))
     }
     *ptr += rate
 }
@@ -2404,8 +2389,10 @@ It just catch panics of the codes of the scope it is in.
 
 <br><br>
 For example;
-<div class="code">may_panic() {
-    panic(Error("a problem"))
+<div class="code">use errors
+
+may_panic() {
+    panic(errors::new("a problem"))
 }
 
 main() {
@@ -2416,13 +2403,15 @@ To be recovered it must be editing using the <x class="inline_code">recover</x> 
 
 <br><br>
 For example;
-<div class="code">may_panic() {
-    panic(Error("a problem"))
+<div class="code">use errors
+
+may_panic() {
+    panic(errors::new("a problem"))
 }
 
 main() {
     recover((e Error) {
-        outln(e.message)
+        outln(e.error())
     })
     may_panic()
 }</div>
@@ -2663,61 +2652,6 @@ const type_statics_strHTML = `
   <div id="tab-type-statics-str-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
 </div>
 <div class="tabcontrol-content"></div>
-</div>
-`;
-
-const namespacesHTML = `
-<div class="title" style="margin-bottom: 20px;">Namespaces</div>
-<div class="text">
-
-Namespaces are a good way to organize definitions.
-The <x class="inline_code">::</x> operator is used to access a namespace.
-A separate operator was not required for this, but it was thought to be more readable and away from shadowing this way.
-<br><br>
-A block after the identifier is sufficient to declare a namespace. <br>
-For example;
-<div class="code">math {
-    @inline
-    sum(a, b int) int { a+b }
-}
-
-main() {
-    result: = math::sum(10, 9)
-    outln(result)
-}</div>
-The example above contains a namespace with the identifier <x class="inline_code">math</x> and a function with the identifier <x class="inline_code">sum</x>.
-You can see how this namespace is used in the main function.
-You use <x class="inline_code">::</x> to access the definitions of a namespace.
-
-<div class="title-separator"></div>
-<div class="sub-title">Nested Namespaces</div>
-A namespace can contain namespaces, here is an example;
-<div class="code">math {
-    flat {
-        const pi: = 3
-    }
-}
-
-main() {
-    outln(math::flat:pi)
-}</div>
-In the example above you see a nested namespace declaration.
-How to access this is also seen in the main function.
-We know that we use the <x class="inline_code">::</x> operator to access the definitions of a namespace.
-After accessing the <x class="inline_code">flat</x> namespace inside the <x class="inline_code">math</x> namespace, we use this operator again to access its definitions.
-
-<div class="topic-separator"></div>
-
-You don't have to write nested to define sub namespaces. <br>
-Here is an alternative to the above example;
-<div class="code">math::flat {
-    const pi: = 3
-}
-
-main() {
-    outln(math::flat:pi)
-}</div>
-
 </div>
 `;
 
@@ -3051,15 +2985,15 @@ const stdlibHTML = `
   At below, you can see all content of standard library of the X programming language;
   <br><br><br>
   <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
-  <li><a href="../pages/stdlib/slice.html">slice</a></li>
   <li><a href="../pages/stdlib/debug.html">debug</a></li>
   <li><a href="../pages/stdlib/debug_assert.html">debug.assert</a></li>
+  <li><a href="../pages/stdlib/errors.html">errors</a></li>
   <li><a href="../pages/stdlib/io.html">io</a></li>
   <li><a href="../pages/stdlib/math.html">math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">math.bits</a></li>
-  <li><a href="../pages/stdlib/mem.html">mem</a></li>
   <li><a href="../pages/stdlib/os.html">os</a></li>
   <li><a href="../pages/stdlib/reflect.html">reflect</a></li>
+  <li><a href="../pages/stdlib/slice.html">slice</a></li>
 </div>
 `;
 
@@ -3670,6 +3604,19 @@ const TAB_cxx_cxxapi_defines = `
 Source struct for deferred calls.
 
 <div class="topic-separator"></div>
+<div class="code">struct trait</div>
+Trait wrapper for traits.
+
+<div class="topic-separator"></div>
+<div class="code">struct voidptr_xt</div>
+The built-in <x class="inline_code">voidptr</x> type.
+
+<div class="topic-separator"></div>
+<div class="code">template<typename T>
+struct ptr</div>
+Pointer wrapper.
+
+<div class="topic-separator"></div>
 <div class="code">struct tracer</div>
 Tracer for panics.
 
@@ -3690,7 +3637,6 @@ Implementation of tuple available for std::ostream.
 The primitive data-types in X, have same names in cxx output.
 But have <x class="inline_code">_xt</x> suffix.
 </div>
-
 
 <div class="code">template&lt;typename _Item_t&gt;
 class slice</div>
@@ -3717,7 +3663,7 @@ The <x class="inline_code">any</x> data-type of X.
 <div class="title-separator"></div>
 <div id="cxxapi-structures" class="sub-sub-title">Structures</div>
 <div class="code">struct XID(Error)</div>
-The built-in <x class="inline_code">Error</x> structure.
+The built-in <x class="inline_code">Error</x> trait.
 
 <div class="title-separator"></div>
 <div id="cxxapi-functions" class="sub-sub-title">Functions</div>
@@ -3828,7 +3774,7 @@ const NAV_memory_pointers                     = document.getElementById('memory-
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
 const NAV_memory_references                   = document.getElementById("memory-references");
 const NAV_error_handling                      = document.getElementById("error-handling");
-const NAV_error_handling_error_structure      = document.getElementById("error-handling-error-structure");
+const NAV_error_handling_error_trait         = document.getElementById("error-handling-error-trait");
 const NAV_error_handling_panics               = document.getElementById("error-handling-panics");
 const NAV_error_handling_handling_panics      = document.getElementById("error-handling-handling-panics");
 const NAV_types                               = document.getElementById('types');
@@ -3853,7 +3799,6 @@ const NAV_type_statics_f64                    = document.getElementById("type-st
 const NAV_type_statics_int                    = document.getElementById("type-statics-int");
 const NAV_type_statics_uint                   = document.getElementById("type-statics-uint");
 const NAV_type_statics_str                    = document.getElementById("type-statics-str");
-const NAV_namespaces                          = document.getElementById("namespaces");
 const NAV_cxx                                 = document.getElementById("cxx");
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
 const NAV_cxx_cxxapi                          = document.getElementById("cxx-cxxapi");
@@ -3910,7 +3855,7 @@ nav.navigations = [
   [NAV_memory_memory_management,            memory_memory_managementHTML],
   [NAV_memory_references,                   memory_referencesHTML],
   [NAV_error_handling,                      error_handlingHTML],
-  [NAV_error_handling_error_structure,      error_handling_error_structureHTML],
+  [NAV_error_handling_error_trait,          error_handling_error_traitHTML],
   [NAV_error_handling_panics,               error_handling_panicsHTML],
   [NAV_error_handling_handling_panics,      error_handling_handling_panicsHTML],
   [NAV_types,                               typesHTML],
@@ -3935,7 +3880,6 @@ nav.navigations = [
   [NAV_type_statics_int,                    type_statics_intHTML],
   [NAV_type_statics_uint,                   type_statics_uintHTML],
   [NAV_type_statics_str,                    type_statics_strHTML],
-  [NAV_namespaces,                          namespacesHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
