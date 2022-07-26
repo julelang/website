@@ -655,12 +655,7 @@ const basics_data_typesHTML = `
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
       <td style="text-align: center;">-</td>
-      <td>UTF-8 Byte String</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">voidptr</td>
-      <td style="text-align: center;">Platform dependent</td>
-      <td>Any pointer type.</td>
+      <td>UTF-8 byte encoded character string.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">any</td>
@@ -739,10 +734,6 @@ const basics_data_typesHTML = `
     <tr>
       <td style="text-align: center; font-family: 'Code';">str</td>
       <td>str</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">voidptr</td>
-      <td>Any pointer.</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">any</td>
@@ -851,11 +842,11 @@ new
 
   <div class="title-separator"></div>
   <div class="sub-title">any</div>
-  It can hold any value and can be nil.
-  Supports equals (==) and not equals (!=) operators.
+  It can be hold any data type and nil.
+  Only supports equals (==) and not equals (!=) operators.
   <br><br>
-  NOTICE;<br>
-  If you comparing two any data-type value, you get true if you compared same any instances, false if not.
+  <x class="inline_code">x == y</x>: true if x and y is nil <br>
+  <x class="inline_code">x == y</x>: true if x and y has same data type
 </div>
 `;
 
@@ -2290,11 +2281,11 @@ If a function does not panic when there is an error, it can return the error wit
 Returns nil when there is no error.
 <br><br>
 For example;
-<div class="code">use errors
+<div class="code">use std::errors
 
 my_div(a, b f64) [f64, Error] {
     if a == 0 || b == 0 {
-        ret 0, errors::new("divided with zero")
+        ret 0, std::errors::new("divided with zero")
     }
     ret a/b, nil
 }
@@ -2319,7 +2310,7 @@ For example;
 }
 
 impl Error in MyError {
-    error() str {
+    &error() str {
         ret .message
     }
 }
@@ -3650,10 +3641,6 @@ Source struct for deferred calls.
 <div class="topic-separator"></div>
 <div class="code">struct trait</div>
 Trait wrapper for traits.
-
-<div class="topic-separator"></div>
-<div class="code">struct voidptr_xt</div>
-The built-in <x class="inline_code">voidptr</x> type.
 
 <div class="topic-separator"></div>
 <div class="code">template<typename T>

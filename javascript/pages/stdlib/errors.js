@@ -1,6 +1,6 @@
 const stdlib_errors_functionsHTML = `
 <div class="code">@inline
-pub new_error(message str) Error</div>
+pub new(message str) Error</div>
 Creates new error with given message.
 
 `;
