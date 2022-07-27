@@ -369,7 +369,7 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Source File</td>
-    <td>camelCase</td>
+    <td>snake_case</td>
     <td>file.xx, my_file.xx</td>
   </tr>
   <tr>
@@ -469,7 +469,7 @@ But you have to use the declarations you make in your code blocks, if you don't 
 <br><br>
 For example;
 <div class="code">main() {
-    a:int
+    a: int
 }</div>
 The variable <x class="inline_code">a</x> seen is declared but unused.
 This will cause you to get an error by the compiler and not be able to compile the code.
@@ -1132,7 +1132,7 @@ You may want to annotate the type, it is possible.
 It also brings you advantages.
 <br><br>
 For example;
-<div class="code">age:int = 18</div>
+<div class="code">age: int = 18</div>
 This is equivalent to the one shown above.
 However, you annotated the type.
 So what exactly is the difference?
@@ -1161,7 +1161,7 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example;
 <div class="code">example() {
-    a:int = 10 // Value is 10.
+    a: int = 10 // Value is 10.
     a = 200    // New value is 200.
 }</div>
 
@@ -1171,7 +1171,7 @@ Constant variables are declared same method, the only difference being that the 
 <br><br>
 For example;
 <div class="code">const age: = 18</div>
-<div class="code">const age:int = 18</div>
+<div class="code">const age: int = 18</div>
 <div class="warn">
   <li>No matter which method the constant variables are defined by, a value must be given.</li>
 </div>
@@ -1318,7 +1318,7 @@ The <x class="inline_code">...</x> operator is used for this.
 <br>
 For example;
 <div class="code">str_out(...values str) {
-    iter _, s: in values {
+    for _, s: in values {
         out(s)
     }
 }
@@ -1722,8 +1722,8 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 For example;
 <div class="code">sum(...values int) int {
-    total:int
-    iter _, i: in values {
+    total: int
+    for _, i: in values {
         total += i
     }
     total
@@ -1891,10 +1891,10 @@ Also, the fields of structures are accessed with an identifier.
 <br><br>
 For example to declaration a struct;
 <div class="code">struct Employee {
-    name   :str
-    age    :u8
-    title  :str
-    salary :u32
+    name  : str
+    age   : u8
+    title : str
+    salary: u32
 }</div>
 Members of structures are the same as a variable definition except <x class="inline_code">const</x> keyword.
 
@@ -1904,10 +1904,10 @@ When instances of struct members are initialized, they are initialized using the
 But you can custom default values. <br>
 For example;
 <div class="code">struct Employee {
-    name   :str = "Anonymous"
-    age    :u8  = 18
-    title  :str = "Engineer"
-    salary :u32 = 6750
+    name  : str = "Anonymous"
+    age   : u8  = 18
+    title : str = "Engineer"
+    salary: u32 = 6750
 }</div>
 
 <div class="title-separator"></div>
@@ -1916,9 +1916,9 @@ To instantiate structs, you can either give the values of the fields using brace
 <br><br>
 For example;
 <div class="code">struct Character {
-    name   :str = "Anonymous"
-    age    :u8  = 18
-    title  :str = "-"
+    name : str = "Anonymous"
+    age  : u8  = 18
+    title: str = "-"
 }
 
 main() {
@@ -2056,29 +2056,33 @@ To implement a trait to structure, the following syntax is applied;
 
 <br>
 For example;
-<div class="code">trait Person {
-    name() str
-    age() u8
+<div class="code">trait Animal {
+    voice() str
 }
 
-struct Employee {
-    _name:str
-    _age:u8
-}
+struct Dog {}
 
-impl Person in *Employee {
-    name() str {
-      ret ._name
+impl Animal for Dog {
+    @inline
+    &voice() str {
+        ret "woof"
     }
+}
 
-    age() u8 {
-        ret ._age
+struct Cat {}
+
+impl Animal for Cat {
+    @inline
+    &voice() str {
+        ret "meow"
     }
 }
 
 main() {
-    e:Person = Employee{"Frodo", 50}
-    outln(e.name())
+    animal1: Animal = Dog{}
+    animal2: Animal = Cat{}
+    outln(animal1.voice())
+    outln(animal2.voice())
 }</div>
 
 </div>
@@ -2113,8 +2117,8 @@ The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
 For example;
 <div class="code">main() {
-    x:int = 10
-    y:*int = &x
+    x: int = 10
+    y: *int = &x
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
@@ -2123,8 +2127,8 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
 For example;
 <div class="code">main() {
-    x:int = 10
-    y:*int = &x
+    x: int = 10
+    y: *int = &x
     outln(y)  // Prints stored address
     outln(*y) // Prints value at address (so 10)
 }</div>
@@ -2135,9 +2139,9 @@ Pointers can take on value assignment just like a variable, with values of the a
 <br>
 For example;
 <div class="code">main() {
-    x:int = 10
-    z:*int = &x // The 'z' store now memory address of the 'x' variable.
-    y:int = 98
+    x: int = 10
+    z: *int = &x // The 'z' store now memory address of the 'x' variable.
+    y: int = 98
     z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-separator"></div>
@@ -2147,8 +2151,8 @@ The <x class="inline_code">*</x> operator used for that too.
 <br>
 For example;
 <div class="code">main() {
-    x:int = 10
-    y:*int = &x
+    x: int = 10
+    y: *int = &x
     *y = 59  // Assign value
     outln(x) // Prints 59
 }</div>
@@ -2294,7 +2298,7 @@ You can create your own error structure for error handling by implementing the E
 <br>
 For example;
 <div class="code">struct MyError {
-    message:str
+    message: str
 }
 
 impl Error in MyError {
@@ -2422,7 +2426,7 @@ For example;
 <div class="code">type int32 i32
 
 main() {
-    my_int:int32 = 100
+    my_int: int32 = 100
     outln(my_int)
 }</div>
 As seen in the example above, there is an alias definition of <x class="inline_code">int32</x> for the <x class="inline_code">i32</x> data type.
@@ -2721,8 +2725,8 @@ Example: <x class="inline_code">(int)(3.14)</x>
 <br><br>
 For code example; <br>
 <div class="code">main() {
-    x:f32 = 3.14
-    y:int = (int)(x) // Casting
+    x: f32 = 3.14
+    y: int = (int)(x) // Casting
     outln(x)         // Prints 3.14
     outln(y)         // Prints 3
 }</div>
@@ -2764,7 +2768,7 @@ Therefore, they can be used as specific types in variable and similar definition
 For example;
 <div class="code">type[T]
 sum(a, b T) T {
-    x:T = a + b
+    x: T = a + b
     x
 }
 
@@ -2796,8 +2800,8 @@ There is no additional syntax to use it. Combine only what you know with the str
 For example;
 <div class="code">type[T]
 struct Position {
-    x:T
-    y:T
+    x: T
+    y: T
 }</div>
 
 <div class="info">
@@ -3103,7 +3107,7 @@ Replaces all matches if <x class="inline_code">n</x> less than zero.
 `;
 
 const TAB_types_arrays_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: uint</x></div>
 Length of array.
 `;
 
@@ -3113,7 +3117,7 @@ Reports array is empty or not.
 `;
 
 const TAB_types_slices_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: uint</x></div>
 Length of slice.
 `;
 
@@ -3148,14 +3152,14 @@ Removes all matched item(s) with specified value.
 Appends specified items to end of slice.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">insert(start size, ...values ITEM_TYPE) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">insert(start uint, ...values ITEM_TYPE) bool</x></div>
 Inserts specified values to slice start at specified position. <br>
 Returns true if insertion is success, false if not. <br>
 What time is it does fail? For example, start position is out of bounds.
 `;
 
 const TAB_types_maps_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: uint</x></div>
 Length of key-value pairs.
 `;
 
@@ -3250,37 +3254,37 @@ Minimum value of type.
 `;
 
 const TAB_type_statics_f64_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: f64</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: f64</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_int_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:int</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: int</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:int</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: int</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_uint_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: uint</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_str_constants = `
-<div class="sub-sub-title"><x class="inline_code">const npos:uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">const npos: uint</x></div>
 Greatest possible value for an element of type <x class="inline_code">uint</x>. <br>
 As a return value, it is usually used to indicate no matches.
 `;
 
 const TAB_common_concepts_iterations = `
 Iterations allow you to repeat the algorithm according to certain conditions.
-The <x class="inline_code">iter</x> keyword use for iterations in X.
+The <x class="inline_code">for</x> keyword use for iterations in X.
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Infinity Iterations</div>
@@ -3288,7 +3292,7 @@ Infinite iterations keep repeating endlessly until the loop is somehow broken.
 <br>
 For example;
 <div class="code">main() {
-    iter {
+    for {
         outln("Hello, iterations")
     }
 }</div>
@@ -3302,7 +3306,7 @@ It is not much different from defining an infinite iteration.
 For example;
 <div class="code">main() {
     counter: = 0
-    iter counter <= 5 {
+    for counter <= 5 {
         outln(counter)
         counter += 10
     }
@@ -3319,8 +3323,8 @@ It repeats itself by looping through the elements of the collection.
 <br>
 For example;
 <div class="code">main() {
-    mystr:str = "Hello"
-    iter index: in mystr {
+    mystr: str = "Hello"
+    for index: in mystr {
         outln(index)
     }
 }
@@ -3340,8 +3344,8 @@ This example, just shows index. Let's see foreach iteration with element.
 <br>
 For example;
 <div class="code">main() {
-    mystr:str = "Hello"
-    iter _, c:byte in mystr {
+    mystr: str = "Hello"
+    for _, c: byte in mystr {
         outln(c)
     }
 }
@@ -3363,7 +3367,7 @@ If the index variable is be numeric, X's auto data-type is <x class="inline_code
 The for loop is a good choice for iterations from one point to another.
 <div class="title-separator"></div>
 <strong>Syntax</strong>
-<div class="code">iter STATEMENT1, EXPRESSION, STATEMENT2 { /* Body */ }</div>
+<div class="code">for STATEMENT1, EXPRESSION, STATEMENT2 { /* Body */ }</div>
 
 <strong>STATEMENT1</strong>: Executed once before block.
 <br>
@@ -3374,7 +3378,7 @@ The for loop is a good choice for iterations from one point to another.
 <br><br>
 For example;
 <div class="code">main() {
-    iter i: = 0, i < 10, i++ {
+    for i: = 0, i < 10, i++ {
         outln(i)
     }
 }</div>
@@ -3388,7 +3392,7 @@ If you want break the iteration, use the <x class="inline_code">break</x> keywor
 <br>
 For example;
 <div class="code">main() {
-    iter {
+    for {
         outln("Hello, World")
         break
     }
@@ -3401,7 +3405,7 @@ If you want continue to next iteration, use the <x class="inline_code">continue<
 <br>
 For example;
 <div class="code">main() {
-    iter {
+    for {
         continue
         outln("Hello, World")
     }
