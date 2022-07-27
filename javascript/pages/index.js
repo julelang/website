@@ -7,57 +7,80 @@ const preview_code_helloworldHTML =
     outln("Hello, world")
 }`;
 
-const preview_code_fibonacci_closureHTML =
-`fibo() () int {
-    a:, b: = 0, 1
-    ret () int {
-        a, b = b, a+b
-        ret a
+const preview_code_quicksortHTML =
+`partition(&slice []int, low, high int) int {
+    pivot: = slice[high]
+    i: = low - 1
+    for j: = low, j < high, j++ {
+        if (slice[j] <= pivot) {
+            i++
+            slice[i], slice[j] = slice[j], slice[i]
+        }
     }
+    slice[i + 1], slice[high] = slice[high], slice[i + 1]
+    ret i + 1
+}
+
+quicksort(&slice []int) {
+    if slice.len <= 1 {
+        ret
+    }
+    p: = partition(slice, 0, slice.len-1)
+    partition(slice, 0, p - 1)
+    partition(slice, p + 1, slice.len-1)
 }
 
 main() {
-    f: = fibo()
-    outln(f())
-    outln(f())
-    outln(f())
+    my_slice: = []int{1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2}
+    outln(my_slice)
+    quicksort(my_slice)
+    outln(my_slice)
 }`;
 
 const preview_code_traitsHTML =
-`trait Animal {
-    voice() str
+`use std::math::{PI}
+
+trait Shape {
+    area() int
 }
 
-struct Dog {}
+struct Rectangle {
+    width: int
+    height: int
+}
 
-impl Animal for Dog {
-    &voice() str {
-        ret "woof"
+impl Shape for Rectangle {
+    @inline
+    &area() int {
+        ret .width * .height
     }
 }
 
-struct Cat {}
+struct Circle {
+    r: f32
+}
 
-impl Animal for Cat {
-    &voice() str {
-        ret "meow"
+impl Shape for Circle {
+    @inline
+    &area() int {
+        ret PI * .r * .r
     }
 }
 
 main() {
-    foo:Animal = Dog{}
-    bar:Animal = Cat{}
-    outln(foo.voice())
-    outln(bar.voice())
+    rect: Shape = Rectangle{90, 5}
+    circ: Shape = Circle{90.5}
+    outln(rect.area())
+    outln(circ.area())
 }`;
 
 //#region GET_ELEMENTS
 
-const preview_code                   = document.getElementById('preview-code')
-const preview_dropdown_text          = document.getElementById('preview-dropdown-text');
-const preview_code_helloworld        = document.getElementById('preview-code-helloworld');
-const preview_code_fibonacci_closure = document.getElementById('preview-code-fibonacci-closure');
-const preview_code_traits            = document.getElementById('preview-code-traits');
+const preview_code            = document.getElementById('preview-code')
+const preview_dropdown_text   = document.getElementById('preview-dropdown-text');
+const preview_code_helloworld = document.getElementById('preview-code-helloworld');
+const preview_code_quicksort  = document.getElementById('preview-code-quicksort');
+const preview_code_traits     = document.getElementById('preview-code-traits');
 
 //#endregion GET_ELEMENTS
 
@@ -66,9 +89,9 @@ preview_code_helloworld.addEventListener("click", () => {
   preview_code.innerHTML = preview_code_helloworldHTML;
 });
 
-preview_code_fibonacci_closure.addEventListener("click", () => {
-  preview_dropdown_text.innerHTML = preview_code_fibonacci_closure.innerHTML;
-  preview_code.innerHTML = preview_code_fibonacci_closureHTML;
+preview_code_quicksort.addEventListener("click", () => {
+  preview_dropdown_text.innerHTML = preview_code_quicksort.innerHTML;
+  preview_code.innerHTML = preview_code_quicksortHTML;
 })
 
 preview_code_traits.addEventListener('click', () => {

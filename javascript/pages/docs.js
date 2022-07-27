@@ -20,10 +20,10 @@ const the_xlangHTML = `
   It is a suitable language for developers of all levels.
   <br><br>
   The fact that X is simple does not diminish its power. X is a pretty powerful language.
-  The fact that it evolves directly to Cxx and compiles from Cxx means an environment familiar to C/Cxx developers.
+  The fact that it evolves directly to C++ and compiles from C++ means an environment familiar to C++ developers.
   <br><br>
-  X is also a good choice for the simpler way to write Cxx.
-  At the developer's request, X can be translated or compiled into Cxx.
+  X is also a good choice for the simpler way to write C++.
+  At the developer's request, X can be translated or compiled into C++.
   This choice is the developer's.
   <br><br>
   The purpose of X is to keep functionality high while maintaining a simple form and readability.
@@ -38,10 +38,10 @@ const forewordHTML = `
   Some content maybe is not released yet, so it may be here, but not in the compiler you have.
   <br><br>
   X syntactically and structurally encourages code to be readable.
-  It aims to transform Cxx code as safely as possible.
+  It aims to transform C++ code as safely as possible.
   Optimizes for a secure code.
   With this documentation you will see the basics and some subtleties of X and you will understand X.
-  You don't actually need to know Cxx to learn and understand X.
+  You don't actually need to know C++ to learn and understand X.
   <br><br>
   X is plain and simple.
   Suitable for developers of all levels.
@@ -228,11 +228,11 @@ Fields in configuration files have specific purposes.
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">cxx_out_dir</td>
-    <td>Directory of transpiled Cxx file.</td>
+    <td>Directory of transpiled C++ file.</td>
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">cxx_out_name</td>
-    <td>Name of transpiled Cxx file.</td>
+    <td>Name of transpiled C++ file.</td>
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">language</td>
@@ -281,10 +281,10 @@ We will use already created settings file with <x class="inline_code">x init</x>
 <br>
 For compile X code, we just give filename to compiler:
 <div class="code">xxc main.xx</div>
-And compiler is transpile our X code to Cxx code. <br>
+And compiler is transpile our X code to C++ code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 <br><br>
-As result we have a executable machine code or Cxx result of our program.
+As result we have a executable machine code or C++ result of our program.
 </div>
 `;
 
@@ -463,7 +463,7 @@ Supported architectures; <br>
 const project_declarationsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Declarations</div>
 <div class="text">
-Each unused statement is tried not to be included in the cxx output.
+Each unused statement is tried not to be included in the C++ output.
 This does not pose much of a problem with global declarations and should not be a hindrance to compilation.
 But you have to use the declarations you make in your code blocks, if you don't the compiler will throw an error for each one.
 <br><br>
@@ -2619,24 +2619,14 @@ const type_statics_uintHTML = `
 </div>
 `;
 
-const type_statics_strHTML = `
-<div class="page-title" style="margin-bottom: 20px;">str</div>
-<div class="text">
-<div class="tabcontrol">
-  <div id="tab-type-statics-str-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
-</div>
-<div class="tabcontrol-content"></div>
-</div>
-`;
-
 const cxxHTML = `
 <div class="title" style="margin-bottom: 20px;">Cxx</div>
 <div class="text">
-Cxx documentations of X.
+C++ documentations of X.
 <br><br>
-In this section, the information necessary to use X and Cxx effectively and the possibilities offered by X are included.
+In this section, the information necessary to use X and C++ effectively and the possibilities offered by X are included.
 <br><br>
-<div class="warn">This documentation is accepts you know basic cxx.</div>
+<div class="warn">This documentation is accepts you know basic C++.</div>
 </div>
 `;
 
@@ -2644,7 +2634,7 @@ const cxx_cxx_embeddingHTML = `
 <div class="title" style="margin-bottom: 20px;">Cxx Embedding</div>
 <div class="text">
 You can embed cxx code in your X code.
-For this, show the comment line as a cxx content;
+For this, show the comment line as a C++ content;
 <div class="code">//cxx: #include "my_library.h"
 
 main() {
@@ -2657,7 +2647,7 @@ main() {
 </div>
 
 <div class="topic-separator"></div>
-Any cxx code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
+Any C++ code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
 
 <div class="warn">
   X does not check whether the embed code you write is incorrect or will affect compilation.
@@ -2683,7 +2673,7 @@ main() {
 
 <div class="title-separator"></div>
 <div class="sub-title">Return Statements</div>
-In Cxx embedding codes, a return expression is treated as a return made within the function.
+In C++ embedding codes, a return expression is treated as a return made within the function.
 So XXC does not give an error that you should write return statement.
 For a return statement to be recognized correctly, the return statement must simply be included as the first keyword in the embed code.
 <br><br>
@@ -2698,10 +2688,10 @@ For example;
 const cxx_cxxapiHTML = `
 <div class="title" style="margin-bottom: 20px;">CxxAPI</div>
 <div class="text">
-API of X for Cxx.
-You can this API your transpiled X code or cxx embedding code.
+API of X for C++.
+You can this API your transpiled X code or C++ embedding code.
 <br><br>
-This API consists of built-in cxx definitions that can be used inside the transpiled X code.
+This API consists of built-in C++ definitions that can be used inside the transpiled X code.
 
 <div class="tabcontrol" style="margin-top: 50px;">
 <div id="cxx-cxxapi-preprocessor-defines" class="tab" onclick="select_tab_event(0)">Preprocessor Defines</div>
@@ -3074,13 +3064,13 @@ Reports string has prefix as specified substring or not.
 Reports string has suffix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">find(sub str) size</x></div>
-Returns index of first matched item with specified substring, returns <x class="inline_code">str.npos</x> if not exist any match. <br>
+<div class="sub-sub-title"><x class="inline_code">find(sub str) int</x></div>
+Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at left of string to right.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">rfind(sub str) size</x></div>
-Returns index of first matched item with specified substring, returns <x class="inline_code">str.npos</x> if not exist any match. <br>
+<div class="sub-sub-title"><x class="inline_code">rfind(sub str) int</x></div>
+Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at right of string to left.
 
 <div class="topic-separator"></div>
@@ -3126,36 +3116,8 @@ const TAB_types_slices_methods = `
 Reports slice is empty or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">clear()</x></div>
-Removes all items.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">find(value ITEM_TYPE) *ITEM_TYPE</x></div>
-Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
-Starts searching at left of slice to right.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">rfind(value ITEM_TYPE) *ITEM_TYPE</x></div>
-Returns pointer of first matched item with specified value, returns <x class="inline_code">nil</x> if not exist any match. <br>
-Starts searching at right of slice to left.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">erase(value ITEM_TYPE)</x></div>
-Removes first matched item with specified value.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">erase_all(value ITEM_TYPE)</x></div>
-Removes all matched item(s) with specified value.
-
-<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">append(...values ITEM_TYPE)</x></div>
 Appends specified items to end of slice.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">insert(start uint, ...values ITEM_TYPE) bool</x></div>
-Inserts specified values to slice start at specified position. <br>
-Returns true if insertion is success, false if not. <br>
-What time is it does fail? For example, start position is out of bounds.
 `;
 
 const TAB_types_maps_constants = `
@@ -3274,12 +3236,6 @@ Minimum value of type.
 const TAB_type_statics_uint_constants = `
 <div class="sub-sub-title"><x class="inline_code">const max: uint</x></div>
 Maximum value of type.
-`;
-
-const TAB_type_statics_str_constants = `
-<div class="sub-sub-title"><x class="inline_code">const npos: uint</x></div>
-Greatest possible value for an element of type <x class="inline_code">uint</x>. <br>
-As a return value, it is usually used to indicate no matches.
 `;
 
 const TAB_common_concepts_iterations = `
@@ -3591,7 +3547,7 @@ Exit code for x panics.
 
 <div class="title-separator"></div>
 <div class="code">XID(_Identifier)</div>
-Appends the prefix that the identifiers have in the CXX output to the identifier you supplied.
+Appends the prefix that the identifiers have in the C++ output to the identifier you supplied.
 
 <div class="title-separator"></div>
 <div class="code">CONCAT(_A, _B)</div>
@@ -3657,7 +3613,7 @@ Implementation of tuple available for std::ostream.
 <div class="title-separator"></div>
 <div id="cxxapi-datatypes" class="sub-sub-title">Data Types</div>
 <div class="info">
-The primitive data-types in X, have same names in cxx output.
+The primitive data-types in X, have same names in C++ output.
 But have <x class="inline_code">_xt</x> suffix.
 </div>
 
@@ -3742,11 +3698,11 @@ Built-in <x class="inline_code">panic</x> function of X.
 
 <div class="topic-separator"></div>
 <div class="code">inline void XID(panic)(const char *_Message)</div>
-Altenative of built-in <x class="inline_code">panic</x> function of X for embed cxx developers.
+Altenative of built-in <x class="inline_code">panic</x> function of X for C++ developers.
 
 <div class="topic-separator"></div>
 <div class="code">void x_terminate_handler(void) noexcept</div>
-Cxx terminate handler of X.
+C++ terminate handler of X.
 
 `;
 
@@ -3821,7 +3777,6 @@ const NAV_type_statics_f32                    = document.getElementById("type-st
 const NAV_type_statics_f64                    = document.getElementById("type-statics-f64");
 const NAV_type_statics_int                    = document.getElementById("type-statics-int");
 const NAV_type_statics_uint                   = document.getElementById("type-statics-uint");
-const NAV_type_statics_str                    = document.getElementById("type-statics-str");
 const NAV_cxx                                 = document.getElementById("cxx");
 const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
 const NAV_cxx_cxxapi                          = document.getElementById("cxx-cxxapi");
@@ -3902,7 +3857,6 @@ nav.navigations = [
   [NAV_type_statics_f64,                    type_statics_f64HTML],
   [NAV_type_statics_int,                    type_statics_intHTML],
   [NAV_type_statics_uint,                   type_statics_uintHTML],
-  [NAV_type_statics_str,                    type_statics_strHTML],
   [NAV_cxx,                                 cxxHTML],
   [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
   [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
@@ -3939,7 +3893,6 @@ const tabs = [
   ["tab-type-statics-f64-constants",        TAB_type_statics_f64_constants],
   ["tab-type-statics-int-constants",        TAB_type_statics_int_constants],
   ["tab-type-statics-uint-constants",       TAB_type_statics_uint_constants],
-  ["tab-type-statics-str-constants",        TAB_type_statics_str_constants],
   ["tab-common-concepts-iterations",        TAB_common_concepts_iterations],
   ["tab-common-concepts-if-expressions",    TAB_common_concepts_if_expression],
   ["tab-common-concepts-match-expressions", TAB_common_concepts_match_expression],
