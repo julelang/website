@@ -30,7 +30,7 @@ const preview_code_traitsHTML =
 
 struct Dog {}
 
-impl Animal in Dog {
+impl Animal for Dog {
     &voice() str {
         ret "woof"
     }
@@ -38,7 +38,7 @@ impl Animal in Dog {
 
 struct Cat {}
 
-impl Animal in Cat {
+impl Animal for Cat {
     &voice() str {
         ret "meow"
     }

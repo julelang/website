@@ -2047,7 +2047,7 @@ const traits_implementingHTML = `
 <div class="title" style="margin-bottom: 20px;">Implementing</div>
 <div class="text">
 To implement a trait to structure, the following syntax is applied;
-<div class="code">impl TRAIT in RECEIVER {
+<div class="code">impl TRAIT for RECEIVER {
     // Implementations...
 }</div>
 
@@ -2814,7 +2814,7 @@ Generic types must also be specified to specify an instance of a specific type o
 Doing this is like calling a function.
 <br><br>
 For example;
-<div class="code">pos:position[int]</div>
+<div class="code">pos: Position[int]</div>
 
 </div>
 `;
@@ -3189,67 +3189,67 @@ Returns values of key-value pairs as slice.
 `;
 
 const TAB_type_statics_i8_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:i8</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: i8</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:i8</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: i8</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_i16_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:i16</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: i16</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:i16</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: i16</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_i32_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: i32</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: i32</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_i64_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:i64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: i64</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:i64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: i64</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_u8_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:u8</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: u8</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_u16_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:u16</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: u16</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_u32_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:u32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: u32</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_u64_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:u64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: u64</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_f32_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max:f32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const max: f32</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min:f32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const min: f32</x></div>
 Minimum value of type.
 `;
 
