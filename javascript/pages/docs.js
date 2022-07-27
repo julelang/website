@@ -3047,7 +3047,7 @@ Returns string value of given object.
 `;
 
 const TAB_types_str_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len:size</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
 Character count of string.
 `;
 
@@ -3084,13 +3084,13 @@ Trims string by specified bytes at right.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">split(sub str, n{-1} i64) []str</x></div>
+<div class="sub-sub-title"><x class="inline_code">split(sub str, n inr) []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty slice if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">replace(sub str, new str, n{-1} i64) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">replace(sub str, new str, n int) str</x></div>
 Replaces all substrings matching <x class="inline_code">sub</x> in the string with <x class="inline_code">new</x>. <br>
 Returns same string if <x class="inline_code">n</x> is equals to zero. <br>
 Replaces all matches if <x class="inline_code">n</x> less than zero.
