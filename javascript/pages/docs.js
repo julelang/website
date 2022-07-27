@@ -378,9 +378,14 @@ const project_namingHTML = `
     <td>CONSTANT, MY_CONSTANT</td>
   </tr>
   <tr>
-    <td style="text-align: center;">Global Variable</td>
+    <td style="text-align: center;">Pub Global Variable</td>
     <td>Capital letters and underscore separator</td>
     <td>GLOBAL, MY_GLOBAL</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Not Pub Global Variable</td>
+    <td>Capital letters and underscore separator, snake_case or notsplitted</td>
+    <td>GLOBAL, my_global, myglobal</td>
   </tr>
   <tr>
     <td style="text-align: center;">Local Variable</td>
@@ -425,7 +430,7 @@ const project_namingHTML = `
   <tr>
     <td style="text-align: center;">Generic Type</td>
     <td>PascalCase and _T extension or starts with T and continue with numbers</td>
-    <td>Generic_T, MyGeneric_T, T1, T2</td>
+    <td>Generic_T, MyGeneric_T, T1, T2, T</td>
   </tr>
 </table>
 
@@ -1215,23 +1220,6 @@ Additionally, you can skip some values with ignore operator.
 For example;
 <div class="code">x, _, z = true, 1, -400</div>
 This way you ignore some values.
-
-<div class="title-separator"></div>
-<div class="sub-title">Assignment Expressions</div>
-You can perform an assignment in an expressions.
-<br><br>
-For example;
-<div class="code">main() {
-    x: = 10
-    outln((x*=10)) // Prints 100
-    outln(x)       // Prints 100 because x assigned as 100
-}</div>
-To assign in Expression, the entire assignment statement must be in parentheses.
-The value it affects Expression is evaluated after the assignment has taken place.
-<div class="warn">
-  <li>You can't multiple assignment</li>
-  <li>You can't declaration</li>
-</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Shadowing</div>
