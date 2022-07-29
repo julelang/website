@@ -429,8 +429,8 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Generic Type</td>
-    <td>PascalCase and _T extension or starts with T and continue with numbers</td>
-    <td>Generic_T, MyGeneric_T, T1, T2, T</td>
+    <td>PascalCase and _T extension, starts with T and continue with numbers or PascalCase</td>
+    <td>Generic_T, MyGeneric_T, T1, T2, T, Generic, GenericType</td>
   </tr>
 </table>
 
@@ -439,7 +439,7 @@ const project_namingHTML = `
 Certain specifications can be made to include only certain files in the compilation.
 For this, simply give a matching specification after the underscore.
 <br><br>
-For example; <x class="inline_code">example_amd64.xx</x>
+For example: <x class="inline_code">example_amd64.xx</x>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Operating System Specification</div>
@@ -467,7 +467,7 @@ Each unused statement is tried not to be included in the C++ output.
 This does not pose much of a problem with global declarations and should not be a hindrance to compilation.
 But you have to use the declarations you make in your code blocks, if you don't the compiler will throw an error for each one.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     a: int
 }</div>
@@ -1090,7 +1090,7 @@ Except that, not necessary.
 <br>
 Well, how we separate statements? Easy, please skip to next line or finish write.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     [STATEMENT_1]; [STATEMENT_2]
     [STATEMENT_3]
@@ -1119,7 +1119,7 @@ X uses the <x class="inline_code">:</x> operator.
 When you just use <x class="inline_code">:</x> you report you want the type to be detect automatically.
 The type is set by the X compiler based on the data.
 <br><br>
-For example;
+For example:
 <div class="code">age: = 18</div>
 The data type of the above variable is defaulted to <x class="inline_code">int</x>.
 <div class="warn">
@@ -1131,7 +1131,7 @@ In this method, the variable must be given a value, otherwise the X compiler wil
 You may want to annotate the type, it is possible.
 It also brings you advantages.
 <br><br>
-For example;
+For example:
 <div class="code">age: int = 18</div>
 This is equivalent to the one shown above.
 However, you annotated the type.
@@ -1159,7 +1159,7 @@ We mentioned that it has advantages, let's take a look;
 The values of the variables can be changed later.
 The value given must be the same as the data type of the variable.
 <br><br>
-For example;
+For example:
 <div class="code">example() {
     a: int = 10 // Value is 10.
     a = 200    // New value is 200.
@@ -1169,7 +1169,7 @@ For example;
 <div class="sub-title">Constant Variable</div>
 Constant variables are declared same method, the only difference being that the keyword <x class="inline_code">const</x> is used when defining them.
 <br><br>
-For example;
+For example:
 <div class="code">const age: = 18</div>
 <div class="code">const age: int = 18</div>
 <div class="warn">
@@ -1191,7 +1191,7 @@ What? Sure, you can use two type in same statement.
 You know how to declare variable, okay it is same.
 The single difference, identifiers and expressions separate with comma.
 <br><br>
-For example;
+For example:
 <div class="code">x:, y:, z: = true, 1, -400</div>
 Yes, there is we declare three new variable named as <x class="inline_code">x</x>, <x class="inline_code">y</x> and <x class="inline_code">z</x> with auto-type detection.
 Variable values are; <x class="inline_code">x</x> is <x class="inline_code">true</x>, <x class="inline_code">y</x> is <x class="inline_code">1</x> and <x class="inline_code">y</x> is <x class="inline_code">-400</x>.
@@ -1203,7 +1203,7 @@ So how do we do the update thing?
 We're essentially just removing the colon operator (and type representation, if any) that indicates that the variable is a new variable.
 Actually, only the name of the variable needs to remain, remember value update statement.
 <br><br>
-For example;
+For example:
 <div class="code">x, y, z = true, 1, -400</div>
 The logic remains the same. Let's not forget that these variables must already exist, of course, due to static type principles, the value you show to it must be compatible with the data type of the variable.
 <br><br>
@@ -1211,13 +1211,13 @@ Well, how to we use combined the update and declaration?
 <br>
 You learned update and declaration statements. Okay, combine.
 <br><br>
-For example;
+For example:
 <div class="code">x, y:, z = true, 1, -400</div>
 Here is the combination of these two methods.
 <br><br>
 Additionally, you can skip some values with ignore operator.
 <br>
-For example;
+For example:
 <div class="code">x, _, z = true, 1, -400</div>
 This way you ignore some values.
 
@@ -1233,7 +1233,7 @@ Yes! However, there are minor changes.
 If you give the name of one of the global definitions to the function's parameter or to a variable within the block, that definition is shaded.
 However, a global definition that you define or shadow once within the block cannot be shaded within the block and in sub-blocks.
 <br><br>
-For example;
+For example:
 <div class="code">a: = 100
 
 my_func(a bool) {
@@ -1246,7 +1246,7 @@ In this case, the parameter name is valid and the global definition is shaded.
 Well, we said that a definition that is already defined or shadowed in the block and sub-blocks cannot be shadowed again.
 What exactly does this mean?
 <br><br>
-For example;
+For example:
 <div class="code">a: = 100
 
 my_func(a bool) {
@@ -1275,7 +1275,7 @@ For functions, the name of the function comes first, followed by the parentheses
 The braces indicate the block of the function.
 <br><br>
 So how can we call this function? <br>
-For Example;
+For example:
 <div class="code">example()</div>
 The name of the function comes first and then the parentheses again.
 
@@ -1284,7 +1284,7 @@ The name of the function comes first and then the parentheses again.
 Functions can have parameters.
 These parameters must be specified with arguments at the time the function is called.
 <br><br>
-For example;
+For example:
 <div class="code">print_int(i int) {
     outln(i)
 }
@@ -1303,7 +1303,7 @@ The given arguments must be compatible with the data-type of the corresponding p
 <div class="topic-separator"></div>
 There is alternative syntax for specifying parameters and data types.
 <br>
-For example;
+For example:
 <div class="code">print_sum(a, b int) {
     add: = a + b
     outln(add)
@@ -1316,7 +1316,7 @@ When this is done, all parameters that have not been given the previous data-typ
 Variadic parameters can contain more than one value.
 The <x class="inline_code">...</x> operator is used for this.
 <br>
-For example;
+For example:
 <div class="code">str_out(...values str) {
     for _, s: in values {
         out(s)
@@ -1344,7 +1344,7 @@ Putting the <x class="inline_code">...</x> operator before its name makes parame
 <div class="sub-title">Functions with Return Values</div>
 Functions can return values.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     outln(div(10, 2))
 }
@@ -1376,8 +1376,8 @@ Functions can be used as data type.
 It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
-For example;
-<div class="code">my_function:(int, int) int</div>
+For example:
+<div class="code">my_function: (int, int) int</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
 
@@ -1388,7 +1388,7 @@ Anonymous functions is not have any name.
 Defining anonymous function is like declaring a function as a value type.
 Just in addition, the block of the function must be written.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     make_hello: = (name str) str { "Hello " + name + "!" };
     outln(make_hello("X"))
@@ -1397,7 +1397,7 @@ For example;
 <div class="topic-separator"></div>
 Anonymous functions can access the definitions of the block in which they are defined.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     message: = "Hello, World!"
     func: = () { outln(message) };
@@ -1422,7 +1422,7 @@ All definitions in Scope are copied with the same identifier.
 <li>Referencing</li>
 Definitions in scope are copied by referencing.
 To make an anonymous function use referencing, the <x class="inline_code">&</x> operator must be used. <br>
-For example;
+For example:
 <div class="code">&() { /* body... */ }</div>
 
 <div class="title-separator"></div>
@@ -1435,7 +1435,7 @@ If a variable captured by reference dies before the anonymous function, the anon
 Functions can returns more then one values.
 For that, specify return data-type with multiple type.
 <br><br>
-For example;
+For example:
 <div class="code">my_func() [int, int] { 18, 96 }</div>
 Brackets are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
@@ -1445,7 +1445,7 @@ What happens when specified single data-type with brackets?
 Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
 <br><br>
-For example;
+For example:
 <div class="code">less_than(x, y int) [bool] { x < y }</div>
 The example at above, accepted as one type return.
 
@@ -1454,7 +1454,7 @@ The example at above, accepted as one type return.
 To give an identifier to the return types, it's enough to make them look like multiple returns.
 The only addition is to give that return value an identifier before the return type.
 <br><br>
-For example;
+For example:
 <div class="code">example() [x int, y int] {
   x = 10
   y = 20
@@ -1467,7 +1467,7 @@ For each identifier, the function has a variable initialized in its scope.
 <div class="topic-separator"></div>
 Also, a function that has at least one return type identifier does not have to have a return expression.
 <br><br>
-For example;
+For example:
 <div class="code">example() [x int, y int] {
   x = 10
   y = 20
@@ -1479,7 +1479,7 @@ Respectively the related variables will be treated as the return statement.
 If you provide a return expression while there are return identifiers, the expressions you provide as the expression of the identifiers will be accepted.
 
 <br><br>
-For example;
+For example:
 <div class="code">example() [x int, y int] {
   ret 90, 100
 }</div>
@@ -1489,7 +1489,7 @@ For example;
 It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
-For example;
+For example:
 <div class="code">compare_int(x, y int) [bool, bool] { x < y, x == y }
 
 main() {
@@ -1503,7 +1503,7 @@ main() {
 <div class="sub-sub-title">Multiple Returns as Argument(s)</div>
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
-For example;
+For example:
 <div class="code">multi_ret_func() [int, str, byte] { 143, "STR", 'W' }
 
 my_print(a int, b str, c byte) {
@@ -1520,7 +1520,7 @@ main() {
 <div class="sub-sub-title">Multiple Returns as Multiple Return</div>
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
-For example;
+For example:
 <div class="code">example1() [int, str, byte] { 143, "STR", 'W' }
 example2() [int, str, byte] { (example1()) }
 
@@ -1535,7 +1535,7 @@ main() {
 <div class="sub-title">Argumet Targeting</div>
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
-For example;
+For example:
 <div class="code">sub(a, b int) int { a-b }
 
 main() {
@@ -1549,7 +1549,7 @@ Deferred calls are not executed until they go out of scope.
 Calls are invoked in reverse.
 The keyword <x class="inline_code">defer</x> is used for a deferred call.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     defer outln("Defer 1")
     defer outln("Defer 2")
@@ -1634,14 +1634,14 @@ The array for storing a fixed size sequence of elements.
 <br><br>
 <div class="sub-title">Syntax</div>
 <div class="code">[CONST_SIZE_EXPRESSION]DATA_TYPE</div>
-For example;
+For example:
 <div class="code">[50]int</div>
 
 <br><br>
 <div class="sub-title">Triple Dot for Auto Computing Size of Array Literals</div>
 You can use <x class="inline_code">...</x> for auto computing size of array literal at compile time.
 <br><br>
-For example;
+For example:
 <div class="code">[...]int{1, 2, 3, 4, 5} // [5]int</div>
 
 <div class="title-separator"></div>
@@ -1651,7 +1651,7 @@ Starts at <x class="inline_code">0</x> and continue step by step, it is never no
 <br><br>
 Arrays is use indexes to access elements and assignment.
 <br>
-For example;
+For example:
 <div class="code">main() {
     my_array: = [3]str{"Hello", "arrays", "indexes"}
     outln(my_array[0])
@@ -1672,7 +1672,7 @@ Output of program;
 <div class="sub-title">Multidimensional Arrays</div>
 Multidimensional arrays is array storing arrays.
 <br>
-For example;
+For example:
 <div class="code">main() {
     my_array: = [2][2]str{
         [2]str{"Apple", "Banana"},
@@ -1691,6 +1691,9 @@ const common_concepts_slicesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Slices</div>
 <div class="text">
 Slices is a dynamic allocated array, for this reason not has constant size expression.
+Slices are heap allocated and use X's reference counting memory management.
+A slice can be <x class="inline_code">nil</x> and its default value is <x class="inline_code">nil</x>.
+Slices are mutable.
 <br><br>
 Example to slices;
 <div class="code">main() {
@@ -1702,6 +1705,7 @@ The nil is the default value of slices.
 But the important point: empty slice and nil setted slice is the same thing.
 The example at above, auto value is given (so nil) at first statement.
 <x class="inline_code">my_slice</x> is equals to <x class="inline_code">nil</x> or <x class="inline_code">[]str{}</x>.
+<br><br>
 Second statement is set value of <x class="inline_code">my_slice</x> variable as <x class="inline_code">[]str{"Hello", "X", "slices!"}</x>.
 Seen at second statement, slices is should be define with data type.
 Last statement is prints to console the <x class="inline_code">my_slice</x> variable.
@@ -1720,7 +1724,7 @@ Yes.
 Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 <br>
-For example;
+For example:
 <div class="code">sum(...values int) int {
     total: int
     for _, i: in values {
@@ -1740,20 +1744,15 @@ To send, it is sufficient to follow the <x class="inline_code">...</x> operator.
 
 <div class="warn">If you pass slice to variadic parameter, you can't pass more value.</div>
 
-<br><br>
-<div class="sub-title">Triple Dot for Auto Computing Size of Array Literals</div>
-You can use <x class="inline_code">...</x> for auto computing size of array literal at compile time.
-<br><br>
-For example;
-<div class="code">[...]int{1, 2, 3, 4, 5} // [5]int</div>
-
 <div class="title-separator"></div>
 <div class="sub-title">Slicing</div>
 You can slice compatible types with indexing.
+As a result of slicing a slice, a new allocation is not created, no copying is performed.
+The relevant memory section of the sliced slice is referenced and its length is limited by the length of the slice.
 <br><br>
 <div class="sub-sub-title">Syntax</div>
 <div class="code">EXPRESSION[START_EXPRESSION:TO_EXPRESSION]</div>
-For example;
+For example:
 <div class="code">my_slice[2:10]</div>
 The example at above, slices items starts at <x class="inline_code">2</x> to <x class="inline_code">10</x>
 The <x class="inline_code">10</x> index is not included.
@@ -1800,18 +1799,18 @@ Keys and values are separated by colons, the key comes first, then the value.
 <div class="title-separator"></div>
 <div class="sub-title">Access to Elements and Indexing</div>
 To get the value of a key, it is sufficient to index it with the key. <br>
-For example;
+For example:
 <div class="code">mymap[1]</div>
 The example at above, gives <x class="inline_code">"RAM"</x> value. <br>
 If you try to access a key that does not exist, it will return the default value.
 
 <div class="topic-separator"></div>
 To change the value of a key, it is sufficient to do a classic assignment by indexing the key. <br>
-For example;
+For example:
 <div class="code">mymap[1] = "SSD"</div>
 <br><br>
 To add a key-value pair that doesn't exist, it's still just a classic assignment. <br>
-For example;
+For example:
 <div class="code">mymap[3] = "HDD"</div>
 If the key does not exist when you assign it, the key is generated and matched with the value you assigned.
 </div>
@@ -1864,7 +1863,7 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 <div class="title-separator"></div>
 <div class="sub-title">Custom Data-Types</div>
 If you want to give enums a data-type other than the default, it is possible to do so. <br>
-For example;
+For example:
 <div class="code">enum FileMode:u8 {
     Read  = 35,
     Write = 89,
@@ -1902,7 +1901,7 @@ Members of structures are the same as a variable definition except <x class="inl
 <div class="sub-title">Assigning Default Values to Members</div>
 When instances of struct members are initialized, they are initialized using the default value of the data-type.
 But you can custom default values. <br>
-For example;
+For example:
 <div class="code">struct Employee {
     name  : str = "Anonymous"
     age   : u8  = 18
@@ -1914,7 +1913,7 @@ For example;
 <div class="sub-title">Creating a Instances of Structures</div>
 To instantiate structs, you can either give the values of the fields using braces after the struct name, or create them with their default values.
 <br><br>
-For example;
+For example:
 <div class="code">struct Character {
     name : str = "Anonymous"
     age  : u8  = 18
@@ -1952,7 +1951,7 @@ To implement method(s) to structure, the following syntax is applied;
 <div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
 
 <br>
-For example;
+For example:
 <div class="code">impl Position {
     is_origin() bool {
       ret .x == 0 && .y == 0
@@ -1995,7 +1994,7 @@ It is used to access and use the members of the structure.
 The data type is the same as the data type of the receiver.
 
 <br><br>
-For example;
+For example:
 <div class="code">impl Person {
     &get_name() str {
         // self: *Person
@@ -2008,7 +2007,7 @@ In the example above, the <x class="inline_code">name</x> field of the "<x class
 A expression starting with dot can be used to access the fields and functions of the structure, without using the <x class="inline_code">self</x> keyword.
 The dot is <x class="inline_code">self.</x> evaluated as.
 <br><br>
-For example;
+For example:
 <div class="code">impl Person {
     &get_name() str {
         ret .name
@@ -2032,7 +2031,7 @@ A trait can be <x class="inline_code">nil</x>
 
 Functions in trait should only exist as prototypes.
 <br><br>
-For example;
+For example:
 <div class="code">trait Person {
     name() str
     age() u8
@@ -2047,42 +2046,49 @@ const traits_implementingHTML = `
 <div class="title" style="margin-bottom: 20px;">Implementing</div>
 <div class="text">
 To implement a trait to structure, the following syntax is applied;
-<div class="code">impl TRAIT for RECEIVER {
+<div class="code">impl TRAIT for STRUCT {
     // Implementations...
 }</div>
 
-<x class="inline_code">TRAIT</x>: Trait to implement.<br>
-<x class="inline_code">RECEIVER</x>: Receiver of structure.<br>
+<x class="inline_code">TRAIT</x>: Trait to implement<br>
+<x class="inline_code">STRUCT</x>: Structure to implement<br>
 
 <br>
-For example;
-<div class="code">trait Animal {
-    voice() str
+For example:
+<div class="code">const PI: = 3.14159265359
+
+trait Shape {
+    area() int
 }
 
-struct Dog {}
+struct Rectangle {
+    width: int
+    height: int
+}
 
-impl Animal for Dog {
+impl Shape for Rectangle {
     @inline
-    &voice() str {
-        ret "woof"
+    &area() int {
+        ret .width * .height
     }
 }
 
-struct Cat {}
+struct Circle {
+    r: f32
+}
 
-impl Animal for Cat {
+impl Shape for Circle {
     @inline
-    &voice() str {
-        ret "meow"
+    &area() int {
+        ret PI * .r * .r
     }
 }
 
 main() {
-    animal1: Animal = Dog{}
-    animal2: Animal = Cat{}
-    outln(animal1.voice())
-    outln(animal2.voice())
+    rect: Shape = Rectangle{90, 5}
+    circ: Shape = Circle{90.5}
+    outln(rect.area())
+    outln(circ.area())
 }</div>
 
 </div>
@@ -2115,7 +2121,7 @@ That's pointer for <x class="inline_code">int</x> type.
 <div class="sub-sub-title">Getting Pointer of Variables</div>
 The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
-For example;
+For example:
 <div class="code">main() {
     x: int = 10
     y: *int = &x
@@ -2125,7 +2131,7 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 <div class="title-separator"></div>
 <div class="sub-sub-title">Accessing Values on Pointers</div>
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
-For example;
+For example:
 <div class="code">main() {
     x: int = 10
     y: *int = &x
@@ -2137,7 +2143,7 @@ For example;
 <div class="sub-sub-title">Assign Values to Pointers</div>
 Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
 <br>
-For example;
+For example:
 <div class="code">main() {
     x: int = 10
     z: *int = &x // The 'z' store now memory address of the 'x' variable.
@@ -2149,7 +2155,7 @@ Additionally, pointers can assign the value of the memory address they store.
 <br>
 The <x class="inline_code">*</x> operator used for that too.
 <br>
-For example;
+For example:
 <div class="code">main() {
     x: int = 10
     y: *int = &x
@@ -2169,13 +2175,15 @@ It is automatically released when the reference count of the pointer reaches zer
 
 <div class="title-separator"></div>
 <div class="sub-title">Heap Allocation</div>
-The <x class="inline_code">new</x> function is used to perform a heap allocation.
-It is a built-in function.
+The <x class="inline_code">new</x> function is used to perform a heap allocation. <br>
+It is a function of the <x class="inline_code">std::mem</x> stdlib. <br>
 Please refer to the built-in standard library documentation for this function.
 <br><br>
-For example;
-<div class="code">main() {
-    ptr: = new(int)
+For example:
+<div class="code">use std::mem
+
+main() {
+    ptr: = std::mem::new(int)
     outln(ptr)
 }</div>
 The <x class="inline_code">ptr</x> variable is a heap allocated pointer.
@@ -2187,8 +2195,10 @@ A reference counting heap counts each time it gets a reference to a dedicated po
 It is deducted from the count when it loses its references.
 When the reference count reaches zero, it releases the allocation as it is no longer used.
 <br><br>
-For example;
-<div class="code">main() {
+For example:
+<div class="code">use std::mem
+
+main() {
     my_int: = 100
 
     // Takes address of my_int but doesn't ref counting
@@ -2200,7 +2210,7 @@ For example;
 
     // Make heap-allocation, returns heap-allocated *int
     // Ref count is 1
-    ptr = new(int)
+    ptr = std::mem::new(int)
     
     // Assign 100 expression to allocation
     *ptr = 100
@@ -2210,7 +2220,7 @@ For example;
 
     // Make new heap-allocation, ref count is 1
     // Frees old allocation cause ref count is 0 now
-    ptr = new(int)
+    ptr = std::mem::new(int)
 
     // Ref count is 2 now of current allocation
     // The ptr_a referencing to allocation of ptr
@@ -2272,7 +2282,7 @@ While the program is executing, if the functions are designed to return this str
 If a function does not panic when there is an error, it can return the error with the Error trait and provides handle it.
 Returns nil when there is no error.
 <br><br>
-For example;
+For example:
 <div class="code">use std::errors
 
 my_div(a, b f64) [f64, Error] {
@@ -2296,7 +2306,7 @@ In the example above, a potential error is handled with the Error trait.
 <div class="sub-title">Creating Custom Errors</div>
 You can create your own error structure for error handling by implementing the Error trait.
 <br>
-For example;
+For example:
 <div class="code">struct MyError {
     message: str
 }
@@ -2334,7 +2344,7 @@ Panics abruptly stop program execution and "abort" it.
 If you're talking about an issue that will cause the program to crash while executing, using panic would be a good choice.
 You can only panic with error structure.
 <br><br>
-For example;
+For example:
 <div class="code">use errors
 
 add_pointer(rate int, ptr *int) {
@@ -2362,7 +2372,7 @@ It just catch panics the codes of the scope it is in.
 It just catch panics of the codes of the scope it is in.
 
 <br><br>
-For example;
+For example:
 <div class="code">use errors
 
 may_panic() {
@@ -2376,7 +2386,7 @@ The example code above will panic.
 To be recovered it must be editing using the <x class="inline_code">recover</x> function.
 
 <br><br>
-For example;
+For example:
 <div class="code">use errors
 
 may_panic() {
@@ -2396,7 +2406,7 @@ the <x class="inline_code">recover</x> function would not have recover the panic
 
 <div class="topic-separator"></div>
 You can use a function as recover handler. <br>
-For example;
+For example:
 <div class="code">handler(e Error) {
     // ...
 }
@@ -2422,7 +2432,7 @@ const types_aliasingHTML = `
 Type aliases is an alias for existing types defined by developer.
 When these aliases are used, they qualify the types they represent.
 <br>
-For example;
+For example:
 <div class="code">type int32 i32
 
 main() {
@@ -2661,7 +2671,7 @@ If there is a definition for which you have written the identifier, its identifi
 X detects the identifier you are using in the embed code and does not give an error that you do not use it.
 You can use only block identifiers.
 <br><br>
-For example;
+For example:
 <div class="code">@inline
 cxx_wcout(msg str) {
     //cxx: std::wcout << @msg << std::endl;
@@ -2677,7 +2687,7 @@ In C++ embedding codes, a return expression is treated as a return made within t
 So XXC does not give an error that you should write return statement.
 For a return statement to be recognized correctly, the return statement must simply be included as the first keyword in the embed code.
 <br><br>
-For example;
+For example:
 <div class="code">two() int {
     //cxx: return 2;
 }</div>
@@ -2717,8 +2727,8 @@ For code example; <br>
 <div class="code">main() {
     x: f32 = 3.14
     y: int = (int)(x) // Casting
-    outln(x)         // Prints 3.14
-    outln(y)         // Prints 3
+    outln(x)          // Prints 3.14
+    outln(y)          // Prints 3
 }</div>
 </div>
 As you can see, the variable <x class="inline_code">x</x> is of type <x class="inline_code">f32</x> and the variable <x class="inline_code">y</x> is of type <x class="inline_code">int</x>.
@@ -2729,7 +2739,7 @@ However, as seen for example, we can accept the value as <x class="inline_code">
 There is an alternative syntax for single data types.
 It consists of using it like a constructor.
 <br><br>
-For example; <x class="inline_code">u64(10)</x>
+For example: <x class="inline_code">u64(10)</x>
 
 <div class="warn">If the data type has a constructor, its constructor is called instead of being considered casting.</div>
 
@@ -2752,10 +2762,10 @@ No new keyword has been introduced to denote generic types, it is possible to ad
 
 <div class="info">
 Generic types are also assumed to be local in-scope type aliases.
-Therefore, they can be used as specific types in variable and similar definitions in scope.
+Therefore, they can be used for type annotation in variable and similar definitions in scope.
 </div>
 <br>
-For example;
+For example:
 <div class="code">type[T]
 sum(a, b T) T {
     x: T = a + b
@@ -2770,7 +2780,7 @@ main() {
 
 There is a use for a generic type annotation, as seen in the example above.
 Use the <x class="inline_code">type</x> keyword with brackets and write the identifier of the generic type.
-To specify a type for a generic type, you specify the data-type in brackets.
+To specify a type for a generic type, you specify the data type in brackets.
 
 <div class="topic-separator"></div>
 
@@ -2787,7 +2797,7 @@ example_func1(a T1, b T2) {}</div>
 Structures support generics.
 There is no additional syntax to use it. Combine only what you know with the struct declaration.
 <br><br>
-For example;
+For example:
 <div class="code">type[T]
 struct Position {
     x: T
@@ -2803,8 +2813,33 @@ Calling the constructor method will be no different than calling a function that
 Generic types must also be specified to specify an instance of a specific type of the position structure.
 Doing this is like calling a function.
 <br><br>
-For example;
+For example:
 <div class="code">pos: Position[int]</div>
+
+<div class="title-separator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Dynamic Generic Type Annotation</div>
+Dynamic generic annotation can be used if all generic types are detectable by the compiler.
+<br><br>
+For example:
+<div class="code">type[Key, Value]
+print_map(map [Key:Value]) {
+    for key:, value: in map {
+        out(key)
+        out(": ")
+        outln(value)
+    }
+}
+
+main() {
+    mymap: = [int:str]{
+        0: "A",
+        1: "B",
+        2: "C",
+    }
+    print_map(mymap)
+}</div>
+Dynamic generic annotation is used in the above example.
+Generic types are automatically detected from the data type of argument by compiler.
 
 </div>
 `;
@@ -2831,7 +2866,7 @@ If you want your personal comments to be in the output created with the <x class
 To create a documentation comment, simply start it with <x class="inline_code">doc:</x>.
 The documenter will treat that and subsequent comment lines as documentation comments.
 <br><br>
-For example;
+For example:
 <div class="code">// doc:
 // Divides specified floats.
 // THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
@@ -2852,7 +2887,7 @@ The <x class="inline_code">doc</x> command is used to use the documenter.
 The <x class="inline_code">doc</x> command works quite simply.
 Show only the X source files you want to document.
 <br><br>
-For example;
+For example:
 <div class="code">$ xxc doc main.xx</div>
 Documentize the <x class="inline_code">main.xx</x> file.
 <br><br>
@@ -2879,7 +2914,7 @@ It is quite plain and simple.
 You write the name of a package you want to use, if you want to use a sub-package, you separate it with a doouble colon.
 A reference to the standard library must begin with <x class="inline_code">std::</x>.
 <br><br>
-For example;
+For example:
 <div class="code">use std::pkg</div>
 <div class="code">use std::pkg::subpkg</div>
 
@@ -2893,7 +2928,7 @@ For example;
 The definitions that come with the use declaration are accessible with the namespaces.
 The namespace is same with use declaration.
 <br><br>
-For example;
+For example:
 <div class="code">use std::pkg
 
 main() {
@@ -2905,7 +2940,7 @@ main() {
 It is sufficient to add <x class="inline_code">::*</x> to the end of the use declaration that you want to import fully.
 The definitions of packages imported in this way can be used directly or optionally accessed with the classic namespace notation.
 <br><br>
-For example;
+For example:
 <div class="code">use std::pkg::*
 
 main() {
@@ -2920,7 +2955,7 @@ If you don't provide an identifier, nothing is imported.
 Imported definitions can be used directly.
 By default, there is no namespace representation.
 <br><br>
-For example;
+For example:
 <div class="code">use std::pkg::{a_function}
 
 main() {
@@ -2948,7 +2983,7 @@ One solution might be to use the namespace notation to access shaded definitions
 X treats each directory as a package.
 Each package has the ability to use its own defines.
 <br><br>
-For example;
+For example:
 <div class="code">// file: ./hello_print.xx
 
 @inline
@@ -2979,7 +3014,7 @@ const preprocessor_directivesHTML = `
 <div class="text">
 Directives tell the compiler how to process the code. <br>
 Directives are denoted by <x class="inline_code">pragma</x> identifier to preprocessor. <br>
-For example;
+For example:
 <div class="code">#pragma enofi</div>
 
 <div class="title-separator"></div>
@@ -3012,9 +3047,10 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/io.html">io</a></li>
   <li><a href="../pages/stdlib/math.html">math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">math.bits</a></li>
+  <li><a href="../pages/stdlib/mem.html">mem</a></li>
   <li><a href="../pages/stdlib/os.html">os</a></li>
   <li><a href="../pages/stdlib/reflect.html">reflect</a></li>
-  <li><a href="../pages/stdlib/slice.html">slice</a></li>
+  <li><a href="../pages/stdlib/unsafe.html">unsafe</a></li>
 </div>
 `;
 
@@ -3097,7 +3133,7 @@ Replaces all matches if <x class="inline_code">n</x> less than zero.
 `;
 
 const TAB_types_arrays_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len: uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
 Length of array.
 `;
 
@@ -3107,21 +3143,17 @@ Reports array is empty or not.
 `;
 
 const TAB_types_slices_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len: uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
 Length of slice.
 `;
 
 const TAB_types_slices_methods = `
 <div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
 Reports slice is empty or not.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">append(...values ITEM_TYPE)</x></div>
-Appends specified items to end of slice.
 `;
 
 const TAB_types_maps_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len: uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
 Length of key-value pairs.
 `;
 
@@ -3246,7 +3278,7 @@ The <x class="inline_code">for</x> keyword use for iterations in X.
 <div class="sub-sub-title">Infinity Iterations</div>
 Infinite iterations keep repeating endlessly until the loop is somehow broken.
 <br>
-For example;
+For example:
 <div class="code">main() {
     for {
         outln("Hello, iterations")
@@ -3259,7 +3291,7 @@ The above example prints <x class="inline_code">Hello, iterations</x> repeatedly
 The while iterations are iterations that repeat as long as a certain condition is met.
 It is not much different from defining an infinite iteration.
 <br>
-For example;
+For example:
 <div class="code">main() {
     counter: = 0
     for counter <= 5 {
@@ -3277,7 +3309,7 @@ This example just prints <x class="inline_code">0</x>.
 Foreach or for-each can be summarized as an iteration standard for collections.
 It repeats itself by looping through the elements of the collection.
 <br>
-For example;
+For example:
 <div class="code">main() {
     mystr: str = "Hello"
     for index: in mystr {
@@ -3298,7 +3330,7 @@ Iterations can have two variables: Current index and current element.
 <br><br>
 This example, just shows index. Let's see foreach iteration with element.
 <br>
-For example;
+For example:
 <div class="code">main() {
     mystr: str = "Hello"
     for _, c: byte in mystr {
@@ -3332,7 +3364,7 @@ The for loop is a good choice for iterations from one point to another.
 <strong>STATEMENT2</strong>: Executes every time after the block executed.
 
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     for i: = 0, i < 10, i++ {
         outln(i)
@@ -3346,7 +3378,7 @@ There are two ways to do this in X; The <x class="inline_code">continue</x> and 
 <br><br>
 If you want break the iteration, use the <x class="inline_code">break</x> keyword.
 <br>
-For example;
+For example:
 <div class="code">main() {
     for {
         outln("Hello, World")
@@ -3359,7 +3391,7 @@ But just prints one time, because <x class="inline_code">break</x> keyword is br
 <div class="topic-separator"></div>
 If you want continue to next iteration, use the <x class="inline_code">continue</x> keyword.
 <br>
-For example;
+For example:
 <div class="code">main() {
     for {
         continue
@@ -3380,7 +3412,7 @@ The <x class="inline_code">if</x> and <x class="inline_code">else</x> keywords u
 If the provided condition is <x class="inline_code">true</x> the block is executed, otherwise it is not executed.
 It is also the beginning of a new chain of conditions.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     x: = new(int)
     if x == nil {
@@ -3392,7 +3424,7 @@ For example;
 <div class="sub-sub-title"><x class="inline_code">else if</x> Expressions</div>
 If the preceding <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions have not been fulfilled, it is a condition presented as an alternative to them.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     x: = 100
     if x > 1000 {
@@ -3410,7 +3442,7 @@ For example;
 <div class="sub-sub-title"><x class="inline_code">else</x> Blocks</div>
 It is the block that will be executed unconditionally if the previous <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions are not fulfilled.
 <br><br>
-For example;
+For example:
 <div class="code">main() {
     x: = new(int)
     if x == nil {
@@ -3450,7 +3482,7 @@ default:
 <strong>default</strong>: Default block.
 
 <br><br>
-For example;
+For example:
 <div class="code">match my_integer {
 case MY_INTEGER_MIN:
     outln("Minimum")
@@ -3466,7 +3498,7 @@ As with iterations, you can break the execution of the block.
 The keyword <x class="inline_code">break</x> is sufficient for this.
 
 <br><br>
-For example;
+For example:
 <div class="code">match X {
 case Y:
     if Y == A {
@@ -3483,7 +3515,7 @@ If a match expression is not given, match acts like an if-else chain.
 This might be a more readable option on long condition chains.
 
 <br><br>
-For example;
+For example:
 <div class="code">match {
 case x > 10 || x < 90:
     // Body
@@ -3502,7 +3534,7 @@ For this, you can give more than one expression for a case.
 The only addition in syntax is commas between statements.
 
 <br><br>
-For example;
+For example:
 <div class="code">match X {
 case Y, Z, V:
     // Body
@@ -3523,14 +3555,14 @@ The goto statements allow you to jump to any part of the algorithm.
 <div class="sub-title">Labels</div>
 Goto statements need labels to jump somewhere in the algorithm.
 To declare a label, simply put the name of the tag followed by a colon. <br>
-For example; <x class="inline_code">repeat:</x>
+For example: <x class="inline_code">repeat:</x>
 
 <div class="title-separator"></div>
 <div class="sub-title">Going to Labels</div>
 The <x class="inline_code">goto</x> keyword is used for a goto statement.
 Jumping to a label is as simple as defining a label.
 First comes the keyword, then the label you want to jump to. <br>
-For example; <x class="inline_code">goto repeat</x>
+For example: <x class="inline_code">goto repeat</x>
 <div class="info">
 <li>You can jump to any label without breaking the rules.</li>
 <li>Labels are only valid for the function block you are in.</li>
