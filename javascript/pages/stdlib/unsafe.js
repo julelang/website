@@ -64,7 +64,7 @@ Moves the pointer from its pointing position by the size of the data type.
 The offset amount is determined by n.
 Moving back requires a negative expression, and moving forward requires a positive expression.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">move(n) = address sets as zero (nil)</x></li>
 
 <div class="topic-separator"></div>

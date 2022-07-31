@@ -3050,6 +3050,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/mem.html">mem</a></li>
   <li><a href="../pages/stdlib/os.html">os</a></li>
   <li><a href="../pages/stdlib/reflect.html">reflect</a></li>
+  <li><a href="../pages/stdlib/slice.html">slice</a></li>
   <li><a href="../pages/stdlib/unsafe.html">unsafe</a></li>
 </div>
 `;

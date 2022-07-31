@@ -37,7 +37,7 @@ const stdlib_math_functionsHTML = `
 pub abs(x f64) f64</div>
 Returns the absolute value of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">abs(±inf) = inf</x></li>
 <li><x class="inline_code">abs(nan) = nan</x></li>
 
@@ -45,7 +45,7 @@ Special cases are; <br>
 <div class="code">pub acosh(x f64) f64</div>
 Returns the inverse hyperbolic cosine of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">acosh(inf) = inf</x></li>
 <li><x class="inline_code">acosh(x) = nan if x < 1</x></li>
 <li><x class="inline_code">acosh(nan) = nan</x></li>
@@ -54,7 +54,7 @@ Special cases are; <br>
 <div class="code">pub asin(x f64) f64</div>
 Returns the arcsine, in radians, of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">asin(±0) = ±0</x></li>
 <li><x class="inline_code">asin(x) = nan if x < -1 or x > 1</x></li>
 
@@ -63,14 +63,14 @@ Special cases are; <br>
 pub acos(x f64) f64</div>
 Returns the arccosine, in radians, of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">acos(x) = nan if x < -1 or x > 1</x></li>
 
 <div class="topic-separator"></div>
 <div class="code">pub asinh(x f64) f64</div>
 Returns the inverse hyperbolic sine of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">asinh(±0) = ±0</x></li>
 <li><x class="inline_code">asinh(±inf) = ±inf</x></li>
 <li><x class="inline_code">asinh(nan) = nan</x></li>
@@ -79,7 +79,7 @@ Special cases are; <br>
 <div class="code">pub atan(x f64) f64</div>
 Returns the arctangent, in radians, of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">atan(±0) = ±0</x></li>
 <li><x class="inline_code">atan(±inf) = ±PI/2</x></li>
 
@@ -88,7 +88,7 @@ Special cases are; <br>
 Returns the arc tangent of y/x, using
 the signs of the two to determine the quadrant of the return value.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">atan2(y, nan) = nan</x></li>
 <li><x class="inline_code">atan2(nan, x) = nan</x></li>
 <li><x class="inline_code">atan2(+0, x>=0) = +0</x></li>
@@ -111,7 +111,7 @@ Special cases are; <br>
 <div class="code">pub atanh(x f64) f64</div>
 Returns the inverse hyperbolic tangent of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">atanh(1) = inf</x></li>
 <li><x class="inline_code">atanh(±0) = ±0</x></li>
 <li><x class="inline_code">atanh(-1) = -inf</x></li>
@@ -144,7 +144,7 @@ If sign == 0, IsInf reports whether f is either infinity. <br>
 <div class="code">pub cbrt(x f64) f64</div>
 Returns the cube root of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">cbrt(±0) = ±0</x></li>
 <li><x class="inline_code">cbrt(±inf) = ±inf</x></li>
 <li><x class="inline_code">cbrt(nan) = nan</x></li>
@@ -157,7 +157,7 @@ Returns a value with the magnitude of f and the sign of sign.
 <div class="code">pub dim(x, y f64) f64</div>
 Returns the maximum of x-y or 0.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">dim(inf, inf) = nan</x></li>
 <li><x class="inline_code">dim(-inf, -inf) = nan</x></li>
 <li><x class="inline_code">dim(x, nan) = dim(nan, x) = nan</x></li>
@@ -166,7 +166,7 @@ Special cases are; <br>
 <div class="code">pub max(x, y f64) f64</div>
 Returns the larger of x or y.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">max(x, inf) = max(inf, x) = inf</x></li>
 <li><x class="inline_code">max(x, nan) = max(nan, x) = nan</x></li>
 <li><x class="inline_code">max(+0, ±0) = max(±0, +0) = +0</x></li>
@@ -176,7 +176,7 @@ Special cases are; <br>
 <div class="code">pub min(x, y f64) f64</div>
 Returns the smaller of x or y.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">min(x, -inf) = min(-inf, x) = -inf</x></li>
 <li><x class="inline_code">min(x, nan)  = min(nan, x) = nan</x></li>
 <li><x class="inline_code">min(-0, ±0)  = min(±0, -0) = -0</x></li>
@@ -185,7 +185,7 @@ Special cases are; <br>
 <div class="code">pub erf(x f64) f64</div>
 Returns the error function of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">erf(inf) = 1</x></li>
 <li><x class="inline_code">erf(-inf) = -1</x></li>
 <li><x class="inline_code">erf(nan) = nan</x></li>
@@ -194,7 +194,7 @@ Special cases are; <br>
 <div class="code">pub erfinv(x f64) f64</div>
 Returns the inverse error function of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">erfinv(1) = inf</x></li>
 <li><x class="inline_code">erfinv(-1) = -inf</x></li>
 <li><x class="inline_code">erfinv(x) = nan if x < -1 or x > 1</x></li>
@@ -205,7 +205,7 @@ Special cases are; <br>
 pub erfcinv(x f64) f64</div>
 Returns the inverse of erfc(x).
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">erfcinv(0) = inf</x></li>
 <li><x class="inline_code">erfcinv(2) = -inf</x></li>
 <li><x class="inline_code">erfcinv(x) = nan if x < 0 or x > 2</x></li>
@@ -215,7 +215,7 @@ Special cases are; <br>
 <div class="code">pub erfc(x f64) f64</div>
 Returns the complementary error function of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">erfc(inf) = 0</x></li>
 <li><x class="inline_code">erfc(-inf) = 2</x></li>
 <li><x class="inline_code">erfc(nan) = nan</x></li>
@@ -224,7 +224,7 @@ Special cases are; <br>
 <div class="code">pub exp(x f64) f64</div>
 Returns e**x, the base-e exponential of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">exp(inf) = inf</x></li>
 <li><x class="inline_code">exp(nan) = nan</x></li>
 <div class="warn">
@@ -242,7 +242,7 @@ Special cases are the same as exp.
 Returns e**x - 1, the base-e exponential of x minus 1.
 It is more accurate than exp(x) - 1 when x is near zero.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">expm1(inf) = inf</x></li>
 <li><x class="inline_code">expm1(-inf) = -1</x></li>
 <li><x class="inline_code">expm1(nan) = nan</x></li>
@@ -252,7 +252,7 @@ Special cases are; <br>
 <div class="code">pub floor(x f64) f64</div>
 Returns the greatest integer value less than or equal to x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">floor(±0) = ±0</x></li>
 <li><x class="inline_code">floor(±inf) = ±inf</x></li>
 <li><x class="inline_code">floor(nan) = nan</x></li>
@@ -262,7 +262,7 @@ Special cases are; <br>
 pub ceil(x f64) f64</div>
 Returns the least integer value greater than or equal to x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">ceil(±0) = ±0</x></li>
 <li><x class="inline_code">ceil(±inf) = ±inf</x></li>
 <li><x class="inline_code">ceil(nan) = nan</x></li>
@@ -271,7 +271,7 @@ Special cases are; <br>
 <div class="code">pub trunc(x f64) f64</div>
 Returns the integer value of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">trunc(±0) = ±0</x></li>
 <li><x class="inline_code">trunc(±inf) = ±inf</x></li>
 <li><x class="inline_code">trunc(nan) = nan</x></li>
@@ -280,7 +280,7 @@ Special cases are; <br>
 <div class="code">pub round(x f64) f64</div>
 Returns the nearest integer, rounding half away from zero.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">round(±0) = ±0</x></li>
 <li><x class="inline_code">round(±inf) = ±inf</x></li>
 <li><x class="inline_code">round(nan) = nan</x></li>
@@ -289,7 +289,7 @@ Special cases are; <br>
 <div class="code">pub round_even(x f64) f64</div>
 Returns the nearest integer, rounding ties to even.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">round_even(±0) = ±0</x></li>
 <li><x class="inline_code">round_even(±inf) = ±inf</x></li>
 <li><x class="inline_code">round_even(nan) = nan</x></li>
@@ -299,7 +299,7 @@ Special cases are; <br>
 Breaks f into a normalized fraction and an integral power of two.
 It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">frexp(±0) = ±0, 0</x></li>
 <li><x class="inline_code">frexp(±inf) = ±inf, 0</x></li>
 <li><x class="inline_code">frexp(nan) = nan, 0</x></li>
@@ -308,7 +308,7 @@ Special cases are; <br>
 <div class="code">pub hypot(p, q f64) f64</div>
 Returns sqrt(p*p + q*q), taking care to avoid unnecessary overflow and underflow.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">hypot(±inf, q) = inf</x></li>
 <li><x class="inline_code">hypot(p, ±inf) = inf</x></li>
 <li><x class="inline_code">hypot(nan, q) = nan</x></li>
@@ -319,7 +319,7 @@ Special cases are; <br>
 Is the inverse of frexp.
 It returns frac × 2**exp.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">ldexp(±0, exp) = ±0</x></li>
 <li><x class="inline_code">ldexp(±inf, exp) = ±inf</x></li>
 <li><x class="inline_code">ldexp(nan, exp) = nan</x></li>
@@ -328,7 +328,7 @@ Special cases are; <br>
 <div class="code">pub log(x f64) f64</div>
 Returns the natural logarithm of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">log(inf) = inf</x></li>
 <li><x class="inline_code">log(0) = -inf</x></li>
 <li><x class="inline_code">log(x < 0) = nan</x></li>
@@ -339,7 +339,7 @@ Special cases are; <br>
 Returns the natural logarithm of 1 plus its argument x.
 It is more accurate than log(1 + x) when x is near zero.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">log1p(inf) = inf</x></li>
 <li><x class="inline_code">log1p(±0) = ±0</x></li>
 <li><x class="inline_code">log1p(-1) = -inf</x></li>
@@ -361,7 +361,7 @@ The special cases are the same as for log.
 <div class="code">pub logb(x f64) f64</div>
 Returns the binary exponent of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">logb(±inf) = inf</x></li>
 <li><x class="inline_code">logb(0) = -inf</x></li>
 <li><x class="inline_code">logb(nan) = nan</x></li>
@@ -370,7 +370,7 @@ Special cases are; <br>
 <div class="code">pub ilogb(x f64) int</div>
 Returns the binary exponent of x as an integer.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">ilogb(±inf) = i32.max</x></li>
 <li><x class="inline_code">ilogb(0) = i32.min</x></li>
 <li><x class="inline_code">ilogb(nan) = i32.max</x></li>
@@ -380,7 +380,7 @@ Special cases are; <br>
 Returns the floating-point remainder of x/y.
 The magnitude of the result is less than y and its sign agrees with that of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">mod(±inf, y) = nan</x></li>
 <li><x class="inline_code">mod(nan, y) = nan</x></li>
 <li><x class="inline_code">mod(x, 0) = nan</x></li>
@@ -392,7 +392,7 @@ Special cases are; <br>
 Returns integer and fractional floating-point numbers that sum to f.
 Both values have the same sign as f.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">modf(±inf) = ±inf, nan</x></li>
 <li><x class="inline_code">modf(nan) = nan, nan</x></li>
 
@@ -400,7 +400,7 @@ Special cases are; <br>
 <div class="code">pub nextafter32(x, y f32) [r f32]</div>
 Returns the next representable f32 value after x towards y.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">nextafter32(x, x)   = x</x></li>
 <li><x class="inline_code">nextafter32(nan, y) = nan</x></li>
 <li><x class="inline_code">nextafter32(x, nan) = nan</x></li>
@@ -409,7 +409,7 @@ Special cases are; <br>
 <div class="code">pub nextafter(x, y f64) [r f64]</div>
 Returns the next representable f64 value after x towards y.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">nextafter(x, x) = x</x></li>
 <li><x class="inline_code">nextafter(nan, y) = nan</x></li>
 <li><x class="inline_code">nextafter(x, nan) = nan</x></li>
@@ -418,7 +418,7 @@ Special cases are; <br>
 <div class="code">pub pow(x, y f64) f64</div>
 Returns x**y, the base-x exponential of y.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">pow(x, ±0) = 1 for any x</x></li>
 <li><x class="inline_code">pow(1, y) = 1 for any y</x></li>
 <li><x class="inline_code">pow(x, 1) = x for any x</x></li>
@@ -444,7 +444,7 @@ Special cases are; <br>
 <div class="code">pub pow10(n int) f64</div>
 Returns 10**n, the base-10 exponential of n.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">pow10(n) = 0 for n < -323</x></li>
 <li><x class="inline_code">pow10(n) = inf for n > 308</x></li>
 
@@ -452,7 +452,7 @@ Special cases are; <br>
 <div class="code">pub remainder(x, y f64) f64</div>
 Returns the IEEE 754 floating-point remainder of x/y.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">remainder(±inf, y) = nan</x></li>
 <li><x class="inline_code">remainder(nan, y) = nan</x></li>
 <li><x class="inline_code">remainder(x, 0) = nan</x></li>
@@ -468,7 +468,7 @@ Reports whether x is negative or negative zero.
 <div class="code">pub sinh(x f64) f64</div>
 Returns the hyperbolic sine of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">sinh(±0) = ±0</x></li>
 <li><x class="inline_code">sinh(±inf) = ±inf</x></li>
 <li><x class="inline_code">sinh(nan) = nan</x></li>
@@ -477,7 +477,7 @@ Special cases are; <br>
 <div class="code">pub cosh(x f64) f64</div>
 Returns the hyperbolic cosine of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">cosh(±0) = 1</x></li>
 <li><x class="inline_code">cosh(±inf) = inf</x></li>
 <li><x class="inline_code">cosh(nan) = nan</x></li>
@@ -486,7 +486,7 @@ Special cases are; <br>
 <div class="code">pub sqrt(x f64) f64</div>
 Returns the square root of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">sqrt(inf) = inf</x></li>
 <li><x class="inline_code">sqrt(±0) = ±0</x></li>
 <li><x class="inline_code">sqrt(x < 0) = nan</x></li>
@@ -496,7 +496,7 @@ Special cases are; <br>
 <div class="code">pub tanh(x f64) f64</div>
 Returns the hyperbolic tangent of x.
 <br><br>
-Special cases are; <br>
+Special cases are: <br>
 <li><x class="inline_code">tanh(±0) = ±0</x></li>
 <li><x class="inline_code">tanh(±inf) = ±1</x></li>
 <li><x class="inline_code">tanh(nan) = nan</x></li>
