@@ -12,12 +12,13 @@ const preview_code_quicksortHTML =
     if slice.len <= 1 {
         ret
     }
-    i: = -1
-    for i++, i < slice.len-1, i++ {
+    i: = 0
+    for i < slice.len-1 {
         curr:, next: = &slice[i], &slice[i+1]
         if *curr > *next {
             *curr, *next = *next, *curr
         }
+        i++
     }
     quicksort(slice[:i])
     quicksort(slice[i+1:])
