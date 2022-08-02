@@ -227,11 +227,11 @@ Fields in configuration files have specific purposes.
     <td>Name of compiled machine code output file.</td>
   </tr>
   <tr>
-    <td style="text-align: center; font-family: 'Code';">cxx_out_dir</td>
+    <td style="text-align: center; font-family: 'Code';">cpp_out_dir</td>
     <td>Directory of transpiled C++ file.</td>
   </tr>
   <tr>
-    <td style="text-align: center; font-family: 'Code';">cxx_out_name</td>
+    <td style="text-align: center; font-family: 'Code';">cpp_out_name</td>
     <td>Name of transpiled C++ file.</td>
   </tr>
   <tr>
@@ -2629,8 +2629,8 @@ const type_statics_uintHTML = `
 </div>
 `;
 
-const cxxHTML = `
-<div class="title" style="margin-bottom: 20px;">Cxx</div>
+const cppHTML = `
+<div class="title" style="margin-bottom: 20px;">Cpp</div>
 <div class="text">
 C++ documentations of X.
 <br><br>
@@ -2640,75 +2640,84 @@ In this section, the information necessary to use X and C++ effectively and the 
 </div>
 `;
 
-const cxx_cxx_embeddingHTML = `
-<div class="title" style="margin-bottom: 20px;">Cxx Embedding</div>
+const cpp_apiHTML = `
+<div class="title" style="margin-bottom: 20px;">API</div>
 <div class="text">
-You can embed cxx code in your X code.
-For this, show the comment line as a C++ content;
-<div class="code">//cxx: #include "my_library.h"
-
-main() {
-    // ...
-}
-</div>
-<div class="warn">
-  <li>The comments should be single-line comments.</li>
-  <li>The comments should be full line.</li>
-</div>
-
-<div class="topic-separator"></div>
-Any C++ code that you don't embed in a code block is appended to the top when transpiled so that all code can use it.
-
-<div class="warn">
-  X does not check whether the embed code you write is incorrect or will affect compilation.
-  This is entirely the developer's responsibility.
-</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">Using definitions of X</div>
-If you want to use definitions in embed codes, you can indicate the identifier you want to reach with <x class="inline_code">@</x>.
-If there is a definition for which you have written the identifier, its identifier will appear there, if not, the relevant section will not be change.
-X detects the identifier you are using in the embed code and does not give an error that you do not use it.
-You can use only block identifiers.
+API of XXC for C++. <br><br>
+XXC presents all the C++ content it implements and owns for X in header files.
+These header files come automatically imported in every code compiled by XXC.
 <br><br>
-For example:
-<div class="code">@inline
-cxx_wcout(msg str) {
-    //cxx: std::wcout << @msg << std::endl;
-}
-
-main() {
-    cxx_wcout("Hello World")
-}</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">Return Statements</div>
-In C++ embedding codes, a return expression is treated as a return made within the function.
-So XXC does not give an error that you should write return statement.
-For a return statement to be recognized correctly, the return statement must simply be included as the first keyword in the embed code.
+With this API, you can use the definitions of XXC in C++ codes and adapt functions written for C++ to X.
 <br><br>
-For example:
-<div class="code">two() int {
-    //cxx: return 2;
-}</div>
+<a href="https://github.com/the-xlang/xxc/tree/main/api">See API</a<
 
 </div>
 `;
 
-const cxx_cxxapiHTML = `
-<div class="title" style="margin-bottom: 20px;">CxxAPI</div>
+const cpp_interoperabilityHTML = `
+<div class="title" style="margin-bottom: 20px;">Interoperability</div>
 <div class="text">
-API of X for C++.
-You can this API your transpiled X code or C++ embedding code.
-<br><br>
-This API consists of built-in C++ definitions that can be used inside the transpiled X code.
+X can work with C++.
+A code written in C++ compatible with X can be transferred to X, used and compiled without any problems.
+Everything needed is readily available, as XXC imports APIs by default to every generated code.
 
-<div class="tabcontrol" style="margin-top: 50px;">
-<div id="cxx-cxxapi-preprocessor-defines" class="tab" onclick="select_tab_event(0)">Preprocessor Defines</div>
-<div id="cxx-cxxapi-defines" class="tab" onclick="select_tab_event(1)">Defines</div>
+<div class="title-separator"></div>
+<div class="sub-title">Including C++ Headers into X</div>
+The use declarations of X are used to include C++ headers in the X code to be generated.
+It's just a little different.
+A use declaration should be told that this is a C++ include and the path should be given as a string.
+<br><br>
+For example:
+<div class="code">use cpp "my_header.hpp"</div>
+The correctness and validity of the file path is checked by the compiler. <br>
+Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.hh</x>, <x class="inline_code">.hpp</x>, <x class="inline_code">.hxx</x>
+
+<div class="title-separator"></div>
+<div class="sub-title">Linking C++ Functions to X</div>
+After the header file containing the C++ functions is passed to X, C++ functions must be declared to X.
+Not all, just the ones you will use.
+But remember, XXC does not check header files.
+Your declarations are reliable.
+The compiler assumes that the definitions exist and are correctly defined.
+<br><br>
+To declare a C++ function, it must be stated that it is a C++ declaration.
+Then just represent the prototype of the function.
+<br><br>
+For example:
+<div class="code">cpp my_function(int, int) f64</div>
+Linked functions can only be used within the respective file and can't overload.
+
+<div class="title-separator"></div>
+<div class="sub-title">Calling Linked Functions</div>
+To call a linked function, the keyword <x class="inline_code">cpp</x> is used.
+All linked functions are available as method of this keyword.
+<br><br>
+For example:
+<div class="code">cpp.my_function(x, y, z)</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Example to Interoperability</div>
+<strong>sum_integers.hpp</strong>
+<div class="code">i64_xt sum_integers(const slice&lt;int_xt&gt; &_Slice) {
+    i64_xt total{0};
+    for (const int_xt &x: _Slice) {
+        total += x;
+    }
+    return total;
+}</div>
+
+<strong>main.xx</strong>
+<div class="code">use cpp "sum_integers.hpp"
+
+cpp sum_integers(slice []int) i64
+
+main() {
+    slice: = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
+    total: = cpp.sum_integers(slice)
+    outln(total)
+}
 </div>
-<div class="tabcontrol-content">
-</div>
+
 </div>
 `;
 
@@ -2851,7 +2860,7 @@ It is important to document the code.
 X makes it easy to have documented code.
 The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your X source code.
 <br><br>
-The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cxx_out_dir</x> field.
+The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cpp_out_dir</x> field.
 The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.xdoc</x>.
 <br><br>
 The <x class="inline_code">xdoc</x> file is in JSON format and contains only metadata about definitions.
@@ -3574,171 +3583,6 @@ For example: <x class="inline_code">goto repeat</x>
 </div>
 `;
 
-const TAB_cxx_cxxapi_preprocessor_defines = `
-<div class="code">X_EXIT_PANIC</div>
-Exit code for x panics.
-
-<div class="title-separator"></div>
-<div class="code">XID(_Identifier)</div>
-Appends the prefix that the identifiers have in the C++ output to the identifier you supplied.
-
-<div class="title-separator"></div>
-<div class="code">CONCAT(_A, _B)</div>
-Concatenate specified arguments.
-
-<div class="title-separator"></div>
-<div class="code">_CONCAT(_A, _B)</div>
-Source define for <x class="inline_code">CONCAT(_A, _B)</x>
-
-<div class="title-separator"></div>
-<div class="code">DEFER(_Expr)</div>
-Calls given expressions as deferred call.
-
-<div class="title-separator"></div>
-<div class="code">CO(_Expr)</div>
-Calls given expressions as concurrent call.
-
-<div class="title-separator"></div>
-<div class="code">nil</div>
-Built-in <x class="inline_code">nil</x> value of X.
-
-<div class="title-separator"></div>
-<div class="code">_WINDOWS</div>
-Defined this if operating system if is Windows.
-`;
-
-const TAB_cxx_cxxapi_defines = `
-<li><a href="#cxxapi-misc">Misc</a></li>
-<li><a href="#cxxapi-datatypes">Data Types</a></li>
-<li><a href="#cxxapi-structures">Structures</a></li>
-<li><a href="#cxxapi-functions">Functions</a></li>
-
-<div class="title-separator"></div>
-<div class="title-separator"></div>
-<div id="cxxapi-misc" class="sub-sub-title">Misc</div>
-<div class="code">struct defer</div>
-Source struct for deferred calls.
-
-<div class="topic-separator"></div>
-<div class="code">struct trait</div>
-Trait wrapper for traits.
-
-<div class="topic-separator"></div>
-<div class="code">template<typename T>
-struct ptr</div>
-Pointer wrapper.
-
-<div class="topic-separator"></div>
-<div class="code">struct tracer</div>
-Tracer for panics.
-
-<div class="topic-separator"></div>
-<div class="code">tracer ___trace;</div>
-Instance of tracer for tracing.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename Type, unsigned N, unsigned Last&gt;
-struct tuple_ostream</div>
-<div class="code">template&lt;typename Type, unsigned N&gt;
-struct tuple_ostream&lt;Type, N, N&gt;</div>
-Implementation of tuple available for std::ostream.
-
-<div class="title-separator"></div>
-<div id="cxxapi-datatypes" class="sub-sub-title">Data Types</div>
-<div class="info">
-The primitive data-types in X, have same names in C++ output.
-But have <x class="inline_code">_xt</x> suffix.
-</div>
-
-<div class="code">template&lt;typename _Item_t&gt;
-class slice</div>
-Slice type class.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Item_t, const uint_xt _N&gt;
-struct array</div>
-Array type class.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
-class map</div>
-Map type class.
-
-<div class="topic-separator"></div>
-<div class="code">class str_xt</div>
-The <x class="inline_code">str</x> data-type of X.
-
-<div class="topic-separator"></div>
-<div class="code">struct any_xt</div>
-The <x class="inline_code">any</x> data-type of X.
-
-<div class="title-separator"></div>
-<div id="cxxapi-structures" class="sub-sub-title">Structures</div>
-<div class="code">struct XID(Error)</div>
-The built-in <x class="inline_code">Error</x> trait.
-
-<div class="title-separator"></div>
-<div id="cxxapi-functions" class="sub-sub-title">Functions</div>
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Enum_t, typename _Index_t, typename _Item_t&gt;
-inline void foreach(const _Enum_t _Enum,
-                    const std::function&lt;void(_Index_t, _Item_t)&gt; _Body)</div>
-<div class="code">template&lt;typename _Enum_t, typename _Index_t&gt;
-inline void foreach(const _Enum_t _Enum,
-                    const std::function&lt;void(_Index_t)&gt; _Body)</div>
-<div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
-inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
-                    const std::function&lt;void(_Key_t)&gt; _Body)</div>
-<div class="code">template&lt;typename _Key_t, typename _Value_t&gt;
-inline void foreach(const map&lt;_Key_t, _Value_t&gt; _Map,
-                    const std::function&lt;void(_Key_t, _Value_t)&gt; _Body)</div>
-Foreach iterations of X that Cxx doesn't support.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Function_t, typename _Tuple_t, size_t ... _I_t&gt;
-inline auto tuple_as_args(const _Function_t _Function,
-                          const _Tuple_t _Tuple,
-                          const std::index_sequence&lt;_I_t ...&gt;)</div>
-<div class="code">template&lt;typename _Function_t, typename _Tuple_t&gt;
-inline auto tuple_as_args(const _Function_t _Function, const _Tuple_t _Tuple)</div>
-Push tuple as argument(s) to function.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Slice_t, typename _Src_Ptr_T&gt;
-_Slice_t ___slice_type(_Src_Ptr_T _Src,
-                       const uint_xt &_Start,
-                       const uint_xt &_End)</div>
-For slicing supported types.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Obj_t&gt;
-inline void XID(out)(const _Obj_t _Obj) noexcept</div>
-Built-in <x class="inline_code">out</x> function of X.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Obj_t&gt;
-inline void XID(outln)(const _Obj_t _Obj) noexcept</div>
-Built-in <x class="inline_code">outln</x> function of X.
-
-<div class="topic-separator"></div>
-<div class="code">template&lt;typename _Obj_t&gt;
-str tostr(const _Obj_t &_Obj) noexcept</div>
-Returns string form of given object.
-
-<div class="topic-separator"></div>
-<div class="code">inline void XID(panic)(const struct XID(Error) &_Error)</div>
-Built-in <x class="inline_code">panic</x> function of X.
-
-<div class="topic-separator"></div>
-<div class="code">inline void XID(panic)(const char *_Message)</div>
-Altenative of built-in <x class="inline_code">panic</x> function of X for C++ developers.
-
-<div class="topic-separator"></div>
-<div class="code">void x_terminate_handler(void) noexcept</div>
-C++ terminate handler of X.
-
-`;
-
 //#region SET_PAGE
 
 document.title = page_title;
@@ -3810,9 +3654,9 @@ const NAV_type_statics_f32                    = document.getElementById("type-st
 const NAV_type_statics_f64                    = document.getElementById("type-statics-f64");
 const NAV_type_statics_int                    = document.getElementById("type-statics-int");
 const NAV_type_statics_uint                   = document.getElementById("type-statics-uint");
-const NAV_cxx                                 = document.getElementById("cxx");
-const NAV_cxx_cxx_embedding                   = document.getElementById("cxx-cxx-embedding");
-const NAV_cxx_cxxapi                          = document.getElementById("cxx-cxxapi");
+const NAV_cpp                                 = document.getElementById("cpp");
+const NAV_cpp_api                             = document.getElementById("cpp-api");
+const NAV_cpp_interoperability                = document.getElementById("cpp-interoperability");
 const NAV_documenting                         = document.getElementById("documenting");
 const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
 const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
@@ -3890,9 +3734,9 @@ nav.navigations = [
   [NAV_type_statics_f64,                    type_statics_f64HTML],
   [NAV_type_statics_int,                    type_statics_intHTML],
   [NAV_type_statics_uint,                   type_statics_uintHTML],
-  [NAV_cxx,                                 cxxHTML],
-  [NAV_cxx_cxx_embedding,                   cxx_cxx_embeddingHTML],
-  [NAV_cxx_cxxapi,                          cxx_cxxapiHTML],
+  [NAV_cpp,                                 cppHTML],
+  [NAV_cpp_api,                             cpp_apiHTML],
+  [NAV_cpp_interoperability,                cpp_interoperabilityHTML],
   [NAV_documenting,                         documentingHTML],
   [NAV_documenting_documentation_comments,  documenting_documentation_commentsHTML],
   [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
@@ -3930,8 +3774,6 @@ const tabs = [
   ["tab-common-concepts-if-expressions",    TAB_common_concepts_if_expression],
   ["tab-common-concepts-match-expressions", TAB_common_concepts_match_expression],
   ["tab-common-concepts-goto-statements",   TAB_common_concepts_goto_statements],
-  ["cxx-cxxapi-preprocessor-defines",       TAB_cxx_cxxapi_preprocessor_defines],
-  ["cxx-cxxapi-defines",                    TAB_cxx_cxxapi_defines],
 ]
 
 nav.set_events();
