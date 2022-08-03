@@ -12,8 +12,14 @@ Returns unsafe pointer from given address.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
+type[T]
+pub voidptr_of(ptr *T) Voidptr</div>
+Returns unsafe voidptr for given raw pointer.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
 pub voidptr_from(addr uintptr) Voidptr</div>
-Returns voidptr instance from given address.
+Returns unsafe voidptr from given address.
 `;
 
 const stdlib_unsafe_traitsHTML = `
@@ -26,6 +32,13 @@ Common behaviors of unsafe pointers.
 const stdlib_unsafe_structsHTML = `
 <div class="code">pub struct Voidptr</div>
 Wrapper structure for voidptr.
+
+<br><br>
+<strong>Implemented traits:</strong>
+<ul>
+    <li><x class="inline_code">Pointer</x></li>
+</ul>
+
 <br><br>
 <strong>Methods:</strong>
 
@@ -40,16 +53,17 @@ type[T]
 pub &to_ptr() Ptr[T]</div>
 Returns unsafe pointer of given type.
 
+<div class="topic-separator"></div>
+<div class="code">type[T]
+pub struct Ptr</div>
+Wrapper structure for unsafe raw pointer.
+
 <br><br>
 <strong>Implemented traits:</strong>
 <ul>
     <li><x class="inline_code">Pointer</x></li>
 </ul>
 
-<div class="topic-separator"></div>
-<div class="code">type[T]
-pub struct Ptr</div>
-Wrapper structure for unsafe raw pointer.
 <br><br>
 <strong>Methods:</strong>
 

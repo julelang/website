@@ -3,6 +3,22 @@ const stdlib_math_bits_functionsHTML = `
 pub leading_zeros8(x u8) int</div>
 Returns the number of leading zero bits in x; the result is 8 for x == 0.
 
+<div class="code">@inline
+pub leading_zeros16(x u16) int</div>
+Returns the number of leading zero bits in x; the result is 16 for x == 0.
+
+<div class="code">@inline
+pub leading_zeros32(x u32) int</div>
+Returns the number of leading zero bits in x; the result is 32 for x == 0.
+
+<div class="code">@inline
+pub leading_zeros64(x u64) int</div>
+Returns the number of leading zero bits in x; the result is 64 for x == 0.
+
+<div class="code">@inline
+pub trailing_zeros8(x u8) int</div>
+Returns the number of trailing zero bits in x; the result is 8 for x == 0.
+
 <div class="topic-separator"></div>
 <div class="code">@inline
 pub len8(x u8) int</div>
