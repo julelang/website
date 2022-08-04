@@ -388,7 +388,7 @@ Special cases are: <br>
 <li><x class="inline_code">mod(x, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub modf(f f64) [integer f64, frac f64]</div>
+<div class="code">pub modf(f f64) [integer, frac f64]</div>
 Returns integer and fractional floating-point numbers that sum to f.
 Both values have the same sign as f.
 <br><br>

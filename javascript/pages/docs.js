@@ -960,19 +960,15 @@ const basics_operatorsHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">&</td>
-      <td>Bitwise and</td>
+      <td>Bitwise AND</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">|</td>
-      <td>Bitwise or</td>
+      <td>Bitwise OR</td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">^</td>
-      <td>Bitwise XOR</td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: 'Code';">~</td>
-      <td>Bitwise not</td>
+      <td>Bitwise XOR, Bitwise NOT</td>
     </tr>
   </table>
 
@@ -1005,11 +1001,11 @@ const basics_operatorsHTML = `
       <th style="text-align: center;">Operator(s)</th>
     </tr>
     <tr>
-      <td style="text-align: center;">1</td>
+      <td style="text-align: center;">5</td>
       <td style="text-align: center; font-family: 'Code';"> * % / << >> & </td>
     </tr>
     <tr>
-      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">4</td>
       <td style="text-align: center; font-family: 'Code';"> + - | ^ </td>
     </tr>
     <tr>
@@ -1017,11 +1013,11 @@ const basics_operatorsHTML = `
       <td style="text-align: center; font-family: 'Code';"> == != < <= > >= </td>
     </tr>
     <tr>
-      <td style="text-align: center;">4</td>
+      <td style="text-align: center;">2</td>
       <td style="text-align: center; font-family: 'Code';"> && </td>
     </tr>
     <tr>
-      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">1</td>
       <td style="text-align: center; font-family: 'Code';"> || </td>
     </tr>
   </table>
@@ -1460,7 +1456,7 @@ If you provide a return expression while there are return identifiers, the expre
 
 <br><br>
 For example:
-<div class="code">example() [x int, y int] {
+<div class="code">example() [x, y int] {
   ret 90, 100
 }</div>
 
