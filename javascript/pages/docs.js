@@ -3532,6 +3532,30 @@ default:
     // Body
 }</div>
 
+<div class="title-separator"><div>
+<div class="sub-title">The <x class="inline_code">fallthrough</x> Keyword</div>
+The fallthrough keyword can only useable into case scopes and end of the scopes. It continues to next scope.
+
+<br><br>
+For example:
+<div class="code">match {
+case false:
+    outln("Case1")
+case true:
+    outln("Case2")
+    fallthrough
+case false:
+    outln("Case3")
+    fallthrough
+default:
+    outln("Default")
+}</div>
+
+Output:
+<div class="code">Case2
+Case3
+Default</div>
+
 `;
 
 const TAB_common_concepts_goto_statements = `

@@ -1,35 +1,35 @@
 const stdlib_math_constantsHTML = `
-<div class="sub-sub-title"><x class="inline_code">pub const E:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const E: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const PI:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const PI: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const PHI:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const PHI: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT2:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT2: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT_E:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT_E: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PI:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PI: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PHI:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const SQRT_PHI: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LN2:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LN2: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LOG_2E:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LOG_2E: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LN10:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LN10: f64</x></div>
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">pub const LOG_10E:f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">pub const LOG_10E: f64</x></div>
 `;
 
 const stdlib_math_functionsHTML = `
@@ -258,6 +258,33 @@ Special cases are: <br>
 <li><x class="inline_code">floor(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub fma(x, y, z f64) f64</div>
+Returns x * y + z, computed with only one rounding.
+(That is, fma returns the fused multiply-add of x, y, and z.)
+
+<div class="topic-separator"></div>
+<div class="code">pub frexp(f f64) [frac f64, exp int]</div>
+Breaks f into a normalized fraction and an integral power of two.
+It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">frexp(±0) = ±0, 0</x></li>
+<li><x class="inline_code">frexp(±inf) = ±inf, 0</x></li>
+<li><x class="inline_code">frexp(nan) = nan, 0</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub gamma(x f64) f64</div>
+Returns the gamma function of x.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">gamma(inf) = inf</x></li>
+<li><x class="inline_code">gamma(+0) = inf</x></li>
+<li><x class="inline_code">gamma(-0) = -inf</x></li>
+<li><x class="inline_code">gamma(x) = nan for integer x < 0</x></li>
+<li><x class="inline_code">gamma(-inf) = nan</x></li>
+<li><x class="inline_code">gamma(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">@inline
 pub ceil(x f64) f64</div>
 Returns the least integer value greater than or equal to x.
@@ -295,16 +322,6 @@ Special cases are: <br>
 <li><x class="inline_code">round_even(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub frexp(f f64) [frac f64, exp int]</div>
-Breaks f into a normalized fraction and an integral power of two.
-It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
-<br><br>
-Special cases are: <br>
-<li><x class="inline_code">frexp(±0) = ±0, 0</x></li>
-<li><x class="inline_code">frexp(±inf) = ±inf, 0</x></li>
-<li><x class="inline_code">frexp(nan) = nan, 0</x></li>
-
-<div class="topic-separator"></div>
 <div class="code">pub hypot(p, q f64) f64</div>
 Returns sqrt(p*p + q*q), taking care to avoid unnecessary overflow and underflow.
 <br><br>
@@ -315,6 +332,62 @@ Special cases are: <br>
 <li><x class="inline_code">hypot(p, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
+<div class="code">pub j0(x f64) f64</div>
+Returns the order-zero Bessel function of the first kind.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">j0(±inf) = 0</x></li>
+<li><x class="inline_code">j0(0) = 1</x></li>
+<li><x class="inline_code">j0(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub y0(x f64) f64</div>
+Returns the order-zero Bessel function of the second kind.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">y0(+inf) = 0</x></li>
+<li><x class="inline_code">y0(0) = -inf</x></li>
+<li><x class="inline_code">y0(x < 0) = nan</x></li>
+<li><x class="inline_code">y0(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub j1(x f64) f64</div>
+Returns the order-one Bessel function of the first kind.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">j1(±inf) = 0</x></li>
+<li><x class="inline_code">j1(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub y1(x f64) f64</div>
+Returns the order-one Bessel function of the second kind.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">y1(inf) = 0</x></li>
+<li><x class="inline_code">y1(0) = -inf</x></li>
+<li><x class="inline_code">y1(x < 0) = nan</x></li>
+<li><x class="inline_code">y1(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub jn(n int, x f64) f64</div>
+Returns the order-n Bessel function of the first kind.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">jn(n, ±inf) = 0</x></li>
+<li><x class="inline_code">jn(n, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub yn(n int, x f64) f64</div>
+Returns the order-n Bessel function of the second kind.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">yn(n, inf) = 0</x></li>
+<li><x class="inline_code">yn(n ≥ 0, 0) = -inf</x></li>
+<li><x class="inline_code">yn(n < 0, 0) = inf if n is odd, -inf if n is even</x></li>
+<li><x class="inline_code">yn(n, x < 0) = nan</x></li>
+<li><x class="inline_code">yn(n, nan) = nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub ldexp(frac f64, exp int) f64</div>
 Is the inverse of frexp.
 It returns frac × 2**exp.
@@ -323,6 +396,17 @@ Special cases are: <br>
 <li><x class="inline_code">ldexp(±0, exp) = ±0</x></li>
 <li><x class="inline_code">ldexp(±inf, exp) = ±inf</x></li>
 <li><x class="inline_code">ldexp(nan, exp) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub lgamma(x f64) [lgamma f64, sign int]</div>
+Returns the natural logarithm and sign (-1 or +1) of gamma(x).
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">lgamma(inf) = inf</x></li>
+<li><x class="inline_code">lgamma(0) = inf</x></li>
+<li><x class="inline_code">lgamma(-integer) = inf</x></li>
+<li><x class="inline_code">lgamma(-inf) = -inf</x></li>
+<li><x class="inline_code">lgamma(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
 <div class="code">pub log(x f64) f64</div>
@@ -465,6 +549,32 @@ pub signbit(x f64) bool</div>
 Reports whether x is negative or negative zero.
 
 <div class="topic-separator"></div>
+<div class="code">pub cos(x f64) f64</div>
+Returns the cosine of the radian argument x.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">cos(±inf) = nan</x></li>
+<li><x class="inline_code">cos(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub sin(x f64) f64</div>
+Returns the sine of the radian argument x.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">sin(±0) = ±0</x></li>
+<li><x class="inline_code">sin(±inf) = nan</x></li>
+<li><x class="inline_code">sin(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub sincos(x f64) [sin, cos f64]</div>
+Returns sin(x), cos(x).
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">sincos(±0) = ±0, 1</x></li>
+<li><x class="inline_code">sincos(±inf) = nan, nan</x></li>
+<li><x class="inline_code">sincos(nan) = nan, nan</x></li>
+
+<div class="topic-separator"></div>
 <div class="code">pub sinh(x f64) f64</div>
 Returns the hyperbolic sine of x.
 <br><br>
@@ -491,6 +601,15 @@ Special cases are: <br>
 <li><x class="inline_code">sqrt(±0) = ±0</x></li>
 <li><x class="inline_code">sqrt(x < 0) = nan</x></li>
 <li><x class="inline_code">sqrt(nan) = nan</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">pub tan(x f64) f64</div>
+Returns the tangent of the radian argument x.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">tan(±0) = ±0</x></li>
+<li><x class="inline_code">tan(±inf) = nan</x></li>
+<li><x class="inline_code">tan(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
 <div class="code">pub tanh(x f64) f64</div>
