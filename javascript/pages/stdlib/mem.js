@@ -10,12 +10,6 @@ allocation is success, nil if not.
 type[T]
 pub drop(&ptr *T)</div>
 Drops pointer from references if include reference counting and set as nil.
-
-<div class="topic-separator"></div>
-<div class="code">@inline @typearg
-type[T]
-pub sizeof() uint</div>
-Returns the size of the data type in bytes.
 `;
 
 const NAV_stdlib_mem_functions = document.getElementById("functions");

@@ -1,4 +1,23 @@
 const stdlib_unsafe_functionsHTML = `
+<div class="code">@inline @typearg
+type[T]
+pub sizeof_t() uint</div>
+Returns the size of the data type in bytes.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+type[T]
+pub sizeof(expr T) uint</div>
+Returns the size of the expression in bytes.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+type[T]
+pub alignof(expr T) uint</div>
+Returns the alignment, in bytes, required for any instance of the type
+indicated by type-id, which is either complete object type.
+
+<div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
 pub ptr_of(ptr *T) Ptr[T]</div>
