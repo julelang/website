@@ -3026,17 +3026,18 @@ const stdlibHTML = `
   At below, you can see all content of standard library of the X programming language;
   <br><br><br>
   <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
-  <li><a href="../pages/stdlib/debug.html">debug</a></li>
-  <li><a href="../pages/stdlib/debug_assert.html">debug.assert</a></li>
-  <li><a href="../pages/stdlib/errors.html">errors</a></li>
-  <li><a href="../pages/stdlib/io.html">io</a></li>
-  <li><a href="../pages/stdlib/math.html">math</a></li>
-  <li><a href="../pages/stdlib/math_bits.html">math.bits</a></li>
-  <li><a href="../pages/stdlib/mem.html">mem</a></li>
-  <li><a href="../pages/stdlib/os.html">os</a></li>
-  <li><a href="../pages/stdlib/reflect.html">reflect</a></li>
-  <li><a href="../pages/stdlib/slice.html">slice</a></li>
-  <li><a href="../pages/stdlib/unsafe.html">unsafe</a></li>
+  <li><a href="../pages/stdlib/debug.html">std::debug</a></li>
+  <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
+  <li><a href="../pages/stdlib/errors.html">std::errors</a></li>
+  <li><a href="../pages/stdlib/io.html">std::io</a></li>
+  <li><a href="../pages/stdlib/math.html">std::math</a></li>
+  <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
+  <li><a href="../pages/stdlib/mem.html">std::mem</a></li>
+  <li><a href="../pages/stdlib/os.html">std::os</a></li>
+  <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
+  <li><a href="../pages/stdlib/slice.html">std::slice</a></li>
+  <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
+  <li><a href="../pages/stdlib/unsafe.html">std::unsafe</a></li>
 </div>
 `;
 
