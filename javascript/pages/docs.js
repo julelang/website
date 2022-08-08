@@ -1335,16 +1335,6 @@ The returned data must also be compatible with the return data type.
 <br><br>
 Return values are written with the <x class="inline_code">ret</x> keyword.
 Although the keyword <x class="inline_code">return</x> is widely used, <x class="inline_code">ret</x> was considered as an alternative to this keyword, which is both shorter and without losing its meaning.
-<br><br>
-However, there is an additional alternative syntax.
-Writing any expression means return statement.
-<div class="code">div(a, b f64) f64 { a/b }</div>
-The example above is an example of this.
-<br><br>
-What if a function return is desired? <br>
-X does not treat function calls as return expressions. <br>
-If you want to send a function as a return expression, try enclosing it in parentheses. <br>
-For exmaple; <x class="inline_code">(my_func())</x> or use the <x class="inline_code">ret</x> keyword.
 
 <div class="title-separator"></div>
 <div class="sub-title">Using Function as Data Type</div>
@@ -1366,7 +1356,9 @@ Just in addition, the block of the function must be written.
 <br><br>
 For example:
 <div class="code">main() {
-    make_hello: = (name str) str { "Hello " + name + "!" };
+    make_hello: = (name str) str {
+    	ret "Hello " + name + "!"
+    };
     outln(make_hello("X"))
 }</div>
 
@@ -1384,35 +1376,12 @@ Definitions used from outer blocks can be shadowed within the anonymous function
 </div>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Captures</div>
-Anonymous functions work a little differently, although they seem to access the block's definitions directly.
-Each definition is copied with the same identifier.
-Captures becomes important in this case.
-<br><br>
-
-There are two captures; copying and referencing.
-<li>Copying</li>
-The default capture of anonymous functions.
-All definitions in Scope are copied with the same identifier.
-
-<li>Referencing</li>
-Definitions in scope are copied by referencing.
-To make an anonymous function use referencing, the <x class="inline_code">&</x> operator must be used. <br>
-For example:
-<div class="code">&() { /* body... */ }</div>
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">Dangling Capturues</div>
-Variables are captured at the point where the anonymous function is defined.
-If a variable captured by reference dies before the anonymous function, the anonymous function will be left holding a dangling reference.
-
-<div class="title-separator"></div>
 <div class="sub-title">Multiple Returnable Functions</div>
 Functions can returns more then one values.
 For that, specify return data-type with multiple type.
 <br><br>
 For example:
-<div class="code">my_func() [int, int] { 18, 96 }</div>
+<div class="code">my_func() [int, int] { ret 18, 96 }</div>
 Brackets are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
 
@@ -1422,7 +1391,7 @@ Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
 <br><br>
 For example:
-<div class="code">less_than(x, y int) [bool] { x < y }</div>
+<div class="code">less_than(x, y int) [bool] { ret x < y }</div>
 The example at above, accepted as one type return.
 
 <div class="title-separator"></div>
@@ -1466,7 +1435,7 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example:
-<div class="code">compare_int(x, y int) [bool, bool] { x < y, x == y }
+<div class="code">compare_int(x, y int) [bool, bool] { ret x < y, x == y }
 
 main() {
     less:, equals: = compare_int(10, 20)
@@ -1480,7 +1449,7 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example:
-<div class="code">multi_ret_func() [int, str, byte] { 143, "STR", 'W' }
+<div class="code">multi_ret_func() [int, str, byte] { ret 143, "STR", 'W' }
 
 my_print(a int, b str, c byte) {
     outln(a)
@@ -1497,8 +1466,8 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example:
-<div class="code">example1() [int, str, byte] { 143, "STR", 'W' }
-example2() [int, str, byte] { (example1()) }
+<div class="code">example1() [int, str, byte] { ret 143, "STR", 'W' }
+example2() [int, str, byte] { ret example1() }
 
 main() {
     a:, b:, c: = test2()
@@ -1512,7 +1481,7 @@ main() {
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
 For example:
-<div class="code">sub(a, b int) int { a-b }
+<div class="code">sub(a, b int) int { ret a-b }
 
 main() {
     outln(sub(190, 10))     // Prints 180
@@ -2148,12 +2117,13 @@ X does the memory management itself.
 It guarantees memory safety.
 It uses reference counting for heap allocations.
 It is automatically released when the reference count of the pointer reaches zero, that is, when it is certain that the heap allocation is no longer used.
+It is guaranteed that no allocation goes unnoticed and is also not released while the allocation is still in use.
 
 <div class="title-separator"></div>
 <div class="sub-title">Heap Allocation</div>
 The <x class="inline_code">new</x> function is used to perform a heap allocation. <br>
 It is a function of the <x class="inline_code">std::mem</x> stdlib. <br>
-Please refer to the built-in standard library documentation for this function.
+Please refer to the <a href="stdlib/mem.html">std::mem</a> standard library documentation for this function.
 <br><br>
 For example:
 <div class="code">use std::mem
@@ -2208,6 +2178,28 @@ main() {
     // Frees allocation, ref count is 0 now
     ptr_a = nil
 }</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">When does XXC perform immutability?</div>
+Definitions that anonymous functions get from within the block are copied into the anonymous function instead of being referenced.
+This means that anonymous functions cannot change the definitions of the block they are defined in.
+A heap guaranteed pointer with pre-guaranteed is required to be effective.
+
+<div class="title-separator"></div>
+<div class="sub-title">Heap Guarantee Approach</div>
+Due to the heap guarantee approach of XXC, the compiler performs heap allocation and moves the relevant pointer to the stack whenever the heap allocation must be guaranteed while compiling the code.
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">When does XXC perform heap guarantee?</div>
+<li>When returned pointers</li>
+<li>When anonymous functions copy pointers from block</li>
+<li>When struct has a pointer member</li>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">How does XXC handle its allocation?</div>
+Pointers to a pure point create and point to a new allocation for itself when the heap is guaranteed.
+Guaranteed pointers always point to the new allocation, not the old one.
+They are common if a pointer points to a place using a different pointer. When one heap is guaranteed, all public pointers used in the same way are moved to the same allocation and the heap is guaranteed.
 
 </div>
 `;
