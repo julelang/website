@@ -3331,7 +3331,7 @@ If the index variable is be numeric, X's auto data-type is <x class="inline_code
 The for loop is a good choice for iterations from one point to another.
 <div class="title-separator"></div>
 <strong>Syntax</strong>
-<div class="code">for STATEMENT1, EXPRESSION, STATEMENT2 { /* Body */ }</div>
+<div class="code">for STATEMENT1; EXPRESSION; STATEMENT2 { /* Body */ }</div>
 
 <strong>STATEMENT1</strong>: Executed once before block.
 <br>
@@ -3342,7 +3342,7 @@ The for loop is a good choice for iterations from one point to another.
 <br><br>
 For example:
 <div class="code">main() {
-    for i: = 0, i < 10, i++ {
+    for i: = 0; i < 10; i++ {
         outln(i)
     }
 }</div>
