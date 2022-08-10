@@ -2122,14 +2122,12 @@ It is guaranteed that no allocation goes unnoticed and is also not released whil
 <div class="title-separator"></div>
 <div class="sub-title">Heap Allocation</div>
 The <x class="inline_code">new</x> function is used to perform a heap allocation. <br>
-It is a function of the <x class="inline_code">std::mem</x> stdlib. <br>
-Please refer to the <a href="stdlib/mem.html">std::mem</a> standard library documentation for this function.
+It is a built-in function. <br>
+Please refer to the <a href="stdlib/builtin.html">built-in</a> library documentation for this function.
 <br><br>
 For example:
-<div class="code">use std::mem
-
-main() {
-    ptr: = std::mem::new(int)
+<div class="code">main() {
+    ptr: = new(int)
     outln(ptr)
 }</div>
 The <x class="inline_code">ptr</x> variable is a heap allocated pointer.
@@ -2142,9 +2140,7 @@ It is deducted from the count when it loses its references.
 When the reference count reaches zero, it releases the allocation as it is no longer used.
 <br><br>
 For example:
-<div class="code">use std::mem
-
-main() {
+<div class="code">main() {
     my_int: = 100
 
     // Takes address of my_int but doesn't ref counting
@@ -2156,7 +2152,7 @@ main() {
 
     // Make heap-allocation, returns heap-allocated *int
     // Ref count is 1
-    ptr = std::mem::new(int)
+    ptr = new(int)
     
     // Assign 100 expression to allocation
     *ptr = 100
@@ -2166,7 +2162,7 @@ main() {
 
     // Make new heap-allocation, ref count is 1
     // Frees old allocation cause ref count is 0 now
-    ptr = std::mem::new(int)
+    ptr = new(int)
 
     // Ref count is 2 now of current allocation
     // The ptr_a referencing to allocation of ptr
@@ -3027,8 +3023,9 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/mem.html">std::mem</a></li>
   <li><a href="../pages/stdlib/os.html">std::os</a></li>
   <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
-  <li><a href="../pages/stdlib/slice.html">std::slice</a></li>
   <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
+  <li><a href="../pages/stdlib/unicode.html">std::unicode</a></li>
+  <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
   <li><a href="../pages/stdlib/unsafe.html">std::unsafe</a></li>
 </div>
 `;

@@ -1,11 +1,4 @@
 const stdlib_mem_functionsHTML = `
-<div class="code">@typearg
-type[T]
-pub new() *T</div>
-Returns pointer to new heap-allocation of data type if
-allocation is success, nil if not.
-
-<div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
 pub drop(&ptr *T)</div>

@@ -30,8 +30,36 @@ Recovers errors if exist and call given function with handled error instance.
 <div class="topic-separator"></div>
 <div class="code">@typearg
 type[T]
-new() *T</div>
-Returns pointer to new heap-allocation of data type if allocation is success, <x class="inline_code">nil</x> if not.
+pub new() *T</div>
+Returns pointer to new heap-allocation of data type if
+allocation is success, nil if not.
+
+<div class="topic-separator"></div>
+<div class="code">type[Item]
+make(n int) []Item</div>
+Allocated new n sized slice for given data type.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">make[Item](n) = nil if n < 0</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">type[Item]
+copy(dest, src []Item) int</div>
+Copies components of source slice to destination slice.
+Returns number of copied components.
+<br><br>
+Special cases are: <br>
+<li><x class="inline_code">copy[Item](dest, src) = length accepts as src.len if dest.len > src.len</x></li>
+<li><x class="inline_code">copy[Item](dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
+
+<div class="topic-separator"></div>
+<div class="code">type[Item]
+append(src []Item, ...components Item) []Item</div>
+Creates new required sized slice. Copies all components
+of given source slice and appends given components to end of new slice.
+Returns new slice, not changes given source slice.
+If you want append components to source slice, assign returned slice.
+
 `;
 
 const stdlib_builtin_traitsHTML = `
