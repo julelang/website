@@ -2,6 +2,8 @@
   Main theme stylesheet.
 */
 
+/* #FFBB00 */
+
 html {
   position: relative;
   max-width: 100%;
@@ -40,7 +42,7 @@ body {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: purple;
+  background-color: #c48f00;
   color: white;
 }
 
@@ -59,12 +61,12 @@ body {
 
 ::-moz-selection {
   color: rgb(255, 255, 255);
-  background-color: blueviolet;
+  background-color: goldenrod;
 }
 
 ::selection {
   color: rgb(255, 255, 255);
-  background-color: blueviolet;
+  background-color: goldenrod;
 }
 
 ::-webkit-scrollbar {
@@ -77,8 +79,19 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(140, 0, 255);
+  background: slategray;
   border-radius: 10px;
+}
+
+a {
+  color: #dfba55;
+  text-decoration: none;
+  transition: 250ms;
+}
+
+a:hover {
+  color: #FFBB00;
+  transition: 250ms;
 }
 
 ::-webkit-scrollbar-thumb:hover {}

@@ -92,7 +92,7 @@ button {
   font-style: normal;
   border: none;
   color: rgb(255, 255, 255);
-  background-color: blueviolet; /* Green */
+  background-color: #9c7300;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -107,7 +107,7 @@ button {
 
 button:hover {
   transition: 250ms;
-  background-color: rgb(100, 50, 168);
+  background-color: #FFBB00;
 }
 
 #side-navigation {
@@ -144,7 +144,7 @@ button:hover {
 
 #side-navigation .topic:hover {
   transition: 200ms;
-  color: blueviolet;
+  color: goldenrod;
   cursor: pointer;
   margin-left: 5px;
   font-weight: bold;
@@ -167,7 +167,7 @@ button:hover {
 
 #side-navigation .sub-topic:hover {
   transition: 250ms;
-  color: blueviolet;
+  color: goldenrod;
   cursor: pointer;
   margin-left: 15px;
   font-weight: bold;
@@ -190,7 +190,7 @@ button:hover {
 
 #side-navigation .sub-sub-topic:hover {
   transition: 250ms;
-  color: blueviolet;
+  color: goldenrod;
   cursor: pointer;
   margin-left: 35px;
   font-weight: bold;
@@ -228,7 +228,7 @@ button:hover {
   color: rgb(255, 255, 255);
   background-color: transparent;
   border-radius: 5px;
-  border-color: blueviolet;
+  border-color: lightslategray;
   border-style: solid;
   border-width: 1px;
   padding: 10px;
@@ -263,13 +263,12 @@ button:hover {
   font-size: 25px;
   text-decoration: none;
   transition: 250ms;
-  color: orchid;
+  
 }
 
 .search-result a:hover {
   transition: 250ms;
   cursor: pointer;
-  color: darkorchid;
   transition: 250ms;
 }
 
@@ -285,20 +284,19 @@ button:hover {
   text-decoration: none;
   margin-left: 10px;
   transition: 250ms;
-  color: orchid;
+  
 }
 
 .search-predictions a:hover {
   transition: 250ms;
   cursor: pointer;
-  color: darkorchid;
   transition: 250ms;
 }
 
 .marked-ul li:before {
   content: '✔';
   display: inline-flex;
-  color: rebeccapurple;
+  color: #c48f00;
   padding: 0px 6px 0px 0px;
   margin: 0px;
 }
@@ -311,7 +309,7 @@ button:hover {
 }
 
 .marked-ul li desc {
-  color: blueviolet;
+  color: silver;
   font-size: 19px;
   font-weight: bolder;
 }
@@ -343,14 +341,15 @@ button:hover {
   user-select: none;
   border-radius: 10px;
   border-width: 2px;
-  border-color:rgb(100, 50, 168);
+  border-color: #ca9400;
   border-style: solid;
   transition: 200ms;
 }
 
 .link-card:hover {
   transition: 200ms;
-  background-color: rgb(100, 50, 168);
+  color: white;
+  background-color: #ca9400;
 }
 
 .link-card-body {
@@ -454,7 +453,7 @@ a:hover {
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-color: rgb(100, 50, 168);
+  border-color: #FFBB00;
   border-style: solid;
   border-width: 1px;
 }
@@ -472,7 +471,8 @@ a:hover {
 
 .dropdown-content a:hover {
   transition: 0.15s;
-  background-color: #d3baf3;
+  color: black;
+  background-color: #f3e6ba;
   font-weight: bold;
 }
 

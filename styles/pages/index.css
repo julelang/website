@@ -12,16 +12,12 @@ body {
   transition: 200ms;
 }
 
-.navigation-logo:hover {
-  background: rgba(71, 0, 95, 0.15);
-  transition: 250ms;
-}
-
 .navigation #navigation-links {
   margin-left: 40px;
 }
 
 .navigation #navigation-links a {
+  color: white;
   border-radius: 200px;
   padding-left: 10px;
   padding-right: 10px;
@@ -29,16 +25,15 @@ body {
   padding-bottom: 1px;
   font-size: 20px;
   /*color: rgb(174, 0, 255);*/
-  color: rgb(130, 36, 218)
 }
 
 .navigation #navigation-links a:hover {
-  background-color: rgb(160, 75, 245);
+  background-color: #FFBB00;
   color: rgb(255, 255, 255);
 }
 
 #startup-panel {
-  color: rgb(196, 138, 255);
+  color: white;
   background-color: transparent;
   /*background-color: rgb(30, 30, 30);*/
   display: flex;
@@ -70,16 +65,9 @@ body {
   height: 580px;
   margin: 0px;
   padding: 0px;
-  background-color: rgb(255, 255, 255);
-  background: rgb(33, 0, 36);
-  background: -moz-linear-gradient(0deg, rgba(33,0,36,1) 0%, rgba(137,0,221,1) 0%, rgba(255,255,255,1) 5%);
-  background: -webkit-linear-gradient(0deg, rgba(33,0,36,1) 0%, rgba(137,0,221,1) 0%, rgba(255,255,255,1) 5%);
-  background: linear-gradient(0deg, rgba(33,0,36,1) 0%, rgba(137,0,221,1) 0%, rgba(255,255,255,1) 5%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#210024",endColorstr="#ffffff",GradientType=1);
 }
 
 .startup-panel-content {
-  color: rgb(174, 0, 255);
   margin-top: 50px;
   margin-left: 50px;
   margin-right: 10%;
@@ -88,114 +76,6 @@ body {
   font-weight: normal;
   z-index: 1000000;
   user-select: none;
-}
-
-#navigate-logo {
-  width: 250px;
-  height: 250px;
-  margin: auto;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  margin-top: 455px;
-  z-index: 1000000000000000000000;
-  user-select: none;
-}
-
-.navigate-link {
-  font-family: 'OpenSans';
-  font-weight: bolder;
-  font-size: larger;
-  border-radius: 100000000000000000000px;
-  position: absolute;
-  width: 250px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
-  user-select: none;
-  text-align: center;
-  top: 0px;
-  margin-top: 550px;
-  background-color: rebeccapurple;
-  border-radius: 100000000000000px;
-  z-index: 1000000000;
-  transition: 250ms;
-  text-decoration: none;
-  color: white;
-}
-
-.navigate-link.left {
-  margin-left: calc(50% - 350px);
-  text-align: left;
-}
-
-.navigate-link.right {
-  margin-left: 50%;
-  text-align: right;
-}
-
-.navigate-link:hover {
-  transition: 250ms;
-  background-color: rgb(174, 0, 255);
-  cursor: pointer;
-}
-
-.navigate-link.left:hover {
-  padding-left: 30px;
-}
-
-.navigate-link.right:hover {
-  padding-left: 70px;
-  padding-right: 30px;
-}
-
-.navigate-link a {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-}
-
-.navigate-shadow {
-  background-color: rgba(137, 0, 201, 1);
-  position: absolute;
-  top: 0px;
-  margin-top: 505px;
-  margin-left: calc(50% - 85px);
-  width: 150px;
-  height: 150px;
-  z-index: 1000000000;
-  border-radius: 10000000000000000px;
-}
-
-.navigate-large-shadow {
-  background-color: rgba(71, 0, 95, 0.2);
-  position: absolute;
-  top: 0px;
-  margin-top: 430px;
-  margin-left: calc(50% - 160px);
-  width: 300px;
-  height: 300px;
-  z-index: 1000000000;
-  border-radius: 10000000000000000px;
-}
-
-#startup-code {
-  border-width: 2px;
-  border-color: rebeccapurple;
-  color: rgb(0, 0, 0);
-  background-color: transparent;
-  margin-left: auto;
-  width: 50%;
-  height: 280px;
-}
-
-.searchbox-input {
-  color: rgb(0, 0, 0);
-}
-
-.searchbox-input::placeholder {
-  color: rgb(100, 100, 100);
 }
 
 .line-section.last {

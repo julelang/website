@@ -12,7 +12,7 @@ const body = document.body;
 
 //#region SET_TITLE
 if (document.title == "") {
-  head.innerHTML += `<title>The X Programming Language</title>`;
+  head.innerHTML += `<title>The Jule Programming Language</title>`;
 }
 //#endregion SET_TITLE
 
@@ -20,7 +20,7 @@ if (document.title == "") {
 head.innerHTML +=
 `<link
   rel="icon"
-  href="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">`;
+  href="https://raw.githubusercontent.com/jule-lang/resources/main/jule.svg?sanitize=true">`;
 //#endregion SET_ICON
 
 //#region SET_STYLES
@@ -44,7 +44,7 @@ document.getElementById('navigation').innerHTML =
 <a href="${rootPath}/index.html">
 <img
   class="navigation-logo"
-  src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
+  src="https://raw.githubusercontent.com/jule-lang/resources/main/jule.svg?sanitize=true">
 </a>
 <div id="navigation-links">
   <a href="${rootPath}/pages/docs.html">DOCUMENTATIONS</a>
@@ -74,14 +74,14 @@ body.innerHTML +=
       <center>
         <img
           class="footer-logo"
-          src="https://raw.githubusercontent.com/the-xlang/resources/main/x.svg?sanitize=true">
+          src="https://raw.githubusercontent.com/jule-lang/resources/main/jule.svg?sanitize=true">
         <div id="copyright"></div>
       </center>
       </div>
     </td>
     <td>
-      <div class="footer-title">Using X</div>
-      <a href="https://github.com/the-xlang/xxc/releases">Download</a> <br>
+      <div class="footer-title">Using Jule</div>
+      <a href="https://github.com/jule-lang/jule/releases">Download</a> <br>
       <a href="${rootPath}/pages/community.html">Community</a> <br>
       <a href="${rootPath}/pages/docs.html">Documentations</a> <br>
       <a href=""></a> <br>
@@ -89,15 +89,15 @@ body.innerHTML +=
     </td>
     <td>
       <div class="footer-title">Contribute</div>
-      <a href="https://github.com/the-xlang/xxc">Source Code</a> <br>
-      <a href="https://github.com/the-xlang/xxc/fork">Fork Project</a> <br>
-      <a href="https://github.com/the-xlang/xxc/issues">Issues</a> <br>
-      <a href="https://github.com/the-xlang/xxc/discussions">Discussions</a> <br>
+      <a href="https://github.com/jule-lang/jule">Source Code</a> <br>
+      <a href="https://github.com/jule-lang/jule/fork">Fork Project</a> <br>
+      <a href="https://github.com/jule-lang/jule/issues">Issues</a> <br>
+      <a href="https://github.com/jule-lang/jule/discussions">Discussions</a> <br>
       <a href="${rootPath}/pages/contributing.html">Guideline</a>
     </td>
     <td>
       <div class="footer-title">Community</div>
-      <a href="https://github.com/the-xlang">GitHub Organization</a> <br>
+      <a href="https://github.com/jule-lang">GitHub Organization</a> <br>
       <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
       <a href="${rootPath}/pages/code_of_conduct.html">Code of Conduct</a> <br>
       <a href="${rootPath}/pages/license.html"">License</a> <br>

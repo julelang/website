@@ -1,7 +1,7 @@
 const license_textHTML = `
 BSD 3-Clause License
 <br><br>
-Copyright (c) ${new Date().getFullYear()}, The X Programming Language <br>
+Copyright (c) ${new Date().getFullYear()}, The Jule Programming Language <br>
 All rights reserved. <br>
 <br><br>
 Redistribution and use in source and binary forms, with or without

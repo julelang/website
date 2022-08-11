@@ -5,7 +5,7 @@
 const copyrightHTML =
 `
 <div style="font-family: 'OpenSans'">
-  The X Programming Language Team
+  The Jule Programming Language
   <br>
   Copyright 2021-${new Date().getFullYear()}
 </div>

@@ -42,14 +42,3 @@ body {
   text-align: left;
   color: rgb(200, 200, 200);
 }
-
-a {
-  color: fuchsia;
-  text-decoration: none;
-  transition: 250ms;
-}
-
-a:hover {
-  color: darkorchid;
-  transition: 250ms;
-}

@@ -1,4 +1,4 @@
-const page_title = `X - `;
+const page_title = `Jule - `;
 
 
 //#region SET_PAGE

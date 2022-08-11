@@ -1,4 +1,4 @@
-const page_title = `X - Code of Conduct`;
+const page_title = `Jule - Code of Conduct`;
 
 const content_titleHTML = `Contributor Covenant Code of Conduct`;
 const pledge_titleHTML = `Our Pledge`;

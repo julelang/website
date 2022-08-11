@@ -31,7 +31,7 @@
   transition: 200ms;
   font-family: 'OpenSans-Bold';
   font-size: large;
-  color: rgb(200, 116, 221);
+  color: rgb(189, 189, 189);
 }
 
 .navigation #navigation-links a:hover {

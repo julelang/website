@@ -5,7 +5,7 @@ footer.remove();
 class SideNavigator {
     navigations  = []
     index        = 0
-    active_color = 'rgb(200, 116, 221)';
+    active_color = '#FFBB00';
     url          = undefined
     query_page   = undefined
     content_body = undefined

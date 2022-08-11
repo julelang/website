@@ -1,32 +1,32 @@
-// Copyright 2022 The X Programming Language.
+// Copyright 2022 The Jule Programming Language.
 // Use of this source code is governed by a BSD 3-Clause
 // license that can be found in the LICENSE file.
 
-const page_title = `X - Documentations`;
+const page_title = `Jule - Documentations`;
 
-const the_xlangHTML = `
-<div class="title">The <x style="color: rgb(180, 52, 235);">X</x> Programming Language</div>
+const jule_langHTML = `
+<div class="title">The <x style="color: #FFBB00;">Jule</x> Programming Language</div>
 <br>
 <div class="text">
   <br><br>
-  This version of the text assumes you're using X compiler (compiled from source) 3.10.2021 (DD/MM/YYYY) or later.
+  This version of the text assumes you're using JuleC compiler (compiled from source) 11.07.2022 (DD/MM/YYYY) or later.
   <br><br><br><br>
-  X is a statically typed compiled programming language designed for system development, building maintainable and reliable software.
+  Jule is a statically typed compiled programming language designed for system development, building maintainable and reliable software.
   It has syntax similar to today's programming languages.
-  So if you already know a language, it probably won't take you long to get used to X.
+  So if you already know a language, it probably won't take you long to get used to Jule.
   <br><br>
-  X is a very simple language.
+  Jule is a very simple language.
   You will not have much difficulty in learning.
   It is a suitable language for developers of all levels.
   <br><br>
-  The fact that X is simple does not diminish its power. X is a pretty powerful language.
+  The fact that Jule is simple does not diminish its power. Jule is a pretty powerful language.
   The fact that it evolves directly to C++ and compiles from C++ means an environment familiar to C++ developers.
   <br><br>
-  X is also a good choice for the simpler way to write C++.
-  At the developer's request, X can be translated or compiled into C++.
+  Jule is also a good choice for the simpler way to write C++.
+  At the developer's request, Jule can be translated or compiled into C++.
   This choice is the developer's.
   <br><br>
-  The purpose of X is to keep functionality high while maintaining a simple form and readability.
+  The purpose of Jule is to keep functionality high while maintaining a simple form and readability.
   It guarantees memory safety and does not contain undefined behavior.
 </div>
 `;
@@ -34,24 +34,24 @@ const the_xlangHTML = `
 const forewordHTML = `
 <div class="title" style="margin-bottom: 20px;">Foreword</div>
 <div class="text">
-  This documentation is updated following the source code according to the latest version of X.
+  This documentation is updated following the source code according to the latest version of Jule.
   Some content maybe is not released yet, so it may be here, but not in the compiler you have.
   <br><br>
-  X syntactically and structurally encourages code to be readable.
+  Jule syntactically and structurally encourages code to be readable.
   It aims to transform C++ code as safely as possible.
   Optimizes for a secure code.
-  With this documentation you will see the basics and some subtleties of X and you will understand X.
-  You don't actually need to know C++ to learn and understand X.
+  With this documentation you will see the basics and some subtleties of Jule and you will understand Jule.
+  You don't actually need to know C++ to learn and understand Jule.
   <br><br>
-  X is plain and simple.
+  Jule is plain and simple.
   Suitable for developers of all levels.
   It also takes a very short time to learn.
   If you're not learning a language for the first time, it probably won't take much of your time.
   <br><br>
-  With this documentation, it is possible to improve your X knowledge, programming and analytical thinking skills.
+  With this documentation, it is possible to improve your Jule knowledge, programming and analytical thinking skills.
   If you're just starting out to programming, it could be a pretty good start for you.
   <br><br>
-  Welcome to X community!
+  Welcome to Jule community!
 </div>
 `;
 
@@ -62,31 +62,31 @@ const introductionHTML = `
   The explanations in this documentation assume that you already know programming.
   Therefore, everything is not explained from the very beginning.
   If you are completely new to programming, it may be better to learn programming from the most basic sources.
-  If you already know programming, you can easily learn X with this documentation.
+  If you already know programming, you can easily learn Jule with this documentation.
 
   <div class="title-separator"></div>
-  <div class="sub-title">Who X is For</div>
-  X is good for a few groups of developers for many reasons. Some of those;
+  <div class="sub-title">Who Jule is For</div>
+  Jule is good for a few groups of developers for many reasons. Some of those;
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">System Developers</div>
-  X was designed as a system programming language.
+  Jule was designed as a system programming language.
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Students</div>
-  X is suitable for learning programming.
+  Jule is suitable for learning programming.
   X's simple structure and easy-to-understand, readable code encourage both effortless writing and understanding.
   In this way, students can learn without difficulty.
   Confusing syntax does not stand in their way.
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Open Source Developers</div>
-  X is a project open to community contributions.
+  Jule is a project open to community contributions.
   Thank you for every tool, library, framework and program you make open source.
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Developers Who Value Performance, Stability and Simplicity</div>
-  X is a good choice for those looking for simplicity, stability and performance.
+  Jule is a good choice for those looking for simplicity, stability and performance.
   When you develop with X, you use a simple and straightforward syntax.
 </div>
 `;
@@ -94,7 +94,7 @@ const introductionHTML = `
 const getting_startedHTML = `
 <div class="title" style="margin-bottom: 20px;">Getting Started</div>
 <div class="text">
-  You are about to start X.
+  You are about to start Jule.
   Fasten the belts.
   Maybe a popcorn.
 </div>
@@ -104,32 +104,32 @@ const getting_started_downloadsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Downloads</div>
 <div class="text">
   <div class="sub-title">Releases</div>
-  You can see X compiler in easy setup form at <a target="_blank" href="https://github.com/the-xlang/xxc/releases">releases</a>.
+  You can see JuleC in easy setup form at <a target="_blank" href="https://github.com/jule-lang/jule/releases">releases</a>.
 
   <div class="title-separator"></div>
   <div class="sub-title">Source Code</div>
-  You can download source code of the X compiler at <a target="_blank" href="https://github.com/the-xlang/xxc">repository</a>.
+  You can download source code of the JuleC at <a target="_blank" href="https://github.com/jule-lang/jule">repository</a>.
 </div>
 `;
 
 const getting_started_install_from_sourceHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Install from Source</div>
 <div class="text">
-  Ok! We install X compiler from source code.
+  Ok! We install JuleC from source code.
   Actually, we just compile project.
   <br>
   Getting the most up-to-date version is a good way to try.
   <br><br>
-  We accept you have already X source code.
+  We accept you have already Jule source code.
 
   <div class="title-separator"></div>
   <div class="sub-title">Build Scripts</div>
   Project has scripts for build/compile project.
   You can use them.
-  This scripts written for compile the X compiler.
+  This scripts written for compile the JuleC.
   If you execute script, result is be compilation error or complete message.
 
-  <div class="warn">These examples assume you are in the root directory of the X project.</div>
+  <div class="warn">These examples assume you are in the root directory of the Jule project.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
@@ -149,19 +149,19 @@ const getting_started_install_from_sourceHTML = `
 
   <div class="title-separator"></div>
   <div class="sub-title">Manual</div>
-  X compiler is written in Go, for now!
+  JuleC is written in Go, for now!
 
   <div class="warn">You should have Go compiler for this option.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">PS @DIR> go build -o xxc.exe -v cmd/xxc/main.go</div>
+  <div class="code">PS @DIR> go build -o jule.exe -v cmd/julec/main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o xxc -v cmd/xxc/main.go</div>
+  <div class="code">$ go build -o jule -v cmd/julec/main.go</div>
 </div>
 `;
 
@@ -182,23 +182,23 @@ The basics of compiler commands.
 <div class="title-separator"></div>
 <div class="sub-title">help</div>
 Shows help about of commands.
-<div class="code">$ xxc help</div>
+<div class="code">$ jule help</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">version</div>
-Shows version of the X compiler.
-<div class="code">$ xxc version</div>
+Shows version of the JuleC.
+<div class="code">$ jule version</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">doc</div>
-Documentize X source code.
+Documentize Jule source code.
 See the Documenting for more information.
-<div class="code">$ xxc doc main.xx</div>
+<div class="code">$ jule doc main.jule</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">init</div>
 Initialize new project in working directory.
-<div class="code">$ xxc init</div>
+<div class="code">$ jule init</div>
 
 </div>
 `;
@@ -206,9 +206,9 @@ Initialize new project in working directory.
 const compiler_config_filesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Config Files</div>
 <div class="text">
-Your config file shows your X compiler how it will work and lets you choose things for yourself.
+Your config file shows your compiler how it will work and lets you choose things for yourself.
 <br>
-The name of the configuration file should be <x class="inline_code">x.set</x>.
+The name of the configuration file should be <x class="inline_code">jule.set</x>.
 <br><br>
 In fact, you can start working right away, leaving it as default.
 Generally you don't need to do any special configuration here.
@@ -271,7 +271,7 @@ const compiler_compilingHTML = `
 <div class="text">
 Let's start with a simple hello world program and learn compiling from this program.
 <br><br>
-We have a <x class="inline_code">main.xx</x> file:
+We have a <x class="inline_code">main.jule</x> file:
 <div class="code">main() {
     outln("Hello, World!")
 }</div>
@@ -279,9 +279,9 @@ We have a <x class="inline_code">main.xx</x> file:
 We will use already created settings file with <x class="inline_code">x init</x> command.
 <br>
 <br>
-For compile X code, we just give filename to compiler:
-<div class="code">xxc main.xx</div>
-And compiler is transpile our X code to C++ code. <br>
+For compile Jule code, we just give filename to JuleC:
+<div class="code">jule main.jule</div>
+And compiler is transpile our Jule code to C++ code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 <br><br>
 As result we have a executable machine code or C++ result of our program.
@@ -370,7 +370,7 @@ const project_namingHTML = `
   <tr>
     <td style="text-align: center;">Source File</td>
     <td>snake_case</td>
-    <td>file.xx, my_file.xx</td>
+    <td>file.jule, my_file.jule</td>
   </tr>
   <tr>
     <td style="text-align: center;">Constant</td>
@@ -439,7 +439,7 @@ const project_namingHTML = `
 Certain specifications can be made to include only certain files in the compilation.
 For this, simply give a matching specification after the underscore.
 <br><br>
-For example: <x class="inline_code">example_amd64.xx</x>
+For example: <x class="inline_code">example_amd64.jule</x>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Operating System Specification</div>
@@ -490,13 +490,13 @@ DEFINE B = 100
 
 In the above example, the <x class="inline_code">A</x> variable uses the <x class="inline_code">B</x> variable while getting the value.
 As can be seen, the <x class="inline_code">B</x> variable is declared after the <x class="inline_code">A</x> variable.
-In this case, the X compiler will throw an error.
-In the X source code, <x class="inline_code">B</x> must have been declared before.
+In this case, the JuleC will throw an error.
+In the Jule source code, <x class="inline_code">B</x> must have been declared before.
 
 <div class="title-separator"></div>
 <div class="sub-title">Define Order</div>
 The example seen above is due to the definition order logic.
-X has a priority queue that it uses to process definitions.
+Jule has a priority queue that it uses to process definitions.
 It is useful to pay attention to this.
 <br><br>
 <strong>Order (High to Low);</strong>
@@ -510,7 +510,7 @@ It is useful to pay attention to this.
 const basicsHTML = `
 <div class="title" style="margin-bottom: 20px;">Basics</div>
 <div class="text">
-  The basics of the X programming language. <br>
+  The basics of the Jule programming language. <br>
   Comments, operators and more. Knowledge for next steps.
 </div>
 `;
@@ -522,7 +522,7 @@ const basics_commentsHTML = `
   <br><br>
   In general, two types of comment lines appear in programming languages: inline comment and multiline comment.
   Some programming languages only support one.
-  X supports both of these common approaches.
+  Jule supports both of these common approaches.
 
   <div class="title-separator"></div>
   <div class="sub-title">Inline Comments</div>
@@ -575,7 +575,7 @@ Initialize function is should be void and not have any parameter.
 const basics_data_typesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Data Types</div>
 <div class="text">
-  X is designed strongly typed.
+  Jule is designed strongly typed.
   Therefore, the data-types of all values must be specified during compilation.
   In this section we will look at the built-in types offered by the compiler.
 
@@ -765,7 +765,7 @@ const basics_data_typesHTML = `
   <div class="title-separator"></div>
   <div class="sub-title">Strings</div>
   <div class="sub-sub-title">String Literals</div>
-  <div class="code">"String literal of X."</div>
+  <div class="code">"String literal of Jule."</div>
   String literals have a escape sequences.
   <br><br>
   <table class="table">
@@ -834,8 +834,8 @@ const basics_data_typesHTML = `
   <div class="sub-sub-title">Raw String Literals</div>
   Raw strings do not contain escape sequences and are not required to be defined in a single line.
   They are represents with <x class="inline_code">\`</x>.
-  <div class="code">\`Raw String literal of X.\`</div>
-  <div class="code">\`Raw String literal of X
+  <div class="code">\`Raw String literal of Jule.\`</div>
+  <div class="code">\`Raw String literal of Jule
 with
 new
     lines.\`</div>
@@ -1056,7 +1056,7 @@ const basics_statementsHTML = `
 <div class="text">
 Statements separates with statement terminator.
 <br>
-The statement terminator of X is the semicolon (<x class="inline_code">;</x>).
+The statement terminator of Jule is the semicolon (<x class="inline_code">;</x>).
 <br>
 Also, we sayed each statement separates with statement terminator and it is true.
 But statement terminator is always necessary? No.
@@ -1088,18 +1088,18 @@ const common_conceptsHTML = `
 const common_concepts_variablesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Variables</div>
 <div class="text">
-There is more than one way in X to define a variable.
+There is more than one way in Jule to define a variable.
 <br><br>
-X is not use any keyword for declaring variable.
-X uses the <x class="inline_code">:</x> operator.
+Jule is not use any keyword for declaring variable.
+Jule uses the <x class="inline_code">:</x> operator.
 When you just use <x class="inline_code">:</x> you report you want the type to be detect automatically.
-The type is set by the X compiler based on the data.
+The type is set by the compiler based on the data.
 <br><br>
 For example:
 <div class="code">age: = 18</div>
 The data type of the above variable is defaulted to <x class="inline_code">int</x>.
 <div class="warn">
-In this method, the variable must be given a value, otherwise the X compiler will show an error.
+In this method, the variable must be given a value, otherwise the compiler will show an error.
 </div>
 
 <div class="title-separator"></div>
@@ -1116,7 +1116,7 @@ We mentioned that it has advantages, let's take a look;
 <ul>
   <li>
   When you follow this method, you do not have to give a value during the creation of the variable.
-  According to the data type you have defined, the X compiler initializes that variable with the default value of the given data type if you have not given a value.
+  According to the data type you have defined, the compiler initializes that variable with the default value of the given data type if you have not given a value.
   </li>
   <br>
   <li>
@@ -1200,10 +1200,10 @@ This way you ignore some values.
 <div class="title-separator"></div>
 <div class="sub-title">Shadowing</div>
 Normally, shading allows to suppress previous definitions with the same name for each block.
-But X does not adopt it.
+But Jule does not adopt it.
 Agrees that this is an approach that degrades security.
 <br><br>
-So does X support shading?
+So does Jule support shadowing?
 <br>
 Yes! However, there are minor changes.
 If you give the name of one of the global definitions to the function's parameter or to a variable within the block, that definition is shaded.
@@ -1239,7 +1239,7 @@ So this code will result in compiler error.
 const common_concepts_functionsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Functions</div>
 <div class="text">
-Functions are common in X code.
+Functions are common in Jule code.
 Previously, the entry point function was mentioned in the basics.
 We have seen partially there how to define a function.
 <br><br>
@@ -1401,9 +1401,9 @@ The only addition is to give that return value an identifier before the return t
 <br><br>
 For example:
 <div class="code">example() [x int, y int] {
-  x = 10
-  y = 20
-  ret x, y
+    x = 10
+    y = 20
+    ret x, y
 }</div>
 As in the example above.
 These identifiers also cause a variable to be created.
@@ -1414,9 +1414,9 @@ Also, a function that has at least one return type identifier does not have to h
 <br><br>
 For example:
 <div class="code">example() [x int, y int] {
-  x = 10
-  y = 20
-  ret
+    x = 10
+    y = 20
+    ret
 }</div>
 Respectively the related variables will be treated as the return statement.
 
@@ -1447,7 +1447,7 @@ main() {
 <div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Returns as Argument(s)</div>
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
-X automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
+Jule automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example:
 <div class="code">multi_ret_func() [int, str, byte] { ret 143, "STR", 'W' }
 
@@ -1464,7 +1464,7 @@ main() {
 <div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Returns as Multiple Return</div>
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
-X allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
+Jule allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example:
 <div class="code">example1() [int, str, byte] { ret 143, "STR", 'W' }
 example2() [int, str, byte] { ret example1() }
@@ -2042,7 +2042,7 @@ main() {
 const memoryHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory</div>
 <div class="text">
-  Memory skills of X. <br><br>
+  Memory skills of Jule. <br><br>
   Pointers, memory management, allocations...
 </div>
 `;
@@ -2113,7 +2113,7 @@ For example:
 const memory_memory_managementHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory Management</div>
 <div class="text">
-X does the memory management itself.
+Jule does the memory management itself.
 It guarantees memory safety.
 It uses reference counting for heap allocations.
 It is automatically released when the reference count of the pointer reaches zero, that is, when it is certain that the heap allocation is no longer used.
@@ -2176,23 +2176,23 @@ For example:
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">When does XXC perform immutability?</div>
+<div class="sub-title">When does JuleC perform immutability?</div>
 Definitions that anonymous functions get from within the block are copied into the anonymous function instead of being referenced.
 This means that anonymous functions cannot change the definitions of the block they are defined in.
 A heap guaranteed pointer with pre-guaranteed is required to be effective.
 
 <div class="title-separator"></div>
 <div class="sub-title">Heap Guarantee Approach</div>
-Due to the heap guarantee approach of XXC, the compiler performs heap allocation and moves the relevant pointer to the stack whenever the heap allocation must be guaranteed while compiling the code.
+Due to the heap guarantee approach of JuleC, the compiler performs heap allocation and moves the relevant pointer to the stack whenever the heap allocation must be guaranteed while compiling the code.
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">When does XXC perform heap guarantee?</div>
+<div class="sub-sub-title">When does JuleC perform heap guarantee?</div>
 <li>When returned pointers</li>
 <li>When anonymous functions copy pointers from block</li>
 <li>When struct has a pointer member</li>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">How does XXC handle its allocation?</div>
+<div class="sub-sub-title">How does JuleC handle its allocation?</div>
 Pointers to a pure point create and point to a new allocation for itself when the heap is guaranteed.
 Guaranteed pointers always point to the new allocation, not the old one.
 They are common if a pointer points to a place using a different pointer. When one heap is guaranteed, all public pointers used in the same way are moved to the same allocation and the heap is guaranteed.
@@ -2229,7 +2229,7 @@ const error_handlingHTML = `
 
 The program should naturally generate and check for errors in some cases.
 This core topic deals with error handling.
-X uses panics and the error structure.
+Jule uses panics and the error structure.
 Catching panics and handling errors happens through them. It is plain and simple.
 
 </div>
@@ -2386,7 +2386,7 @@ main() {
 const typesHTML = `
 <div class="title" style="margin-bottom: 20px;">Types</div>
 <div class="text">
-  Types and type manuplation in X.
+  Types and type manuplation in Jule.
 </div>
 `;
 
@@ -2409,7 +2409,7 @@ Then comes the name you want to give and which type it will represent.
 This alias will now represent <x class="inline_code">i32</x> when used.
 <br><br>
 In addition, it seems that this alias is used in variable definition.
-This is because the X compiler recognizes the default types built-in.
+This is because the compiler recognizes the default types built-in.
 If your type alias represents a built-in definition, your type alias will not be detected as a type.
 For this reason, it is a more useful approach to specify specifically.
 <div class="title-separator"></div>
@@ -2596,9 +2596,9 @@ const type_statics_uintHTML = `
 const cppHTML = `
 <div class="title" style="margin-bottom: 20px;">Cpp</div>
 <div class="text">
-C++ documentations of X.
+C++ documentations of Jule.
 <br><br>
-In this section, the information necessary to use X and C++ effectively and the possibilities offered by X are included.
+In this section, the information necessary to use Jule and C++ effectively and the possibilities offered by JuleC are included.
 <br><br>
 <div class="warn">This documentation is accepts you know basic C++.</div>
 </div>
@@ -2607,13 +2607,13 @@ In this section, the information necessary to use X and C++ effectively and the 
 const cpp_apiHTML = `
 <div class="title" style="margin-bottom: 20px;">API</div>
 <div class="text">
-API of XXC for C++. <br><br>
-XXC presents all the C++ content it implements and owns for X in header files.
-These header files come automatically imported in every code compiled by XXC.
+API of JuleC for C++. <br><br>
+JuleC presents all the C++ content it implements and owns for Jule in header files.
+These header files come automatically imported in every code compiled by JuleC.
 <br><br>
-With this API, you can use the definitions of XXC in C++ codes and adapt functions written for C++ to X.
+With this API, you can use the definitions of JuleC in C++ codes and adapt functions written for C++ to Jule.
 <br><br>
-<a href="https://github.com/the-xlang/xxc/tree/main/api">See API</a<
+<a href="https://github.com/jule-lang/jule/tree/main/api">See API</a<
 
 </div>
 `;
@@ -2621,13 +2621,13 @@ With this API, you can use the definitions of XXC in C++ codes and adapt functio
 const cpp_interoperabilityHTML = `
 <div class="title" style="margin-bottom: 20px;">Interoperability</div>
 <div class="text">
-X can work with C++.
-A code written in C++ compatible with X can be transferred to X, used and compiled without any problems.
-Everything needed is readily available, as XXC imports APIs by default to every generated code.
+Jule can work with C++.
+A code written in C++ compatible with Jule can be transferred to X, used and compiled without any problems.
+Everything needed is readily available, as JuleC imports APIs by default to every generated code.
 
 <div class="title-separator"></div>
 <div class="sub-title">Including C++ Headers into X</div>
-The use declarations of X are used to include C++ headers in the X code to be generated.
+The use declarations of Jule are used to include C++ headers in the Jule code to be generated.
 It's just a little different.
 A use declaration should be told that this is a C++ include and the path should be given as a string.
 <br><br>
@@ -2638,9 +2638,9 @@ Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.
 
 <div class="title-separator"></div>
 <div class="sub-title">Linking C++ Functions to X</div>
-After the header file containing the C++ functions is passed to X, C++ functions must be declared to X.
+After the header file containing the C++ functions is passed to Jule, C++ functions must be declared to Jule.
 Not all, just the ones you will use.
-But remember, XXC does not check header files.
+But remember, JuleC does not check header files.
 Your declarations are reliable.
 The compiler assumes that the definitions exist and are correctly defined.
 <br><br>
@@ -2670,7 +2670,7 @@ For example:
     return total;
 }</div>
 
-<strong>main.xx</strong>
+<strong>main.jule</strong>
 <div class="code">use cpp "sum_integers.hpp"
 
 cpp sum_integers(slice []int) i64
@@ -2821,8 +2821,8 @@ const documentingHTML = `
 <div class="title" style="margin-bottom: 20px;">Documenting</div>
 <div class="text">
 It is important to document the code.
-X makes it easy to have documented code.
-The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your X source code.
+Jule makes it easy to have documented code.
+The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your Jule source code.
 <br><br>
 The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cpp_out_dir</x> field.
 The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.xdoc</x>.
@@ -2861,11 +2861,11 @@ The <x class="inline_code">doc</x> command works quite simply.
 Show only the X source files you want to document.
 <br><br>
 For example:
-<div class="code">$ xxc doc main.xx</div>
-Documentize the <x class="inline_code">main.xx</x> file.
+<div class="code">$ jule doc main.jule</div>
+Documentize the <x class="inline_code">main.jule</x> file.
 <br><br>
-<div class="code">$ xxc doc main.xx test.xx</div>
-Documentize the <x class="inline_code">main.xx</x> and <x class="inline_code">test.xx</x> files.
+<div class="code">$ jule doc main.jule test.jule</div>
+Documentize the <x class="inline_code">main.jule</x> and <x class="inline_code">test.jule</x> files.
 
 <div class="title-separator"></div>
 <div class="warn">
@@ -2953,17 +2953,17 @@ One solution might be to use the namespace notation to access shaded definitions
 
 <div class="title-separator"></div>
 <div class="sub-title">Packages</div>
-X treats each directory as a package.
+Jule treats each directory as a package.
 Each package has the ability to use its own defines.
 <br><br>
 For example:
-<div class="code">// file: ./hello_print.xx
+<div class="code">// file: ./hello_print.jule
 
 @inline
 hello_print(name str) {
     outln("Hello " + name)
 }</div>
-<div class="code">// file: ./main.xx
+<div class="code">// file: ./main.jule
 
 main() {
     hello_print("Packages")
@@ -3011,7 +3011,7 @@ const stdlibHTML = `
   For this reason, standard library provides readability for developers.
   Since developers do not rewrite their functions every time, developers who already know the standard library can understand the code more easily.
   <br><br>
-  At below, you can see all content of standard library of the X programming language;
+  At below, you can see all content of standard library of the Jule programming language;
   <br><br><br>
   <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
   <li><a href="../pages/stdlib/debug.html">std::debug</a></li>
@@ -3042,12 +3042,12 @@ Please tell us, share with us your ideas and experiences.
 Support us to improve the documentation.
 <br>
 <br>
-<a href="https://github.com/the-xlang/website/issues/new/choose">Open Issue</a> <br>
-<a href="https://github.com/the-xlang/website/fork">Fork project</a>
+<a href="https://github.com/jule-lang/website/issues/new/choose">Open Issue</a> <br>
+<a href="https://github.com/jule-lang/website/fork">Fork project</a>
 
 <div class="title-separator"></div>
   <div class="sub-title">Source Code this Website</div>
-  The source code files is accessible from <a href="https://github.com/the-xlang/website">GitHub</a> website repository.
+  The source code files is accessible from <a href="https://github.com/jule-lang/website">GitHub</a> website repository.
 </div>
 `;
 
@@ -3248,7 +3248,7 @@ Maximum value of type.
 
 const TAB_common_concepts_iterations = `
 Iterations allow you to repeat the algorithm according to certain conditions.
-The <x class="inline_code">for</x> keyword use for iterations in X.
+The <x class="inline_code">for</x> keyword use for iterations in Jule.
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Infinity Iterations</div>
@@ -3322,7 +3322,7 @@ For example:
 // o</div>
 As you can see, it is possible to use the ignore operator for unused fields.
 
-<div class="info">If you don't use declaration with data-type, X assign variables data-types by automatically by collection.
+<div class="info">If you don't use declaration with data-type, Jule assign variables data-types by automatically by collection.
 Similar to auto-type variables.
 If the index variable is be numeric, X's auto data-type is <x class="inline_code">int</x> type.</div>
 
@@ -3381,7 +3381,7 @@ But prints nothing, because <x class="inline_code">continue</x> keyword is conti
 
 const TAB_common_concepts_if_expression = `
 If expressions allow you to manipulate the algorithm according to certain conditions.
-The <x class="inline_code">if</x> and <x class="inline_code">else</x> keywords use for if expressions in X.
+The <x class="inline_code">if</x> and <x class="inline_code">else</x> keywords use for if expressions in Jule.
 
 <div class="title-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">if</x> Expressions</div>
@@ -3582,7 +3582,7 @@ document.title = page_title;
 //#region GET_ELEMENTS
 
 // Navigation.
-const NAV_the_xlang                           = document.getElementById('the-xlang');
+const NAV_jule_lang                           = document.getElementById('jule-lang');
 const NAV_foreword                            = document.getElementById('foreword');
 const NAV_introduction                        = document.getElementById('introduction');
 const NAV_getting_started                     = document.getElementById('getting-started');
@@ -3662,7 +3662,7 @@ const side_navigation = document.getElementById("side-navigation");
 
 const nav = new SideNavigator();
 nav.navigations = [
-  [NAV_the_xlang,                           the_xlangHTML],
+  [NAV_jule_lang,                           jule_langHTML],
   [NAV_foreword,                            forewordHTML],
   [NAV_introduction,                        introductionHTML],
   [NAV_getting_started,                     getting_startedHTML],

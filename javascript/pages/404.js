@@ -1,4 +1,4 @@
-const page_title = `X - 404`;
+const page_title = `Jule - 404`;
 
 const codeHTML = `404`;
 const titleHTML = `Page Not Found`;
