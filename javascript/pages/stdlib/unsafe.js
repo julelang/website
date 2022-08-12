@@ -7,37 +7,37 @@ Returns the size of the data type in bytes.
 <div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
-pub sizeof(expr T) uint</div>
+pub sizeof(expr: T) uint</div>
 Returns the size of the expression in bytes.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
-pub alignof(expr T) uint</div>
+pub alignof(expr: T) uint</div>
 Returns the alignment, in bytes, required for any instance of the type
 indicated by type-id, which is either complete object type.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
-pub ptr_of(ptr *T) Ptr[T]</div>
+pub ptr_of(ptr: *T) Ptr[T]</div>
 Returns unsafe pointer for given raw pointer.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
-pub ptr_from(addr uintptr) Ptr[T]</div>
+pub ptr_from(addr: uintptr) Ptr[T]</div>
 Returns unsafe pointer from given address.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
 type[T]
-pub voidptr_of(ptr *T) Voidptr</div>
+pub voidptr_of(ptr: *T) Voidptr</div>
 Returns unsafe voidptr for given raw pointer.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-pub voidptr_from(addr uintptr) Voidptr</div>
+pub voidptr_from(addr: uintptr) Voidptr</div>
 Returns unsafe voidptr from given address.
 `;
 
@@ -92,7 +92,7 @@ Returns unsafe pointer as unsafe voidptr.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-pub &move(n int)</div>
+pub &move(n: int)</div>
 Moves the pointer from its pointing position by the size of the data type.
 The offset amount is determined by n.
 Moving back requires a negative expression, and moving forward requires a positive expression.

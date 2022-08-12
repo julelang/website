@@ -1,10 +1,10 @@
 const stdlib_builtin_type_aliasesHTML = `
-<div class="sub-sub-title"><x class="inline_code">type byte u8</x></div>
+<div class="sub-sub-title"><x class="inline_code">type byte: u8</x></div>
 Is an alias for u8.
 It is used, by convention, to distinguish byte values from 8-bit unsigned integer values.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">type rune i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">type rune: i32</x></div>
 Is an alias for i32.
 It is used, by convention, to distinguish character values from integer values.`;
 
@@ -20,11 +20,11 @@ This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">panic(error Error)</x></div>
+<div class="sub-sub-title"><x class="inline_code">panic(error: Error)</x></div>
 Panics program with given error instance.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">recover(handler (Error))</x></div>
+<div class="sub-sub-title"><x class="inline_code">recover(handler: (Error))</x></div>
 Recovers errors if exist and call given function with handled error instance.
 
 <div class="topic-separator"></div>
@@ -36,7 +36,7 @@ allocation is success, nil if not.
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-make(n int) []Item</div>
+make(n: int) []Item</div>
 Allocated new n sized slice for given data type.
 <br><br>
 Special cases are: <br>
@@ -44,7 +44,7 @@ Special cases are: <br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-copy(dest, src []Item) int</div>
+copy(dest: []Item, src: []Item) int</div>
 Copies components of source slice to destination slice.
 Returns number of copied components.
 <br><br>
@@ -54,7 +54,7 @@ Special cases are: <br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-append(src []Item, ...components Item) []Item</div>
+append(src: []Item, components: ...Item) []Item</div>
 Creates new required sized slice. Copies all components
 of given source slice and appends given components to end of new slice.
 Returns new slice, not changes given source slice.

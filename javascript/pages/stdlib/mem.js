@@ -1,7 +1,7 @@
 const stdlib_mem_functionsHTML = `
 <div class="code">@inline
 type[T]
-pub drop(&ptr *T)</div>
+pub drop(ptr: &*T)</div>
 Drops pointer from references if include reference counting and set as nil.
 `;
 

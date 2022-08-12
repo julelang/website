@@ -1032,7 +1032,7 @@ Each attribute is defined with <x class="inline_code">@</x>, the attribute itsel
 <br><br>
 For example:
 <div class="code">@attribute_a
-cube(s int) int {
+my_func() int {
     // Body ...
 }</div>
 </div>
@@ -1042,7 +1042,7 @@ Note that an attribute cannot be given repeatedly.
 <br><br>
 For example:
 <div class="code">@attribute_a @attribute_b
-cube(s int) int {
+my_func() int {
     // Body...
 }</div>
 <div class="warn">
@@ -1212,7 +1212,7 @@ However, a global definition that you define or shadow once within the block can
 For example:
 <div class="code">a: = 100
 
-my_func(a bool) {
+my_func(a: bool) {
     outln(a)
 }
 </div>
@@ -1225,7 +1225,7 @@ What exactly does this mean?
 For example:
 <div class="code">a: = 100
 
-my_func(a bool) {
+my_func(a: bool) {
     a: = 0.10
     outln(a)
 }
@@ -1261,7 +1261,7 @@ Functions can have parameters.
 These parameters must be specified with arguments at the time the function is called.
 <br><br>
 For example:
-<div class="code">print_int(i int) {
+<div class="code">print_int(i: int) {
     outln(i)
 }
 
@@ -1276,24 +1276,13 @@ The name of the parameter is written first, followed by the data-type.
 When calling the function, as seen in the example in the entry point, arguments are written in parentheses, and if they are more than one, they are separated from each other with commas.
 The given arguments must be compatible with the data-type of the corresponding parameters.
 
-<div class="topic-separator"></div>
-There is alternative syntax for specifying parameters and data types.
-<br>
-For example:
-<div class="code">print_sum(a, b int) {
-    add: = a + b
-    outln(add)
-}</div>
-As seen in the example above, if there is more than one parameter that must have the same data-type, the data-type can be specified in the last parameter.
-When this is done, all parameters that have not been given the previous data-type will have the same data-type.
-
 <div class="title-separator"></div>
 <div class="sub-sub-title">Variadic Parameters</div>
 Variadic parameters can contain more than one value.
 The <x class="inline_code">...</x> operator is used for this.
 <br>
 For example:
-<div class="code">str_out(...values str) {
+<div class="code">str_out(values: ...str) {
     for _, s: in values {
         out(s)
     }
@@ -1325,7 +1314,7 @@ For example:
     outln(div(10, 2))
 }
 
-div(a, b f64) f64 {
+div(a: f64, b: f64) f64 {
     ret a / b
 }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
@@ -1356,7 +1345,7 @@ Just in addition, the block of the function must be written.
 <br><br>
 For example:
 <div class="code">main() {
-    make_hello: = (name str) str {
+    make_hello: = (name: str) str {
     	ret "Hello " + name + "!"
     };
     outln(make_hello("X"))
@@ -1391,7 +1380,7 @@ Nothing, you not see compiler error.
 But not compile as multi-type, compiles single data-type.
 <br><br>
 For example:
-<div class="code">less_than(x, y int) [bool] { ret x < y }</div>
+<div class="code">less_than(x: int, y: int) [bool] { ret x < y }</div>
 The example at above, accepted as one type return.
 
 <div class="title-separator"></div>
@@ -1400,7 +1389,7 @@ To give an identifier to the return types, it's enough to make them look like mu
 The only addition is to give that return value an identifier before the return type.
 <br><br>
 For example:
-<div class="code">example() [x int, y int] {
+<div class="code">example() [x: int, y: int] {
     x = 10
     y = 20
     ret x, y
@@ -1413,7 +1402,7 @@ For each identifier, the function has a variable initialized in its scope.
 Also, a function that has at least one return type identifier does not have to have a return expression.
 <br><br>
 For example:
-<div class="code">example() [x int, y int] {
+<div class="code">example() [x: int, y: int] {
     x = 10
     y = 20
     ret
@@ -1425,7 +1414,7 @@ If you provide a return expression while there are return identifiers, the expre
 
 <br><br>
 For example:
-<div class="code">example() [x, y int] {
+<div class="code">example() [x: int, y: int] {
   ret 90, 100
 }</div>
 
@@ -1435,7 +1424,7 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example:
-<div class="code">compare_int(x, y int) [bool, bool] { ret x < y, x == y }
+<div class="code">compare_int(x: int, y: int) [bool, bool] { ret x < y, x == y }
 
 main() {
     less:, equals: = compare_int(10, 20)
@@ -1451,7 +1440,7 @@ Jule automatically maps the returned values as arguments to the corresponding fu
 For example:
 <div class="code">multi_ret_func() [int, str, byte] { ret 143, "STR", 'W' }
 
-my_print(a int, b str, c byte) {
+my_print(a: int, b: str, c: byte) {
     outln(a)
     outln(b)
     outln(c)
@@ -1481,7 +1470,7 @@ main() {
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
 For example:
-<div class="code">sub(a, b int) int { ret a-b }
+<div class="code">sub(a: int, b: int) int { ret a-b }
 
 main() {
     outln(sub(190, 10))     // Prints 180
@@ -1642,7 +1631,7 @@ Slices are mutable.
 <br><br>
 Example to slices;
 <div class="code">main() {
-    my_slice:[]str
+    my_slice: []str
     my_slice = []str{"Hello", "X", "slices!"}
     outln(my_slice)
 }</div>
@@ -1670,7 +1659,7 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 <br>
 For example:
-<div class="code">sum(...values int) int {
+<div class="code">sum(values: ...int) int {
     total: int
     for _, i: in values {
         total += i
@@ -1809,7 +1798,7 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 <div class="sub-title">Custom Data-Types</div>
 If you want to give enums a data-type other than the default, it is possible to do so. <br>
 For example:
-<div class="code">enum FileMode:u8 {
+<div class="code">enum FileMode: u8 {
     Read  = 35,
     Write = 89,
     Both,
@@ -2210,7 +2199,7 @@ The <x class="inline_code">&</x> operator must be used to represent a reference.
 <div class="title-separator"></div>
 <div class="sub-title">Reference Paramaters</div>
 Example for referenced parameters;
-<div class="code">sum(&i, val int) { i += val }
+<div class="code">sum(i: &int, val: int) { i += val }
 
 main() {
     a: = 10
@@ -2249,7 +2238,7 @@ Returns nil when there is no error.
 For example:
 <div class="code">use std::errors
 
-my_div(a, b f64) [f64, Error] {
+my_div(a: f64, b: f64) [f64, Error] {
     if a == 0 || b == 0 {
         ret 0, std::errors::new("divided with zero")
     }
@@ -2281,7 +2270,7 @@ impl Error in MyError {
     }
 }
 
-my_div(a, b f64) [f64, Error] {
+my_div(a: f64, b: f64) [f64, Error] {
     if a == 0 || b == 0 {
         ret 0, MyError{"divided by zero"}
     }
@@ -2311,7 +2300,7 @@ You can only panic with error structure.
 For example:
 <div class="code">use errors
 
-add_pointer(rate int, ptr *int) {
+add_pointer(rate: int, ptr: *int) {
     if !ptr {
         panic(errors::new("pointer is nil"))
     }
@@ -2358,7 +2347,7 @@ may_panic() {
 }
 
 main() {
-    recover((e Error) {
+    recover((e: Error) {
         outln(e.error())
     })
     may_panic()
@@ -2371,7 +2360,7 @@ the <x class="inline_code">recover</x> function would not have recover the panic
 <div class="topic-separator"></div>
 You can use a function as recover handler. <br>
 For example:
-<div class="code">handler(e Error) {
+<div class="code">handler(e: Error) {
     // ...
 }
 
@@ -2397,7 +2386,7 @@ Type aliases is an alias for existing types defined by developer.
 When these aliases are used, they qualify the types they represent.
 <br>
 For example:
-<div class="code">type int32 i32
+<div class="code">type int32: i32
 
 main() {
     my_int: int32 = 100
@@ -2673,7 +2662,7 @@ For example:
 <strong>main.jule</strong>
 <div class="code">use cpp "sum_integers.hpp"
 
-cpp sum_integers(slice []int) i64
+cpp sum_integers(slice: []int) i64
 
 main() {
     slice: = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
@@ -2740,7 +2729,7 @@ Therefore, they can be used for type annotation in variable and similar definiti
 <br>
 For example:
 <div class="code">type[T]
-sum(a, b T) T {
+sum(a: T, b: T) T {
     x: T = a + b
     x
 }
@@ -2760,10 +2749,10 @@ To specify a type for a generic type, you specify the data type in brackets.
 To specify multiple different generic types, sequential specification or comma-separation syntaxes are available;
 <div class="code">type[T1]
 type[T2]
-example_func(a T1, b T2) {}</div>
+example_func(a: T1, b: T2) {}</div>
 
 <div class="code">type[T1, T2]
-example_func1(a T1, b T2) {}</div>
+example_func1(a: T1, b: T2) {}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title" style="margin-bottom: 20px;">Generics for Structure</div>
@@ -2795,7 +2784,7 @@ Dynamic generic annotation can be used if all generic types are detectable by th
 <br><br>
 For example:
 <div class="code">type[Key, Value]
-print_map(map [Key:Value]) {
+print_map(map: [Key:Value]) {
     for key:, value: in map {
         out(key)
         out(": ")
@@ -2843,7 +2832,7 @@ For example:
 <div class="code">// doc:
 // Divides specified floats.
 // THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
-div(a, b f64) f64 { a/b }</div>
+div(a: f64, b: f64) f64 { ret a/b }</div>
 
 <div class="warn">
     <li>The documentation comments should be single-line comments.</li>
@@ -2960,7 +2949,7 @@ For example:
 <div class="code">// file: ./hello_print.jule
 
 @inline
-hello_print(name str) {
+hello_print(name: str) {
     outln("Hello " + name)
 }</div>
 <div class="code">// file: ./main.jule
@@ -3054,7 +3043,7 @@ Support us to improve the documentation.
 // ------------------------------------------------------------------------------
 
 const TAB_types_str_constructor = `
-<div class="sub-sub-title"><x class="inline_code">str(obj any) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">str(obj: any) str</x></div>
 Returns string value of given object.
 `;
 
@@ -3068,41 +3057,41 @@ const TAB_types_str_methods = `
 Reports string is empty or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">has_prefix(sub str) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">has_prefix(sub: str) bool</x></div>
 Reports string has prefix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">has_suffix(sub str) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">has_suffix(sub: str) bool</x></div>
 Reports string has suffix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">find(sub str) int</x></div>
+<div class="sub-sub-title"><x class="inline_code">find(sub: str) int</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at left of string to right.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">rfind(sub str) int</x></div>
+<div class="sub-sub-title"><x class="inline_code">rfind(sub: str) int</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at right of string to left.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">trim(bytes str) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">trim(bytes: str) str</x></div>
 Trims string by specified bytes at left.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">rtrim(bytes str) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">rtrim(bytes: str) str</x></div>
 Trims string by specified bytes at right.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">split(sub str, n inr) []str</x></div>
+<div class="sub-sub-title"><x class="inline_code">split(sub: str, n: int) []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty slice if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">replace(sub str, new str, n int) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">replace(sub: str, new: str, n: int) str</x></div>
 Replaces all substrings matching <x class="inline_code">sub</x> in the string with <x class="inline_code">new</x>. <br>
 Returns same string if <x class="inline_code">n</x> is equals to zero. <br>
 Replaces all matches if <x class="inline_code">n</x> less than zero.
@@ -3142,11 +3131,11 @@ Reports map is empty or not.
 Removes all key-value pairs.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">has(key KEY_TYPE) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">has(key: KEY_TYPE) bool</x></div>
 Returns true if specified key value is exist in map, returns false if not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">del(key KEY_TYPE)</x></div>
+<div class="sub-sub-title"><x class="inline_code">del(key: KEY_TYPE)</x></div>
 Deletes key if exist.
 
 <div class="topic-separator"></div>

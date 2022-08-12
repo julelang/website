@@ -8,7 +8,7 @@ const preview_code_helloworldHTML =
 }`;
 
 const preview_code_quicksortHTML =
-`quicksort(slice []int) {
+`quicksort(slice: []int) {
     if slice.len <= 1 {
         ret
     }

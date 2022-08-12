@@ -1,15 +1,15 @@
 const stdlib_os_constantsHTML = `
-<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:int</x></div>
+<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:</x></div>
 Exit code for success.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:int</x></div>
+<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:</x></div>
 Exit code for failure.
 `;
 
 const stdlib_os_functionsHTML = `
 <div class="code">@inline
-pub exit(code int)</div>
+pub exit(code: int)</div>
 Causes the current program to exit with the given status code. <br>
 Conventionally, code zero indicates success, non-zero an error.
 `;
