@@ -2651,9 +2651,9 @@ For example:
 <div class="title-separator"></div>
 <div class="sub-title">Example to Interoperability</div>
 <strong>sum_integers.hpp</strong>
-<div class="code">i64_xt sum_integers(const slice&lt;int_xt&gt; &_Slice) {
-    i64_xt total{0};
-    for (const int_xt &x: _Slice) {
+<div class="code">i64_julet sum_integers(const slice&lt;int_julet&gt; &_Slice) {
+    i64_julet total{0};
+    for (const int_julet &x: _Slice) {
         total += x;
     }
     return total;
