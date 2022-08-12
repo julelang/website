@@ -145,7 +145,7 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally shellscripts (.sh).
   </div>
   Using example for Bash;
-  <div class="code">$ sudo sh scripts/build.sh</div>
+  <div class="code">$ sh scripts/build.sh</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Manual</div>
@@ -156,12 +156,12 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">PS @DIR> go build -o jule.exe -v cmd/julec/main.go</div>
+  <div class="code">PS @DIR> go build -o julec.exe -v cmd/julec/main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o jule -v cmd/julec/main.go</div>
+  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
 </div>
 `;
 
@@ -182,23 +182,23 @@ The basics of compiler commands.
 <div class="title-separator"></div>
 <div class="sub-title">help</div>
 Shows help about of commands.
-<div class="code">$ jule help</div>
+<div class="code">$ julec help</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">version</div>
 Shows version of the JuleC.
-<div class="code">$ jule version</div>
+<div class="code">$ julec version</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">doc</div>
 Documentize Jule source code.
 See the Documenting for more information.
-<div class="code">$ jule doc main.jule</div>
+<div class="code">$ julec doc main.jule</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">init</div>
 Initialize new project in working directory.
-<div class="code">$ jule init</div>
+<div class="code">$ julec init</div>
 
 </div>
 `;
@@ -280,7 +280,7 @@ We will use already created settings file with <x class="inline_code">x init</x>
 <br>
 <br>
 For compile Jule code, we just give filename to JuleC:
-<div class="code">jule main.jule</div>
+<div class="code">julec main.jule</div>
 And compiler is transpile our Jule code to C++ code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 <br><br>
