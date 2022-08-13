@@ -3,6 +3,28 @@ const stdlib_mem_functionsHTML = `
 type[T]
 pub drop(ptr: &*T)</div>
 Drops pointer from references if include reference counting and set as nil.
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+type[T]
+pub is_guaranteed(ptr: *T) bool</div>
+Reports pointer is heap-guaranteed or not.
+<li>Returns false if pointer is nil.</li>
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+type[T]
+pub can_guarantee(ptr: *T) bool</div>
+Reports pointer is can heap-guarantee.
+<li>Returns false if pointer is nil.</li>
+<li>Returns false if pointer is already heap-guaranteed.</li>
+
+<div class="topic-separator"></div>
+<div class="code">@inline
+type[T]
+pub guarantee(ptr: *T) bool</div>
+Heap-guarantee to pointer if pointer is can guarantee.
+
 `;
 
 const NAV_stdlib_mem_functions = document.getElementById("functions");

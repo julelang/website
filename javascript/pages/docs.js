@@ -2615,7 +2615,7 @@ A code written in C++ compatible with Jule can be transferred to X, used and com
 Everything needed is readily available, as JuleC imports APIs by default to every generated code.
 
 <div class="title-separator"></div>
-<div class="sub-title">Including C++ Headers into X</div>
+<div class="sub-title">Including C++ Headers into Jule</div>
 The use declarations of Jule are used to include C++ headers in the Jule code to be generated.
 It's just a little different.
 A use declaration should be told that this is a C++ include and the path should be given as a string.
@@ -2626,7 +2626,7 @@ The correctness and validity of the file path is checked by the compiler. <br>
 Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.hh</x>, <x class="inline_code">.hpp</x>, <x class="inline_code">.hxx</x>
 
 <div class="title-separator"></div>
-<div class="sub-title">Linking C++ Functions to X</div>
+<div class="sub-title">Linking C++ Functions to Jule</div>
 After the header file containing the C++ functions is passed to Jule, C++ functions must be declared to Jule.
 Not all, just the ones you will use.
 But remember, JuleC does not check header files.
@@ -2670,6 +2670,24 @@ main() {
     outln(total)
 }
 </div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Linking C Preprocessor Defines</div>
+It is possible to report preprocessor defines to Jule.
+However, type protection must be provided exactly.
+It links just like a function.
+<br><br>
+For example;<br>
+<strong>sum.hpp</strong>
+<div class="code">#define SUM(X, Y) (X+Y)</div>
+
+<strong>sum.jule</strong>
+<div class="code">use cpp "sum.hpp"
+
+@cdef
+cpp SUM(int, int) int</div>
+
+The <x class="inline_code">@cdef</x> attribute must be used for correct parsing of preprocessor defines.
 
 </div>
 `;
