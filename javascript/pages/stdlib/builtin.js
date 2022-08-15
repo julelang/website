@@ -20,8 +20,10 @@ This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">panic(error: Error)</x></div>
-Panics program with given error instance.
+<div class="sub-sub-title"><x class="inline_code">panic(error: any)</x></div>
+Panics program with given error data.
+The data converting to str and panics with
+Error trait compatible structure instance.
 
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">recover(handler: (Error))</x></div>

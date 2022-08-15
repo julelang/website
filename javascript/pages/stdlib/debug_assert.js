@@ -9,8 +9,8 @@ Writes fail message to <x class="inline_code">cerr</x> and exit failure if asser
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-pub assert_panic(expr: bool, error: Error)</div>
-Panics with given error if assertion failed.
+pub assert_panic(expr: bool, error: any)</div>
+Panics with given error data if assertion failed.
 `;
 
 const NAV_stdlib_debug_assert_functions = document.getElementById("functions");

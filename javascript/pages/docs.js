@@ -75,7 +75,7 @@ const introductionHTML = `
   <div class="title-separator"></div>
   <div class="sub-sub-title">Students</div>
   Jule is suitable for learning programming.
-  X's simple structure and easy-to-understand, readable code encourage both effortless writing and understanding.
+  Jule's simple structure and easy-to-understand, readable code encourage both effortless writing and understanding.
   In this way, students can learn without difficulty.
   Confusing syntax does not stand in their way.
 
@@ -87,7 +87,7 @@ const introductionHTML = `
   <div class="title-separator"></div>
   <div class="sub-sub-title">Developers Who Value Performance, Stability and Simplicity</div>
   Jule is a good choice for those looking for simplicity, stability and performance.
-  When you develop with X, you use a simple and straightforward syntax.
+  When you develop with Jule, you use a simple and straightforward syntax.
 </div>
 `;
 
@@ -546,7 +546,7 @@ const basics_reserved_functionsHTML = `
   The entry point is the first routine that starts running when the program runs. <br>
   You must have a entry point. If you not have, code does not compile.
   <br><br>
-  X's entry point function is <x class="inline_code">main</x> function. <br>
+  Jule's entry point function is <x class="inline_code">main</x> function. <br>
   Entry point is should be void and not have any parameter.
 
   <div class="title-separator"></div>
@@ -560,7 +560,7 @@ const basics_reserved_functionsHTML = `
 It is a one-time initialize function when a package is imported.<br>
 If you use it in your main program package, it will be executed before the entry point.
 <br><br>
-X's initialize function is <x class="inline_code">init</x> function. <br>
+Jule's initialize function is <x class="inline_code">init</x> function. <br>
 Initialize function is should be void and not have any parameter.
 
 <div class="title-separator"></div>
@@ -1625,7 +1625,7 @@ const common_concepts_slicesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Slices</div>
 <div class="text">
 Slices is a dynamic allocated array, for this reason not has constant size expression.
-Slices are heap allocated and use X's reference counting memory management.
+Slices are heap allocated and use Jule's reference counting memory management.
 A slice can be <x class="inline_code">nil</x> and its default value is <x class="inline_code">nil</x>.
 Slices are mutable.
 <br><br>
@@ -1888,7 +1888,7 @@ To implement method(s) to structure, the following syntax is applied;
 For example:
 <div class="code">impl Position {
     is_origin() bool {
-      ret .x == 0 && .y == 0
+        ret .x == 0 && .y == 0
     }
 }</div>
 Implements <x class="is_origin() bool"> method to <x class="inline_code">Position</x> structure.
@@ -1948,6 +1948,16 @@ For example:
     }
 }</div>
 
+<div class="title-separator"></div>
+<div class="sub-title">Heap Allocated Instances</div>
+You can heap-allocated structure instancing.
+The unary <x class="inline_code">&</x> operator returns pointer to heap-allocated structure if you use at
+instancing.
+<br><br>
+For example;
+<div class="code">pos: = &Position{x: 10, y: 20}</div>
+<x class="inline_code">pos</x> variable is the pointer points to heap-allocated <x class="inline_code">Position</x> structure instance.
+
 </div>
 `;
 
@@ -1972,6 +1982,10 @@ For example:
 }</div>
 
 All constructs that implement the trait above must have the methods <x class="inline_code">name() str</x> and <x class="inline_code">age() u8</x>.
+
+<div class="title-separator"></div>
+<div class="sub-title">Comparing Traits</div>
+Equals to comparisons returns true if two traits uses same allocation (so, same pointer address), false if not.
 
 </div>
 `
@@ -2295,14 +2309,13 @@ const error_handling_panicsHTML = `
 
 Panics abruptly stop program execution and "abort" it.
 If you're talking about an issue that will cause the program to crash while executing, using panic would be a good choice.
-You can only panic with error structure.
+The <x class="inline_code">panic</x> function is the builtin function.
+See the <a href="./stdlib/builtin.html">builtin</a> documentations.
 <br><br>
 For example:
-<div class="code">use errors
-
-add_pointer(rate: int, ptr: *int) {
-    if !ptr {
-        panic(errors::new("pointer is nil"))
+<div class="code">add_pointer(rate: int, ptr: *int) {
+    if ptr == nil {
+        panic("pointer is nil")
     }
     *ptr += rate
 }
@@ -2326,10 +2339,8 @@ It just catch panics of the codes of the scope it is in.
 
 <br><br>
 For example:
-<div class="code">use errors
-
-may_panic() {
-    panic(errors::new("a problem"))
+<div class="code">may_panic() {
+    panic("a problem")
 }
 
 main() {
@@ -2340,10 +2351,8 @@ To be recovered it must be editing using the <x class="inline_code">recover</x> 
 
 <br><br>
 For example:
-<div class="code">use errors
-
-may_panic() {
-    panic(errors::new("a problem"))
+<div class="code">may_panic() {
+    panic("a problem")
 }
 
 main() {
@@ -2610,7 +2619,7 @@ With this API, you can use the definitions of JuleC in C++ codes and adapt funct
 const cpp_interoperabilityHTML = `
 <div class="title" style="margin-bottom: 20px;">Interoperability</div>
 <div class="text">
-Jule can work with C++.
+Jule can interop with C++.
 A code written in C++ compatible with Jule can be transferred to X, used and compiled without any problems.
 Everything needed is readily available, as JuleC imports APIs by default to every generated code.
 
@@ -3021,6 +3030,7 @@ const stdlibHTML = `
   At below, you can see all content of standard library of the Jule programming language;
   <br><br><br>
   <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
+  <li><a href="../pages/stdlib/conv.html">std::conv</a></li>
   <li><a href="../pages/stdlib/debug.html">std::debug</a></li>
   <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
   <li><a href="../pages/stdlib/errors.html">std::errors</a></li>
@@ -3331,7 +3341,7 @@ As you can see, it is possible to use the ignore operator for unused fields.
 
 <div class="info">If you don't use declaration with data-type, Jule assign variables data-types by automatically by collection.
 Similar to auto-type variables.
-If the index variable is be numeric, X's auto data-type is <x class="inline_code">int</x> type.</div>
+If the index variable is be numeric, Jule's auto data-type is <x class="inline_code">int</x> type.</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">For Iterations</div>
