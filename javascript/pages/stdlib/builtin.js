@@ -9,36 +9,35 @@ Is an alias for i32.
 It is used, by convention, to distinguish character values from integer values.`;
 
 const stdlib_builtin_functionsHTML = `
-<div class="sub-sub-title"><x class="inline_code">out(expr)</x></div>
-Prints value to command line.
-Can take any data-type as argument.
-Can use without expression.
+<div class="sub-sub-title"><x class="inline_code">fn out(expr)</x></div>
+Prints specified expression to command line.
+Uses built-in formatter.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">outln(expr)</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn outln(expr)</x></div>
 This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">panic(error: any)</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn panic(error: any)</x></div>
 Panics program with given error data.
 The data converting to str and panics with
 Error trait compatible structure instance.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">recover(handler: (Error))</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn recover(handler: fn(Error))</x></div>
 Recovers errors if exist and call given function with handled error instance.
 
 <div class="topic-separator"></div>
 <div class="code">@typearg
 type[T]
-pub new() *T</div>
+pub fn new() *T</div>
 Returns pointer to new heap-allocation of data type if
 allocation is success, nil if not.
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-make(n: int) []Item</div>
+fn make(n: int) []Item</div>
 Allocated new n sized slice for given data type.
 <br><br>
 Special cases are: <br>
@@ -46,7 +45,7 @@ Special cases are: <br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-copy(dest: []Item, src: []Item) int</div>
+fn copy(dest: []Item, src: []Item) int</div>
 Copies components of source slice to destination slice.
 Returns number of copied components.
 <br><br>
@@ -56,7 +55,7 @@ Special cases are: <br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-append(src: []Item, components: ...Item) []Item</div>
+fn append(src: []Item, components: ...Item) []Item</div>
 Creates new required sized slice. Copies all components
 of given source slice and appends given components to end of new slice.
 Returns new slice, not changes given source slice.
@@ -66,7 +65,7 @@ If you want append components to source slice, assign returned slice.
 
 const stdlib_builtin_traitsHTML = `
 <div class="code">trait Error {
-    error() str
+    fn error() str
 }</div>
 
 This is a error handling trait of standard library. <br>

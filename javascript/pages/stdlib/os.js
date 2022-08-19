@@ -1,9 +1,9 @@
 const stdlib_os_constantsHTML = `
-<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS:</x></div>
+<div class="sub-sub-title"><x class="inline_code">const EXIT_SUCCESS</x></div>
 Exit code for success.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE:</x></div>
+<div class="sub-sub-title"><x class="inline_code">const EXIT_FAILURE</x></div>
 Exit code for failure.
 `;
 

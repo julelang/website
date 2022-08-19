@@ -168,7 +168,7 @@ const getting_started_install_from_sourceHTML = `
 const compilerHTML = `
 <div class="title" style="margin-bottom: 20px;">Compiler</div>
 <div class="text">
-  In this part of the documentation you will explore the compiler and understand how to compile X code.
+  In this part of the documentation you will explore the compiler and understand how to compile Jule code.
   After this section, you will learn and use compiler commands.
   You will also be able to customize your settings file to configure your projects.
 </div>
@@ -272,7 +272,7 @@ const compiler_compilingHTML = `
 Let's start with a simple hello world program and learn compiling from this program.
 <br><br>
 We have a <x class="inline_code">main.jule</x> file:
-<div class="code">main() {
+<div class="code">fn main() {
     outln("Hello, World!")
 }</div>
 
@@ -468,7 +468,7 @@ This does not pose much of a problem with global declarations and should not be 
 But you have to use the declarations you make in your code blocks, if you don't the compiler will throw an error for each one.
 <br><br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     a: int
 }</div>
 The variable <x class="inline_code">a</x> seen is declared but unused.
@@ -551,7 +551,7 @@ const basics_reserved_functionsHTML = `
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">For Example</div>
-  <div class="code">main() {
+  <div class="code">fn main() {
     // Your entry point function body.
 }</div>
 
@@ -565,7 +565,7 @@ Initialize function is should be void and not have any parameter.
 
 <div class="title-separator"></div>
   <div class="sub-sub-title">For Example</div>
-  <div class="code">init() {
+  <div class="code">fn init() {
     // Your initialize function body.
 }</div>
 
@@ -1032,7 +1032,7 @@ Each attribute is defined with <x class="inline_code">@</x>, the attribute itsel
 <br><br>
 For example:
 <div class="code">@attribute_a
-my_func() int {
+fn my_func() int {
     // Body ...
 }</div>
 </div>
@@ -1042,7 +1042,7 @@ Note that an attribute cannot be given repeatedly.
 <br><br>
 For example:
 <div class="code">@attribute_a @attribute_b
-my_func() int {
+fn my_func() int {
     // Body...
 }</div>
 <div class="warn">
@@ -1067,7 +1067,7 @@ Except that, not necessary.
 Well, how we separate statements? Easy, please skip to next line or finish write.
 <br><br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     [STATEMENT_1]; [STATEMENT_2]
     [STATEMENT_3]
     [STATEMENT_4]
@@ -1090,16 +1090,16 @@ const common_concepts_variablesHTML = `
 <div class="text">
 There is more than one way in Jule to define a variable.
 <br><br>
-Jule is not use any keyword for declaring variable.
-Jule uses the <x class="inline_code">:</x> operator.
-When you just use <x class="inline_code">:</x> you report you want the type to be detect automatically.
+Jule is uses the <x class="inline_code">let</x> and <x class="inline_code">const</x> keywords for variable declarations.
+Jule uses the <x class="inline_code">:</x> operator for type annotations.
+When you don't use <x class="inline_code">:</x> operator, you report you want the type to be detect automatically by compiler.
 The type is set by the compiler based on the data.
 <br><br>
 For example:
-<div class="code">age: = 18</div>
+<div class="code">let age = 18</div>
 The data type of the above variable is defaulted to <x class="inline_code">int</x>.
 <div class="warn">
-In this method, the variable must be given a value, otherwise the compiler will show an error.
+In this method, the variable must be given a value, otherwise the compiler will give an error.
 </div>
 
 <div class="title-separator"></div>
@@ -1108,7 +1108,7 @@ You may want to annotate the type, it is possible.
 It also brings you advantages.
 <br><br>
 For example:
-<div class="code">age: int = 18</div>
+<div class="code">let age: int = 18</div>
 This is equivalent to the one shown above.
 However, you annotated the type.
 So what exactly is the difference?
@@ -1118,12 +1118,10 @@ We mentioned that it has advantages, let's take a look;
   When you follow this method, you do not have to give a value during the creation of the variable.
   According to the data type you have defined, the compiler initializes that variable with the default value of the given data type if you have not given a value.
   </li>
-  <br>
   <li>
   This is better than automatic assignment if the variable's data type is important.
-  Because in automatic assignment, the data type is detected automatically, but since the value given here must be compatible with the given data type, the X compiler will not accept any incompatible value.
+  Because in automatic assignment, the data type is detected automatically, but since the value given here must be compatible with the given data type, the Jule compiler will not accept any incompatible value.
   </li>
-  <br>
   <li>
   You know more precisely which data type you are working with.
   It can help avoid possible confusion.
@@ -1136,9 +1134,9 @@ The values of the variables can be changed later.
 The value given must be the same as the data type of the variable.
 <br><br>
 For example:
-<div class="code">example() {
-    a: int = 10 // Value is 10.
-    a = 200    // New value is 200.
+<div class="code">fn example() {
+    let a: int = 10 // Value is 10.
+    a = 200         // New value is 200.
 }</div>
 
 <div class="title-separator"></div>
@@ -1146,7 +1144,7 @@ For example:
 Constant variables are declared same method, the only difference being that the keyword <x class="inline_code">const</x> is used when defining them.
 <br><br>
 For example:
-<div class="code">const age: = 18</div>
+<div class="code">const age = 18</div>
 <div class="code">const age: int = 18</div>
 <div class="warn">
   <li>No matter which method the constant variables are defined by, a value must be given.</li>
@@ -1162,39 +1160,33 @@ Constant expressions are all evaluated at compile time.
 
 <div class="title-separator"></div>
 <div class="sub-title">Multiple Assignment / Declaration</div>
-You can multiple variable update or declaration.
+You can multiple variable assignment or declaration.
 What? Sure, you can use two type in same statement.
 You know how to declare variable, okay it is same.
 The single difference, identifiers and expressions separate with comma.
 <br><br>
 For example:
-<div class="code">x:, y:, z: = true, 1, -400</div>
+<div class="code">let (x, y, z) = true, 1, -400</div>
 Yes, there is we declare three new variable named as <x class="inline_code">x</x>, <x class="inline_code">y</x> and <x class="inline_code">z</x> with auto-type detection.
 Variable values are; <x class="inline_code">x</x> is <x class="inline_code">true</x>, <x class="inline_code">y</x> is <x class="inline_code">1</x> and <x class="inline_code">y</x> is <x class="inline_code">-400</x>.
 As you can see, the order in which the variable is defined is associated with the expression in the same order.
-Remember that if you have given a data type, the value you have shown must also be compatible with this data type.
+Remember that, you can't use type annotation in this case.
 <br><br>
-So how do we do the update thing?
+So how do we do the assignment thing?
 <br>
-We're essentially just removing the colon operator (and type representation, if any) that indicates that the variable is a new variable.
-Actually, only the name of the variable needs to remain, remember value update statement.
+We're essentially just removing the declaration things that indicates that the variable is a new variable.
+Actually, only the name of the variable needs to remain, remember value assignment statement.
 <br><br>
 For example:
 <div class="code">x, y, z = true, 1, -400</div>
-The logic remains the same. Let's not forget that these variables must already exist, of course, due to static type principles, the value you show to it must be compatible with the data type of the variable.
-<br><br>
-Well, how to we use combined the update and declaration?
-<br>
-You learned update and declaration statements. Okay, combine.
-<br><br>
-For example:
-<div class="code">x, y:, z = true, 1, -400</div>
-Here is the combination of these two methods.
+The logic remains the same.
+Let's not forget that these variables must already exist, of course, due to static type principles, the value you show to it must be compatible with the data type of the variable.
 <br><br>
 Additionally, you can skip some values with ignore operator.
 <br>
 For example:
 <div class="code">x, _, z = true, 1, -400</div>
+<div class="code">let (x, _, z) = true, 1, -400</div>
 This way you ignore some values.
 
 <div class="title-separator"></div>
@@ -1210,7 +1202,7 @@ If you give the name of one of the global definitions to the function's paramete
 However, a global definition that you define or shadow once within the block cannot be shaded within the block and in sub-blocks.
 <br><br>
 For example:
-<div class="code">a: = 100
+<div class="code">let a = 100
 
 my_func(a: bool) {
     outln(a)
@@ -1223,10 +1215,10 @@ Well, we said that a definition that is already defined or shadowed in the block
 What exactly does this mean?
 <br><br>
 For example:
-<div class="code">a: = 100
+<div class="code">let a = 100
 
-my_func(a: bool) {
-    a: = 0.10
+fn my_func(a: bool) {
+    let a = 0.10
     outln(a)
 }
 </div>
@@ -1244,7 +1236,7 @@ Previously, the entry point function was mentioned in the basics.
 We have seen partially there how to define a function.
 <br><br>
 To remember:
-<div class="code">example() {
+<div class="code">fn example() {
     // ...
 }</div>
 For functions, the name of the function comes first, followed by the parentheses.
@@ -1261,11 +1253,11 @@ Functions can have parameters.
 These parameters must be specified with arguments at the time the function is called.
 <br><br>
 For example:
-<div class="code">print_int(i: int) {
+<div class="code">fn print_int(i: int) {
     outln(i)
 }
 
-main() {
+fn main() {
     print_int(50)
 }</div>
 It is similar to normal function definition.
@@ -1282,13 +1274,13 @@ Variadic parameters can contain more than one value.
 The <x class="inline_code">...</x> operator is used for this.
 <br>
 For example:
-<div class="code">str_out(values: ...str) {
+<div class="code">fn str_out(values: ...str) {
     for _, s: in values {
         out(s)
     }
 }
 
-main() {
+fn main() {
     str_out("Hello", "World", "Variadic")
 }</div>
 As seen in the example above, many arguments could be given to the function even though it was a single parameter.
@@ -1310,11 +1302,11 @@ Putting the <x class="inline_code">...</x> operator before its name makes parame
 Functions can return values.
 <br><br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     outln(div(10, 2))
 }
 
-div(a: f64, b: f64) f64 {
+fn div(a: f64, b: f64) f64 {
     ret a / b
 }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
@@ -1332,7 +1324,7 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example:
-<div class="code">my_function: (int, int) int</div>
+<div class="code">my_function: fn(int, int) int</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
 
@@ -1344,9 +1336,9 @@ Defining anonymous function is like declaring a function as a value type.
 Just in addition, the block of the function must be written.
 <br><br>
 For example:
-<div class="code">main() {
-    make_hello: = (name: str) str {
-    	ret "Hello " + name + "!"
+<div class="code">fn main() {
+    let make_hello = fn(name: str) str {
+        ret "Hello " + name + "!"
     };
     outln(make_hello("X"))
 }</div>
@@ -1355,9 +1347,9 @@ For example:
 Anonymous functions can access the definitions of the block in which they are defined.
 <br><br>
 For example:
-<div class="code">main() {
-    message: = "Hello, World!"
-    func: = () { outln(message) };
+<div class="code">fn main() {
+    let message = "Hello, World!"
+    func: = fn() { outln(message) };
     func();
 }</div>
 The anonymous function defined in the example above uses the <x class="inline_code">message</x> variable belonging to the block it is defined in.
@@ -1370,17 +1362,17 @@ Functions can returns more then one values.
 For that, specify return data-type with multiple type.
 <br><br>
 For example:
-<div class="code">my_func() [int, int] { ret 18, 96 }</div>
-Brackets are used to specify multiple data types, seen as example at above.
+<div class="code">my_func() (int, int) { ret 18, 96 }</div>
+Parentheses are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
 
 <div class="topic-separator"></div>
-What happens when specified single data-type with brackets?
+What happens when specified single data type with parentheses?
 Nothing, you not see compiler error.
-But not compile as multi-type, compiles single data-type.
+But not compile as multi type, compiles single data type.
 <br><br>
 For example:
-<div class="code">less_than(x: int, y: int) [bool] { ret x < y }</div>
+<div class="code">fn less_than(x: int, y: int) (bool) { ret x < y }</div>
 The example at above, accepted as one type return.
 
 <div class="title-separator"></div>
@@ -1389,7 +1381,7 @@ To give an identifier to the return types, it's enough to make them look like mu
 The only addition is to give that return value an identifier before the return type.
 <br><br>
 For example:
-<div class="code">example() [x: int, y: int] {
+<div class="code">fn example() (x: int, y: int) {
     x = 10
     y = 20
     ret x, y
@@ -1402,7 +1394,7 @@ For each identifier, the function has a variable initialized in its scope.
 Also, a function that has at least one return type identifier does not have to have a return expression.
 <br><br>
 For example:
-<div class="code">example() [x: int, y: int] {
+<div class="code">fn example() (x: int, y: int) {
     x = 10
     y = 20
     ret
@@ -1414,8 +1406,8 @@ If you provide a return expression while there are return identifiers, the expre
 
 <br><br>
 For example:
-<div class="code">example() [x: int, y: int] {
-  ret 90, 100
+<div class="code">fn example() (x: int, y: int) {
+    ret 90, 100
 }</div>
 
 <div class="title-separator"></div>
@@ -1424,10 +1416,10 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example:
-<div class="code">compare_int(x: int, y: int) [bool, bool] { ret x < y, x == y }
+<div class="code">fn compare_int(x: int, y: int) (bool, bool) { ret x < y, x == y }
 
-main() {
-    less:, equals: = compare_int(10, 20)
+fn main() {
+    let (less, equals) = compare_int(10, 20)
     outln(less)
     outln(equals)
 }</div>
@@ -1438,15 +1430,15 @@ main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 Jule automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example:
-<div class="code">multi_ret_func() [int, str, byte] { ret 143, "STR", 'W' }
+<div class="code">fn multi_ret_func() (int, str, byte) { ret 143, "STR", 'W' }
 
-my_print(a: int, b: str, c: byte) {
+fn my_print(a: int, b: str, c: byte) {
     outln(a)
     outln(b)
     outln(c)
 }
 
-main() {
+fn main() {
     my_print(multi_ret_func())
 }</div>
 
@@ -1455,11 +1447,11 @@ main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 Jule allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example:
-<div class="code">example1() [int, str, byte] { ret 143, "STR", 'W' }
-example2() [int, str, byte] { ret example1() }
+<div class="code">fn example1() (int, str, byte) { ret 143, "STR", 'W' }
+fn example2() (int, str, byte) { ret example1() }
 
-main() {
-    a:, b:, c: = test2()
+fn main() {
+    let (a, b, c) = test2()
     outln(a)
     outln(b)
     outln(c)
@@ -1470,9 +1462,9 @@ main() {
 Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
 To target, a syntax similar to assignment is used. <br>
 For example:
-<div class="code">sub(a: int, b: int) int { ret a-b }
+<div class="code">fn sub(a: int, b: int) int { ret a-b }
 
-main() {
+fn main() {
     outln(sub(190, 10))     // Prints 180
     outln(sub(b=190, a=10)) // Prints -180
 }</div>
@@ -1484,7 +1476,7 @@ Calls are invoked in reverse.
 The keyword <x class="inline_code">defer</x> is used for a deferred call.
 <br><br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     defer outln("Defer 1")
     defer outln("Defer 2")
     outln("Hello Deferred Calls")
@@ -1509,11 +1501,11 @@ This tends to happen in programs where a task is waiting and the program has det
 <br><br>
 The keyword <x class="inline_code">co</x> is used to do a concurrent call. <br>
 For exmaple;
-<div class="code">hello_world() {
+<div class="code">fn hello_world() {
     outln("Hello World")
 }
 
-main() {
+fn main() {
     co hello_world()
 }</div>
 
@@ -1586,8 +1578,8 @@ Starts at <x class="inline_code">0</x> and continue step by step, it is never no
 Arrays is use indexes to access elements and assignment.
 <br>
 For example:
-<div class="code">main() {
-    my_array: = [3]str{"Hello", "arrays", "indexes"}
+<div class="code">fn main() {
+    let my_array = [3]str{"Hello", "arrays", "indexes"}
     outln(my_array[0])
     my_array[0] = "Hi"
     outln(my_array)
@@ -1600,15 +1592,15 @@ The last statement prints our array to console.
 <br><br>
 Output of program;
 <div class="code">Hello
-[Hi, arrays, indexes]</div>
+[Hi arrays indexes]</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Multidimensional Arrays</div>
 Multidimensional arrays is array storing arrays.
 <br>
 For example:
-<div class="code">main() {
-    my_array: = [2][2]str{
+<div class="code">fn main() {
+    let my_array = [2][2]str{
         [2]str{"Apple", "Banana"},
         [2]str{"Bred", "Cheese"},
     }
@@ -1616,7 +1608,7 @@ For example:
 }</div>
 <br>
 Output of program;
-<div class="code">[[Apple, Banana], [Bred, Cheese]]</div>
+<div class="code">[[Apple Banana] [Bred Cheese]]</div>
 
 </div>
 `;
@@ -1630,8 +1622,8 @@ A slice can be <x class="inline_code">nil</x> and its default value is <x class=
 Slices are mutable.
 <br><br>
 Example to slices;
-<div class="code">main() {
-    my_slice: []str
+<div class="code">fn main() {
+    let my_slice: []str
     my_slice = []str{"Hello", "X", "slices!"}
     outln(my_slice)
 }</div>
@@ -1645,7 +1637,7 @@ Seen at second statement, slices is should be define with data type.
 Last statement is prints to console the <x class="inline_code">my_slice</x> variable.
 <br><br>
 Output of program;
-<div class="code">[Hello, X, slices!]</div>
+<div class="code">[Hello X slices!]</div>
 </div>
 
 <div class="title-separator"></div>
@@ -1659,17 +1651,17 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 <br>
 For example:
-<div class="code">sum(values: ...int) int {
-    total: int
+<div class="code">fn sum(values: ...int) int {
+    let total: int
     for _, i: in values {
         total += i
     }
-    total
+    ret total
 }
 
-main() {
-    my_arr: = []int{90, 32, 6, 53}
-    result: = sum(my_arr...)
+fn main() {
+    let my_arr = []int{90, 32, 6, 53}
+    let result = sum(my_arr...)
     outln(result)
 }</div>
 As seen in the example above, the owned variable <x class="inline_code">my_arr</x> holds an slice.
@@ -1698,8 +1690,8 @@ If you don't give the start index expression, accepts as <x class="inline_code">
 If you don't give the to index expression, accepts as length.
 <br><br>
 For exmaple;
-<div class="code">main() {
-    my_slice: = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+<div class="code">fn main() {
+    let my_slice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
     outln(my_slice[2:5]) // [3, 4, 5]
     outln(my_slice[:])   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     outln(my_slice[:10]) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -1718,7 +1710,7 @@ Maps is a hashmap. Maps a unique key value to a value.
 <br><br>
 Example to maps;
 <div class="code">main() {
-    mymap:[i8:str] = [i8:str]{
+    let mymap: [i8:str] = [i8:str]{
         0: "CPU",
         1: "RAM",
         2: "GPU"
@@ -1781,7 +1773,7 @@ For exmaple;
     Both,
 }
 
-main() {
+fn main() {
     outln(FileMode.Read)
 }</div>
 As seen in the example above, there is an enumeration definition.
@@ -1804,7 +1796,7 @@ For example:
     Both,
 }
 
-main() {
+fn main() {
     outln(FileMode.Read)
 }</div>
 The above enumeration has the data-type <x class="inline_code">u8</x>.
@@ -1854,10 +1846,10 @@ For example:
     title: str = "-"
 }
 
-main() {
-    anon: = Character{}
-    frodo: = Character{"Frodo", 50, "Hobbit"}
-    gandalf: = Character{
+fn main() {
+    let anon = Character{}
+    let frodo = Character{"Frodo", 50, "Hobbit"}
+    let gandalf = Character{
         name:  "Gandalf",
         age:   24000,
         title: "Wizard",
@@ -1887,7 +1879,7 @@ To implement method(s) to structure, the following syntax is applied;
 <br>
 For example:
 <div class="code">impl Position {
-    is_origin() bool {
+    fn is_origin() bool {
         ret .x == 0 && .y == 0
     }
 }</div>
@@ -1917,9 +1909,9 @@ The value receiver is using a copy of the instance from which the function was c
 <br><br>
 For examples;
 <div class="code">// Pointer Receiver
-&method() str { /* Body */ }</div>
+fn &method() str { /* Body */ }</div>
 <div class="code">// Value Receiver
-method() str { /* Body */ }</div>
+fn method() str { /* Body */ }</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">The <x class="inline_code">self</x> Keyword</div>
@@ -1930,7 +1922,7 @@ The data type is the same as the data type of the receiver.
 <br><br>
 For example:
 <div class="code">impl Person {
-    &get_name() str {
+    fn &get_name() str {
         // self: *Person
         ret self.name
     }
@@ -1943,7 +1935,7 @@ The dot is <x class="inline_code">self.</x> evaluated as.
 <br><br>
 For example:
 <div class="code">impl Person {
-    &get_name() str {
+    fn &get_name() str {
         ret .name
     }
 }</div>
@@ -1977,8 +1969,8 @@ Functions in trait should only exist as prototypes.
 <br><br>
 For example:
 <div class="code">trait Person {
-    name() str
-    age() u8
+    fn name() str
+    fn age() u8
 }</div>
 
 All constructs that implement the trait above must have the methods <x class="inline_code">name() str</x> and <x class="inline_code">age() u8</x>.
@@ -2006,7 +1998,7 @@ For example:
 <div class="code">const PI: = 3.14159265359
 
 trait Shape {
-    area() int
+    fn area() int
 }
 
 struct Rectangle {
@@ -2016,7 +2008,7 @@ struct Rectangle {
 
 impl Shape for Rectangle {
     @inline
-    &area() int {
+    fn &area() int {
         ret .width * .height
     }
 }
@@ -2027,14 +2019,14 @@ struct Circle {
 
 impl Shape for Circle {
     @inline
-    &area() int {
+    fn &area() int {
         ret PI * .r * .r
     }
 }
 
-main() {
-    rect: Shape = Rectangle{90, 5}
-    circ: Shape = Circle{90.5}
+fn main() {
+    let rect: Shape = Rectangle{90, 5}
+    let circ: Shape = Circle{90.5}
     outln(rect.area())
     outln(circ.area())
 }</div>
@@ -2061,7 +2053,7 @@ Pointers are variables can store this memory addresses.
 To declare a pointer data-type, use <x class="inline_code">*</x> operator.
 <br>
 Example;
-<div class="code">x:*int</div>
+<div class="code">let x: *int</div>
 That's pointer for <x class="inline_code">int</x> type.
 <div class="info">Default value of pointers is nil.</div>
 
@@ -2070,9 +2062,9 @@ That's pointer for <x class="inline_code">int</x> type.
 The <x class="inline_code">&</x> operator used to get pointer of variable.
 <br>
 For example:
-<div class="code">main() {
-    x: int = 10
-    y: *int = &x
+<div class="code">fn main() {
+    let x: int = 10
+    let y: *int = &x
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
@@ -2080,9 +2072,9 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 <div class="sub-sub-title">Accessing Values on Pointers</div>
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
 For example:
-<div class="code">main() {
-    x: int = 10
-    y: *int = &x
+<div class="code">fn main() {
+    let x: int = 10
+    let y: *int = &x
     outln(y)  // Prints stored address
     outln(*y) // Prints value at address (so 10)
 }</div>
@@ -2092,10 +2084,10 @@ For example:
 Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
 <br>
 For example:
-<div class="code">main() {
-    x: int = 10
-    z: *int = &x // The 'z' store now memory address of the 'x' variable.
-    y: int = 98
+<div class="code">fn main() {
+    let x: int = 10
+    let z: *int = &x // The 'z' store now memory address of the 'x' variable.
+    let y: int = 98
     z = &y      // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-separator"></div>
@@ -2104,9 +2096,9 @@ Additionally, pointers can assign the value of the memory address they store.
 The <x class="inline_code">*</x> operator used for that too.
 <br>
 For example:
-<div class="code">main() {
-    x: int = 10
-    y: *int = &x
+<div class="code">fn main() {
+    let x: int = 10
+    let y: *int = &x
     *y = 59  // Assign value
     outln(x) // Prints 59
 }</div>
@@ -2129,8 +2121,8 @@ It is a built-in function. <br>
 Please refer to the <a href="stdlib/builtin.html">built-in</a> library documentation for this function.
 <br><br>
 For example:
-<div class="code">main() {
-    ptr: = new(int)
+<div class="code">fn main() {
+    let ptr = new(int)
     outln(ptr)
 }</div>
 The <x class="inline_code">ptr</x> variable is a heap allocated pointer.
@@ -2143,11 +2135,11 @@ It is deducted from the count when it loses its references.
 When the reference count reaches zero, it releases the allocation as it is no longer used.
 <br><br>
 For example:
-<div class="code">main() {
-    my_int: = 100
+<div class="code">fn main() {
+    let my_int = 100
 
     // Takes address of my_int but doesn't ref counting
-    ptr: = &my_int
+    let ptr = &my_int
 
     // Not free cause my_int is not heap-allocated
     ptr = nil
@@ -2169,7 +2161,7 @@ For example:
 
     // Ref count is 2 now of current allocation
     // The ptr_a referencing to allocation of ptr
-    ptr_a: = ptr
+    let ptr_a = ptr
 
     // Just assign as nil, not frees. Ref count is 1 now
     ptr = nil
@@ -2213,10 +2205,10 @@ The <x class="inline_code">&</x> operator must be used to represent a reference.
 <div class="title-separator"></div>
 <div class="sub-title">Reference Paramaters</div>
 Example for referenced parameters;
-<div class="code">sum(i: &int, val: int) { i += val }
+<div class="code">fn sum(i: &int, val: int) { i += val }
 
-main() {
-    a: = 10
+fn main() {
+    let a = 10
     sum(a, 100)
     outln(a)
 }</div>
@@ -2252,15 +2244,15 @@ Returns nil when there is no error.
 For example:
 <div class="code">use std::errors
 
-my_div(a: f64, b: f64) [f64, Error] {
+fn my_div(a: f64, b: f64) (f64, Error) {
     if a == 0 || b == 0 {
         ret 0, std::errors::new("divided with zero")
     }
     ret a/b, nil
 }
 
-main() {
-    result:, err: = my_div(5, 0)
+fn main() {
+    let (result, err) = my_div(5, 0)
     if err != nil {
         outln(err)
         ret
@@ -2279,20 +2271,20 @@ For example:
 }
 
 impl Error in MyError {
-    &error() str {
+    fn &error() str {
         ret .message
     }
 }
 
-my_div(a: f64, b: f64) [f64, Error] {
+fn my_div(a: f64, b: f64) (f64, Error) {
     if a == 0 || b == 0 {
         ret 0, MyError{"divided by zero"}
     }
     ret a/b, nil
 }
 
-main() {
-    result:, err: = my_div(10, 0)
+fn main() {
+    let (result, err) = my_div(10, 0)
     if err != nil {
         outln(err.error())
         ret
@@ -2313,14 +2305,14 @@ The <x class="inline_code">panic</x> function is the builtin function.
 See the <a href="./stdlib/builtin.html">builtin</a> documentations.
 <br><br>
 For example:
-<div class="code">add_pointer(rate: int, ptr: *int) {
+<div class="code">fn add_pointer(rate: int, ptr: *int) {
     if ptr == nil {
         panic("pointer is nil")
     }
     *ptr += rate
 }
 
-main() {
+fn main() {
     add_pointer(nil, 10)
 }</div>
 The code above is an example of panicking.
@@ -2339,11 +2331,11 @@ It just catch panics of the codes of the scope it is in.
 
 <br><br>
 For example:
-<div class="code">may_panic() {
+<div class="code">fn may_panic() {
     panic("a problem")
 }
 
-main() {
+fn main() {
     may_panic()
 }</div>
 The example code above will panic.
@@ -2351,11 +2343,11 @@ To be recovered it must be editing using the <x class="inline_code">recover</x> 
 
 <br><br>
 For example:
-<div class="code">may_panic() {
+<div class="code">fn may_panic() {
     panic("a problem")
 }
 
-main() {
+fn main() {
     recover((e: Error) {
         outln(e.error())
     })
@@ -2369,7 +2361,7 @@ the <x class="inline_code">recover</x> function would not have recover the panic
 <div class="topic-separator"></div>
 You can use a function as recover handler. <br>
 For example:
-<div class="code">handler(e: Error) {
+<div class="code">fn handler(e: Error) {
     // ...
 }
 
@@ -2397,7 +2389,7 @@ When these aliases are used, they qualify the types they represent.
 For example:
 <div class="code">type int32: i32
 
-main() {
+fn main() {
     my_int: int32 = 100
     outln(my_int)
 }</div>
@@ -2671,11 +2663,11 @@ For example:
 <strong>main.jule</strong>
 <div class="code">use cpp "sum_integers.hpp"
 
-cpp sum_integers(slice: []int) i64
+cpp fn sum_integers(slice: []int) i64
 
 main() {
-    slice: = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
-    total: = cpp.sum_integers(slice)
+    let slice = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
+    let total = cpp.sum_integers(slice)
     outln(total)
 }
 </div>
@@ -2694,7 +2686,7 @@ For example;<br>
 <div class="code">use cpp "sum.hpp"
 
 @cdef
-cpp SUM(int, int) int</div>
+cpp fn SUM(int, int) int</div>
 
 The <x class="inline_code">@cdef</x> attribute must be used for correct parsing of preprocessor defines.
 
@@ -2713,9 +2705,9 @@ A casting expression evaluates expression of between parentheses for itself.
 Example: <x class="inline_code">(int)(3.14)</x>
 <br><br>
 For code example; <br>
-<div class="code">main() {
-    x: f32 = 3.14
-    y: int = (int)(x) // Casting
+<div class="code">fn main() {
+    let x: f32 = 3.14
+    let y: int = (int)(x) // Casting
     outln(x)          // Prints 3.14
     outln(y)          // Prints 3
 }</div>
@@ -2756,12 +2748,12 @@ Therefore, they can be used for type annotation in variable and similar definiti
 <br>
 For example:
 <div class="code">type[T]
-sum(a: T, b: T) T {
+fn sum(a: T, b: T) T {
     x: T = a + b
     x
 }
 
-main() {
+fn main() {
     outln(sum[int](10, 20))  // 30
     outln(sum[f32](10, 4.2)) // 14.2
     outln(sum[f64](4.67, 2)) // 6.67
@@ -2776,10 +2768,10 @@ To specify a type for a generic type, you specify the data type in brackets.
 To specify multiple different generic types, sequential specification or comma-separation syntaxes are available;
 <div class="code">type[T1]
 type[T2]
-example_func(a: T1, b: T2) {}</div>
+fn example_func(a: T1, b: T2) {}</div>
 
 <div class="code">type[T1, T2]
-example_func1(a: T1, b: T2) {}</div>
+fn example_func1(a: T1, b: T2) {}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title" style="margin-bottom: 20px;">Generics for Structure</div>
@@ -2811,7 +2803,7 @@ Dynamic generic annotation can be used if all generic types are detectable by th
 <br><br>
 For example:
 <div class="code">type[Key, Value]
-print_map(map: [Key:Value]) {
+fn print_map(map: [Key:Value]) {
     for key:, value: in map {
         out(key)
         out(": ")
@@ -2819,8 +2811,8 @@ print_map(map: [Key:Value]) {
     }
 }
 
-main() {
-    mymap: = [int:str]{
+fn main() {
+    ket mymap = [int:str]{
         0: "A",
         1: "B",
         2: "C",
@@ -2859,7 +2851,7 @@ For example:
 <div class="code">// doc:
 // Divides specified floats.
 // THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
-div(a: f64, b: f64) f64 { ret a/b }</div>
+fn div(a: f64, b: f64) f64 { ret a/b }</div>
 
 <div class="warn">
     <li>The documentation comments should be single-line comments.</li>
@@ -2920,7 +2912,7 @@ The namespace is same with use declaration.
 For example:
 <div class="code">use std::pkg
 
-main() {
+fn main() {
     std::pkg::a_function()
 }</div>
 
@@ -2932,7 +2924,7 @@ The definitions of packages imported in this way can be used directly or optiona
 For example:
 <div class="code">use std::pkg::*
 
-main() {
+fn main() {
     a_function()
     std::pkg::a_function()
 }</div>
@@ -2947,7 +2939,7 @@ By default, there is no namespace representation.
 For example:
 <div class="code">use std::pkg::{a_function}
 
-main() {
+fn main() {
     a_function()
 }</div>
 
@@ -2955,7 +2947,7 @@ main() {
 If you want to import with Namespace but want to make some definitions directly available, use the <x class="inline_code">self</x> keyword.
 <div class="code">use std::pkg::{self, a_function}
 
-main() {
+fn main() {
     a_function()
     std::pkg::a_function()
 }</div>
@@ -2976,12 +2968,12 @@ For example:
 <div class="code">// file: ./hello_print.jule
 
 @inline
-hello_print(name: str) {
+fn hello_print(name: str) {
     outln("Hello " + name)
 }</div>
 <div class="code">// file: ./main.jule
 
-main() {
+fn main() {
     hello_print("Packages")
 }</div>
 As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
@@ -3071,7 +3063,7 @@ Support us to improve the documentation.
 // ------------------------------------------------------------------------------
 
 const TAB_types_str_constructor = `
-<div class="sub-sub-title"><x class="inline_code">str(obj: any) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn str(obj: any) str</x></div>
 Returns string value of given object.
 `;
 
@@ -3081,45 +3073,45 @@ Character count of string.
 `;
 
 const TAB_types_str_methods = `
-<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
 Reports string is empty or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">has_prefix(sub: str) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn has_prefix(sub: str) bool</x></div>
 Reports string has prefix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">has_suffix(sub: str) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn has_suffix(sub: str) bool</x></div>
 Reports string has suffix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">find(sub: str) int</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn find(sub: str) int</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at left of string to right.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">rfind(sub: str) int</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn rfind(sub: str) int</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at right of string to left.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">trim(bytes: str) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn trim(bytes: str) str</x></div>
 Trims string by specified bytes at left.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">rtrim(bytes: str) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn rtrim(bytes: str) str</x></div>
 Trims string by specified bytes at right.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">split(sub: str, n: int) []str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn split(sub: str, n: int) []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty slice if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">replace(sub: str, new: str, n: int) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn replace(sub: str, new: str, n: int) str</x></div>
 Replaces all substrings matching <x class="inline_code">sub</x> in the string with <x class="inline_code">new</x>. <br>
 Returns same string if <x class="inline_code">n</x> is equals to zero. <br>
 Replaces all matches if <x class="inline_code">n</x> less than zero.
@@ -3131,7 +3123,7 @@ Length of array.
 `;
 
 const TAB_types_arrays_methods = `
-<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
 Reports array is empty or not.
 `;
 
@@ -3141,7 +3133,7 @@ Length of slice.
 `;
 
 const TAB_types_slices_methods = `
-<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
 Reports slice is empty or not.
 `;
 
@@ -3151,27 +3143,27 @@ Length of key-value pairs.
 `;
 
 const TAB_types_maps_methods = `
-<div class="sub-sub-title"><x class="inline_code">empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
 Reports map is empty or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">clear()</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn clear()</x></div>
 Removes all key-value pairs.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">has(key: KEY_TYPE) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn has(key: KEY_TYPE) bool</x></div>
 Returns true if specified key value is exist in map, returns false if not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">del(key: KEY_TYPE)</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn del(key: KEY_TYPE)</x></div>
 Deletes key if exist.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">keys() []KEY_TYPE</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn keys() []KEY_TYPE</x></div>
 Returns keys of key-value pairs as slice.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">values() []VALUE_TYPE</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn values() []VALUE_TYPE</x></div>
 Returns values of key-value pairs as slice.
 `;
 
@@ -3272,7 +3264,7 @@ The <x class="inline_code">for</x> keyword use for iterations in Jule.
 Infinite iterations keep repeating endlessly until the loop is somehow broken.
 <br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     for {
         outln("Hello, iterations")
     }
@@ -3285,8 +3277,8 @@ The while iterations are iterations that repeat as long as a certain condition i
 It is not much different from defining an infinite iteration.
 <br>
 For example:
-<div class="code">main() {
-    counter: = 0
+<div class="code">fn main() {
+    let counter = 0
     for counter <= 5 {
         outln(counter)
         counter += 10
@@ -3303,8 +3295,8 @@ Foreach or for-each can be summarized as an iteration standard for collections.
 It repeats itself by looping through the elements of the collection.
 <br>
 For example:
-<div class="code">main() {
-    mystr: str = "Hello"
+<div class="code">fn main() {
+    let mystr str = "Hello"
     for index: in mystr {
         outln(index)
     }
@@ -3324,8 +3316,8 @@ Iterations can have two variables: Current index and current element.
 This example, just shows index. Let's see foreach iteration with element.
 <br>
 For example:
-<div class="code">main() {
-    mystr: str = "Hello"
+<div class="code">fn main() {
+    let mystr: str = "Hello"
     for _, c: byte in mystr {
         outln(c)
     }
@@ -3358,8 +3350,8 @@ The for loop is a good choice for iterations from one point to another.
 
 <br><br>
 For example:
-<div class="code">main() {
-    for i: = 0; i < 10; i++ {
+<div class="code">fn main() {
+    for let i = 0; i < 10; i++ {
         outln(i)
     }
 }</div>
@@ -3372,7 +3364,7 @@ There are two ways to do this in X; The <x class="inline_code">continue</x> and 
 If you want break the iteration, use the <x class="inline_code">break</x> keyword.
 <br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     for {
         outln("Hello, World")
         break
@@ -3385,7 +3377,7 @@ But just prints one time, because <x class="inline_code">break</x> keyword is br
 If you want continue to next iteration, use the <x class="inline_code">continue</x> keyword.
 <br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     for {
         continue
         outln("Hello, World")
@@ -3406,8 +3398,8 @@ If the provided condition is <x class="inline_code">true</x> the block is execut
 It is also the beginning of a new chain of conditions.
 <br><br>
 For example:
-<div class="code">main() {
-    x: = new(int)
+<div class="code">fn main() {
+    let x = new(int)
     if x == nil {
         outln("memory allocation is failed")
     }
@@ -3418,8 +3410,8 @@ For example:
 If the preceding <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions have not been fulfilled, it is a condition presented as an alternative to them.
 <br><br>
 For example:
-<div class="code">main() {
-    x: = 100
+<div class="code">fn main() {
+    let x = 100
     if x > 1000 {
         outln("greater than thousand")
     } else if x < 100 {
@@ -3437,7 +3429,7 @@ It is the block that will be executed unconditionally if the previous <x class="
 <br><br>
 For example:
 <div class="code">main() {
-    x: = new(int)
+    let x = new(int)
     if x == nil {
         outln("memory allocation is failed")
     } else {

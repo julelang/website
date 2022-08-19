@@ -12,7 +12,7 @@ const preview_code_quicksortHTML =
     if slice.len <= 1 {
         ret
     }
-    i: = 0
+    let i = 0
     for i < slice.len-1 {
         curr:, next: = &slice[i], &slice[i+1]
         if *curr > *next {
@@ -25,7 +25,7 @@ const preview_code_quicksortHTML =
 }
 
 main() {
-    my_slice: = []int{1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2}
+    let my_slice = []int{1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2}
     outln(my_slice)
     quicksort(my_slice)
     outln(my_slice)
@@ -62,8 +62,8 @@ impl Shape for Circle {
 }
 
 main() {
-    rect: Shape = Rectangle{90, 5}
-    circ: Shape = Circle{90.5}
+    let rect: Shape = Rectangle{90, 5}
+    let circ: Shape = Circle{90.5}
     outln(rect.area())
     outln(circ.area())
 }`;

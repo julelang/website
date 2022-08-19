@@ -1,11 +1,11 @@
 const stdlib_io_functionsHTML = `
 <div class="code">@inline
-pub readln() str</div>
+pub fn readln() str</div>
 Reads full-complete line from command-line.
 
 <div class="topic-separator"></div>
 <div class="code">@inline
-pub readin() str</div>
+pub fn readin() str</div>
 Read first part of line from command-line.
 `;
 
