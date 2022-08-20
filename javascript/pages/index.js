@@ -3,18 +3,18 @@
 // license that can be found in the LICENSE file.
 
 const preview_code_helloworldHTML =
-`main() {
+`fn main() {
     outln("Hello, world")
 }`;
 
 const preview_code_quicksortHTML =
-`quicksort(slice: []int) {
+`fn quicksort(slice: []int) {
     if slice.len <= 1 {
         ret
     }
     let i = 0
     for i < slice.len-1 {
-        curr:, next: = &slice[i], &slice[i+1]
+        let (curr, next) = &slice[i], &slice[i+1]
         if *curr > *next {
             *curr, *next = *next, *curr
         }
@@ -24,7 +24,7 @@ const preview_code_quicksortHTML =
     quicksort(slice[i+1:])
 }
 
-main() {
+fn main() {
     let my_slice = []int{1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2}
     outln(my_slice)
     quicksort(my_slice)
@@ -35,7 +35,7 @@ const preview_code_traitsHTML =
 `use std::math::{PI}
 
 trait Shape {
-    area() int
+    fn area() int
 }
 
 struct Rectangle {
@@ -44,7 +44,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    &area() int {
+    fn &area() int {
         ret .width * .height
     }
 }
@@ -54,12 +54,12 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    &area() int {
+    fn &area() int {
         ret PI * .r * .r
     }
 }
 
-main() {
+fn main() {
     let rect: Shape = Rectangle{90, 5}
     let circ: Shape = Circle{90.5}
     outln(rect.area())

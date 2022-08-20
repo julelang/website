@@ -2966,10 +2966,9 @@ const preprocessor_directivesHTML = `
 <div class="title" style="margin-bottom: 20px;">Directives</div>
 <div class="text">
 Directives tell the compiler how to process the code. <br>
-Directives are denoted by <x class="inline_code">pragma</x> identifier to preprocessor. <br>
+Directives are used with pragma comments. <br>
 For example:
-<div class="code">#pragma enofi</div>
-
+<div class="code">//jule:enofi</div>
 <div class="title-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">enofi</x></div>
 When importing a package or local package, this directive ensures that the code is split on import.
