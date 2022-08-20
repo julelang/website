@@ -520,13 +520,13 @@ const basics_commentsHTML = `
 <div class="text">
   Comments are useful for understanding code, making comments and explanations, taking notes, and sometimes writing little jokes.
   <br><br>
-  In general, two types of comment lines appear in programming languages: inline comment and multiline comment.
+  In general, two types of comment lines appear in programming languages: singleline comment and multiline comment.
   Some programming languages only support one.
   Jule supports both of these common approaches.
 
   <div class="title-separator"></div>
-  <div class="sub-title">Inline Comments</div>
-  <div class="code">// Inline comment</div>
+  <div class="sub-title">Signleline Comments</div>
+  <div class="code">// Signleline comment</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Multiline Comments</div>
@@ -1028,10 +1028,10 @@ const basics_attributesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Attributes</div>
 <div class="text">
 Attributes are used to mark definitions for specific reasons and to report them to the compiler.
-Each attribute is defined with <x class="inline_code">@</x>, the attribute itself must come immediately after this operator.
+Each attribute is defined with comment pragma (<x class="inline_code">jule:</x>), the attribute itself must come immediately after pragma.
 <br><br>
 For example:
-<div class="code">@attribute_a
+<div class="code">//jule:attribute_a
 fn my_func() int {
     // Body ...
 }</div>
@@ -1041,7 +1041,8 @@ If you are giving more than one attribute, you should write each one in the same
 Note that an attribute cannot be given repeatedly.
 <br><br>
 For example:
-<div class="code">@attribute_a @attribute_b
+<div class="code">//jule:attribute_a
+//jule:attribute_b
 fn my_func() int {
     // Body...
 }</div>
@@ -1513,38 +1514,15 @@ fn main() {
 
 <div class="title-separator"></div>
 <div class="sub-title">Attributes</div>
-<div class="sub-sub-title"><x class="inline_code">inline</x></div>
-Function calls has a cost.
-Inline functions, if function body small, can be a good way to avoid this call cost.
-Inline functions are expanded or modified where they are called.
-So the function is not actually called.
-However, it should be noted that this is not a command, it is a request to the compiler.
-The compiler can choose not to compile it inline even if the function is marked as inline.
-Of course this has advantages and disadvantages.
-<br><br>
-<strong style="font-family: 'OpenSans-Light'">Advantages;</strong>
-<ul>
-  <li>Function call overhead doesn't occur.</li>
-  <li>Saves overhead of a return call from a function.</li>
-  <li>Saves the overhead of push/pop variables on the stack when function is called.</li>
-</ul>
-<strong style="font-family: 'OpenSans-Light'">Disadvantages;</strong>
-<ul>
-  <li>If you use too many inline functions then the size of the binary executable file will be more large than normally, because of the duplication of same code.</li>
-  <li>Too much inlining can also reduce your instruction cache hit rate, thus reducing the speed of instruction fetch from that of cache memory to that of primary memory.</li>
-  <li>Inline functions may not be useful for many embedded systems. Because code size is often more important than speed in embedded systems.</li>
-</ul>
-
-<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">typearg</x></div>
 This accepts generic types as parameter of function.
 This attribute only used for functions with generics.
 <br><br>
-<strong style="font-family: 'OpenSans-Light'">Advantages;</strong>
+<strong style="font-family: 'OpenSans-Light'">Pros;</strong>
 <ul>
   <li>Increase readability.</li>
 </ul>
-<strong style="font-family: 'OpenSans-Light'">Disadvantages;</strong>
+<strong style="font-family: 'OpenSans-Light'">Cons;</strong>
 <ul>
   <li>Function cannot have parameters.</li>
 </ul>
@@ -2007,7 +1985,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    @inline
+    //jule:inline
     fn &area() int {
         ret .width * .height
     }
@@ -2018,7 +1996,7 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    @inline
+    //jule:inline
     fn &area() int {
         ret PI * .r * .r
     }
@@ -2833,9 +2811,9 @@ Jule makes it easy to have documented code.
 The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your Jule source code.
 <br><br>
 The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cpp_out_dir</x> field.
-The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.xdoc</x>.
+The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.juledoc</x>.
 <br><br>
-The <x class="inline_code">xdoc</x> file is in JSON format and contains only metadata about definitions.
+The <x class="inline_code">juledoc</x> file is in JSON format and contains only metadata about definitions.
 </div>
 `;
 
@@ -2844,19 +2822,13 @@ const documenting_documentation_commentsHTML = `
 <div class="text">
 If you want your personal comments to be in the output created with the <x class="inline_code">doc</x> command, you can do this with the documentation comments.
 <br><br>
-To create a documentation comment, simply start it with <x class="inline_code">doc:</x>.
+To create a documentation comment, write comment.
 The documenter will treat that and subsequent comment lines as documentation comments.
 <br><br>
 For example:
-<div class="code">// doc:
-// Divides specified floats.
-// THIS FUNCTION DOESN'T CHECK ZERO DIVISION!
-fn div(a: f64, b: f64) f64 { ret a/b }</div>
-
-<div class="warn">
-    <li>The documentation comments should be single-line comments.</li>
-    <li>The documentation comments should be full line.</li>
-</div>
+<div class="code">// The first documentation comment line.
+// The second documentation comment line.
+fn my_func() {}</div>
 </div>
 `;
 
@@ -2866,7 +2838,7 @@ const documenting_using_documenterHTML = `
 The <x class="inline_code">doc</x> command is used to use the documenter.
 <br><br>
 The <x class="inline_code">doc</x> command works quite simply.
-Show only the X source files you want to document.
+Show only the Jule source files you want to document.
 <br><br>
 For example:
 <div class="code">$ jule doc main.jule</div>
@@ -2967,7 +2939,7 @@ Each package has the ability to use its own defines.
 For example:
 <div class="code">// file: ./hello_print.jule
 
-@inline
+//jule:inline
 fn hello_print(name: str) {
     outln("Hello " + name)
 }</div>

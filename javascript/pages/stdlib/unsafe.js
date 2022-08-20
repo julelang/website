@@ -1,43 +1,37 @@
 const stdlib_unsafe_functionsHTML = `
-<div class="code">@inline @typearg
+<div class="code">//jule:typearg
 type[T]
 pub fn sizeof_t() uint</div>
 Returns the size of the data type in bytes.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-type[T]
+<div class="code">type[T]
 pub fn sizeof(expr: T) uint</div>
 Returns the size of the expression in bytes.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-type[T]
+<div class="code">type[T]
 pub fn alignof(expr: T) uint</div>
 Returns the alignment, in bytes, required for any instance of the type
 indicated by type-id, which is either complete object type.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-type[T]
+<div class="code">type[T]
 pub fn ptr_of(ptr: *T) Ptr[T]</div>
 Returns unsafe pointer for given raw pointer.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-type[T]
+<div class="code">type[T]
 pub fn ptr_from(addr: uintptr) Ptr[T]</div>
 Returns unsafe pointer from given address.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-type[T]
+<div class="code">type[T]
 pub fn voidptr_of(ptr: *T) Voidptr</div>
 Returns unsafe voidptr for given raw pointer.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn voidptr_from(addr: uintptr) Voidptr</div>
+<div class="code">pub fn voidptr_from(addr: uintptr) Voidptr</div>
 Returns unsafe voidptr from given address.
 `;
 
@@ -61,13 +55,13 @@ Wrapper structure for voidptr.
 <br><br>
 <strong>Methods:</strong>
 
-<div class="code">@typearg
+<div class="code">//jule:typearg
 type[T]
 pub fn &cast() *T</div>
 Returns casted raw pointer of given type.
 
 <div class="topic-separator"></div>
-<div class="code">@inline @typearg
+<div class="code">//jule:typearg
 type[T]
 pub fn &to_ptr() Ptr[T]</div>
 Returns unsafe pointer of given type.
@@ -86,13 +80,11 @@ Wrapper structure for unsafe raw pointer.
 <br><br>
 <strong>Methods:</strong>
 
-<div class="code">@inline
-pub fn &to_voidptr() Voidptr</div>
+<div class="code">pub fn &to_voidptr() Voidptr</div>
 Returns unsafe pointer as unsafe voidptr.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn &move(n: int)</div>
+<div class="code">pub fn &move(n: int)</div>
 Moves the pointer from its pointing position by the size of the data type.
 The offset amount is determined by n.
 Moving back requires a negative expression, and moving forward requires a positive expression.
@@ -101,8 +93,7 @@ Special cases are: <br>
 <li><x class="inline_code">move(n) = address sets as zero (nil)</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn &get() T</div>
+<div class="code">pub fn &get() T</div>
 Returns data of pointer.
 `;
 

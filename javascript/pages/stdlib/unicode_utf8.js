@@ -94,8 +94,7 @@ encodings are treated as single runes of width 1 byte.
 Is like rune_count but its input is a string.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn rune_start(b: byte) bool</div>
+<div class="code">pub fn rune_start(b: byte) bool</div>
 Reports whether the byte could be the first byte of an encoded,
 possibly invalid rune. Second and subsequent bytes always have the top two
 bits set to 10.

@@ -33,13 +33,11 @@ for 2 <= base <= 36. The result uses the lower-case letters 'a' to 'z'
 for digit values >= 10.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn itoa(i: int) str</div>
+<div class="code">pub fn itoa(i: int) str</div>
 Is equivalent to fmt_int(i64(i), 10).
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn fmt_float(f: f64, fmt: byte, prec: int, bit_size: int) str</div>
+<div class="code">pub fn fmt_float(f: f64, fmt: byte, prec: int, bit_size: int) str</div>
 Converts the floating-point number f to a string,
 according to the format fmt and precision prec. It rounds the
 result assuming that the original was obtained from a floating-point
@@ -107,8 +105,7 @@ Records a failed conversion.
 <br><br>
 <strong>Methods:</strong>
 
-<div class="code">@inline
-pub fn &unwrap() Error</div>
+<div class="code">pub fn &unwrap() Error</div>
 
 `;
 

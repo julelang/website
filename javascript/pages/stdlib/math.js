@@ -33,8 +33,7 @@ const stdlib_math_constantsHTML = `
 `;
 
 const stdlib_math_functionsHTML = `
-<div class="code">@inline
-pub fn abs(x: f64) f64</div>
+<div class="code">pub fn abs(x: f64) f64</div>
 Returns the absolute value of x.
 <br><br>
 Special cases are: <br>
@@ -59,8 +58,7 @@ Special cases are: <br>
 <li><x class="inline_code">asin(x) = nan if x < -1 or x > 1</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn acos(x: f64) f64</div>
+<div class="code">pub fn acos(x: f64) f64</div>
 Returns the arccosine, in radians, of x.
 <br><br>
 Special cases are: <br>
@@ -119,13 +117,11 @@ Special cases are: <br>
 <li><x class="inline_code">atanh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn nan() f64</div>
+<div class="code">pub fn nan() f64</div>
 Returns an IEEE 754 “not-a-number” value.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn isnan(f: f64) bool</div>
+<div class="code">pub fn isnan(f: f64) bool</div>
 Reports whether f is an IEEE 754 “not-a-number” value.
 
 <div class="topic-separator"></div>
@@ -133,8 +129,7 @@ Reports whether f is an IEEE 754 “not-a-number” value.
 Returns positive infinity if sign >= 0, negative infinity if !sign < 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn isinf(f: f64, sign: int) bool</div>
+<div class="code">pub fn isinf(f: f64, sign: int) bool</div>
 Reports whether f is an infinity, according to sign. <br>
 If sign > 0, isinf reports whether f is positive infinity. <br>
 If sign < 0, isinf reports whether f is negative infinity. <br>
@@ -201,8 +196,7 @@ Special cases are: <br>
 <li><x class="inline_code">erfinv(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn erfcinv(x: f64) f64</div>
+<div class="code">pub fn erfcinv(x: f64) f64</div>
 Returns the inverse of erfc(x).
 <br><br>
 Special cases are: <br>
@@ -285,8 +279,7 @@ Special cases are: <br>
 <li><x class="inline_code">gamma(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn ceil(x: f64) f64</div>
+<div class="code">pub fn ceil(x: f64) f64</div>
 Returns the least integer value greater than or equal to x.
 <br><br>
 Special cases are: <br>
@@ -431,8 +424,7 @@ Special cases are: <br>
 <li><x class="inline_code">log1p(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn log10(x: f64) f64</div>
+<div class="code">pub fn log10(x: f64) f64</div>
 Returns the decimal logarithm of x.
 The special cases are the same as for log.
 
@@ -544,8 +536,7 @@ Special cases are: <br>
 <li><x class="inline_code">remainder(x, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn signbit(x: f64) bool</div>
+<div class="code">pub fn signbit(x: f64) bool</div>
 Reports whether x is negative or negative zero.
 
 <div class="topic-separator"></div>
@@ -621,28 +612,24 @@ Special cases are: <br>
 <li><x class="inline_code">tanh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn f32_bits(f: f32) u32</div>
+<div class="code">pub fn f32_bits(f: f32) u32</div>
 Returns the IEEE 754 binary representation of f, with the sign bit of f and the result in the same bit position. <br>
 <x class="inline_code">f32_bits(f32_from_bits(x)) == x</x>.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn f32_from_bits(b: u32) f32</div>
+<div class="code">pub fn f32_from_bits(b: u32) f32</div>
 Returns the floating-point number corresponding
 to the IEEE 754 binary representation b, with the sign bit of b and the result in the same bit position.
 <x class="inline_code">f32_from_bits(f32_bits(x)) == x</x>.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn f64_bits(f: f64) u64</div>
+<div class="code">pub fn f64_bits(f: f64) u64</div>
 Returns the IEEE 754 binary representation of f,
 with the sign bit of f and the result in the same bit position,
 and <x class="inline_code">f64_bits(f64_from_bits(x)) == x</x>.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn f64_from_bits(b: u64) f64</div>
+<div class="code">pub fn f64_from_bits(b: u64) f64</div>
 Returns the floating-point number corresponding
 to the IEEE 754 binary representation b, with the sign bit of b
 and the result in the same bit position.

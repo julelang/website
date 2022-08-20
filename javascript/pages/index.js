@@ -44,7 +44,6 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    @inline
     &area() int {
         ret .width * .height
     }
@@ -55,7 +54,6 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    @inline
     &area() int {
         ret PI * .r * .r
     }

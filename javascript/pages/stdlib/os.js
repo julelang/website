@@ -8,8 +8,7 @@ Exit code for failure.
 `;
 
 const stdlib_os_functionsHTML = `
-<div class="code">@inline
-pub exit(code: int)</div>
+<div class="code">pub exit(code: int)</div>
 Causes the current program to exit with the given status code. <br>
 Conventionally, code zero indicates success, non-zero an error.
 `;

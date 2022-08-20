@@ -5,28 +5,23 @@ Is the size of a uint in bits.
 `;
 
 const stdlib_math_bits_functionsHTML = `
-<div class="code">@inline
-pub fn leading_zeros(x: uint) int</div>
+<div class="code">pub fn leading_zeros(x: uint) int</div>
 Returns the number of leading zero bits in x; the result is UINT_SIZE for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn leading_zeros8(x: u8) int</div>
+<div class="code">pub fn leading_zeros8(x: u8) int</div>
 Returns the number of leading zero bits in x; the result is 8 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn leading_zeros16(x: u16) int</div>
+<div class="code">pub fn leading_zeros16(x: u16) int</div>
 Returns the number of leading zero bits in x; the result is 16 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn leading_zeros32(x: u32) int</div>
+<div class="code">pub fn leading_zeros32(x: u32) int</div>
 Returns the number of leading zero bits in x; the result is 32 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn leading_zeros64(x: u64) int</div>
+<div class="code">pub fn leading_zeros64(x: u64) int</div>
 Returns the number of leading zero bits in x; the result is 64 for x == 0.
 
 <div class="topic-separator"></div>
@@ -34,8 +29,7 @@ Returns the number of leading zero bits in x; the result is 64 for x == 0.
 Returns the number of trailing zero bits in x; the result is UINT_SIZE for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn trailing_zeros8(x: u8) int</div>
+<div class="code">pub fn trailing_zeros8(x: u8) int</div>
 Returns the number of trailing zero bits in x; the result is 8 for x == 0.
 
 <div class="topic-separator"></div>
@@ -55,18 +49,15 @@ Returns the number of trailing zero bits in x; the result is 64 for x == 0.
 Returns the number of one bits ("population count") in x.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn ones_count8(x: u8) int</div>
+<div class="code">pub fn ones_count8(x: u8) int</div>
 Returns the number of one bits ("population count") in x.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn ones_count16(x: u16) int</div>
+<div class="code">pub fn ones_count16(x: u16) int</div>
 Returns the number of one bits ("population count") in x.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn ones_count32(x: u32) int</div>
+<div class="code">pub fn ones_count32(x: u32) int</div>
 Returns the number of one bits ("population count") in x.
 
 <div class="topic-separator"></div>
@@ -113,23 +104,19 @@ To rotate x right by k bits, call rotate_left64(x, -k).
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn reverse8(x: u8) u8</div>
+<div class="code">pub fn reverse8(x: u8) u8</div>
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn reverse16(x: u16) u16</div>
+<div class="code">pub fn reverse16(x: u16) u16</div>
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn reverse32(x: u32) u32</div>
+<div class="code">pub fn reverse32(x: u32) u32</div>
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn reverse64(x: u64) u64</div>
+<div class="code">pub fn reverse64(x: u64) u64</div>
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
@@ -139,8 +126,7 @@ Returns the value of x with its bytes in reversed order.
 <div class="info">This function's execution time does not depend on the inputs.</div>
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn reverse_bytes16(x: u16) u16</div>
+<div class="code">pub fn reverse_bytes16(x: u16) u16</div>
 Returns the value of x with its bytes in reversed order.
 
 <div class="info">This function's execution time does not depend on the inputs.</div>
@@ -163,8 +149,7 @@ Returns the minimum number of bits required to represent x;
 the result is 0 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn len8(x: u8) int</div>
+<div class="code">pub fn len8(x: u8) int</div>
 Returns the minimum number of bits required to represent x;
 the result is 0 for x == 0.
 
@@ -282,8 +267,7 @@ Returns the remainder of (hi, lo) divided by y. rem panics for
 y == 0 (division by zero) but, unlike div, it doesn't panic on a quotient overflow.
 
 <div class="topic-separator"></div>
-<div class="code">@inline
-pub fn rem32(hi: u32, lo: u32, y: u32) u32</div>
+<div class="code">pub fn rem32(hi: u32, lo: u32, y: u32) u32</div>
 Returns the remainder of (hi, lo) divided by y. rem32 panics
 for y == 0 (division by zero) but, unlike div32, it doesn't panic on a quotient overflow.
 
