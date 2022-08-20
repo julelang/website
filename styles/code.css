@@ -3,7 +3,7 @@
 */
 
 .code {
-  color: gainsboro;
+  color: rgb(235, 235, 235);
   background-color: #1d1d1d;
   white-space: pre-wrap;
   overflow: auto;

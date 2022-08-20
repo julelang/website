@@ -3,12 +3,13 @@ const footer = document.getElementById('footer');
 footer.remove();
 
 class SideNavigator {
-    navigations  = []
-    index        = 0
-    active_color = '#FFBB00';
-    url          = undefined
-    query_page   = undefined
-    content_body = undefined
+    navigations      = []
+    index            = 0
+    active_color     = '#FFBB00';
+    active_backcolor = "rgb(20, 20, 20)";
+    url              = null
+    query_page       = null
+    content_body     = null
     
     prev_page = `
 <button id="@$" style="float: left; padding: 15px;">
@@ -36,7 +37,7 @@ class SideNavigator {
         pathname = "page" + pathname;
         pathname = (is_next ? "next-" : "prev-") + pathname;
         pathname = "button-" + pathname;
-        return pathname
+        return pathname;
     }
 
     set_events() {
@@ -72,7 +73,12 @@ class SideNavigator {
         let html = this.navigations[index][1];
         const old = this.navigations[this.index][0];
         old.style = nav.style;
-        nav.style.color = this.active_color;
+        nav.style.color = "white";
+        nav.style.backgroundColor = this.active_backcolor;
+        nav.style.borderWidth = "1px";
+        nav.style.borderRadius = "5px";
+        nav.style.borderColor = "gray";
+        nav.style.borderStyle = "solid";
         nav.style.fontWeight = "bold";
         this.index = index;
         html += `<div style="margin-top: 150px;">`;
@@ -97,8 +103,7 @@ class SideNavigator {
         }
         this.url.searchParams.set('page', nav.id);
         window.history.replaceState(null, null, "?" + this.url.searchParams.toString());
-        nav.scrollIntoView();
-        window.scrollTo(0, 0);
+        this.content_body.scrollTo(0, 0);
     }
 
     next_page_click() { this.select_topic_index(this.index+1); }

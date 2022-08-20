@@ -5,7 +5,7 @@
 const page_title = `Jule - Documentations`;
 
 const jule_langHTML = `
-<div class="title">The <x style="color: #FFBB00;">Jule</x> Programming Language</div>
+<div class="title">The <x style="color: #5F7389;">Jule</x> Programming Language</div>
 <br>
 <div class="text">
   <br><br>
@@ -1148,7 +1148,7 @@ For example:
 <div class="code">const age = 18</div>
 <div class="code">const age: int = 18</div>
 <div class="warn">
-  <li>No matter which method the constant variables are defined by, a value must be given.</li>
+  No matter which method the constant variables are defined by, a value must be given.
 </div>
 
 <div class="title-separator"></div>

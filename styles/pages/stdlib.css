@@ -1,0 +1,8 @@
+#side-navigation {
+    width: 190px;
+    min-width: 190px;
+}
+
+#side-navigation-content-body {
+    left: 230px;
+}

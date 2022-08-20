@@ -92,7 +92,7 @@ button {
   font-style: normal;
   border: none;
   color: rgb(255, 255, 255);
-  background-color: #9c7300;
+  background-color: rgb(70, 80, 90);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -107,7 +107,7 @@ button {
 
 button:hover {
   transition: 250ms;
-  background-color: #FFBB00;
+  background-color: slategray;
 }
 
 #side-navigation {
@@ -116,24 +116,29 @@ button:hover {
   height: calc(100% - 41px);
   margin-right: auto;
   padding: 20px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: inline-block;
   position: fixed;
   user-select: none;
   left: 0px;
   top: 0px;
+  right: 0px;
 }
 
 #side-navigation .topic {
   transition: 200ms;
-  color: rgb(255, 255, 255);
+  color: rgb(189, 189, 189);
   background-color: transparent;
   text-decoration: none;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
+  text-align: left;
+  padding: 4px;
+  padding-right: 0px;
   font-family: 'OpenSans';
   font-size: medium;
-  font-weight: normal;
+  font-weight: bold;
   user-select: none;
   margin-bottom: 8px;
 }
@@ -143,23 +148,24 @@ button:hover {
 }
 
 #side-navigation .topic:hover {
-  transition: 200ms;
-  color: goldenrod;
+  transition: 250ms;
+  color: white;
   cursor: pointer;
-  margin-left: 5px;
-  font-weight: bold;
 }
 
 #side-navigation .sub-topic {
   transition: 200ms;
-  color: rgb(255, 255, 255);
+  color: rgb(189, 189, 189);
   background-color: transparent;
   text-decoration: none;
-  width: fit-content;
+  width: 100%;
+  text-align: left;
+  padding: 4px;
+  padding-right: 0;
   height: fit-content;
   font-family: 'OpenSans';
   font-size: medium;
-  font-weight: normal;
+  font-weight: bold;
   user-select: none;
   margin-left: 10px;
   margin-bottom: 8px;
@@ -167,10 +173,8 @@ button:hover {
 
 #side-navigation .sub-topic:hover {
   transition: 250ms;
-  color: goldenrod;
+  color: white;
   cursor: pointer;
-  margin-left: 15px;
-  font-weight: bold;
 }
 
 #side-navigation .sub-sub-topic {
@@ -190,7 +194,7 @@ button:hover {
 
 #side-navigation .sub-sub-topic:hover {
   transition: 250ms;
-  color: goldenrod;
+  color: rgb(255, 255, 255);
   cursor: pointer;
   margin-left: 35px;
   font-weight: bold;
@@ -226,28 +230,28 @@ button:hover {
 
 .info {
   color: rgb(255, 255, 255);
-  background-color: transparent;
+  background-color: rgba(0, 25, 39, 0.2);
   border-radius: 5px;
   border-color: lightslategray;
   border-style: solid;
   border-width: 1px;
+  border-left-width: 8px;
   padding: 10px;
-  font-family: 'OpenSans-LightItalic';
-  font-weight: bold;
+  font-family: 'OpenSans';
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .warn {
   color: rgb(255, 255, 255);
-  background-color: transparent;
+  background-color: rgba(63, 57, 5, 0.20);
   border-radius: 5px;
   border-color: rgb(175, 158, 0);
   border-style: solid;
   border-width: 1px;
+  border-left-width: 8px;
   padding: 10px;
-  font-family: 'OpenSans-LightItalic';
-  font-weight: bold;
+  font-family: 'OpenSans';
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -296,7 +300,7 @@ button:hover {
 .marked-ul li:before {
   content: '✔';
   display: inline-flex;
-  color: #c48f00;
+  color: rgb(121, 145, 168);
   padding: 0px 6px 0px 0px;
   margin: 0px;
 }
@@ -341,7 +345,7 @@ button:hover {
   user-select: none;
   border-radius: 10px;
   border-width: 2px;
-  border-color: #ca9400;
+  border-color: #5F7389;
   border-style: solid;
   transition: 200ms;
 }
@@ -349,7 +353,7 @@ button:hover {
 .link-card:hover {
   transition: 200ms;
   color: white;
-  background-color: #ca9400;
+  background-color: #5F7389;
 }
 
 .link-card-body {
@@ -403,7 +407,7 @@ a:hover {
   width: 100%;
   background-color: transparent;
   border-bottom-style: solid;
-  border-bottom-color: #FFBB00;
+  border-bottom-color: #5F7389;
   border-bottom-width: 2px;
   padding-left: 10px;
   padding-right: 10px;
@@ -421,13 +425,13 @@ a:hover {
 }
 
 .tabcontrol .tab.active {
-  color: #FFBB00;
+  color: rgb(136, 163, 190);
 }
 
 .tabcontrol .tab:hover {
   transition: 250ms;
   cursor: pointer;
-  color: #FFBB00;
+  color: rgb(136, 163, 190);
 }
 
 .tabcontrol-content {
@@ -450,10 +454,10 @@ a:hover {
   margin-left: 2px;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: transparent;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-color: #FFBB00;
+  border-color: #5F7389;
   border-style: solid;
   border-width: 1px;
 }
@@ -461,7 +465,7 @@ a:hover {
 .dropdown-content a {
   transition: 0.15s;
   cursor: pointer;
-  color: black;
+  color: white;
   font-family: 'OpenSans';
   padding: 12px 16px;
   text-decoration: none;
@@ -471,8 +475,8 @@ a:hover {
 
 .dropdown-content a:hover {
   transition: 0.15s;
-  color: black;
-  background-color: #f3e6ba;
+  color: white;
+  background-color: #5F7389;
   font-weight: bold;
 }
 

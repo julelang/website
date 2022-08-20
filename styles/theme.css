@@ -2,7 +2,7 @@
   Main theme stylesheet.
 */
 
-/* #FFBB00 */
+/* #5F7389 */
 
 html {
   position: relative;
@@ -24,7 +24,7 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: purple transparent;
+  scrollbar-color: #5F7389 transparent;
 }
 
 .table {
@@ -42,7 +42,7 @@ body {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #c48f00;
+  background-color: #333c46;
   color: white;
 }
 
@@ -61,12 +61,12 @@ body {
 
 ::-moz-selection {
   color: rgb(255, 255, 255);
-  background-color: goldenrod;
+  background-color: #5F7389;
 }
 
 ::selection {
   color: rgb(255, 255, 255);
-  background-color: goldenrod;
+  background-color: #5F7389;
 }
 
 ::-webkit-scrollbar {
@@ -84,13 +84,13 @@ body {
 }
 
 a {
-  color: #dfba55;
+  color: rgb(124, 149, 173);
   text-decoration: none;
   transition: 250ms;
 }
 
 a:hover {
-  color: #FFBB00;
+  color: #9dbde2;
   transition: 250ms;
 }
 

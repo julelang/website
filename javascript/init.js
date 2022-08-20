@@ -20,7 +20,7 @@ if (document.title == "") {
 head.innerHTML +=
 `<link
   rel="icon"
-  href="https://raw.githubusercontent.com/jule-lang/resources/main/jule.svg?sanitize=true">`;
+  href="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">`;
 //#endregion SET_ICON
 
 //#region SET_STYLES
@@ -44,7 +44,7 @@ document.getElementById('navigation').innerHTML =
 <a href="${rootPath}/index.html">
 <img
   class="navigation-logo"
-  src="https://raw.githubusercontent.com/jule-lang/resources/main/jule.svg?sanitize=true">
+  src="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">
 </a>
 <div id="navigation-links">
   <a href="${rootPath}/pages/docs.html">DOCUMENTATIONS</a>
@@ -74,13 +74,13 @@ body.innerHTML +=
       <center>
         <img
           class="footer-logo"
-          src="https://raw.githubusercontent.com/jule-lang/resources/main/jule.svg?sanitize=true">
+          src="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">
         <div id="copyright"></div>
       </center>
       </div>
     </td>
     <td>
-      <div class="footer-title">Using Jule</div>
+      <div class="footer-title">Jule</div>
       <a href="https://github.com/jule-lang/jule/releases">Download</a> <br>
       <a href="${rootPath}/pages/community.html">Community</a> <br>
       <a href="${rootPath}/pages/docs.html">Documentations</a> <br>
