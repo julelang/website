@@ -137,12 +137,12 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
   Using example for PowerShell;
-  <div class="code">PS @DIR> scripts/build.bat</div>
+  <div class="code">$ scripts/build.bat</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   <div class="info">
-    Ideal scripts for Windows: usally shellscripts (.sh).
+    Ideal scripts for Linux: usally shellscripts (.sh).
   </div>
   Using example for Bash;
   <div class="code">$ sh scripts/build.sh</div>
@@ -156,7 +156,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">PS @DIR> go build -o julec.exe -v cmd/julec/main.go</div>
+  <div class="code">$ go build -o julec.exe -v cmd/julec/main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
@@ -2163,12 +2163,15 @@ Due to the heap guarantee approach of JuleC, the compiler performs heap allocati
 <li>When returned pointers</li>
 <li>When anonymous functions copy pointers from block</li>
 <li>When struct has a pointer member</li>
+<li>When a pointer gives to trait as data</li>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">How does JuleC handle its allocation?</div>
 Pointers to a pure point create and point to a new allocation for itself when the heap is guaranteed.
 Guaranteed pointers always point to the new allocation, not the old one.
-They are common if a pointer points to a place using a different pointer. When one heap is guaranteed, all public pointers used in the same way are moved to the same allocation and the heap is guaranteed.
+<br><br>
+They are common if a pointer points to a place using a different pointer.
+When one heap is guaranteed, all public pointers used in the same way are moved to the same allocation and the heap is guaranteed.
 
 </div>
 `;
