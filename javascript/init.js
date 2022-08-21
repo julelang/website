@@ -107,7 +107,7 @@ body.innerHTML +=
       <a href="https://github.com/jule-lang">GitHub Organization</a> <br>
       <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
       <a href="https://github.com/jule-lang/jule/discussions">Discussions</a> <br>
-      <a href="https://discord.gg/Z6caSvTQeD">Discord Server</a> <br>
+      <a href=""></a> <br>
       <a href=""></a>
     </td>
     </tr>
