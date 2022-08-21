@@ -108,3 +108,27 @@ body {
   transition: 200ms;
   margin-left: 25px;
 }
+
+#index-learn-button {
+  font-family: 'OpenSans-SemiBold';
+  font-style: bold;
+  font-size: large;
+  width: 150px;
+  background-color: firebrick;
+}
+
+#index-learn-button:hover {
+  background-color: rgb(211, 39, 39);
+}
+
+#index-download-button {
+  font-family: 'OpenSans-SemiBold';
+  font-style: bold;
+  font-size: large;
+  width: 150px;
+  background-color: rgb(83, 95, 107);
+}
+
+#index-download-button:hover {
+  background-color: slategray;
+}

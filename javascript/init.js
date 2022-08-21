@@ -70,42 +70,49 @@ body.innerHTML +=
     <table>
     <tr>
     <td>
-      <div style="margin-right: 200px;">
+      <div style="margin-right: 130px;">
       <center>
         <img
           class="footer-logo"
           src="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">
-        <div id="copyright"></div>
       </center>
       </div>
     </td>
     <td>
-      <div class="footer-title">Jule</div>
+      <div class="footer-title">About</div>
       <a href="https://github.com/jule-lang/jule/releases">Download</a> <br>
       <a href="${rootPath}/pages/community.html">Community</a> <br>
+      <a href="${rootPath}/pages/license.html"">License</a> <br>
+      <a href="${rootPath}/pages/code_of_conduct.html">Code of Conduct</a> <br>
+      <a href=""></a>
+    </td>
+    <td>
+      <div class="footer-title">Get Started</div>
       <a href="${rootPath}/pages/docs.html">Documentations</a> <br>
+      <a href="${rootPath}/pages/docs.html?page=stdlib">Standard Library</a> <br>
+      <a href=""></a> <br>
       <a href=""></a> <br>
       <a href=""></a>
     </td>
     <td>
       <div class="footer-title">Contribute</div>
       <a href="https://github.com/jule-lang/jule">Source Code</a> <br>
-      <a href="https://github.com/jule-lang/jule/fork">Fork Project</a> <br>
-      <a href="https://github.com/jule-lang/jule/issues">Issues</a> <br>
-      <a href="https://github.com/jule-lang/jule/discussions">Discussions</a> <br>
-      <a href="${rootPath}/pages/contributing.html">Guideline</a>
+      <a href="https://github.com/jule-lang/jule/fork">Fork JuleC</a> <br>
+      <a href="https://github.com/jule-lang/jule/issues">Issue Tracker</a> <br>
+      <a href="${rootPath}/pages/contributing.html">Guideline</a> <br>
+      <a href=""></a>
     </td>
     <td>
-      <div class="footer-title">Community</div>
+      <div class="footer-title">Connect</div>
       <a href="https://github.com/jule-lang">GitHub Organization</a> <br>
       <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
-      <a href="${rootPath}/pages/code_of_conduct.html">Code of Conduct</a> <br>
-      <a href="${rootPath}/pages/license.html"">License</a> <br>
+      <a href="https://github.com/jule-lang/jule/discussions">Discussions</a> <br>
+      <a href="https://discord.gg/Z6caSvTQeD">Discord Server</a> <br>
       <a href=""></a>
     </td>
     </tr>
     </table>
-  </div>
+    </div>
 </div>
 </div>
 `;
