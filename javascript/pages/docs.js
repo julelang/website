@@ -137,7 +137,7 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
   Using example for PowerShell;
-  <div class="code">$ scripts/build.bat</div>
+  <div class="code">$ call scripts/build.bat</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
