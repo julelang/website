@@ -39,7 +39,7 @@ trait Shape {
 }
 
 struct Rectangle {
-    width: int
+    width:  int
     height: int
 }
 

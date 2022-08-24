@@ -9,7 +9,7 @@ const jule_langHTML = `
 <br>
 <div class="text">
   <br><br>
-  This version of the text assumes you're using JuleC compiler (compiled from source) 11.07.2022 (DD/MM/YYYY) or later.
+  This version of the text assumes you're using latest JuleC compiler (compiled from source).
   <br><br><br><br>
   Jule is a statically typed compiled programming language designed for system development, building maintainable and reliable software.
   It has syntax similar to today's programming languages.
@@ -199,6 +199,11 @@ See the Documenting for more information.
 <div class="sub-title">init</div>
 Initialize new project in working directory.
 <div class="code">$ julec init</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">bug</div>
+Starts new bug report on GitHub.
+<div class="code">$ julec bug</div>
 
 </div>
 `;
@@ -2816,7 +2821,7 @@ The <x class="inline_code">doc</x> command comes internally to the compiler and 
 The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cpp_out_dir</x> field.
 The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.juledoc</x>.
 <br><br>
-The <x class="inline_code">juledoc</x> file is in JSON format and contains only metadata about definitions.
+The <x class="inline_code">juledoc</x> file is in Jule Metadoc or JSON format and contains only metadata about definitions.
 </div>
 `;
 
@@ -2849,6 +2854,13 @@ Documentize the <x class="inline_code">main.jule</x> file.
 <br><br>
 <div class="code">$ jule doc main.jule test.jule</div>
 Documentize the <x class="inline_code">main.jule</x> and <x class="inline_code">test.jule</x> files.
+<div class="topic-separator"></div>
+The default format is the Jule Metadoc. <br>
+If you want use JSON format, use the <x class="inline_code">--json</x> attribute.
+<br><br>
+For exmaple:
+<div class="code">$ jule doc --json main.jule test.jule</div>
+Documentize the <x class="inline_code">main.jule</x> and <x class="inline_code">test.jule</x> files with JSON format.
 
 <div class="title-separator"></div>
 <div class="warn">

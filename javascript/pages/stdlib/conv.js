@@ -90,6 +90,34 @@ appropriate bit_size and sign.
 Is like parse_int but for unsigned numbers.
 A sign prefix is not permitted.
 
+<div class="topic-separator"></div>
+<div class="code">pub fn parse_float(s: str, bit_size: int) (f64, Error)</div>
+Converts the string s to a floating-point number
+with the precision specified by bit_size: 32 for f32, or 64 for f64.
+When bit_size=32, the result still has type f64, but it will be
+convertible to f32 without changing its value.
+<br><br>
+Accepts decimal and hexadecimal floating-point numbers
+as defined by the Jule syntax for [floating-point literals].
+If s is well-formed and near a valid floating-point number,
+returns the nearest floating-point number rounded
+using IEEE754 unbiased rounding.
+(Parsing a hexadecimal floating-point value only rounds when
+there are more bits in the hexadecimal representation than
+will fit in the mantissa.)
+<br><br>
+The errors that returns have concrete type *ConvError
+and include err.Num = s.
+<br><br>
+If s is not syntactically well-formed, returns err.Err = ERROR_SYNTAX.
+<br><br>
+If s is syntactically well-formed but is more than 1/2 ULP
+away from the largest floating point number of the given size,
+Returns f = ±inf, err.Error = ERROR_RANGE.
+<br><br>
+Recognizes the string "nan", and the (possibly signed) strings "inf" and "infinity"
+as their respective special floating point values. It ignores case when matching.
+
 `;
 
 const stdlib_conv_structsHTML = `
