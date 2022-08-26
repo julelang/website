@@ -281,7 +281,7 @@ We have a <x class="inline_code">main.jule</x> file:
     outln("Hello, World!")
 }</div>
 
-We will use already created settings file with <x class="inline_code">x init</x> command.
+We will use already created settings file with <x class="inline_code">julec init</x> command.
 <br>
 <br>
 For compile Jule code, we just give filename to JuleC:
