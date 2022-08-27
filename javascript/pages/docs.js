@@ -305,7 +305,7 @@ These are recommendations and are not obligatory to follow.
 const project_directory_orderHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Directory Order</div>
 <div class="text">
-Recommended work pattern and use of project directories for X;
+Recommended work pattern and use of project directories for Jule;
 
 <div class="title-separator"></div>
 <div class="sub-title">Source files</div>
@@ -1692,7 +1692,7 @@ const common_concepts_mapsHTML = `
 Maps is a hashmap. Maps a unique key value to a value.
 <br><br>
 Example to maps;
-<div class="code">main() {
+<div class="code">fn main() {
     let mymap: [i8:str] = [i8:str]{
         0: "CPU",
         1: "RAM",
@@ -2351,7 +2351,7 @@ For example:
     // ...
 }
 
-main() {
+fn main() {
     recover(handler)
     // ...
 }</div>
@@ -2598,7 +2598,7 @@ const cpp_interoperabilityHTML = `
 <div class="title" style="margin-bottom: 20px;">Interoperability</div>
 <div class="text">
 Jule can interop with C++.
-A code written in C++ compatible with Jule can be transferred to X, used and compiled without any problems.
+A code written in C++ compatible with Jule can be transferred to Jule, used and compiled without any problems.
 Everything needed is readily available, as JuleC imports APIs by default to every generated code.
 
 <div class="title-separator"></div>
@@ -2651,7 +2651,7 @@ For example:
 
 cpp fn sum_integers(slice: []int) i64
 
-main() {
+fn main() {
     let slice = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
     let total = cpp.sum_integers(slice)
     outln(total)
@@ -3345,7 +3345,7 @@ For example:
 <div class="title-separator"></div>
 <div class="sub-sub-title">Iteration Controlling</div>
 We may want to check for iterations, this is normal and common.
-There are two ways to do this in X; The <x class="inline_code">continue</x> and <x class="inline_code">break</x> keywords.
+There are two ways to do this in Jule; The <x class="inline_code">continue</x> and <x class="inline_code">break</x> keywords.
 <br><br>
 If you want break the iteration, use the <x class="inline_code">break</x> keyword.
 <br>
@@ -3414,7 +3414,7 @@ For example:
 It is the block that will be executed unconditionally if the previous <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions are not fulfilled.
 <br><br>
 For example:
-<div class="code">main() {
+<div class="code">fn main() {
     let x = new(int)
     if x == nil {
         outln("memory allocation is failed")
