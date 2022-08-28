@@ -93,24 +93,7 @@
   font-family: 'Code';
   src: url('../fonts/CascadiaMono.ttf') format('truetype');
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'CodePL';
-  src: url('../fonts/CascadiaMonoPL.ttf') format('truetype');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Code-Italic';
-  src: url('../fonts/CascadiaMonoItalic.ttf') format('truetype');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'CodePL-Italic';
-  src: url('../fonts/CascadiaMonoPLItalic.ttf') format('truetype');
-  font-style: normal;
+  font-weight: 350;
 }
 
 @font-face {

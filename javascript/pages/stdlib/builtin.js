@@ -79,7 +79,7 @@ The first return value naturally result of computation. <br>
 Returns result and empty Error for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to <x class="inline_code">0</x>. <br>
 If not, returns <x class="inline_code">0</x> and returns <x class="inline_code">Error</x> instance with error message. <br>
 You can handle errors like that; <br>
-<div class="code">result:, err: = div(x, y)
+<div class="code">let (result, err) = div(x, y)
 if err != nil {
     // If has error...
 }</div>

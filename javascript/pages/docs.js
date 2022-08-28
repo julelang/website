@@ -2204,6 +2204,84 @@ Since the reference of the variable is used, it acts directly on the parent valu
 </div>
 `;
 
+const unsafe_juleHTML = `
+<div class="title" style="margin-bottom: 20px;">Unsafe Jule</div>
+<div class="text">
+We know, Jule is safe.
+But you are a developer who knows what you are doing, you are confident.
+There is the <x class="inline_code">unsafe</x> keyword for you.
+With this keyword, you can circumvent Jule's safety and engage in unsafe behavior.
+This is understandably insecure and can compromise your program's safety.
+All responsibility in this matter belongs to you as the developer.
+<br><br>
+The reason for the unsafe Jule is that the computer is basically unsafe by nature.
+Sometimes you need this unsafety.
+If Jule didn't provide this, it would take more effort to solve some things with Jule.
+Maybe you could take an approach like using C++ interoperability, but is the effort really necessary?
+C++ interoperability is a nice feature and in some cases provides significant benefits.
+But having a C++ dependency of your Jule code exposed isn't always a good thing.
+It is very important that you can write pure Jule.
+As a developer, the only time you should feel like you should use C++ interoperability is when you really need to use C++ code.
+<br><br>
+Unsafe Jule can also allow you to get performance gains and better memory optimization.
+For example, if you are sure that a pointer never, ever needs to be guaranteed, you can achieve significant gains by obtaining this pointer with Unsafe Jule.
+Because that means there will be no new memory allocations and reference-counting.
+
+<div class="title-separator"></div>
+<div class="sub-title">Unsafe Benefits</div>
+The mentioned <x class="inline_code">unsafe</x> keyword allows us to use these powers.
+If you don't switch to insecure Jule, secure Jule will not allow you to engage in unsafe behavior.
+<br><br>
+Benefits of Unsafe Jule:
+<ul>
+  <li>Unsafely deference a raw pointer</li>
+  <li>Cast raw pointers</li>
+  <li>Call unsafe functions or methods</li>
+</ul>
+
+Note that this does not lead to a completely unsafe use of Jule.
+Other than the listed unsafe behaviors, Safe Jule will continue to show itself.
+This means you get a level of safety even with unsafe blocks.
+<br><br>
+Let's take a look at the unsafe behaviors listed above:
+
+<div class="title-separator"></div>
+<div class="sub-title">Unsafely Derefence a Raw Pointer</div>
+Jule not checks your deferences if into unsafe block.
+So you can deference a nil pointer but Jule is not panics.
+
+<div class="title-separator"></div>
+<div class="sub-title">Cast Raw Pointers</div>
+You can cast a pointer to an integer with valid integer types or cast a raw pointer from an integer.
+However, you can also cast a pointer to a pointer of different type.
+<br><br>
+For example:
+<div class="code">let ptr: int = 0
+let unsafe_ptr = unsafe{ (*str)(ptr) }</div>
+
+<div class="warn">
+Unsafe pointers is never heap-guaranteed.
+</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Call Unsafe Functions or Methods</div>
+You can call unsafe functions with Unsafe Jule.
+Functions or methods that qualify as unsafe can only be called with Unsafe Jule.
+Functions that qualify as unsafe can only be called with an Unsafe Jule and have an Unsafe Jule throughout their entire body.
+<br><br>
+For exmaple:
+<div class="code">unsafe fn my_unsafe_fn() { /* ... */ }</div>
+
+<div class="info">
+Before qualifying a function or method as unsafe, make sure that the function is not safe all time.
+Even if it performs unsafe operations, it is better for the function to act as a safe wrapper than to qualify as unsafe if safety is guaranteed.
+<br><br>
+If safety depends on parameters and other external factors then it is better to qualify as unsafe.
+</div>
+
+</div>
+`;
+
 const error_handlingHTML = `
 <div class="title" style="margin-bottom: 20px;">Error Handling</div>
 <div class="text">
@@ -2299,7 +2377,7 @@ For example:
 }
 
 fn main() {
-    add_pointer(nil, 10)
+    add_pointer(10, nil)
 }</div>
 The code above is an example of panicking.
 
@@ -2624,7 +2702,7 @@ To declare a C++ function, it must be stated that it is a C++ declaration.
 Then just represent the prototype of the function.
 <br><br>
 For example:
-<div class="code">cpp my_function(int, int) f64</div>
+<div class="code">cpp fn my_function(int, int) f64</div>
 Linked functions can only be used within the respective file and can't overload.
 
 <div class="title-separator"></div>
@@ -2651,7 +2729,7 @@ For example:
 
 cpp fn sum_integers(slice: []int) i64
 
-main() {
+fn main() {
     let slice = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
     let total = cpp.sum_integers(slice)
     outln(total)
@@ -3566,6 +3644,44 @@ For example: <x class="inline_code">goto repeat</x>
 <li>If your jumps over any declaration you will get a compiler error.</li>
 <li>Each label declared and not used causes a compiler error.</li>
 </div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Labels for <x class="inline_code">break</x> and <x class="inline_code">continue</x> Keywords</div>
+When using nested iterations or match expressions, the keywords <x class="inline_code">break</x> and <x class="inline_code">continue</x> are targeted to the last valid block.
+This makes it harder to target outer loops or the match expression.
+<br><br>
+For example:
+<div class="code">fn main() {
+    for {
+        match {
+        case true:
+            break
+        }
+    }
+}</div>
+An infinite iteration appears in this example.
+The <x class="inline_code">break</x> keyword inside the match expression breaks the match expression.
+This way there is no way to break the infinite loop.
+Maybe alternative solutions like using a goto label outside of the iteration could be adopted but this is confusion.
+<br><br>
+Again, label can be used to clear up this confusion.
+This is a more maintainable and clearer solution.
+Labels defined before an iteration and match expression can be used for targeting.
+<br><br>
+For example:
+<div class="code">fn main() {
+loop:
+    for {
+        match {
+        case true:
+            break loop
+        }
+    }
+}</div>
+The above example will break the iteration outside.
+Because the "loop" label used by the <x class="inline_code">break</x> keyword indicates that iteration.
+
+<div class="info">These labels are not special for that, so <x class="inline_code">goto</x> keyword can use these labels.</div>
 `;
 
 //#region SET_PAGE
@@ -3614,8 +3730,9 @@ const NAV_memory                              = document.getElementById('memory'
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
 const NAV_memory_references                   = document.getElementById("memory-references");
+const NAV_unsafe_jule                         = document.getElementById("unsafe-jule");
 const NAV_error_handling                      = document.getElementById("error-handling");
-const NAV_error_handling_error_trait         = document.getElementById("error-handling-error-trait");
+const NAV_error_handling_error_trait          = document.getElementById("error-handling-error-trait");
 const NAV_error_handling_panics               = document.getElementById("error-handling-panics");
 const NAV_error_handling_handling_panics      = document.getElementById("error-handling-handling-panics");
 const NAV_types                               = document.getElementById('types');
@@ -3694,6 +3811,7 @@ nav.navigations = [
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
   [NAV_memory_references,                   memory_referencesHTML],
+  [NAV_unsafe_jule,                         unsafe_juleHTML],
   [NAV_error_handling,                      error_handlingHTML],
   [NAV_error_handling_error_trait,          error_handling_error_traitHTML],
   [NAV_error_handling_panics,               error_handling_panicsHTML],

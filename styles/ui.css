@@ -120,7 +120,6 @@ button:hover {
 }
 
 #side-navigation .topic {
-  transition: 200ms;
   color: rgb(189, 189, 189);
   background-color: transparent;
   text-decoration: none;
@@ -129,55 +128,52 @@ button:hover {
   text-align: left;
   padding: 4px;
   padding-right: 0px;
-  font-family: 'OpenSans';
+  font-family: 'OpenSans-Light';
   font-size: medium;
   font-weight: bold;
   user-select: none;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }
 
 #side-navigation * {
+  transition: 0ms;
   display: inline-block;
 }
 
 #side-navigation .topic:hover {
-  transition: 250ms;
   color: white;
   cursor: pointer;
 }
 
 #side-navigation .sub-topic {
-  transition: 200ms;
   color: rgb(189, 189, 189);
   background-color: transparent;
   text-decoration: none;
-  width: 100%;
+  width: calc(100% - 25px);
   text-align: left;
   padding: 4px;
   padding-right: 0;
   height: fit-content;
-  font-family: 'OpenSans';
+  font-family: 'OpenSans-Light';
   font-size: medium;
   font-weight: bold;
   user-select: none;
-  margin-left: 10px;
-  margin-bottom: 8px;
+  margin-left: 25px;
+  margin-bottom: 0px;
 }
 
 #side-navigation .sub-topic:hover {
-  transition: 250ms;
   color: white;
   cursor: pointer;
 }
 
 #side-navigation .sub-sub-topic {
-  transition: 200ms;
   color: rgb(255, 255, 255);
   background-color: transparent;
   text-decoration: none;
   width: fit-content;
   height: fit-content;
-  font-family: 'OpenSans';
+  font-family: 'OpenSans-Light';
   font-size: medium;
   font-weight: normal;
   user-select: none;
@@ -186,7 +182,6 @@ button:hover {
 }
 
 #side-navigation .sub-sub-topic:hover {
-  transition: 250ms;
   color: rgb(255, 255, 255);
   cursor: pointer;
   margin-left: 35px;

@@ -76,7 +76,7 @@ class SideNavigator {
         nav.style.color = "white";
         nav.style.backgroundColor = this.active_backcolor;
         nav.style.borderWidth = "1px";
-        nav.style.borderRadius = "5px";
+        nav.style.borderRadius = "4px";
         nav.style.borderColor = "gray";
         nav.style.borderStyle = "solid";
         nav.style.fontWeight = "bold";

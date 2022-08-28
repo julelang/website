@@ -36,9 +36,13 @@ body {
 }
 
 .text {
-  font-family: 'OpenSans-Medium';
+  font-family: 'OpenSans';
   font-weight: normal;
   font-size: 16px;
   text-align: left;
   color: rgb(200, 200, 200);
+}
+
+strong {
+  font-family: 'OpenSans-Bold';
 }

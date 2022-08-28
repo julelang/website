@@ -121,7 +121,7 @@ Special cases are: <br>
 Returns an IEEE 754 “not-a-number” value.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn isnan(f: f64) bool</div>
+<div class="code">pub fn is_nan(f: f64) bool</div>
 Reports whether f is an IEEE 754 “not-a-number” value.
 
 <div class="topic-separator"></div>
@@ -129,11 +129,11 @@ Reports whether f is an IEEE 754 “not-a-number” value.
 Returns positive infinity if sign >= 0, negative infinity if !sign < 0.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn isinf(f: f64, sign: int) bool</div>
+<div class="code">pub fn is_inf(f: f64, sign: int) bool</div>
 Reports whether f is an infinity, according to sign. <br>
-If sign > 0, isinf reports whether f is positive infinity. <br>
-If sign < 0, isinf reports whether f is negative infinity. <br>
-If sign == 0, isinf reports whether f is either infinity. <br>
+If sign > 0, is_inf reports whether f is positive infinity. <br>
+If sign < 0, is_inf reports whether f is negative infinity. <br>
+If sign == 0, is_inf reports whether f is either infinity. <br>
 
 <div class="topic-separator"></div>
 <div class="code">pub fn cbrt(x: f64) f64</div>

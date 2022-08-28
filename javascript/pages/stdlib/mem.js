@@ -21,6 +21,17 @@ Reports pointer is can heap-guarantee.
 pub fn guarantee(ptr: *T) bool</div>
 Heap-guarantee to pointer if pointer is can guarantee.
 
+<div class="topic-separator"></div>
+<div class="code">pub fn size_of(TYPE || EXPRESSION) uint</div>
+Returns the size of the type in bytes.
+If given expression, uses type of expression.
+
+<div class="topic-separator"></div>
+<div class="code">pub fn align_of(TYPE || EXPRESSION) uint</div>
+Returns the alignment, in bytes, required for any instance of the type
+indicated by type-id, which is either complete object type.
+If given expression, uses type of expression.
+
 `;
 
 const NAV_stdlib_mem_functions = document.getElementById("functions");
