@@ -3125,8 +3125,8 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
   <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
   <li><a href="../pages/stdlib/unicode.html">std::unicode</a></li>
+  <li><a href="../pages/stdlib/unicode_utf16.html">std::unicode::utf16</a></li>
   <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
-  <li><a href="../pages/stdlib/unsafe.html">std::unsafe</a></li>
 </div>
 `;
 
