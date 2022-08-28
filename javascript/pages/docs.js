@@ -2235,6 +2235,7 @@ If you don't switch to insecure Jule, secure Jule will not allow you to engage i
 Benefits of Unsafe Jule:
 <ul>
   <li>Unsafely deference a raw pointer</li>
+  <li>Postfixes for raw pointers</li>
   <li>Cast raw pointers</li>
   <li>Call unsafe functions or methods</li>
 </ul>
@@ -2247,8 +2248,34 @@ Let's take a look at the unsafe behaviors listed above:
 
 <div class="title-separator"></div>
 <div class="sub-title">Unsafely Derefence a Raw Pointer</div>
-Jule not checks your deferences if into unsafe block.
+Unsafe Jule not checks your deferences. <br>
 So you can deference a nil pointer but Jule is not panics.
+
+<div class="title-separator"></div>
+<div class="sub-title">Postfixes for Raw Pointers</div>
+Unsafe Jule supports postfixes for raw pointers.
+<br><br>
+For example:
+<div class="code">fn print_slice_components_with_unsafe(slc: []int) {
+    unsafe {
+        let ptr = &slc[0]
+        let end = &slc[slc.len-1]
+        end++
+        for ptr < end {
+            outln(*ptr)
+            ptr++
+        }
+    }
+}</div>
+
+<div class="warn">
+You should be careful with the pointers you use in Unsafe Jule.
+Because these pointers must have been acquired in an Unsafe Jule.
+Pointers obtained with Unsafe Jule are pure.
+It's not included in Jule's approach such as memory-safety and reference-counting, so you have a pure pointer directly.
+<br><br>
+For example, the postfixes used in the above example, if the pointers were obtained with Safe Jule, would target the buffer, not the actual address, since all references point to a dedicated buffer to point to the common point of safe pointers.
+</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Cast Raw Pointers</div>
