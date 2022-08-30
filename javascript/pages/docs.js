@@ -582,7 +582,7 @@ const basics_data_typesHTML = `
 <div class="text">
   Jule is designed strongly typed.
   Therefore, the data-types of all values must be specified during compilation.
-  In this section we will look at the built-in types offered by the compiler.
+  In this section we will look at the builtin types offered by the compiler.
 
   <div class="title-separator"></div>
   <div class="sub-title">Primitive Types</div>
@@ -1330,7 +1330,7 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example:
-<div class="code">my_function: fn(int, int) int</div>
+<div class="code">let my_function: fn(int, int) int</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
 
@@ -1355,8 +1355,8 @@ Anonymous functions can access the definitions of the block in which they are de
 For example:
 <div class="code">fn main() {
     let message = "Hello, World!"
-    func: = fn() { outln(message) };
-    func();
+    let func = fn() { outln(message) }
+    func()
 }</div>
 The anonymous function defined in the example above uses the <x class="inline_code">message</x> variable belonging to the block it is defined in.
 Definitions used from outer blocks can be shadowed within the anonymous function.
@@ -1461,18 +1461,6 @@ fn main() {
     outln(a)
     outln(b)
     outln(c)
-}</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">Argumet Targeting</div>
-Argument targeting, while the arguments are given during the function call, target the parameter to which they are sent separately for each parameter.
-To target, a syntax similar to assignment is used. <br>
-For example:
-<div class="code">fn sub(a: int, b: int) int { ret a-b }
-
-fn main() {
-    outln(sub(190, 10))     // Prints 180
-    outln(sub(b=190, a=10)) // Prints -180
 }</div>
 
 <div class="title-separator"></div>
@@ -1807,26 +1795,14 @@ For example to declaration a struct;
 Members of structures are the same as a variable definition except <x class="inline_code">const</x> keyword.
 
 <div class="title-separator"></div>
-<div class="sub-title">Assigning Default Values to Members</div>
-When instances of struct members are initialized, they are initialized using the default value of the data-type.
-But you can custom default values. <br>
-For example:
-<div class="code">struct Employee {
-    name  : str = "Anonymous"
-    age   : u8  = 18
-    title : str = "Engineer"
-    salary: u32 = 6750
-}</div>
-
-<div class="title-separator"></div>
 <div class="sub-title">Creating a Instances of Structures</div>
 To instantiate structs, you can either give the values of the fields using braces after the struct name, or create them with their default values.
 <br><br>
 For example:
 <div class="code">struct Character {
-    name : str = "Anonymous"
-    age  : u8  = 18
-    title: str = "-"
+    name : str
+    age  : u8
+    title: str
 }
 
 fn main() {
@@ -1859,27 +1835,20 @@ To implement method(s) to structure, the following syntax is applied;
 
 <div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
 
-<br>
-For example:
-<div class="code">impl Position {
-    fn is_origin() bool {
-        ret .x == 0 && .y == 0
-    }
-}</div>
-Implements <x class="is_origin() bool"> method to <x class="inline_code">Position</x> structure.
-
 <div class="title-separator"></div>
 <div class="sub-sub-title">Receivers</div>
 Receivers indicate how instance the function will use.
 <br><br>
 There are two types of receivers;
 <br><br>
-<strong>Pointer Receiver</strong> <br>
-The value receiver is using a pointer to the instance from which the function was called.
-You can changes on original instance.
+<strong>Reference Receiver</strong> <br>
+Reference receivers require the function to be a reference.
+The function can only be called from a reference instance of the structure.
 <br><br>
-<strong>Value Receiver</strong> <br>
-The value receiver is using a copy of the instance from which the function was called.
+<strong>Safe-Mutable Receiver</strong> <br>
+Safe-Mutable receivers, on the other hand, allow changes made within the function to be reflected in the structure.
+However, when the structure is given as arguments to different functions, or in a different state, it is copied.
+That is, it is only variable within itself.
 <div class="warn">Not deep copy.</div>
 
 <div class="title-separator"></div>
@@ -1890,11 +1859,20 @@ The value receiver is using a copy of the instance from which the function was c
 }</div>
 
 <br><br>
-For examples;
-<div class="code">// Pointer Receiver
+For example to receivers:
+<div class="code">// Reference Receiver
 fn &method() str { /* Body */ }</div>
-<div class="code">// Value Receiver
+<div class="code">// Safe-Mutable Receiver
 fn method() str { /* Body */ }</div>
+
+<br>
+For example to implementing method to structure:
+<div class="code">impl Position {
+    fn is_origin() bool {
+        ret .x == 0 && .y == 0
+    }
+}</div>
+He example at above, implements <x class="is_origin() bool"> method to <x class="inline_code">Position</x> structure.
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">The <x class="inline_code">self</x> Keyword</div>
@@ -1906,7 +1884,7 @@ The data type is the same as the data type of the receiver.
 For example:
 <div class="code">impl Person {
     fn &get_name() str {
-        // self: *Person
+        // self: &Person
         ret self.name
     }
 }</div>
@@ -1924,14 +1902,17 @@ For example:
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Heap Allocated Instances</div>
+<div class="sub-title">Reference Literal Instances</div>
 You can heap-allocated structure instancing.
-The unary <x class="inline_code">&</x> operator returns pointer to heap-allocated structure if you use at
-instancing.
+The unary <x class="inline_code">&</x> operator returns reference to if you use at instancing.
 <br><br>
-For example;
-<div class="code">pos: = &Position{x: 10, y: 20}</div>
-<x class="inline_code">pos</x> variable is the pointer points to heap-allocated <x class="inline_code">Position</x> structure instance.
+For example:
+<div class="code">let pos = &Position{x: 10, y: 20}</div>
+<x class="inline_code">pos</x> variable is the reference points to heap-allocated <x class="inline_code">Position</x> structure instance.
+
+<div class="warn">
+If you not have any idea about references, check the <a href="./docs.html?page=memory-memory-management">memory management documentations</a>.
+</div>
 
 </div>
 `;
@@ -1990,8 +1971,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    //jule:inline
-    fn &area() int {
+    fn area() int {
         ret .width * .height
     }
 }
@@ -2001,8 +1981,7 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    //jule:inline
-    fn &area() int {
+    fn area() int {
         ret PI * .r * .r
     }
 }
@@ -2052,38 +2031,46 @@ For example:
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
 <div class="title-separator"></div>
+
+<div class="warn">
+What follows is related to Unsafe Jule.
+If you're not familiar with this topic, check out the <a href="docs.html?page=unsafe-jule">Unsafe Jule documentations</a>.
+</div>
+
+<div class="title-separator"></div>
 <div class="sub-sub-title">Accessing Values on Pointers</div>
 The <x class="inline_code">*</x> operator is used to access the value in the memory address that the pointer store.
+<br><br>
 For example:
 <div class="code">fn main() {
     let x: int = 10
     let y: *int = &x
-    outln(y)  // Prints stored address
-    outln(*y) // Prints value at address (so 10)
+    outln(y)            // Prints stored address
+    unsafe{ outln(*y) } // Prints value at address (so 10)
 }</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Assign Values to Pointers</div>
 Pointers can take on value assignment just like a variable, with values of the appropriate data type, because they are already variables.
-<br>
+<br><br>
 For example:
 <div class="code">fn main() {
     let x: int = 10
     let z: *int = &x // The 'z' store now memory address of the 'x' variable.
     let y: int = 98
-    z = &y      // The 'z' store now memory address of the 'y' variable.
+    z = &y           // The 'z' store now memory address of the 'y' variable.
 }</div>
 <div class="topic-separator"></div>
 Additionally, pointers can assign the value of the memory address they store.
 <br>
 The <x class="inline_code">*</x> operator used for that too.
-<br>
+<br><br>
 For example:
 <div class="code">fn main() {
     let x: int = 10
     let y: *int = &x
-    *y = 59  // Assign value
-    outln(x) // Prints 59
+    unsafe{ *y = 59 } // Assign value
+    outln(x)          // Prints 59
 }</div>
 </div>
 `;
@@ -2092,114 +2079,86 @@ const memory_memory_managementHTML = `
 <div class="title" style="margin-bottom: 20px;">Memory Management</div>
 <div class="text">
 Jule does the memory management itself.
+But it's not fully automatic.
+You decide where and when to allocate, and it's self-evident which variables are heap-allocated.
 It guarantees memory safety.
-It uses reference counting for heap allocations.
+<br><br>
+Jule uses reference counting for heap allocations.
 It is automatically released when the reference count of the pointer reaches zero, that is, when it is certain that the heap allocation is no longer used.
 It is guaranteed that no allocation goes unnoticed and is also not released while the allocation is still in use.
 
 <div class="title-separator"></div>
+<div class="sub-title">References</div>
+References are heap allocation data types.
+They are always allocated, they cannot be <x class="inline_code">nil</x>.
+Safe Jule forces you to initialize them.
+Just like constant variables, references must be initialized as soon as they are declared.
+A reference is annotated by an <x class="inline_code">&</x> operator.
+<br><br>
+A reference is always heap-allocation and is always within the reference counting.
+They allow you to get a pointer to the heap allocation when trying to get the address.
+In this way, you assign the heap allocation indicated by the references to an unsafe raw pointer.
+<br><br>
+Example to reference data type anotations:
+<div class="code">&int</div>
+<div class="code">&MyStruct</div>
+<br><br>
+You can't use reference type these types:
+<ul>
+  <li>Enum</li>
+  <li>Pointer</li>
+  <li>Trait</li>
+  <li>Reference</li>
+</ul>
+
+<div class="title-separator"></div>
 <div class="sub-title">Heap Allocation</div>
 The <x class="inline_code">new</x> function is used to perform a heap allocation. <br>
-It is a built-in function. <br>
-Please refer to the <a href="stdlib/builtin.html">built-in</a> library documentation for this function.
+It is a builtin function. <br>
+Please refer to the <a href="stdlib/builtin.html">builtin</a> library documentation for this function.
 <br><br>
 For example:
 <div class="code">fn main() {
-    let ptr = new(int)
-    outln(ptr)
+    let x = new(int)
+    outln(x)
 }</div>
-The <x class="inline_code">ptr</x> variable is a heap allocated pointer.
+The <x class="inline_code">x</x> variable is a heap allocated reference.
+
+<div class="info">
+We realized that the compiler was forcing initialization to references.
+So if you are instantiating a struct and that struct has reference fields, you cannot do it with implicit initialization with a function.
+The compiler will request an explicit initialization.
+Please use the reference struct literal for this.
+</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Understanding Reference Counting</div>
-Only heap allocated pointers perform reference counting.
 A reference counting heap counts each time it gets a reference to a dedicated pointer.
 It is deducted from the count when it loses its references.
 When the reference count reaches zero, it releases the allocation as it is no longer used.
 <br><br>
 For example:
 <div class="code">fn main() {
-    let my_int = 100
 
-    // Takes address of my_int but doesn't ref counting
-    let ptr = &my_int
-
-    // Not free cause my_int is not heap-allocated
-    ptr = nil
-
-
-    // Make heap-allocation, returns heap-allocated *int
+    // Make heap-allocation, returns heap-allocated &int
     // Ref count is 1
-    ptr = new(int)
+    x = new(int)
     
     // Assign 100 expression to allocation
-    *ptr = 100
+    x = 100
 
     // Prints 100
-    outln(*ptr)
+    outln(x)
 
     // Make new heap-allocation, ref count is 1
-    // Frees old allocation cause ref count is 0 now
-    ptr = new(int)
+    // Frees old allocation because ref count is 0 now
+    x = new(x)
 
     // Ref count is 2 now of current allocation
-    // The ptr_a referencing to allocation of ptr
-    let ptr_a = ptr
+    // The y referencing to allocation of x
+    let y = x
 
-    // Just assign as nil, not frees. Ref count is 1 now
-    ptr = nil
-
-    // Frees allocation, ref count is 0 now
-    ptr_a = nil
-}</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">When does JuleC perform immutability?</div>
-Definitions that anonymous functions get from within the block are copied into the anonymous function instead of being referenced.
-This means that anonymous functions cannot change the definitions of the block they are defined in.
-A heap guaranteed pointer with pre-guaranteed is required to be effective.
-
-<div class="title-separator"></div>
-<div class="sub-title">Heap Guarantee Approach</div>
-Due to the heap guarantee approach of JuleC, the compiler performs heap allocation and moves the relevant pointer to the stack whenever the heap allocation must be guaranteed while compiling the code.
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">When does JuleC perform heap guarantee?</div>
-<li>When returned pointers</li>
-<li>When anonymous functions copy pointers from block</li>
-<li>When struct has a pointer member</li>
-<li>When a pointer gives to trait as data</li>
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">How does JuleC handle its allocation?</div>
-Pointers to a pure point create and point to a new allocation for itself when the heap is guaranteed.
-Guaranteed pointers always point to the new allocation, not the old one.
-<br><br>
-They are common if a pointer points to a place using a different pointer.
-When one heap is guaranteed, all public pointers used in the same way are moved to the same allocation and the heap is guaranteed.
-
-</div>
-`;
-
-const memory_referencesHTML = `
-<div class="title" style="margin-bottom: 20px;">References</div>
-<div class="text">
-References are like pointers but less powerful.
-References are definitions that refer to a definition.
-The <x class="inline_code">&</x> operator must be used to represent a reference.
-
-<div class="title-separator"></div>
-<div class="sub-title">Reference Paramaters</div>
-Example for referenced parameters;
-<div class="code">fn sum(i: &int, val: int) { i += val }
-
-fn main() {
-    let a = 10
-    sum(a, 100)
-    outln(a)
-}</div>
-The example at above, prints <x class="inline_code">110</x>.
-Since the reference of the variable is used, it acts directly on the parent value.
+} // Frees allocation because ref count is 0, destroyed all references</div>
 
 </div>
 `;
@@ -2234,7 +2193,7 @@ If you don't switch to insecure Jule, secure Jule will not allow you to engage i
 <br><br>
 Benefits of Unsafe Jule:
 <ul>
-  <li>Unsafely deference a raw pointer</li>
+  <li>Deference a raw pointer</li>
   <li>Postfixes for raw pointers</li>
   <li>Cast raw pointers</li>
   <li>Call unsafe functions or methods</li>
@@ -2247,9 +2206,19 @@ This means you get a level of safety even with unsafe blocks.
 Let's take a look at the unsafe behaviors listed above:
 
 <div class="title-separator"></div>
-<div class="sub-title">Unsafely Derefence a Raw Pointer</div>
-Unsafe Jule not checks your deferences. <br>
-So you can deference a nil pointer but Jule is not panics.
+<div class="sub-title">Derefence a Raw Pointer</div>
+Unsafe Jule allows deference raw pointers.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let x = 200
+    let ptr = &x
+    unsafe{ outln(*ptr) }
+}</div>
+Note that no safety is provided in this regard.
+Pointers can benefit you, but you have to provide safety yourself.
+You need to be wary of dangling pointers, buffer overflows, and similar memory issues.
+
 
 <div class="title-separator"></div>
 <div class="sub-title">Postfixes for Raw Pointers</div>
@@ -2268,15 +2237,6 @@ For example:
     }
 }</div>
 
-<div class="warn">
-You should be careful with the pointers you use in Unsafe Jule.
-Because these pointers must have been acquired in an Unsafe Jule.
-Pointers obtained with Unsafe Jule are pure.
-It's not included in Jule's approach such as memory-safety and reference-counting, so you have a pure pointer directly.
-<br><br>
-For example, the postfixes used in the above example, if the pointers were obtained with Safe Jule, would target the buffer, not the actual address, since all references point to a dedicated buffer to point to the common point of safe pointers.
-</div>
-
 <div class="title-separator"></div>
 <div class="sub-title">Cast Raw Pointers</div>
 You can cast a pointer to an integer with valid integer types or cast a raw pointer from an integer.
@@ -2285,10 +2245,6 @@ However, you can also cast a pointer to a pointer of different type.
 For example:
 <div class="code">let ptr: int = 0
 let unsafe_ptr = unsafe{ (*str)(ptr) }</div>
-
-<div class="warn">
-Unsafe pointers is never heap-guaranteed.
-</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Call Unsafe Functions or Methods</div>
@@ -2325,7 +2281,7 @@ const error_handling_error_traitHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Error Trait</div>
 <div class="text">
 
-The Error trait is a built-in definition.
+The Error trait is a builtin definition.
 It is a way of handling errors.
 While the program is executing, if the functions are designed to return this structure when a problem occurs, providing error handling.
 <br><br>
@@ -2415,8 +2371,8 @@ const error_handling_handling_panicsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Handling Panics</div>
 <div class="text">
 
-There is a built-in function that allows you to catch panics and keep your program running.
-The built-in <x class="inline_code">recover</x> function once used, it catches panics of ongoing codes.
+There is a builtin function that allows you to catch panics and keep your program running.
+The buil-in <x class="inline_code">recover</x> function once used, it catches panics of ongoing codes.
 It just catch panics the codes of the scope it is in.
 It just catch panics of the codes of the scope it is in.
 
@@ -2490,13 +2446,13 @@ Then comes the name you want to give and which type it will represent.
 This alias will now represent <x class="inline_code">i32</x> when used.
 <br><br>
 In addition, it seems that this alias is used in variable definition.
-This is because the compiler recognizes the default types built-in.
-If your type alias represents a built-in definition, your type alias will not be detected as a type.
+This is because the compiler recognizes the default types builtin.
+If your type alias represents a builtin definition, your type alias will not be detected as a type.
 For this reason, it is a more useful approach to specify specifically.
 <div class="title-separator"></div>
 When defining a type alias, only the following types can be given as the type to represent:
 <ul>
-  <li>Built-in Data Types</li>
+  <li>Builtin Data Types</li>
   <li>Type Aliases</li>
 </ul>
 </div>
@@ -3059,7 +3015,6 @@ Each package has the ability to use its own defines.
 For example:
 <div class="code">// file: ./hello_print.jule
 
-//jule:inline
 fn hello_print(name: str) {
     outln("Hello " + name)
 }</div>
@@ -3112,7 +3067,7 @@ const stdlibHTML = `
   <br><br>
   At below, you can see all content of standard library of the Jule programming language;
   <br><br><br>
-  <li><a href="../pages/stdlib/builtin.html">Builtin</a></li>
+  <li><a href="../pages/stdlib/builtin.html">builtin</a></li>
   <li><a href="../pages/stdlib/conv.html">std::conv</a></li>
   <li><a href="../pages/stdlib/debug.html">std::debug</a></li>
   <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
@@ -3756,7 +3711,6 @@ const NAV_traits_implementing                 = document.getElementById("traits-
 const NAV_memory                              = document.getElementById('memory');
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
-const NAV_memory_references                   = document.getElementById("memory-references");
 const NAV_unsafe_jule                         = document.getElementById("unsafe-jule");
 const NAV_error_handling                      = document.getElementById("error-handling");
 const NAV_error_handling_error_trait          = document.getElementById("error-handling-error-trait");
@@ -3837,7 +3791,6 @@ nav.navigations = [
   [NAV_memory,                              memoryHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
-  [NAV_memory_references,                   memory_referencesHTML],
   [NAV_unsafe_jule,                         unsafe_juleHTML],
   [NAV_error_handling,                      error_handlingHTML],
   [NAV_error_handling_error_trait,          error_handling_error_traitHTML],

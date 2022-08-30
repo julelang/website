@@ -8,20 +8,22 @@ const preview_code_helloworldHTML =
 }`;
 
 const preview_code_quicksortHTML =
-`fn quicksort(slice: []int) {
-    if slice.len <= 1 {
+`fn quicksort(s: []int) {
+    if s.len <= 1 {
         ret
     }
     let i = 0
-    for i < slice.len-1 {
-        let (curr, next) = &slice[i], &slice[i+1]
-        if *curr > *next {
-            *curr, *next = *next, *curr
+    unsafe {
+        for i < s.len-1 {
+            let (x, y) = &s[i], &s[i+1]
+            if *x > *y {
+                *x, *y = *y, *x
+            }
+            i++
         }
-        i++
     }
-    quicksort(slice[:i])
-    quicksort(slice[i+1:])
+    quicksort(s[:i])
+    quicksort(s[i+1:])
 }
 
 fn main() {
@@ -44,7 +46,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    fn &area() int {
+    fn area() int {
         ret .width * .height
     }
 }
@@ -54,7 +56,7 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    fn &area() int {
+    fn area() int {
         ret PI * .r * .r
     }
 }
