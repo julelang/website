@@ -474,7 +474,7 @@ But you have to use the declarations you make in your code blocks, if you don't 
 <br><br>
 For example:
 <div class="code">fn main() {
-    a: int
+    let a: int
 }</div>
 The variable <x class="inline_code">a</x> seen is declared but unused.
 This will cause you to get an error by the compiler and not be able to compile the code.
@@ -752,7 +752,7 @@ const basics_data_typesHTML = `
   </table>
 
   <div class="title-separator"></div>
-  <div class="sub-title">Integers</div>
+  <div class="sub-title">Integer Literals</div>
   <div class="sub-sub-title">Decimal</div>
   <div class="code">12345</div>
   <div class="sub-sub-title">Binary</div>
@@ -763,9 +763,22 @@ const basics_data_typesHTML = `
   <div class="code">0xDFF90</div>
 
   <div class="title-separator"></div>
-  <div class="sub-title">Floats</div>
+  <div class="sub-title">Floating-Point Literals</div>
   <div class="code">3.14</div>
-  <div class="code">3.148797963502462594e+005</div>
+  <div class="code">32.60</div>
+  <div class="code">032.60</div>
+  <div class="code">3.</div>
+  <div class="code">0.3</div>
+  <div class="code">1E2</div>
+  <div class="code">.12345E+6</div>
+  <div class="code">1.e+0</div>
+  <div class="code">0x1p-2</div>
+
+  <div class="code">0x2.p10</div>
+  <div class="code">0x1.Fp+0</div>
+  <div class="code">0X.8p-0</div>
+  <div class="code">0x1fffp-16</div>
+  <div class="code">0x15e-2</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Strings</div>
@@ -1144,8 +1157,8 @@ The value given must be the same as the data type of the variable.
 <br><br>
 For example:
 <div class="code">fn example() {
-    let a: int = 10 // Value is 10.
-    a = 200         // New value is 200.
+    let mut a: int = 10 // Value is 10.
+    a = 200             // New value is 200.
 }</div>
 
 <div class="title-separator"></div>
@@ -1161,7 +1174,7 @@ For example:
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Differences Between Variables and Constants Variables</div>
-The value of the variables can change, then they can be updated with a different value to match the data type.
+The value of the variables can change (with mutability), then they can be updated with a different value to match the data type.
 Constants take a constant expressions and never change again.
 Constant expressions do not exist as a variable in memory at runtime.
 Constant expressions used are copied exactly where they are used.
@@ -1180,6 +1193,12 @@ Yes, there is we declare three new variable named as <x class="inline_code">x</x
 Variable values are; <x class="inline_code">x</x> is <x class="inline_code">true</x>, <x class="inline_code">y</x> is <x class="inline_code">1</x> and <x class="inline_code">y</x> is <x class="inline_code">-400</x>.
 As you can see, the order in which the variable is defined is associated with the expression in the same order.
 Remember that, you can't use type annotation in this case.
+<br><br>
+Use the <x class="inline_code">mut</x> keyword for mutable declaration.
+<br><br>
+For example:
+<div class="code">let (mut x, y, mut z) = true, 1, -400</div>
+The <x class="inline_code">x</x> and <x class="inline_code">z</x> variables are mutable.
 <br><br>
 So how do we do the assignment thing?
 <br>
@@ -1276,6 +1295,14 @@ The name of the parameter is written first, followed by the data-type.
 <br><br>
 When calling the function, as seen in the example in the entry point, arguments are written in parentheses, and if they are more than one, they are separated from each other with commas.
 The given arguments must be compatible with the data-type of the corresponding parameters.
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Mutable Parameters</div>
+Parameters are immutable by default.
+For mutability, use the <x class="inline_code">mut</x> keyword.
+<br><br>
+For example:
+<div class="code">fn my_func(mut i: int) { /* ... */ }</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Variadic Parameters</div>
@@ -1553,7 +1580,7 @@ Arrays is use indexes to access elements and assignment.
 <br>
 For example:
 <div class="code">fn main() {
-    let my_array = [3]str{"Hello", "arrays", "indexes"}
+    let mut my_array = [3]str{"Hello", "arrays", "indexes"}
     outln(my_array[0])
     my_array[0] = "Hi"
     outln(my_array)
@@ -1597,7 +1624,7 @@ Slices are mutable.
 <br><br>
 Example to slices;
 <div class="code">fn main() {
-    let my_slice: []str
+    let mut my_slice: []str
     my_slice = []str{"Hello", "X", "slices!"}
     outln(my_slice)
 }</div>
@@ -1626,7 +1653,7 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 <br>
 For example:
 <div class="code">fn sum(values: ...int) int {
-    let total: int
+    let mut total: int = 0
     for _, i: in values {
         total += i
     }
@@ -1634,8 +1661,8 @@ For example:
 }
 
 fn main() {
-    let my_arr = []int{90, 32, 6, 53}
-    let result = sum(my_arr...)
+    let my_slice = []int{90, 32, 6, 53}
+    let result = sum(my_slice...)
     outln(result)
 }</div>
 As seen in the example above, the owned variable <x class="inline_code">my_arr</x> holds an slice.
@@ -1684,11 +1711,12 @@ Maps is a hashmap. Maps a unique key value to a value.
 <br><br>
 Example to maps;
 <div class="code">fn main() {
-    let mymap: [i8:str] = [i8:str]{
+    let mut mymap: [i8:str] = [i8:str]{
         0: "CPU",
         1: "RAM",
         2: "GPU"
     }
+    outln(mymap)
 }</div>
 The example above shows how a map is defined and its data-type representation.
 To describe a map, curly braces are opened after the data type.
@@ -2078,7 +2106,7 @@ const memory_immutabilityHTML = `
   In this case, compiler will give error.
   Now let's repeat the same example using a mutable variable.
   <div class="code">fn main() {
-    mut let x = 20
+    let mut x = 20
     x++
     outln(x)
 }</div>
@@ -2109,6 +2137,7 @@ For example:
 <div class="code">fn main() {
     let x: int = 10
     let y: *int = &x
+    outln(y)
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
@@ -2224,7 +2253,7 @@ For example:
 
     // Make heap-allocation, returns heap-allocated &int
     // Ref count is 1
-    x = new(int)
+    let mut x = new(int)
     
     // Assign 100 expression to allocation
     x = 100
@@ -2317,8 +2346,8 @@ Unsafe Jule supports postfixes for raw pointers.
 For example:
 <div class="code">fn print_slice_components_with_unsafe(slc: []int) {
     unsafe {
-        let ptr = &slc[0]
-        let end = &slc[slc.len-1]
+        let mut ptr = &slc[0]
+        let mut end = &slc[slc.len-1]
         end++
         for ptr < end {
             outln(*ptr)
@@ -2408,7 +2437,7 @@ For example:
 }
 
 impl Error in MyError {
-    fn &error() str {
+    fn error() str {
         ret .message
     }
 }
@@ -2442,11 +2471,11 @@ The <x class="inline_code">panic</x> function is the builtin function.
 See the <a href="./stdlib/builtin.html">builtin</a> documentations.
 <br><br>
 For example:
-<div class="code">fn add_pointer(rate: int, ptr: *int) {
+<div class="code">fn add_pointer(rate: int, mut ptr: *int) {
     if ptr == nil {
         panic("pointer is nil")
     }
-    *ptr += rate
+    unsafe{ *ptr += rate }
 }
 
 fn main() {
@@ -2527,7 +2556,7 @@ For example:
 <div class="code">type int32: i32
 
 fn main() {
-    my_int: int32 = 100
+    let my_int: int32 = 100
     outln(my_int)
 }</div>
 As seen in the example above, there is an alias definition of <x class="inline_code">int32</x> for the <x class="inline_code">i32</x> data type.
@@ -2800,7 +2829,7 @@ For example:
 <strong>main.jule</strong>
 <div class="code">use cpp "sum_integers.hpp"
 
-cpp fn sum_integers(slice: []int) i64
+cpp fn sum_integers([]int) i64
 
 fn main() {
     let slice = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
@@ -2845,8 +2874,8 @@ For code example; <br>
 <div class="code">fn main() {
     let x: f32 = 3.14
     let y: int = (int)(x) // Casting
-    outln(x)          // Prints 3.14
-    outln(y)          // Prints 3
+    outln(x)              // Prints 3.14
+    outln(y)              // Prints 3
 }</div>
 </div>
 As you can see, the variable <x class="inline_code">x</x> is of type <x class="inline_code">f32</x> and the variable <x class="inline_code">y</x> is of type <x class="inline_code">int</x>.
@@ -2886,8 +2915,8 @@ Therefore, they can be used for type annotation in variable and similar definiti
 For example:
 <div class="code">type[T]
 fn sum(a: T, b: T) T {
-    x: T = a + b
-    x
+    let x: T = a + b
+    ret x
 }
 
 fn main() {
@@ -3414,7 +3443,7 @@ It is not much different from defining an infinite iteration.
 <br>
 For example:
 <div class="code">fn main() {
-    let counter = 0
+    let mut counter = 0
     for counter <= 5 {
         outln(counter)
         counter += 10
@@ -3487,7 +3516,7 @@ The for loop is a good choice for iterations from one point to another.
 <br><br>
 For example:
 <div class="code">fn main() {
-    for let i = 0; i < 10; i++ {
+    for let mut i = 0; i < 10; i++ {
         outln(i)
     }
 }</div>
@@ -3535,9 +3564,9 @@ It is also the beginning of a new chain of conditions.
 <br><br>
 For example:
 <div class="code">fn main() {
-    let x = new(int)
+    let x: Error
     if x == nil {
-        outln("memory allocation is failed")
+        outln("error is not initialized")
     }
 }</div>
 
@@ -3564,12 +3593,14 @@ For example:
 It is the block that will be executed unconditionally if the previous <x class="inline_code">if</x> and <x class="inline_code">else if</x> expressions are not fulfilled.
 <br><br>
 For example:
-<div class="code">fn main() {
-    let x = new(int)
+<div class="code">use std::errors
+
+fn main() {
+    let x: Error = std::errors::new("my error message")
     if x == nil {
-        outln("memory allocation is failed")
+        outln("error is not initialized")
     } else {
-        outln("memory allocation is success")
+        outln("error is initialized")
     }
 }</div>
 `;
