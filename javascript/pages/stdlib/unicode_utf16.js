@@ -9,7 +9,7 @@ If the pair is not a valid UTF-16 surrogate pair, decode_rune returns
 the Unicode replacement code point U+FFFD.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn encode_rune(r: rune) (r1: rune, r2: rune)</div>
+<div class="code">pub fn encode_rune(mut r: rune) (r1: rune, r2: rune)</div>
 Returns the UTF-16 surrogate pair r1, r2 for the given rune.
 If the rune is not a valid Unicode code point or does not need encoding,
 encode_rune returns U+FFFD, U+FFFD.

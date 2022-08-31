@@ -44,7 +44,7 @@ Special cases are: <br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-fn copy(dest: []Item, src: []Item) int</div>
+fn copy(mut dest: []Item, src: []Item) int</div>
 Copies components of source slice to destination slice.
 Returns number of copied components.
 <br><br>

@@ -74,7 +74,7 @@ Returns the number of bytes required to encode the rune.
 It returns -1 if the rune is not a valid value to encode in UTF-8.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn encode_rune(p: []byte, r: rune) int</div>
+<div class="code">pub fn encode_rune(mut p: []byte, mut r: rune) int</div>
 Writes into p (which must be large enough) the UTF-8 encoding of the rune.
 If the rune is out of range, it writes the encoding of RUNE_ERROR.
 It returns the number of bytes written.
@@ -104,7 +104,7 @@ bits set to 10.
 Reports whether p consists entirely of valid UTF-8-encoded runes.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn valid_str(s: str) bool</div>
+<div class="code">pub fn valid_str(mut s: str) bool</div>
 Reports whether s consists entirely of valid UTF-8-encoded runes.
 
 <div class="topic-separator"></div>

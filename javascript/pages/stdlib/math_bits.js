@@ -61,7 +61,7 @@ Returns the number of one bits ("population count") in x.
 Returns the number of one bits ("population count") in x.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn ones_count64(x: u64) int</div>
+<div class="code">pub fn ones_count64(mut x: u64) int</div>
 Returns the number of one bits ("population count") in x.
 
 <div class="topic-separator"></div>
@@ -112,11 +112,11 @@ Returns the value of x with its bits in reversed order.
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn reverse32(x: u32) u32</div>
+<div class="code">pub fn reverse32(mut x: u32) u32</div>
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn reverse64(x: u64) u64</div>
+<div class="code">pub fn reverse64(mut x: u64) u64</div>
 Returns the value of x with its bits in reversed order.
 
 <div class="topic-separator"></div>
@@ -132,13 +132,13 @@ Returns the value of x with its bytes in reversed order.
 <div class="info">This function's execution time does not depend on the inputs.</div>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn reverse_bytes32(x: u32) u32</div>
+<div class="code">pub fn reverse_bytes32(mut x: u32) u32</div>
 Returns the value of x with its bytes in reversed order.
 
 <div class="info">This function's execution time does not depend on the inputs.</div>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn reverse_bytes64(x: u64) u64</div>
+<div class="code">pub fn reverse_bytes64(mut x: u64) u64</div>
 Returns the value of x with its bytes in reversed order.
 
 <div class="info">This function's execution time does not depend on the inputs.</div>
@@ -154,17 +154,17 @@ Returns the minimum number of bits required to represent x;
 the result is 0 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn len16(x: u16) (n: int)</div>
+<div class="code">pub fn len16(mut x: u16) (n: int)</div>
 Returns the minimum number of bits required to represent x;
 the result is 0 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn len32(x: u32) (n: int)</div>
+<div class="code">pub fn len32(mut x: u32) (n: int)</div>
 Returns the minimum number of bits required to represent x;
 the result is 0 for x == 0.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn len64(x: u64) (n: int)</div>
+<div class="code">pub fn len64(mut x: u64) (n: int)</div>
 Returns the minimum number of bits required to represent x;
 the result is 0 for x == 0.
 
@@ -255,7 +255,7 @@ half in parameter hi and the lower half in parameter lo. <br>
 div32 panics for y == 0 (division by zero) or y <= hi (quotient overflow).
 
 <div class="topic-separator"></div>
-<div class="code">pub fn div64(hi: u64, lo: u64, y: u64) (quo: u64, rem: u64)</div>
+<div class="code">pub fn div64(hi: u64, lo: u64, mut y: u64) (quo: u64, rem: u64)</div>
 Returns the quotient and remainder of (hi, lo) divided by y: <br>
 quo = (hi, lo)/y, rem = (hi, lo)%y with the dividend bits' upper
 half in parameter hi and the lower half in parameter lo. <br>

@@ -62,7 +62,7 @@ The special precision -1 uses the smallest number of digits
 necessary such that ParseFloat will return f exactly.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn parse_int(s: str, base: int, bit_size: int) (i: i64, err: Error)</div>
+<div class="code">pub fn parse_int(mut s: str, base: int, mut bit_size: int) (i64, Error)</div>
 Interprets a string s in the given base (0, 2 to 36) and
 bit size (0 to 64) and returns the corresponding value i.
 <br><br>
@@ -86,7 +86,7 @@ returned value is the maximum magnitude integer of the
 appropriate bit_size and sign.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn parse_uint(s: str, base: int, bit_size: int) (u64, Error)</div>
+<div class="code">pub fn parse_uint(mut s: str, mut base: int, mut bit_size: int) (u64, Error)</div>
 Is like parse_int but for unsigned numbers.
 A sign prefix is not permitted.
 
@@ -121,7 +121,11 @@ as their respective special floating point values. It ignores case when matching
 `;
 
 const stdlib_conv_structsHTML = `
-<div class="code">pub struct ConvError</div>
+<div class="code">pub struct ConvError {
+    pub mut Func: str
+    pub mut Input: str
+    pub Error: Error
+}</div>
 Records a failed conversion.
 
 <br><br>

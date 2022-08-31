@@ -1088,6 +1088,9 @@ const common_conceptsHTML = `
   Common programming concepts. <br>
   Approaches that be found in every code. <br>
   Variables, functions...
+  <br><br>
+  Some examples of the subtopics of this section and the following sections require knowledge of immutability of Jule.
+  Please if you don't have any idea abot immutability of Jule, read the <a href="docs.html?page=memory-immutability">immutability</a> documentations.
 </div>
 `;
 
@@ -2001,6 +2004,85 @@ const memoryHTML = `
 <div class="text">
   Memory skills of Jule. <br><br>
   Pointers, memory management, allocations...
+  <br><br> 
+  The Jule compiler is very obsessed with some things.
+  One of these is the memory safety.
+  In this section, we'll explore the compiler's  obsessions.
+  These obsessions are for the developers.
+</div>
+`;
+
+const memory_immutabilityHTML = `
+<div class="title" style="margin-bottom: 20px;">Immutability</div>
+<div class="text">
+  One approach of the compiler from its security obsessions is that by default variables are immutable.
+  You've probably seen in the structure documentations that the compiler insists on using a reference to the reference receiver.
+  This is just one of the compiler's security obsessions.
+  But right now, we're taking a look at another similar obsession: immutability by default!
+  <br><br>
+  <div class="info">You can also see this approach in Rust.</div>
+  <br><br>
+  The fact that a variable is immutable by default requires that you do so consciously if you want to change it.
+  Let's see why this is a security obsession for the compiler:
+  <br><br>
+  Jule has data types in which it is mutable. These are:
+  <ul>
+  	<li>Pointer</li>
+  	<li>Slice</li>
+  </ul>
+  These are types that point to commonalities among the variables with which they are shared.
+  You may want to ensure that one of these types has not changed.
+  You are safe about this as variables are immutable by default.
+  This is possible if you want it to be mutable.
+  But before we get into how this is done, let's take a look at how obsessed the compiler is with immutability.
+  <br><br>
+  If you are using a mutable data type and your data type is in an immutable variable, the compiler will never allow you to assign it to a mutable variable.
+  If the compiler allows it, you will lose its immutability.
+  The value of the immutable variable can be changed with the new mutable variable.
+  <br><br>
+  For the same reason, the compiler will force you to return a mutable variable if you also have one of these data types as a return expression.
+  This is precisely because this variable can change.
+  The compiler has no idea whether a data type is mutable.
+  All are basically immutable, with the exception of the ones listed above.
+  <br><br>
+  An immutable variable with mutable data type returned from the function then poses a unsafety.
+  Because it is not possible to specify it as immutable in return data type.
+  That's why the compiler assumes that the return value can change, and shows you one of its strict obsessions about it: if you're returning, please use a mutable variable.
+  Even if you're just returning the variable, the compiler doesn't want to understand it.
+  According to the compiler, if that variable is an immutable and is also used within the function, the immutable obtained instance obtained from the return value may break this immutability.
+  Even if there is no such thing, the compiler will continue to insist on this.
+  <br><br>
+  Okay, so why doesn't the compiler implement immutability by default only for those data types?
+  This is a good question. The answer lies in the compiler wanting to be stable.
+  It is a mental overhead during the development phase that the developer has to constantly consider these data types.
+  This stability of the compiler ensures that the developer always knows that all variables are immutable by default.
+  This also helps the developer to understand what he or she is changing and will change while developing and reading algorithms.
+  It is more obvious which variables should be paid attention to, especially when using concurrency.
+  
+  <div class="title-separator"></div>
+  <div class="sub-title">Mutability</div>
+  Let's learn to say how we want a variable that is immutable by default to be mutable.
+  The keyword <x class="inline_code">mut</x> is used for this.
+  Before defining a variable, declare it mutable with this keyword.
+  Then you will have a mutable variable.
+  <br><br>
+  But before that, let's make a deliberate mistake to better understand immutability:
+  <div class="code">fn main() {
+    let x = 20
+    x++
+    outln(x)
+}</div>
+  The example above is absolutely wrong.
+  Because the variable <x class="inline_code">x</x> we have is an immutable variable.
+  And the <x class="inline_code">x++</x> statement definitely breaks immutability.
+  In this case, compiler will give error.
+  Now let's repeat the same example using a mutable variable.
+  <div class="code">fn main() {
+    mut let x = 20
+    x++
+    outln(x)
+}</div>
+Currently we want our variable as mutable so the compiler doesn't object to anything.
 </div>
 `;
 
@@ -2125,7 +2207,7 @@ For example:
 The <x class="inline_code">x</x> variable is a heap allocated reference.
 
 <div class="info">
-We realized that the compiler was forcing initialization to references.
+We know that the compiler was forcing initialization to references.
 So if you are instantiating a struct and that struct has reference fields, you cannot do it with implicit initialization with a function.
 The compiler will request an explicit initialization.
 Please use the reference struct literal for this.
@@ -2193,6 +2275,7 @@ If you don't switch to insecure Jule, secure Jule will not allow you to engage i
 <br><br>
 Benefits of Unsafe Jule:
 <ul>
+  <li>Break immutability</li>
   <li>Deference a raw pointer</li>
   <li>Postfixes for raw pointers</li>
   <li>Cast raw pointers</li>
@@ -2204,6 +2287,13 @@ Other than the listed unsafe behaviors, Safe Jule will continue to show itself.
 This means you get a level of safety even with unsafe blocks.
 <br><br>
 Let's take a look at the unsafe behaviors listed above:
+
+<div class="title-separator"></div>
+<div class="sub-title">Break Immutability</div>
+If a variable is immutable and has mutable data type, Safe Jule does not allow assigning it to a mutable variable.
+Memory safety on this is mentioned in the <a href="docs.html?page=memory-immutability">immutability</a> documentations.
+There is a way to break it. It naturally means breaking safety as well, but you are conscious of it.
+Unsafe Jule does not encourage you to be safe about it.
 
 <div class="title-separator"></div>
 <div class="sub-title">Derefence a Raw Pointer</div>
@@ -3709,6 +3799,7 @@ const NAV_common_concepts_structures          = document.getElementById("common-
 const NAV_traits                              = document.getElementById("traits");
 const NAV_traits_implementing                 = document.getElementById("traits-implementing");
 const NAV_memory                              = document.getElementById('memory');
+const NAV_memory_immutability                 = document.getElementById("memory-immutability");
 const NAV_memory_pointers                     = document.getElementById('memory-pointers');
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
 const NAV_unsafe_jule                         = document.getElementById("unsafe-jule");
@@ -3789,6 +3880,7 @@ nav.navigations = [
   [NAV_traits,                              traitsHTML],
   [NAV_traits_implementing,                 traits_implementingHTML],
   [NAV_memory,                              memoryHTML],
+  [NAV_memory_immutability,                 memory_immutabilityHTML],
   [NAV_memory_pointers,                     memory_pointersHTML],
   [NAV_memory_memory_management,            memory_memory_managementHTML],
   [NAV_unsafe_jule,                         unsafe_juleHTML],

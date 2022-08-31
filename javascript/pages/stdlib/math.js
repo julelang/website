@@ -41,7 +41,7 @@ Special cases are: <br>
 <li><x class="inline_code">abs(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn acosh(x: f64) f64</div>
+<div class="code">pub fn acosh(mut x: f64) f64</div>
 Returns the inverse hyperbolic cosine of x.
 <br><br>
 Special cases are: <br>
@@ -50,7 +50,7 @@ Special cases are: <br>
 <li><x class="inline_code">acosh(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn asin(x: f64) f64</div>
+<div class="code">pub fn asin(mut x: f64) f64</div>
 Returns the arcsine, in radians, of x.
 <br><br>
 Special cases are: <br>
@@ -65,7 +65,7 @@ Special cases are: <br>
 <li><x class="inline_code">acos(x) = nan if x < -1 or x > 1</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn asinh(x: f64) f64</div>
+<div class="code">pub fn asinh(mut x: f64) f64</div>
 Returns the inverse hyperbolic sine of x.
 <br><br>
 Special cases are: <br>
@@ -106,7 +106,7 @@ Special cases are: <br>
 <li><x class="inline_code">atan2(-inf, x) = -PI/2</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn atanh(x: f64) f64</div>
+<div class="code">pub fn atanh(mut x: f64) f64</div>
 Returns the inverse hyperbolic tangent of x.
 <br><br>
 Special cases are: <br>
@@ -136,7 +136,7 @@ If sign < 0, is_inf reports whether f is negative infinity. <br>
 If sign == 0, is_inf reports whether f is either infinity. <br>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn cbrt(x: f64) f64</div>
+<div class="code">pub fn cbrt(mut x: f64) f64</div>
 Returns the cube root of x.
 <br><br>
 Special cases are: <br>
@@ -177,7 +177,7 @@ Special cases are: <br>
 <li><x class="inline_code">min(-0, ±0) = min(±0, -0) = -0</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn erf(x: f64) f64</div>
+<div class="code">pub fn erf(mut x: f64) f64</div>
 Returns the error function of x.
 <br><br>
 Special cases are: <br>
@@ -186,7 +186,7 @@ Special cases are: <br>
 <li><x class="inline_code">erf(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn erfinv(x: f64) f64</div>
+<div class="code">pub fn erfinv(mut x: f64) f64</div>
 Returns the inverse error function of x.
 <br><br>
 Special cases are: <br>
@@ -206,7 +206,7 @@ Special cases are: <br>
 <li><x class="inline_code">erfcinv(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn erfc(x: f64) f64</div>
+<div class="code">pub fn erfc(mut x: f64) f64</div>
 Returns the complementary error function of x.
 <br><br>
 Special cases are: <br>
@@ -232,7 +232,7 @@ Returns 2**x, the base-2 exponential of x.
 Special cases are the same as exp.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn expm1(x: f64) f64</div>
+<div class="code">pub fn expm1(mut x: f64) f64</div>
 Returns e**x - 1, the base-e exponential of x minus 1.
 It is more accurate than exp(x) - 1 when x is near zero.
 <br><br>
@@ -257,7 +257,7 @@ Returns x * y + z, computed with only one rounding.
 (That is, fma returns the fused multiply-add of x, y, and z.)
 
 <div class="topic-separator"></div>
-<div class="code">pub fn frexp(f: f64) (frac: f64, exp: int)</div>
+<div class="code">pub fn frexp(mut f: f64) (frac: f64, exp: int)</div>
 Breaks f into a normalized fraction and an integral power of two.
 It returns frac and exp satisfying f == frac × 2**exp, with the absolute value of frac in the interval [½, 1).
 <br><br>
@@ -315,7 +315,7 @@ Special cases are: <br>
 <li><x class="inline_code">round_even(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn hypot(p: f64, q: f64) f64</div>
+<div class="code">pub fn hypot(mut p: f64, mut q: f64) f64</div>
 Returns sqrt(p*p + q*q), taking care to avoid unnecessary overflow and underflow.
 <br><br>
 Special cases are: <br>
@@ -325,7 +325,7 @@ Special cases are: <br>
 <li><x class="inline_code">hypot(p, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn j0(x: f64) f64</div>
+<div class="code">pub fn j0(mut x: f64) f64</div>
 Returns the order-zero Bessel function of the first kind.
 <br><br>
 Special cases are: <br>
@@ -344,7 +344,7 @@ Special cases are: <br>
 <li><x class="inline_code">y0(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn j1(x: f64) f64</div>
+<div class="code">pub fn j1(mut x: f64) f64</div>
 Returns the order-one Bessel function of the first kind.
 <br><br>
 Special cases are: <br>
@@ -362,7 +362,7 @@ Special cases are: <br>
 <li><x class="inline_code">y1(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn jn(n: int, x: f64) f64</div>
+<div class="code">pub fn jn(mut n: int, mut x: f64) f64</div>
 Returns the order-n Bessel function of the first kind.
 <br><br>
 Special cases are: <br>
@@ -370,7 +370,7 @@ Special cases are: <br>
 <li><x class="inline_code">jn(n, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn yn(n: int, x: f64) f64</div>
+<div class="code">pub fn yn(mut n: int, x: f64) f64</div>
 Returns the order-n Bessel function of the second kind.
 <br><br>
 Special cases are: <br>
@@ -381,7 +381,7 @@ Special cases are: <br>
 <li><x class="inline_code">yn(n, nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn ldexp(frac: f64, exp: int) f64</div>
+<div class="code">pub fn ldexp(mut frac: f64, mut exp: int) f64</div>
 Is the inverse of frexp.
 It returns frac × 2**exp.
 <br><br>
@@ -391,7 +391,7 @@ Special cases are: <br>
 <li><x class="inline_code">ldexp(nan, exp) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn lgamma(x: f64) (lgamma: f64, sign: int)</div>
+<div class="code">pub fn lgamma(mut x: f64) (lgamma: f64, sign: int)</div>
 Returns the natural logarithm and sign (-1 or +1) of gamma(x).
 <br><br>
 Special cases are: <br>
@@ -452,7 +452,7 @@ Special cases are: <br>
 <li><x class="inline_code">ilogb(nan) = i32.max</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn mod(x: f64, y: f64) f64</div>
+<div class="code">pub fn mod(x: f64, mut y: f64) f64</div>
 Returns the floating-point remainder of x/y.
 The magnitude of the result is less than y and its sign agrees with that of x.
 <br><br>
@@ -525,7 +525,7 @@ Special cases are: <br>
 <li><x class="inline_code">pow10(n) = +inf for n > 308</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn remainder(x: f64, y: f64) f64</div>
+<div class="code">pub fn remainder(mut x: f64, mut y: f64) f64</div>
 Returns the IEEE 754 floating-point remainder of x/y.
 <br><br>
 Special cases are: <br>
@@ -540,7 +540,7 @@ Special cases are: <br>
 Reports whether x is negative or negative zero.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn cos(x: f64) f64</div>
+<div class="code">pub fn cos(mut x: f64) f64</div>
 Returns the cosine of the radian argument x.
 <br><br>
 Special cases are: <br>
@@ -548,7 +548,7 @@ Special cases are: <br>
 <li><x class="inline_code">cos(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn sin(x: f64) f64</div>
+<div class="code">pub fn sin(mut x: f64) f64</div>
 Returns the sine of the radian argument x.
 <br><br>
 Special cases are: <br>
@@ -557,7 +557,7 @@ Special cases are: <br>
 <li><x class="inline_code">sin(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn sincos(x: f64) (sin: f64, cos: f64)</div>
+<div class="code">pub fn sincos(mut x: f64) (sin: f64, cos: f64)</div>
 Returns sin(x), cos(x).
 <br><br>
 Special cases are: <br>
@@ -566,7 +566,7 @@ Special cases are: <br>
 <li><x class="inline_code">sincos(nan) = nan, nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn sinh(x: f64) f64</div>
+<div class="code">pub fn sinh(mut x: f64) f64</div>
 Returns the hyperbolic sine of x.
 <br><br>
 Special cases are: <br>
@@ -594,7 +594,7 @@ Special cases are: <br>
 <li><x class="inline_code">sqrt(nan) = nan</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">pub fn tan(x: f64) f64</div>
+<div class="code">pub fn tan(mut x: f64) f64</div>
 Returns the tangent of the radian argument x.
 <br><br>
 Special cases are: <br>
