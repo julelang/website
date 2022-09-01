@@ -1227,7 +1227,7 @@ This is made possible by performing a new definition in subscopes of a scope wit
 For example:
 <div class="code">let a = 100
 
-my_func(a: bool) {
+fn my_func(a: bool) {
     outln(a)
 }
 </div>
