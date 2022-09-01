@@ -773,7 +773,6 @@ const basics_data_typesHTML = `
   <div class="code">.12345E+6</div>
   <div class="code">1.e+0</div>
   <div class="code">0x1p-2</div>
-
   <div class="code">0x2.p10</div>
   <div class="code">0x1.Fp+0</div>
   <div class="code">0X.8p-0</div>
@@ -1219,15 +1218,11 @@ This way you ignore some values.
 
 <div class="title-separator"></div>
 <div class="sub-title">Shadowing</div>
-Normally, shading allows to suppress previous definitions with the same name for each block.
-But Jule does not adopt it.
-Agrees that this is an approach that degrades security.
-<br><br>
-So does Jule support shadowing?
-<br>
-Yes! However, there are minor changes.
-If you give the name of one of the global definitions to the function's parameter or to a variable within the block, that definition is shaded.
-However, a global definition that you define or shadow once within the block cannot be shaded within the block and in sub-blocks.
+In the basic sense, shadowing is when a definition with the same identifier shadows a define with the same identifier before it in scope.
+This is made possible by performing a new definition in subscopes of a scope with the name of a definition defined in that parent scope, or by using the identifier of a global definition in the main scope of a function.
+
+
+
 <br><br>
 For example:
 <div class="code">let a = 100
@@ -1239,20 +1234,29 @@ my_func(a: bool) {
 In the code above, the function's parameter is the same as the name of a global definition.
 In this case, the parameter name is valid and the global definition is shaded.
 <br><br>
-Well, we said that a definition that is already defined or shadowed in the block and sub-blocks cannot be shadowed again.
-What exactly does this mean?
+So how does this work in child scopes?
 <br><br>
 For example:
 <div class="code">let a = 100
 
-fn my_func(a: bool) {
-    let a = 0.10
+fn my_func() {
+    let a = 10
+    {
+        let a = 200
+        outln(a)
+    }
     outln(a)
 }
 </div>
-Let's go over the previous example. In the block, the parameter <x class="inline_code">a</x> was taken with shadowing.
-It is no longer a definition that can be shaded, but is assumed to be defined within the block.
-So this code will result in compiler error.
+In the above example, the main scope of the function has a child scope.
+This scope has a variable with the same identifier as the variable <x class="inline_code">a</x> in the main scope.
+This variable replaces and shadows the parent scope's variable <x class="inline_code">a</x> in it and its child scopes.
+<br><br>
+Can a definition in the same scope be shadowed, how does the compiler behave about it?
+Obviously, you can't.
+The compiler will never allow two identifiers in the same scope.
+Therefore, you cannot have definitions with the same identifier in the same scope.
+
 </div>
 `;
 
@@ -1425,6 +1429,10 @@ For example:
 As in the example above.
 These identifiers also cause a variable to be created.
 For each identifier, the function has a variable initialized in its scope.
+<br><br>
+As noticed, they are mutable variables by default.
+This is because of some of compiler obsessions.
+Please refer to the <a href="docs.html?page=memory-immutability">immutability documentations</a> if you don't know anything about it.
 
 <div class="topic-separator"></div>
 Also, a function that has at least one return type identifier does not have to have a return expression.
@@ -2911,6 +2919,8 @@ No new keyword has been introduced to denote generic types, it is possible to ad
 Generic types are also assumed to be local in-scope type aliases.
 Therefore, they can be used for type annotation in variable and similar definitions in scope.
 </div>
+
+<div class="warn">Generics are never supports shadowing.</div>
 <br>
 For example:
 <div class="code">type[T]
@@ -2951,17 +2961,13 @@ struct Position {
     y: T
 }</div>
 
-<div class="info">
-Calling the constructor method will be no different than calling a function that uses generics.
-</div>
-
 <div class="title-separator"></div>
 <div class="sub-sub-title" style="margin-bottom: 20px;">Genericed Structure Type Representation</div>
 Generic types must also be specified to specify an instance of a specific type of the position structure.
 Doing this is like calling a function.
 <br><br>
 For example:
-<div class="code">pos: Position[int]</div>
+<div class="code">let pos: Position[int]</div>
 
 <div class="title-separator"></div>
 <div class="sub-title" style="margin-bottom: 20px;">Dynamic Generic Type Annotation</div>

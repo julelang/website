@@ -8,14 +8,14 @@ const preview_code_helloworldHTML =
 }`;
 
 const preview_code_quicksortHTML =
-`fn quicksort(s: []int) {
+`fn quicksort(mut s: []int) {
     if s.len <= 1 {
         ret
     }
-    let i = 0
+    let mut i = 0
     unsafe {
         for i < s.len-1 {
-            let (x, y) = &s[i], &s[i+1]
+            let (mut x, mut y) = &s[i], &s[i+1]
             if *x > *y {
                 *x, *y = *y, *x
             }
@@ -27,7 +27,7 @@ const preview_code_quicksortHTML =
 }
 
 fn main() {
-    let my_slice = []int{1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2}
+    let mut my_slice = []int{1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2}
     outln(my_slice)
     quicksort(my_slice)
     outln(my_slice)
