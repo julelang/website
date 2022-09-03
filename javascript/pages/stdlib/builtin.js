@@ -64,7 +64,7 @@ If you want append components to source slice, assign returned slice.
 
 const stdlib_builtin_traitsHTML = `
 <div class="code">trait Error {
-    fn error() str
+    fn error(self) str
 }</div>
 
 This is a error handling trait of standard library. <br>

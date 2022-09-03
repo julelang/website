@@ -1826,9 +1826,9 @@ Also, the fields of structures are accessed with an identifier.
 <br><br>
 For example to declaration a struct;
 <div class="code">struct Employee {
-    name  : str
-    age   : u8
-    title : str
+    name: str
+    age: u8
+    title: str
     salary: u32
 }</div>
 Members of structures are the same as a variable definition except <x class="inline_code">const</x> keyword.
@@ -1839,8 +1839,8 @@ To instantiate structs, you can either give the values of the fields using brace
 <br><br>
 For example:
 <div class="code">struct Character {
-    name : str
-    age  : u8
+    name: str
+    age: u8
     title: str
 }
 
@@ -1848,8 +1848,8 @@ fn main() {
     let anon = Character{}
     let frodo = Character{"Frodo", 50, "Hobbit"}
     let gandalf = Character{
-        name:  "Gandalf",
-        age:   24000,
+        name: "Gandalf",
+        age: 24000,
         title: "Wizard",
     }
     outln(anon)
@@ -1875,17 +1875,18 @@ To implement method(s) to structure, the following syntax is applied;
 <div class="warn">Just give structure identifier as receiver. Not generics or type alias.</div>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Receivers</div>
+<div class="sub-sub-title">Receiver Parameters</div>
 Receivers indicate how instance the function will use.
+Receiver parameters must be the first parameter of each method.
 <br><br>
-There are two types of receivers;
+There are two types of receiver parameters;
 <br><br>
-<strong>Reference Receiver</strong> <br>
+<strong>Reference Receiver Parameter</strong> <br>
 Reference receivers require the function to be a reference.
 The function can only be called from a reference instance of the structure.
 <br><br>
-<strong>Safe-Mutable Receiver</strong> <br>
-Safe-Mutable receivers, on the other hand, allow changes made within the function to be reflected in the structure.
+<strong>Copy Receiver Parameter</strong> <br>
+Copy receivers, on the other hand, allow changes made within the function to be reflected in the structure if receiver is mutable.
 However, when the structure is given as arguments to different functions, or in a different state, it is copied.
 That is, it is only variable within itself.
 <div class="warn">Not deep copy.</div>
@@ -1893,22 +1894,26 @@ That is, it is only variable within itself.
 <div class="title-separator"></div>
 <div class="sub-sub-title">Syntax</div>
 
-<div class="code">[RECEIVER_OPERATOR]IDENTIFIER(PARAMETERS) RET_TYPE {
+<div class="code">fn IDENTIFIER([RECEIVER_PARAMETER], PARAMETERS...) RET_TYPE {
     // Body
 }</div>
 
 <br><br>
-For example to receivers:
-<div class="code">// Reference Receiver
-fn &method() str { /* Body */ }</div>
-<div class="code">// Safe-Mutable Receiver
-fn method() str { /* Body */ }</div>
+For example to receiver parameters:
+<div class="code">// Immutable Reference Receiver
+fn method(&self) str { /* Body */ }</div>
+<div class="code">// Mutable Reference Receiver
+fn method(mut &self) str { /* Body */ }</div>
+<div class="code">// Immutable Copy Receiver
+fn method(self) str { /* Body */ }</div>
+<div class="code">// Mutable Copy Receiver
+fn method(mut self) str { /* Body */ }</div>
 
 <br>
 For example to implementing method to structure:
 <div class="code">impl Position {
-    fn is_origin() bool {
-        ret .x == 0 && .y == 0
+    fn is_origin(self) bool {
+        ret self.x == 0 && self.y == 0
     }
 }</div>
 He example at above, implements <x class="is_origin() bool"> method to <x class="inline_code">Position</x> structure.
@@ -1922,23 +1927,11 @@ The data type is the same as the data type of the receiver.
 <br><br>
 For example:
 <div class="code">impl Person {
-    fn &get_name() str {
-        // self: &Person
+    fn get_name(self) str {
         ret self.name
     }
 }</div>
 In the example above, the <x class="inline_code">name</x> field of the "<x class="inline_code">Employee</x> structure instance is accessed with the <x class="inline_code">self</x> keyword.
-
-<div class="topic-separator"></div>
-A expression starting with dot can be used to access the fields and functions of the structure, without using the <x class="inline_code">self</x> keyword.
-The dot is <x class="inline_code">self.</x> evaluated as.
-<br><br>
-For example:
-<div class="code">impl Person {
-    fn &get_name() str {
-        ret .name
-    }
-}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Reference Literal Instances</div>
@@ -1998,10 +1991,10 @@ To implement a trait to structure, the following syntax is applied;
 
 <br>
 For example:
-<div class="code">const PI: = 3.14159265359
+<div class="code">const PI = 3.14159265359
 
 trait Shape {
-    fn area() int
+    fn area(self) int
 }
 
 struct Rectangle {
@@ -2010,8 +2003,8 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    fn area() int {
-        ret .width * .height
+    fn area(self) int {
+        ret self.width * self.height
     }
 }
 
@@ -2020,8 +2013,8 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    fn area() int {
-        ret PI * .r * .r
+    fn area(self) int {
+        ret PI * self.r * self.r
     }
 }
 
@@ -2063,8 +2056,8 @@ const memory_immutabilityHTML = `
   <br><br>
   Jule has data types in which it is mutable. These are:
   <ul>
-  	<li>Pointer</li>
-  	<li>Slice</li>
+    <li>Pointer</li>
+    <li>Slice</li>
   </ul>
   These are types that point to commonalities among the variables with which they are shared.
   You may want to ensure that one of these types has not changed.
@@ -3464,12 +3457,15 @@ This example just prints <x class="inline_code">0</x>.
 <div class="sub-sub-title">Foreach Iterations</div>
 Foreach or for-each can be summarized as an iteration standard for collections.
 It repeats itself by looping through the elements of the collection.
-<br>
+<br><br>
+Each identifier used for foreach is used to create a new variable.
+So if there is a definition that already has this identifier, it will be shaded.
+<br><br>
 For example:
 <div class="code">fn main() {
-    let mystr str = "Hello"
-    for index: in mystr {
-        outln(index)
+    let s = "Hello"
+    for i in s {
+        outln(i)
     }
 }
 
@@ -3480,17 +3476,16 @@ For example:
 // 3
 // 4</div>
 Seen as the example at above, this is a foreach iteration.
-The <x class="inline_code">index:</x> part of iteration, declares a new variable for iteration.
 <br>
 Iterations can have two variables: Current index and current element.
 <br><br>
-This example, just shows index. Let's see foreach iteration with element.
+This example, just shows index. Let's see foreach iteration with content.
 <br>
 For example:
 <div class="code">fn main() {
-    let mystr: str = "Hello"
-    for _, c: byte in mystr {
-        outln(c)
+    let s = "Hello"
+    for _, b in s {
+        outln(b)
     }
 }
 
@@ -3502,9 +3497,22 @@ For example:
 // o</div>
 As you can see, it is possible to use the ignore operator for unused fields.
 
-<div class="info">If you don't use declaration with data-type, Jule assign variables data-types by automatically by collection.
-Similar to auto-type variables.
-If the index variable is be numeric, Jule's auto data-type is <x class="inline_code">int</x> type.</div>
+<div class="info">Jule assign variables data types by automatically by collection.
+Similar to auto type variables.
+If the index variable is be numeric, Jule's auto data type is <x class="inline_code">int</x> type.</div>
+
+<div class="topic-separator"></div>
+Foreach iterations have immutable variables by default.
+But you may want to get them as mutable.
+For this, enclose the identifiers in parentheses and qualify the variable you want to be mutable as mutable.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let s = "Hello"
+    for (_, mut b) in s {
+        outln(b)
+    }
+}</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">For Iterations</div>

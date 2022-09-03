@@ -122,8 +122,8 @@ as their respective special floating point values. It ignores case when matching
 
 const stdlib_conv_structsHTML = `
 <div class="code">pub struct ConvError {
-    pub mut Func: str
-    pub mut Input: str
+    pub Func: str
+    pub Input: str
     pub Error: Error
 }</div>
 Records a failed conversion.
@@ -137,7 +137,7 @@ Records a failed conversion.
 <br><br>
 <strong>Methods:</strong>
 
-<div class="code">pub fn &unwrap() Error</div>
+<div class="code">pub fn unwrap(&self) Error</div>
 
 `;
 
