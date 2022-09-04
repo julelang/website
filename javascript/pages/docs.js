@@ -2112,6 +2112,37 @@ const memory_immutabilityHTML = `
     outln(x)
 }</div>
 Currently we want our variable as mutable so the compiler doesn't object to anything.
+
+<div class="title-separator"></div>
+<div class="sub-title">Interior Mutability</div>
+When an instance of a struct is immutable, you cannot use it with mutable methods because this compromises its immutability guarantee.
+However, you may still need to change the fields of an immutable structure.
+For this you need to use interior mutability.
+Since you cannot call a mutable method, your method will remain immutable, but thanks to interior mutability, you will be able to obtain the fields you want as mutable.
+<br><br>
+It is recommended that fields within interior mutability not be public, although the compiler leaves this to the discretion of the developer.
+Because when interior mutability fields vary in an immutable instance, the developer using this immutable copy may encounter a change even though he or she does not expect a change on the copy.
+Therefore, if fields within interior mutability need to be accessible, it is recommended to use wrapper methods.
+<br><br>
+Now let's take a look at how interior mutability is achieved.
+Actually, this is a pretty simple.
+If you are a developer who has used C++ before, you may be familiar with the <x class="inline_code">mutable</x> keyword in this regard.
+Similarly, Jule uses the already existing keyword <x class="inline_code">mut</x> for mutability.
+For interior mutability, the relevant field must be declared with the <x class="inline_code">mut</x> keyword.
+This means that field can exhibit interior mutability.
+<br><br>
+For example:
+<div class="code">struct MyStruct {
+    mut x: int
+    y: int
+}</div>
+In this example, the mutability of the <x class="inline_code">y</x> field is fully responsive.
+However, the variable <x class="inline_code">x</x> exhibits interior mutability.
+That's why it can be changed in methods without the need for <x class="inline_code">mut self</x> receiver parameter.
+<br><br>
+The point that should not be forgotten in this regard is that even if there is interior mutability, this field cannot be changed from outside the structure with an immutable instance.
+Interior mutability only applies inside the structure itself.
+
 </div>
 `;
 
@@ -2208,8 +2239,24 @@ Just like constant variables, references must be initialized as soon as they are
 A reference is annotated by an <x class="inline_code">&</x> operator.
 <br><br>
 A reference is always heap-allocation and is always within the reference counting.
-They allow you to get a pointer to the heap allocation when trying to get the address.
-In this way, you assign the heap allocation indicated by the references to an unsafe raw pointer.
+When a pointer to a reference is taken, you don't get a pointer to the reference.
+You get a pointer to the address of the heap allocation that the reference is using.
+<br><br>
+Because: <br><br>
+<strong>Reference Pointer is Unnecessary</strong> <br>
+It is unnecessary for a pointer to point to a reference.
+You're probably doing this to share the same address.
+The truth is, references already do that.
+So instead of getting a pointer to a reference, using the reference directly gives the same experience.
+Therefore, pointers to a reference are not supported.
+<br><br>
+<strong>More Productive</strong> </br>
+As explained above, you are probably doing this to share the same address.
+Getting a pointer to a reference and getting a pointer pointing to the address that reference is pointing to should then be the same for you.
+If you had a pointer to a reference, that would raise issues for you.
+Because the references you point to are also variables, for example, when using the atomicity functions in the standard library, instead of performing an atomic operation for the allocation of that reference, you have to perform an atomic operation for the reference itself.
+This atomicity is unnecessary because what you need is the atomicity that is above the allocation of the reference.
+
 <br><br>
 Example to reference data type anotations:
 <div class="code">&int</div>
@@ -2224,8 +2271,22 @@ You can't use reference type these types:
 </ul>
 
 <div class="title-separator"></div>
-<div class="sub-title">Heap Allocation</div>
-The <x class="inline_code">new</x> function is used to perform a heap allocation. <br>
+<div class="sub-title">Initialization</div>
+References must initialize explicitly at declaration.
+A reference is never allocated by the compiler.
+The developer should explicitly allocate them.
+Although it is very easy to do this with the new function, there is an exception.
+The compiler is really obsessed with this explicit initialization.
+If you want to initialize the struct with a reference type field with the new function, you will obviously encounter an error.
+In this case you have to explicitly initialize the fields as well.
+For this, it is necessary to use a reference literal.
+<br><br>
+This can be frustrating in some cases.
+But it's actually quite helpful behavior for the developer.
+A reference used anywhere will always be initialized, encourages you to guarantee this.
+You also have more awareness of how the reference is initialized.
+<br><br>
+The <x class="inline_code">new</x> function is used to perform a heap allocation for references. <br>
 It is a builtin function. <br>
 Please refer to the <a href="stdlib/builtin.html">builtin</a> library documentation for this function.
 <br><br>
@@ -2236,18 +2297,21 @@ For example:
 }</div>
 The <x class="inline_code">x</x> variable is a heap allocated reference.
 
-<div class="info">
-We know that the compiler was forcing initialization to references.
-So if you are instantiating a struct and that struct has reference fields, you cannot do it with implicit initialization with a function.
-The compiler will request an explicit initialization.
-Please use the reference struct literal for this.
-</div>
+<div class="title-separator"></div>
+<div class="sub-title"><x class="inline_code">nil</x> Support</div>
+References can't be <x class="inline_code">nil</x> (aka null). 
+A reference can never be <x class="inline_code">nil</x> throughout its lifetime.
+Access to references must always be safe.
 
 <div class="title-separator"></div>
 <div class="sub-title">Understanding Reference Counting</div>
 A reference counting heap counts each time it gets a reference to a dedicated pointer.
 It is deducted from the count when it loses its references.
 When the reference count reaches zero, it releases the allocation as it is no longer used.
+<br><br>
+Reference counting is not a program running in the background.
+Therefore, it does not host variable loads at runtime like the garbage collector and its release times are always specific.
+Reference counting offers the developer a deterministic memory management.
 <br><br>
 For example:
 <div class="code">fn main() {
@@ -2271,6 +2335,28 @@ For example:
     let y = x
 
 } // Frees allocation because ref count is 0, destroyed all references</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Critical Points</div>
+Jule has language-integrated concurrency and for concurrency, reference counting should be atomic.
+Reference counting may not occur correctly if there is no atomicity in concurrency.
+That is, when a reference is referenced by a different reference, it must do so in an atomic way.
+But the fact that this happens all the time raises a problem: the critical impact on performance.
+<br><br>
+Atomic operations are essential for references to be thread-safe, but in cases where this is not necessary?
+Atomicity means overhead, which means loss of performance.
+It is inherently unnecessary to have atomicity when atomicity is not required.
+Jule references works atomic because thread-safe must be guaranteed.
+<br><br>
+This means that references will use atomicity for reference counting on each copy.
+This atomicity creates an atomicity overhead in memory with each copy operation.
+Obviously this shouldn't be a major cause of performance degradation in your runtime in most cases.
+However, references also contain a memory footprint.
+This memory footprint is the memory space allocated separately for the counter used in reference counting.
+<br><br>
+All of these are minor overheads, but for performance-critical software, the developer may want to eliminate them.
+There is no way to do this using references as the runtime paradigm of references cannot be changed.
+Therefore, the developer should use to the less safe manual memory management.
 
 </div>
 `;
