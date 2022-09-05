@@ -208,6 +208,29 @@ Starts new bug report on GitHub.
 </div>
 `;
 
+const compiler_platform_supportHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Platform Support</div>
+<div class="text">
+Jule supports multiple platforms.
+JuleC undertakes that the code and standard library it produces will be compatible with all these platforms.
+When you try to compile for a platform other than officially supported platforms, it is not guaranteed that it will be supported and the code will work correctly.
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Supported Operating Systems</div>
+<li class="inline_code">windows</li>
+<li class="inline_code">darwin</li>
+<li class="inline_code">linux</li>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Supported Architectures</div>
+<li class="inline_code">i386</li>
+<li class="inline_code">amd64</li>
+<li class="inline_code">arm</li>
+<li class="inline_code">arm64</li>
+
+</div>
+`;
+
 const compiler_config_filesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Config Files</div>
 <div class="text">
@@ -445,22 +468,9 @@ Certain specifications can be made to include only certain files in the compilat
 For this, simply give a matching specification after the underscore.
 <br><br>
 For example: <x class="inline_code">example_amd64.jule</x>
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">Operating System Specification</div>
-
-Supported operating systems; <br>
-<li class="inline_code">windows</li>
-<li class="inline_code">darwin</li>
-<li class="inline_code">linux</li>
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">Architecture Specification</div>
-Supported architectures; <br>
-<li class="inline_code">i386</li>
-<li class="inline_code">amd64</li>
-<li class="inline_code">arm</li>
-<li class="inline_code">arm64</li>
+<br><br>
+These specifications are available for all supported operating systems and architects.
+Check out <a href="docs.html?page=compiler-platform-support">these documents</a> to see the supported operating systems and architectures.
 
 </div>
 `;
@@ -3903,6 +3913,7 @@ const NAV_getting_started                     = document.getElementById('getting
 const NAV_getting_started_downloads           = document.getElementById('getting-started-downloads');
 const NAV_getting_started_install_from_source = document.getElementById('getting-started-install-from-source');
 const NAV_compiler                            = document.getElementById('compiler');
+const NAV_compiler_platform_support           = document.getElementById("compiler-platform-support");
 const NAV_compiler_basic_commands             = document.getElementById('compiler-basic-commands');
 const NAV_compiler_config_files               = document.getElementById('compiler-config-files');
 const NAV_compiler_compiling                  = document.getElementById('compiler-compiling');
@@ -3984,6 +3995,7 @@ nav.navigations = [
   [NAV_getting_started_downloads,           getting_started_downloadsHTML],
   [NAV_getting_started_install_from_source, getting_started_install_from_sourceHTML],
   [NAV_compiler,                            compilerHTML],
+  [NAV_compiler_platform_support,           compiler_platform_supportHTML],
   [NAV_compiler_basic_commands,             compiler_basic_commandsHTML],
   [NAV_compiler_config_files,               compiler_config_filesHTML],
   [NAV_compiler_compiling,                  compiler_compilingHTML],
