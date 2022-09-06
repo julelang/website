@@ -484,7 +484,7 @@ But you have to use the declarations you make in your code blocks, if you don't 
 <br><br>
 For example:
 <div class="code">fn main() {
-    let a: int
+    let a: int = 0
 }</div>
 The variable <x class="inline_code">a</x> seen is declared but unused.
 This will cause you to get an error by the compiler and not be able to compile the code.
@@ -1129,8 +1129,11 @@ The type is set by the compiler based on the data.
 For example:
 <div class="code">let age = 18</div>
 The data type of the above variable is defaulted to <x class="inline_code">int</x>.
+
 <div class="warn">
-In this method, the variable must be given a value, otherwise the compiler will give an error.
+Variables must be initialized when declaring.
+Otherwise, the compiler will throw an error.
+It is one of the compiler's obsessions that encourages the developer to develop safe software.
 </div>
 
 <div class="title-separator"></div>
@@ -1325,7 +1328,7 @@ The <x class="inline_code">...</x> operator is used for this.
 <br>
 For example:
 <div class="code">fn str_out(values: ...str) {
-    for _, s: in values {
+    for _, s in values {
         out(s)
     }
 }
@@ -1390,7 +1393,7 @@ For example:
     let make_hello = fn(name: str) str {
         ret "Hello " + name + "!"
     };
-    outln(make_hello("X"))
+    outln(make_hello("Jule"))
 }</div>
 
 <div class="topic-separator"></div>
@@ -1642,21 +1645,18 @@ Slices are mutable.
 <br><br>
 Example to slices;
 <div class="code">fn main() {
-    let mut my_slice: []str
-    my_slice = []str{"Hello", "X", "slices!"}
+    let mut my_slice: []str = nil
+    my_slice = []str{"Hello", "Jule", "slices!"}
     outln(my_slice)
 }</div>
 The nil is the default value of slices.
-But the important point: empty slice and nil setted slice is the same thing.
-The example at above, auto value is given (so nil) at first statement.
-<x class="inline_code">my_slice</x> is equals to <x class="inline_code">nil</x> or <x class="inline_code">[]str{}</x>.
 <br><br>
-Second statement is set value of <x class="inline_code">my_slice</x> variable as <x class="inline_code">[]str{"Hello", "X", "slices!"}</x>.
+Second statement is set value of <x class="inline_code">my_slice</x> variable as <x class="inline_code">[]str{"Hello", "Jule", "slices!"}</x>.
 Seen at second statement, slices is should be define with data type.
 Last statement is prints to console the <x class="inline_code">my_slice</x> variable.
 <br><br>
 Output of program;
-<div class="code">[Hello X slices!]</div>
+<div class="code">[Hello Jule slices!]</div>
 </div>
 
 <div class="title-separator"></div>
@@ -1672,7 +1672,7 @@ Again, the <x class="inline_code">...</x> operator is used for this.
 For example:
 <div class="code">fn sum(values: ...int) int {
     let mut total: int = 0
-    for _, i: in values {
+    for _, i in values {
         total += i
     }
     ret total
@@ -2167,9 +2167,8 @@ Pointers are variables can store this memory addresses.
 To declare a pointer data-type, use <x class="inline_code">*</x> operator.
 <br>
 Example;
-<div class="code">let x: *int</div>
+<div class="code">let x: *int = nil</div>
 That's pointer for <x class="inline_code">int</x> type.
-<div class="info">Default value of pointers is nil.</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Getting Pointer of Variables</div>
@@ -2225,6 +2224,33 @@ For example:
     unsafe{ *y = 59 } // Assign value
     outln(x)          // Prints 59
 }</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Unsafe Pointers</div>
+Developers who have previously worked with programming languages such as C and C++ are probably familiar with void pointers.
+Jule has void pointers.
+To obtain a void pointer, an unsafe pointer is used.
+Unsafe pointers can receive assignments from any pointer type.
+It is general purpose.
+Unsafe pointer is not an explicit pointer, it cannot be used with postfix and cannot be deferenced.
+<br><br>
+These pointers are known as unsafe pointers in Jule because they are actually more unsafe than regular pointers.
+This is mainly because they are not a pointer to a data type.
+It is assumed that they simply point to a memory location.
+Therefore, there is no guarantee that it is correct, even if cast to a datatype pointer.
+The developer must know the data type at the pointed address.
+Unsafe pointers are not helpful in this regard.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let a: int = 20
+    let ptr: *unsafe = &a
+    unsafe{ outln(*( (*int)(ptr) )) }
+}</div>
+In this example, the variable <x class="inline_code">ptr</x> is an unsafe pointer and points to the variable <x class="inline_code">a</x>.
+Then we see that this pointer is cast to the <x class="inline_code">int</x> pointer and deferenced.
+As a result, we get the value the <x class="inline_code">20</x> because was done right.
+
 </div>
 `;
 
@@ -2368,6 +2394,20 @@ All of these are minor overheads, but for performance-critical software, the dev
 There is no way to do this using references as the runtime paradigm of references cannot be changed.
 Therefore, the developer should use to the less safe manual memory management.
 
+<div class="topic-separator"></div>
+Some data types of Jule also use references in the background.
+This is because they reference each other the space they allocate.
+This is why some types use background references to minimize the amount of allocations.
+Therefore, they have additional overhead such as the additional atomicity of references and the memory space allocated for reference counting.
+<br><br>
+List of all types which is performs reference counting:
+<ul>
+  <li>Reference</li>
+  <li>Slice</li>
+  <li>Any</li>
+  <li>Trait</li>
+</ul>
+
 </div>
 `;
 
@@ -2392,7 +2432,7 @@ As a developer, the only time you should feel like you should use C++ interopera
 <br><br>
 Unsafe Jule can also allow you to get performance gains and better memory optimization.
 For example, if you are sure that a pointer never, ever needs to be guaranteed, you can achieve significant gains by obtaining this pointer with Unsafe Jule.
-Because that means there will be no new memory allocations and reference-counting.
+Because that means there will be no new memory allocations and reference counting.
 
 <div class="title-separator"></div>
 <div class="sub-title">Unsafe Benefits</div>
@@ -2948,10 +2988,10 @@ For example;<br>
 <strong>sum.jule</strong>
 <div class="code">use cpp "sum.hpp"
 
-@cdef
+//jule:cdef
 cpp fn SUM(int, int) int</div>
 
-The <x class="inline_code">@cdef</x> attribute must be used for correct parsing of preprocessor defines.
+The <x class="inline_code">cdef</x> attribute must be used for correct parsing of preprocessor defines.
 
 </div>
 `;
@@ -3094,7 +3134,7 @@ Jule makes it easy to have documented code.
 The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your Jule source code.
 <br><br>
 The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cpp_out_dir</x> field.
-The extensions of the files are <x class="inline_code">$SOURCE_FILE_NAME.juledoc</x>.
+The extensions of the files are <x class="inline_code">SOURCE_FILE_NAME.juledoc</x>.
 <br><br>
 The <x class="inline_code">juledoc</x> file is in Jule Metadoc or JSON format and contains only metadata about definitions.
 </div>
