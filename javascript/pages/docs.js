@@ -2444,6 +2444,7 @@ Benefits of Unsafe Jule:
   <li>Break immutability</li>
   <li>Deference a raw pointer</li>
   <li>Postfixes for raw pointers</li>
+  <li>Indexing with raw pointers</li>
   <li>Cast raw pointers</li>
   <li>Call unsafe functions or methods</li>
 </ul>
@@ -2492,6 +2493,29 @@ For example:
         }
     }
 }</div>
+<div class="title-separator"></div>
+<div class="sub-title">Indexing with Raw Pointers</div>
+This is especially true if you have a pointer to an array (for example, an array pointer allocated with <x class="inline_code">std::mem::c</x> package), which allows you to use the pointer just like an array.
+Maybe you would prefer to use a wrapper to help with the length for the offset, as they are just raw pointers and don't have a way to get the lengths right away like in Jule's slice or array structures.
+<br><br>
+The fact that this operation is covered by Unsafe Jule is not only because it has widespread pointer unsafety, but also because there is a possibility of overflow and this is not checked.
+For example, slice and array are safe and controlled in this regard.
+<br><br>
+When you have an array of pointers, it can be interpreted semantically like this:
+It is a pointer to the component type, as the pointer usually points to one of the memory areas.
+So think of it like a pointer to the field of an element of an array.
+Indexing is sensitive to the data type according to the offset, skipping that much space in the memory, finding the position of the offset and selecting that area.
+<br><br>
+To better understand data type sampling, array pointers can be interpreted as:
+<ul>
+    <li> <x class="inline_code">*int</x> = <x class="inline_code">[]int</x> </li>
+    <li> <x class="inline_code">*str</x> = <x class="inline_code">[]str</x> </li>
+</ul>
+For example:
+<div class="code">ptr[9]</div>
+Suppose the variable <x class="inline_code">ptr</x> is <x class="inline_code">*int</x>.
+Let this pointer be an array pointer.
+The above expression takes the data at index 9 of this array.
 
 <div class="title-separator"></div>
 <div class="sub-title">Cast Raw Pointers</div>
@@ -3330,6 +3354,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
   <li><a href="../pages/stdlib/mem.html">std::mem</a></li>
+  <li><a href="../pages/stdlib/mem_c.html">std::mem::c</a></li>  
   <li><a href="../pages/stdlib/os.html">std::os</a></li>
   <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
   <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
