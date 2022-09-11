@@ -313,6 +313,27 @@ And compiler is transpile our Jule code to C++ code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 <br><br>
 As result we have a executable machine code or C++ result of our program.
+
+<div class="title-separator"></div>
+<div class="sub-title">Compiler and C++ Standard Support</div>
+JuleC commits that the codes it produces can be successfully compiled by the GNU Compiler Collection and Clang.
+Likewise, JuleC undertakes that the API it has and openly offers can be compiled with these compilers.
+While this preference is entirely left to the developers, JuleC has primarily embraced generating Clang compatible code, so it is recommended that Clang be the primary choice.
+<br><br>
+Even if you can compile code generated outside of official support compilers with a different compiler, it is not under official support and there is no commitment that the code will be compiled.
+Regardless of whether you use Clang to compile the code or a compiler with or without official support, make sure that you either support or use a version of compiler that does support the C++ standard that Jule created.
+<br><br>
+Jule aims to generate code in accordance with the most ideal C++ standard supported by the C++ compilers it offers official support, and is committed to compiling it with compilers that fully comply with this standard.
+As a result of our tests, the most suitable standard seems to be C++14.
+The C++14 standard has full support on officially supported compilers and is the default compilation standard.
+For this reason, Jule aims to produce code in accordance with the C++14 standard.
+<br><br>
+When we tested it, Clang successfully compiled the API and a simple code output in the C++17 and C++20 standard.
+However, when we tested with GCC, we encountered compiler errors in the C++20 standard with the same parameters.
+<br><br>
+These tests were performed on Linux. When we tested GCC compilation on Windows with MinGW, we encountered different results.
+If you're working on a cross-platform project and your code must be compilable on supported operating systems, consider platform-dependent differences if you're trying to compile with a standard other than the officially supported C++ standard.
+
 </div>
 `;
 
