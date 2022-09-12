@@ -1809,7 +1809,7 @@ This increases the readability of the code and makes it easier to maintain.
 The keyword <x class="inline_code">enum</x> is used to declare an enum. <br>
 For exmaple;
 <div class="code">enum FileMode {
-    Eead  = 35,
+    Read  = 35,
     Write = 89,
     Both,
 }
@@ -1823,26 +1823,26 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 
 <div class="info">
   <li>You can use an element before them as a value in enumerations.</li>
-  <li>Enumerations has <x class="inline_code">i64</x> data-type by default.</li>
+  <li>Enumerations has <x class="inline_code">i64</x> data type by default.</li>
 </div>
 <div class="warn">You can't use any global, function or etc. in custom value expressions.</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Custom Data-Types</div>
-If you want to give enums a data-type other than the default, it is possible to do so. <br>
+<div class="sub-title">Custom Data Types</div>
+If you want to give enums a data type other than the default, it is possible to do so. <br>
 For example:
 <div class="code">enum FileMode: u8 {
-    Read  = 35,
-    Write = 89,
+    Read,
+    Write,
     Both,
 }
 
 fn main() {
     outln(FileMode.Read)
 }</div>
-The above enumeration has the data-type <x class="inline_code">u8</x>.
+The above enumeration has the data type <x class="inline_code">u8</x>.
 
-<div class="warn">You can use only integer data-types.</div>
+<div class="warn">You can use only integer or str data types.</div>
 
 </div>
 `;
