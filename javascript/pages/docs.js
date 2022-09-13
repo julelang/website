@@ -494,14 +494,24 @@ const project_namingHTML = `
 </table>
 
 <div class="title-separator"></div>
-<div class="sub-title">Specifications</div>
-Certain specifications can be made to include only certain files in the compilation.
-For this, simply give a matching specification after the underscore.
-<br><br>
-For example: <x class="inline_code">example_amd64.jule</x>
-<br><br>
-These specifications are available for all supported operating systems and architects.
+<div class="sub-title">File Annotation</div>
+File Annotation enables a source file to be classified by operating system or architecture at compile time.
+If there is a platform or operating system that does not comply with Annotation, the source file is not included in the compilation.
+This is a compiler feature that can help with platform specific development.
+These annotations are available for all supported operating systems and architects.
 Check out <a href="docs.html?page=compiler-platform-support">these documents</a> to see the supported operating systems and architectures.
+<br><br>
+Attachments should be placed at the end and separated by underscore.
+Up to two annotations can be used.
+If you use a single annotation, this annotation can be both an operating system and an archtitecture annotation.
+If you use two annotations, the first annotation must be the operating system and the second annotation must be architecture.
+
+<br><br>
+For example:
+<div class="code">example_amd64.jule</div>
+<div class="code">example_windows_amd64.jule</div>
+<div class="code">example_darwin_arm64.jule</div>
+<div class="code">example_linux.jule</div>
 
 </div>
 `;
