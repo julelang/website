@@ -3388,6 +3388,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/mem_c.html">std::mem::c</a></li>  
   <li><a href="../pages/stdlib/os.html">std::os</a></li>
   <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
+  <li><a href="../pages/stdlib/runtime.html">std::runtime</a></li>
   <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
   <li><a href="../pages/stdlib/unicode.html">std::unicode</a></li>
   <li><a href="../pages/stdlib/unicode_utf16.html">std::unicode::utf16</a></li>
