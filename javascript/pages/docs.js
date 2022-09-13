@@ -205,6 +205,16 @@ Initialize new project in working directory.
 Starts new bug report on GitHub.
 <div class="code">$ julec bug</div>
 
+<div class="title-separator"></div>
+<div class="sub-title">tool</div>
+Tools for effective Jule.
+It includes tools that can add to your Jule experience.
+<br>
+See the command's help table for more information:
+<div class="code">$ julec tool</div>
+
+
+
 </div>
 `;
 
