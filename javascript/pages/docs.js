@@ -245,7 +245,9 @@ const compiler_config_filesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Config Files</div>
 <div class="text">
 Your config file shows your compiler how it will work and lets you choose things for yourself.
-<br>
+If this file does not exist, the default configuration used.
+You can initialize a new configuration file to see the default configuration your compiler.
+<br><br>
 The name of the configuration file should be <x class="inline_code">jule.set</x>.
 <br><br>
 In fact, you can start working right away, leaving it as default.
@@ -300,6 +302,10 @@ Fields in configuration files have specific purposes.
     <td style="text-align: center; font-family: 'Code';">indent_count</td>
     <td>Indention string repetition count per one indention.</td>
   </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">compiler</td>
+    <td>Your compiler executable file path for compiling C++ code.</td>
+  </tr>
 </table>
 </div>
 `;
@@ -307,23 +313,6 @@ Fields in configuration files have specific purposes.
 const compiler_compilingHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Compiling</div>
 <div class="text">
-Let's start with a simple hello world program and learn compiling from this program.
-<br><br>
-We have a <x class="inline_code">main.jule</x> file:
-<div class="code">fn main() {
-    outln("Hello, World!")
-}</div>
-
-We will use already created settings file with <x class="inline_code">julec init</x> command.
-<br>
-<br>
-For compile Jule code, we just give filename to JuleC:
-<div class="code">julec main.jule</div>
-And compiler is transpile our Jule code to C++ code. <br>
-Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
-<br><br>
-As result we have a executable machine code or C++ result of our program.
-
 <div class="title-separator"></div>
 <div class="sub-title">Compiler and C++ Standard Support</div>
 JuleC commits that the codes it produces can be successfully compiled by the GNU Compiler Collection and Clang.
@@ -343,6 +332,50 @@ However, when we tested with GCC, we encountered compiler errors in the C++20 st
 <br><br>
 These tests were performed on Linux. When we tested GCC compilation on Windows with MinGW, we encountered different results.
 If you're working on a cross-platform project and your code must be compilable on supported operating systems, consider platform-dependent differences if you're trying to compile with a standard other than the officially supported C++ standard.
+
+<div class="title-separator"></div>
+<div class="sub-title">Using C++ Compiler</div>
+JuleC has multiple officially supported C++ compilers.
+For this reason, it does not contain a specific C++ compiler in itself to keep your download sizes small and leave the choice to you.
+If you're using Linux or a similar operating system, you can usually already have an officially supported C++ compiler.
+Once you've decided on the C++ compiler you want to use, JuleC can take care of the rest for you.
+Before that, you need to give JuleC a few simple instructions.
+<br><br>
+Config files are a very good tool to understand the structure of your project more easily and to show some of its needs to the developers.
+This tool also tells JuleC how to work.
+Now it's time to set up the compiler you want to use. This will not only show other developers which compiler your project is using to compile, but also allow you to use the compiler you want to use.
+Of course, it is recommended to use the compiler's original executable filename to be successful in informing about used C++ compiler.
+Other than that, if the path is completely correct, JuleC doesn't care if it's an officially supported or unsupported compiler.
+It just fits you and uses this path to compile your code.
+<br><br>
+Let's create a new <x class="inline_code">jule.set</x> file in the project's directory using JuleC.
+It's likely that JuleC will do this by setting up the C++ compiler you most likely prefer to use in your operating system.
+If this is true, you don't need to change it.
+It even means that you can compile without a config file if you don't need any other config file changes.
+It is recommended to have a config file though.
+<br><br>
+The <x class="inline_code">compiler</x> key in the config file is the executable file path of the compiler you want to use to compile your C++ code.
+It is recommended that this path be a directly accessible executable file path so that your project is more portable and your config file is more consistent.
+
+<div class="title-separator"></div>
+<div class="sub-title">Using JuleC</div>
+Let's start with a simple hello world program and learn compiling from this program.
+<br><br>
+We have a <x class="inline_code">main.jule</x> file:
+<div class="code">fn main() {
+    outln("Hello, World!")
+}</div>
+We will use our already created and configurated config file with <x class="inline_code">julec init</x> command.
+<br>
+<br>
+For compile Jule code, we just give filename to JuleC:
+<div class="code">julec main.jule</div>
+And compiler is transpile our Jule code to C++ code. <br>
+Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
+In build mode, JuleC will show you the build command itself on the command line, which is used during compilation.
+You can also set the mod to <x class="inline_code">transpile</x> and choose to compile manually, or you can use your own drill directives in the <x class="inline_code">post commands</x> key to experience the <x class="inline_code">compile</x> mod.
+<br><br>
+As result we have a executable machine code result of our program.
 
 </div>
 `;
