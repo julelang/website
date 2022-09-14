@@ -304,9 +304,21 @@ Fields in configuration files have specific purposes.
   </tr>
   <tr>
     <td style="text-align: center; font-family: 'Code';">compiler</td>
+    <td>Name of the used compiler.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; font-family: 'Code';">compiler_path</td>
     <td>Your compiler executable file path for compiling C++ code.</td>
   </tr>
 </table>
+
+<div class="title-separator"></div>
+<div class="sub-title">Compiler Key Values</div>
+<ul>
+    <li><x class="inline_code">gcc</x>: GNU Compiler Collection</li>
+    <li><x class="inline_code">clang</x>: Clang</li>
+</ul>
+
 </div>
 `;
 
@@ -354,8 +366,11 @@ If this is true, you don't need to change it.
 It even means that you can compile without a config file if you don't need any other config file changes.
 It is recommended to have a config file though.
 <br><br>
-The <x class="inline_code">compiler</x> key in the config file is the executable file path of the compiler you want to use to compile your C++ code.
+The <x class="inline_code">compiler_path</x> key in the config file is the executable file path of the compiler you want to use to compile your C++ code.
 It is recommended that this path be a directly accessible executable file path so that your project is more portable and your config file is more consistent.
+The <x class="inline_code">compiler</x> key tells you what compiler you are using.
+JuleC handles the compilation accordingly.
+If you are using a compiler without official support, but has the same standards of compilation commands, you can still use it by setting the compatible compiler, but if it is not compatible, you should set the compilation mode to <x class="inline_code">transpile</x> and write your own compile command, otherwise the code cannot be compiled due to the incompatible command.
 
 <div class="title-separator"></div>
 <div class="sub-title">Using JuleC</div>
