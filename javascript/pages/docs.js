@@ -227,16 +227,20 @@ When you try to compile for a platform other than officially supported platforms
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Supported Operating Systems</div>
-<li class="inline_code">windows</li>
-<li class="inline_code">darwin</li>
-<li class="inline_code">linux</li>
+<x class="inline_code">windows</x>
+<x class="inline_code">darwin</x>
+<x class="inline_code">linux</x>
+<br><br>
+The <x class="inline_code">unix</x> includes:
+<x class="inline_code">darwin</x>
+<x class="inline_code">linux</x>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Supported Architectures</div>
-<li class="inline_code">i386</li>
-<li class="inline_code">amd64</li>
-<li class="inline_code">arm</li>
-<li class="inline_code">arm64</li>
+<x class="inline_code">i386</x>
+<x class="inline_code">amd64</x>
+<x class="inline_code">arm</x>
+<x class="inline_code">arm64</x>
 
 </div>
 `;
