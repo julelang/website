@@ -443,7 +443,6 @@ Or you can create a new script directory in the corresponding directory.
 <div class="sub-title">Documentations</div>
 Nice names for documentations of your project; <br>
 <ul>
-  <li><x class="inline_code">doc</x></li>
   <li><x class="inline_code">docs</x></li>
   <li><x class="inline_code">documentation</x></li>
   <li><x class="inline_code">documentations</x></li>

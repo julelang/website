@@ -1,9 +1,9 @@
 const stdlib_io_functionsHTML = `
-<div class="code">pub fn readln() str</div>
+<div class="code">fn readln() str</div>
 Reads full-complete line from command-line.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn readin() str</div>
+<div class="code">fn readin() str</div>
 Read first part of line from command-line.
 `;
 

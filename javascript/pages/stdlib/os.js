@@ -1,5 +1,5 @@
 const stdlib_os_globalsHTML = `
-<div class="code">pub let ARGS: []str</div>
+<div class="code">let ARGS: []str</div>
 Holds the command-line arguments. <br>
 Starts with the program name.
 <br><br>
@@ -11,10 +11,18 @@ Command-line arguments sets at runtime with init function. <br>
 Initialize expression is nil. <br>
 You got nil slice if used as initialize expression to any global.
 </div>
+
+<div class="topic-separator"></div>
+<div class="code">const PATH_SEPARATOR</div>
+Operating system specific path separator.
+
+<div class="topic-separator"></div>
+<div class="code">const PATH_LIST_SEPARATOR</div>
+Operating system specific path list separator.
 `;
 
 const stdlib_os_functionsHTML = `
-<div class="code">pub exit(code: int)</div>
+<div class="code">exit(code: int)</div>
 Causes the current program to exit with the given status code. <br>
 Conventionally, code zero indicates success, non-zero an error.
 `;

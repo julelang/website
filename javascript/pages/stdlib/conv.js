@@ -1,43 +1,41 @@
-const stdlib_conv_constantsHTML = `
-<div class="sub-sub-title"><x class="inline_code">pub const INT_SIZE</x></div>
+const stdlib_conv_globalsHTML = `
+<div class="sub-sub-title"><x class="inline_code">const INT_SIZE</x></div>
 Is the size in bits of an int or uint value.
 
-`;
-
-const stdlib_conv_globalsHTML = `
-<div class="code">pub let ERROR_SYNTAX: Error</div>
+<div class="topic-separator"></div>
+<div class="code">let ERROR_SYNTAX: Error</div>
 Error trait compatible structure instance for syntax errors.
 
 `;
 
 const stdlib_conv_functionsHTML = `
-<div class="code">pub fn conv_bool(s: str) (bool, Error)</div>
+<div class="code">fn conv_bool(s: str) (bool, Error)</div>
 Returns the boolean value represented by the string.
 It accepts 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False.
 Any other value returns an error.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn fmt_bool(b: bool) str</div>
+<div class="code">fn fmt_bool(b: bool) str</div>
 Returns "true" or "false" according to the value of b.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn fmt_uint(i: u64, base: int) str</div>
+<div class="code">fn fmt_uint(i: u64, base: int) str</div>
 Returns the string representation of i in the given base,
 for 2 <= base <= 36. The result uses the lower-case letters 'a' to 'z'
 for digit values >= 10.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn fmt_int(i: i64, base: int) str</div>
+<div class="code">fn fmt_int(i: i64, base: int) str</div>
 Returns the string representation of i in the given base,
 for 2 <= base <= 36. The result uses the lower-case letters 'a' to 'z'
 for digit values >= 10.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn itoa(i: int) str</div>
+<div class="code">fn itoa(i: int) str</div>
 Is equivalent to fmt_int(i64(i), 10).
 
 <div class="topic-separator"></div>
-<div class="code">pub fn fmt_float(f: f64, fmt: byte, prec: int, bit_size: int) str</div>
+<div class="code">fn fmt_float(f: f64, fmt: byte, prec: int, bit_size: int) str</div>
 Converts the floating-point number f to a string,
 according to the format fmt and precision prec. It rounds the
 result assuming that the original was obtained from a floating-point
@@ -62,7 +60,7 @@ The special precision -1 uses the smallest number of digits
 necessary such that ParseFloat will return f exactly.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn parse_int(mut s: str, base: int, mut bit_size: int) (i64, Error)</div>
+<div class="code">fn parse_int(mut s: str, base: int, mut bit_size: int) (i64, Error)</div>
 Interprets a string s in the given base (0, 2 to 36) and
 bit size (0 to 64) and returns the corresponding value i.
 <br><br>
@@ -86,12 +84,12 @@ returned value is the maximum magnitude integer of the
 appropriate bit_size and sign.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn parse_uint(mut s: str, mut base: int, mut bit_size: int) (u64, Error)</div>
+<div class="code">fn parse_uint(mut s: str, mut base: int, mut bit_size: int) (u64, Error)</div>
 Is like parse_int but for unsigned numbers.
 A sign prefix is not permitted.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn parse_float(s: str, bit_size: int) (f64, Error)</div>
+<div class="code">fn parse_float(s: str, bit_size: int) (f64, Error)</div>
 Converts the string s to a floating-point number
 with the precision specified by bit_size: 32 for f32, or 64 for f64.
 When bit_size=32, the result still has type f64, but it will be
@@ -121,10 +119,10 @@ as their respective special floating point values. It ignores case when matching
 `;
 
 const stdlib_conv_structsHTML = `
-<div class="code">pub struct ConvError {
-    pub Func: str
-    pub Input: str
-    pub Error: Error
+<div class="code">struct ConvError {
+    func: str
+    input: str
+    error: Error
 }</div>
 Records a failed conversion.
 
@@ -137,18 +135,16 @@ Records a failed conversion.
 <br><br>
 <strong>Methods:</strong>
 
-<div class="code">pub fn unwrap(&self) Error</div>
+<div class="code">fn unwrap(&self) Error</div>
 
 `;
 
-const NAV_stdlib_conv_constants = document.getElementById("constants");
 const NAV_stdlib_conv_globals = document.getElementById("globals");
 const NAV_stdlib_conv_functions = document.getElementById("functions");
 const NAV_stdlib_conv_structs = document.getElementById("structs");
 
 const stdlib_conv_nav = new SideNavigator();
 stdlib_conv_nav.navigations = [
-    [NAV_stdlib_conv_constants, stdlib_conv_constantsHTML],
     [NAV_stdlib_conv_globals, stdlib_conv_globalsHTML],
     [NAV_stdlib_conv_functions, stdlib_conv_functionsHTML],
     [NAV_stdlib_conv_structs, stdlib_conv_structsHTML],

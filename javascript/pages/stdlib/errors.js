@@ -1,5 +1,5 @@
 const stdlib_errors_functionsHTML = `
-<div class="code">pub fn new(message: str) Error</div>
+<div class="code">fn new(message: str) Error</div>
 Creates new error with given message.
 
 `;

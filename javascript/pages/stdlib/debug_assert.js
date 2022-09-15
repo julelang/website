@@ -1,13 +1,13 @@
 const stdlib_debug_assert_functionsHTML = `
-<div class="code">pub fn assert(expr: bool)</div>
+<div class="code">fn assert(expr: bool)</div>
 Writes default fail message to <x class="inline_code">cerr</x> and exit failure if assertion failed.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn assert_message(expr: bool, msg: str)</div>
+<div class="code">fn assert_message(expr: bool, msg: str)</div>
 Writes fail message to <x class="inline_code">cerr</x> and exit failure if assertion failed.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn assert_panic(expr: bool, error: any)</div>
+<div class="code">fn assert_panic(expr: bool, error: any)</div>
 Panics with given error data if assertion failed.
 `;
 

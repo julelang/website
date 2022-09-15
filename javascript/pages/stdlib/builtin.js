@@ -31,7 +31,7 @@ Recovers errors if exist and call given function with handled error instance.
 <div class="topic-separator"></div>
 <div class="code">//jule:typearg
 type[T]
-pub fn new() &T</div>
+fn new() &T</div>
 Returns reference to new heap-allocation of data type if allocation is success, panics if not.
 
 <div class="topic-separator"></div>
