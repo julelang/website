@@ -122,7 +122,7 @@ const stdlib_conv_structsHTML = `
 <div class="code">struct ConvError {
     func: str
     input: str
-    error: Error
+    err: Error
 }</div>
 Records a failed conversion.
 
