@@ -30,6 +30,10 @@ Conventionally, code zero indicates success, non-zero an error.
 <div class="code">fn getwd() (path: str, ok: bool)</div>
 Returns an absolute path name of the current working directory of the calling process.
 
+<div class="topic-separator"></div>
+<div class="code">fn chdir(path: str) (ok: bool)</div>
+Changes the current working directory to the given directory.
+
 </div>`;
 
 const NAV_stdlib_os_globals = document.getElementById("globals");
