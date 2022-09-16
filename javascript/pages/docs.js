@@ -241,6 +241,14 @@ The <x class="inline_code">unix</x> includes:
 <x class="inline_code">amd64</x>
 <x class="inline_code">arm</x>
 <x class="inline_code">arm64</x>
+<br><br>
+The <x class="inline_code">64bit</x> includes:
+<x class="inline_code">amd64</x>
+<x class="inline_code">arm64</x>
+<br><br>
+The <x class="inline_code">32bit</x> includes:
+<x class="inline_code">i386</x>
+<x class="inline_code">arm</x>
 
 </div>
 `;
