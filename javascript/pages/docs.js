@@ -3066,7 +3066,7 @@ Then just represent the prototype of the function.
 <br><br>
 For example:
 <div class="code">cpp fn my_function(int, int) f64</div>
-Linked functions can only be used within the respective file and can't overload.
+Linked functions can only be used within the respective package and can't overload.
 
 <div class="title-separator"></div>
 <div class="sub-title">Calling Linked Functions</div>
