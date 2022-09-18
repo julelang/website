@@ -1820,6 +1820,18 @@ For exmaple;
 <div class="title-separator"></div>
 <div class="sub-sub-title">Supported Types</div>
 Arrays, slices and strings.
+
+<div class="title-separator"></div>
+<div class="sub-title">Allocating Slices</div>
+A certain size slice can be allocated with the builtin <x class="inline_code">make</x> function.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let s = make([]int, 20)
+    outln(s)
+}</div>
+The example at above, the <x class="inline_code">s</x> variable is 20 sized slice.
+
 `;
 
 const common_concepts_mapsHTML = `

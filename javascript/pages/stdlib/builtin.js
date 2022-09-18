@@ -35,12 +35,8 @@ fn new() &T</div>
 Returns reference to new heap-allocation of data type if allocation is success, panics if not.
 
 <div class="topic-separator"></div>
-<div class="code">type[Item]
-fn make(n: int) []Item</div>
-Allocated new n sized slice for given data type.
-<br><br>
-Special cases are: <br>
-<li><x class="inline_code">make[Item](n) = nil if n < 0</x></li>
+<div class="code">fn make(X, ...Y) X</div>
+Returns new instance of data type for supported types.
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
