@@ -2410,12 +2410,14 @@ Example to reference data type anotations:
 <div class="code">&int</div>
 <div class="code">&MyStruct</div>
 <br><br>
-You can't use reference type these types:
+You can't use as reference these types:
 <ul>
   <li>Enum</li>
   <li>Pointer</li>
   <li>Trait</li>
   <li>Reference</li>
+  <li>Slice</li>
+  <li>Array</li>
 </ul>
 
 <div class="title-separator"></div>
