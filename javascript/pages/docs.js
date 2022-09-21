@@ -1690,7 +1690,7 @@ For example:
 You can use <x class="inline_code">...</x> for auto computing size of array literal at compile time.
 <br><br>
 For example:
-<div class="code">[...]int{1, 2, 3, 4, 5} // [5]int</div>
+<div class="code">let x: [...]int = [1, 2, 3, 4, 5] // [5]int</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Access to Elements and Indexing</div>
@@ -1701,7 +1701,7 @@ Arrays is use indexes to access elements and assignment.
 <br>
 For example:
 <div class="code">fn main() {
-    let mut my_array = [3]str{"Hello", "arrays", "indexes"}
+    let mut my_array: [3]str = ["Hello", "arrays", "indexes"]
     outln(my_array[0])
     my_array[0] = "Hi"
     outln(my_array)
@@ -1722,10 +1722,10 @@ Multidimensional arrays is array storing arrays.
 <br>
 For example:
 <div class="code">fn main() {
-    let my_array = [2][2]str{
-        [2]str{"Apple", "Banana"},
-        [2]str{"Bred", "Cheese"},
-    }
+    let my_array: [2][2]str = [
+        ["Apple", "Banana"],
+        ["Bred", "Cheese"],
+    ]
     outln(my_array)
 }</div>
 <br>
@@ -1743,15 +1743,21 @@ Slices are heap allocated and use Jule's reference counting memory management.
 A slice can be <x class="inline_code">nil</x> and its default value is <x class="inline_code">nil</x>.
 Slices are mutable.
 <br><br>
+Slices are defined using <x class="inline_code">[ ]</x>.
+Actually, you might remember this from the array section of documentation.
+They actually mean slice by default.
+When used in arrays, so examples always use type annotation, which indicates that it's an array.
+If no type annotation is given, A slice literal defaults to the data type of its first element as element type.
+<br><br>
 Example to slices;
 <div class="code">fn main() {
     let mut my_slice: []str = nil
-    my_slice = []str{"Hello", "Jule", "slices!"}
+    my_slice = ["Hello", "Jule", "slices!"]
     outln(my_slice)
 }</div>
 The nil is the default value of slices.
 <br><br>
-Second statement is set value of <x class="inline_code">my_slice</x> variable as <x class="inline_code">[]str{"Hello", "Jule", "slices!"}</x>.
+Second statement is set value of <x class="inline_code">my_slice</x> variable as <x class="inline_code">["Hello", "Jule", "slices!"]</x>.
 Seen at second statement, slices is should be define with data type.
 Last statement is prints to console the <x class="inline_code">my_slice</x> variable.
 <br><br>
@@ -1779,7 +1785,7 @@ For example:
 }
 
 fn main() {
-    let my_slice = []int{90, 32, 6, 53}
+    let my_slice = [90, 32, 6, 53]
     let result = sum(my_slice...)
     outln(result)
 }</div>
@@ -1810,7 +1816,7 @@ If you don't give the to index expression, accepts as length.
 <br><br>
 For exmaple;
 <div class="code">fn main() {
-    let my_slice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    let my_slice = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     outln(my_slice[2:5]) // [3, 4, 5]
     outln(my_slice[:])   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     outln(my_slice[:10]) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -3107,7 +3113,7 @@ For example:
 cpp fn sum_integers([]int) i64
 
 fn main() {
-    let slice = []int{90, 34, 63, -34, 3246, -95, 734, 0, 3}
+    let slice = [90, 34, 63, -34, 3246, -95, 734, 0, 3]
     let total = cpp.sum_integers(slice)
     outln(total)
 }
