@@ -3772,11 +3772,11 @@ For example:
 }
 
 // OUTPUT
-// H
-// e
-// l
-// l
-// o</div>
+// 72
+// 101
+// 108
+// 108
+// 111</div>
 As you can see, it is possible to use the ignore operator for unused fields.
 
 <div class="info">Jule assign variables data types by automatically by collection.
