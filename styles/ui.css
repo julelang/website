@@ -301,7 +301,7 @@ button:hover {
 }
 
 .marked-ul li desc {
-  color: silver;
+  color: black;
   font-size: 19px;
   font-weight: bolder;
 }

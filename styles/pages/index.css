@@ -12,12 +12,16 @@ body {
   transition: 200ms;
 }
 
+.searchbox-input::placeholder {
+  color: rgb(77, 77, 77);
+}
+
 .navigation #navigation-links {
   margin-left: 40px;
 }
 
 .navigation #navigation-links a {
-  color: white;
+  color: black;
   border-radius: 200px;
   padding-left: 10px;
   padding-right: 10px;

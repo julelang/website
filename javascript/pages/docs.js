@@ -3069,7 +3069,9 @@ It's just a little different.
 A use declaration should be told that this is a C++ include and the path should be given as a string.
 <br><br>
 For example:
-<div class="code">use cpp "my_header.hpp"</div>
+<div class="code">use cpp "&lt;stdlib.h&gt;"</div>
+<div class="code">use cpp "&lt;iostream&gt;"</div>
+<div class="code">use cpp "header.hpp"</div>
 The correctness and validity of the file path is checked by the compiler. <br>
 Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.hh</x>, <x class="inline_code">.hpp</x>, <x class="inline_code">.hxx</x>
 
