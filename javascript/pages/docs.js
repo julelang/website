@@ -3076,12 +3076,45 @@ The correctness and validity of the file path is checked by the compiler. <br>
 Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.hh</x>, <x class="inline_code">.hpp</x>, <x class="inline_code">.hxx</x>
 
 <div class="title-separator"></div>
-<div class="sub-title">Linking C++ Functions to Jule</div>
-After the header file containing the C++ functions is passed to Jule, C++ functions must be declared to Jule.
+<div class="sub-title">Linking C++ Variables to Jule</div>
+After the header file containing the C++ variables is passed to Jule, C++ variables must be declared to Jule.
 Not all, just the ones you will use.
 But remember, JuleC does not check header files.
 Your declarations are reliable.
 The compiler assumes that the definitions exist and are correctly defined.
+<br><br>
+For example:
+<div class="code">cpp let tickrate: int</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Linking Macro Defines to Jule</div>
+Macro definitions are declared just like variables.
+Let's assume that the tickrate variable is macro define literal.
+<br><br>
+For example:<br>
+<strong>tickrate.hpp</strong>
+<div class="code">#define TICKRATE 256</div>
+
+<strong>sum.jule</strong>
+<div class="code">use cpp "tickrate.hpp"
+
+cpp let tickrate: int</div>
+
+<div class="topic-separator"></div>
+A few points:
+<ul>
+  <li>The data type must be specified when linking a variable</li>
+  <li>Cannot give expression when linking a variable</li>
+  <li>All variables linkings are immutable by default</li>
+  <li>They cannot be constant, leave immutable if linking a constant variable</li>
+  <li>Take macro definition literals as constants and leave them immutable</li>
+</ul>
+
+<div class="title-separator"></div>
+<div class="sub-title">Linking C++ Functions to Jule</div>
+Like variable linking, after the header file containing the C++ functions is passed to Jule, C++ functions must be declared to Jule.
+Not all, just the ones you will use.
+But remember, JuleC does not check header files still.
 <br><br>
 To declare a C++ function, it must be stated that it is a C++ declaration.
 Then just represent the prototype of the function.
@@ -3091,7 +3124,25 @@ For example:
 Linked functions can only be used within the respective package and can't overload.
 
 <div class="title-separator"></div>
-<div class="sub-title">Calling Linked Functions</div>
+<div class="sub-sub-title">Linking Function-Like Macros to Jule</div>
+It is possible report macros to Jule.
+However, type protection must be provided exactly.
+Function-like macros must be declared as a function.
+<br><br>
+For example:<br>
+<strong>sum.hpp</strong>
+<div class="code">#define SUM(X, Y) (X+Y)</div>
+
+<strong>sum.jule</strong>
+<div class="code">use cpp "sum.hpp"
+
+//jule:cdef
+cpp fn SUM(int, int) int</div>
+
+The <x class="inline_code">cdef</x> attribute must be used for correct parsing of preprocessor defines.
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Calling Linked Functions</div>
 To call a linked function, the keyword <x class="inline_code">cpp</x> is used.
 All linked functions are available as method of this keyword.
 <br><br>
@@ -3120,24 +3171,6 @@ fn main() {
     outln(total)
 }
 </div>
-
-<div class="title-separator"></div>
-<div class="sub-title">Linking C Preprocessor Defines</div>
-It is possible to report preprocessor defines to Jule.
-However, type protection must be provided exactly.
-It links just like a function.
-<br><br>
-For example;<br>
-<strong>sum.hpp</strong>
-<div class="code">#define SUM(X, Y) (X+Y)</div>
-
-<strong>sum.jule</strong>
-<div class="code">use cpp "sum.hpp"
-
-//jule:cdef
-cpp fn SUM(int, int) int</div>
-
-The <x class="inline_code">cdef</x> attribute must be used for correct parsing of preprocessor defines.
 
 </div>
 `;
