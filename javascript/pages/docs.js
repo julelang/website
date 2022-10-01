@@ -2677,6 +2677,42 @@ Catching panics and handling errors happens through them. It is plain and simple
 </div>
 `;
 
+const error_handling_error_codingHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Error Coding</div>
+<div class="text">
+
+Error coding is Jule's primary recommended method for error handling.
+In this method, integer constants are used to encode errors.
+Each integer is arranged to represent a unique error.
+The best way to accomplish this is to use an enum, a constant variable can be used depending on the developer's design preference.
+
+<br><br>
+For example:
+<div class="code">enum DivError {
+    Ok,
+    DividedByZero,
+}
+
+fn my_div(a: f64, b: f64) (f64, DivError) {
+    if a == 0 || b == 0 {
+        ret 0, DivError.DividedByZero
+    }
+    ret a/b, DivError.Ok
+}
+
+fn main() {
+    let (result, err) = my_div(5, 0)
+    if err != DivError.Ok {
+        outln("division failed, error code is: " + str(err))
+        ret
+    }
+    outln(result)
+}</div>
+
+</div>
+`;
+
+
 const error_handling_error_traitHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Error Trait</div>
 <div class="text">
@@ -4167,6 +4203,7 @@ const NAV_memory_pointers                     = document.getElementById('memory-
 const NAV_memory_memory_management            = document.getElementById('memory-memory-management');
 const NAV_unsafe_jule                         = document.getElementById("unsafe-jule");
 const NAV_error_handling                      = document.getElementById("error-handling");
+const NAV_error_handling_error_coding         = document.getElementById("error-handling-error-coding");
 const NAV_error_handling_error_trait          = document.getElementById("error-handling-error-trait");
 const NAV_error_handling_panics               = document.getElementById("error-handling-panics");
 const NAV_error_handling_handling_panics      = document.getElementById("error-handling-handling-panics");
@@ -4249,6 +4286,7 @@ nav.navigations = [
   [NAV_memory_memory_management,            memory_memory_managementHTML],
   [NAV_unsafe_jule,                         unsafe_juleHTML],
   [NAV_error_handling,                      error_handlingHTML],
+  [NAV_error_handling_error_coding,         error_handling_error_codingHTML],
   [NAV_error_handling_error_trait,          error_handling_error_traitHTML],
   [NAV_error_handling_panics,               error_handling_panicsHTML],
   [NAV_error_handling_handling_panics,      error_handling_handling_panicsHTML],
