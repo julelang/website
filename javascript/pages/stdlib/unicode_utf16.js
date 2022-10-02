@@ -22,6 +22,12 @@ Returns the UTF-16 encoding of the Unicode code point sequence s.
 <div class="code">fn decode(s: []u16) []rune</div>
 Returns the Unicode code point sequence represented by the UTF-16 encoding s.
 
+<div class="topic-separator"></div>
+<div class="code">fn append_rune(a: []u16, r: rune) []u16</div>
+Appends the UTF-16 encoding of the Unicode code point r
+to the end of p and returns the extended buffer. If the rune is not
+a valid Unicode code point, it appends the encoding of U+FFFD.
+
 `;
 
 const NAV_stdlib_unicode_utf16_functions = document.getElementById("functions");
