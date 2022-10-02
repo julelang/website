@@ -3178,19 +3178,38 @@ cpp fn SUM(int, int) int</div>
 The <x class="inline_code">cdef</x> attribute must be used for correct parsing of preprocessor defines.
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Calling Linked Functions</div>
-To call a linked function, the keyword <x class="inline_code">cpp</x> is used.
-All linked functions are available as method of this keyword.
+<div class="sub-title">Linking C++ Structures to Jule</div>
+As always, your links are reliable.
+Generics are supported in linking a structure.
+Not all fields have to be specified.
+If you're only going to use the struct by name, you can also declare it without the fields.
+The requirements here are limited to your needs and what needs to be declared for compliance.
 <br><br>
 For example:
+<div class="code">struct cpp.my_struct{}</div>
+<div class="code">struct cpp.my_struct {
+    x: int
+    y: str
+}</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Using Linked Definitions</div>
+C++ links are stored separately.
+So to access C++ definitions it is necessary to use the C++ scope.
+The keyword <x class="inline_code">cpp</x> is used to use the C++ scope.
+The linked identifier can be used after the expression <x class="inline_code">cpp.</x>.
+<br><br>
+For example:
+<div class="code">cpp.my_variable</div>
+<div class="code">cpp.my_struct{}</div>
 <div class="code">cpp.my_function(x, y, z)</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Example to Interoperability</div>
 <strong>sum_integers.hpp</strong>
 <div class="code">i64_julet sum_integers(const slice&lt;int_julet&gt; &_Slice) {
-    i64_julet total{0};
-    for (const int_julet &x: _Slice) {
+    i64_julet total{ 0 };
+    for (const auto x: _Slice) {
         total += x;
     }
     return total;
@@ -3205,8 +3224,8 @@ fn main() {
     let slice = [90, 34, 63, -34, 3246, -95, 734, 0, 3]
     let total = cpp.sum_integers(slice)
     outln(total)
-}
-</div>
+}</div>
+
 
 </div>
 `;
