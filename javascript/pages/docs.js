@@ -3186,11 +3186,19 @@ If you're only going to use the struct by name, you can also declare it without 
 The requirements here are limited to your needs and what needs to be declared for compliance.
 <br><br>
 For example:
-<div class="code">struct cpp.my_struct{}</div>
-<div class="code">struct cpp.my_struct {
+<div class="code">cpp struct my_struct{}</div>
+<div class="code">cpp struct my_struct {
     x: int
     y: str
 }</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Linking C++ Types to Jule</div>
+Although it is possible to link any typedef, these type aliases are not like standard aliases, for example they cannot be used as an alias for a struct if you use them in an expression.
+These type aliases are for linking unavoidable types to Jule.
+<br><br>
+For example:
+<div class="code">cpp type wchar_t: u16</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Using Linked Definitions</div>
@@ -3560,6 +3568,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/debug.html">std::debug</a></li>
   <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
   <li><a href="../pages/stdlib/errors.html">std::errors</a></li>
+  <li><a href="../pages/stdlib/fs.html">std::fs</a></li>
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
@@ -3568,7 +3577,9 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/os.html">std::os</a></li>
   <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
   <li><a href="../pages/stdlib/runtime.html">std::runtime</a></li>
+  <li><a href="../pages/stdlib/sync.html">std::sync</a></li>
   <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
+  <li><a href="../pages/stdlib/sys.html">std::sys</a></li>
   <li><a href="../pages/stdlib/unicode.html">std::unicode</a></li>
   <li><a href="../pages/stdlib/unicode_utf16.html">std::unicode::utf16</a></li>
   <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
