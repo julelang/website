@@ -1615,29 +1615,6 @@ fn main() {
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Deferred Calls</div>
-Deferred calls are not executed until they go out of scope.
-Calls are invoked in reverse.
-The keyword <x class="inline_code">defer</x> is used for a deferred call.
-<br><br>
-For example:
-<div class="code">fn main() {
-    defer outln("Defer 1")
-    defer outln("Defer 2")
-    outln("Hello Deferred Calls")
-}
-
-// OUTPUT
-// Hello Deferred Calls
-// Defer 2
-// Defer 1</div>
-As seen in the example above, the effect of a normal call is seen first in the output.
-This is because calls made before it is deferred.
-In the continuation of the output, a reverse execution is seen from the last deferred call to the first deferred call.
-This is exactly why.
-Deferred calls when out of scope are executed from the most recent deferred call to the first deferred call.
-
-<div class="title-separator"></div>
 <div class="sub-title">Concurrent Calls</div>
 Concurrency works on performing multiple tasks at the same time.
 This means that you are working on multiple tasks simultaneously in one time frame.
@@ -1655,21 +1632,6 @@ fn main() {
 }</div>
 
 <div class="warn">The program does not automatically wait for the execution of concurrent calls to terminate.</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">Attributes</div>
-<div class="sub-sub-title"><x class="inline_code">typearg</x></div>
-This accepts generic types as parameter of function.
-This attribute only used for functions with generics.
-<br><br>
-<strong style="font-family: 'OpenSans-Light'">Pros;</strong>
-<ul>
-  <li>Increase readability.</li>
-</ul>
-<strong style="font-family: 'OpenSans-Light'">Cons;</strong>
-<ul>
-  <li>Function cannot have parameters.</li>
-</ul>
 
 </div>
 `;
@@ -3191,6 +3153,10 @@ For example:
     x: int
     y: str
 }</div>
+<div class="topic-separator"></div>
+If the struct is a typedef, say it's a typedef with attribute <x class="inline_code">typedef</x> for correct linking:
+<div class="code">//jule:typedef
+cpp struct my_struct {}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Linking C++ Types to Jule</div>

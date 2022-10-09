@@ -728,11 +728,24 @@ State not recoverable.
 
 `;
 
-
 const stdlib_sys_functionsHTML = `
-<div class="code">fn utf16_from_str(s: str) ([]u16, bool)</div>
-Returns the UTF-16 encoding of the UTF-8 string s, with a terminating NUL added.
-If s contains a NUL byte at any location, it returns (nil, false).
+<div class="code">fn utf16_from_str(s: str) []u16</div>
+Returns the UTF-16 encoding of the UTF-8 string s, with a terminating NULL added.
+If s includes NULL character at any location, ignores followed characters.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">fn utf16_to_str(s: []u16) str</div>
+Returns the UTF-8 encoding of the UTF-16 sequence s, with a terminating NULL removed.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">fn wchar_to_str(s: *cpp.wchar_t) str</div>
+Returns the UTF-8 encoding of the UTF-16 sequence s in *wchar_t form, with a terminating NULL removed.
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
@@ -755,6 +768,25 @@ Returns number of last error.
 
 <div class="topic-separator"></div>
 <div class="code">fn stat(path: str, handle: *cpp.stat) (ok: bool)</div>
+
+<div class="topic-separator"></div>
+<strong>Windows:</strong>
+<div class="code">fn open_dir(path: str) *cpp._WDIR</div>
+<strong>Unix:</strong>
+<div class="code">fn open_dir(path: str) *cpp.DIR</div>
+
+<div class="topic-separator"></div>
+<strong>Windows:</strong>
+<div class="code">unsafe fn read_dir(mut dir: *cpp._WDIR) *cpp._wdirent</div>
+<strong>Unix:</strong>
+<div class="code">unsafe fn read_dir(mut dir: *cpp.DIR) *cpp.dirent</div>
+
+<div class="topic-separator"></div>
+<strong>Windows:</strong>
+<div class="code">unsafe fn close_dir(mut dir: *cpp._WDIR) int</div>
+<strong>Unix:</strong>
+<div class="code">unsafe fn close_dir(mut dir: *cpp.DIR) int</div>
+
 
 `;
 

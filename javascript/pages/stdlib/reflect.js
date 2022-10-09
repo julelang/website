@@ -1,6 +1,5 @@
 const stdlib_reflect_functionsHTML = `
-<div class="code">//jule:typearg
-type[T1, T2]
+<div class="code">type[T1, T2]
 fn is_same() bool</div>
 Reports the given data types are same or not.
 

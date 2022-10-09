@@ -1,13 +1,39 @@
 const stdlib_fs_functionsHTML = `
 <div class="code">fn stat(path: str) (s: Stat, err: FsError)</div>
 Returns a Stat describing the path.
+<br><br>
+Possible errors:
+<x class="inline_code">Denied</x>
+<x class="inline_code">IO</x>
+<x class="inline_code">Loop</x>
+<x class="inline_code">LongPath</x>
+<x class="inline_code">NotExist</x>
+<x class="inline_code">NotDir</x>
+<x class="inline_code">Overflow</x>
+
+<div class="topic-separator"></div>
+<div class="code">fn read_dir(path: str) ([]Dirent, FsError)</div>
+Reads the named directory and returs all its directory entries can read.
+<br><br>
+Possible errors:
+<x class="inline_code">Denied</x>
+<x class="inline_code">InvalidDescriptor</x>
+<x class="inline_code">PerProcessLimit</x>
+<x class="inline_code">SystemWideLimit</x>
+<x class="inline_code">NotExist</x>
+<x class="inline_code">InsufficientMemory</x>
+<x class="inline_code">NotDir</x>
 
 `;
 
 
 const stdlib_fs_structsHTML = `
 <div class="code">struct Stat {
+    // Type and mode.
     mode: uint
+
+    // Total size in bytes of regular file or symbolic link.
+    size: uint
 }</div>
 Stat information.
 <br><br>
@@ -18,6 +44,13 @@ Reports path is directory or not.
 <div class="title-separator"></div>
 <div class="inline_code">fn is_reg(self) bool</div> <br>
 Reports path is regular file or not.
+
+<div class="topic-separator"></div>
+<div class="code">struct Dirent {
+    name: str
+    stat: Stat
+}</div>
+Directory entry.
 
 `;
 
@@ -34,6 +67,10 @@ const stdlib_fs_enumsHTML = `
     <li><x class="inline_code">NotExist</x>: A component of path does not name an existing file or path is an empty string</li>
     <li><x class="inline_code">NotDir</x>: A component of the path prefix is not a directory</li>
     <li><x class="inline_code">Overflow</x>: The file size in bytes or the number of blocks allocated to the file or the file serial number cannot be represented correctly in the structure pointed to by buf</li>
+    <li><x class="inline_code">InvalidDescriptor</x>: fd is not a valid file descriptor opened for reading.</li>
+    <li><x class="inline_code">PerProcessLimit</x>: The per-process limit on the number of open file descriptors has been reached.</li>
+    <li><x class="inline_code">SystemWideLimit</x>: The system-wide limit on the total number of open files has been reached.</li>
+    <li><x class="inline_code">InsufficientMemory</x>: Insufficient memory to complete the operation.</li>
 </ul>
 
 `;
