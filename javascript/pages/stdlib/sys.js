@@ -744,7 +744,7 @@ Returns the UTF-8 encoding of the UTF-16 sequence s, with a terminating NULL rem
 </div>
 
 <div class="topic-separator"></div>
-<div class="code">fn wchar_to_str(s: *cpp.wchar_t) str</div>
+<div class="code">unsafe fn wchar_to_str(s: *cpp.wchar_t) str</div>
 Returns the UTF-8 encoding of the UTF-16 sequence s in *wchar_t form, with a terminating NULL removed.
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
@@ -757,7 +757,7 @@ Returns the UTF-8 encoding of the UTF-16 sequence s in *wchar_t form, with a ter
 </div>
 
 <div class="topic-separator"></div>
-<div class="code">fn close_handle(stdh: handle) bool</div>
+<div class="code">unsafe fn close_handle(stdh: handle) bool</div>
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
@@ -767,7 +767,7 @@ Returns the UTF-8 encoding of the UTF-16 sequence s in *wchar_t form, with a ter
 Returns number of last error.
 
 <div class="topic-separator"></div>
-<div class="code">fn stat(path: str, handle: *cpp.stat) (ok: bool)</div>
+<div class="code">unsafe fn stat(path: str, handle: *cpp.stat) (ok: bool)</div>
 
 <div class="topic-separator"></div>
 <strong>Windows:</strong>

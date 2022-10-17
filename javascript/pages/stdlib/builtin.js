@@ -31,16 +31,16 @@ Recovers errors if exist and call given function with handled error instance.
 <div class="topic-separator"></div>
 <div class="code">//jule:typearg
 type[T]
-fn new() &T</div>
+fn new(): &T</div>
 Returns reference to new heap-allocation of data type if allocation is success, panics if not.
 
 <div class="topic-separator"></div>
-<div class="code">fn make(X, ...Y) X</div>
+<div class="code">fn make(X, ...Y): X</div>
 Returns new instance of data type for supported types.
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-fn copy(mut dest: []Item, src: []Item) int</div>
+fn copy(mut dest: []Item, src: []Item): int</div>
 Copies components of source slice to destination slice.
 Returns number of copied components.
 <br><br>
@@ -50,7 +50,7 @@ Special cases are: <br>
 
 <div class="topic-separator"></div>
 <div class="code">type[Item]
-fn append(src: []Item, components: ...Item) []Item</div>
+fn append(src: []Item, components: ...Item): []Item</div>
 Creates new required sized slice. Copies all components
 of given source slice and appends given components to end of new slice.
 Returns new slice, not changes given source slice.
@@ -60,7 +60,7 @@ If you want append components to source slice, assign returned slice.
 
 const stdlib_builtin_traitsHTML = `
 <div class="code">trait Error {
-    fn error(self) str
+    fn error(self): str
 }</div>
 
 This is a error handling trait of standard library. <br>
@@ -69,7 +69,7 @@ It is used for error handling and panics.
 Example to error handling:<br>
 You have a <x class="inline_code">div</x> method have two <x class="inline_code">f64</x> parameter: <x class="inline_code">x</x> and <x class="inline_code">y</x>. <br>
 This function returns division of given arguments. <br>
-Actually returns: <x class="inline_code">[f64, Error]</x> <br>
+Actually returns: <x class="inline_code">(f64, Error)</x> <br>
 The first return value naturally result of computation. <br>
 Returns result and empty Error for if the <x class="inline_code">x</x> and <x class="inline_code">y</x> is not equals to <x class="inline_code">0</x>. <br>
 If not, returns <x class="inline_code">0</x> and returns <x class="inline_code">Error</x> instance with error message. <br>

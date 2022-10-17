@@ -3,33 +3,33 @@ const stdlib_conv_globalsHTML = `
 Is the size in bits of an int or uint value.`;
 
 const stdlib_conv_functionsHTML = `
-<div class="code">fn conv_bool(s: str) (bool, ConvError)</div>
+<div class="code">fn conv_bool(s: str): (bool, ConvError)</div>
 Returns the boolean value represented by the string.
 It accepts 1, t, T, TRUE, true, True, 0, f, F, FALSE, false, False.
 Any other value returns an error.
 
 <div class="topic-separator"></div>
-<div class="code">fn fmt_bool(b: bool) str</div>
+<div class="code">fn fmt_bool(b: bool): str</div>
 Returns "true" or "false" according to the value of b.
 
 <div class="topic-separator"></div>
-<div class="code">fn fmt_uint(i: u64, base: int) str</div>
+<div class="code">fn fmt_uint(i: u64, base: int): str</div>
 Returns the string representation of i in the given base,
 for 2 <= base <= 36. The result uses the lower-case letters 'a' to 'z'
 for digit values >= 10.
 
 <div class="topic-separator"></div>
-<div class="code">fn fmt_int(i: i64, base: int) str</div>
+<div class="code">fn fmt_int(i: i64, base: int): str</div>
 Returns the string representation of i in the given base,
 for 2 <= base <= 36. The result uses the lower-case letters 'a' to 'z'
 for digit values >= 10.
 
 <div class="topic-separator"></div>
-<div class="code">fn itoa(i: int) str</div>
+<div class="code">fn itoa(i: int): str</div>
 Is equivalent to fmt_int(i64(i), 10).
 
 <div class="topic-separator"></div>
-<div class="code">fn fmt_float(f: f64, fmt: byte, prec: int, bit_size: int) str</div>
+<div class="code">fn fmt_float(f: f64, fmt: byte, prec: int, bit_size: int): str</div>
 Converts the floating-point number f to a string,
 according to the format fmt and precision prec. It rounds the
 result assuming that the original was obtained from a floating-point
@@ -54,7 +54,7 @@ The special precision -1 uses the smallest number of digits
 necessary such that ParseFloat will return f exactly.
 
 <div class="topic-separator"></div>
-<div class="code">fn parse_int(mut s: str, base: int, mut bit_size: int) (i64, ConvError)</div>
+<div class="code">fn parse_int(mut s: str, base: int, mut bit_size: int): (i64, ConvError)</div>
 Interprets a string s in the given base (0, 2 to 36) and
 bit size (0 to 64) and returns the corresponding value i.
 <br><br>
@@ -77,12 +77,12 @@ returned value is the maximum magnitude integer of the
 appropriate bit_size and sign.
 
 <div class="topic-separator"></div>
-<div class="code">fn parse_uint(mut s: str, mut base: int, mut bit_size: int) (u64, ConvError)</div>
+<div class="code">fn parse_uint(mut s: str, mut base: int, mut bit_size: int): (u64, ConvError)</div>
 Is like parse_int but for unsigned numbers.
 A sign prefix is not permitted.
 
 <div class="topic-separator"></div>
-<div class="code">fn parse_float(s: str, bit_size: int) (f64, ConvError)</div>
+<div class="code">fn parse_float(s: str, bit_size: int): (f64, ConvError)</div>
 Converts the string s to a floating-point number
 with the precision specified by bit_size: 32 for f32, or 64 for f64.
 When bit_size=32, the result still has type f64, but it will be

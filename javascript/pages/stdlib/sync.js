@@ -24,7 +24,6 @@ Decrements the WaitGroup counter by one.
 <div class="inline_code">fn wait(mut self)</div> <br>
 Blocks until all tasks are done (task count becomes zero)
 
-
 `;
 
 const NAV_stdlib_sync_structs = document.getElementById("structs");

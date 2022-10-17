@@ -137,7 +137,7 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
   Using example for PowerShell;
-  <div class="code">$ call scripts/build.bat</div>
+  <div class="code">$ scripts/build.bat</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
@@ -1159,7 +1159,7 @@ Each attribute is defined with comment pragma (<x class="inline_code">jule:</x>)
 <br><br>
 For example:
 <div class="code">//jule:attribute_a
-fn my_func() int {
+fn my_func(): int {
     // Body ...
 }</div>
 </div>
@@ -1170,7 +1170,7 @@ Note that an attribute cannot be given repeatedly.
 For example:
 <div class="code">//jule:attribute_a
 //jule:attribute_b
-fn my_func() int {
+fn my_func(): int {
     // Body...
 }</div>
 <div class="warn">
@@ -1459,9 +1459,7 @@ For example:
     outln(div(10, 2))
 }
 
-fn div(a: f64, b: f64) f64 {
-    ret a / b
-}</div>
+fn div(a: f64, b: f64): f64 { ret a / b }</div>
 The <x class="inline_code">div</x> function divides the two parameters and returns the result as a value.
 To return a value, the function must have the data type for the return.
 Otherwise, it is considered a function that does not return data.
@@ -1477,7 +1475,7 @@ It is similar to defining a function.
 Just parameters and return value are necessary.
 <br><br>
 For example:
-<div class="code">let my_function: fn(int, int) int</div>
+<div class="code">let my_function: fn(int, int): int</div>
 The example at above, is a variable definition with function data type.
 The compatible function values is a have two <x class="inline_code">int</x> parameter and returns <x class="inline_code">int</x> value.
 
@@ -1490,7 +1488,7 @@ Just in addition, the block of the function must be written.
 <br><br>
 For example:
 <div class="code">fn main() {
-    let make_hello = fn(name: str) str {
+    let make_hello = fn(name: str): str {
         ret "Hello " + name + "!"
     };
     outln(make_hello("Jule"))
@@ -1515,7 +1513,7 @@ Functions can returns more then one values.
 For that, specify return data-type with multiple type.
 <br><br>
 For example:
-<div class="code">my_func() (int, int) { ret 18, 96 }</div>
+<div class="code">my_func(): (int, int) { ret 18, 96 }</div>
 Parentheses are used to specify multiple data types, seen as example at above.
 This option, only valid for function returns.
 
@@ -1525,7 +1523,7 @@ Nothing, you not see compiler error.
 But not compile as multi type, compiles single data type.
 <br><br>
 For example:
-<div class="code">fn less_than(x: int, y: int) (bool) { ret x < y }</div>
+<div class="code">fn less_than(x: int, y: int): (bool) { ret x < y }</div>
 The example at above, accepted as one type return.
 
 <div class="title-separator"></div>
@@ -1534,7 +1532,7 @@ To give an identifier to the return types, it's enough to make them look like mu
 The only addition is to give that return value an identifier before the return type.
 <br><br>
 For example:
-<div class="code">fn example() (x: int, y: int) {
+<div class="code">fn example(): (x: int, y: int) {
     x = 10
     y = 20
     ret x, y
@@ -1551,7 +1549,7 @@ Please refer to the <a href="docs.html?page=memory-immutability">immutability do
 Also, a function that has at least one return type identifier does not have to have a return expression.
 <br><br>
 For example:
-<div class="code">fn example() (x: int, y: int) {
+<div class="code">fn example(): (x: int, y: int) {
     x = 10
     y = 20
     ret
@@ -1563,9 +1561,7 @@ If you provide a return expression while there are return identifiers, the expre
 
 <br><br>
 For example:
-<div class="code">fn example() (x: int, y: int) {
-    ret 90, 100
-}</div>
+<div class="code">fn example(): (x: int, y: int) { ret 90, 100 }</div>
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Assignment with Multiple Returned Functions</div>
@@ -1573,7 +1569,7 @@ It's too similar to normal assignment.
 Give much identifier same count with function return values and give function call as value.
 <br><br>
 For example:
-<div class="code">fn compare_int(x: int, y: int) (bool, bool) { ret x < y, x == y }
+<div class="code">fn compare_int(x: int, y: int): (bool, bool) { ret x < y, x == y }
 
 fn main() {
     let (less, equals) = compare_int(10, 20)
@@ -1587,7 +1583,7 @@ fn main() {
 When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
 Jule automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
 For example:
-<div class="code">fn multi_ret_func() (int, str, byte) { ret 143, "STR", 'W' }
+<div class="code">fn multi_ret_func(): (int, str, byte) { ret 143, "STR", 'W' }
 
 fn my_print(a: int, b: str, c: byte) {
     outln(a)
@@ -1604,8 +1600,8 @@ fn main() {
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 Jule allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
 For example:
-<div class="code">fn example1() (int, str, byte) { ret 143, "STR", 'W' }
-fn example2() (int, str, byte) { ret example1() }
+<div class="code">fn example1(): (int, str, byte) { ret 143, "STR", 'W' }
+fn example2(): (int, str, byte) { ret example1() }
 
 fn main() {
     let (a, b, c) = test2()
@@ -1623,9 +1619,7 @@ This tends to happen in programs where a task is waiting and the program has det
 <br><br>
 The keyword <x class="inline_code">co</x> is used to do a concurrent call. <br>
 For exmaple;
-<div class="code">fn hello_world() {
-    outln("Hello World")
-}
+<div class="code">fn hello_world() { outln("Hello World") }
 
 fn main() {
     co hello_world()
@@ -1809,7 +1803,7 @@ Maps is a hashmap. Maps a unique key value to a value.
 <br><br>
 Example to maps;
 <div class="code">fn main() {
-    let mut mymap: [i8:str] = [i8:str]{
+    let mut mymap: [i8:str] = {
         0: "CPU",
         1: "RAM",
         2: "GPU"
@@ -1984,29 +1978,29 @@ That is, it is only variable within itself.
 <div class="title-separator"></div>
 <div class="sub-sub-title">Syntax</div>
 
-<div class="code">fn IDENTIFIER([RECEIVER_PARAMETER], PARAMETERS...) RET_TYPE {
+<div class="code">fn IDENTIFIER([RECEIVER_PARAMETER], PARAMETERS...): RET_TYPE {
     // Body
 }</div>
 
 <br><br>
 For example to receiver parameters:
 <div class="code">// Immutable Reference Receiver
-fn method(&self) str { /* Body */ }</div>
+fn method(&self): str { /* Body */ }</div>
 <div class="code">// Mutable Reference Receiver
-fn method(mut &self) str { /* Body */ }</div>
+fn method(mut &self): str { /* Body */ }</div>
 <div class="code">// Immutable Copy Receiver
-fn method(self) str { /* Body */ }</div>
+fn method(self): str { /* Body */ }</div>
 <div class="code">// Mutable Copy Receiver
-fn method(mut self) str { /* Body */ }</div>
+fn method(mut self): str { /* Body */ }</div>
 
 <br>
 For example to implementing method to structure:
 <div class="code">impl Position {
-    fn is_origin(self) bool {
+    fn is_origin(self): bool {
         ret self.x == 0 && self.y == 0
     }
 }</div>
-He example at above, implements <x class="is_origin() bool"> method to <x class="inline_code">Position</x> structure.
+He example at above, implements <x class="inline_code">is_origin(): bool</x> method to <x class="inline_code">Position</x> structure.
 
 <div class="title-separator"></div>
 <div class="sub-sub-title">The <x class="inline_code">self</x> Keyword</div>
@@ -2017,7 +2011,7 @@ The data type is the same as the data type of the receiver.
 <br><br>
 For example:
 <div class="code">impl Person {
-    fn get_name(self) str {
+    fn get_name(self): str {
         ret self.name
     }
 }</div>
@@ -2055,8 +2049,8 @@ Functions in trait should only exist as prototypes.
 <br><br>
 For example:
 <div class="code">trait Person {
-    fn name() str
-    fn age() u8
+    fn name(): str
+    fn age(): u8
 }</div>
 
 All constructs that implement the trait above must have the methods <x class="inline_code">name() str</x> and <x class="inline_code">age() u8</x>.
@@ -2084,7 +2078,7 @@ For example:
 <div class="code">const PI = 3.14159265359
 
 trait Shape {
-    fn area(self) int
+    fn area(self): int
 }
 
 struct Rectangle {
@@ -2093,7 +2087,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    fn area(self) int {
+    fn area(self): int {
         ret self.width * self.height
     }
 }
@@ -2103,7 +2097,7 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    fn area(self) int {
+    fn area(self): int {
         ret PI * self.r * self.r
     }
 }
@@ -2278,7 +2272,7 @@ For example:
     let x: int = 10
     let y: *int = &x
     outln(y)            // Prints stored address
-    unsafe{ outln(*y) } // Prints value at address (so 10)
+    unsafe { outln(*y) } // Prints value at address (so 10)
 }</div>
 
 <div class="title-separator"></div>
@@ -2301,7 +2295,7 @@ For example:
 <div class="code">fn main() {
     let x: int = 10
     let y: *int = &x
-    unsafe{ *y = 59 } // Assign value
+    unsafe { *y = 59 } // Assign value
     outln(x)          // Prints 59
 }</div>
 
@@ -2325,7 +2319,7 @@ For example:
 <div class="code">fn main() {
     let a: int = 20
     let ptr: *unsafe = &a
-    unsafe{ outln(*( (*int)(ptr) )) }
+    unsafe { outln(*( (*int)(ptr) )) }
 }</div>
 In this example, the variable <x class="inline_code">ptr</x> is an unsafe pointer and points to the variable <x class="inline_code">a</x>.
 Then we see that this pointer is cast to the <x class="inline_code">int</x> pointer and deferenced.
@@ -2552,7 +2546,7 @@ For example:
 <div class="code">fn main() {
     let x = 200
     let ptr = &x
-    unsafe{ outln(*ptr) }
+    unsafe { outln(*ptr) }
 }</div>
 Note that no safety is provided in this regard.
 Pointers can benefit you, but you have to provide safety yourself.
@@ -2606,7 +2600,7 @@ However, you can also cast a pointer to a pointer of different type.
 <br><br>
 For example:
 <div class="code">let ptr: int = 0
-let unsafe_ptr = unsafe{ (*str)(ptr) }</div>
+let unsafe_ptr = unsafe { (*str)(ptr) }</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Call Unsafe Functions or Methods</div>
@@ -2655,7 +2649,7 @@ For example:
     DividedByZero,
 }
 
-fn my_div(a: f64, b: f64) (f64, DivError) {
+fn my_div(a: f64, b: f64): (f64, DivError) {
     if a == 0 || b == 0 {
         ret 0, DivError.DividedByZero
     }
@@ -2689,7 +2683,7 @@ Returns nil when there is no error.
 For example:
 <div class="code">use std::errors
 
-fn my_div(a: f64, b: f64) (f64, Error) {
+fn my_div(a: f64, b: f64): (f64, Error) {
     if a == 0 || b == 0 {
         ret 0, std::errors::new("divided with zero")
     }
@@ -2716,12 +2710,12 @@ For example:
 }
 
 impl Error in MyError {
-    fn error() str {
+    fn error(): str {
         ret .message
     }
 }
 
-fn my_div(a: f64, b: f64) (f64, Error) {
+fn my_div(a: f64, b: f64): (f64, Error) {
     if a == 0 || b == 0 {
         ret 0, MyError{"divided by zero"}
     }
@@ -2754,7 +2748,7 @@ For example:
     if ptr == nil {
         panic("pointer is nil")
     }
-    unsafe{ *ptr += rate }
+    unsafe { *ptr += rate }
 }
 
 fn main() {
@@ -2793,7 +2787,7 @@ For example:
 }
 
 fn main() {
-    recover((e: Error) {
+    recover(fn(e: Error) {
         outln(e.error())
     })
     may_panic()
@@ -3118,7 +3112,7 @@ To declare a C++ function, it must be stated that it is a C++ declaration.
 Then just represent the prototype of the function.
 <br><br>
 For example:
-<div class="code">cpp fn my_function(int, int) f64</div>
+<div class="code">cpp fn my_function(int, int): f64</div>
 Linked functions can only be used within the respective package and can't overload.
 
 <div class="title-separator"></div>
@@ -3135,7 +3129,7 @@ For example:<br>
 <div class="code">use cpp "sum.hpp"
 
 //jule:cdef
-cpp fn SUM(int, int) int</div>
+cpp fn SUM(int, int): int</div>
 
 The <x class="inline_code">cdef</x> attribute must be used for correct parsing of preprocessor defines.
 
@@ -3192,7 +3186,7 @@ For example:
 <strong>main.jule</strong>
 <div class="code">use cpp "sum_integers.hpp"
 
-cpp fn sum_integers([]int) i64
+cpp fn sum_integers([]int): i64
 
 fn main() {
     let slice = [90, 34, 63, -34, 3246, -95, 734, 0, 3]

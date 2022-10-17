@@ -1,5 +1,5 @@
 const stdlib_fs_functionsHTML = `
-<div class="code">fn stat(path: str) (s: Stat, err: FsError)</div>
+<div class="code">fn stat(path: str): (s: Stat, err: FsError)</div>
 Returns a Stat describing the path.
 <br><br>
 Possible errors:
@@ -12,7 +12,7 @@ Possible errors:
 <x class="inline_code">Overflow</x>
 
 <div class="topic-separator"></div>
-<div class="code">fn read_dir(path: str) ([]Dirent, FsError)</div>
+<div class="code">fn read_dir(path: str): ([]Dirent, FsError)</div>
 Reads the named directory and returs all its directory entries can read.
 <br><br>
 Possible errors:
@@ -38,11 +38,11 @@ const stdlib_fs_structsHTML = `
 Stat information.
 <br><br>
 <strong>Methods:</strong> <br><br>
-<div class="inline_code">fn is_dir(self) bool</div> <br>
+<div class="inline_code">fn is_dir(self): bool</div> <br>
 Reports path is directory or not.
 
 <div class="title-separator"></div>
-<div class="inline_code">fn is_reg(self) bool</div> <br>
+<div class="inline_code">fn is_reg(self): bool</div> <br>
 Reports path is regular file or not.
 
 <div class="topic-separator"></div>

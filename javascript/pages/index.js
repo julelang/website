@@ -37,7 +37,7 @@ const preview_code_traitsHTML =
 `use std::math::{PI}
 
 trait Shape {
-    fn area(self) int
+    fn area(self): int
 }
 
 struct Rectangle {
@@ -46,7 +46,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    fn area(self) int {
+    fn area(self): int {
         ret self.width * self.height
     }
 }
@@ -56,7 +56,7 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    fn area(self) int {
+    fn area(self): int {
         ret PI * self.r * self.r
     }
 }

@@ -16,16 +16,16 @@ Maximum number of bytes of a UTF-8 encoded Unicode character.
 `;
 
 const stdlib_unicode_utf8_functionsHTML = `
-<div class="code">fn full_rune(p: []byte) bool</div>
+<div class="code">fn full_rune(p: []byte): bool</div>
 Reports whether the bytes in p begin with a full UTF-8 encoding of a rune.
 An invalid encoding is considered a full Rune since it will convert as a width-1 error rune.
 
 <div class="topic-separator"></div>
-<div class="code">pub fn full_rune_str(s: str) bool</div>
+<div class="code">pub fn full_rune_str(s: str): bool</div>
 Is like full_rune but its input is a string.
 
 <div class="topic-separator"></div>
-<div class="code">fn decode_rune(p: []byte) (r: rune, size: int)</div>
+<div class="code">fn decode_rune(p: []byte): (r: rune, size: int)</div>
 Unpacks the first UTF-8 encoding in p and returns the rune and
 its width in bytes. If p is empty it returns (RUNE_ERROR, 0). Otherwise, if
 the encoding is invalid, it returns (RUNE_ERROR, 1). Both are impossible
@@ -36,7 +36,7 @@ out of range, or is not the shortest possible UTF-8 encoding for the
 value. No other validation is performed.
 
 <div class="topic-separator"></div>
-<div class="code">fn decode_rune_str(s: str) (r: rune, size: int)</div>
+<div class="code">fn decode_rune_str(s: str): (r: rune, size: int)</div>
 Is like decode_rune but its input is a string. If s is empty
 it returns (RUNE_ERROR, 0). Otherwise, if the encoding is invalid, it
 returns (RUNE_ERROR, 1). Both are impossible results for correct, non-empty
@@ -47,7 +47,7 @@ out of range, or is not the shortest possible UTF-8 encoding for the
 value. No other validation is performed.
 
 <div class="topic-separator"></div>
-<div class="code">fn decode_last_rune(p: []byte) (r: rune, size: int)</div>
+<div class="code">fn decode_last_rune(p: []byte): (r: rune, size: int)</div>
 Unpacks the last UTF-8 encoding in p and returns the rune and
 its width in bytes. If p is empty it returns (RUNE_ERROR, 0). Otherwise, if
 the encoding is invalid, it returns (RUNE_ERROR, 1). Both are impossible
@@ -58,7 +58,7 @@ out of range, or is not the shortest possible UTF-8 encoding for the
 value. No other validation is performed.
 
 <div class="topic-separator"></div>
-<div class="code">fn decode_last_rune_str(s: str) (r: rune, size: int)</div>
+<div class="code">fn decode_last_rune_str(s: str): (r: rune, size: int)</div>
 Is like decode_last_rune but its input is a string. If
 s is empty it returns (RUNE_ERROR, 0). Otherwise, if the encoding is invalid,
 it returns (RUNE_ERROR, 1). Both are impossible results for correct,
@@ -69,46 +69,46 @@ out of range, or is not the shortest possible UTF-8 encoding for the
 value. No other validation is performed.
 
 <div class="topic-separator"></div>
-<div class="code">fn rune_len(r: rune) int</div>
+<div class="code">fn rune_len(r: rune): int</div>
 Returns the number of bytes required to encode the rune.
 It returns -1 if the rune is not a valid value to encode in UTF-8.
 
 <div class="topic-separator"></div>
-<div class="code">fn encode_rune(mut p: []byte, mut r: rune) int</div>
+<div class="code">fn encode_rune(mut p: []byte, mut r: rune): int</div>
 Writes into p (which must be large enough) the UTF-8 encoding of the rune.
 If the rune is out of range, it writes the encoding of RUNE_ERROR.
 It returns the number of bytes written.
 
 <div class="topic-separator"></div>
-<div class="code">fn append_rune(p: []byte, r: rune) []byte</div>
+<div class="code">fn append_rune(p: []byte, r: rune): []byte</div>
 Appends the UTF-8 encoding of r to the end of p and returns the extended buffer.
 If the rune is out of range, it appends the encoding of RUNE_ERROR.
 
 <div class="topic-separator"></div>
-<div class="code">fn rune_count(p: []byte) (n: int)</div>
+<div class="code">fn rune_count(p: []byte): (n: int)</div>
 Returns the number of runes in p. Erroneous and short
 encodings are treated as single runes of width 1 byte.
 
 <div class="topic-separator"></div>
-<div class="code">fn rune_count_str(s: str) (n: int)</div>
+<div class="code">fn rune_count_str(s: str): (n: int)</div>
 Is like rune_count but its input is a string.
 
 <div class="topic-separator"></div>
-<div class="code">fn rune_start(b: byte) bool</div>
+<div class="code">fn rune_start(b: byte): bool</div>
 Reports whether the byte could be the first byte of an encoded,
 possibly invalid rune. Second and subsequent bytes always have the top two
 bits set to 10.
 
 <div class="topic-separator"></div>
-<div class="code">fn valid(p: []byte) bool</div>
+<div class="code">fn valid(p: []byte): bool</div>
 Reports whether p consists entirely of valid UTF-8-encoded runes.
 
 <div class="topic-separator"></div>
-<div class="code">fn valid_str(mut s: str) bool</div>
+<div class="code">fn valid_str(mut s: str): bool</div>
 Reports whether s consists entirely of valid UTF-8-encoded runes.
 
 <div class="topic-separator"></div>
-<div class="code">fn valid_rune(r: rune) bool</div>
+<div class="code">fn valid_rune(r: rune): bool</div>
 Reports whether r can be legally encoded as UTF-8.
 Code points that are out of range or a surrogate half are illegal.
 `;
