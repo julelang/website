@@ -1204,6 +1204,69 @@ For example:
 </div>
 `;
 
+const basics_blocksHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Blocks</div>
+<div class="text">
+Blocks are indicated by braces, except in exceptional cases.
+Each block represents a scope.
+Although a block is often used to denote an algorithm domain, it is also used for other purposes.
+
+<div class="title-separator"></div>
+<div class="sub-title">Anonymous Blocks</div>
+Anonymous blocks are blocks that do not belong to a definition (function, etc.).
+<br><br>
+For example:
+<div class="code">fn main() {
+    {
+      // Anonymous block
+    }
+}</div>
+The above example shows an anonymous block (scope) contained within the block (scope) of the <x class="inline_code">main</x> function.
+
+<div class="title-separator"></div>
+<div class="sub-title">Deferred Blocks</div>
+Deferred blocks are blocks whose execution is deferred until the scope they are in expires.
+Declares with the <x class="inline_code">defer</x> keyword.
+<br><br>
+For example:
+<div class="code">fn main() {
+    defer {
+        outln("Hello Defer")
+    }
+    outln("Hello World")
+}</div>
+In the example above, the output <x class="inline_code">Hello World</x> appears before.
+This is because the deferred block is defined in the scope of the function and its execution is deferred until the scope of the function exits.
+
+<div class="title-separator"></div>
+<div class="sub-title">Unsafe Blocks</div>
+Unsafe blocks allows to use Unsafe Jule.
+Declares with the <x class="inline_code">unsafe</x> keyword.
+<br><br>
+For example:
+<div class="code">fn main() {
+    unsafe {
+      // Unsafe anonymous block
+    }
+}</div>
+
+<a href="docs.html?page=unsafe-jule">See more information about Unsafe Jule</a>
+
+<div class="title-separator"></div>
+<div class="sub-title">Deferred Unsafe Blocks</div>
+You may want to use Unsafe Jule and deferred blocks at the same time.
+You can do this.
+<br><br>
+For example:
+<div class="code">fn main() {
+    unsafe defer {
+      // Deferred unsafe anonymous block
+    }
+}</div>
+
+</div>
+`;
+
 const common_conceptsHTML = `
 <div class="title" style="margin-bottom: 20px;">Common Concepts</div>
 <div class="text">
@@ -4176,6 +4239,7 @@ const NAV_basics_data_types                   = document.getElementById('basics-
 const NAV_basics_operators                    = document.getElementById('basics-operators');
 const NAV_basics_attributes                   = document.getElementById('basics-attributes');
 const NAV_basics_statements                   = document.getElementById('basics-statements');
+const NAV_basics_blocks                       = document.getElementById("basics-blocks");
 const NAV_common_concepts                     = document.getElementById('common-concepts');
 const NAV_common_concepts_variables           = document.getElementById('common-concepts-variables');
 const NAV_common_concepts_functions           = document.getElementById('common-concepts-functions');
@@ -4259,6 +4323,7 @@ nav.navigations = [
   [NAV_basics_operators,                    basics_operatorsHTML],
   [NAV_basics_attributes,                   basics_attributesHTML],
   [NAV_basics_statements,                   basics_statementsHTML],
+  [NAV_basics_blocks,                       basics_blocksHTML],
   [NAV_common_concepts,                     common_conceptsHTML],
   [NAV_common_concepts_variables,           common_concepts_variablesHTML],
   [NAV_common_concepts_functions,           common_concepts_functionsHTML],
