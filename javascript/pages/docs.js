@@ -300,13 +300,6 @@ Fields in configuration files have specific purposes.
     </td>
   </tr>
   <tr>
-    <td style="text-align: center; font-family: 'Code';">post_commands</td>
-    <td>
-    Terminal commands to be executed after compilation.
-    All processes are separated by a space, and the first part is the process name, the next ones are treated as arguments.
-    </td>
-  </tr>
-  <tr>
     <td style="text-align: center; font-family: 'Code';">indent</td>
     <td>Indention string.</td>
   </tr>
@@ -400,7 +393,7 @@ For compile Jule code, we just give filename to JuleC:
 And compiler is transpile our Jule code to C++ code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 In build mode, JuleC will show you the build command itself on the command line, which is used during compilation.
-You can also set the mod to <x class="inline_code">transpile</x> and choose to compile manually, or you can use your own drill directives in the <x class="inline_code">post commands</x> key to experience the <x class="inline_code">compile</x> mod.
+You can also set the mod to <x class="inline_code">transpile</x> and choose to compile manually, or you can write a script that compiles the code after you have it in C++ form using the transpile mode to experience compile mode.
 <br><br>
 As result we have a executable machine code result of our program.
 
@@ -3860,6 +3853,31 @@ This expression is evaluated before each loop, and if it returns true, the loop 
 This example just prints <x class="inline_code">0</x>.
 
 <div class="title-separator"></div>
+<div class="sub-title">While-Next Iterations</div>
+If you've ever used a programming language, you're probably familiar with for loops.
+Jule doesn't have the classic for loops.
+The main reason for this is that it does not look stylish and is not readable.
+The first of the three iteration statements almost always serves to define a scope-specific variable.
+The main reason for use is a conditional iteration and a post-iteration step.
+For this reason, Jule has a different iteration that is more readable and is thought to serve the purpose better: while-next
+<br><br>
+While-next is almost the same as a classic while iteration.
+In this, the only addition is to be able to write an expression that will happen after the iteration step.
+While-next's statement is separated by the statement terminator.
+First comes the condition expression, then statement.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let mut i = 1
+    for i <= 5; i++ {
+        outln(i)
+    }
+}</div>
+The while-next iteration above executes first if the condition is met.
+After execution, the statement is executed.
+Then the scope executes if the condition is met, so on.
+
+<div class="title-separator"></div>
 <div class="sub-sub-title">Foreach Iterations</div>
 Foreach or for-each can be summarized as an iteration standard for collections.
 It repeats itself by looping through the elements of the collection.
@@ -3917,27 +3935,6 @@ For example:
     let s = "Hello"
     for (_, mut b) in s {
         outln(b)
-    }
-}</div>
-
-<div class="title-separator"></div>
-<div class="sub-sub-title">For Iterations</div>
-The for loop is a good choice for iterations from one point to another.
-<div class="title-separator"></div>
-<strong>Syntax</strong>
-<div class="code">for STATEMENT1; EXPRESSION; STATEMENT2 { /* Body */ }</div>
-
-<strong>STATEMENT1</strong>: Executed once before block.
-<br>
-<strong>EXPRESSION</strong>: Iteration condition expression, it is should be bool expression.
-<br>
-<strong>STATEMENT2</strong>: Executes every time after the block executed.
-
-<br><br>
-For example:
-<div class="code">fn main() {
-    for let mut i = 0; i < 10; i++ {
-        outln(i)
     }
 }</div>
 
