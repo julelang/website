@@ -105,7 +105,7 @@ body.innerHTML +=
     <td>
       <div class="footer-title">Connect</div>
       <a href="https://github.com/julelang">GitHub Organization</a> <br>
-      <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
+      <a href="https://stackoverflow.com/questions/tagged/jule+julec">Stack Overflow</a> <br>
       <a href="https://github.com/julelang/jule/discussions">Discussions</a> <br>
       <a href=""></a> <br>
       <a href=""></a>
