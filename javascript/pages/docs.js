@@ -104,11 +104,11 @@ const getting_started_downloadsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Downloads</div>
 <div class="text">
   <div class="sub-title">Releases</div>
-  You can see JuleC in easy setup form at <a target="_blank" href="https://github.com/jule-lang/jule/releases">releases</a>.
+  You can see JuleC in easy setup form at <a target="_blank" href="https://github.com/julelang/jule/releases">releases</a>.
 
   <div class="title-separator"></div>
   <div class="sub-title">Source Code</div>
-  You can download source code of the JuleC at <a target="_blank" href="https://github.com/jule-lang/jule">repository</a>.
+  You can download source code of the JuleC at <a target="_blank" href="https://github.com/julelang/jule">repository</a>.
 </div>
 `;
 
@@ -3098,7 +3098,7 @@ These header files come automatically imported in every code compiled by JuleC.
 <br><br>
 With this API, you can use the definitions of JuleC in C++ codes and adapt functions written for C++ to Jule.
 <br><br>
-<a href="https://github.com/jule-lang/jule/tree/main/api">See API</a<
+<a href="https://github.com/julelang/jule/tree/main/api">See API</a<
 
 </div>
 `;
@@ -3614,12 +3614,12 @@ Please tell us, share with us your ideas and experiences.
 Support us to improve the documentation.
 <br>
 <br>
-<a href="https://github.com/jule-lang/website/issues/new/choose">Open Issue</a> <br>
-<a href="https://github.com/jule-lang/website/fork">Fork project</a>
+<a href="https://github.com/julelang/website/issues/new/choose">Open Issue</a> <br>
+<a href="https://github.com/julelang/website/fork">Fork project</a>
 
 <div class="title-separator"></div>
   <div class="sub-title">Source Code this Website</div>
-  The source code files is accessible from <a href="https://github.com/jule-lang/website">GitHub</a> website repository.
+  The source code files is accessible from <a href="https://github.com/julelang/website">GitHub</a> website repository.
 </div>
 `;
 

@@ -20,7 +20,7 @@ if (document.title == "") {
 head.innerHTML +=
 `<link
   rel="icon"
-  href="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">`;
+  href="https://raw.githubusercontent.com/julelang/resources/main/jule_icon.svg?sanitize=true">`;
 //#endregion SET_ICON
 
 //#region SET_STYLES
@@ -44,7 +44,7 @@ document.getElementById('navigation').innerHTML =
 <a href="${rootPath}/index.html">
 <img
   class="navigation-logo"
-  src="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">
+  src="https://raw.githubusercontent.com/julelang/resources/main/jule_icon.svg?sanitize=true">
 </a>
 <div id="navigation-links">
   <a href="${rootPath}/pages/docs.html">DOCUMENTATIONS</a>
@@ -74,13 +74,13 @@ body.innerHTML +=
       <center>
         <img
           class="footer-logo"
-          src="https://raw.githubusercontent.com/jule-lang/resources/main/jule_icon.svg?sanitize=true">
+          src="https://raw.githubusercontent.com/julelang/resources/main/jule_icon.svg?sanitize=true">
       </center>
       </div>
     </td>
     <td>
       <div class="footer-title">About</div>
-      <a href="https://github.com/jule-lang/jule/releases">Download</a> <br>
+      <a href="https://github.com/julelang/jule/releases">Download</a> <br>
       <a href="${rootPath}/pages/community.html">Community</a> <br>
       <a href="${rootPath}/pages/license.html"">License</a> <br>
       <a href="${rootPath}/pages/code_of_conduct.html">Code of Conduct</a> <br>
@@ -96,17 +96,17 @@ body.innerHTML +=
     </td>
     <td>
       <div class="footer-title">Contribute</div>
-      <a href="https://github.com/jule-lang/jule">Source Code</a> <br>
-      <a href="https://github.com/jule-lang/jule/fork">Fork JuleC</a> <br>
-      <a href="https://github.com/jule-lang/jule/issues">Issue Tracker</a> <br>
+      <a href="https://github.com/julelang/jule">Source Code</a> <br>
+      <a href="https://github.com/julelang/jule/fork">Fork JuleC</a> <br>
+      <a href="https://github.com/julelang/jule/issues">Issue Tracker</a> <br>
       <a href="${rootPath}/pages/contributing.html">Guideline</a> <br>
       <a href=""></a>
     </td>
     <td>
       <div class="footer-title">Connect</div>
-      <a href="https://github.com/jule-lang">GitHub Organization</a> <br>
+      <a href="https://github.com/julelang">GitHub Organization</a> <br>
       <a href="https://stackoverflow.com/questions/tagged/x">Stack Overflow</a> <br>
-      <a href="https://github.com/jule-lang/jule/discussions">Discussions</a> <br>
+      <a href="https://github.com/julelang/jule/discussions">Discussions</a> <br>
       <a href=""></a> <br>
       <a href=""></a>
     </td>
