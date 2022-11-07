@@ -1683,6 +1683,27 @@ fn main() {
 
 <div class="warn">The program does not automatically wait for the execution of concurrent calls to terminate.</div>
 
+<div class="title-separator"></div>
+<div class="sub-title">Valid Return Statements</div>
+A return expression need not always be specified in the main scope of the function.
+The only criterion is that the function returns under all conditions.
+Return statements in inner scopes are considered valid if they guarantee the return under all conditions.
+<br><br>
+For example:
+<div class="code">fn get_rate(x: int): int {
+    match {
+    case x <= 30:
+        ret 0
+    case x <= 50
+        ret 1
+    case x <= 100:
+        ret 3
+    default:
+        ret 8
+    }
+}</div>
+The function does not have to return in the main scope, as the match expression above returns a return for every condition.
+
 </div>
 `;
 
@@ -3363,7 +3384,7 @@ Dynamic generic annotation can be used if all generic types are detectable by th
 For example:
 <div class="code">type[Key, Value]
 fn print_map(map: [Key:Value]) {
-    for key:, value: in map {
+    for key, value in map {
         out(key)
         out(": ")
         outln(value)
