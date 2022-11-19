@@ -169,8 +169,7 @@ const compilerHTML = `
 <div class="title" style="margin-bottom: 20px;">Compiler</div>
 <div class="text">
   In this part of the documentation you will explore the compiler and understand how to compile Jule code.
-  After this section, you will learn and use compiler commands.
-  You will also be able to customize your settings file to configure your projects.
+  After this section, you will learn and use compiler commands and compiler arguments.
 </div>
 `;
 
@@ -213,8 +212,6 @@ It includes tools that can add to your Jule experience.
 See the command's help table for more information:
 <div class="code">$ julec tool</div>
 
-
-
 </div>
 `;
 
@@ -253,76 +250,55 @@ The <x class="inline_code">32bit</x> includes:
 </div>
 `;
 
-const compiler_config_filesHTML = `
-<div class="page-title" style="margin-bottom: 20px;">Config Files</div>
+const compiler_compiler_optionsHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Compiler Options</div>
 <div class="text">
-Your config file shows your compiler how it will work and lets you choose things for yourself.
-If this file does not exist, the default configuration used.
-You can initialize a new configuration file to see the default configuration your compiler.
+
+Compiler options (aka arguments) let you tell your compiler a set of preferences.
+Accordingly, the behavior and outputs of the compiler may differ.
 <br><br>
-The name of the configuration file should be <x class="inline_code">jule.set</x>.
+Arguments are indicated in their full form using two hyphens <x class="inline_code">--</x>.
+However, some arguments may have abbreviations (usually one letter), denoted by a single hyphen <x class="inline_code">-</x>.
 <br><br>
-In fact, you can start working right away, leaving it as default.
-Generally you don't need to do any special configuration here.
-<br><br>
-Configuration format is JSON, and you can delete any key for use default value.
-<br><br>
-Fields in configuration files have specific purposes.
-<br><br>
-<table class="table">
-  <tr>
-    <th style="text-align: center;">Field</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">out_name</td>
-    <td>Name of compiled machine code output file.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">cpp_out_dir</td>
-    <td>Directory of transpiled C++ file.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">cpp_out_name</td>
-    <td>Name of transpiled C++ file.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">language</td>
-    <td>
-      Name of language-pack to use.
-      Set empty for default language-pack.
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">mode</td>
-    <td>
-      Set the mod of compiler as <x class="inline_code">compile</x> or <x class="inline_code">transpile</x>.
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">indent</td>
-    <td>Indention string.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">indent_count</td>
-    <td>Indention string repetition count per one indention.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">compiler</td>
-    <td>Name of the used compiler.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center; font-family: 'Code';">compiler_path</td>
-    <td>Your compiler executable file path for compiling C++ code.</td>
-  </tr>
-</table>
+Some options may require value.
 
 <div class="title-separator"></div>
-<div class="sub-title">Compiler Key Values</div>
-<ul>
-    <li><x class="inline_code">gcc</x>: GNU Compiler Collection</li>
-    <li><x class="inline_code">clang</x>: Clang</li>
-</ul>
+<div class="sub-title">Using Options</div>
+<br>
+Options are written as command-line arguments when executing the compiler.
+Some options are only used, but an option may have to take value.
+Options that receive value must see its value after it. So, after JuleC sees an option that should take a value, it evaluates the following command-line argument as the option's value.
+<br><br>
+It doesn't matter if the options are in mixed order.
+They can be completely at the end of the command, at the beginning, in the middle, or in a complex way.
+The recommended order is to write the options first and then give the compiler inputs.
+
+<br><br>
+For example;
+<div class="code">$ julec -t --compiler clang main.jule</div>
+The example code above means: "Hey compiler, transpile main.jule's content using the clang compiler standard."
+
+<div class="title-separator"></div>
+<div class="sub-title">--options</div>
+<br>
+
+<x class="inline_code">-c</x> <x class="inline_code">--compile</x> <br>
+Compiles source code.
+Actually this is not necessary because compiler's default option is compile.
+
+<div class="topic-separator"></div>
+
+<x class="inline_code">-t</x> <x class="inline_code">--transpile</x> <br>
+Just transpile source code.
+
+<div class="topic-separator"></div>
+
+<x class="inline_code">--compiler &lt;value&gt;</x> <br>
+Set the preferred compiler.
+Specify the compiler standard you will use for compilation from among the supported compilers.
+<br><br>
+Values: <x class="inline_code">gcc</x>
+        <x class="inline_code">clang</x>
 
 </div>
 `;
@@ -3252,8 +3228,8 @@ For example:
 <div class="title-separator"></div>
 <div class="sub-title">Example to Interoperability</div>
 <strong>sum_integers.hpp</strong>
-<div class="code">i64_julet sum_integers(const slice&lt;int_julet&gt; &_Slice) {
-    i64_julet total{ 0 };
+<div class="code">i64_jt sum_integers(const slice_jt&lt;int_jt&gt; &_Slice) {
+    i64_jt total{ 0 };
     for (const auto x: _Slice) {
         total += x;
     }
@@ -4236,7 +4212,7 @@ const NAV_getting_started_install_from_source = document.getElementById('getting
 const NAV_compiler                            = document.getElementById('compiler');
 const NAV_compiler_platform_support           = document.getElementById("compiler-platform-support");
 const NAV_compiler_basic_commands             = document.getElementById('compiler-basic-commands');
-const NAV_compiler_config_files               = document.getElementById('compiler-config-files');
+const NAV_compiler_compiler_options           = document.getElementById('compiler-compiler-options');
 const NAV_compiler_compiling                  = document.getElementById('compiler-compiling');
 const NAV_project                             = document.getElementById('project');
 const NAV_project_directory_order             = document.getElementById('project-directory-order');
@@ -4320,7 +4296,7 @@ nav.navigations = [
   [NAV_compiler,                            compilerHTML],
   [NAV_compiler_platform_support,           compiler_platform_supportHTML],
   [NAV_compiler_basic_commands,             compiler_basic_commandsHTML],
-  [NAV_compiler_config_files,               compiler_config_filesHTML],
+  [NAV_compiler_compiler_options,           compiler_compiler_optionsHTML],
   [NAV_compiler_compiling,                  compiler_compilingHTML],
   [NAV_project,                             projectHTML],
   [NAV_project_directory_order,             project_directory_orderHTML],
