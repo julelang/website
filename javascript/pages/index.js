@@ -13,13 +13,12 @@ const preview_code_quicksortHTML =
         ret
     }
     let mut i = 0
-    unsafe {
-        for i < s.len-1 {
-            let (mut x, mut y) = &s[i], &s[i+1]
+    for i < s.len-1; i++ {
+        let (mut x, mut y) = &s[i], &s[i+1]
+        unsafe {
             if *x > *y {
                 *x, *y = *y, *x
             }
-            i++
         }
     }
     quicksort(s[:i])
@@ -27,10 +26,10 @@ const preview_code_quicksortHTML =
 }
 
 fn main() {
-    let mut my_slice = [1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2]
-    outln(my_slice)
-    quicksort(my_slice)
-    outln(my_slice)
+    let mut s = [1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2]
+    outln(s)
+    quicksort(s)
+    outln(s)
 }`;
 
 const preview_code_traitsHTML =

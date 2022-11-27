@@ -129,7 +129,7 @@ const getting_started_install_from_sourceHTML = `
   This scripts written for compile the JuleC.
   If you execute script, result is be compilation error or complete message.
 
-  <div class="warn">These examples assume you are in the root directory of the Jule project.</div>
+  <div class="warn">These examples assume you are in the source code (src) directory of the JuleC.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
@@ -137,7 +137,7 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
   Using example for PowerShell;
-  <div class="code">$ scripts/build.bat</div>
+  <div class="code">$ scripts\\build.bat</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
@@ -156,7 +156,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">$ go build -o julec.exe -v cmd/julec/main.go</div>
+  <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
