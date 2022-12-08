@@ -3381,57 +3381,6 @@ Generic types are automatically detected from the data type of argument by compi
 </div>
 `;
 
-const documentingHTML = `
-<div class="title" style="margin-bottom: 20px;">Documenting</div>
-<div class="text">
-It is important to document the code.
-Jule makes it easy to have documented code.
-The <x class="inline_code">doc</x> command comes internally to the compiler and takes over the task of documenting your Jule source code.
-<br><br>
-The <x class="inline_code">doc</x> command creates the documentation it creates in the <x class="inline_code">cpp_out_dir</x> field.
-The extensions of the files are <x class="inline_code">SOURCE_FILE_NAME.juledoc</x>.
-<br><br>
-The <x class="inline_code">juledoc</x> file is in JSON format and contains only metadata about definitions.
-</div>
-`;
-
-const documenting_documentation_commentsHTML = `
-<div class="title" style="margin-bottom: 20px;">Documentation Comments</div>
-<div class="text">
-If you want your personal comments to be in the output created with the <x class="inline_code">doc</x> command, you can do this with the documentation comments.
-<br><br>
-To create a documentation comment, write comment.
-The documenter will treat that and subsequent comment lines as documentation comments.
-<br><br>
-For example:
-<div class="code">// The first documentation comment line.
-// The second documentation comment line.
-fn my_func() {}</div>
-</div>
-`;
-
-const documenting_using_documenterHTML = `
-<div class="title" style="margin-bottom: 20px;">Using Documenter</div>
-<div class="text">
-The <x class="inline_code">doc</x> command is used to use the documenter.
-<br><br>
-The <x class="inline_code">doc</x> command works quite simply.
-Show only the Jule source files you want to document.
-<br><br>
-For example:
-<div class="code">$ jule doc main.jule</div>
-Documentize the <x class="inline_code">main.jule</x> file.
-<br><br>
-<div class="code">$ jule doc main.jule test.jule</div>
-Documentize the <x class="inline_code">main.jule</x> and <x class="inline_code">test.jule</x> files.
-
-<div class="title-separator"></div>
-<div class="warn">
-The <x class="inline_code">doc</x> command does not document if the source code contains a non-logical (syntax, etc.) error.
-</div>
-</div>
-`;
-
 const use_declarationsHTML = `
 <div class="title" style="margin-bottom: 20px;">Use Declarations</div>
 <div class="text">
@@ -4272,9 +4221,6 @@ const NAV_type_statics_uint                   = document.getElementById("type-st
 const NAV_cpp                                 = document.getElementById("cpp");
 const NAV_cpp_api                             = document.getElementById("cpp-api");
 const NAV_cpp_interoperability                = document.getElementById("cpp-interoperability");
-const NAV_documenting                         = document.getElementById("documenting");
-const NAV_documenting_documentation_comments  = document.getElementById("documenting-documentation-comments");
-const NAV_documenting_using_documenter        = document.getElementById("documenting-using-documenter");
 const NAV_use_declarations                    = document.getElementById("use-declarations");
 const NAV_preprocessor                        = document.getElementById("preprocessor");
 const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
@@ -4356,9 +4302,6 @@ nav.navigations = [
   [NAV_cpp,                                 cppHTML],
   [NAV_cpp_api,                             cpp_apiHTML],
   [NAV_cpp_interoperability,                cpp_interoperabilityHTML],
-  [NAV_documenting,                         documentingHTML],
-  [NAV_documenting_documentation_comments,  documenting_documentation_commentsHTML],
-  [NAV_documenting_using_documenter,        documenting_using_documenterHTML],
   [NAV_use_declarations,                    use_declarationsHTML],
   [NAV_preprocessor,                        preprocessorHTML],
   [NAV_preprocessor_directives,             preprocessor_directivesHTML],
