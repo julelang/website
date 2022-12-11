@@ -3480,28 +3480,6 @@ As shown in the example above, since both files are located in the same director
 </div>
 `;
 
-const preprocessorHTML = `
-<div class="title" style="margin-bottom: 20px;">Preprocessor</div>
-<div class="text">
-The compile's preprocessor processes the source code before the parser.
-Before the compiler parses the code, the preprocessor processes the preprocessor instructions above the code, and the parser parses the code processed by this preprocessor.
-</div>
-`;
-
-const preprocessor_directivesHTML = `
-<div class="title" style="margin-bottom: 20px;">Directives</div>
-<div class="text">
-Directives tell the compiler how to process the code. <br>
-Directives are used with pragma comments. <br>
-For example:
-<div class="code">//jule:enofi</div>
-<div class="title-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">enofi</x></div>
-When importing a package or local package, this directive ensures that the code is split on import.
-When the preprocessor sees this directive, it discards the rest of the code.
-</div>
-`;
-
 const stdlibHTML = `
 <div class="title" style="margin-bottom: 20px;">Standard Libray</div>
 <div class="text">
@@ -4222,8 +4200,6 @@ const NAV_cpp                                 = document.getElementById("cpp");
 const NAV_cpp_api                             = document.getElementById("cpp-api");
 const NAV_cpp_interoperability                = document.getElementById("cpp-interoperability");
 const NAV_use_declarations                    = document.getElementById("use-declarations");
-const NAV_preprocessor                        = document.getElementById("preprocessor");
-const NAV_preprocessor_directives             = document.getElementById("preprocessor-directives");
 const NAV_stdlib                              = document.getElementById("stdlib");
 const NAV_end                                 = document.getElementById("end");
 
@@ -4303,8 +4279,6 @@ nav.navigations = [
   [NAV_cpp_api,                             cpp_apiHTML],
   [NAV_cpp_interoperability,                cpp_interoperabilityHTML],
   [NAV_use_declarations,                    use_declarationsHTML],
-  [NAV_preprocessor,                        preprocessorHTML],
-  [NAV_preprocessor_directives,             preprocessor_directivesHTML],
   [NAV_stdlib,                              stdlibHTML],
   [NAV_end,                                 endHTML],
 ];
