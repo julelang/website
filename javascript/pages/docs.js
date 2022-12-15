@@ -189,22 +189,6 @@ Shows version of the JuleC.
 <div class="code">$ julec version</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">doc</div>
-Documentize Jule source code.
-See the Documenting for more information.
-<div class="code">$ julec doc main.jule</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">init</div>
-Initialize new project in working directory.
-<div class="code">$ julec init</div>
-
-<div class="title-separator"></div>
-<div class="sub-title">bug</div>
-Starts new bug report on GitHub.
-<div class="code">$ julec bug</div>
-
-<div class="title-separator"></div>
 <div class="sub-title">tool</div>
 Tools for effective Jule.
 It includes tools that can add to your Jule experience.
