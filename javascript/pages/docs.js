@@ -286,7 +286,7 @@ Values: <x class="inline_code">gcc</x>
 
 <div class="topic-separator"></div>
 
-<x class="inline_code">--output &lt;file&gt;</x> <br>
+<x class="inline_code">-o &lt;file&gt;</x> <x class="inline_code">--out &lt;file&gt;</x> <br>
 Write output to <x class="inline_code">&lt;file&gt;</x>.
 <br><br>
 
