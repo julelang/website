@@ -284,6 +284,12 @@ Specify the compiler standard you will use for compilation from among the suppor
 Values: <x class="inline_code">gcc</x>
         <x class="inline_code">clang</x>
 
+<div class="topic-separator"></div>
+
+<x class="inline_code">-o &lt;file&gt;</x> <x class="inline_code">--out &lt;file&gt;</x> <br>
+Write output to <x class="inline_code">&lt;file&gt;</x>.
+<br><br>
+
 </div>
 `;
 
@@ -345,7 +351,7 @@ We have a <x class="inline_code">main.jule</x> file:
 <div class="code">fn main() {
     outln("Hello, World!")
 }</div>
-We will use our already created and configurated config file with <x class="inline_code">julec init</x> command.
+
 <br>
 <br>
 For compile Jule code, we just give filename to JuleC:
