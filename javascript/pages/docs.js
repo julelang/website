@@ -3085,7 +3085,7 @@ These header files come automatically imported in every code compiled by JuleC.
 <br><br>
 With this API, you can use the definitions of JuleC in C++ codes and adapt functions written for C++ to Jule.
 <br><br>
-<a href="https://github.com/julelang/jule/tree/main/api">See API</a<
+<a href="https://github.com/julelang/jule/tree/master/api">See API</a<
 
 </div>
 `;

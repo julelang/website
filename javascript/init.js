@@ -20,7 +20,7 @@ if (document.title == "") {
 head.innerHTML +=
 `<link
   rel="icon"
-  href="https://raw.githubusercontent.com/julelang/resources/main/jule_icon.svg?sanitize=true">`;
+  href="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg?sanitize=true">`;
 //#endregion SET_ICON
 
 //#region SET_STYLES
@@ -44,7 +44,7 @@ document.getElementById('navigation').innerHTML =
 <a href="${rootPath}/index.html">
 <img
   class="navigation-logo"
-  src="https://raw.githubusercontent.com/julelang/resources/main/jule_icon.svg?sanitize=true">
+  src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg?sanitize=true">
 </a>
 <div id="navigation-links">
   <a href="${rootPath}/pages/docs.html">DOCUMENTATIONS</a>
@@ -74,7 +74,7 @@ body.innerHTML +=
       <center>
         <img
           class="footer-logo"
-          src="https://raw.githubusercontent.com/julelang/resources/main/jule_icon.svg?sanitize=true">
+          src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg?sanitize=true">
       </center>
       </div>
     </td>
