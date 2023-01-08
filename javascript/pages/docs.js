@@ -2527,6 +2527,25 @@ List of all types which is performs reference counting:
   <li>Trait</li>
 </ul>
 
+<div class="title-separator"></div>
+<div class="sub-title">Slices</div>
+Slices have a capacity, but don't free unused capacities.
+This capacity can be used during slicing.
+If you have a slice with a length of 5 but its capacity is 8, you can expand the slice to use all the capacity by giving 8 during slicing.
+<br><br>
+For example;
+
+<div class="code">fn main() {
+    let mut s = [1, 2, 3]
+    s = append(s, 4, 5)
+    s = s[:s.len-2]
+    outln(s)  // [1 2 3]
+    s = s[:]
+    outln(s)  // [1 2 3]
+    s = s[:5] // [1 2 3 4 5]
+    outln(s)
+}</div>
+
 </div>
 `;
 
