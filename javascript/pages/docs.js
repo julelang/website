@@ -324,24 +324,12 @@ If you're using Linux or a similar operating system, you can usually already hav
 Once you've decided on the C++ compiler you want to use, JuleC can take care of the rest for you.
 Before that, you need to give JuleC a few simple instructions.
 <br><br>
-Config files are a very good tool to understand the structure of your project more easily and to show some of its needs to the developers.
-This tool also tells JuleC how to work.
-Now it's time to set up the compiler you want to use. This will not only show other developers which compiler your project is using to compile, but also allow you to use the compiler you want to use.
-Of course, it is recommended to use the compiler's original executable filename to be successful in informing about used C++ compiler.
-Other than that, if the path is completely correct, JuleC doesn't care if it's an officially supported or unsupported compiler.
-It just fits you and uses this path to compile your code.
+JuleC will automatically choose the recommended C++ compiler when compiling your code.
+If the recommended compiler is your preferred compiler, you don't need to take an action.
+But if not, you need to set your compiler using the related compiler option(s).
 <br><br>
-Let's create a new <x class="inline_code">jule.set</x> file in the project's directory using JuleC.
-It's likely that JuleC will do this by setting up the C++ compiler you most likely prefer to use in your operating system.
-If this is true, you don't need to change it.
-It even means that you can compile without a config file if you don't need any other config file changes.
-It is recommended to have a config file though.
-<br><br>
-The <x class="inline_code">compiler_path</x> key in the config file is the executable file path of the compiler you want to use to compile your C++ code.
-It is recommended that this path be a directly accessible executable file path so that your project is more portable and your config file is more consistent.
-The <x class="inline_code">compiler</x> key tells you what compiler you are using.
-JuleC handles the compilation accordingly.
-If you are using a compiler without official support, but has the same standards of compilation commands, you can still use it by setting the compatible compiler, but if it is not compatible, you should set the compilation mode to <x class="inline_code">transpile</x> and write your own compile command, otherwise the code cannot be compiled due to the incompatible command.
+If you need a special configuration for your build, it is recommended to create a script file for it or write compile command in a document such as a readme files.
+This makes it clearer and easier how to compile the project, as well as a faster and more comfortable development experience.
 
 <div class="title-separator"></div>
 <div class="sub-title">Using JuleC</div>
