@@ -115,16 +115,15 @@ const getting_started_downloadsHTML = `
 const getting_started_install_from_sourceHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Install from Source</div>
 <div class="text">
-  Ok! We install JuleC from source code.
-  Actually, we just compile project.
-  <br>
-  Getting the most up-to-date version is a good way to try.
-  <br><br>
+  <div class="warn">You should have Go compiler for this option.</div>
+  Ok! We will install JuleC from source code.
+  Actually, we will just compile project.
+  Getting the latest version is a good way to try.
   We accept you have already Jule source code.
 
   <div class="title-separator"></div>
   <div class="sub-title">Build Scripts</div>
-  Project has scripts for build/compile project.
+  The JuleC project has scripts for build/compile compiler.
   You can use them.
   This scripts written for compile the JuleC.
   If you execute script, result is be compilation error or complete message.
@@ -137,7 +136,7 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
   Using example for PowerShell;
-  <div class="code">$ scripts\\build.bat</div>
+  <div class="code">$ build.bat</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
@@ -145,23 +144,22 @@ const getting_started_install_from_sourceHTML = `
     Ideal scripts for Linux: usally shellscripts (.sh).
   </div>
   Using example for Bash;
-  <div class="code">$ sh scripts/build.sh</div>
+  <div class="code">$ sh build.sh</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Manual</div>
   JuleC is written in Go, for now!
-
-  <div class="warn">You should have Go compiler for this option.</div>
+  <div class="warn">These examples assume you are in the root directory of the JuleC.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
+  <div class="code">$ go build -o julec.exe -v src\\cmd\\julec\\main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
+  <div class="code">$ go build -o julec -v src/cmd/julec/main.go</div>
 </div>
 `;
 
@@ -1646,13 +1644,13 @@ Return statements in inner scopes are considered valid if they guarantee the ret
 For example:
 <div class="code">fn get_rate(x: int): int {
     match {
-    case x <= 30:
+    | x <= 30:
         ret 0
-    case x <= 50
+    | x <= 50
         ret 1
-    case x <= 100:
+    | x <= 100:
         ret 3
-    default:
+    |:
         ret 8
     }
 }</div>
@@ -3938,20 +3936,16 @@ fn main() {
 
 const TAB_common_concepts_match_expression = `
 If you need to make a selection and run an algorithm based on that selection, <x class="inline_code">match</x> is a good choice.
-The keyword <x class="inline_code">case</x> is used for each case.
-For a block to be executed if not exist any match, the optional keyword <x class="inline_code">default</x> can be used.
+The operator <x class="inline_code">|</x> is used for each case.
+For a block to be executed if not exist any match, don't give any expression to one case.
 <br><br>
 
 <strong>Syntax</strong>
 <div class="code">match EXPRESSION {
-case CASE_EXPRESSION1:
-    // Body
-case CASE_EXPRESSION2:
-    // Body
-case CASE_EXPRESSION3:
-    // Body
-default:
-    // Body
+| CASE_EXPRESSION1: // Body
+| CASE_EXPRESSION2: // Body
+| CASE_EXPRESSION3: // Body
+|:                  // Body
 }</div>
 
 <strong>EXPRESSION</strong>: Expression to match.
@@ -3962,17 +3956,14 @@ default:
 <br>
 <strong>CASE_EXPRESSION3</strong>: Expression for another case.
 <br>
-<strong>default</strong>: Default block.
+<strong>No expression case</strong>: Default block.
 
 <br><br>
 For example:
 <div class="code">match my_integer {
-case MY_INTEGER_MIN:
-    outln("Minimum")
-case MY_INTEGER_MAX:
-    outln("Maximum")
-default:
-    outln("Between or not")
+| MY_INTEGER_MIN: outln("Minimum")
+| MY_INTEGER_MAX: outln("Maximum")
+|:                outln("Between or not")
 }</div>
 
 <div class="title-separator"><div>
@@ -3983,12 +3974,12 @@ The keyword <x class="inline_code">break</x> is sufficient for this.
 <br><br>
 For example:
 <div class="code">match X {
-case Y:
+| Y:
     if Y == A {
         break
     }
     // ...
-case Z:
+| Z:
     // ...
 }</div>
 
@@ -4000,13 +3991,13 @@ This might be a more readable option on long condition chains.
 <br><br>
 For example:
 <div class="code">match {
-case x > 10 || x < 90:
+| x > 10 || x < 90:
     // Body
-case my_bool:
+| my_bool:
     // Body
-case y == 100:
+| y == 100:
     // Body
-default:
+|:
     // Body
 }</div>
 
@@ -4014,37 +4005,38 @@ default:
 <div class="sub-title">Multiple Case Expression</div>
 You can have a single algorithm for multiple cases.
 For this, you can give more than one expression for a case.
-The only addition in syntax is commas between statements.
+The only addition in syntax is vline operator (<x class="inline_code">|</x>) between expressions.
 
 <br><br>
 For example:
 <div class="code">match X {
-case Y, Z, V:
+| Y | Z | V:
     // Body
-case A, B:
+| A | B:
     // Body
-case C:
+| C:
     // Body
-default:
+|:
     // Body
 }</div>
 
 <div class="title-separator"><div>
 <div class="sub-title">The <x class="inline_code">fallthrough</x> Keyword</div>
-The fallthrough keyword can only useable into case scopes and end of the scopes. It continues to next scope.
+The fallthrough keyword can only useable into case scopes and end of the scopes.
+It continues to next scope.
 
 <br><br>
 For example:
 <div class="code">match {
-case false:
+| false:
     outln("Case1")
-case true:
+| true:
     outln("Case2")
     fallthrough
-case false:
+| false:
     outln("Case3")
     fallthrough
-default:
+|:
     outln("Default")
 }</div>
 
@@ -4088,7 +4080,7 @@ For example:
 <div class="code">fn main() {
     for {
         match {
-        case true:
+        | true:
             break
         }
     }
@@ -4107,7 +4099,7 @@ For example:
 loop:
     for {
         match {
-        case true:
+        | true:
             break loop
         }
     }
