@@ -585,8 +585,8 @@ const basics_commentsHTML = `
   Jule supports both of these common approaches.
 
   <div class="title-separator"></div>
-  <div class="sub-title">Signleline Comments</div>
-  <div class="code">// Signleline comment</div>
+  <div class="sub-title">Singleline Comments</div>
+  <div class="code">// Singleline comment</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Multiline Comments</div>
