@@ -509,9 +509,13 @@ Attachments should be placed at the end and separated by underscore.
 Up to two annotations can be used.
 If you use a single annotation, this annotation can be both an operating system and an archtitecture annotation.
 If you use two annotations, the first annotation must be the operating system and the second annotation must be architecture.
+If there is no underscore, the entire name can also be matched.
 
 <br><br>
 For example:
+<div class="code">darwin.jule</div>
+<div class="code">arm64.jule</div>
+<div class="code">unix_amd64.jule</div>
 <div class="code">example_amd64.jule</div>
 <div class="code">example_windows_amd64.jule</div>
 <div class="code">example_darwin_arm64.jule</div>
