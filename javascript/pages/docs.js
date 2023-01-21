@@ -3542,7 +3542,7 @@ Support us to improve the documentation.
 // ------------------------------------------------------------------------------
 
 const TAB_types_str_constructor = `
-<div class="sub-sub-title"><x class="inline_code">fn str(obj: any) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn str(obj: any): str</x></div>
 Returns string value of given object.
 `;
 
@@ -3552,45 +3552,45 @@ Character count of string.
 `;
 
 const TAB_types_str_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
 Reports string is empty or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn has_prefix(sub: str) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn has_prefix(sub: str): bool</x></div>
 Reports string has prefix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn has_suffix(sub: str) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn has_suffix(sub: str): bool</x></div>
 Reports string has suffix as specified substring or not.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn find(sub: str) int</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn find(sub: str): int</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at left of string to right.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn rfind(sub: str) int</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn rfind(sub: str): int</x></div>
 Returns index of first matched item with specified substring, returns <x class="inline_code">-1</x> if not exist any match. <br>
 Starts searching at right of string to left.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn trim(bytes: str) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn trim(bytes: str): str</x></div>
 Trims string by specified bytes at left.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn rtrim(bytes: str) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn rtrim(bytes: str): str</x></div>
 Trims string by specified bytes at right.
 Each character is each byte.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn split(sub: str, n: int) []str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn split(sub: str, n: int): []str</x></div>
 Splits the string into the specified number of parts to the specified substring. <br>
 Returns empty slice if <x class="inline_code">n</x> is equals to zero. <br>
 Returns all parts if <x class="inline_code">n</x> less than zero.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn replace(sub: str, new: str, n: int) str</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn replace(sub: str, new: str, n: int): str</x></div>
 Replaces all substrings matching <x class="inline_code">sub</x> in the string with <x class="inline_code">new</x>. <br>
 Returns same string if <x class="inline_code">n</x> is equals to zero. <br>
 Replaces all matches if <x class="inline_code">n</x> less than zero.
@@ -3602,7 +3602,7 @@ Length of array.
 `;
 
 const TAB_types_arrays_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
 Reports array is empty or not.
 `;
 
@@ -3612,7 +3612,7 @@ Length of slice.
 `;
 
 const TAB_types_slices_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
 Reports slice is empty or not.
 `;
 
@@ -3622,7 +3622,7 @@ Length of key-value pairs.
 `;
 
 const TAB_types_maps_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty() bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
 Reports map is empty or not.
 
 <div class="topic-separator"></div>
@@ -3630,7 +3630,7 @@ Reports map is empty or not.
 Removes all key-value pairs.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn has(key: KEY_TYPE) bool</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn has(key: KEY_TYPE): bool</x></div>
 Returns true if specified key value is exist in map, returns false if not.
 
 <div class="topic-separator"></div>
@@ -3638,11 +3638,11 @@ Returns true if specified key value is exist in map, returns false if not.
 Deletes key if exist.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn keys() []KEY_TYPE</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn keys(): []KEY_TYPE</x></div>
 Returns keys of key-value pairs as slice.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn values() []VALUE_TYPE</x></div>
+<div class="sub-sub-title"><x class="inline_code">fn values(): []VALUE_TYPE</x></div>
 Returns values of key-value pairs as slice.
 `;
 
