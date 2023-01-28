@@ -30,8 +30,7 @@ Recovers errors if exist and call given function with handled error instance.
 
 <div class="topic-separator"></div>
 <div class="code">//jule:typearg
-type[T]
-fn new(): &T</div>
+fn new[T](): &T</div>
 Returns reference to new heap-allocation of data type if allocation is success, panics if not.
 
 <div class="topic-separator"></div>
@@ -39,8 +38,7 @@ Returns reference to new heap-allocation of data type if allocation is success, 
 Returns new instance of data type for supported types.
 
 <div class="topic-separator"></div>
-<div class="code">type[Item]
-fn copy(mut dest: []Item, src: []Item): int</div>
+<div class="code">fn copy[Item](mut dest: []Item, src: []Item): int</div>
 Copies components of source slice to destination slice.
 Returns number of copied components.
 <br><br>
@@ -49,8 +47,7 @@ Special cases are: <br>
 <li><x class="inline_code">copy[Item](dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">type[Item]
-fn append(src: []Item, components: ...Item): []Item</div>
+<div class="code">fn append[Item](src: []Item, components: ...Item): []Item</div>
 Creates new required sized slice. Copies all components
 of given source slice and appends given components to end of new slice.
 Returns new slice, not changes given source slice.

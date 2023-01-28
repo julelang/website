@@ -3304,10 +3304,14 @@ Therefore, they can be used for type annotation in variable and similar definiti
 </div>
 
 <div class="warn">Generics are never supports shadowing.</div>
-<br>
-For example:
-<div class="code">type[T]
-fn sum(a: T, b: T) T {
+
+
+<div class="title-separator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Generics for Functions</div>
+
+<div class="warn">Genericed functions never can used as anonymous function or type annotation!</div>
+
+<div class="code">fn sum[T](a: T, b: T) T {
     let x: T = a + b
     ret x
 }
@@ -3319,27 +3323,22 @@ fn main() {
 }</div>
 
 There is a use for a generic type annotation, as seen in the example above.
-Use the <x class="inline_code">type</x> keyword with brackets and write the identifier of the generic type.
+Use the brackets and write the identifier of the generic type.
 To specify a type for a generic type, you specify the data type in brackets.
 
 <div class="topic-separator"></div>
 
-To specify multiple different generic types, sequential specification or comma-separation syntaxes are available;
-<div class="code">type[T1]
-type[T2]
-fn example_func(a: T1, b: T2) {}</div>
-
-<div class="code">type[T1, T2]
-fn example_func1(a: T1, b: T2) {}</div>
+To specify multiple different generic types, comma-separation syntax are available;
+<div class="code">fn example_func[T1, T2](a: T1, b: T2) {}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title" style="margin-bottom: 20px;">Generics for Structure</div>
 Structures support generics.
-There is no additional syntax to use it. Combine only what you know with the struct declaration.
+There is no additional syntax to use it.
+Combine only what you know with the struct declaration.
 <br><br>
 For example:
-<div class="code">type[T]
-struct Position {
+<div class="code">struct Position[T] {
     x: T
     y: T
 }</div>
@@ -3357,8 +3356,7 @@ For example:
 Dynamic generic annotation can be used if all generic types are detectable by the compiler.
 <br><br>
 For example:
-<div class="code">type[Key, Value]
-fn print_map(map: [Key:Value]) {
+<div class="code">fn print_map[Key, Value](map: [Key:Value]) {
     for key, value in map {
         out(key)
         out(": ")
