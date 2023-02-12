@@ -2376,9 +2376,6 @@ It is guaranteed that no allocation goes unnoticed and is also not released whil
 <div class="title-separator"></div>
 <div class="sub-title">References</div>
 References are heap allocation data types.
-They are always allocated, they cannot be <x class="inline_code">nil</x>.
-Safe Jule forces you to initialize them.
-Just like constant variables, references must be initialized as soon as they are declared.
 A reference is annotated by an <x class="inline_code">&</x> operator.
 <br><br>
 A reference is always heap-allocation and is always within the reference counting.
@@ -2409,47 +2406,72 @@ You can't use as reference these types:
 <ul>
   <li>Enum</li>
   <li>Pointer</li>
-  <li>Trait</li>
   <li>Reference</li>
-  <li>Slice</li>
   <li>Array</li>
 </ul>
 
 <div class="title-separator"></div>
-<div class="sub-title">Initialization</div>
-References must initialize explicitly at declaration.
-A reference is never allocated by the compiler.
-The developer should explicitly allocate them.
-Although it is very easy to do this with the new function, there is an exception.
-The compiler is really obsessed with this explicit initialization.
-If you want to initialize the struct with a reference type field with the new function, you will obviously encounter an error.
-In this case you have to explicitly initialize the fields as well.
-For this, it is necessary to use a reference literal.
-<br><br>
-This can be frustrating in some cases.
-But it's actually quite helpful behavior for the developer.
-A reference used anywhere will always be initialized, encourages you to guarantee this.
-You also have more awareness of how the reference is initialized.
-<br><br>
-The <x class="inline_code">new</x> function is used to perform a heap allocation for references. <br>
-It is a builtin function. <br>
+<div class="sub-sub-title">Initialization</div>
+The built-in <x class="inline_code">new</x> function is used to make the reference.
 Please refer to the <a href="stdlib/builtin.html">builtin</a> library documentation for this function.
+<br><br>
+It can be used in two ways.
+The first type allows you to get only one reference, but that reference is an uninitialized reference, meaning it does not point to any allocation and does not perform reference counting.
 <br><br>
 For example:
 <div class="code">fn main() {
-    let x = new(int)
+    let x = new(int, 100)
     outln(x)
 }</div>
-The <x class="inline_code">x</x> variable is a heap allocated reference.
+The <x class="inline_code">x</x> variable is integer reference, but not have allocation.
+<br><br>
+The second type is references initialized with a value.
+These references are initialized with an allocation when they are created and perform reference counting, the given value is assigned to the created allocation.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let x = new(int, 100)
+    outln(x)
+}</div>
+The <x class="inline_code">x</x> variable is a heap-allocated reference initialized with 100.
+
+<div class="topic-separator"></div>
+References that are automatically initialized by the compiler are created as null references.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let x = make([]&int, 1)
+    outln(real(x[0])) // false
+}</div>
 
 <div class="title-separator"></div>
-<div class="sub-title"><x class="inline_code">nil</x> Support</div>
-References can't be <x class="inline_code">nil</x> (aka null). 
-A reference can never be <x class="inline_code">nil</x> throughout its lifetime.
-Access to references must always be safe.
+<div class="sub-sub-title">Allocation Management</div>
+References can be <x class="inline_code">nil</x> (aka null). 
+This is safe, when a <x class="inline_code">nil</x> reference is used unsafe it will give you a panic that it is nil.
+When a reference is set to nil, the reference count continues to run.
+So when you assign to nil any reference, this reference countdown by reference count and deallocates if necessary.
+<br><br>
+Classic assignment cannot be made to assign a reference to nil.
+Classic assignments are always assignments to the data carried by the reference.
+If the data type carried by the reference is nil compatible, the nil assignment is made to the data it contains.
+<br><br>
+Assigning a reference to nil does not make all references to be set to nil.
+It simply ensures that the relevant reference no longer performs reference counting and disposes of ownership of the allocation.
+<br><br>
+The built-in <x class="inline_code">drop</x> function drops allocation and reference counting, sets reference to nil.
+If you want to check if the reference is zero and has allocation, use the built-in <x class="real">real</x> function.
+The <x class="real">real</x> function returns boolean.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let mut x = new(int, 20)
+    outln(real(x)) // true
+    drop(x)
+    outln(real(x)) // false
+}</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Understanding Reference Counting</div>
+<div class="sub-sub-title">Understanding Reference Counting</div>
 A reference counting heap counts each time it gets a reference to a dedicated pointer.
 It is deducted from the count when it loses its references.
 When the reference count reaches zero, it releases the allocation as it is no longer used.
@@ -2459,30 +2481,30 @@ Therefore, it does not host variable loads at runtime like the garbage collector
 Reference counting offers the developer a deterministic memory management.
 <br><br>
 For example:
-<div class="code">fn main() {
+<div class="code">fn test() {
 
-    // Make heap-allocation, returns heap-allocated &int
+    // Make heap-allocation, returns heap-allocated &int initialized with 100
     // Ref count is 1
-    let mut x = new(int)
-    
-    // Assign 100 expression to allocation
-    x = 100
+    let mut x = new(int, 100)
 
     // Prints 100
     outln(x)
 
-    // Make new heap-allocation, ref count is 1
+    // Make new heap-allocation with 50, ref count is 1
     // Frees old allocation because ref count is 0 now
-    x = new(x)
+    x = new(int, 50)
 
     // Ref count is 2 now of current allocation
     // The y referencing to allocation of x
     let y = x
 
+    // Prints 50
+    outln(y)
+
 } // Frees allocation because ref count is 0, destroyed all references</div>
 
 <div class="title-separator"></div>
-<div class="sub-title">Critical Points</div>
+<div class="sub-sub-title">Critical Points</div>
 Jule has language-integrated concurrency and for concurrency, reference counting should be atomic.
 Reference counting may not occur correctly if there is no atomicity in concurrency.
 That is, when a reference is referenced by a different reference, it must do so in an atomic way.
@@ -2516,6 +2538,36 @@ List of all types which is performs reference counting:
   <li>Any</li>
   <li>Trait</li>
 </ul>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Using References with Reference-Counted Types</div>
+Data types that already perform reference counting can be used with references if supported.
+This does not pose any problem.
+References perform a reference counting in themselves, if the data they carry has a reference counting, it does not interfere with them.
+<br><br>
+If the reference count of the migrated data has not reached zero, but the reference carrying it has now released its allocation, there is no problem.
+This is because the reference counting and allocation control of the data it carries take place independently.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let ref = new([]int, [1, 2, 3, 4])
+    let s: []int = ref
+    drop(ref)
+    outln(s)
+}</div>
+The <x class="inline_code">ref</x> variable holds a slice.
+Slices are data types that perform reference counting in themselves.
+The slice carried by the reference is assigned to the variable <x class="inline_code">s</x> and then the reference is dropped, this reference will make the counting zero, so the allocation of the reference is freed.
+<br><br>
+This does not pose any problem.
+Everything works normally when the variable <x class="inline_code">s</x> is printed.
+The reference count of the slice did not reach zero and therefore its allocation was not released.
+The allocation of the reference passed to the variable <x class="inline_code">s</x> as a copy, not a pointer.
+For this reason, slice continued to protect its own allocation.
+
+<div class="info">
+This happens the same for all reference-counted data types supported by references.
+</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Slices</div>

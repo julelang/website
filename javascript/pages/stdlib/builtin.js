@@ -9,29 +9,40 @@ Is an alias for i32.
 It is used, by convention, to distinguish character values from integer values.`;
 
 const stdlib_builtin_functionsHTML = `
-<div class="sub-sub-title"><x class="inline_code">fn out(expr)</x></div>
+<div class="code">fn out(expr)</div>
 Prints specified expression to command line.
 Uses built-in formatter.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn outln(expr)</x></div>
+<div class="code">fn outln(expr)</div>
 This function same with <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn panic(error: any)</x></div>
+<div class="code">fn panic(error: any)</div>
 Panics program with given error data.
 The data converting to str and panics with
 Error trait compatible structure instance.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">fn recover(handler: fn(Error))</x></div>
+<div class="code">fn recover(handler: fn(Error))</div>
 Recovers errors if exist and call given function with handled error instance.
 
 <div class="topic-separator"></div>
-<div class="code">//jule:typearg
-fn new[T](): &T</div>
-Returns reference to new heap-allocation of data type if allocation is success, panics if not.
+<div class="code">fn new(TYPE): &TYPE</div>
+Returns nil reference of data type.
+
+<div class="topic-separator"></div>
+<div class="code">fn new(TYPE, EXPRESSION): &TYPE</div>
+Returns reference to new heap-allocation initialized with expression of data type if allocation is success, panics if not.
+
+<div class="topic-separator"></div>
+<div class="code">fn drop(&TYPE)</div>
+Drops allocation and reference counting of reference.
+
+<div class="topic-separator"></div>
+<div class="code">fn real(&TYPE): bool</div>
+Reports reference is not nil.
 
 <div class="topic-separator"></div>
 <div class="code">fn make(X, ...Y): X</div>
