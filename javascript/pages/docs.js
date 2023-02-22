@@ -2959,7 +2959,7 @@ const types_strHTML = `
 <div class="text">
 <div class="tabcontrol">
   <div id="tab-types-str-constructor" class="tab" onclick="select_tab_event(0)">Constructor</div>
-  <div id="tab-types-str-constants" class="tab" onclick="select_tab_event(1)">Constants</div>
+  <div id="tab-types-str-fields" class="tab" onclick="select_tab_event(1)">Fields</div>
   <div id="tab-types-str-methods" class="tab" onclick="select_tab_event(2)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
@@ -2971,7 +2971,6 @@ const types_arraysHTML = `
 <div class="text">
 <div class="tabcontrol">
   <div id="tab-types-arrays-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
-  <div id="tab-types-arrays-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2981,8 +2980,7 @@ const types_slicesHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Slices</div>
 <div class="text">
 <div class="tabcontrol">
-  <div id="tab-types-slices-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
-  <div id="tab-types-slices-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
+  <div id="tab-types-slices-fields" class="tab" onclick="select_tab_event(0)">Fields</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -2992,7 +2990,7 @@ const types_mapsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Maps</div>
 <div class="text">
 <div class="tabcontrol">
-  <div id="tab-types-maps-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-types-maps-fields" class="tab" onclick="select_tab_event(0)">Fields</div>
   <div id="tab-types-maps-methods" class="tab" onclick="select_tab_event(1)">Methods</div>
 </div>
 <div class="tabcontrol-content"></div>
@@ -3596,16 +3594,13 @@ const TAB_types_str_constructor = `
 Returns string value of given object.
 `;
 
-const TAB_types_str_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
-Character count of string.
+const TAB_types_str_fields = `
+<div class="sub-sub-title"><x class="inline_code">len: int</x></div>
+Character count of string. <br>
+It is can constant if string is literal.
 `;
 
 const TAB_types_str_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
-Reports string is empty or not.
-
-<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">fn has_prefix(sub: str): bool</x></div>
 Reports string has prefix as specified substring or not.
 
@@ -3651,31 +3646,17 @@ const TAB_types_arrays_constants = `
 Length of array.
 `;
 
-const TAB_types_arrays_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
-Reports array is empty or not.
-`;
-
-const TAB_types_slices_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
+const TAB_types_slices_fields = `
+<div class="sub-sub-title"><x class="inline_code">len: int</x></div>
 Length of slice.
 `;
 
-const TAB_types_slices_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
-Reports slice is empty or not.
-`;
-
-const TAB_types_maps_constants = `
-<div class="sub-sub-title"><x class="inline_code">const len: int</x></div>
+const TAB_types_maps_fields = `
+<div class="sub-sub-title"><x class="inline_code">len: int</x></div>
 Length of key-value pairs.
 `;
 
 const TAB_types_maps_methods = `
-<div class="sub-sub-title"><x class="inline_code">fn empty(): bool</x></div>
-Reports map is empty or not.
-
-<div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">fn clear()</x></div>
 Removes all key-value pairs.
 
@@ -4329,13 +4310,11 @@ nav.navigations = [
 const tabs = [
   // ID - HTML
   ["tab-types-str-constructor",             TAB_types_str_constructor],
-  ["tab-types-str-constants",               TAB_types_str_constants],
+  ["tab-types-str-fields",                  TAB_types_str_fields],
   ["tab-types-str-methods",                 TAB_types_str_methods],
   ["tab-types-arrays-constants",            TAB_types_arrays_constants],
-  ["tab-types-arrays-methods",              TAB_types_arrays_methods],
-  ["tab-types-slices-constants",            TAB_types_slices_constants],
-  ["tab-types-slices-methods",              TAB_types_slices_methods],
-  ["tab-types-maps-constants",              TAB_types_maps_constants],
+  ["tab-types-slices-fields",               TAB_types_slices_fields],
+  ["tab-types-maps-fields",                 TAB_types_maps_fields],
   ["tab-types-maps-methods",                TAB_types_maps_methods],
   ["tab-type-statics-i8-constants",         TAB_type_statics_i8_constants],
   ["tab-type-statics-i16-constants",        TAB_type_statics_i16_constants],
