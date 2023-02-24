@@ -128,7 +128,7 @@ const getting_started_install_from_sourceHTML = `
   This scripts written for compile the JuleC.
   If you execute script, result is be compilation error or complete message.
 
-  <div class="warn">These examples assume you are in the source code (src) directory of the JuleC.</div>
+  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
@@ -149,17 +149,17 @@ const getting_started_install_from_sourceHTML = `
   <div class="title-separator"></div>
   <div class="sub-title">Manual</div>
   JuleC is written in Go, for now!
-  <div class="warn">These examples assume you are in the root directory of the JuleC.</div>
+  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
-  <div class="code">$ go build -o julec.exe -v src\\cmd\\julec\\main.go</div>
+  <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   Using example for Bash;
-  <div class="code">$ go build -o julec -v src/cmd/julec/main.go</div>
+  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
 </div>
 `;
 

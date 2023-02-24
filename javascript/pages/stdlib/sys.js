@@ -2457,6 +2457,156 @@ const stdlib_sys_globalsHTML = `
 <x class="inline_code">darwin_arm64</x>
 </div>
 
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_ACCESS_DENIED</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_ALREADY_EXISTS</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_BROKEN_PIPE</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_BUFFER_OVERFLOW</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_DIR_NOT_EMPTY</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_ENVVAR_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_FILE_EXISTS</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_FILE_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_HANDLE_EOF</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_INSUFFICIENT_BUFFER</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_IO_PENDING</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_MOD_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_MORE_DATA</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_NETNAME_DELETED</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_NO_MORE_FILES</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_OPERATION_ABORTED</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_PATH_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_PRIVILEGE_NOT_HELD</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_PROC_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const WSAEACCES</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const WSAECONNABORTED</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const WSAECONNRESET</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const MAX_PATH</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const MAX_LONG_PATH</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
 `;
 
 const stdlib_sys_functionsHTML = `
@@ -2470,6 +2620,7 @@ If s includes NULL character at any location, ignores followed characters.
 <div class="topic-separator"></div>
 <div class="code">fn utf16_to_str(s: []u16): str</div>
 Returns the UTF-8 encoding of the UTF-16 sequence s, with a terminating NULL removed.
+Returns empty string if s is nil.
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
@@ -2491,43 +2642,31 @@ Returns the UTF-8 encoding of the UTF-16 sequence s, with a terminating NULL rem
 Returns number of last error.
 
 <div class="topic-separator"></div>
-<div class="code">fn stat(path: str): (stat: &Stat)</div>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">
-Calls C's wstat function. <br>
-Returns nil reference if error occurs.
-</div>
-
-<strong>Unix:</strong>
-<div style="margin-left: 10px">
-Calls C's stat function. <br>
-Returns nil reference if error occurs.
+<div class="code">unsafe fn stat(path: *byte, mut stat: *Stat): int</div>
+Calls C's stat function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
 </div>
 
 <div class="topic-separator"></div>
-<div class="code">fn open_dir(path: str): &Dir</div>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">
-Calls C's _wopendir function. <br>
-Returns nil reference if error occurs.
-</div>
-
-<strong>Unix:</strong>
-<div style="margin-left: 10px">
-Calls C's opendir function. <br>
-Returns nil reference if error occurs.
+<div class="code">unsafe fn wstat(path: *u16, mut stat: *Stat): int</div>
+Calls C's wstat function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
 
 <div class="topic-separator"></div>
-<div class="code">fn open(path: str, flag: int, mode: int): int</div>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">
-Wrapper for C's _wopen function.
-</div>
-
-<strong>Unix:</strong>
-<div style="margin-left: 10px">
+<div class="code">unsafe fn open(path: *byte, flag: int, mode: int): int</div>
 Wrapper for C's open function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn _wopen(path: *u16, flag: int, mode: int): int</div>
+Wrapper for C's _wopen function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
 
 <div class="topic-separator"></div>
@@ -2535,7 +2674,7 @@ Wrapper for C's open function.
 Wrapper for C's lseek function.
 
 <div class="topic-separator"></div>
-<div class="code">fn read(handle: int, mut buff: []byte): int</div>
+<div class="code">unsafe fn read(handle: int, mut buff: *unsafe, n: uint): int</div>
 Wrapper for C's read function.
 
 <div class="topic-separator"></div>
@@ -2543,86 +2682,128 @@ Wrapper for C's read function.
 Wrapper for C's close function.
 
 <div class="topic-separator"></div>
-<div class="code">fn write(handle: int, buff: []byte): int</div>
+<div class="code">unsafe fn write(handle: int, buff: *unsafe, n: uint): int </div>
 Wrapper for C's write function.
+
+<div class="topic-separator"></div>
+<div class="code">fn get_last_error(): u32</div>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn get_current_directory(bufflen: u32, mut buff: *u16): u32</div>
+Reads working directory into buff and returns readed rune count of current process.
+Returns 0 if fail.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn set_current_directory(path: *u16): bool</div>
+Sets working directory to path.
+Reports operation is success.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn getcwd(buff: *byte, bufflen: uint): *byte</div>
+Reads current working directory into buff.
+Returns pointer to buff if success, nil pointer if error occurs.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn u16_ptr_to_str(s: *u16): str</div>
+Returns the UTF-8 encoding of the UTF-16 sequence s in *u16 form, with a terminating NULL removed.
+Returns empty string if s is nil.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn opendir(path: *byte): *Dir</div>
+Calls C's opendir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn _wopendir(path: *u16): *Wdir</div>
+Calls C's _wopendir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn readdir(mut dir: *Dir): *Dirent</div>
+Calls C's readdir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn _wreaddir(mut dir: *Wdir): *Wdirent</div>
+Calls C's _wreaddir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn closedir(mut dir: *Dir): int</div>
+Calls C's closedir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn _wclosedir(mut dir: *Wdir): int</div>
+Calls C's _wclosedir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
 
 `;
 
 const stdlib_sys_structsHTML = `
-<div class="code">struct Stat</div>
-Wrapper for C's stat.
-<br><br>
-<strong>Methods:</strong> <br><br>
-<div class="inline_code">fn addr(self): uintptr</div> <br>
-Returns handle as uintptr.
-
-<div class="title-separator"></div>
-<div class="inline_code">fn mode(self): uint</div> <br>
-Return st_mode field of handle. <br>
-Returns 0, if handle is nil.
-
-<div class="title-separator"></div>
-<div class="inline_code">fn size(self): uint</div> <br>
-Return st_size field of handle. <br>
-Returns 0 if handle is nil.
+<div class="code">struct Stat {
+    st_mode: uint
+    st_size: uint
+}</div>
+C's stat.
 
 <div class="topic-separator"></div>
-<div class="code">struct Dirent</div>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">Wrapper for C's _wdirent.</div>
+<div class="code">struct Wdirent {
+    d_name: *u16
+}</div>
+C's _wdirent.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
 
-<strong>Unix:</strong>
-<div style="margin-left: 10px">Wrapper for C's dirent.</div>
+<div class="topic-separator"></div>
+<div class="code">struct Dirent {
+    d_name: *byte
+}</div>
+C's dirent.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
 
-<br><br>
-<strong>Methods:</strong> <br><br>
-<div class="inline_code">fn addr(self): uintptr</div> <br>
-Returns handle as uintptr.
-
-<div class="title-separator"></div>
-<div class="inline_code">fn name(self): str</div> <br>
-Returns d_name field of handle as string. <br>
-Returns empty string if handle is nil.
+<div class="topic-separator"></div>
+<div class="code">struct Wdir</div>
+C's _WDIR.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
 
 <div class="topic-separator"></div>
 <div class="code">struct Dir</div>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">Wrapper for C's _WDIR.</div>
-
-<strong>Unix:</strong>
-<div style="margin-left: 10px">Wrapper for C's DIR.</div>
-
-<br><br>
-<strong>Methods:</strong> <br><br>
-<div class="inline_code">fn addr(self): uintptr</div> <br>
-Returns handle as uintptr.
-
-<div class="title-separator"></div>
-<div class="inline_code">fn close(mut self): int</div> <br>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">
-Calls C's _wclosedir function with handle. <br>
-Returns 0 if handle is nil.
-</div>
-
-<strong>Unix:</strong>
-<div style="margin-left: 10px">
-Calls C's closedir function with handle. <br>
-Returns 0 if handle is nil.
-</div>
-
-<div class="title-separator"></div>
-<div class="inline_code">fn read(mut self): (dirent: &Dirent)</div> <br>
-<strong>Windows:</strong>
-<div style="margin-left: 10px; margin-bottom: 10px;">
-Calls C's _wreaddir function with handle and returns Dirent. <br>
-Returns nil reference if handle is nil or _wreaddir returns nil.
-</div>
-
-<strong>Unix:</strong>
-<div style="margin-left: 10px">
-Calls C's readdir function with handle and returns Dirent. <br>
-Returns nil reference if handle is nil or readdir returns nil.
+C's DIR.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
 </div>
 
 `;
