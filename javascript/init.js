@@ -47,7 +47,7 @@ document.getElementById('navigation').innerHTML =
   src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg?sanitize=true">
 </a>
 <div id="navigation-links">
-  <a href="${rootPath}/pages/docs.html">DOCUMENTATIONS</a>
+  <a href="${rootPath}/pages/manual.html">MANUAL</a>
   <a href="${rootPath}/pages/community.html">COMMUNITY</a>
   <a href="${rootPath}/pages/contributing.html">CONTRIBUTE</a>
 </div>
@@ -88,8 +88,8 @@ body.innerHTML +=
     </td>
     <td>
       <div class="footer-title">Get Started</div>
-      <a href="${rootPath}/pages/docs.html">Documentations</a> <br>
-      <a href="${rootPath}/pages/docs.html?page=stdlib">Standard Library</a> <br>
+      <a href="${rootPath}/pages/manual.html">Manual</a> <br>
+      <a href="${rootPath}/pages/manual.html?page=stdlib">Standard Library</a> <br>
       <a href=""></a> <br>
       <a href=""></a> <br>
       <a href=""></a>

@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD 3-Clause
 // license that can be found in the LICENSE file.
 
-const page_title = `Jule - Documentations`;
-
 const jule_langHTML = `
 <div class="title">The <x style="color: #5F7389;">Jule</x> Programming Language</div>
 <br>
@@ -503,7 +501,7 @@ File Annotation enables a source file to be classified by operating system or ar
 If there is a platform or operating system that does not comply with Annotation, the source file is not included in the compilation.
 This is a compiler feature that can help with platform specific development.
 These annotations are available for all supported operating systems and architects.
-Check out <a href="docs.html?page=compiler-platform-support">these documents</a> to see the supported operating systems and architectures.
+Check out <a href="manual.html?page=compiler-platform-support">these documents</a> to see the supported operating systems and architectures.
 <br><br>
 Attachments should be placed at the end and separated by underscore.
 Up to two annotations can be used.
@@ -1199,7 +1197,7 @@ For example:
     }
 }</div>
 
-<a href="docs.html?page=unsafe-jule">See more information about Unsafe Jule</a>
+<a href="manual.html?page=unsafe-jule">See more information about Unsafe Jule</a>
 
 <div class="title-separator"></div>
 <div class="sub-title">Deferred Unsafe Blocks</div>
@@ -1224,7 +1222,7 @@ const common_conceptsHTML = `
   Variables, functions...
   <br><br>
   Some examples of the subtopics of this section and the following sections require knowledge of immutability of Jule.
-  Please if you don't have any idea abot immutability of Jule, read the <a href="docs.html?page=memory-immutability">immutability</a> documentations.
+  Please if you don't have any idea abot immutability of Jule, read the <a href="manual.html?page=memory-immutability">immutability</a> documentations.
 </div>
 `;
 
@@ -1555,7 +1553,7 @@ For each identifier, the function has a variable initialized in its scope.
 <br><br>
 As noticed, they are mutable variables by default.
 This is because of some of compiler obsessions.
-Please refer to the <a href="docs.html?page=memory-immutability">immutability documentations</a> if you don't know anything about it.
+Please refer to the <a href="manual.html?page=memory-immutability">immutability documentations</a> if you don't know anything about it.
 
 <div class="topic-separator"></div>
 Also, a function that has at least one return type identifier does not have to have a return expression.
@@ -2060,7 +2058,7 @@ For example:
 <x class="inline_code">pos</x> variable is the reference points to heap-allocated <x class="inline_code">Position</x> structure instance.
 
 <div class="warn">
-If you not have any idea about references, check the <a href="./docs.html?page=memory-memory-management">memory management documentations</a>.
+If you not have any idea about references, check the <a href="./manual.html?page=memory-memory-management">memory management documentations</a>.
 </div>
 
 </div>
@@ -2293,7 +2291,7 @@ The <x class="inline_code">y</x> variable is now store memory address of <x clas
 
 <div class="warn">
 What follows is related to Unsafe Jule.
-If you're not familiar with this topic, check out the <a href="docs.html?page=unsafe-jule">Unsafe Jule documentations</a>.
+If you're not familiar with this topic, check out the <a href="manual.html?page=unsafe-jule">Unsafe Jule documentations</a>.
 </div>
 
 <div class="title-separator"></div>
@@ -2638,7 +2636,7 @@ Let's take a look at the unsafe behaviors listed above:
 <div class="title-separator"></div>
 <div class="sub-title">Break Immutability</div>
 If a variable is immutable and has mutable data type, Safe Jule does not allow assigning it to a mutable variable.
-Memory safety on this is mentioned in the <a href="docs.html?page=memory-immutability">immutability</a> documentations.
+Memory safety on this is mentioned in the <a href="manual.html?page=memory-immutability">immutability</a> documentations.
 There is a way to break it. It naturally means breaking safety as well, but you are conscious of it.
 Unsafe Jule does not encourage you to be safe about it.
 
@@ -4144,12 +4142,6 @@ Because the "loop" label used by the <x class="inline_code">break</x> keyword in
 
 <div class="info">These labels are not special for that, so <x class="inline_code">goto</x> keyword can use these labels.</div>
 `;
-
-//#region SET_PAGE
-
-document.title = page_title;
-
-//#endregion SET_PAGE
 
 //#region GET_ELEMENTS
 
