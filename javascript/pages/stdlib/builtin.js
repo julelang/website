@@ -9,13 +9,13 @@ Is an alias for i32.
 It is used, by convention, to distinguish character values from integer values.`;
 
 const stdlib_builtin_functionsHTML = `
-<div class="code">fn out(expr)</div>
-Prints specified expression to command line.
+<div class="code">fn out(v)</div>
+Prints value to command line.
 Uses built-in formatter.
 
 <div class="topic-separator"></div>
-<div class="code">fn outln(expr)</div>
-This function same with <x class="inline_code">out</x> function.
+<div class="code">fn outln(v)</div>
+This function same with the <x class="inline_code">out</x> function.
 One difference, prints new line after print.
 
 <div class="topic-separator"></div>
@@ -29,40 +29,52 @@ Error trait compatible structure instance.
 Recovers errors if exist and call given function with handled error instance.
 
 <div class="topic-separator"></div>
-<div class="code">fn new(TYPE): &TYPE</div>
+<div class="code">fn new(T): &T</div>
 Returns nil reference of data type.
 
 <div class="topic-separator"></div>
-<div class="code">fn new(TYPE, EXPRESSION): &TYPE</div>
+<div class="code">fn new(T, v: T): &T</div>
 Returns reference to new heap-allocation initialized with expression of data type if allocation is success, panics if not.
 
 <div class="topic-separator"></div>
-<div class="code">fn drop(&TYPE)</div>
+<div class="code">fn drop(&T)</div>
 Drops allocation and reference counting of reference.
 
 <div class="topic-separator"></div>
-<div class="code">fn real(&TYPE): bool</div>
+<div class="code">fn real(&T): bool</div>
 Reports reference is not nil.
 
 <div class="topic-separator"></div>
-<div class="code">fn make(X, ...Y): X</div>
-Returns new instance of data type for supported types.
+<div class="code">fn make(T, ...V): T</div>
+Returns new instance of data type for supported types. <br>
+<li>Slices:</li>
+<ol>
+Allocates slice with dynamic size. <br>
+Size 0 will accept as nil slice.
+</ol>
 
 <div class="topic-separator"></div>
-<div class="code">fn copy[Item](mut dest: []Item, src: []Item): int</div>
-Copies components of source slice to destination slice.
-Returns number of copied components.
+<div class="code">fn copy(mut dest: []T, src): int</div>
+Copies elements of source to destination slice. <br>
+Returns number of copied elements. <br>
+Source can be any data type that supported by destination type.
+<br><br>
+<li>Byte Slices:</li>
+<ol>
+Strings are valid data types for byte slices. <br>
+Casting is not necessary.
+</ol>
 <br><br>
 Special cases are: <br>
-<li><x class="inline_code">copy[Item](dest, src) = length accepts as src.len if dest.len > src.len</x></li>
-<li><x class="inline_code">copy[Item](dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
+<li><x class="inline_code">copy(dest, src) = length accepts as src.len if dest.len > src.len</x></li>
+<li><x class="inline_code">copy(dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">fn append[Item](src: []Item, components: ...Item): []Item</div>
-Creates new required sized slice. Copies all components
-of given source slice and appends given components to end of new slice.
+<div class="code">fn append(src: []T, values: ...T): []T</div>
+Creates new required sized slice.
+Copies all elements of given source slice and appends given values to end of new slice.
 Returns new slice, not changes given source slice.
-If you want append components to source slice, assign returned slice.
+If you want append values to source slice, assign returned slice.
 
 `;
 

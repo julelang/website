@@ -94,7 +94,7 @@ Possible errors:
 <x class="inline_code">UnableStream</x>
 <x class="inline_code">NoSpace</x>
 <x class="inline_code">NotDir</x>
-<x class="inline_code">NoResponse</x>
+<x class="inline_code">Divice</x>
 <x class="inline_code">Overflow</x>
 <x class="inline_code">ReadOnly</x>
 <x class="inline_code">Retry</x>
@@ -162,7 +162,7 @@ Possible errors:
 <x class="inline_code">Overflow</x>
 <x class="inline_code">Buffer</x>
 <x class="inline_code">InsufficientMemory</x>
-<x class="inline_code">NoResponse</x>
+<x class="inline_code">Divice</x>
 <x class="inline_code">Seek</x>
 
 <div class="title-separator"></div>
@@ -182,7 +182,7 @@ Possible errors:
 <x class="inline_code">Range</x>
 <x class="inline_code">SyncIO</x>
 <x class="inline_code">Seek</x>
-<x class="inline_code">NoResponse</x>
+<x class="inline_code">Divice</x>
 <x class="inline_code">Buffer</x>
 
 <div class="title-separator"></div>
@@ -219,7 +219,7 @@ const stdlib_fs_enumsHTML = `
     <li><x class="inline_code">IsDir</x>: The named file is a directory and flag includes O_WRONLY or O_RDWR</li>
     <li><x class="inline_code">UnableStream</x>: The path argument names a STREAMS-based file and the system is unable to allocate a STREAM</li>
     <li><x class="inline_code">NoSpace</x>: There is no space on the drive</li>
-    <li><x class="inline_code">NoResponse</x>: Divice did not respond</li>
+    <li><x class="inline_code">Divice</x>: Divice did not respond</li>
     <li><x class="inline_code">ReadOnly</x>: Read-only filesystem</li>
     <li><x class="inline_code">Retry</x>: Resource temporarily unavailable</li>
     <li><x class="inline_code">Busy</x>: File is busy</li>

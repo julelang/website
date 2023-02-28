@@ -2458,6 +2458,18 @@ const stdlib_sys_globalsHTML = `
 </div>
 
 <div class="topic-separator"></div>
+<div class="inline_code">const PATH_MAX</div> <br>
+<div class="warn">
+<strong>Available on: </strong>
+<x class="inline_code">darwin_amd64</x>
+<x class="inline_code">darwin_arm64</x>
+<x class="inline_code">linux_amd64</x>
+<x class="inline_code">linux_arm</x>
+<x class="inline_code">linux_arm64</x>
+<x class="inline_code">linux_i386</x>
+</div>
+
+<div class="topic-separator"></div>
 <div class="inline_code">const ERROR_ACCESS_DENIED</div> <br>
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
@@ -2518,6 +2530,12 @@ const stdlib_sys_globalsHTML = `
 </div>
 
 <div class="topic-separator"></div>
+<div class="inline_code">const ERROR_INVALID_NAME</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
 <div class="inline_code">const ERROR_IO_PENDING</div> <br>
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
@@ -2543,6 +2561,12 @@ const stdlib_sys_globalsHTML = `
 
 <div class="topic-separator"></div>
 <div class="inline_code">const ERROR_NOT_FOUND</div> <br>
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="inline_code">const ERROR_NOT_READY</div> <br>
 <div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
@@ -2720,6 +2744,11 @@ Returns pointer to buff if success, nil pointer if error occurs.
 Returns the UTF-8 encoding of the UTF-16 sequence s in *u16 form, with a terminating NULL removed.
 Returns empty string if s is nil.
 <div class="warn">
+You can pass wchar_t pointer to this function, it's valid. <br>
+If you passing wchar_t pointer, cast to u16 pointer. <br>
+Otherwise generated C++ code does not compile.
+</div>
+<div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
 
@@ -2765,18 +2794,36 @@ Calls C's _wclosedir function.
 <strong>Available on: </strong> <x class="inline_code">windows</x>
 </div>
 
+<div class="topic-separator"></div>
+<div class="code">fn exit(code: int)</div>
+Wrapper for C's exit.
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn chdir(path: *byte): int</div>
+Calls for C's chdir function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn get_full_path_name(path: *u16, bufflen: u32, buff: *u16, fname: **u16): u32</div>
+Calls Windows's GetFullPathNameW function.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
 `;
 
 const stdlib_sys_structsHTML = `
 <div class="code">struct Stat {
-    st_mode: uint
-    st_size: uint
+    st_mode: uint // _mode_t
+    st_size: uint // _off_t
 }</div>
 C's stat.
 
 <div class="topic-separator"></div>
 <div class="code">struct Wdirent {
-    d_name: *u16
+    d_name: *u16 // wchar_t*
 }</div>
 C's _wdirent.
 <div class="warn">
@@ -2785,7 +2832,7 @@ C's _wdirent.
 
 <div class="topic-separator"></div>
 <div class="code">struct Dirent {
-    d_name: *byte
+    d_name: *byte // char*
 }</div>
 C's dirent.
 <div class="warn">
