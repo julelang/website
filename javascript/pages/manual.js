@@ -1928,6 +1928,14 @@ The above enumeration has the data type <x class="inline_code">u8</x>.
 
 <div class="warn">You can use only integer or str data types.</div>
 
+<div class="title-separator"></div>
+<div class="sub-title">Default Values</div>
+The default values ​​of enums are always what is the default value of the data type they use.
+For example, <x class="inline_code">0</x> for <x class="inline_code">int</x> and empty string for <x class="inline_code">str</x>.
+If your enum definition should always define a default field, set its first field to the default value.
+In this way, your compiler-initiated enum value will be exist in fields.
+If you don't do this, the developers will not be able to match the enum value in code at all if the default value is not present in the fields.
+
 </div>
 `;
 
