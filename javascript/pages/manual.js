@@ -3547,6 +3547,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
   <li><a href="../pages/stdlib/errors.html">std::errors</a></li>
   <li><a href="../pages/stdlib/fs.html">std::fs</a></li>
+  <li><a href="../pages/stdlib/fs_path.html">std::fs::path</a></li>
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
