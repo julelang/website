@@ -255,7 +255,7 @@ The recommended order is to write the options first and then give the compiler i
 
 <br><br>
 For example;
-<div class="code">$ julec -t --compiler clang main.jule</div>
+<div class="code">$ julec -t --compiler clang .</div>
 The example code above means: "Hey compiler, transpile main.jule's content using the clang compiler standard."
 
 <div class="title-separator"></div>
@@ -338,14 +338,25 @@ We have a <x class="inline_code">main.jule</x> file:
 
 <br>
 <br>
-For compile Jule code, we just give filename to JuleC:
-<div class="code">julec main.jule</div>
+For compile Jule code, we just give current directory path to JuleC:
+<div class="code">julec .</div>
 And compiler is transpile our Jule code to C++ code. <br>
 Result is created by settings file and compile if mode setted as <x class="inline_code">compile</x>.
 In build mode, JuleC will show you the build command itself on the command line, which is used during compilation.
 You can also set the mod to <x class="inline_code">transpile</x> and choose to compile manually, or you can write a script that compiles the code after you have it in C++ form using the transpile mode to experience compile mode.
 <br><br>
 As result we have a executable machine code result of our program.
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Why JuleC Needs Directory Path Instead File Path?</div>
+In Jule, each program is also a package.
+Jule source codes in the directory are accepted within the package.
+Accordingly, every directory is actually a potential Jule package.
+The directory of the program you will compile should be the main package of your program.
+<br><br>
+This also eliminates the need to link individual source codes to the compiler and significantly avoids the occurrence of long compiler commands.
+It makes it easy to understand which of the source codes are in the main program, the answer is simple: all the Jule source codes in the directory.
+Because of this approach, each Jule program is kept in a separate directory as a package, causing optimistic pressure on the project organization.
 
 </div>
 `;
@@ -376,6 +387,10 @@ The source directory is the directory where your project's source codes are loca
 It is recommended that you keep the source code of the language or languages you are using in this directory.
 If your project has more than one language, you can separate the languages in different directories in this directory.
 The same method can be applied if you have more than one program.
+<br><br>
+You can place your source code files directly in this directory.
+But if there is more than one program source code from your project, you can create a new directory under this directory for each program.
+In addition, if you wish, you can store the source code in a directory specific to your program, even though it is your only program.
 
 <div class="title-separator"></div>
 <div class="sub-title">Scripts</div>
