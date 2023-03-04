@@ -1355,6 +1355,46 @@ For example:
 This way you ignore some values.
 
 <div class="title-separator"></div>
+<div class="sub-sub-title">Assignment and Definition Simultaneously</div>
+Script: You have multiple assignments, but some of your variables need to be defined for the first time while some of your variables are assigned.
+<br><br>
+Jule's approach in this regard is that both can occur simultaneously if certain rules are met.
+If you are using a variable defined in the same scope, the variable will not be evaluated according to the definition rules.
+This will not cause you to get an error about it.
+Your variable is handled according to the assignment rules.
+So the errors we can get will be typical assignment errors like mutability or type safety.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let (mut x, y) = 10, 20
+    let (x, z) = 100, 30
+    outln(x) // 100
+    outln(y) // 20
+    outln(z) // 30
+}</div>
+In the example above, the variable <x class="inline_code">x</x> is set to mutable.
+Since it is again in a multiple assignment within the same scope, it is treated according to the assignment rules, not the rebuild rules.
+While assigning to the <x class="inline_code">x</x> variable, the <x class="inline_code">z</x> variable does not exist, so it is newly created.
+<br><br>
+The point that should not be missed is that the relevant variable must be in exactly the same scope.
+If a variable from the global scope is used, it will not be considered as assignment.
+Likewise, if the variable comes from parent scopes, it is still not considered an assignment.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let (x, y) = 100, 200
+    {
+        let (x, z) = 10, 20
+        outln(x) // 10
+        outln(y) // 200
+        outln(z) // 20
+    }
+    outln(x) / 100
+}</div>
+In the above example, the variable <x class="inline_code">x</x> is not considered an assignment because it comes from the parent scope.
+If you want to perform an assignment, you must use a clean assignment statement.
+
+<div class="title-separator"></div>
 <div class="sub-title">Shadowing</div>
 In the basic sense, shadowing is when a definition with the same identifier shadows a define with the same identifier before it in scope.
 This is made possible by performing a new definition in subscopes of a scope with the name of a definition defined in that parent scope, or by using the identifier of a global definition in the main scope of a function.
