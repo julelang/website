@@ -2308,6 +2308,8 @@ const memory_immutabilityHTML = `
 }</div>
 Currently we want our variable as mutable so the compiler doesn't object to anything.
 
+<div class="info">All literals and received pointers are considered mutable.</div>
+
 <div class="title-separator"></div>
 <div class="sub-title">Interior Mutability</div>
 When an instance of a struct is immutable, you cannot use it with mutable methods because this compromises its immutability guarantee.
@@ -2367,7 +2369,11 @@ For example:
 }</div>
 The <x class="inline_code">y</x> variable is now store memory address of <x class="inline_code">x</x> variable.
 
-<div class="title-separator"></div>
+<div class="warn">
+Pointers are taken as each mutable.
+</div>
+
+<div class="topic-separator"></div>
 
 <div class="warn">
 What follows is related to Unsafe Jule.
@@ -2719,6 +2725,18 @@ If a variable is immutable and has mutable data type, Safe Jule does not allow a
 Memory safety on this is mentioned in the <a href="manual.html?page=memory-immutability">immutability</a> documentations.
 There is a way to break it. It naturally means breaking safety as well, but you are conscious of it.
 Unsafe Jule does not encourage you to be safe about it.
+<br><br>
+The knowledge that the pointers are obtained as mutable when they are received is important in this regard.
+So if you take the pointer of an immutable variable and use it mutable, you can change the data of the immutable variable.
+Since you can only assign to pointers with Unsafe Jule, you will be aware that this is already an action that can create unsafety.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let x = 10
+    let mut xp = &x
+    unsafe { *xp += 20 }
+    outln(x) // 30
+}</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Derefence a Raw Pointer</div>
@@ -3629,6 +3647,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/fs.html">std::fs</a></li>
   <li><a href="../pages/stdlib/fs_path.html">std::fs::path</a></li>
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
+  <li><a href="../pages/stdlib/jule.html">std::jule</a></li>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
   <li><a href="../pages/stdlib/mem.html">std::mem</a></li>
