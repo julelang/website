@@ -4154,8 +4154,8 @@ For example:
 }</div>
 
 <div class="title-separator"><div>
-<div class="sub-title">The <x class="inline_code">fallthrough</x> Keyword</div>
-The fallthrough keyword can only useable into case scopes and end of the scopes.
+<div class="sub-title">The <x class="inline_code">fall</x> Keyword</div>
+The fall keyword can only useable into case scopes and end of the scopes.
 It continues to next scope.
 
 <br><br>
@@ -4165,10 +4165,10 @@ For example:
     outln("Case1")
 | true:
     outln("Case2")
-    fallthrough
+    fall
 | false:
     outln("Case3")
-    fallthrough
+    fall
 |:
     outln("Default")
 }</div>
@@ -4177,6 +4177,25 @@ Output:
 <div class="code">Case2
 Case3
 Default</div>
+
+<div class="title-separator"><div>
+<div class="sub-title">Type Matching</div>
+The <x class="inline_code">any</x> data type may contain any data and you may want to execute different algorithms based on this data, in which case type matching is useful.
+Type matching is easy.
+Just use the keyword <x class="inline_code">type</x> and then use the data type in case to match.
+<br><br>
+For example:
+<div class="code">fn main() {
+    let x: any = 10
+    match type x {
+    | int:
+        outln("integer")
+    | f32 | f64:
+        outln("floating-point")
+    |:
+        outln("other")
+    }
+}</div>
 
 `;
 
