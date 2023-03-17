@@ -51,7 +51,7 @@ For 'e', 'E', 'f', 'x', and 'X', it is the number of digits after the decimal po
 For 'g' and 'G' it is the maximum number of significant digits (trailing
 zeros are removed).
 The special precision -1 uses the smallest number of digits
-necessary such that ParseFloat will return f exactly.
+necessary such that parse_float will return f exactly.
 
 <div class="topic-separator"></div>
 <div class="code">fn parse_int(mut s: str, base: int, mut bit_size: int): (i64, ConvError)</div>
