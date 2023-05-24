@@ -2744,12 +2744,15 @@ Returns pointer to buff if success, nil pointer if error occurs.
 Returns the UTF-8 encoding of the UTF-16 sequence s in *u16 form, with a terminating NULL removed.
 Returns empty string if s is nil.
 <div class="warn">
-You can pass wchar_t pointer to this function, it's valid. <br>
-If you passing wchar_t pointer, cast to u16 pointer. <br>
-Otherwise generated C++ code does not compile.
-</div>
-<div class="warn">
 <strong>Available on: </strong> <x class="inline_code">windows</x>
+</div>
+
+<div class="topic-separator"></div>
+<div class="code">unsafe fn char_ptr_to_str(s: *cpp.char): str</div>
+Returns the string of s, with a terminating NULL removed. \
+Returns empty string if pointer is nil.
+<div class="warn">
+<strong>Available on: </strong> <x class="inline_code">unix</x>
 </div>
 
 <div class="topic-separator"></div>

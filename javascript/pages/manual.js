@@ -1661,23 +1661,6 @@ fn main() {
 <div class="warn">You can't use multiple returnable functions combined with normal multiple assignments.</div>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Multiple Returns as Argument(s)</div>
-When you have a function that returns more than one value and you want to send these return values to another matching function, it is not a necessity but a preference to assign the variable one by one and then give it as an argument to the function.
-Jule automatically maps the returned values as arguments to the corresponding function call, respectively, if the arguments match the parameters. <br>
-For example:
-<div class="code">fn multi_ret_func(): (int, str, byte) { ret 143, "STR", 'W' }
-
-fn my_print(a: int, b: str, c: byte) {
-    outln(a)
-    outln(b)
-    outln(c)
-}
-
-fn main() {
-    my_print(multi_ret_func())
-}</div>
-
-<div class="title-separator"></div>
 <div class="sub-sub-title">Multiple Returns as Multiple Return</div>
 When you have a function that returns more than one value, and to use these return values as a return value in another function that returns exactly the same, using a variable too is not a necessity but a preference.
 Jule allows you to use the return values of a multi-return function as the return value and automatically maps the values if the return values and data types match exactly. <br>
@@ -3184,7 +3167,7 @@ const type_statics_f32HTML = `
 <div class="page-title" style="margin-bottom: 20px;">f32</div>
 <div class="text">
 <div class="tabcontrol">
-  <div id="tab-type-statics-f32_constants" class="tab" onclick="select_tab_event(0)">Constants</div>
+  <div id="tab-type-statics-f32-constants" class="tab" onclick="select_tab_event(0)">Constants</div>
 </div>
 <div class="tabcontrol-content"></div>
 </div>
@@ -3357,6 +3340,13 @@ These type aliases are for linking unavoidable types to Jule.
 <br><br>
 For example:
 <div class="code">cpp type wchar_t: u16</div>
+
+<div class="warn">
+You bind bound types from C++ in accordance with the types they target.
+But that doesn't mean you can use them directly in that type.
+Linked types are internally compatible.
+They must be cast when they are intended to be used with the type they are targeted when linking.
+</div>
 
 <div class="title-separator"></div>
 <div class="sub-title">Using Linked Definitions</div>
