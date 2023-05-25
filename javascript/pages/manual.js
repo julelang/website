@@ -553,34 +553,28 @@ This will cause you to get an error by the compiler and not be able to compile t
 </div>
 `;
 
-const project_definesHTML = `
-<div class="page-title" style="margin-bottom: 20px;">Defines</div>
+const project_cyclesHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Cycles</div>
 <div class="text">
-Definitions only allow the use of declarations that have been declared before them.
+Illegal cycles occur when the program will have an invalid runtime cycle.
 <br><br>
-You might see something similar in some programming languages;
-<div class="code">This is a pseudocode!
+For example:
+<div class="code">struct A {
+    b: B
+}
 
-DEFINE A = B + 100
-DEFINE B = 100
-</div>
+struct B {
+    a: A
+}</div>
+In the example above, both structures refer directly to each other. This is an illegal cycle.
 
-In the above example, the <x class="inline_code">A</x> variable uses the <x class="inline_code">B</x> variable while getting the value.
-As can be seen, the <x class="inline_code">B</x> variable is declared after the <x class="inline_code">A</x> variable.
-In this case, the JuleC will throw an error.
-In the Jule source code, <x class="inline_code">B</x> must have been declared before.
+<div class="topic-separator"></div>
 
-<div class="title-separator"></div>
-<div class="sub-title">Define Order</div>
-The example seen above is due to the definition order logic.
-Jule has a priority queue that it uses to process definitions.
-It is useful to pay attention to this.
-<br><br>
-<strong>Order (High to Low);</strong>
-<div style="margin-top: 5px;"></div>
-<li>Use Declarations</li>
-<li>Type Aliases, Globals, Structures, Enums</li>
-<li>Functions</li>
+<div class="code">struct A {
+  a: A
+}</div>
+In the example above, structure refers directly to itself. This is an illegal cycle.
+
 </div>
 `;
 
@@ -4270,7 +4264,7 @@ const NAV_project                             = document.getElementById('project
 const NAV_project_directory_order             = document.getElementById('project-directory-order');
 const NAV_project_naming                      = document.getElementById('project-naming');
 const NAV_project_declarations                = document.getElementById("project-declarations");
-const NAV_project_defines                     = document.getElementById("project-defines");
+const NAV_project_cycles                      = document.getElementById("project-cycles");
 const NAV_basics                              = document.getElementById('basics');
 const NAV_basics_comments                     = document.getElementById('basics-comments');
 const NAV_basics_reserved_functions           = document.getElementById('basics-reserved-functions');
@@ -4349,7 +4343,7 @@ nav.navigations = [
   [NAV_project_directory_order,             project_directory_orderHTML],
   [NAV_project_naming,                      project_namingHTML],
   [NAV_project_declarations,                project_declarationsHTML],
-  [NAV_project_defines,                     project_definesHTML],
+  [NAV_project_cycles,                      project_cyclesHTML],
   [NAV_basics,                              basicsHTML],
   [NAV_basics_comments,                     basics_commentsHTML],
   [NAV_basics_reserved_functions,           basics_reserved_functionsHTML],
