@@ -22,25 +22,6 @@ Identifier of entry point function.
 <div class="topic-separator"></div>
 <div class="sub-sub-title"><x class="inline_code">const INIT_FN: str</x></div>
 Identifier of initializer function.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">let STDLIB_PATH: str</x></div>
-Absolute directory path of standard library.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">let EXEC_PATH: str</x></div>
-Absolute directory path of compiler (JuleC). <br>
-Actually, this package and sub-packages designed for JuleC. <br>
-So returns JuleC's executable file path. <br>
-But actually returns executable path of current program.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">let WORKING_PATH: str</x></div>
-Absolute directory path of working path of compiler (JuleC). <br>
-Actually, this package and sub-packages designed for JuleC. <br>
-So returns JuleC's working path. <br>
-But actually returns working path of current program.
-
 `;
 
 const NAV_stdlib_jule_globals = document.getElementById("globals");
