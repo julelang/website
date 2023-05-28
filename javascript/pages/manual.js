@@ -1249,12 +1249,6 @@ For example:
 <div class="code">let age = 18</div>
 The data type of the above variable is defaulted to <x class="inline_code">int</x>.
 
-<div class="warn">
-Variables must be initialized when declaring.
-Otherwise, the compiler will throw an error.
-It is one of the compiler's obsessions that encourages the developer to develop safe software.
-</div>
-
 <div class="title-separator"></div>
 <div class="sub-title">Type Annotation</div>
 You may want to annotate the type, it is possible.
@@ -1280,6 +1274,15 @@ We mentioned that it has advantages, let's take a look;
   It can help avoid possible confusion.
   </li>
 </ul>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Auto Initialization</div>
+In case of type annotation, the default value is initialized by the compiler.
+Variables do not need to be explicitly initialized when the type is annotated.
+<br><br>
+For example:
+<div class="code">let a: int</div>
+
 
 <div class="title-separator"></div>
 <div class="sub-title">Assignment</div>
