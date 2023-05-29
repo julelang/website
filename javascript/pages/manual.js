@@ -3077,6 +3077,12 @@ const type_staticsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Type Statics</div>
 <div class="text">
 
+Type statics are types-specific static definitions. <br>
+They can be accessed by double colons.
+<br><br>
+For example:
+<div class="code">int::MAX</div>
+
 </div>
 `;
 
@@ -3763,90 +3769,90 @@ Returns values of key-value pairs as slice.
 `;
 
 const TAB_type_statics_i8_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: i8</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: i8</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: i8</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: i8</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_i16_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: i16</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: i16</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: i16</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: i16</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_i32_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: i32</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: i32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: i32</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_i64_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: i64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: i64</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: i64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: i64</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_u8_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: u8</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: u8</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_u16_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: u16</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: u16</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_u32_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: u32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: u32</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_u64_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: u64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: u64</x></div>
 Maximum value of type.
 `;
 
 const TAB_type_statics_f32_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: f32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: f32</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: f32</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: f32</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_f64_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: f64</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: f64</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: f64</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_int_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: int</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: int</x></div>
 Maximum value of type.
 
 <div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const min: int</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MIN: int</x></div>
 Minimum value of type.
 `;
 
 const TAB_type_statics_uint_constants = `
-<div class="sub-sub-title"><x class="inline_code">const max: uint</x></div>
+<div class="sub-sub-title"><x class="inline_code">const MAX: uint</x></div>
 Maximum value of type.
 `;
 
