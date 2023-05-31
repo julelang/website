@@ -2169,7 +2169,7 @@ For example:
 <div class="code">const PI = 3.14159265359
 
 trait Shape {
-    fn area(self): int
+    fn area(self): f32
 }
 
 struct Rectangle {
@@ -2178,7 +2178,7 @@ struct Rectangle {
 }
 
 impl Shape for Rectangle {
-    fn area(self): int {
+    fn area(self): f32 {
         ret self.width * self.height
     }
 }
@@ -2188,7 +2188,7 @@ struct Circle {
 }
 
 impl Shape for Circle {
-    fn area(self): int {
+    fn area(self): f32 {
         ret PI * self.r * self.r
     }
 }
@@ -2634,6 +2634,62 @@ This happens the same for all reference-counted data types supported by referenc
 </div>
 
 <div class="title-separator"></div>
+<div class="sub-sub-title">Reference Cycles</div>
+
+Jule does not handle reference cycles.
+Obviously this can create a significant overhead at runtime and is a negative factor in program runtime for performance-critical software development processes.
+Therefore, reference cycles should be considered by the developer.
+What makes cycles so important is not that they cause any errors at runtime, it's that they can leak memory.
+<br><br>
+If the references point to each other or to themselves, a cycle occurs, and even if it goes out of use, the allocation is not freed, so memory leaks can occur.
+The best way to avoid this is to consider cycles in the programming phase.
+<br><br>
+For example:
+<div class="code">struct A {
+    b: &B
+}
+
+struct B {
+    a: &A
+}
+
+fn main() {
+    let mut a = &A{}
+    let mut b = &B{}
+    a.b = b
+    b.a = a
+}</div>
+
+There is a cycle in the above code.
+Obviously this cycle is creates a memory leak.
+If there is such a cycle risk, the easiest and shortest solution is to drop the references so that the cycle will break.
+<br><br>
+For example:
+<div class="code">struct A {
+  b: &B
+}
+
+struct B {
+  a: &A
+}
+
+fn main() {
+  let mut a = &A{}
+  let mut b = &B{}
+  a.b = b
+  b.a = a
+  drop(b.a)
+}</div>
+
+The reference count cycle is broken as one of the parties causing the cycle is removed, so there shouldn't be any memory leaks in the above code.
+<br><br>
+Software developers may not always have code that they can cycle through.
+But when cycles do occur, they can be difficult to spot and locate.
+So just being a little more careful when there are potential cycle situations can make things a lot safer.
+
+</div>
+
+<div class="title-separator"></div>
 <div class="sub-title">Slices</div>
 Slices have a capacity, but don't free unused capacities.
 This capacity can be used during slicing.
@@ -2651,8 +2707,6 @@ For example;
     s = s[:5] // [1 2 3 4 5]
     outln(s)
 }</div>
-
-</div>
 `;
 
 const unsafe_juleHTML = `
@@ -3613,6 +3667,21 @@ fn main() {
 As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
 
 <div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Cycles</div>
+
+Import cycles are dependency cycles that shouldn't be, they are dependencies that don't make sense technically.
+When one or more packages exhibit an infinite state of interdependence, this is indicated by a compiler message.
+The compiler captures and handles these cycles, allowing the developer to understand and remediate logic errors of package dependencies.
+<br><br>
+It is an illegal cycle when a package tries to import itself within itself. <br>
+Logically, a package cannot be self-dependent.
+<br><br>
+This invalid dependency status is also valid if the package has dependencies on itself from different packages.
+For example, if one of the package's dependencies is dependent on the package itself, it's still an invalid cycle.
+This also applies to nested dependencies.
+
 </div>
 `;
 
