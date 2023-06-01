@@ -813,7 +813,7 @@ const basics_data_typesHTML = `
     </tr>
     <tr>
       <td style="text-align: center; font-family: 'Code';">any</td>
-      <td>Any.</td>
+      <td>Any type.</td>
     </tr>
   </table>
 
@@ -934,7 +934,7 @@ new
   Only supports equals (==) and not equals (!=) operators.
   <br><br>
   <x class="inline_code">x == y</x>: true if x and y is nil <br>
-  <x class="inline_code">x == y</x>: true if x and y has same data type
+  <x class="inline_code">x == y</x>: true if x and y has same data type and returns true of equals operator of data type for two value
 </div>
 `;
 
