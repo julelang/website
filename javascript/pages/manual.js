@@ -3419,25 +3419,33 @@ For example:
 
 <div class="title-separator"></div>
 <div class="sub-title">Example to Interoperability</div>
-<strong>sum_integers.hpp</strong>
-<div class="code">i64_jt sum_integers(const slice_jt&lt;int_jt&gt; &_Slice) {
-    i64_jt total{ 0 };
-    for (const auto x: _Slice) {
+File: <strong>sum.hpp</strong>
+<div class="code">using namespace jule;
+
+Int sum(const Slice<Int> slice) {
+    Int total{ 0 };
+    for (const Int x: slice)
         total += x;
-    }
     return total;
 }</div>
 
-<strong>main.jule</strong>
-<div class="code">use cpp "sum_integers.hpp"
+File: <strong>main.jule</strong>
+<div class="code">use cpp "sum.hpp"
 
-cpp fn sum_integers([]int): i64
+cpp fn sum([]int): int
 
 fn main() {
-    let slice = [90, 34, 63, -34, 3246, -95, 734, 0, 3]
-    let total = cpp.sum_integers(slice)
+    let numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+    let total = cpp.sum(numbers)
     outln(total)
 }</div>
+
+The above example demonstrates the interoperability of Jule with a C++ function that returns total of all values of an integer slice.
+The C++ header file is written entirely using the Jule API.
+The <x class="inline_code">Int</x>, and <x class="inline_code">Slice</x> types used are part of the API.
+The <x class="inline_code">Int</x> data type is equally sensitive to system architecture as in Jule.
+The Jule source code declares to use <x class="inline_code">sum.hpp</x> first and binds the C++ function in it to Jule accordingly.
+Then a call is made from Jule and the result of the function is written to the command line.
 
 
 </div>
