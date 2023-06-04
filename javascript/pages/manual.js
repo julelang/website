@@ -1959,7 +1959,7 @@ In this case, the element <x class="inline_code">both</x> in the example above h
 
 <div class="info">
   <li>You can use an element before them as a value in enumerations.</li>
-  <li>Enumerations has <x class="inline_code">i64</x> data type by default.</li>
+  <li>Enumerations has <x class="inline_code">int</x> data type by default.</li>
 </div>
 <div class="warn">You can't use any global, function or etc. in custom value expressions.</div>
 
@@ -1987,6 +1987,33 @@ For example, <x class="inline_code">0</x> for <x class="inline_code">int</x> and
 If your enum definition should always define a default field, set its first field to the default value.
 In this way, your compiler-initiated enum value will be exist in fields.
 If you don't do this, the developers will not be able to match the enum value in code at all if the default value is not present in the fields.
+
+<div class="title-separator"></div>
+<div class="sub-title">Casting</div>
+You may want to cast your enum for various reasons.
+Normal casting rules apply here. When casting an enum value, it is based on the enum value type.
+<br><br>
+<div class="code">enum MyEnum {
+    MyVal = 10
+}
+
+fn main() {
+    _ = (int)(MyEnum.MyVal)
+    _ = (u8)(MyEnum.MyVal)
+}</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Type Safety</div>
+
+Enums consider themselves a data type.
+Therefore, even an enum with an int data type cannot be handled directly with an int data type.
+Enum type only considers itself as a valid type.
+<br><br>
+It must be cast in order to be processed with different types, but due to type safety.
+However, you also cannot cast an integer value to an enum that uses the integer type.
+Assignments should always be of their own type.
+<br><br>
+Enum basically supports <x class="inline_code">==</x> and <x class="inline_code">!=</x> operators. But for enum types using integer, you can also use the <x class="inline_code">|</x> and <x class="inline_code">&</x> operators.
 
 </div>
 `;
@@ -3135,7 +3162,7 @@ Type statics are types-specific static definitions. <br>
 They can be accessed by double colons.
 <br><br>
 For example:
-<div class="code">int::MAX</div>
+<div class="code">int.MAX</div>
 
 </div>
 `;
@@ -3649,12 +3676,54 @@ fn main() {
     std::pkg::a_function()
 }</div>
 
+<div class="warn">You can't select same identifier with other use declarations.</div>
+
 <div class="title-separator"></div>
 <div class="sub-title">Shadowing</div>
 When you import, definitions using the same identifier are shaded.
 When there is a conflict, the compiler will use the first imported definition.
-When a definition made and an imported definition have the same identifier, you will get a compiler error if it is not shadowable.
 One solution might be to use the namespace notation to access shaded definitions.
+<br><br>
+For example:
+<div class="code">use std::foo::* // Includes run function
+use std::bar::* // Includes run function
+
+fn main() {
+    run()           // Calls std::foo::run
+    std::foo::run() // Calls std::foo::run
+    std::bar::run() // Calls std::bar::run
+}</div>
+
+<div class="topic-separator"></div>
+
+However, directly imported definitions can be shaded.
+<br><br>
+For example:
+<div class="code">use std::foo::* // Includes pow function
+
+fn pow() {}
+
+fn main() {
+    pow() // Calls pow, not std::foo:pow
+}</div>
+
+But, any definition you explicitly import is treated as a native definition. A definition with the same identifier cannot be included in your source code in that file.
+<br><br>
+For example:
+<div class="code">use std::foo::{pow}
+
+fn pow() {} // Error: duplicated identifier
+
+fn main() {}</div>
+
+Likewise, you cannot shade definitions that you have explicitly imported before during import.
+<br><br>
+For example:
+<div class="code">use std::foo::{run}
+use std::bar::{run} // Error: duplicated identifier
+
+fn main() {}</div>
+
 
 <div class="title-separator"></div>
 <div class="sub-title">Packages</div>
