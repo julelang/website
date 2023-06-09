@@ -3449,7 +3449,7 @@ For example:
 File: <strong>sum.hpp</strong>
 <div class="code">using namespace jule;
 
-Int sum(const Slice<Int> slice) {
+Int sum(const Slice&lt;Int&gt; slice) {
     Int total{ 0 };
     for (const Int x: slice)
         total += x;
