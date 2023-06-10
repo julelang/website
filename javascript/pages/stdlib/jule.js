@@ -3,25 +3,6 @@ const stdlib_jule_globalsHTML = `
 Version of package and sub-packages. <br>
 This version represents also JuleC version.
 
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const EXT: str</x></div>
-Extension (includes dot) of Jule source code files.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const API: str</x></div>
-Directory name of JuleC++ API.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const STDLIB: str</x></div>
-Directory name of standard library.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const ENTRY_POINT: str</x></div>
-Identifier of entry point function.
-
-<div class="topic-separator"></div>
-<div class="sub-sub-title"><x class="inline_code">const INIT_FN: str</x></div>
-Identifier of initializer function.
 `;
 
 const NAV_stdlib_jule_globals = document.getElementById("globals");

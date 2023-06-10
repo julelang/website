@@ -3787,6 +3787,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/fs_path.html">std::fs::path</a></li>
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
   <li><a href="../pages/stdlib/jule.html">std::jule</a></li>
+  <li><a href="../pages/stdlib/jule_build.html">std::jule::build</a></li>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
   <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
   <li><a href="../pages/stdlib/mem.html">std::mem</a></li>
