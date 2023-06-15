@@ -29,10 +29,10 @@ const preview_code_quicksortHTML =
 }
 
 fn main() {
-	let mut my_slice = [1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2]
-	outln(my_slice)
-	quicksort(my_slice)
-	outln(my_slice)
+    let mut my_slice = [1, 9, -2, 25, -24, 4623, 0, -1, 0xFD2]
+    outln(my_slice)
+    quicksort(my_slice)
+    outln(my_slice)
 }`;
 
 const preview_code_traitsHTML =

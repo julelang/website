@@ -136,6 +136,7 @@ Compiler directives.
 <ul>
 	<li><x class="inline_code">Cdef</x></li>
 	<li><x class="inline_code">Typedef</x></li>
+	<li><x class="inline_code">Derive</x></li>
 </ul>
 
 <div class="topic-separator"></div>
@@ -165,6 +166,16 @@ Architectures for file annotation kind.
 	<li><x class="inline_code">Bit32</x></li>
 	<li><x class="inline_code">Bit64</x></li>
 	
+</ul>
+
+<div class="topic-separator"></div>
+<div class="inline_code">enum Derives: str</div>
+<br><br>
+All built-in derive defines.
+<br><br>
+<strong>Fields:</strong>
+<ul>
+	<li><x class="inline_code">Clone</x></li>
 </ul>
 
 <div class="topic-separator"></div>

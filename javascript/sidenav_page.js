@@ -10,7 +10,7 @@ class SideNavigator {
     url              = null
     query_page       = null
     content_body     = null
-    
+
     prev_page = `
 <button id="@$" style="float: left; padding: 15px;">
   <x class="arrow left" style="margin-top: 5px; margin-left: 5px;"></x>

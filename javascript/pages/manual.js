@@ -230,6 +230,74 @@ The <x class="inline_code">32bit</x> includes:
 </div>
 `;
 
+const compiler_directivesHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Directives</div>
+<div class="text">
+
+Compiler directives (or pragma), they are statements that describe how the compiler should handle the source code.
+Directives are safe to use.
+Each one is essentially a comment.
+Any part or directive that is incorrect is considered invalid.
+You won't get a headache with any compiler errors.
+<br><br>
+For example to directives:
+<div class="code">//jule:typedef</div>
+As seen in the example, it is essentially a comment as explained.
+For a directive to be valid, it must be used correctly in the right place.
+The comment must be at the beginning of the line and begin with the <x class="inline_code">jule:</x> prefix.
+
+<div class="title-separator"></div>
+<div class="sub-title">Arguments</div>
+The arguments of the directives are separated by spaces.
+The directive must be followed by the required arguments, separated by spaces.
+<br><br>
+For example:
+<div class="code">//jule:derive Clone
+struct MyStruct {}</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Directive: typedef</div>
+In C++-linked structs, if the structure is a <x class="inline_code">typedef</x> use this will configure code generation correctly.
+Otherwise, the struct will be treated as a classical structures.
+
+<div class="title-separator"></div>
+<div class="sub-title">Directive: cdef</div>
+In C++-linked functions, if the function is a <x class="inline_code">#define</x>, it configures code generation to be compatible.
+
+<div class="title-separator"></div>
+<div class="sub-title">Directive: derive</div>
+Specify what additions the compiler will make. <br>
+Supported by only structures. <br>
+See more information about <a href="manual.html?page=compiler-deriving">deriving</a>.
+
+</div>
+`;
+
+const compiler_derivingHTML = `
+<div class="page-title" style="margin-bottom: 20px;">Deriving</div>
+<div class="text">
+Deriving is a set of behaviors or extensions that the compiler must implement for types.
+These are implemented by the compiler, the developer should only request them to be implemented.
+
+<div class="title-separator"></div>
+<div class="sub-title">Derive: Clone</div>
+<x class="inline_code">Clone</x> adds support to structs for the built-in <x class="inline_code">clone</x> function. <br>
+The compiler adds an algorithm that can deep copy every field of the structure at runtime.
+<br><br>
+For example:
+<div class="code">//jule:derive Clone
+struct SliceWrapper {
+    buffer: []int
+}</div>
+This may not always be possible.
+If the structure defines fields with a data type that does not support deep copy, the <x class="inline_code">Clone</x> derive will fail.
+<div class="info">
+    See more information about <a href="manual.html?page=memory-immutability">clonning supported types</a>.
+</div>
+
+</div>
+`;
+
 const compiler_compiler_optionsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Compiler Options</div>
 <div class="text">
@@ -465,12 +533,12 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Local Variable</td>
-    <td>camelCase</td>
+    <td>snake_case</td>
     <td>variable, my_variable</td>
   </tr>
   <tr>
     <td style="text-align: center;">Function</td>
-    <td>camelCase</td>
+    <td>snake_case</td>
     <td>function, my_function</td>
   </tr>
   <tr>
@@ -480,12 +548,12 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Method</td>
-    <td>camelCase</td>
+    <td>snake_case</td>
     <td>method, my_method</td>
   </tr>
   <tr>
     <td style="text-align: center;">Field</td>
-    <td>camelCase</td>
+    <td>snake_case</td>
     <td>field, my_field</td>
   </tr>
   <tr>
@@ -505,8 +573,8 @@ const project_namingHTML = `
   </tr>
   <tr>
     <td style="text-align: center;">Generic Type</td>
-    <td>PascalCase and _T extension, starts with T and continue with numbers or PascalCase</td>
-    <td>Generic_T, MyGeneric_T, T1, T2, T, Generic, GenericType</td>
+    <td>Starts with T and continue with numbers, or PascalCase</td>
+    <td>T1, T2, T, Generic, GenericType</td>
   </tr>
 </table>
 
@@ -930,11 +998,27 @@ new
 
   <div class="title-separator"></div>
   <div class="sub-title">any</div>
-  It can be hold any data type and nil.
+  It can be hold any data type and nil. <br>
   Only supports equals (==) and not equals (!=) operators.
   <br><br>
   <x class="inline_code">x == y</x>: true if x and y is nil <br>
   <x class="inline_code">x == y</x>: true if x and y has same data type and returns true of equals operator of data type for two value
+  <br><br>
+  Supports casting to any type. <br>
+  You can get type-safe value of <x class="inline_code">any</x> with casting. <br>
+  For example:
+  <div class="code">let my_any: any = 10
+let x = (int)(my_any)</div>
+  <br>
+  <x class="inline_code">any</x> type protects itself against mutability if necessary. <br>
+  For example, you have slice value holds by any-typed variable. <br>
+  And your variable is immutable. <br>
+  So, if you cast your value to slice for assign to mutable variable, you will get error. <br>
+  Because of slice is mutable type, so it's breaking immutability.
+  <div class="warn">
+  This is is very unsafe, also blocks deriving <x class="inline_code">Clone</x>. <br>
+  Avoid using any whenever possible.
+  </div>
 </div>
 `;
 
@@ -2087,8 +2171,8 @@ There are two types of receiver parameters;
 Reference receivers require the function to be a reference.
 The function can only be called from a reference instance of the structure.
 <br><br>
-<strong>Copy Receiver Parameter</strong> <br>
-Copy receivers, on the other hand, allow changes made within the function to be reflected in the structure if receiver is mutable.
+<strong>Receiver Parameter</strong> <br>
+Receivers, on the other hand, allow changes made within the function to be reflected in the structure if receiver is mutable.
 However, when the structure is given as arguments to different functions, or in a different state, it is copied.
 That is, it is only variable within itself.
 <div class="warn">Not deep copy.</div>
@@ -2106,9 +2190,9 @@ For example to receiver parameters:
 fn method(&self): str { /* Body */ }</div>
 <div class="code">// Mutable Reference Receiver
 fn method(mut &self): str { /* Body */ }</div>
-<div class="code">// Immutable Copy Receiver
+<div class="code">// Immutable Receiver
 fn method(self): str { /* Body */ }</div>
-<div class="code">// Mutable Copy Receiver
+<div class="code">// Mutable Receiver
 fn method(mut self): str { /* Body */ }</div>
 
 <br>
@@ -2251,8 +2335,6 @@ const memory_immutabilityHTML = `
   This is just one of the compiler's security obsessions.
   But right now, we're taking a look at another similar obsession: immutability by default!
   <br><br>
-  <div class="info">You can also see this approach in Rust.</div>
-  <br><br>
   The fact that a variable is immutable by default requires that you do so consciously if you want to change it.
   Let's see why this is a security obsession for the compiler:
   <br><br>
@@ -2260,6 +2342,8 @@ const memory_immutabilityHTML = `
   <ul>
     <li>Pointer</li>
     <li>Slice</li>
+    <li>Reference</li>
+    <li>Mutable Structures</li>
   </ul>
   These are types that point to commonalities among the variables with which they are shared.
   You may want to ensure that one of these types has not changed.
@@ -2289,7 +2373,7 @@ const memory_immutabilityHTML = `
   This stability of the compiler ensures that the developer always knows that all variables are immutable by default.
   This also helps the developer to understand what he or she is changing and will change while developing and reading algorithms.
   It is more obvious which variables should be paid attention to, especially when using concurrency.
-  
+
   <div class="title-separator"></div>
   <div class="sub-title">Mutability</div>
   Let's learn to say how we want a variable that is immutable by default to be mutable.
@@ -2316,6 +2400,49 @@ const memory_immutabilityHTML = `
 Currently we want our variable as mutable so the compiler doesn't object to anything.
 
 <div class="info">All literals and received pointers are considered mutable.</div>
+
+<div class="title-separator"></div>
+<div class="sub-title">Mutable Structures</div>
+Mutable structures are risky structures that can break immutability when directly copied.
+For a structure to be mutable, one of its fields must have an explicitly mutable data type.
+When a struct is mutable, it loses its ability to be copied.
+In this case, if you try to assign an immutable mutable struct instance to a mutable definition, you will fail because there is no copy and you risk breaking immutability.
+<br><br>
+See the example below for better understanding:
+<div class="code">struct Wrapper {
+    slc: []int
+}
+
+fn main() {
+    let x = Wrapper{slc: [1,2,3]}
+    let mut y = x
+    y.slc[0] = 89
+    outln(x.slc[0])
+    outln(y.slc[0])
+}</div>
+This structure is a mutable structure because it has a field with a mutable type.
+The slice that the structure contains is mutable when the structure is copied, and if the main structure is immutable, it risks this immutability of the structure.
+This is because the mutable copy points to the same address and the changes will affect the other copy.
+<br><br>
+The variable <x class="inline_code">x</x> in the example shows the case of keeping the mutable structure in an immutable variable.
+Then the <x class="inline_code">x</x> variable is copied and assigned to the mutable <x class="inline_code">y</x> variable, but this is a risky and unsafe operation as explained.
+<br><br>
+You can derive <x class="inline_code">Clone</x> to solve this problem. <br>
+For example:
+<div class="code">//jule:derive Clone
+struct Wrapper {
+    slc: []int
+}
+
+fn main() {
+    let x = Wrapper{slc: [1,2,3]}
+    let mut y = clone(x)
+    y.slc[0] = 89
+    outln(x.slc[0])
+    outln(y.slc[0])
+}</div>
+
+See <a href="manual.html?page=compiler-deriving">deriving</a> page for more information about <x class="inline_code">Clone</x> derive.
 
 <div class="title-separator"></div>
 <div class="sub-title">Interior Mutability</div>
@@ -2346,6 +2473,46 @@ That's why it can be changed in methods without the need for <x class="inline_co
 <br><br>
 The point that should not be forgotten in this regard is that even if there is interior mutability, this field cannot be changed from outside the structure with an immutable instance.
 Interior mutability only applies inside the structure itself.
+
+<div class="title-separator"></div>
+<div class="sub-title">Clonning</div>
+You may need to have deep copies for various reasons (for example assigning mutable struct in immutable variable to mutable variable).
+You can use the built-in <x class="inline_code">clone</x> function to do this.
+The <x class="inline_code">clone</x> function only supports some data types as input.
+To find out about them, you can refer to the <a href="../pages/stdlib/builtin.html?page=functions">relevant documents</a>.
+<br><br>
+Clonning supported types and copy methods:
+<ul>
+    <li>Numeric Types</li>
+    Returns copy of value.
+
+    <li><x class="inline_code">str</x></li>
+    Returns copy of value.
+
+    <li><x class="inline_code">bool</x></li>
+    Returns copy of value.
+
+    <li><x class="inline_code">[]T</x></li>
+    Clones slice with elements. <br>
+    Returns new independent mutable slice.
+
+    <li><x class="inline_code">[K:V]</x></li>
+    Clones map's keys and values. <br>
+    Returns new independent mutable map.
+
+    <li><x class="inline_code">&T</x></li>
+    Clones reference and type. <br>
+    Returns new independent reference clone of expression.
+
+    <li><x class="inline_code">*T</x></li>
+    Pointers are part of the Unsafe Jule. <br>
+    Always has risk of breaking immutability. <br>
+    The clone function just returns copy of pointer as mutable.
+
+    <li><x class="inline_code">jule:derive Clone</x></li>
+    Clones struct if derives <x class="inline_code">Clone</x>. <br>
+    Returns new independent mutable struct.
+</ul>
 
 </div>
 `;
@@ -4413,6 +4580,8 @@ const NAV_getting_started_downloads           = document.getElementById('getting
 const NAV_getting_started_install_from_source = document.getElementById('getting-started-install-from-source');
 const NAV_compiler                            = document.getElementById('compiler');
 const NAV_compiler_platform_support           = document.getElementById("compiler-platform-support");
+const NAV_compiler_directives                 = document.getElementById("compiler-directives");
+const NAV_compiler_deriving                   = document.getElementById("compiler-deriving");
 const NAV_compiler_basic_commands             = document.getElementById('compiler-basic-commands');
 const NAV_compiler_compiler_options           = document.getElementById('compiler-compiler-options');
 const NAV_compiler_compiling                  = document.getElementById('compiler-compiling');
@@ -4492,6 +4661,8 @@ nav.navigations = [
   [NAV_getting_started_install_from_source, getting_started_install_from_sourceHTML],
   [NAV_compiler,                            compilerHTML],
   [NAV_compiler_platform_support,           compiler_platform_supportHTML],
+  [NAV_compiler_directives,                 compiler_directivesHTML],
+  [NAV_compiler_deriving,                   compiler_derivingHTML],
   [NAV_compiler_basic_commands,             compiler_basic_commandsHTML],
   [NAV_compiler_compiler_options,           compiler_compiler_optionsHTML],
   [NAV_compiler_compiling,                  compiler_compilingHTML],

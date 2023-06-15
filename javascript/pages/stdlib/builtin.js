@@ -76,6 +76,20 @@ Copies all elements of given source slice and appends given values to end of new
 Returns new slice, not changes given source slice.
 If you want append values to source slice, assign returned slice.
 
+<div class="topic-separator"></div>
+<div class="code">fn clone(expr: T): T</div>
+Returns mutable deep-clone of expression.
+<br><br>
+Allowed types;
+<ul>
+    <li><x class="inline_code">[]T</x></li>
+    <li><x class="inline_code">[K:V]</x></li>
+    <li><x class="inline_code">&T</x></li>
+    <li><x class="inline_code">*T:</x></li>
+    <li><x class="inline_code">jule:derive Clone</x></li>
+</ul>
+<div class="info"><a href="https://jule.dev/pages/manual?page=memory-immutability">See more clonning information.</a></div>
+
 `;
 
 const stdlib_builtin_traitsHTML = `
