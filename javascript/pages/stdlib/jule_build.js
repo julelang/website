@@ -137,6 +137,7 @@ Compiler directives.
 	<li><x class="inline_code">Cdef</x></li>
 	<li><x class="inline_code">Typedef</x></li>
 	<li><x class="inline_code">Derive</x></li>
+	<li><x class="inline_code">Pass</x></li>
 </ul>
 
 <div class="topic-separator"></div>
