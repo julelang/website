@@ -239,12 +239,20 @@ Directives are safe to use.
 Each one is essentially a comment.
 Any part or directive that is incorrect is considered invalid.
 You won't get a headache with any compiler errors.
+<div class="info">
+  Incorrect directives will cause compiler errors if necessary.
+</div>
 <br><br>
 For example to directives:
 <div class="code">//jule:typedef</div>
 As seen in the example, it is essentially a comment as explained.
 For a directive to be valid, it must be used correctly in the right place.
 The comment must be at the beginning of the line and begin with the <x class="inline_code">jule:</x> prefix.
+
+<div class="title-separator"></div>
+<div class="sub-title">Top Directives</div>
+Top directives are must be placed at top of source file. <br>
+Usually contains specific compiler configurations for file or package.
 
 <div class="title-separator"></div>
 <div class="sub-title">Arguments</div>
@@ -269,6 +277,24 @@ In C++-linked functions, if the function is a <x class="inline_code">#define</x>
 Specify what additions the compiler will make. <br>
 Supported by only structures. <br>
 See more information about <a href="manual.html?page=compiler-deriving">deriving</a>.
+
+<div class="title-separator"></div>
+<div class="sub-title">Directive: pass</div>
+Directive pass is a top directive. <br>
+Passes compiler flags to generated compile command for compiling source code.  <br>
+Passes are must be start with dash. <br>
+<div class="info">
+  There are no issue if you are using same passes. <br>
+  The compiler eliminates duplicate passes.
+</div>
+<br>
+For example:
+<div class="code">//jule:pass -framework Foundation
+//jule:pass -framework Cocoa
+
+fn main() {
+    // ...
+}</div>
 
 </div>
 `;
