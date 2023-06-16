@@ -115,16 +115,15 @@ const getting_started_install_from_sourceHTML = `
 <div class="text">
   <div class="warn">You should have Go compiler for this option.</div>
   Ok! We will install JuleC from source code.
-  Actually, we will just compile project.
-  Getting the latest version is a good way to try.
-  We accept you have already Jule source code.
+  Actually, we will just compile the project.
+  Getting the latest version is a good way to start.
+  We assume that you already have the Jule source code.
 
   <div class="title-separator"></div>
   <div class="sub-title">Build Scripts</div>
-  The JuleC project has scripts for build/compile compiler.
+  The JuleC project has scripts for building/compiling the compiler.
   You can use them.
-  This scripts written for compile the JuleC.
-  If you execute script, result is be compilation error or complete message.
+  If you execute a script, the result will be either a compilation error or a completion message.
 
   <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
 
@@ -137,6 +136,14 @@ const getting_started_install_from_sourceHTML = `
   <div class="code">$ build.bat</div>
 
   <div class="title-separator"></div>
+  <div class="sub-sub-title">macOS (Darwin)</div>
+  <div class="info">
+    Ideal scripts for macOS: usally shellscripts (.sh).
+  </div>
+  Using example for ZSH;
+  <div class="code">$ zsh build.sh</div>
+
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   <div class="info">
     Ideal scripts for Linux: usally shellscripts (.sh).
@@ -145,7 +152,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="code">$ sh build.sh</div>
 
   <div class="title-separator"></div>
-  <div class="sub-title">Manual</div>
+  <div class="sub-title">Manual Compilation</div>
   JuleC is written in Go, for now!
   <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
 
@@ -153,6 +160,11 @@ const getting_started_install_from_sourceHTML = `
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
   <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
+
+  <div class="title-separator"></div>
+  <div class="sub-sub-title">macOS (Darwin)</div>
+  Using example for ZSH;
+  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
