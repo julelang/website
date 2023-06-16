@@ -32,24 +32,22 @@ const jule_langHTML = `
 const forewordHTML = `
 <div class="title" style="margin-bottom: 20px;">Foreword</div>
 <div class="text">
-  This documentation is updated following the source code according to the latest version of Jule.
-  Some content maybe is not released yet, so it may be here, but not in the compiler you have.
+  This documentation is updated following the source code, according to the latest version of Jule.
+  Some content may be not released yet, so it may be already documented here, but not yet available in the compiler you have.
   <br><br>
   Jule syntactically and structurally encourages code to be readable.
-  It aims to transform C++ code as safely as possible.
-  Optimizes for a secure code.
+  It aims to create C++ code as safe as possible, and to optimize for secure code.
   With this documentation you will see the basics and some subtleties of Jule and you will understand Jule.
-  You don't actually need to know C++ to learn and understand Jule.
+  You don't need to know C++ to learn and understand Jule.
   <br><br>
-  Jule is plain and simple.
-  Suitable for developers of all levels.
+  Jule is plain and simple, and suitable for developers of all levels.
   It also takes a very short time to learn.
   If you're not learning a language for the first time, it probably won't take much of your time.
   <br><br>
-  With this documentation, it is possible to improve your Jule knowledge, programming and analytical thinking skills.
-  If you're just starting out to programming, it could be a pretty good start for you.
+  With this documentation, it is possible to improve your Jule knowledge, programming, and analytical thinking skills.
+  If you're just starting out programming, Jule could be a pretty good choice for you.
   <br><br>
-  Welcome to Jule community!
+  Welcome to the Jule community!
 </div>
 `;
 
