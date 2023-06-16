@@ -7,22 +7,22 @@ const jule_langHTML = `
 <br>
 <div class="text">
   <br><br>
-  This version of the text assumes you're using latest JuleC compiler (compiled from source).
+  This version of the text assumes you're using the latest version of the JuleC compiler (compiled from source).
   <br><br><br><br>
-  Jule is a statically typed compiled programming language designed for system development, building maintainable and reliable software.
+  Jule is a statically typed, compiled programming language. 
+  It's designed for system development, and for building maintainable and reliable software.
   It has syntax similar to today's programming languages.
-  So if you already know a language, it probably won't take you long to get used to Jule.
+  So, if you already know a language, it probably won't take you long to get used to Jule.
   <br><br>
   Jule is a very simple language.
   You will not have much difficulty in learning.
   It is a suitable language for developers of all levels.
   <br><br>
-  The fact that Jule is simple does not diminish its power. Jule is a pretty powerful language.
-  The fact that it evolves directly to C++ and compiles from C++ means an environment familiar to C++ developers.
+  The fact that Jule is simple does not diminish its power, as Jule is a pretty powerful language.
+  It transpiles directly to C++ and compiles from C++ to an executable file, which means that the programming environment is familiar to C++ developers.
   <br><br>
-  Jule is also a good choice for the simpler way to write C++.
-  At the developer's request, Jule can be translated or compiled into C++.
-  This choice is the developer's.
+  Jule is also a good choice as a simpler way to write C++, because at the developer's request Jule can also just transpile to C++.
+  It is the developer's choice.
   <br><br>
   The purpose of Jule is to keep functionality high while maintaining a simple form and readability.
   It guarantees memory safety and does not contain undefined behavior.
@@ -32,24 +32,22 @@ const jule_langHTML = `
 const forewordHTML = `
 <div class="title" style="margin-bottom: 20px;">Foreword</div>
 <div class="text">
-  This documentation is updated following the source code according to the latest version of Jule.
-  Some content maybe is not released yet, so it may be here, but not in the compiler you have.
+  This documentation is updated following the source code, according to the latest version of Jule.
+  Some content may be not released yet, so it may be already documented here, but not yet available in the compiler you have.
   <br><br>
   Jule syntactically and structurally encourages code to be readable.
-  It aims to transform C++ code as safely as possible.
-  Optimizes for a secure code.
+  It aims to create C++ code as safe as possible, and to optimize for secure code.
   With this documentation you will see the basics and some subtleties of Jule and you will understand Jule.
-  You don't actually need to know C++ to learn and understand Jule.
+  You don't need to know C++ to learn and understand Jule.
   <br><br>
-  Jule is plain and simple.
-  Suitable for developers of all levels.
+  Jule is plain and simple, and suitable for developers of all levels.
   It also takes a very short time to learn.
   If you're not learning a language for the first time, it probably won't take much of your time.
   <br><br>
-  With this documentation, it is possible to improve your Jule knowledge, programming and analytical thinking skills.
-  If you're just starting out to programming, it could be a pretty good start for you.
+  With this documentation, it is possible to improve your Jule knowledge, programming, and analytical thinking skills.
+  If you're just starting out programming, Jule could be a pretty good choice for you.
   <br><br>
-  Welcome to Jule community!
+  Welcome to the Jule community!
 </div>
 `;
 
@@ -115,16 +113,15 @@ const getting_started_install_from_sourceHTML = `
 <div class="text">
   <div class="warn">You should have Go compiler for this option.</div>
   Ok! We will install JuleC from source code.
-  Actually, we will just compile project.
-  Getting the latest version is a good way to try.
-  We accept you have already Jule source code.
+  Actually, we will just compile the project.
+  Getting the latest version is a good way to start.
+  We assume that you already have the Jule source code.
 
   <div class="title-separator"></div>
   <div class="sub-title">Build Scripts</div>
-  The JuleC project has scripts for build/compile compiler.
+  The JuleC project has scripts for building/compiling the compiler.
   You can use them.
-  This scripts written for compile the JuleC.
-  If you execute script, result is be compilation error or complete message.
+  If you execute a script, the result will be either a compilation error or a completion message.
 
   <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
 
@@ -137,6 +134,14 @@ const getting_started_install_from_sourceHTML = `
   <div class="code">$ build.bat</div>
 
   <div class="title-separator"></div>
+  <div class="sub-sub-title">macOS (Darwin)</div>
+  <div class="info">
+    Ideal scripts for macOS: usally shellscripts (.sh).
+  </div>
+  Using example for ZSH;
+  <div class="code">$ zsh build.sh</div>
+
+  <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
   <div class="info">
     Ideal scripts for Linux: usally shellscripts (.sh).
@@ -145,7 +150,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="code">$ sh build.sh</div>
 
   <div class="title-separator"></div>
-  <div class="sub-title">Manual</div>
+  <div class="sub-title">Manual Compilation</div>
   JuleC is written in Go, for now!
   <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
 
@@ -153,6 +158,11 @@ const getting_started_install_from_sourceHTML = `
   <div class="sub-sub-title">Windows</div>
   Using example for PowerShell;
   <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
+
+  <div class="title-separator"></div>
+  <div class="sub-sub-title">macOS (Darwin)</div>
+  Using example for ZSH;
+  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Linux</div>
