@@ -1,49 +1,3 @@
-const stdlib_fs_constantsHTML = `
-<div class="code">const O_RDONLY</div>
-Open the file read-only.
-
-<div class="topic-separator"></div>
-<div class="code">const O_WRONLY</div>
-Open the file write-only.
-
-<div class="topic-separator"></div>
-<div class="code">const O_RDWR</div>
-Open the file read-write.
-
-<div class="topic-separator"></div>
-<div class="code">const O_APPEND</div>
-Append data to the file when writing.
-
-<div class="topic-separator"></div>
-<div class="code">const O_CREAT</div>
-Create a new file if none exists.
-
-<div class="topic-separator"></div>
-<div class="code">const O_EXCL</div>
-Used with O_CREAT, file must not exist.
-
-<div class="topic-separator"></div>
-<div class="code">const O_SYNC</div>
-Open for synchronous I/O.
-
-<div class="topic-separator"></div>
-<div class="code">const O_TRUNC</div>
-Truncate regular writable file when opened.
-
-<div class="topic-separator"></div>
-<div class="code">const SEEK_SET</div>
-Seek relative to the origin of the file.
-
-<div class="topic-separator"></div>
-<div class="code">const SEEK_CUR</div>
-Seek relative to the current offset.
-
-<div class="topic-separator"></div>
-<div class="code">const SEEK_END</div>
-Seek relative to the end.
-
-`;
-
 const stdlib_fs_functionsHTML = `
 <div class="code">fn stat(path: str): (s: Stat, err: FsError)</div>
 Returns a Stat describing the path. <br>
@@ -73,9 +27,9 @@ Possible errors:
 <x class="inline_code">NotDir</x>
 
 <div class="topic-separator"></div>
-<div class="code">fn open(path: str, flag: int, mode: int): (&File, FsError)</div>
-Opens file stream with named file, specified flag (O_RDWR, O_TRUNC etc.) and perm.
-If named file does not exist and O_CREAT flag is passed, will created with mode (before umask).
+<div class="code">fn open(path: str, flag: OFlag, mode: int): (&File, FsError)</div>
+Opens file stream with named file, specified flag (Sema.Rdwr, Sema.Trunc etc.) and perm.
+If named file does not exist and Sema.Creat flag is passed, will created with mode (before umask).
 If successful, returns File reference with handle to file stream and the reference can used for I/O operations.
 Returns nil reference if error occurs.
 <br><br>
@@ -132,10 +86,10 @@ Directory entry.
 The file stream handle.
 <br><br>
 <strong>Methods:</strong> <br><br>
-<div class="inline_code">fn seek(mut self, offset: i64, origin: int): (i64, FsError)</div> <br>
+<div class="inline_code">fn seek(mut self, offset: i64, origin: Seek): (i64, FsError)</div> <br>
 Sets offset to next Read/Write operation and returns the new offset.
-whence: 0 (SEEK_SET) means, relative to the origin of the file, 1 (SEEK_CUR)
-means relative to the current offset, and 2 (SEEK_END) means relative to end.
+whence: 0 (Seek.Set) means, relative to the origin of the file, 1 (Seek.Cur)
+means relative to the current offset, and 2 (Seek.End) means relative to end.
 Return 0 if error occurs.
 <br><br>
 Possible errors:
@@ -231,16 +185,43 @@ const stdlib_fs_enumsHTML = `
     <li><x class="inline_code">BadMessage</x>: Not a data message</li>
 </ul>
 
+<div class="topic-separator"></div>
+<div class="inline_code">enum Seek: int</div> <br>
+Seek whence values.
+<br><br>
+<strong>Fields:</strong>
+<ul>
+    <li><x class="inline_code">Set</x>: Seek relative to the origin of the file</li>
+    <li><x class="inline_code">Cur</x>: Seek relative to the current offset</li>
+    <li><x class="inline_code">End</x>: Seek relative to the end</li>
+</ul>
+
+<div class="topic-separator"></div>
+<div class="inline_code">enum OFlag: int</div> <br>
+Flags to open wrapping those of the underlying system. <br>
+Not all flags may be implemented on a given system. <br>
+Exactly one of Rdonly, Wronly, or Rdwr must be specified.
+<br><br>
+<strong>Fields:</strong>
+<ul>
+    <li><x class="inline_code">Rdonly</x>: Open the file read-only</li>
+    <li><x class="inline_code">Wronly</x>: Open the file write-only</li>
+    <li><x class="inline_code">Rdwr</x>: Open the file read-write</li>
+    <li><x class="inline_code">Append</x>: Append data to the file when writing</li>
+    <li><x class="inline_code">Creat</x>: Create a new file if none exists</li>
+    <li><x class="inline_code">Excl</x>: Used with Sema.Creat, file must not exist</li>
+    <li><x class="inline_code">Sync</x>: Open for synchronous I/O</li>
+    <li><x class="inline_code">Trunc</x>: Truncate regular writable file when opened</li>
+</ul>
+
 `;
 
-const NAV_stdlib_fs_constants = document.getElementById("constants");
 const NAV_stdlib_fs_functions = document.getElementById("functions");
 const NAV_stdlib_fs_structs = document.getElementById("structs");
 const NAV_stdlib_fs_enums = document.getElementById("enums");
 
 const stdlib_fs_nav = new SideNavigator();
 stdlib_fs_nav.navigations = [
-    [NAV_stdlib_fs_constants, stdlib_fs_constantsHTML],
     [NAV_stdlib_fs_functions, stdlib_fs_functionsHTML],
     [NAV_stdlib_fs_structs, stdlib_fs_structsHTML],
     [NAV_stdlib_fs_enums, stdlib_fs_enumsHTML],
