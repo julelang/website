@@ -33,15 +33,15 @@ Recovers errors if exist and call given function with handled error instance.
 Returns nil reference of data type.
 
 <div class="topic-separator"></div>
-<div class="code">fn new(T, v: T): &T</div>
+<div class="code">fn new(T, mut v: T): &T</div>
 Returns reference to new heap-allocation initialized with expression of data type if allocation is success, panics if not.
 
 <div class="topic-separator"></div>
-<div class="code">fn drop(&T)</div>
+<div class="code">fn drop(ref: mut &T)</div>
 Drops allocation and reference counting of reference.
 
 <div class="topic-separator"></div>
-<div class="code">fn real(&T): bool</div>
+<div class="code">fn real(ref: mut &T): bool</div>
 Reports reference is not nil.
 
 <div class="topic-separator"></div>
@@ -54,23 +54,17 @@ Size 0 will accept as nil slice.
 </ol>
 
 <div class="topic-separator"></div>
-<div class="code">fn copy(mut dest: []T, src): int</div>
+<div class="code">fn copy(mut dest: []T, mut src: []T): int</div>
 Copies elements of source to destination slice. <br>
 Returns number of copied elements. <br>
 Source can be any data type that supported by destination type.
-<br><br>
-<li>Byte Slices:</li>
-<ol>
-Strings are valid data types for byte slices. <br>
-Casting is not necessary.
-</ol>
 <br><br>
 Special cases are: <br>
 <li><x class="inline_code">copy(dest, src) = length accepts as src.len if dest.len > src.len</x></li>
 <li><x class="inline_code">copy(dest, src) = length accepts as dest.len if src.len > dest.len</x></li>
 
 <div class="topic-separator"></div>
-<div class="code">fn append(src: []T, values: ...T): []T</div>
+<div class="code">fn append(src: []T, mut values: ...T): []T</div>
 Creates new required sized slice.
 Copies all elements of given source slice and appends given values to end of new slice.
 Returns new slice, not changes given source slice.
