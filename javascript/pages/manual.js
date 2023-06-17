@@ -2532,6 +2532,10 @@ Clonning supported types and copy methods:
     Clones slice with elements. <br>
     Returns new independent mutable slice.
 
+    <li><x class="inline_code">[...]T</x></li>
+    Clones array with elements. <br>
+    Returns new independent mutable array.
+
     <li><x class="inline_code">[K:V]</x></li>
     Clones map's keys and values. <br>
     Returns new independent mutable map.

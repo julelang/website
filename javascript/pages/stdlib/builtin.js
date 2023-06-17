@@ -77,6 +77,7 @@ Returns mutable deep-clone of expression.
 Allowed types;
 <ul>
     <li><x class="inline_code">[]T</x></li>
+    <li><x class="inline_code">[...]T</x></li>
     <li><x class="inline_code">[K:V]</x></li>
     <li><x class="inline_code">&T</x></li>
     <li><x class="inline_code">*T:</x></li>
