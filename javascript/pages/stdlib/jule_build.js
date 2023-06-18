@@ -45,6 +45,10 @@ const functionsHTML = `
 Reports whether file path passes file annotation by current system.
 
 <div class="topic-separator"></div>
+<div class="code">fn is_top_directive(directive: Directive): bool</div>
+Reports whether directive is top-directive.
+
+<div class="topic-separator"></div>
 <div class="code">fn is_std_header_path(p: str): bool</div>
 Reports path is C++ std library path.
 
