@@ -2275,15 +2275,15 @@ const traitsHTML = `
 <div class="title" style="margin-bottom: 20px;">Traits</div>
 <div class="text">
 Traits can be used to represent common behaviors.
-As a result of the implementation of a trait by one or more structures that exhibit common behavior, the trait it applies becomes usable wherever it is used.
-Trait can only contain functions.
-Every definition it contains is marked as <x class="inline_code">pub</x>.
+As a result of the implementation of a trait by one or more structures that exhibit common behavior, the trait it applies to becomes usable wherever it is used.
+A trait can only contain functions.
+Every function declaration is automatically public and marked as <x class="inline_code">pub</x>.
 A trait can be <x class="inline_code">nil</x>
 
 <div class="title-separator"></div>
 <div class="sub-title">Define a Trait</div>
 
-Functions in trait should only exist as prototypes.
+Functions in a trait should only exist as prototypes (declaration of a trait, not a definition).
 <br><br>
 For example:
 <div class="code">trait Person {
@@ -2291,11 +2291,11 @@ For example:
     fn age(): u8
 }</div>
 
-All constructs that implement the trait above must have the methods <x class="inline_code">name() str</x> and <x class="inline_code">age() u8</x>.
+All constructs that implement the trait above, must have the methods <x class="inline_code">name() str</x> and <x class="inline_code">age() u8</x>.
 
 <div class="title-separator"></div>
 <div class="sub-title">Comparing Traits</div>
-Equals to comparisons returns true if two traits uses same allocation (so, same pointer address), false if not.
+During a comparison of traits: equal traits return true if two traits use the same allocation (both have the same pointer address), false if not.
 
 </div>
 `
@@ -2303,13 +2303,13 @@ Equals to comparisons returns true if two traits uses same allocation (so, same 
 const traits_implementingHTML = `
 <div class="title" style="margin-bottom: 20px;">Implementing</div>
 <div class="text">
-To implement a trait to structure, the following syntax is applied;
+To implement a trait to a structure, the following syntax needs to be applied:
 <div class="code">impl TRAIT for STRUCT {
     // Implementations...
 }</div>
 
 <x class="inline_code">TRAIT</x>: Trait to implement<br>
-<x class="inline_code">STRUCT</x>: Structure to implement<br>
+<x class="inline_code">STRUCT</x>: Structure implementing the trait<br>
 
 <br>
 For example:
