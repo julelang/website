@@ -1,6 +1,6 @@
 const stdlib_fs_functionsHTML = `
-<div class="code">fn stat(path: str): (s: Stat, err: FsError)</div>
-Returns a Stat describing the path. <br>
+<div class="code">fn stat(path: str): (s: &Status, err: FsError)</div>
+Returns a Status describing the path. <br>
 Returns nil reference if error occurs.
 <br><br>
 Possible errors:
@@ -13,9 +13,9 @@ Possible errors:
 <x class="inline_code">Overflow</x>
 
 <div class="topic-separator"></div>
-<div class="code">fn read_dir(path: str): ([]Dirent, FsError)</div>
+<div class="code">fn read_dir(path: str): ([]&DirEntry, FsError)</div>
 Reads the named directory and returs all its directory entries can read. <br>
-Returns nil if no any dirent or error occurs.
+Returns nil if no any directory entry or error occurs.
 <br><br>
 Possible errors:
 <x class="inline_code">Denied</x>
@@ -57,14 +57,14 @@ Possible errors:
 `;
 
 const stdlib_fs_structsHTML = `
-<div class="code">struct Stat {
+<div class="code">struct Status {
     // Type and mode.
     mode: uint
 
     // Total size in bytes of regular file or symbolic link.
     size: uint
 }</div>
-Stat information.
+Status information.
 <br><br>
 <strong>Methods:</strong> <br><br>
 <div class="inline_code">fn is_dir(self): bool</div> <br>
@@ -75,9 +75,9 @@ Reports path is directory or not.
 Reports path is regular file or not.
 
 <div class="topic-separator"></div>
-<div class="code">struct Dirent {
+<div class="code">struct DirEntry {
     name: str
-    stat: Stat
+    stat: &Status
 }</div>
 Directory entry.
 

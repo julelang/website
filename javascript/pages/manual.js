@@ -2554,6 +2554,29 @@ Clonning supported types and copy methods:
     Returns new independent mutable struct.
 </ul>
 
+<div class="title-separator"></div>
+<div class="sub-sub-title">Clonning Cycles</div>
+Clone cycles are a kind of illegal cycle.
+In cases where you risk an endless cloning cycle at runtime, the compiler will give you an illegal cycle error.
+Cloning cycles usually occur in nested types, in which it will try to clone itself forever, which somehow attaches to itself.
+<br><br>
+For example:
+<div class="code">//jule:derive Clone
+struct A {
+    b: &B
+}
+
+//jule:derive Clone
+struct B {
+    a: &A
+}</div>
+The <x class="inline_code">A</x> struct and <x class="inline_code">B</x> struct in the example above have fields that reference each other.
+They both derive <x class="inline_code">Clone</x>.
+But this poses a risk at runtime.
+Because if you try to clone struct <x class="inline_code">A</x> and it points to a struct <x class="inline_code">B</x> pointing to itself, an endless cycle of cloning occurs.
+This is clearly a runtime risk.
+Therefore the compiler will not compile your code.
+
 </div>
 `;
 
