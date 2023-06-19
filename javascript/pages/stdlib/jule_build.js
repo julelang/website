@@ -38,6 +38,10 @@ List of supported operating systems.
 <div class="code">let DISTARCH: []Arch</div>
 List of supported architectures.
 
+<div class="topic-separator"></div>
+<div class="code">let DIRECTIVE_PREFIX: str</div>
+Prefix of directive comments.
+
 `;
 
 const functionsHTML = `
@@ -198,6 +202,7 @@ Log kinds.
 
 const globals = document.getElementById("globals");
 const functions = document.getElementById("functions");
+const structs = document.getElementById("structs");
 const enums = document.getElementById("enums");
 
 const nav = new SideNavigator();
