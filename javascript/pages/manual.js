@@ -4011,26 +4011,41 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/builtin.html">builtin</a></li>
   <li><a href="../pages/stdlib/conv.html">std::conv</a></li>
   <li><a href="../pages/stdlib/debug.html">std::debug</a></li>
-  <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
+  <ul>
+    <li><a href="../pages/stdlib/debug_assert.html">std::debug::assert</a></li>
+  </ul>
   <li><a href="../pages/stdlib/errors.html">std::errors</a></li>
   <li><a href="../pages/stdlib/fs.html">std::fs</a></li>
-  <li><a href="../pages/stdlib/fs_path.html">std::fs::path</a></li>
+  <ul>
+    <li><a href="../pages/stdlib/fs_path.html">std::fs::path</a></li>
+  </ul>
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
   <li><a href="../pages/stdlib/jule.html">std::jule</a></li>
-  <li><a href="../pages/stdlib/jule_build.html">std::jule::build</a></li>
+  <ul>
+    <li><a href="../pages/stdlib/jule_build.html">std::jule::build</a></li>
+    <li><a href="../pages/stdlib/jule_lex.html">std::jule::lex</a></li>
+  </ul>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
-  <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
+  <ul>
+    <li><a href="../pages/stdlib/math_bits.html">std::math::bits</a></li>
+  </ul>
   <li><a href="../pages/stdlib/mem.html">std::mem</a></li>
-  <li><a href="../pages/stdlib/mem_c.html">std::mem::c</a></li>  
+  <ul>
+    <li><a href="../pages/stdlib/mem_c.html">std::mem::c</a></li>  
+  </ul>
   <li><a href="../pages/stdlib/os.html">std::os</a></li>
   <li><a href="../pages/stdlib/reflect.html">std::reflect</a></li>
   <li><a href="../pages/stdlib/runtime.html">std::runtime</a></li>
   <li><a href="../pages/stdlib/sync.html">std::sync</a></li>
-  <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
+  <ul>
+    <li><a href="../pages/stdlib/sync_atomic.html">std::sync::atomic</a></li>
+  </ul>
   <li><a href="../pages/stdlib/sys.html">std::sys</a></li>
   <li><a href="../pages/stdlib/unicode.html">std::unicode</a></li>
-  <li><a href="../pages/stdlib/unicode_utf16.html">std::unicode::utf16</a></li>
-  <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
+  <ul>
+    <li><a href="../pages/stdlib/unicode_utf16.html">std::unicode::utf16</a></li>
+    <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
+  </ul>
 </div>
 `;
 
