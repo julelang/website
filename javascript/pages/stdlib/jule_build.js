@@ -42,6 +42,26 @@ List of supported architectures.
 <div class="code">let DIRECTIVE_PREFIX: str</div>
 Prefix of directive comments.
 
+<div class="topic-separator"></div>
+<div class="code">let PATH_STDLIB: str</div>
+Path of standard library.
+<div class="warn">Initialized by initializer function.</div>
+
+<div class="topic-separator"></div>
+<div class="code">let PATH_EXEC: str</div>
+Path of executable file's directory.
+<div class="warn">Initialized by initializer function.</div>
+
+<div class="topic-separator"></div>
+<div class="code">let PATH_WD: str</div>
+Path of working directory.
+<div class="warn">Initialized by initializer function.</div>
+
+<div class="topic-separator"></div>
+<div class="code">let PATH_API: str</div>
+Path of main API header file.
+<div class="warn">Initialized by initializer function.</div>
+
 `;
 
 const functionsHTML = `

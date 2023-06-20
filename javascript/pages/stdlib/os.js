@@ -50,6 +50,11 @@ Possible errors:
 <div class="code">fn is_path_sep(c: u8): bool</div>
 Reports whether c is path separator.
 
+<div class="topic-separator"></div>
+<div class="code">fn executable(): str</div>
+Returns executable path. <br>
+Returns empty string if any error occurs.
+
 </div>`;
 
 const stdlib_os_enumsHTML = `
