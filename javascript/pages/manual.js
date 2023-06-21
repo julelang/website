@@ -548,6 +548,11 @@ const project_namingHTML = `
     <th>Examples</th>
   </tr>
   <tr>
+    <td style="text-align: center;">Package</td>
+    <td>lowercase</td>
+    <td>package, mypackage</td>
+  </tr>
+  <tr>
     <td style="text-align: center;">Source File</td>
     <td>snake_case</td>
     <td>file.jule, my_file.jule</td>
@@ -3836,14 +3841,59 @@ Generic types are automatically detected from the data type of argument by compi
 </div>
 `;
 
-const use_declarationsHTML = `
-<div class="title" style="margin-bottom: 20px;">Use Declarations</div>
+const packagesHTML = `
+<div class="title" style="margin-bottom: 20px;">Packages</div>
 <div class="text">
+Jule treats each directory as a package.
+Each package has the ability to use its own defines.
+<br><br>
+For example:
+<div class="code">// file: ./hello_print.jule
+
+fn hello_print(name: str) {
+    outln("Hello " + name)
+}</div>
+<div class="code">// file: ./main.jule
+
+fn main() {
+    hello_print("Packages")
+}</div>
+As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
+
+<div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Cycles</div>
+
+Import cycles are dependency cycles that shouldn't be, they are dependencies that don't make sense technically.
+When one or more packages exhibit an infinite state of interdependence, this is indicated by a compiler message.
+The compiler captures and handles these cycles, allowing the developer to understand and remediate logic errors of package dependencies.
+<br><br>
+It is an illegal cycle when a package tries to import itself within itself. <br>
+Logically, a package cannot be self-dependent.
+<br><br>
+This invalid dependency status is also valid if the package has dependencies on itself from different packages.
+For example, if one of the package's dependencies is dependent on the package itself, it's still an invalid cycle.
+This also applies to nested dependencies.
+
+</div>
+`;
+
+const packages_using_packagesHTML = `
+<div class="title" style="margin-bottom: 20px;">Using Packages</div>
+<div class="text">
+
 The use declarations act as importing other packages for use in your code. <br>
 Declared with the <x class="inline_code">use</x> keyword.
 
+<div class="warn">
+  <li>You can't use already used packages.</li>
+  <li>You must declare uses at the beginning of code.</li>
+  <li>You can't access to private (not-exported) definitions.</li>
+</div>
+
 <div class="title-separator"></div>
-<div class="sub-sub-title">Use Declaration for Standard Library</div>
+<div class="sub-title">Use Declaration for Standard Library</div>
 To use standard library, standard path is used.
 It is quite plain and simple.
 You write the name of a package you want to use, if you want to use a sub-package, you separate it with a doouble colon.
@@ -3853,13 +3903,40 @@ For example:
 <div class="code">use std::pkg</div>
 <div class="code">use std::pkg::subpkg</div>
 
-<div class="warn">
-  <li>You can't use already used packages.</li>
-  <li>You must declare uses at the beginning of code.</li>
-</div>
+<div class="title-separator"></div>
+<div class="sub-title">Use Declaration for Project</div>
+Your own project may not consist of only one package, the main one.
+You may want to include different packages in your project.
+It is a useful action to use separate packages for the organization of the project.
+Jule recognizes subpackages in your project's main package and allows you to import those subpackages.
+<br><br>
+For example, your main package is <x class="inline_code">head</x> directory. <br>
+This package is your entry package for project.
+<br><br>
+Your example project tree:
+<div class="code">head/
+├─ foo/
+│  ├─ bar/
+│  │  ├─ README.md
+│  │  └─ bar.jule
+│  │
+│  ├─ README.md
+│  └─ foo.jule
+│
+├─ LICENSE
+└─ main.jule</div>
+
+As you can see in your project tree, your main package <x class="inline_code">head</x> directory has <x class="inline_code">foo</x> directory.
+This directory is a subpackage accessible to you and it also has a subpackage called <x class="inline_code">bar</x>.
+<br><br>
+Using your subpackages is simple, here is an example:
+<div class="code">use foo
+use foo::bar</div>
+As you can see in the example above, each subpackage in your main package represents a chain of packages that you can use.
+This means that in your subpackages you will follow the same syntax when you try to use your other subpackages.
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Using Use Declarations</div>
+<div class="sub-title">Using Use Declarations</div>
 The definitions that come with the use declaration are accessible with the namespaces.
 The namespace is same with use declaration.
 <br><br>
@@ -3871,7 +3948,7 @@ fn main() {
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Full Use Declarations</div>
+<div class="sub-title">Full Use Declarations</div>
 It is sufficient to add <x class="inline_code">::*</x> to the end of the use declaration that you want to import fully.
 The definitions of packages imported in this way can be used directly or optionally accessed with the classic namespace notation.
 <br><br>
@@ -3884,7 +3961,7 @@ fn main() {
 }</div>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Selector Use Declarations</div>
+<div class="sub-title">Selector Use Declarations</div>
 You can only import identifiers for the definitions you want imported.
 If you don't provide an identifier, nothing is imported.
 Imported definitions can be used directly.
@@ -3954,40 +4031,102 @@ use std::bar::{run} // Error: duplicated identifier
 
 fn main() {}</div>
 
+</div>
+`;
 
-<div class="title-separator"></div>
-<div class="sub-title">Packages</div>
-Jule treats each directory as a package.
-Each package has the ability to use its own defines.
+const packages_exporting_definitionsHTML = `
+<div class="title" style="margin-bottom: 20px;">Exporting Definitions</div>
+<div class="text">
+
+Packages have access to any definition they have.
+But this does not apply to packages that use a package.
+Only exported definitions are accessible when a package is used.
+This is a kind of safety.
+When publicly-closed/internal package definitions that should not be used are not exported, they cannot be accessed from the outside and this possibility is eliminated.
+This is the most basic purpose of the export mechanism.
+<br><br>
+The keyword <x class="inline_code">pub</x> is used to specify exportable public-use definitions of a package. <br>
+Otherwise, all definitions are private by default.
+<br><br>
+You can mark public these kind of definitions:
+<ul>
+  <li>Global</li>
+  <li>Function</li>
+  <li>Enum</li>
+  <li>Struct</li>
+  <li>Struct Field</li>
+  <li>Type Alias</li>
+  <li>Trait</li>
+</ul>
+
+<br><br>
+For example to public definitions:
+<div class="code">fn add(x: int, y: int): int { ret x + y }</div>
+The <x class="inline_code">add</x> function is private. <br>
+With the keyword <x class="inline_code">pub</x>, you can public definition.
 <br><br>
 For example:
-<div class="code">// file: ./hello_print.jule
+<div class="code">pub fn add(x: int, y: int): int { ret x + y }</div>
+The <x class="inline_code">add</x> function is public now.
 
-fn hello_print(name: str) {
-    outln("Hello " + name)
-}</div>
-<div class="code">// file: ./main.jule
+</div>
+`;
 
-fn main() {
-    hello_print("Packages")
-}</div>
-As shown in the example above, since both files are located in the same directory, they are considered the same package and therefore have access to each other's definitions.
+const packages_3rd_party_packagesHTML = `
+<div class="title" style="margin-bottom: 20px;">3rd Party Packages</div>
+<div class="text">
 
-<div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
+3rd party packages are Jule packages not offered by Jule developers.
+These packages are supported and maintained by their developers.
+Package developers are responsible for updates and problems.
+3rd party packages are very important and have significant advantages.
+You may want to use or develop 3rd party packages for various reasons.
+<br><br>
+Possible reasons of using 3rd party packages:
+<ul>
+  <li>You don't want to reinvent the wheel</li>
+  <li>It serves your purposes and has a well supported package</li>
+  <li>Saving time or conscious technical debt</li>
+</ul>
+
+<br>
+Possible reasons of developing 3rd party packages:
+<ul>
+  <li>Idea for a non-existent package that you or the community need</li>
+  <li>You or community need an alternative or successor to a package</li>
+  <li>Packing the codes you use often</li>
+</ul>
+
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Cycles</div>
+<div class="sub-title">Using 3rd Party Packages</div>
+To use a 3rd party package, you need the package's source codes.
+Once you have the complete package's source code (and dependencies, if any), place it in your main package.
+You should then be able to import and use it as you wish, in accordance with the use declaration rules.
 
-Import cycles are dependency cycles that shouldn't be, they are dependencies that don't make sense technically.
-When one or more packages exhibit an infinite state of interdependence, this is indicated by a compiler message.
-The compiler captures and handles these cycles, allowing the developer to understand and remediate logic errors of package dependencies.
+<div class="title-separator"></div>
+<div class="sub-title">Developing 3rd Party Packages</div>
+
+To develop a 3rd party package, you can develop a package locally. <br>
+For this, a structure like the following is recommended:
+<div class="code">head/
+├─ yourpackage/
+│  └─ ...
+│
+└─ main.jule</div>
+As shown in the example above, it is recommended to design your package as a sub-package inside the main package.
+This is because, in fact, its users will be using it that way.
+So you can get the most accurate development experience.
+If your package has subpackages, you can import them according to the use declaration rules.
+Since your package will be a sub-package of the main package, you will obviously be conscious that you are importing from your own package.
 <br><br>
-It is an illegal cycle when a package tries to import itself within itself. <br>
-Logically, a package cannot be self-dependent.
-<br><br>
-This invalid dependency status is also valid if the package has dependencies on itself from different packages.
-For example, if one of the package's dependencies is dependent on the package itself, it's still an invalid cycle.
-This also applies to nested dependencies.
+If your package has a dependency, ie not developed with pure Jule, you can choose to locate these dependencies in the package.
+When you require packages to be installed separately, developers who want to install the source code directly may be hesitant to use your package.
+The possible harm of this is that your dependency is also available subpackage of your package, as it will be considered as a subpackage.
+Jule does not yet offer a restriction for this.
+However, this shouldn't be a big deal, as the package is already intended for public use.
+Chances are, some developers might think there's a problem with your package and report a bug about your dependency package to you.
+While this can be distasteful for you at times, we hope that in the future Jule will have improvements to resolve them.
 
 </div>
 `;
@@ -4725,7 +4864,10 @@ const NAV_type_statics_uint                   = document.getElementById("type-st
 const NAV_cpp                                 = document.getElementById("cpp");
 const NAV_cpp_api                             = document.getElementById("cpp-api");
 const NAV_cpp_interoperability                = document.getElementById("cpp-interoperability");
-const NAV_use_declarations                    = document.getElementById("use-declarations");
+const NAV_packages                            = document.getElementById("packages");
+const NAV_packages_using_packages             = document.getElementById("packages-using-packages");
+const NAV_packages_exporting_definitions      = document.getElementById("packages-exporting-definitions");
+const NAV_packages_3rd_party_packages         = document.getElementById("packages-3rd-party-packages");
 const NAV_stdlib                              = document.getElementById("stdlib");
 const NAV_end                                 = document.getElementById("end");
 
@@ -4806,7 +4948,10 @@ nav.navigations = [
   [NAV_cpp,                                 cppHTML],
   [NAV_cpp_api,                             cpp_apiHTML],
   [NAV_cpp_interoperability,                cpp_interoperabilityHTML],
-  [NAV_use_declarations,                    use_declarationsHTML],
+  [NAV_packages,                            packagesHTML],
+  [NAV_packages_using_packages,             packages_using_packagesHTML],
+  [NAV_packages_exporting_definitions,      packages_exporting_definitionsHTML],
+  [NAV_packages_3rd_party_packages,         packages_3rd_party_packagesHTML],
   [NAV_stdlib,                              stdlibHTML],
   [NAV_end,                                 endHTML],
 ];
