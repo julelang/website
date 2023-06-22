@@ -3582,13 +3582,6 @@ The correctness and validity of the file path is checked by the compiler. <br>
 Valid source file extensions; <x class="inline_code">.cpp</x>, <x class="inline_code">.cc</x>, <x class="inline_code">.cxx</x>, <x class="inline_code">.mm</x>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Linking Approach</div>
-
-The source codes you link are considered not <x class="inline_code">#include</x> in different files.
-Therefore, your compiler applies them by linking them with the <x class="inline_code">#include</x> directive in the generated source code, instead of adding them to the compile command.
-If you are already including your source code files, you should not forget to take precautions against the problems that this will cause.
-
-<div class="title-separator"></div>
 <div class="sub-title">Linking C++ Variables to Jule</div>
 After the header file containing the C++ variables is passed to Jule, C++ variables must be declared to Jule.
 Not all, just the ones you will use.
