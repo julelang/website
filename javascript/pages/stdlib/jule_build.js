@@ -24,7 +24,15 @@ List of all directives.
 
 <div class="topic-separator"></div>
 <div class="code">let CPP_HEADER_EXTS: []str</div>
-Valid extensions of cpp headers.
+Valid extensions of C++ headers.
+
+<div class="topic-separator"></div>
+<div class="code">let CPP_EXTS: []str</div>
+Valid extensions of C++ source files.
+
+<div class="topic-separator"></div>
+<div class="code">let OBJECTIVE_CPP_EXTS: []str</div>
+Valid extensions of Objective-C++ source files.
 
 <div class="topic-separator"></div>
 <div class="code">let ERRORS: [str:str]</div>
@@ -74,7 +82,11 @@ Reports whether directive is top-directive.
 
 <div class="topic-separator"></div>
 <div class="code">fn is_std_header_path(p: str): bool</div>
-Reports path is C++ std library path.
+Reports whether path is C++ std library path.
+
+<div class="topic-separator"></div>
+<div class="code">fn is_valid_cpp_ext(p: str): bool</div>
+Reports whether C++ extension is valid.
 
 <div class="topic-separator"></div>
 <div class="code">fn is_valid_header_ext(ext: str): bool</div>
@@ -132,11 +144,11 @@ Reports whether architecture is 64-bit.
 
 const structsHTML = `
 <div class="code">struct Log {
-	kind:   LogKind
-	row:    int
-	column: int
-	path:   str
-	text:   str
+    kind:   LogKind
+    row:    int
+    column: int
+    path:   str
+    text:   str
 }</div>
 Compiler log.
 
@@ -162,10 +174,10 @@ Compiler directives.
 <br><br>
 <strong>Fields:</strong>
 <ul>
-	<li><x class="inline_code">Cdef</x></li>
-	<li><x class="inline_code">Typedef</x></li>
-	<li><x class="inline_code">Derive</x></li>
-	<li><x class="inline_code">Pass</x></li>
+    <li><x class="inline_code">Cdef</x></li>
+    <li><x class="inline_code">Typedef</x></li>
+    <li><x class="inline_code">Derive</x></li>
+    <li><x class="inline_code">Pass</x></li>
 </ul>
 
 <div class="topic-separator"></div>
@@ -175,10 +187,10 @@ Operating Systems for file annotation kind.
 <br><br>
 <strong>Fields:</strong>
 <ul>
-	<li><x class="inline_code">Windows</x></li>
-	<li><x class="inline_code">Linux</x></li>
-	<li><x class="inline_code">Darwin</x></li>
-	<li><x class="inline_code">Unix</x></li>
+    <li><x class="inline_code">Windows</x></li>
+    <li><x class="inline_code">Linux</x></li>
+    <li><x class="inline_code">Darwin</x></li>
+    <li><x class="inline_code">Unix</x></li>
 </ul>
 
 <div class="topic-separator"></div>
@@ -189,12 +201,12 @@ Architectures for file annotation kind.
 <strong>Fields:</strong>
 <ul>
     <li><x class="inline_code">I386</x></li>
-	<li><x class="inline_code">Arm</x></li>
-	<li><x class="inline_code">Arm64</x></li>
-	<li><x class="inline_code">Amd64</x></li>
-	<li><x class="inline_code">Bit32</x></li>
-	<li><x class="inline_code">Bit64</x></li>
-	
+    <li><x class="inline_code">Arm</x></li>
+    <li><x class="inline_code">Arm64</x></li>
+    <li><x class="inline_code">Amd64</x></li>
+    <li><x class="inline_code">Bit32</x></li>
+    <li><x class="inline_code">Bit64</x></li>
+    
 </ul>
 
 <div class="topic-separator"></div>
@@ -204,7 +216,7 @@ All built-in derive defines.
 <br><br>
 <strong>Fields:</strong>
 <ul>
-	<li><x class="inline_code">Clone</x></li>
+    <li><x class="inline_code">Clone</x></li>
 </ul>
 
 <div class="topic-separator"></div>
@@ -214,8 +226,8 @@ Log kinds.
 <br><br>
 <strong>Fields:</strong>
 <ul>
-	<li><x class="inline_code">Flat</x>: Just text.</li>
-	<li><x class="inline_code">Error</x>: Error message.</li>
+    <li><x class="inline_code">Flat</x>: Just text.</li>
+    <li><x class="inline_code">Error</x>: Error message.</li>
 </ul>
 
 `;
@@ -229,7 +241,7 @@ const nav = new SideNavigator();
 nav.navigations = [
     [globals, globalsHTML],
     [functions, functionsHTML],
-	[structs, structsHTML],
+    [structs, structsHTML],
     [enums, enumsHTML],
 ];
 

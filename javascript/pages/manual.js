@@ -3564,8 +3564,29 @@ For example:
 <div class="code">use cpp "&lt;stdlib.h&gt;"</div>
 <div class="code">use cpp "&lt;iostream&gt;"</div>
 <div class="code">use cpp "header.hpp"</div>
+
 The correctness and validity of the file path is checked by the compiler. <br>
 Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.hh</x>, <x class="inline_code">.hpp</x>, <x class="inline_code">.hxx</x>
+
+<div class="title-separator"></div>
+<div class="sub-title">Including C++ Header Implementations into Jule</div>
+You may not write your header files to include all the code (with implementation of declarations).
+Typical usage is in the form of a header file and a separate source code file for implementation of declarations.
+For this reason, you can also link your implementation C++ source code files just like header files.
+<br><br>
+For example:
+<div class="code">use cpp "myfile.cpp"</div>
+<div class="code">use cpp "implementation.cxx"</div>
+
+The correctness and validity of the file path is checked by the compiler. <br>
+Valid source file extensions; <x class="inline_code">.cpp</x>, <x class="inline_code">.cc</x>, <x class="inline_code">.cxx</x>, <x class="inline_code">.mm</x>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Linking Approach</div>
+
+The source codes you link are considered not <x class="inline_code">#include</x> in different files.
+Therefore, your compiler applies them by linking them with the <x class="inline_code">#include</x> directive in the generated source code, instead of adding them to the compile command.
+If you are already including your source code files, you should not forget to take precautions against the problems that this will cause.
 
 <div class="title-separator"></div>
 <div class="sub-title">Linking C++ Variables to Jule</div>
