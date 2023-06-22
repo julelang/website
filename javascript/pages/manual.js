@@ -3564,8 +3564,29 @@ For example:
 <div class="code">use cpp "&lt;stdlib.h&gt;"</div>
 <div class="code">use cpp "&lt;iostream&gt;"</div>
 <div class="code">use cpp "header.hpp"</div>
+
 The correctness and validity of the file path is checked by the compiler. <br>
 Valid header extensions; <x class="inline_code">.h</x>, <x class="inline_code">.hh</x>, <x class="inline_code">.hpp</x>, <x class="inline_code">.hxx</x>
+
+<div class="title-separator"></div>
+<div class="sub-title">Including C++ Header Implementations into Jule</div>
+You may not write your header files to include all the code (with implementation of declarations).
+Typical usage is in the form of a header file and a separate source code file for implementation of declarations.
+For this reason, you can also link your implementation C++ source code files just like header files.
+<br><br>
+For example:
+<div class="code">use cpp "myfile.cpp"</div>
+<div class="code">use cpp "implementation.cxx"</div>
+
+The correctness and validity of the file path is checked by the compiler. <br>
+Valid source file extensions; <x class="inline_code">.cpp</x>, <x class="inline_code">.cc</x>, <x class="inline_code">.cxx</x>, <x class="inline_code">.mm</x>
+
+<div class="title-separator"></div>
+<div class="sub-sub-title">Linking Approach</div>
+
+The source codes you link are considered not <x class="inline_code">#include</x> in different files.
+Therefore, your compiler applies them by linking them with the <x class="inline_code">#include</x> directive in the generated source code, instead of adding them to the compile command.
+If you are already including your source code files, you should not forget to take precautions against the problems that this will cause.
 
 <div class="title-separator"></div>
 <div class="sub-title">Linking C++ Variables to Jule</div>
@@ -3862,20 +3883,6 @@ As shown in the example above, since both files are located in the same director
 
 <div class="warn">Be careful to design the packages according to their definition order, otherwise you may not get the result you expect.</div>
 
-<div class="title-separator"></div>
-<div class="sub-sub-title">Cycles</div>
-
-Import cycles are dependency cycles that shouldn't be, they are dependencies that don't make sense technically.
-When one or more packages exhibit an infinite state of interdependence, this is indicated by a compiler message.
-The compiler captures and handles these cycles, allowing the developer to understand and remediate logic errors of package dependencies.
-<br><br>
-It is an illegal cycle when a package tries to import itself within itself. <br>
-Logically, a package cannot be self-dependent.
-<br><br>
-This invalid dependency status is also valid if the package has dependencies on itself from different packages.
-For example, if one of the package's dependencies is dependent on the package itself, it's still an invalid cycle.
-This also applies to nested dependencies.
-
 </div>
 `;
 
@@ -4031,6 +4038,21 @@ use std::bar::{run} // Error: duplicated identifier
 
 fn main() {}</div>
 
+
+<div class="title-separator"></div>
+<div class="sub-title">Cycles</div>
+
+Import cycles are dependency cycles that shouldn't be, they are dependencies that don't make sense technically.
+When one or more packages exhibit an infinite state of interdependence, this is indicated by a compiler message.
+The compiler captures and handles these cycles, allowing the developer to understand and remediate logic errors of package dependencies.
+<br><br>
+It is an illegal cycle when a package tries to import itself within itself. <br>
+Logically, a package cannot be self-dependent.
+<br><br>
+This invalid dependency status is also valid if the package has dependencies on itself from different packages.
+For example, if one of the package's dependencies is dependent on the package itself, it's still an invalid cycle.
+This also applies to nested dependencies.
+
 </div>
 `;
 
@@ -4068,6 +4090,36 @@ With the keyword <x class="inline_code">pub</x>, you can public definition.
 For example:
 <div class="code">pub fn add(x: int, y: int): int { ret x + y }</div>
 The <x class="inline_code">add</x> function is public now.
+
+<div class="title-separator"></div>
+<div class="sub-title">Implicit Export</div>
+
+Implicit export is when definitions that are not explicitly defined as public are implicitly served as public by another public definition.
+For example, a private struct can have public fields.
+But since the struct is private, it cannot be accessed from outside the package.
+A wrapper function that provides this can access the struct and return an instance of it because it is in its own package.
+This is an implicit export.
+<br><br>
+For example, the package <x class="inline_code">foo</x>:
+<div class="code">struct MyStruct {
+    pub number: int
+}
+
+pub fn new_mystruct(number: int): MyStruct {
+    ret MyStruct{
+        number: number,
+    }
+}</div>
+
+Your code:
+<div class="code">use foo::{new_mystruct}
+
+fn main() {
+    let ms = new_mystruct(20)
+    outln(ms.number)
+}</div>
+As shown in the example above, your code accessed a private struct via a public function and used the public field.
+This means that that definition is implicitly exported.
 
 </div>
 `;
@@ -4167,6 +4219,7 @@ const stdlibHTML = `
       <li><a href="../pages/stdlib/jule_constant_lit.html">std::jule::constant::lit</a></li>
     </ul>
     <li><a href="../pages/stdlib/jule_lex.html">std::jule::lex</a></li>
+    <li><a href="../pages/stdlib/jule_types.html">std::jule::types</a></li>
   </ul>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
   <ul>
