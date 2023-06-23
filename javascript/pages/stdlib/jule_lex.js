@@ -168,11 +168,11 @@ Special cases are:
 Reports given token id is allow for assignment left-expression or not.
 
 <div class="topic-separator"></div>
-<div class="code">fn is_postfix_op(kind: TokenKind): bool</div>
+<div class="code">fn is_postfix_op(kind: str): bool</div>
 Reports whether operator kind is postfix operator.
 
 <div class="topic-separator"></div>
-<div class="code">fn is_assign_op(kind: TokenKind): bool</div>
+<div class="code">fn is_assign_op(kind: str): bool</div>
 Reports whether operator kind is assignment operator.
 
 `;
