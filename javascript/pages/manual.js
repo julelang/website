@@ -3582,13 +3582,6 @@ The correctness and validity of the file path is checked by the compiler. <br>
 Valid source file extensions; <x class="inline_code">.cpp</x>, <x class="inline_code">.cc</x>, <x class="inline_code">.cxx</x>, <x class="inline_code">.mm</x>
 
 <div class="title-separator"></div>
-<div class="sub-sub-title">Linking Approach</div>
-
-The source codes you link are considered not <x class="inline_code">#include</x> in different files.
-Therefore, your compiler applies them by linking them with the <x class="inline_code">#include</x> directive in the generated source code, instead of adding them to the compile command.
-If you are already including your source code files, you should not forget to take precautions against the problems that this will cause.
-
-<div class="title-separator"></div>
 <div class="sub-title">Linking C++ Variables to Jule</div>
 After the header file containing the C++ variables is passed to Jule, C++ variables must be declared to Jule.
 Not all, just the ones you will use.
@@ -4172,6 +4165,11 @@ So you can get the most accurate development experience.
 If your package has subpackages, you can import them according to the use declaration rules.
 Since your package will be a sub-package of the main package, you will obviously be conscious that you are importing from your own package.
 <br><br>
+You can use <x class="inline_code">main.jule</x> and your other main package files to test the package you are developing.
+You will not need your main package when publishing your package.
+This is just an approach that can help you have a better developer experience as a method you use by importing the package you developed.
+When you publish your package, it is sufficient to directly publish your original package (<x class="inline_code">yourpackage</x> in the example above) that you developed.
+<br><br>
 If your package has a dependency, ie not developed with pure Jule, you can choose to locate these dependencies in the package.
 When you require packages to be installed separately, developers who want to install the source code directly may be hesitant to use your package.
 The possible harm of this is that your dependency is also available subpackage of your package, as it will be considered as a subpackage.
@@ -4213,6 +4211,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
   <li><a href="../pages/stdlib/jule.html">std::jule</a></li>
   <ul>
+    <li><a href="../pages/stdlib/jule_ast.html">std::jule::ast</a></li>
     <li><a href="../pages/stdlib/jule_build.html">std::jule::build</a></li>
     <li><a href="../pages/stdlib/jule_constant.html">std::jule::constant</a></li>
     <ul>
