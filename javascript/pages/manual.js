@@ -4211,6 +4211,7 @@ const stdlibHTML = `
   <li><a href="../pages/stdlib/io.html">std::io</a></li>
   <li><a href="../pages/stdlib/jule.html">std::jule</a></li>
   <ul>
+    <li><a href="../pages/stdlib/jule_ast.html">std::jule::ast</a></li>
     <li><a href="../pages/stdlib/jule_build.html">std::jule::build</a></li>
     <li><a href="../pages/stdlib/jule_constant.html">std::jule::constant</a></li>
     <ul>
