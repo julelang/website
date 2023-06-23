@@ -4165,6 +4165,11 @@ So you can get the most accurate development experience.
 If your package has subpackages, you can import them according to the use declaration rules.
 Since your package will be a sub-package of the main package, you will obviously be conscious that you are importing from your own package.
 <br><br>
+You can use <x class="inline_code">main.jule</x> and your other main package files to test the package you are developing.
+You will not need your main package when publishing your package.
+This is just an approach that can help you have a better developer experience as a method you use by importing the package you developed.
+When you publish your package, it is sufficient to directly publish your original package (<x class="inline_code">yourpackage</x> in the example above) that you developed.
+<br><br>
 If your package has a dependency, ie not developed with pure Jule, you can choose to locate these dependencies in the package.
 When you require packages to be installed separately, developers who want to install the source code directly may be hesitant to use your package.
 The possible harm of this is that your dependency is also available subpackage of your package, as it will be considered as a subpackage.
