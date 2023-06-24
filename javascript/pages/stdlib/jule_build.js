@@ -77,7 +77,7 @@ const functionsHTML = `
 Reports whether file path passes file annotation by current system.
 
 <div class="topic-separator"></div>
-<div class="code">fn is_top_directive(directive: Directive): bool</div>
+<div class="code">fn is_top_directive(directive: str): bool</div>
 Reports whether directive is top-directive.
 
 <div class="topic-separator"></div>

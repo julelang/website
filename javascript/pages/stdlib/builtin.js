@@ -50,7 +50,7 @@ Returns new instance of data type for supported types. <br>
 <li>Slices:</li>
 <ol>
 Allocates slice with dynamic size. <br>
-Size 0 will accept as nil slice.
+Negative sizes will be accepted as 0-sized.
 </ol>
 
 <div class="topic-separator"></div>
