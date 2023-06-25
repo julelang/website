@@ -18,7 +18,7 @@ Returns empty string if bytes.len == 0
 <div class="topic-separator"></div>
 <div class="code">fn to_raw_str(bytes: []byte): str</div>
 Returns raw-string value string from bytes, not includes quotes. <br>
-Bytes are represents string characters, allows escape sequences. <br>
+Bytes are represents string characters. <br>
 Returns empty string if bytes.len == 0
 
 <div class="topic-separator"></div>
