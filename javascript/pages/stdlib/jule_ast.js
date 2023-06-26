@@ -89,7 +89,7 @@ Directive.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct Type {
+<div class="code">struct TypeDecl {
     token: Token // From std::jule::lex
     kind:  TypeDeclKind
 }</div>
@@ -98,7 +98,7 @@ Also represents type expression.
 <br><br>
 For primitive types:
 <ul>
-    <li>Represented by IdentType</li>
+    <li>Represented by IdentTypeDecl</li>
     <li>Token's identity is data type</li>
     <li>Primitive type kind is Ident</li>
 </ul>
@@ -110,11 +110,11 @@ For function types:
 
 
 <div class="topic-separator"></div>
-<div class="code">struct IdentType {
+<div class="code">struct IdentTypeDecl {
     token:      Token // From std::jule::lex
     ident:      str
     cpp_linked: bool
-    generics:   []&Type
+    generics:   []&TypeDecl
 }</div>
 Identifier type.
 
@@ -125,30 +125,36 @@ Reports whether identifier is primitive type.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct NamespaceType {
+<div class="code">struct NamespaceTypeDecl {
     idents: []Token    // Token from std::jule::lex
-    kind:   &IdentType
+    kind:   &IdentTypeDecl
 }</div>
 Namespace chain type.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct RefType {
-    elem: &Type
+<div class="code">struct RefTypeDecl {
+    elem: &TypeDecl
 }</div>
 Reference type.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct SlcType {
-    elem: &Type
+<div class="code">struct SlcTypeDecl {
+    elem: &TypeDecl
 }</div>
 Slice type.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct PtrType {
-    elem: &Type
+<div class="code">struct TupleTypeDecl {
+    types: []&TypeDecl
+}</div>
+Tuple type.
+
+<div class="topic-separator"></div>
+<div class="code">struct PtrTypeDecl {
+    elem: &TypeDecl
 }</div>
 Pointer type.
 
@@ -158,8 +164,8 @@ Pointer type.
 Reports whether pointer is unsafe pointer (*unsafe).
 
 <div class="topic-separator"></div>
-<div class="code">struct ArrType {
-    elem: &Type
+<div class="code">struct ArrTypeDecl {
+    elem: &TypeDecl
     size: &Expr
 }</div>
 Array type. <br>
@@ -171,16 +177,16 @@ Size expression is nil for auto-sized array.
 Reports whether array is auto-sized.
 
 <div class="topic-separator"></div>
-<div class="code">struct MapType {
-    key: &Type
-    val: &Type
+<div class="code">struct MapTypeDecl {
+    key: &TypeDecl
+    val: &TypeDecl
 }</div>
 Map type.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct RetType {
-    kind:   &Type
+<div class="code">struct RetTypeDecl {
+    kind:   &TypeDecl
     idents: []Token // Token from std::jule::lex
 }</div>
 Return type. <br>
@@ -259,7 +265,7 @@ Variadiced expression.
 
 <div class="topic-separator"></div>
 <div class="code">struct CastExpr {
-    kind: &Type
+    kind: &TypeDecl
     expr: ExprData
 }</div>
 Casting expression.
@@ -295,7 +301,7 @@ Binary operation.
 <div class="code">struct FnCallExpr {
     token:      Token // From std::jule::lex
     expr:       &Expr
-    generics:   []&Type
+    generics:   []&TypeDecl
     args:       []&Expr
     concurrent: bool
 }</div>
@@ -317,7 +323,7 @@ Reports whether pair targeted field.
 
 <div class="topic-separator"></div>
 <div class="code">struct StructLit {
-    kind:  &Type
+    kind:  &TypeDecl
     exprs: []ExprData
 }</div>
 Struct literal instiating expression.
@@ -379,11 +385,11 @@ Slicing expression.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct Generic {
+<div class="code">struct GenericDecl {
     token: Token // From std::jule::lex
     ident: str
 }</div>
-Generic typpe.
+Generic type declaration.
 
 
 <div class="topic-separator"></div>
@@ -439,11 +445,11 @@ Scope tree.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct Param {
+<div class="code">struct ParamDecl {
     token:    Token // From std::jule::lex
     mutable:  bool
     variadic: bool
-    kind:     &Type
+    kind:     &TypeDecl
     ident:    str
 }</div>
 Parameter.
@@ -469,9 +475,9 @@ Reports whether self (receivers) parameter is reference.
     directives:   []&Directive
     doc_comments: &CommentGroup
     scope:        &ScopeTree
-    generics:     []&Generic
-    result:       &RetType
-    params:       []&Param
+    generics:     []&GenericDecl
+    result:       &RetTypeDecl
+    params:       []&ParamDecl
 }</div>
 Function declaration. <br>
 Also represents anonymous function expression.
@@ -487,7 +493,7 @@ Also represents anonymous function expression.
     mutable:      bool
     constant:     bool
     doc_comments: &CommentGroup
-    kind:         &Type     // nil for auto-typed
+    kind:         &TypeDecl     // nil for auto-typed
     expr:         &Expr
 }</div>
 Variable declaration.
@@ -586,7 +592,7 @@ Condition chain.
     cpp_linked:   bool
     token:        Token // From std::jule::lex
     ident:        str
-    kind:         &Type
+    kind:         &TypeDecl
     doc_comments: &CommentGroup
 }</div>
 Type alias declaration.
@@ -625,7 +631,7 @@ Use declaration statement.
 
 
 <div class="topic-separator"></div>
-<div class="code">struct EnumItem {
+<div class="code">struct EnumItemDecl {
     token: Token  // From std::jule::lex
     ident: str
     expr:  &Expr   // Nil for auto expression.
@@ -643,8 +649,8 @@ Reports whether item has auto expression.
     token:        Token  // From std::jule::lex
     public:       bool
     ident:        str
-    kind:         &Type
-    items:        []&EnumItem
+    kind:         &TypeDecl
+    items:        []&EnumItemDecl
     doc_comments: &CommentGroup
 }</div>
 Enum declaration.
@@ -661,7 +667,7 @@ Reports whether enum's type is defualt.
     public:  bool
     mutable: bool   // Interior mutability.
     ident:   str
-    kind:    &Type
+    kind:    &TypeDecl
 }</div>
 Field declaration.
 
@@ -675,7 +681,7 @@ Field declaration.
     cpp_linked:   bool
     directives:   []&Directive
     doc_comments: &CommentGroup
-    generics:     []&Generic
+    generics:     []&GenericDecl
 }</div>
 Structure declaration.
 
