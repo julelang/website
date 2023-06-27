@@ -4766,6 +4766,7 @@ Default</div>
 <div class="title-separator"><div>
 <div class="sub-title">Type Matching</div>
 The <x class="inline_code">any</x> data type may contain any data and you may want to execute different algorithms based on this data, in which case type matching is useful.
+You can also determine types of trait's data.
 Type matching is easy.
 Just use the keyword <x class="inline_code">type</x> and then use the data type in case to match.
 <br><br>
