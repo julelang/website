@@ -2008,6 +2008,9 @@ const common_concepts_mapsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Maps</div>
 <div class="text">
 Maps is a hashmap. Maps a unique key value to a value.
+<div class="info">
+The built-in out functions prints map in LIFO format.
+</div>
 <br><br>
 Example to maps;
 <div class="code">fn main() {
