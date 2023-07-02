@@ -111,7 +111,7 @@ const getting_started_downloadsHTML = `
 const getting_started_install_from_sourceHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Install from Source</div>
 <div class="text">
-  <div class="warn">You should have Go compiler for this option.</div>
+  <div class="warn">You should have JuleC for this option.</div>
   Ok! We will install JuleC from source code.
   Actually, we will just compile the project.
   Getting the latest version is a good way to start.
@@ -123,14 +123,14 @@ const getting_started_install_from_sourceHTML = `
   You can use them.
   If you execute a script, the result will be either a compilation error or a completion message.
 
-  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
+  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src/julec</x>) directory of the JuleC.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   <div class="info">
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
-  Using example for PowerShell;
+  Using example for PowerShell:
   <div class="code">$ build.bat</div>
 
   <div class="title-separator"></div>
@@ -138,7 +138,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="info">
     Ideal scripts for macOS: usally shellscripts (.sh).
   </div>
-  Using example for ZSH;
+  Using example for ZSH:
   <div class="code">$ zsh build.sh</div>
 
   <div class="title-separator"></div>
@@ -146,28 +146,19 @@ const getting_started_install_from_sourceHTML = `
   <div class="info">
     Ideal scripts for Linux: usally shellscripts (.sh).
   </div>
-  Using example for Bash;
+  Using example for Bash:
   <div class="code">$ sh build.sh</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Manual Compilation</div>
-  JuleC is written in Go, for now!
-  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
+  JuleC is written in Jule!
+  <div class="warn">
+    These example assume you are in the source code (<x class="inline_code">src/julec</x>) directory of the JuleC. <br>
+    This example also accepts you already have JuleC in global path.
+  </div>
+  
+  <div class="code">julec -o julec .</div>
 
-  <div class="title-separator"></div>
-  <div class="sub-sub-title">Windows</div>
-  Using example for PowerShell;
-  <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
-
-  <div class="title-separator"></div>
-  <div class="sub-sub-title">macOS (Darwin)</div>
-  Using example for ZSH;
-  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
-
-  <div class="title-separator"></div>
-  <div class="sub-sub-title">Linux</div>
-  Using example for Bash;
-  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
 </div>
 `;
 
@@ -4247,6 +4238,7 @@ const stdlibHTML = `
     <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
   </ul>
 </div>
+<li><a href="../pages/stdlib/vector.html">std::vector</a></li>
 `;
 
 const endHTML = `

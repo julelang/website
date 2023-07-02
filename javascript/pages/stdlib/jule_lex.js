@@ -30,7 +30,7 @@ List of assign operators.
 `;
 
 const functionsHTML = `
-<div class="code">fn lex(mut f: &File, text: str): bool</div>
+<div class="code">fn lex(mut f: &File, text: []byte): bool</div>
 Lex source code into fileset. <br>
 Returns nil if <x class="inline_code">!real(f)</x>. <br>
 Returns nil slice for errors if no any error.
@@ -203,7 +203,7 @@ Returns filename.
 Returns self as uintptr.
 
 <div class="title-separator"></div>
-<div class="inline_code">fn tokens(mut self): []Token</div> <br>
+<div class="inline_code">fn tokens(mut self): Vector[Token]</div> <br>
 Returns tokens of file. <br>
 Tokens are mutable. <br>
 

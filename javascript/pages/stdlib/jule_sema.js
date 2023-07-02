@@ -664,7 +664,7 @@ Package.
     parent:   &Scope
     unsafety: bool
     deferred: bool
-    stmts:    []St
+    stmts:    Vector[St]
 }</div>
 Scope.
 
@@ -1296,7 +1296,7 @@ Lookup.
     // Logs accepts as error.
     import_package(mut self, path: str): ([]&Ast, []Log)
     // Invoked after the package is imported.
-    imported(mut self, &ImportInfo)
+    imported(mut self, mut &ImportInfo)
 }</div>
 Importer. <br>
 Used by semantic analyzer for import use declarations.
