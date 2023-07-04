@@ -3846,6 +3846,19 @@ fn main() {
 Dynamic generic annotation is used in the above example.
 Generic types are automatically detected from the data type of argument by compiler.
 
+<div class="title-separator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Runtime Cost of Generics</div>
+Short answer: Generics hasn't any cost for runtime.
+<br><br>
+The cost of generics is that they typically add potentially additional time to compile times.
+When generics are evaluated as compile-time, there may be a cost, but the same is not true for runtime.
+Jule's generics cost nothing to runtime, you have no losses.
+<br><br>
+The generated code is created specifically for each generic combination, and each combination uses its own unique algorithms.
+There is no difference in runtime.
+Each generic type is determined at compile time and is compiled accordingly preserving the static type.
+So even if you use generic types at runtime, you get the performance of no-generic definitions at no cost.
+
 </div>
 `;
 

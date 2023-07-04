@@ -944,16 +944,16 @@ Directive pass.
 
 <div class="title-separator"></div>
 <div class="code">struct SymbolTable {
-    file:         &File         // Owner fileset of this symbol table.
-    passes:       []Pass        // All passed flags with jule:pass directive.
-    imports:      []&ImportInfo // Imported packages.
-    vars:         []&Var        // Variables.
-    type_aliases: []&TypeAlias  // Type aliases.
-    structs:      []&Struct     // Structures.
-    funcs:        []&Fn         // Functions.
-    traits:       []&Trait      // Traits.
-    enums:        []&Enum       // Enums.
-    impls:        []&Impl       // Implementations.
+    file:         &File               // Owner fileset of this symbol table.
+    passes:       Vector[Pass]        // All passed flags with jule:pass directive.
+    imports:      Vector[&ImportInfo] // Imported packages.
+    vars:         Vector[&Var]        // Variables.
+    type_aliases: Vector[&TypeAlias]  // Type aliases.
+    structs:      Vector[&Struct]     // Structures.
+    funcs:        Vector[&Fn]         // Functions.
+    traits:       Vector[&Trait]      // Traits.
+    enums:        Vector[&Enum]       // Enums.
+    impls:        Vector[&Impl]       // Implementations.
 }</div>
 Structure instance.
 
