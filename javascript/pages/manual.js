@@ -111,7 +111,7 @@ const getting_started_downloadsHTML = `
 const getting_started_install_from_sourceHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Install from Source</div>
 <div class="text">
-  <div class="warn">You should have Go compiler for this option.</div>
+  <div class="warn">You should have JuleC for this option.</div>
   Ok! We will install JuleC from source code.
   Actually, we will just compile the project.
   Getting the latest version is a good way to start.
@@ -123,14 +123,14 @@ const getting_started_install_from_sourceHTML = `
   You can use them.
   If you execute a script, the result will be either a compilation error or a completion message.
 
-  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
+  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src/julec</x>) directory of the JuleC.</div>
 
   <div class="title-separator"></div>
   <div class="sub-sub-title">Windows</div>
   <div class="info">
     Ideal scripts for Windows: usally batchfiles (.bat).
   </div>
-  Using example for PowerShell;
+  Using example for PowerShell:
   <div class="code">$ build.bat</div>
 
   <div class="title-separator"></div>
@@ -138,7 +138,7 @@ const getting_started_install_from_sourceHTML = `
   <div class="info">
     Ideal scripts for macOS: usally shellscripts (.sh).
   </div>
-  Using example for ZSH;
+  Using example for ZSH:
   <div class="code">$ zsh build.sh</div>
 
   <div class="title-separator"></div>
@@ -146,28 +146,19 @@ const getting_started_install_from_sourceHTML = `
   <div class="info">
     Ideal scripts for Linux: usally shellscripts (.sh).
   </div>
-  Using example for Bash;
+  Using example for Bash:
   <div class="code">$ sh build.sh</div>
 
   <div class="title-separator"></div>
   <div class="sub-title">Manual Compilation</div>
-  JuleC is written in Go, for now!
-  <div class="warn">These examples assume you are in the source code (<x class="inline_code">src</x>) directory of the JuleC.</div>
+  JuleC is written in Jule!
+  <div class="warn">
+    These example assume you are in the source code (<x class="inline_code">src/julec</x>) directory of the JuleC. <br>
+    This example also accepts you already have JuleC in global path.
+  </div>
+  
+  <div class="code">julec -o julec .</div>
 
-  <div class="title-separator"></div>
-  <div class="sub-sub-title">Windows</div>
-  Using example for PowerShell;
-  <div class="code">$ go build -o julec.exe -v cmd\\julec\\main.go</div>
-
-  <div class="title-separator"></div>
-  <div class="sub-sub-title">macOS (Darwin)</div>
-  Using example for ZSH;
-  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
-
-  <div class="title-separator"></div>
-  <div class="sub-sub-title">Linux</div>
-  Using example for Bash;
-  <div class="code">$ go build -o julec -v cmd/julec/main.go</div>
 </div>
 `;
 
@@ -2008,6 +1999,9 @@ const common_concepts_mapsHTML = `
 <div class="page-title" style="margin-bottom: 20px;">Maps</div>
 <div class="text">
 Maps is a hashmap. Maps a unique key value to a value.
+<div class="info">
+The built-in out functions prints map in LIFO format.
+</div>
 <br><br>
 Example to maps;
 <div class="code">fn main() {
@@ -3852,6 +3846,19 @@ fn main() {
 Dynamic generic annotation is used in the above example.
 Generic types are automatically detected from the data type of argument by compiler.
 
+<div class="title-separator"></div>
+<div class="sub-title" style="margin-bottom: 20px;">Runtime Cost of Generics</div>
+Short answer: Generics hasn't any cost for runtime.
+<br><br>
+The cost of generics is that they typically add potentially additional time to compile times.
+When generics are evaluated as compile-time, there may be a cost, but the same is not true for runtime.
+Jule's generics cost nothing to runtime, you have no losses.
+<br><br>
+The generated code is created specifically for each generic combination, and each combination uses its own unique algorithms.
+There is no difference in runtime.
+Each generic type is determined at compile time and is compiled accordingly preserving the static type.
+So even if you use generic types at runtime, you get the performance of no-generic definitions at no cost.
+
 </div>
 `;
 
@@ -4219,6 +4226,7 @@ const stdlibHTML = `
     </ul>
     <li><a href="../pages/stdlib/jule_lex.html">std::jule::lex</a></li>
     <li><a href="../pages/stdlib/jule_parser.html">std::jule::parser</a></li>
+    <li><a href="../pages/stdlib/jule_sema.html">std::jule::sema</a></li>
     <li><a href="../pages/stdlib/jule_types.html">std::jule::types</a></li>
   </ul>
   <li><a href="../pages/stdlib/math.html">std::math</a></li>
@@ -4243,6 +4251,7 @@ const stdlibHTML = `
     <li><a href="../pages/stdlib/unicode_utf8.html">std::unicode::utf8</a></li>
   </ul>
 </div>
+<li><a href="../pages/stdlib/vector.html">std::vector</a></li>
 `;
 
 const endHTML = `
@@ -4766,6 +4775,7 @@ Default</div>
 <div class="title-separator"><div>
 <div class="sub-title">Type Matching</div>
 The <x class="inline_code">any</x> data type may contain any data and you may want to execute different algorithms based on this data, in which case type matching is useful.
+You can also determine types of trait's data.
 Type matching is easy.
 Just use the keyword <x class="inline_code">type</x> and then use the data type in case to match.
 <br><br>

@@ -19,10 +19,10 @@ Type of Iter's kind.
 const structsHTML = `
 <div class="code">struct Ast {
     file:           &File // From std::jule::lex
-    top_directives: []&Directive
-    use_decls:      []&UseDecl
-    impls:          []&Impl
-    comments:       []&Comment
+    top_directives: Vector[&Directive]
+    use_decls:      Vector[&UseDecl]
+    impls:          Vector[&Impl]
+    comments:       Vector[&Comment]
 
     // Possible types:
     //  &EnumDecl
@@ -31,7 +31,7 @@ const structsHTML = `
     //  &TraitDecl
     //  &TypeAliasDecl
     //  &VarDecl
-    decls: []Node
+    decls: Vector[Node]
 }</div>
 Abstract syntax tree.
 

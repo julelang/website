@@ -208,8 +208,8 @@ Exactly one of Rdonly, Wronly, or Rdwr must be specified.
     <li><x class="inline_code">Wronly</x>: Open the file write-only</li>
     <li><x class="inline_code">Rdwr</x>: Open the file read-write</li>
     <li><x class="inline_code">Append</x>: Append data to the file when writing</li>
-    <li><x class="inline_code">Creat</x>: Create a new file if none exists</li>
-    <li><x class="inline_code">Excl</x>: Used with Sema.Creat, file must not exist</li>
+    <li><x class="inline_code">Create</x>: Create a new file if none exists</li>
+    <li><x class="inline_code">Excl</x>: Used with Sema.Create, file must not exist</li>
     <li><x class="inline_code">Sync</x>: Open for synchronous I/O</li>
     <li><x class="inline_code">Trunc</x>: Truncate regular writable file when opened</li>
 </ul>
