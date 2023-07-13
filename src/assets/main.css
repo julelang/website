@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --jule-light: #708090;
+  --jule: #5f7389;
+  --jule-dark: #434f5d;
+  --jule-darker: #262626;
+  --jule-darkest: #181818;
+
+  --jule-red: #b22222;
+  --jule-light-red: #d32727;
+}
+
+::-moz-selection,
+::selection
+{
+  background-color: var(--jule);
+  color: white;
+}
+
+#nprogress .bar {
+  background: var(--jule) !important;
+  height: 3px !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 20px;
+}
+
+main {
+  min-height: calc(100vh - 104px); /* screen height - navbar height */
+}
+
+@font-face {
+  font-family: 'Code';
+  src: url('./fonts/Cascadia/CascadiaCode.ttf') format('truetype');
+}
+
+.bg-jule-darkest {
+  background-color: var(--jule-darkest);
+}
+
+.bg-jule-darker {
+  background-color: var(--jule-darker);
+}
+
+.bg-jule-dark {
+  background-color: var(--jule-dark);
+}
+
+.bg-jule {
+  background-color: var(--jule);
+}
+
+.text-jule {
+  color: var(--jule);
+}
+
+.card {
+  border: 3px solid var(--jule);
+  border-radius: 10px;
+  padding: 2rem;
+  transition: 0.3s;
+  width: 16rem;
+}
+
+.card:hover {
+  background-color: var(--jule);
+  opacity: 1;
+}
+
+.btn-red {
+  background-color: var(--jule-red);
+  color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-red:hover {
+  background-color: var(--jule-light-red);
+}
+
+.btn-jule {
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: white !important;
+  background-color: var(--jule-dark);
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-jule:hover {
+  background-color: var(--jule-light);
+}
+
+.code-block {
+  background-color: #181818;
+  border-radius: 5px;
+  border: 1px solid #797979;
+  color: #e9e9e9;
+  padding: 10px;
+  font-family: code;
+  height: 30rem;
+}
