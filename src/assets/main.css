@@ -20,6 +20,24 @@
   color: white;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--jule) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--jule);
+  border-radius: 10px;
+}
+
 #nprogress .bar {
   background: var(--jule) !important;
   height: 3px !important;
@@ -91,6 +109,10 @@ main {
 }
 
 .btn-jule {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
   padding: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
