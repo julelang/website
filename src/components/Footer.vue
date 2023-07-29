@@ -38,7 +38,6 @@ import { RouterLink } from 'vue-router'
         <li><a href="https://github.com/julelang" target="_blank">GitHub Organization</a></li>
         <li><a href="https://github.com/julelang/jule/discussions" target="_blank">Discussions</a></li>
         <li><a href="https://discord.gg/CZhK7dyh9X" target="_blank">Discord Community</a></li>
-        <li><a href="https://stackoverflow.com/questions/tagged/jule+julec" target="_blank">Stack Overflow</a></li>
       </ul>
     </div>
   </footer>

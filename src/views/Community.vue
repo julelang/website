@@ -25,10 +25,6 @@ export default {
                     <font-awesome-icon class="text-8xl mb-20" icon="fa-brands fa-discord" />
                     <p class="font-bold text-xl">Discord</p>
                 </a>
-                <a href="https://stackoverflow.com/questions/tagged/jule+julec" target="_blank" class="card text-center">
-                    <font-awesome-icon class="text-8xl mb-20" icon="fa-brands fa-stack-overflow" />
-                    <p class="font-bold text-xl">Stack Overflow</p>
-                </a>
             </div>
         </div>
     </main>
