@@ -11,7 +11,6 @@ import { RouterLink } from 'vue-router'
       <ul>
         <li><a href="https://github.com/julelang/jule/releases" target="_blank">Download</a></li>
         <li><router-link to="/community">Community</router-link></li>
-        <li><router-link to="/license">License</router-link></li>
         <li><router-link to="/code-of-conduct">Code of Conduct</router-link></li>
       </ul>
     </div>

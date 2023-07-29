@@ -25,11 +25,6 @@ const router = createRouter({
       component: () => import('../views/CodeOfConduct.vue')
     },
     {
-      path: '/license',
-      name: 'License',
-      component: () => import('../views/License.vue')
-    },
-    {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: () => import('../views/404.vue')
