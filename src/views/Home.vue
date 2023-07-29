@@ -70,6 +70,22 @@ fn main() {
     outln(rect.area())
     outln(circ.area())
 }`
+      } else if (code == "fizzbuzz") {
+        document.getElementById("code").innerText = `fn main() {
+    let mut j = 1
+    for j <= 100; j++ {
+        match {
+        | j % 3 == 0 && j % 5 == 0:
+            outln("FizzBuzz")
+        | j % 3 == 0:
+            outln("Fizz")
+        | j % 5 == 0:
+            outln("Buzz")
+        |:
+            outln(j)
+        }
+    }
+}`
       }
     }
   },
@@ -107,6 +123,7 @@ fn main() {
           <option value="hello">Hello World</option>
           <option value="quick">Quick Sort</option>
           <option value="traits">Traits</option>
+          <option value="fizzbuzz">FizzBuzz</option>
         </select>
       </div>
     </div>
