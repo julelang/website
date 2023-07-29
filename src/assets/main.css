@@ -132,6 +132,7 @@ main {
   border-radius: 5px;
   border: 1px solid #797979;
   color: #e9e9e9;
+  white-space: pre;
   padding: 10px;
   font-family: code;
   height: 30rem;
