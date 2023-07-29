@@ -31,6 +31,12 @@ export default {
     quick_sort(s[i+1:])
 
     ret s
+}
+
+fn main() {
+    let mut s = [9, 35, -0, 0, 98, 8935, -85, -9835, 64, 89]
+    s = quick_sort(s)
+    outln(s)
 }`
       } else if (code == "hello") {
         document.getElementById("code").innerText = `fn main() {
