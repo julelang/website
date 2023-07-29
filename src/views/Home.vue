@@ -92,6 +92,57 @@ fn main() {
         }
     }
 }`
+      } else if (code == "levenshtein-distance") {
+        document.getElementById("code").innerText = `fn min(values: ...int): int {
+    if values.len == 0 {
+        ret 0
+    }
+    let mut min = values[0]
+    for _, x in values[1:] {
+        if min > x {
+            min = x
+        }
+    }
+    ret min
+}
+
+fn levenshtein_distance(s1: str, s2: str): int {
+    if s1 == s2 {
+        ret 0
+    }
+    if s1.len == 0 {
+        ret s2.len
+    }
+    if s2.len == 0 {
+        ret s1.len
+    }
+    let v_len = s2.len+1
+    let mut v0 = make([]int, v_len)
+    let mut v1 = make([]int, v_len)
+    let mut i = 0
+    for i < v_len; i++ {
+        v0[i] = i
+    }
+    i = 0
+    for i < s1.len; i++ {
+        v1[0] = i+1
+        let mut j = 0
+        for j < s2.len; j++ {
+            let mut cost = 1
+            if s1[i] == s2[j] {
+                cost = 0
+            }
+            v1[j+1] = min(v1[j]+1, v0[j+1]+1, v0[j]+cost)
+        }
+        v0, v1 = v1, v0
+    }
+    ret v0[s2.len]
+}
+
+fn main() {
+    let mut d = levenshtein_distance("Levenshtein", "Distance")
+    outln(d)
+}`
       }
     }
   },
@@ -130,6 +181,7 @@ fn main() {
           <option value="quick">Quick Sort</option>
           <option value="traits">Traits</option>
           <option value="fizzbuzz">FizzBuzz</option>
+          <option value="levenshtein-distance">Levenshtein Distance</option>
         </select>
       </div>
     </div>
