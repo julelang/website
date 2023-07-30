@@ -4,6 +4,14 @@ The official website of [the Jule Programming Language](https://github.com/julel
 
 ## Building the website
 
+### Gitpod
+
+Skip all of the steps below by using Gitpod, which automatically does it for you.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/julelang/website)
+
+### Manually/locally
+
 1. Fork the repository [here](https://github.com/jule/website/fork).
 2. Clone the forked repository.
 
