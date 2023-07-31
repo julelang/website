@@ -157,15 +157,16 @@ fn main() {
       <div class="grow">
         <h1 class="text-4xl font-bold">The <span class="text-jule">Jule</span> Programming Language</h1>
         <br>
-        <p class="text-2xl">Jule is the simple, efficient, statically typed and compiled <br>
-          system programming language
+        <p class="text-2xl">Jule is the simple, efficient, statically typed <br>
+          and compiled system programming language
         </p>
         <br>
         <ul>
-          <li><font-awesome-icon icon="check" /> Jule is an open source and free programming language</li>
+          <li><font-awesome-icon icon="check" /> Free and 100% open-source</li>
           <li><font-awesome-icon icon="check" /> Easy to learn and get started with</li>
           <li><font-awesome-icon icon="check" /> Efficient and fast as C++</li>
           <li><font-awesome-icon icon="check" /> High interoperability with C++</li>
+          <li><font-awesome-icon icon="check" /> Well-written and explained manual</li>
         </ul>
         <br><br>
         <a href="#get-started" class="btn-red">Get Started</a>
@@ -206,7 +207,7 @@ fn main() {
           <div class="flex justify-between items-center">
             <div class="me-10">
               <p class="font-bold text-xl">Manual</p>
-              <p>Learn Jule</p>
+              <p>Learn to code in JuleC</p>
             </div>
             <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
           </div>
@@ -217,7 +218,7 @@ fn main() {
           <div class="flex justify-between items-center">
             <div class="me-10">
               <p class="font-bold text-xl">Community</p>
-              <p>Join community</p>
+              <p>Get involved in our community</p>
             </div>
             <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
           </div>
