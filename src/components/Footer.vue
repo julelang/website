@@ -26,9 +26,9 @@ import { RouterLink } from 'vue-router'
       <h1 class="font-bold">Contribute</h1>
       <br>
       <ul>
-        <li><a href="https://github.com/julelang/jule" target="_blank">Source Code</a></li>
-        <li><a href="https://github.com/julelang/jule/fork" target="_blank">Fork JuleC</a></li>
-        <li><a href="https://github.com/julelang/jule/issues" target="_blank">Issue Tracker</a></li>
+        <li><a href="https://github.com/julelang/jule" target="_blank">Source code</a></li>
+        <li><a href="https://github.com/julelang/jule/issues" target="_blank">Issue tracker</a></li>
+        <li><a href="https://github.com/julelang/manual" target="_blank">Manual source code</a></li>
       </ul>
     </div>
     <div>
@@ -44,6 +44,6 @@ import { RouterLink } from 'vue-router'
   <div class="flex flex-wrap justify-center gap-20 pt-32 pb-12 bg-jule-darker text-gray-400 g:px-50 max-lg:px-6">
     <p align="center">
     Copyright © 2023 The Jule Team<br>
-    <a href="https://github.com/julelang/website">Source code</a> is licensed under <a href="https://opensource.org/license/bsd-3-clause/">BSD-3-Clause license</a></p>
+    <a href="https://github.com/julelang/website" target="_blank">Source code</a> is licensed under <a href="https://opensource.org/license/bsd-3-clause/" target="_blank">BSD-3-Clause license</a></p>
   </div>
 </template>
