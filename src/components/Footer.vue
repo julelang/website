@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <footer class="flex flex-wrap justify-center gap-20 pt-32 pb-32 bg-jule-darker text-gray-400 g:px-50 max-lg:px-6">
+  <footer class="flex flex-wrap justify-center gap-20 pt-32 pb-26 bg-jule-darker text-gray-400 g:px-50 max-lg:px-6">
     <router-link to="/"><img class="w-32 select-none" src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg" alt="Jule Icon"></router-link>
     <div>
       <h1 class="font-bold">About</h1>
@@ -41,4 +41,9 @@ import { RouterLink } from 'vue-router'
       </ul>
     </div>
   </footer>
+  <div class="flex flex-wrap justify-center gap-20 pt-32 pb-12 bg-jule-darker text-gray-400 g:px-50 max-lg:px-6">
+    <p align="center">
+    Copyright © 2023 The Jule Team<br>
+    <a href="https://github.com/julelang/website">Source code</a> is licensed under <a href="https://opensource.org/license/bsd-3-clause/">BSD-3-Clause license</a></p>
+  </div>
 </template>
