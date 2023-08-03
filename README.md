@@ -12,7 +12,7 @@ Skip all of the steps below by using Gitpod, which automatically does it for you
 
 ### Manually/locally
 
-1. Fork the repository [here](https://github.com/jule/website/fork).
+1. Fork the repository [here](https://github.com/julelang/website/fork).
 2. Clone the forked repository.
 
 ```bash
@@ -37,13 +37,13 @@ npm ci
 npm run build
 ```
 
-6. Run website at port 5173.
+6. Run the website at port 5173.
 
 ```bash
 npm run dev
 ```
 
-That's it! :tada: You have successfully ran the website locally.
+That's it! :tada: You have successfully run the website locally.
 
 ## License
 
