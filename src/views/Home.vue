@@ -143,6 +143,28 @@ fn main() {
     let mut d = levenshtein_distance("Levenshtein", "Distance")
     outln(d)
 }`
+      } else if (code == "number-kind") {
+        document.getElementById("code").innerText = `enum NumberKind {
+    Even,
+    Odd,
+    Zero,
+}
+
+fn kind_of_number(x: int): NumberKind {
+    if x == 0 {
+        ret NumberKind.Zero
+    } else if x%2 == 0 {
+        ret NumberKind.Even
+    } else {
+        ret NumberKind.Odd
+    }
+}
+
+fn main() {
+    outln(kind_of_number(10))
+    outln(kind_of_number(0))
+    outln(kind_of_number(1))
+}`
       }
     }
   },
@@ -164,8 +186,8 @@ fn main() {
         <ul>
           <li><font-awesome-icon icon="check" /> Free and 100% open-source</li>
           <li><font-awesome-icon icon="check" /> Easy to learn and get started with</li>
-          <li><font-awesome-icon icon="check" /> Efficient and fast as C++</li>
-          <li><font-awesome-icon icon="check" /> High interoperability with C++</li>
+          <li><font-awesome-icon icon="check" /> Efficient and extremely fast</li>
+          <li><font-awesome-icon icon="check" /> High interoperability with C/C++</li>
           <li><font-awesome-icon icon="check" /> Well-written and explained manual</li>
         </ul>
         <br><br>
@@ -183,6 +205,7 @@ fn main() {
           <option value="traits">Traits</option>
           <option value="fizzbuzz">FizzBuzz</option>
           <option value="levenshtein-distance">Levenshtein Distance</option>
+          <option value="number-kind">Number Kind</option>
         </select>
       </div>
     </div>
