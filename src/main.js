@@ -1,38 +1,40 @@
-import './assets/main.css'
-import '../node_modules/nprogress/nprogress.css'
+import "./assets/main.css"
+import "../node_modules/nprogress/nprogress.css"
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue"
+import App from "./App.vue"
+import router from "./router"
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faDiscord, faGithub, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
-import {
-  faMagnifyingGlass,
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
+import { faDiscord, faGithub, faStackOverflow } from "@fortawesome/free-brands-svg-icons"
+import { 
+  faMoon, 
+  faSun, 
   faCheck,
   faArrowUpRightFromSquare, 
   faGraduationCap,
   faDownload,
   faUserGroup,
-  faBars
-} from '@fortawesome/free-solid-svg-icons'
-
-const app = createApp(App)
+  faPlus
+} from "@fortawesome/free-solid-svg-icons"
 
 library.add(
-  faDiscord, 
-  faGithub, 
-  faStackOverflow,
-  faMagnifyingGlass, 
-  faCheck, 
+  faMoon, 
+  faSun, 
+  faCheck,
   faArrowUpRightFromSquare, 
   faGraduationCap, 
   faDownload, 
   faUserGroup,
-  faBars
+  faDiscord, 
+  faGithub, 
+  faStackOverflow,
+  faPlus,
 )
 
-app.component('font-awesome-icon', FontAwesomeIcon)
+const app = createApp(App)
+
+app.component("font-awesome-icon", FontAwesomeIcon)
 app.use(router)
-app.mount('#app')
+app.mount("#app")

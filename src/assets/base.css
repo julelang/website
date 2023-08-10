@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--jule) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--jule);
+  border-radius: 10px;
+}
+
+:root {
+  --jule: #5f7389;
+  --jule-dark: #3d4752;
+}
+
+::-moz-selection,
+::selection
+{
+  background-color: var(--jule);
+  color: white;
+}
+
+@font-face {
+  font-family: "Code";
+  src: url("./CascadiaCode.ttf") format("truetype");
+}
+
+#nprogress .bar {
+  background: var(--jule) !important;
+  height: 3px !important;
+}

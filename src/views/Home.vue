@@ -1,13 +1,11 @@
 <script>
-import { RouterLink } from 'vue-router'
+import { useDark } from "@vueuse/core"
 
-import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
+const isDark = useDark()
 
 export default {
-  components: {
-    Navbar,
-    Footer
+  data() {
+    return { isDark }
   },
   methods: {
     codes() {
@@ -106,7 +104,7 @@ fn main() {
     ret min
 }
 
-fn levenshtein_distance(s1: str, s2: str): int {
+fn distance(s1: str, s2: str): int {
     if s1 == s2 {
         ret 0
     }
@@ -140,7 +138,7 @@ fn levenshtein_distance(s1: str, s2: str): int {
 }
 
 fn main() {
-    let mut d = levenshtein_distance("Levenshtein", "Distance")
+    let mut d = distance("Levenshtein", "Distance")
     outln(d)
 }`
       } else if (code == "number-kind") {
@@ -169,36 +167,38 @@ fn main() {
     }
   },
 }
-// &nbsp;&nbsp;&nbsp;&nbsp;
 </script>
 
 <template>
-  <Navbar theme="light" />
-  <main>
-    <div class="flex gap-10 px-24 pb-40 max-sm:px-10 max-lg:flex-wrap">
-      <div class="grow">
-        <h1 class="text-4xl font-bold">The <span class="text-jule">Jule</span> Programming Language</h1>
-        <br>
-        <p class="text-2xl">Jule is the simple, efficient, statically typed <br>
-          and compiled system programming language
-        </p>
-        <br>
-        <ul>
-          <li><font-awesome-icon icon="check" /> Free and 100% open-source</li>
-          <li><font-awesome-icon icon="check" /> Easy to learn and get started with</li>
-          <li><font-awesome-icon icon="check" /> Efficient and extremely fast</li>
-          <li><font-awesome-icon icon="check" /> High interoperability with C/C++</li>
-          <li><font-awesome-icon icon="check" /> Well-written and explained manual</li>
-        </ul>
-        <br><br>
-        <a href="#get-started" class="btn-red">Get Started</a>
+  <main class="px-20 max-sm:px-10">
+    <div class="flex items-center justify-between gap-14 max-lg:pt-5 lg:h-screen max-lg:pb-20 max-lg:flex-wrap">
+      <div>
+        <div class="flex mb-14">
+          <router-link to="/">
+            <img
+              class="w-14 dark:invert dark:brightness-0"
+              src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg" 
+              alt="Jule Icon"
+            >
+          </router-link>
+        </div>
+        <h1 class="font-bold text-4xl mb-7">The <span style="color: var(--jule)">Jule</span> Programming Language</h1>
+        <p class="text-2xl text-inherit mb-10">Jule is the simple, efficient, statically typed<br>and compiled system programming language.</p>
+        <div class="text-md mb-10">
+          <p><font-awesome-icon icon="check" /> Jule is an open source and free programming language</p>
+          <p><font-awesome-icon icon="check" /> Easy to learn and get started with</p>
+          <p><font-awesome-icon icon="check" /> Efficient and fast as C++</p>
+          <p><font-awesome-icon icon="check" /> High interoperability with C++</p>
+          <p><font-awesome-icon icon="check" /> Well-written and explained manual</p>
+        </div>
+        <div class="flex gap-3">
+          <a class="btn-jule" href="#get-started">Get Started</a>
+        </div>
       </div>
 
       <div class="max-lg:grow">
-        <div class="overflow-auto code-block lg:w-[35rem]" id="code">
-          fn main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;outln("Hello, world")<br>}
-        </div>
-        <br>
+        <div class="overflow-auto h-[30rem] p-2.5 mb-5 rounded-md font-code text-lg text-white bg-zinc-800 whitespace-pre-wrap border-2 border-[var(--jule-dark)] lg:w-[35rem]" id="code">fn main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;outln("Hello, world")<br>}</div>
+
         <select class="btn-jule" id="codes" @change="codes()">
           <option value="hello">Hello World</option>
           <option value="quick">Quick Sort</option>
@@ -209,12 +209,12 @@ fn main() {
         </select>
       </div>
     </div>
+    
+    <div class="pb-20" id="get-started">
+      <h1 class="text-4xl font-bold text-center mb-20">Get Started</h1>
 
-    <div class="bg-jule-darkest text-white px-24 max-sm:px-10 py-20" id="get-started">
-      <h1 class="text-4xl font-bold text-center">Get Started</h1>
-      <br><br>
-      <div class="flex justify-center max-lg:flex-wrap gap-16 select-none">
-        <a href="https://github.com/julelang/jule/releases" target="_blank" class="card">
+      <div class="flex flex-wrap justify-center gap-16 select-none">
+        <router-link to="/downloads" class="card dark:text-white text-black">
           <div class="text-center"><font-awesome-icon class="w-28 mb-20 text-8xl" icon="download" /></div>
           <div class="flex justify-between items-center">
             <div class="me-10">
@@ -223,9 +223,9 @@ fn main() {
             </div>
             <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
           </div>
-        </a>
+        </router-link>
 
-        <a href="https://manual.jule.dev" target="_blank" class="card">
+        <a href="https://manual.jule.dev" target="_blank" class="card dark:text-white text-black">
           <div class="text-center"><font-awesome-icon class="w-28 mb-20 text-8xl" icon="graduation-cap" /></div>
           <div class="flex justify-between items-center">
             <div class="me-10">
@@ -236,7 +236,7 @@ fn main() {
           </div>
         </a>
 
-        <router-link to="/community" class="card">
+        <router-link to="/community" class="card dark:text-white text-black">
           <div class="text-center"><font-awesome-icon class="w-28 mb-20 text-8xl" icon="user-group" /></div>
           <div class="flex justify-between items-center">
             <div class="me-10">
@@ -249,5 +249,4 @@ fn main() {
       </div>
     </div>
   </main>
-  <Footer />
 </template>

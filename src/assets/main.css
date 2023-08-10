@@ -1,83 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./base.css";
 
-:root {
-  --jule-light: #708090;
-  --jule: #5f7389;
-  --jule-dark: #434f5d;
-  --jule-darker: #262626;
-  --jule-darkest: #181818;
-
-  --jule-red: #b22222;
-  --jule-light-red: #d32727;
-}
-
-::-moz-selection,
-::selection
-{
-  background-color: var(--jule);
-  color: white;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--jule) transparent;
-}
-
-*::-webkit-scrollbar {
-  width: 7px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--jule);
-  border-radius: 10px;
-}
-
-#nprogress .bar {
-  background: var(--jule) !important;
-  height: 3px !important;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-size: 18px;
-}
-
-main {
-  min-height: calc(100vh - 104px); /* screen height - navbar height */
-}
-
-@font-face {
-  font-family: 'Code';
-  src: url('./fonts/Cascadia/CascadiaCode.ttf') format('truetype');
-}
-
-.bg-jule-darkest {
-  background-color: var(--jule-darkest);
-}
-
-.bg-jule-darker {
-  background-color: var(--jule-darker);
-}
-
-.bg-jule-dark {
-  background-color: var(--jule-dark);
-}
-
-.bg-jule {
-  background-color: var(--jule);
-}
-
-.text-jule {
+a:not(.btn-jule, .btn-jule-2, .card, .nav-link, .download-link) {
   color: var(--jule);
+  transition: 0.3s;
+}
+
+a:not(.btn-jule, .btn-jule-2, .card, .nav-link, .download-link):hover {
+  color: var(--jule-dark);
+  text-decoration: underline;
 }
 
 .card {
@@ -89,51 +19,68 @@ main {
 }
 
 .card:hover {
+  color: white;
   background-color: var(--jule);
   opacity: 1;
 }
 
-.btn-red {
-  background-color: var(--jule-red);
-  color: white;
+.warn {
   border-radius: 5px;
-  padding: 1rem;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn-red:hover {
-  background-color: var(--jule-light-red);
+  background-color: rgba(63, 57, 5, 0.20);
+  border: 1px solid rgb(175, 158, 0);
+  border-left-width: 5px;
+  padding: 7px;
+  margin: 10px;
+  margin-left: 0;
 }
 
 .btn-jule {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-
-  padding: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  color: white !important;
-  background-color: var(--jule-dark);
+  background-color: var(--jule);
+  padding: 15px;
+  text-align: center;
   border-radius: 5px;
   font-weight: bold;
   transition: 0.3s;
+  color: white;
 }
 
 .btn-jule:hover {
-  background-color: var(--jule-light);
+  background-color: var(--jule-dark);
 }
 
-.code-block {
-  background-color: #181818;
-  border-radius: 5px;
-  border: 1px solid #797979;
-  color: #e9e9e9;
-  white-space: pre-wrap;
-  padding: 10px;
-  font-family: code;
-  height: 30rem;
+summary {
+  display:block;
+}
+
+.badge-success {
+  color: white;
+  font-size: 14px;
+  border: 1px solid green;
+  background-color: rgb(1, 64, 1);
+  border-radius: 10px;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  text-align: center;
+}
+
+.badge-warn {
+  color: white;
+  font-size: 14px;
+  border: 1px solid yellow;
+  background-color: rgb(86, 86, 0);
+  border-radius: 10px;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  text-align: center;
+}
+
+ul {
+  list-style-type: disc;
+  list-style: inside;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
