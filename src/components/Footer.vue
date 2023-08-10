@@ -9,7 +9,7 @@ import { RouterLink } from "vue-router"
       <h1 class="font-bold">About</h1>
       <br>
       <div class="flex flex-col">
-        <a href="https://github.com/julelang/jule/releases" target="_blank">Download</a>
+        <a href="/downloads" target="_blank">Download</a>
         <router-link to="/community">Community</router-link>
         <router-link to="/code-of-conduct">Code of Conduct</router-link>
       </div>

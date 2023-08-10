@@ -209,7 +209,7 @@ fn main() {
         </select>
       </div>
     </div>
-    
+
     <div class="pb-20" id="get-started">
       <h1 class="text-4xl font-bold text-center mb-20">Get Started</h1>
 
