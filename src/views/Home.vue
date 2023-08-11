@@ -188,8 +188,8 @@ fn main() {
         <div class="text-md mb-10">
           <p><font-awesome-icon icon="check" /> Jule is an open source and free programming language</p>
           <p><font-awesome-icon icon="check" /> Easy to learn and get started with</p>
-          <p><font-awesome-icon icon="check" /> Efficient and fast as C++</p>
-          <p><font-awesome-icon icon="check" /> High interoperability with C++</p>
+          <p><font-awesome-icon icon="check" /> Extremely fast and efficient</p>
+          <p><font-awesome-icon icon="check" /> High interoperability with C/C++</p>
           <p><font-awesome-icon icon="check" /> Well-written and explained manual</p>
         </div>
         <div class="flex gap-3">
