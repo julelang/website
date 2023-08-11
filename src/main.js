@@ -16,7 +16,10 @@ import {
   faGraduationCap,
   faDownload,
   faUserGroup,
-  faPlus
+  faPlus,
+  faStar,
+  faCodeFork,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons"
 
 library.add(
@@ -31,6 +34,9 @@ library.add(
   faGithub, 
   faStackOverflow,
   faPlus,
+  faStar,
+  faCodeFork,
+  faEye,
 )
 
 const app = createApp(App)

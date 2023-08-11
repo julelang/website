@@ -1,14 +1,9 @@
 <script>
-import Navbar from "../components/Navbar.vue"
-
 import MarkdownIt from "markdown-it"
 
 const markdown = new MarkdownIt()
 
 export default {
-  components: {
-    Navbar
-  },
   data() {
     return {
       releases: [],
@@ -37,8 +32,8 @@ export default {
         <details class="p-5 rounded-lg bg-zinc-100 dark:bg-zinc-800" :open="true ? index == 0 : false">
           <summary class="cursor-pointer">
             <div class="flex justify-between items-center">
-              <div class="flex gap-3 items-center">
-                <div class="text-2xl font-bold ">{{ release.name }}</div>
+              <div class="flex flex-wrap items-center">
+                <div class="text-2xl font-bold pr-3">{{ release.name }}</div>
                 <div :hidden="false ? release.prerelease : false" class="badge-warn">pre-release</div>
                 <div :hidden="true ? index == releases.length-1 : false" class="badge-success">latest</div>
               </div>

@@ -1,15 +1,4 @@
-<script>
-import Navbar from "../components/Navbar.vue"
-
-export default {
-  components: {
-    Navbar,
-  }
-}
-</script>
-
 <template>
-  <Navbar />
   <main class="pb-20 px-20 max-sm:px-10">
     <h1 class="text-4xl font-bold text-center mb-10">Contributing</h1>
     <h3 class="text-2xl font-bold">Before the Start</h3>

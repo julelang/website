@@ -5,7 +5,10 @@ const isDark = useDark()
 
 export default {
   data() {
-    return { isDark }
+    return { 
+      isDark,
+      repo: {},
+    }
   },
   methods: {
     codes() {
@@ -166,22 +169,20 @@ fn main() {
       }
     }
   },
+  mounted() {
+    fetch("https://api.github.com/repos/julelang/jule")
+      .then(res => res.json())
+      .then(data => {
+        this.repo = data
+      })
+  }
 }
 </script>
 
 <template>
   <main class="px-20 max-sm:px-10">
-    <div class="flex items-center justify-between gap-14 max-lg:pt-5 lg:h-screen max-lg:pb-20 max-lg:flex-wrap">
+    <div class="flex items-center justify-between gap-14 pb-32 max-lg:pt-5 max-lg:flex-wrap">
       <div>
-        <div class="flex mb-14">
-          <router-link to="/">
-            <img
-              class="w-14 dark:invert dark:brightness-0"
-              src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg" 
-              alt="Jule Icon"
-            >
-          </router-link>
-        </div>
         <h1 class="font-bold text-4xl mb-7">The <span style="color: var(--jule)">Jule</span> Programming Language</h1>
         <p class="text-2xl text-inherit mb-10">Jule is the simple, efficient, statically typed<br>and compiled system programming language.</p>
         <div class="text-md mb-10">
@@ -193,6 +194,21 @@ fn main() {
         </div>
         <div class="flex gap-3">
           <a class="btn-jule" href="#get-started">Get Started</a>
+          <router-link to="/downloads" class="btn-jule-2">Downloads</router-link>
+        </div>
+        <div class="flex gap-5 pt-5 items-center text-lg">
+          <div>
+            <font-awesome-icon icon="star" />
+            {{ repo.stargazers_count }}
+          </div>
+          <div>
+            <font-awesome-icon icon="code-fork" />
+            {{ repo.forks_count }}
+          </div>
+          <div>
+            <font-awesome-icon icon="eye" />
+            {{ repo.subscribers_count }}
+          </div>
         </div>
       </div>
 
