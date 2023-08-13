@@ -34,8 +34,10 @@ export default {
             <div class="flex justify-between items-center">
               <div class="flex flex-wrap items-center">
                 <div class="text-2xl font-bold pr-3">{{ release.name }}</div>
-                <div :hidden="false ? release.prerelease : false" class="badge-warn">pre-release</div>
-                <div :hidden="true ? index == releases.length-1 : false" class="badge-success">latest</div>
+                <div class="flex gap-1">
+                  <div :hidden="release.prerelease ? false : true" class="badge-warn">pre-release</div>
+                  <div :hidden="index == 0 ? false : true" class="badge-success">latest</div>
+                </div>
               </div>
               <font-awesome-icon icon="plus" />
             </div>
