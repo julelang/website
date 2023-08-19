@@ -57,7 +57,7 @@ struct Rectangle {
 
 impl Shape for Rectangle {
     fn area(self): f32 {
-        ret self.width * self.height
+        ret f32(self.width * self.height)
     }
 }
 
