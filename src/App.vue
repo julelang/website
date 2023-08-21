@@ -5,7 +5,7 @@ import { useDark } from "@vueuse/core"
 import Footer from "./components/Footer.vue"
 import Navbar from "./components/Navbar.vue"
 
-const isDark = useDark()
+useDark()
 
 export default {
   components: {

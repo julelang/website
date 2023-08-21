@@ -1,12 +1,7 @@
 <script>
-import { useDark } from "@vueuse/core"
-
-const isDark = useDark()
-
 export default {
   data() {
     return { 
-      isDark,
       repo: {},
     }
   },
