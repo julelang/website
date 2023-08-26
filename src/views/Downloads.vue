@@ -8,6 +8,7 @@ export default {
     return {
       releases: [],
       markdown: markdown,
+      open: {}
     }
   },
   mounted() {
@@ -15,6 +16,14 @@ export default {
       .then(res => res.json())
       .then(data => {
         this.releases = data
+        for (let i = 0; i < data.length; i++) {
+            // This will automatically set as `open` the latest release.
+            if (i == 0) {
+              this.open[i] = true
+            } else {
+              this.open[i] = false
+            }
+        }
       })
   }
 }
@@ -30,7 +39,7 @@ export default {
     <div class="flex flex-col gap-5">
       <div v-for="(release, index) in releases">
         <details class="p-5 rounded-lg bg-zinc-100 dark:bg-zinc-800" :open="true ? index == 0 : false">
-          <summary class="cursor-pointer">
+          <summary class="cursor-pointer" @click="open[index] = !open[index]">
             <div class="flex justify-between items-center">
               <div class="flex flex-wrap items-center">
                 <div class="text-2xl font-bold pr-3">{{ release.name }}</div>
@@ -39,7 +48,8 @@ export default {
                   <div :hidden="index == 0 ? false : true" class="badge-success">latest</div>
                 </div>
               </div>
-              <font-awesome-icon icon="plus" />
+              <font-awesome-icon v-if="open[index]" icon="minus" />
+              <font-awesome-icon v-else icon="plus" />
             </div>
           </summary>
 
