@@ -181,7 +181,7 @@ fn main() {
         <h1 class="font-bold text-4xl mb-7">The <span style="color: var(--jule)">Jule</span> Programming Language</h1>
         <p class="text-2xl text-inherit mb-10">Jule is the simple, efficient, statically typed<br>and compiled system programming language.</p>
         <div class="text-md mb-10">
-          <p><font-awesome-icon icon="check" /> Jule is an open source and free programming language</p>
+          <p><font-awesome-icon icon="check" /> 100% free and open-source</p>
           <p><font-awesome-icon icon="check" /> Easy to learn and get started with</p>
           <p><font-awesome-icon icon="check" /> Extremely fast and efficient</p>
           <p><font-awesome-icon icon="check" /> High interoperability with C/C++</p>
