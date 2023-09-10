@@ -230,7 +230,7 @@ fn main() {
           <div class="flex justify-between items-center">
             <div class="me-10">
               <p class="font-bold text-xl">Download</p>
-              <p>Get a Release</p>
+              <p>Download your preferred Jule version</p>
             </div>
             <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
           </div>
@@ -241,7 +241,7 @@ fn main() {
           <div class="flex justify-between items-center">
             <div class="me-10">
               <p class="font-bold text-xl">Manual</p>
-              <p>Learn to programming in Jule</p>
+              <p>Learn to properly code in Jule</p>
             </div>
             <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
           </div>
