@@ -1,17 +1,13 @@
 # Official Website of Jule
-
 The official website of [the Jule Programming Language](https://github.com/julelang/jule), live at <https://jule.dev>.
 
 ## Building the website
-
 ### Gitpod
-
 Skip all of the steps below by using Gitpod, which automatically does it for you.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/julelang/website)
 
 ### Manually/locally
-
 1. Fork the repository [here](https://github.com/julelang/website/fork).
 2. Clone the forked repository.
 
@@ -46,6 +42,5 @@ npm run dev
 That's it! :tada: You have successfully run the website locally.
 
 ## License
-
 The repository is under the terms of the BSD-3 Clause license.\
 See the [`LICENSE`](https://github.com/julelang/website/blob/master/LICENSE) file for more information.

@@ -1,263 +1,46 @@
 <script>
+import { RouterLink } from 'vue-router';
+
+import Code from '../components/CodeBlock.vue'
+
 export default {
-  data() {
-    return { 
-      repo: {},
-    }
-  },
-  methods: {
-    codes() {
-      let code = document.getElementById("codes").value;
-      if (code == "quick") {
-        document.getElementById("code").innerText = `fn quick_sort(mut s: []int): []int {
-    if s.len <= 1 {
-        ret s
-    }
-
-    let mut i = -1
-    let last = s[s.len-1]
-    for j in s {
-        if s[j] <= last {
-            i++
-            s[i], s[j] = s[j], s[i]
-        }
-    }
-
-    quick_sort(s[:i])
-    quick_sort(s[i+1:])
-
-    ret s
-}
-
-fn main() {
-    let mut s = [9, 35, -0, 0, 98, 8935, -85, -9835, 64, 89]
-    s = quick_sort(s)
-    outln(s)
-}`
-      } else if (code == "hello") {
-        document.getElementById("code").innerText = `fn main() {
-    outln("Hello World!")
-}`
-      } else if (code == "traits") {
-        document.getElementById("code").innerText = `const PI = 3.14159
-
-trait Shape {
-    fn area(self): f32
-}
-
-struct Rectangle {
-    width: int
-    height: int
-}
-
-impl Shape for Rectangle {
-    fn area(self): f32 {
-        ret f32(self.width * self.height)
-    }
-}
-
-struct Circle {
-    r: f32
-}
-
-impl Shape for Circle {
-    fn area(self): f32 {
-        ret PI * self.r * self.r
-    }
-}
-
-fn main() {
-    let rect: Shape = Rectangle{90, 5}
-    let circ: Shape = Circle{90.5}
-    outln(rect.area())
-    outln(circ.area())
-}`
-      } else if (code == "fizzbuzz") {
-        document.getElementById("code").innerText = `fn main() {
-    let mut j = 1
-    for j <= 100; j++ {
-        match {
-        | j % 3 == 0 && j % 5 == 0:
-            outln("FizzBuzz")
-        | j % 3 == 0:
-            outln("Fizz")
-        | j % 5 == 0:
-            outln("Buzz")
-        |:
-            outln(j)
-        }
-    }
-}`
-      } else if (code == "levenshtein-distance") {
-        document.getElementById("code").innerText = `fn min(values: ...int): int {
-    if values.len == 0 {
-        ret 0
-    }
-    let mut min = values[0]
-    for _, x in values[1:] {
-        if min > x {
-            min = x
-        }
-    }
-    ret min
-}
-
-fn distance(s1: str, s2: str): int {
-    if s1 == s2 {
-        ret 0
-    }
-    if s1.len == 0 {
-        ret s2.len
-    }
-    if s2.len == 0 {
-        ret s1.len
-    }
-    let v_len = s2.len+1
-    let mut v0 = make([]int, v_len)
-    let mut v1 = make([]int, v_len)
-    let mut i = 0
-    for i < v_len; i++ {
-        v0[i] = i
-    }
-    i = 0
-    for i < s1.len; i++ {
-        v1[0] = i+1
-        let mut j = 0
-        for j < s2.len; j++ {
-            let mut cost = 1
-            if s1[i] == s2[j] {
-                cost = 0
-            }
-            v1[j+1] = min(v1[j]+1, v0[j+1]+1, v0[j]+cost)
-        }
-        v0, v1 = v1, v0
-    }
-    ret v0[s2.len]
-}
-
-fn main() {
-    let mut d = distance("Levenshtein", "Distance")
-    outln(d)
-}`
-      } else if (code == "number-kind") {
-        document.getElementById("code").innerText = `enum NumberKind {
-    Even,
-    Odd,
-    Zero,
-}
-
-fn kind_of_number(x: int): NumberKind {
-    if x == 0 {
-        ret NumberKind.Zero
-    } else if x%2 == 0 {
-        ret NumberKind.Even
-    } else {
-        ret NumberKind.Odd
-    }
-}
-
-fn main() {
-    outln(kind_of_number(10))
-    outln(kind_of_number(0))
-    outln(kind_of_number(1))
-}`
-      }
-    }
-  },
-  mounted() {
-    fetch("https://api.github.com/repos/julelang/jule")
-      .then(res => res.json())
-      .then(data => {
-        this.repo = data
-      })
+  components: {
+    Code
   }
 }
 </script>
 
 <template>
-  <main class="px-20 max-sm:px-10">
-    <div class="flex items-center justify-between gap-14 pb-32 max-lg:pt-5 max-lg:flex-wrap">
+  <main>
+    <div class="bg-[var(--bg-secondary)] text-white">
+      <div class="max-w-screen-lg mx-auto py-7 px-5 flex flex-wrap justify-between items-center gap-2">
+        <div>
+          <div class="mb-2 text-5xl font-black">Jule</div>
+          <div class="leading-6 text-xl">An effective programming language to build<br>efficient, fast, reliable and safe software.</div>
+        </div>
+        <router-link to="/downloads" class="py-2 px-7 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-darker)] duration-[0.3s] text-lg rounded-sm">Download</router-link>
+      </div>
+    </div>
+
+    <div class="max-w-screen-lg mx-auto py-20 px-5 grid grid-cols-2 max-sm:grid-cols-1 gap-y-20 gap-x-10 leading-5">
       <div>
-        <h1 class="font-bold text-4xl mb-7">The <span style="color: var(--jule)">Jule</span> Programming Language</h1>
-        <p class="text-2xl text-inherit mb-10">Jule is the simple, efficient, statically typed<br>and compiled system programming language.</p>
-        <div class="text-md mb-10">
-          <p><font-awesome-icon icon="check" /> 100% free and open-source</p>
-          <p><font-awesome-icon icon="check" /> Easy to learn and get started with</p>
-          <p><font-awesome-icon icon="check" /> Extremely fast and efficient</p>
-          <p><font-awesome-icon icon="check" /> High interoperability with C/C++</p>
-          <p><font-awesome-icon icon="check" /> Well-written and explained manual</p>
-        </div>
-        <div class="flex gap-3">
-          <a class="btn-jule" href="#get-started">Get Started</a>
-          <router-link to="/downloads" class="btn-jule-2">Downloads</router-link>
-        </div>
-        <div class="flex gap-5 pt-5 items-center text-lg">
-          <div>
-            <font-awesome-icon icon="star" />
-            {{ repo.stargazers_count }}
-          </div>
-          <div>
-            <font-awesome-icon icon="code-fork" />
-            {{ repo.forks_count }}
-          </div>
-          <div>
-            <font-awesome-icon icon="eye" />
-            {{ repo.subscribers_count }}
-          </div>
-        </div>
+        <div class="font-black text-2xl mb-2">Performance</div>
+        <div>Jule is extremly fast and memory efficient thanks to its efficient design and optimizing compiler.</div>
       </div>
-
-      <div class="max-lg:grow">
-        <div class="overflow-auto h-[30rem] p-2.5 mb-5 rounded-md font-code text-lg text-white bg-zinc-800 whitespace-pre-wrap border-2 border-[var(--jule-dark)] lg:w-[35rem]" id="code">fn main() {<br>&nbsp;&nbsp;&nbsp;&nbsp;outln("Hello, world")<br>}</div>
-
-        <select class="btn-jule" id="codes" @change="codes()">
-          <option value="hello">Hello World</option>
-          <option value="quick">Quick Sort</option>
-          <option value="traits">Traits</option>
-          <option value="fizzbuzz">FizzBuzz</option>
-          <option value="levenshtein-distance">Levenshtein Distance</option>
-          <option value="number-kind">Number Kind</option>
-        </select>
+      <div>
+        <div class="font-black text-2xl mb-2">Safety</div>
+        <div>Jule's static type system and principles disallows many errors when compile-time, and you have memory safety at runtime.</div>
+      </div>
+      <div>
+        <div class="font-black text-2xl mb-2">Interoperability</div>
+        <div>Jule has an API written in C++ for develop C++ extensions for Jule and integrates beautifully with C, C++, Objective-C, and Objective-C++.</div>
+      </div>
+      <div>
+        <div class="font-black text-2xl mb-2">Effective</div>
+        <div>Jule has built-in concurrency and supported by a cross-platform implemented standard library.</div>
       </div>
     </div>
 
-    <div class="pb-20" id="get-started">
-      <h1 class="text-4xl font-bold text-center mb-20">Get Started</h1>
-
-      <div class="flex flex-wrap justify-center gap-16 select-none">
-        <router-link to="/downloads" class="card dark:text-white text-black">
-          <div class="text-center"><font-awesome-icon class="w-28 mb-20 text-8xl" icon="download" /></div>
-          <div class="flex justify-between items-center">
-            <div class="me-10">
-              <p class="font-bold text-xl">Download</p>
-              <p>Download your preferred Jule version</p>
-            </div>
-            <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
-          </div>
-        </router-link>
-
-        <a href="https://manual.jule.dev" target="_blank" class="card dark:text-white text-black">
-          <div class="text-center"><font-awesome-icon class="w-28 mb-20 text-8xl" icon="graduation-cap" /></div>
-          <div class="flex justify-between items-center">
-            <div class="me-10">
-              <p class="font-bold text-xl">Manual</p>
-              <p>Learn to properly code in Jule</p>
-            </div>
-            <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
-          </div>
-        </a>
-
-        <router-link to="/community" class="card dark:text-white text-black">
-          <div class="text-center"><font-awesome-icon class="w-28 mb-20 text-8xl" icon="user-group" /></div>
-          <div class="flex justify-between items-center">
-            <div class="me-10">
-              <p class="font-bold text-xl">Community</p>
-              <p>Get involved in our community</p>
-            </div>
-            <font-awesome-icon class="text-2xl" icon="fa-arrow-up-right-from-square" />
-          </div>
-        </router-link>
-      </div>
-    </div>
+    <Code />
   </main>
 </template>

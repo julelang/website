@@ -1,22 +1,17 @@
 <script>
-import { RouterView } from "vue-router"
-import { useDark } from "@vueuse/core"
-
-import Footer from "./components/Footer.vue"
-import Navbar from "./components/Navbar.vue"
-
-useDark()
+import TheNavbar from './components/TheNavbar.vue'
+import TheFooter from './components/TheFooter.vue'
 
 export default {
   components: {
-    Navbar,
-    Footer,
+    TheNavbar,
+    TheFooter
   }
 }
 </script>
 
 <template>
-  <Navbar />
+  <TheNavbar />
   <RouterView />
-  <Footer />
+  <TheFooter />
 </template>

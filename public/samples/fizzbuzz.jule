@@ -1,0 +1,15 @@
+fn main() {
+    let mut j = 1
+    for j <= 100; j++ {
+        match {
+        | j % 3 == 0 && j % 5 == 0:
+            outln("FizzBuzz")
+        | j % 3 == 0:
+            outln("Fizz")
+        | j % 5 == 0:
+            outln("Buzz")
+        |:
+            outln(j)
+        }
+    }
+}

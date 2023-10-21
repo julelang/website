@@ -1,22 +1,23 @@
 <template>
-  <main class="pb-20 px-20 max-sm:px-10">
-    <h1 class="text-4xl font-bold text-center mb-10">Community</h1>
-    <h3 class="text-2xl font-bold text-center mb-5">Contribute and get involved in our community</h3>
-    <p class="text-1xl text-center">
-      There are plenty of ways to contribute in our community, whether you<br>
-      are a coder or not, you can help us in many ways like documenting.
-    </p>
+  <main class="max-w-screen-lg mx-auto px-5 py-20">
+    <div class="text-4xl font-black text-center">Community</div>
+    <br><br>
+    <div class="text-2xl font-bold text-center">Contribute and get involved in our community</div>
+    <div class="text-center">There are plenty of ways to contribute in our community, whether you
     <br>
-    <div class="flex justify-center max-lg:flex-wrap gap-16 select-none">
-      <a href="https://github.com/julelang/" target="_blank" class="card dark:text-white text-black text-center">
-        <font-awesome-icon class="text-8xl mb-20" icon="fa-brands fa-github" />
-        <p class="font-bold text-xl">GitHub</p><br>
-        <p>Contribute to the codebase</p>
+    are a coder or not, you can help us in many ways like documenting.
+    </div>
+    <br><br>
+    <div class="flex flex-wrap justify-center gap-10">
+      <a href="https://github.com/julelang/jule" target="_blank" class="w-64 py-10 border-black border-2 rounded-lg text-center cursor-pointer duration-[0.3s] hover:text-white hover:bg-black hover:opacity-[1]">
+        <font-awesome-icon icon="fa-brands fa-github" class="text-8xl" />
+        <div class="my-10 font-bold text-xl">GitHub</div>
+        <div>Contribute to the codebase</div>
       </a>
-      <a href="https://discord.gg/CZhK7dyh9X" target="_blank" class="card dark:text-white text-black text-center">
-        <font-awesome-icon class="text-8xl mb-20" icon="fa-brands fa-discord" />
-        <p class="font-bold text-xl">Discord</p><br>
-        <p>Engage with other community members</p>
+      <a href="https://discord.gg/" target="_blank" class="w-64 py-10 border-black border-2 rounded-lg text-center cursor-pointer duration-[0.3s] hover:text-white hover:bg-black hover:opacity-[1]">
+        <font-awesome-icon icon="fa-brands fa-discord" class="text-8xl" />
+        <div class="my-10 font-bold text-xl">Discord</div>
+        <div>Engage with other community members</div>
       </a>
     </div>
   </main>

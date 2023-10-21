@@ -1,124 +1,36 @@
-@import "./base.css";
+@import './base.css';
 
-a:not(.btn-jule, .btn-jule-2, .card, .nav-link, .download-link) {
-  color: var(--jule);
-  transition: 0.3s;
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
 }
 
-a:not(.btn-jule, .btn-jule-2, .card, .nav-link, .download-link):hover {
-  color: var(--jule-dark);
-  text-decoration: underline;
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
 }
 
-.card {
-  border: 3px solid var(--jule);
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
   border-radius: 10px;
-  padding: 2rem;
-  transition: 0.3s;
-  width: 16rem;
 }
 
-.card:hover {
-  color: white;
-  background-color: var(--jule);
-  opacity: 1;
-}
-
-.warn {
-  border-radius: 5px;
-  background-color: rgba(63, 57, 5, 0.20);
-  border: 1px solid rgb(175, 158, 0);
-  border-left-width: 5px;
-  padding: 7px;
-  margin: 10px;
-  margin-left: 0;
-}
-
-.btn-jule {
-  background-color: var(--jule);
-  padding: 15px;
-  text-align: center;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
+::-moz-selection,
+::selection
+{
+  background-color: var(--color-primary);
   color: white;
 }
 
-.btn-jule:hover {
-  background-color: var(--jule-dark);
+#nprogress .bar {
+  background: var(--color-primary) !important;
+  height: 3px !important;
 }
 
-.btn-jule {
-  background-color: var(--jule);
-  padding: 15px;
-  text-align: center;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
-  color: white;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-}
-
-.btn-jule:hover {
-  background-color: var(--jule-dark);
-}
-
-.btn-jule-2 {
-  border: 2px solid var(--jule);
-  padding: 15px;
-  text-align: center;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  width: fit-content;
-}
-
-.btn-jule-2:hover {
-  background-color: var(--jule);
-  color: white;
-}
-
-.badge-success {
-  color: white;
-  font-size: 14px;
-  border: 1px solid green;
-  background-color: rgb(1, 64, 1);
-  border-radius: 10px;
-  padding-left: .5rem;
-  padding-right: .5rem;
-  text-align: center;
-}
-
-.badge-warn {
-  color: white;
-  font-size: 14px;
-  border: 1px solid yellow;
-  background-color: rgb(86, 86, 0);
-  border-radius: 10px;
-  padding-left: .5rem;
-  padding-right: .5rem;
-  text-align: center;
-}
-
-ul {
-  list-style-type: disc;
-  list-style: inside;
-}
-
-select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-summary {
-  list-style: none;
-}
-
-summary::-webkit-details-marker {
-  display: none;
+main {
+  min-height: calc(100vh - 80px - 80px); /* screen height - navbar- footer */
 }

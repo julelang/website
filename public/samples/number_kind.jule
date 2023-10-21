@@ -1,0 +1,21 @@
+enum NumberKind {
+    Even,
+    Odd,
+    Zero,
+}
+
+fn kind_of_number(x: int): NumberKind {
+    if x == 0 {
+        ret NumberKind.Zero
+    } else if x%2 == 0 {
+        ret NumberKind.Even
+    } else {
+        ret NumberKind.Odd
+    }
+}
+
+fn main() {
+    outln(kind_of_number(10))
+    outln(kind_of_number(0))
+    outln(kind_of_number(1))
+}
