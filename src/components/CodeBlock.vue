@@ -51,7 +51,7 @@ export default {
     <div class="max-w-screen-lg mx-auto px-5 py-20">
       <div class="text-3xl text-center text-black pb-5">Sample Programs</div>
       <pre id="code-block" class="overflow-auto h-96 mb-5 p-5 bg-zinc-900 text-white rounded-sm"></pre>
-      <select @change="changeSelect()" id="select" class="p-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-darker)] duration-[0.3s] text-white text-sm rounded-sm">
+      <select @change="changeSelect()" id="select" class="p-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-darker)] duration-[0.3s] text-white text-sm rounded-sm" style="-webkit-appearance: none;">
         <option value="hello-world">Hello World</option>
         <option value="quick-sort">Quick Sort</option>
         <option value="traits">Traits</option>
