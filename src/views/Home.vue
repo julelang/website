@@ -5,7 +5,7 @@ import Code from '../components/CodeBlock.vue'
 
 export default {
   components: {
-    Code
+    Code,
   }
 }
 </script>
@@ -42,5 +42,35 @@ export default {
     </div>
 
     <Code />
+
+    <div
+      class="bg-[var(--bg-secondary)] bg-gradient-to-t from-slate-600 text-white rounded-3xl max-w-screen-lg mx-auto px-10 py-5"
+      style="margin-top: 70px; margin-bottom: 70px; min-height: fit-content; max-width: 900px; height: 500px;">
+      <div class="text-3xl pt-4 pb-2">Open Source</div>
+      Including important parts of Jule such as the reference compiler, standards library and API, is developed completely open source and free of charge, and its source code open at <a style="color: deepskyblue" href="https://github.com/julelang/jule">GitHub respository</a>, open to the contribution of the entire community.
+      Many regular and non-regular contributors work together to make Jule more effective and stable.
+
+      <div class="text-2xl pt-6 pb-2">Cross Platform</div>
+      Jule has a cross-platform implementation, supports popular operating systems such as macOS, Linux, Windows and can generate code for popular architectures such as arm64, amd64, and intel 386.
+      It is actively designed to implement all competencies cross-platform and focuses on a homogeneous experience.
+      We're excited for it to have broader platform support in the future.
+
+      <div class="text-2xl pt-6 pb-2">Well Documented</div>
+      Jule has a well written and detailed manual.
+      With each change on Jule, the manual is often updated at the same time, and documentation of even the newest updates is made available to the community immediately.
+    </div>
+
+    <div class="bg-[steelblue] text-white py-5">
+      <div class="text-3xl pb-5 text-center">Get Started</div>
+      <div class="text-xl text-center">
+        Download Jule's compiler and start to program.<br>
+        The manual will help you find your way.
+      </div>
+      <center class="pt-10">
+        <router-link to="/downloads" class="py-2 px-7 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-darker)] duration-[0.3s] text-lg rounded-sms">Download</router-link>
+        <a href="https://manual.jule.dev" class="py-2 px-7 bg-[gray] hover:bg-[dimgray] duration-[0.3s] text-lg rounded-sm">Manual</a>
+      </center>
+    </div>
+
   </main>
 </template>
