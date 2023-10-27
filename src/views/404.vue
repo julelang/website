@@ -11,7 +11,3 @@ a {
   text-decoration: underline;
 }
 </style>
-
-<!-- 
-<main class="flex flex-col gap-5 text-center items-center justify-center bg-jule-darkest text-white pb-20 sm:px-24 max-sm:px-10">
--->
