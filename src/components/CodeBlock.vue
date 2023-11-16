@@ -1,4 +1,9 @@
 <script>
+import hljs from 'highlight.js';
+import jule from '../jule';
+
+hljs.registerLanguage('jule', jule.jule);
+
 export default {
   data() {
     return {
@@ -14,7 +19,7 @@ export default {
         .then(data => { this.samples[sample_names[name]] = data })
     }
 
-    document.getElementById('code-block').innerText = this.samples.hello_world
+    document.getElementById('code-block').innerHTML = hljs.highlight(this.samples.hello_world, { language: 'jule' }).value
   },
   methods: {
     changeSelect() {
@@ -23,22 +28,22 @@ export default {
 
       switch (selected) {
         case 'hello-world':
-          code_block.innerText = this.samples.hello_world
+          code_block.innerHTML = hljs.highlight(this.samples.hello_world, { language: 'jule' }).value
           break;
         case 'quick-sort':
-          code_block.innerText = this.samples.quick_sort
+          code_block.innerHTML = hljs.highlight(this.samples.quick_sort, { language: 'jule' }).value
           break;
         case 'traits':
-          code_block.innerText = this.samples.traits
+          code_block.innerHTML = hljs.highlight(this.samples.traits, { language: 'jule' }).value
           break;
         case 'fizzbuzz':
-          code_block.innerText = this.samples.fizzbuzz
+          code_block.innerHTML = hljs.highlight(this.samples.fizzbuzz, { language: 'jule' }).value
           break;
         case 'levenshtein-distance':
-          code_block.innerText = this.samples.levenshtein_distance
+          code_block.innerHTML = hljs.highlight(this.samples.levenshtein_distance, { language: 'jule' }).value
           break;
         case 'number-kind':
-          code_block.innerText = this.samples.number_kind
+          code_block.innerHTML = hljs.highlight(this.samples.number_kind, { language: 'jule' }).value
           break;
       }
     }
@@ -50,7 +55,7 @@ export default {
   <div class="bg-[var(--bg-tertiary)]">
     <div class="max-w-screen-lg mx-auto px-5 py-20">
       <div class="mb-5 text-3xl text-center text-black">Sample Programs</div>
-      <pre id="code-block" class="overflow-auto h-96 mb-5 p-5 bg-zinc-900 text-white rounded-sm"></pre>
+      <pre id="code-block" class="overflow-auto h-96 mb-5 p-5 bg-[#23272e] text-white rounded-sm"></pre>
       <select @change="changeSelect()" id="select" class="p-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-darker)] duration-[0.3s] text-white text-sm rounded-sm" style="-webkit-appearance: none;">
         <option value="hello-world">Hello World</option>
         <option value="quick-sort">Quick Sort</option>
