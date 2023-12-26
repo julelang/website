@@ -33,7 +33,7 @@ export default {
       </div>
       <div>
         <div class="font-black text-2xl mb-2">Interoperability</div>
-        <div>Jule has an API written in C++ for develop C++ extensions for Jule and integrates beautifully with C, C++, Objective-C, and Objective-C++.</div>
+        <div>Jule has an API written in C++ to develop C++ extensions for Jule and integrates beautifully with C, C++, Objective-C, and Objective-C++.</div>
       </div>
       <div>
         <div class="font-black text-2xl mb-2">Effective</div>
