@@ -31,17 +31,17 @@ export default {
 
 <template>
   <main class="max-w-screen-lg mx-auto px-5 py-20">
-    <div class="text-4xl font-black text-center">Downloads</div>
+    <div class="text-4xl font-bold text-center">Downloads</div>
     <br><br>
     <div class="flex flex-wrap items-center gap-x-2">
-      <div class="text-2xl font-black">{{ release.name }}</div>
+      <div class="text-2xl font-semibold">{{ release.name }}</div>
       <TheBadge v-if="latest" type="success" content="latest" />
       <TheBadge v-if="release.prerelease" type="warning" content="pre-release" />
     </div>
     <div>Release notes are <a :href="'https://github.com/julelang/jule/releases/tag/' + release.tag_name"
         target="_blank">here</a>.</div>
     <br><br>
-    <div class="text-2xl font-black">Files</div>
+    <div class="text-2xl font-semibold">Files</div>
     <br>
     <div class="overflow-auto h-60 h-fit">
       <table class="table-auto w-full whitespace-nowrap">

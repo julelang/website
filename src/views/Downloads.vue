@@ -93,10 +93,10 @@ export default {
 
 <template>
   <main class="max-w-screen-lg mx-auto px-5 py-20">
-    <div class="text-4xl font-black text-center">Downloads</div>
+    <div class="text-4xl font-bold text-center">Downloads</div>
     <br><br>
     <div class="flex flex-wrap items-center gap-x-2">
-      <div class="text-2xl font-black">{{ releases[0]?.name }}</div>
+      <div class="text-2xl font-semibold">{{ releases[0]?.name }}</div>
       <TheBadge type="success" content="latest" />
       <TheBadge v-if="releases[0]?.prerelease" type="warning" content="pre-release" />
     </div>
@@ -128,7 +128,7 @@ export default {
         :to="{ name: 'release', params: { id: releases[0]?.id } }">release page</router-link>.
     </div>
     <br><br>
-    <div class="text-2xl font-black">Older Releases</div>
+    <div class="text-2xl font-semibold">Older Releases</div>
     <br>
     <div class="overflow-auto h-60 h-fit">
       <table class="table-auto w-full whitespace-nowrap">
