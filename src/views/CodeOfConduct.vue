@@ -14,7 +14,7 @@
       Different ideas, views and disagreements are needed for development and progress. However, disrespect is not
       acceptable.</div>
     <br>
-    <div class="text-2xl font-semibold">Julenour Characteristics</div>
+    <div class="mb-1 text-2xl font-semibold">Julenour Characteristics</div>
     <div>Julenours are everyone in the Jule community. Please be like a true Julenour:</div>
     <ul class="ml-8">
       <li>Friendly</li>
@@ -39,13 +39,13 @@
       </li>
     </ul>
     <br>
-    <div class="text-2xl font-semibold">Our Pledge</div>
+    <div class="mb-1 text-2xl font-semibold">Our Pledge</div>
     <div>In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making
       participation in our project and our community a harassment-free experience for everyone, regardless of age, body
       size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education,
       socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.</div>
     <br>
-    <div class="text-2xl font-semibold">Our Standards</div>
+    <div class="mb-1 text-2xl font-semibold">Our Standards</div>
     <div>Examples of behavior that contributes to creating a positive environment include:</div>
     <ul class="ml-8">
       <li>Using welcoming and inclusive language</li>
@@ -64,7 +64,7 @@
       <li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
     </ul>
     <br>
-    <div class="text-2xl font-semibold">Our Responsibilities</div>
+    <div class="mb-1 text-2xl font-semibold">Our Responsibilities</div>
     <div>Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take
       appropriate and fair corrective action in response to any instances of unacceptable behavior.</div>
     <br>
@@ -73,7 +73,7 @@
       permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
     </div>
     <br>
-    <div class="text-2xl font-semibold">Enforcement</div>
+    <div class="mb-1 text-2xl font-semibold">Enforcement</div>
     <div> Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team
       at. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and
       appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the
@@ -82,15 +82,14 @@
     <div>Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent
       repercussions as determined by other members of the project's leadership. </div>
     <br>
-    <div class="text-2xl font-semibold">Attribution</div>
+    <div class="mb-1 text-2xl font-semibold">Attribution</div>
     <div>This Code of Conduct is adapted from the <a href="https://www.contributor-covenant.org/" target="_blank">Contributor Covenant</a>,
-      version 2.1, available at <a href="https://www.contributor-covenant.org/version/2/1/code_of_conduct.html" target="_blank">https://www.contributor-covenant.org/version/2/1/code_of_conduct.html</a></div>
-    <br>
-    <div>Community Impact Guidelines were inspired by <a href="https://github.com/mozilla/diversity" target="_blank">Mozilla's code of
+      version 2.1, available at <a href="https://www.contributor-covenant.org/version/2/1/code_of_conduct.html" target="_blank">here</a></div>
+    <div class="mt-2">Community Impact Guidelines were inspired by <a href="https://github.com/mozilla/diversity" target="_blank">Mozilla's code of
         conduct enforcement ladder</a>.</div>
     <br>
-    <div>For answers to common questions about this code of conduct, see the FAQ at <a href="https://www.contributor-covenant.org/faq" target="_blank">https://www.contributor-covenant.org/faq</a>. Translations are available at
-      <a href="https://www.contributor-covenant.org/translations" target="_blank">https://www.contributor-covenant.org/translations</a>.</div>
+    <div>For answers to common questions about this code of conduct, see the FAQ at <a href="https://www.contributor-covenant.org/faq" target="_blank">here</a>.</div>
+    <div>Translations are available at <a href="https://www.contributor-covenant.org/translations" target="_blank">here</a>.</div>
   </main>
 </template>
 
