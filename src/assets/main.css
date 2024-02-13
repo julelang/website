@@ -9,6 +9,10 @@
   font-family: "Poppins";
 }
 
+#download-button {
+  background-color: var(--color-primary);
+}
+
 #code-block {
   font-family: "Source Code Pro", monospace;
   font-optical-sizing: auto;
