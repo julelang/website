@@ -2,7 +2,7 @@
   <main class="max-w-screen-lg mx-auto px-5 py-20">
     <div class="text-4xl font-bold text-center">Community</div>
     <br><br>
-    <div class="text-2xl font-semibold text-center">Contribute and get involved in our community</div>
+    <div class="mb-2 text-2xl font-semibold text-center">Contribute and get involved in our community</div>
     <div class="text-center">There are plenty of ways to contribute in our community, whether you
     <br>
     are a coder or not, you can help us in many ways like documenting.
