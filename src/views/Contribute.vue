@@ -2,7 +2,7 @@
   <main class="max-w-screen-lg mx-auto px-5 py-20">
     <div class="text-4xl font-bold text-center">Contributing</div>
     <br><br>
-    <div class="text-2xl font-semibold">Before the Start</div>
+    <div class="mb-1 text-2xl font-semibold">Before the Start</div>
     <div class="underline">This guide is about contributing to JuleC.</div>
     <br>
     <div>All contributions to Jule, no matter how small or large, are welcome.</div>
@@ -101,7 +101,7 @@
       </li>
     </ul>
     <br>
-    <div class="text-2xl font-semibold">Rules</div>
+    <div class="mb-1 text-2xl font-semibold">Rules</div>
     <ul>
       <li>It is important that the code is written and properly formatted.</li>
       <li>Description lines should be legible and meaningful.</li>
@@ -109,7 +109,7 @@
       <li>Commit messages should be understandable and expressive.</li>
     </ul>
     <br>
-    <div class="text-2xl font-semibold">Get Fork</div>
+    <div class="mb-1 text-2xl font-semibold">Get Fork</div>
     <div>Once you have your fork, you can work directly. But to make things easier, you can open a branch in your own name. After making the changes in the fork you want to work with, you can throw a pull request.</div>
     <ul class="ml-8">
       <li>Very large changes are difficult to control and understand. Therefore, avoid excessively large PR requests
@@ -117,7 +117,7 @@
       <li>Try not to make multiple changes within a single PR, a PR request should only serve one change.</li>
     </ul>
     <br>
-    <div class="text-2xl font-semibold">Send Pull Request</div>
+    <div class="mb-1 text-2xl font-semibold">Send Pull Request</div>
     <div>After making the contribution you want to make, you have reached the stage of sending it as a PR request.</div>
     <div>Before send a PR:</div>
     <ul class="ml-8">
