@@ -130,6 +130,10 @@ export default {
       </div>
     </div>
 
+    <div class="transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 mb-20 bg-gradient-to-r from-blue-600 w-fit via-purple-500 to-orange-400">
+      <a href="/future-of-jule" class="text-transparent hover:cursor-pointer text-center font-semibold text-3xl">Future of Jule</a>
+    </div>
+
     <div class="bg-[steelblue] text-white">
       <div class="max-w-screen-lg mx-auto p-5">
         <div class="text-3xl text-center font-semibold">Get Started</div>

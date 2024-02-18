@@ -45,6 +45,11 @@ const router = createRouter({
       name: 'release',
       component: () => import('../views/Release.vue'),
     },
+    {
+      path: '/future-of-jule',
+      name: 'future',
+      component: () => import('../views/FutureOfJule.vue'),
+    }
   ]
 })
 
