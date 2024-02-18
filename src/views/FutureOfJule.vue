@@ -32,7 +32,7 @@
       <div class="text-xl mb-14">
         <div class="text-4xl mb-4 font-semibold">Concurrency</div>
         Jule's concurrency is built-in in the current implementation and uses native threads.
-        Jule's concurrency support is intended to improve over time. The current application is supported by functionalities such as Mutex and WaitGroup in the standard library.
+        Jule's concurrency support is intended to improve over time. The current implementation is supported by functionalities such as Mutex and WaitGroup in the standard library.
         In addition, it is planned to add channels implemented as built-in types or as a structure in the standard library.
         <br><br>
         There is no implementation for coroutine or green threads.
@@ -90,7 +90,7 @@
             <li>Stdlib package to encode/decode XML data</li>
             <li>Stdlib package for region-based memory management</li>
             <li>Stdlib package for regular expressions</li>
-            <li>Stdlib package to StopWatch functionality</li>
+            <li>Stdlib package for StopWatch functionality</li>
             <li>Stdlib package that provides tiny data store</li>
             <li>Stdlib package that provides functionality for SQL databases</li>
             <li>Stdlib package that provides Jule-special encoding/decoding functionality</li>
@@ -119,7 +119,7 @@
           However, if it were to be assigned to a mutable variable, your compiler would not be happy with it.
           <br><br>
           This experimental design focuses on an approach that takes this intuition further.
-          The main design focus is on construction methods.
+          The main design focus is on structure methods.
           In current implementation, a method that returns a value must return mutable value.
           If the returned value is a structure field, the self variable used must also be mutable.
           This may lead to the need for an immutable variable to be mutable because of a method that only returns a value.
