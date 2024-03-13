@@ -1,16 +1,94 @@
 <script>
 import { RouterLink } from 'vue-router';
-
 import Code from '../components/CodeBlock.vue'
+import hljs from 'highlight.js';
+import jule from '../jule';
+
+hljs.registerLanguage('jule', jule.jule);
 
 export default {
   components: {
     Code,
-  }
+  },
+  async mounted() {
+    document.getElementById('test-code').innerHTML = hljs.highlight(
+`use std::testing::{T}
+
+fn reverse(mut s: []int) {
+    let mut i = 0
+    for i < s.len >> 1; i++ {
+        s.swap(i, s.len - i - 1)
+    }
+}
+
+#test
+fn test_reverse(mut t: &T) {
+    let mut s = [1, 2, 3, 4, 5]
+    let r = [5, 4, 3, 2, 1]
+    reverse(s)
+    for i in s {
+        if s[i] != r[i] {
+            t.errorf("index {} is not equal", i)
+        }
+    }
+}
+`, { language: 'jule' }).value;
+
+    document.getElementById('comptime-code').innerHTML = hljs.highlight(
+`use std::math::big::{Int}
+
+fn fast_even[T](x: T): bool {
+    match type T {
+    | Int:
+        ret x.even()
+    | uint | int:
+        ret x&1 != 1
+    |:
+        panic("T is not supported")
+    }
+}
+
+fn main() {
+    outln(fast_even(Int.new(20)))
+    outln(fast_even(int(20)))
+    outln(fast_even(uint(20)))
+    outln(fast_even(Int.new(23)))
+    outln(fast_even(int(23)))
+    outln(fast_even(uint(23)))
+}
+`, { language: 'jule' }).value;
+
+    document.getElementById('memory-code').innerHTML = hljs.highlight(
+`use std::fs::{File}
+use std::fmt::{printf}
+use env for std::env
+use bytes for std::bytes
+
+fn main() {
+    let args = env::args()
+    if args.len == 1 {
+        ret
+    }
+    let path = args[1]
+    let mut buf = File.read(path) else {
+        outln("path could not read: " + path)
+        ret
+    }
+    let mut n = 0
+    for _, part in bytes::split(buf, [' '], -1) {
+        if part.len != 0 {
+            n++
+        }
+    }
+    printf("{} contains {} word\\n", path, n)
+}
+`, { language: 'jule' }).value;
+  },
 }
 </script>
 
 <template>
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/Yukaii/github-highlightjs-themes/master/themes/github-dark-default.css">
   <main>
     <div class="bg-[var(--bg-primary)] text-white">
       <div class="max-w-screen-lg mx-auto py-7 px-5 justify-between items-center gap-2">
@@ -29,86 +107,95 @@ export default {
     <div class="max-w-screen-lg mx-auto py-20 px-5 grid grid-cols-2 max-sm:grid-cols-1 gap-y-8 gap-x-10 leading-5">
       <div class="rounded-xl border-[2.8px] border-[slateblue] p-4">
         <div class="font-semibold text-2xl mb-2 text-[slateblue]">Performance</div>
-        <div>Jule is extremely fast and memory efficient thanks to its efficient design and optimizing compiler.</div>
+        <div class="text-lg">Jule is extremely fast and memory efficient thanks to its efficient design and optimizing compiler.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[darkviolet] p-4">
         <div class="font-semibold text-2xl mb-2 text-[darkviolet]">Safety</div>
-        <div>Jule's static type system and principles disallows many errors when compile-time, and you have memory safety at runtime.</div>
+        <div class="text-lg">Jule's static type system and principles disallows many errors during compile-time, and you have memory safety at runtime.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[teal] p-4">
         <div class="font-semibold text-2xl mb-2 text-[teal]">Interoperability</div>
-        <div>Jule has an API written in C++ to develop C++ extensions for Jule and integrates beautifully with C, C++, Objective-C, and Objective-C++.</div>
+        <div class="text-lg">Jule has an API written in C++ to develop C++ extensions for Jule and integrates beautifully with C, C++, Objective-C, and Objective-C++.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[olive] p-4">
         <div class="font-semibold text-2xl mb-2 text-[olive]">Effective</div>
-        <div>Jule has built-in concurrency and supported by a cross-platform implemented standard library.</div>
+        <div class="text-lg">Jule has built-in concurrency and supported by a cross-platform implemented standard library.</div>
       </div>
     </div>
 
     <div class="bg-[var(--bg-primary)] h-20 rounded-tl-full ml-[50%] w-[50%]" />
     <div class="bg-[var(--bg-primary)] h-20 rounded-tl-full" />
     <div class="bg-[var(--bg-primary)]">
-      <div class="max-w-screen-lg mx-auto px-5 py-20 text-white">
+      <div class="max-w-screen-lg mx-auto px-5 py-20 text-lg text-white">
           <div>
-            <div class="font-semibold text-2xl mb-2">Robust Performance</div>
-            <div class="flex grid grid-cols-2 max-sm:grid-cols-1">
+            <div class="font-semibold text-2xl mb-2">Empowered Compile Time</div>
+            <div class="flex grid grid-cols-2 max-lg:grid-cols-1">
               <div class="mr-5 mb-5">
-                Jule aims to be performant and for this it has an optimizing compiler that tries to make your code as good as possible.
-                The standard library has also been developed with performance in mind.
-                The compiler takes an optimized approach, such as evaluating constant expressions and generic instances at compile time.
-                The generated back-end IR is created so that it can be compiled with trusted back-end compilers.
+                The Jule compiler can do a lot of cool things at compile time.
+                Evaluation of constant expressions, pattern matching for generic types, compile-time panics and more.
+                <br><br>
+                Generics are checked at compile time and have no runtime costs, and provide pattern matching support for generic types.
+                Evaluates compile-time panic calls to provide a custom error message to the compiler when your desired match is not met.
+                <br><br>
+                The compiler supports cross code generation.
+                This means that you can produce code for a different platform other than the platform you are working on.
+                Not only that, your compiler emulates the target platform at compile time.
+                This means that all of them, including platform-dependent types, will be based on the target platform, even for constant evaluation.
+                <br><br>
+                <li>Zero runtime cost generics</li>
+                <li>Evaluate constants at compile-time</li>
+                <li>Match generics at compile-time</li>
+                <li>Imitate target platform at compile-time</li>
+                <li>Generate object code for another platform</li>
               </div>
-            <div>
-              <li>Capable optimizing compiler</li>
-              <li>Performant and safe standard library</li>
-              <li>Zero runtime cost generics</li>
-              <li>Compile-time evaluations</li>
-              <li>Trusted back-end IR compilers</li>
-            </div>
+            <pre id="comptime-code" class="code text-base"></pre>
           </div>
         </div>
       </div>
 
-      <div class="max-w-screen-lg mx-auto px-5 py-20 text-white">
+      <div class="max-w-screen-lg mx-auto px-5 py-20 text-lg text-white">
           <div>
-            <div class="font-semibold text-2xl mb-2">Shields Included</div>
-            <div class="flex grid grid-cols-2 max-sm:grid-cols-1">
+            <div class="font-semibold text-2xl mb-2">Managing Memory, Hands Free by Default</div>
+            <div class="flex grid grid-cols-2 max-lg:grid-cols-1">
               <div class="mr-5 mb-5">
-                Programs created with Jule are safe.
-                It performs operational checks such as nil memory dereference, and boundary checking to prevent memory errors and guarantees memory safety.
-                Prevents variable shading by default.
-                It requires exceptional functions to be processed for error handling.
+                Jule manages memory automatically at runtime.
+                It uses reference counting by default.
+                As a developer, you don't have to worry about memory leaks or not being able to predict memory management.
+                Jule exhibits completely deterministic and automatic memory management.
+                Just program freely.
+                <br><br>
+                Optionally, the standard library includes some implementations for managing memory.
+                You can also access C/C++ memory management functions with Integrated Jule.
+                <br><br>
+                <li>Reference Counting by Default</li>
+                <li>Supported by Standard Library</li>
               </div>
-            <div>
-              <li>Statically typed</li>
-              <li>Immutability by default</li>
-              <li>Disallow variable shadowing by default</li>
-              <li>Trusted exceptional functions for error handling</li>
-              <li>Memory safety</li>
-            </div>
+            <pre id="memory-code" class="code text-base"></pre>
           </div>
         </div>
       </div>
 
-      <div class="max-w-screen-lg mx-auto px-5 py-20 text-white">
+      <div class="max-w-screen-lg mx-auto px-5 py-20 text-lg text-white">
           <div>
-            <div class="font-semibold text-2xl mb-2">Collaborative</div>
-            <div class="flex grid grid-cols-2 max-sm:grid-cols-1">
+            <div class="font-semibold text-2xl mb-2">Built-in Testing Support</div>
+            <div class="flex grid grid-cols-2 max-lg:grid-cols-1">
               <div class="mr-5 mb-5">
-                Jule has high interoperability with C++ and can theoretically be used with the whole C/C++ ecosystem.
-                It also has an official rich API for C++ developers.
-                Jule can access C/C++ functions and functions integrated with the API can be developed.
+                Jule provides built-in testing support.
+                When compiled for testing, it performs a special compilation and test functions are run when the executable is executed.
+                Test functions are ignored outside of test compilations.
+                <br><br>
+                Each testing function is powered and supported by tools provided by the standard library.
+                At the same time, different libraries can be used in test functions.
+                In this way, all kinds of algorithms can be programmed into test functions and additional tools can be developed.
+                <br><br>
+                <li>Empowered with Standard Library</li>
+                <li>Ignored from Normal Compilations</li>
               </div>
-            <div>
-              <li>Interop with whole C/C++ ecosystem</li>
-              <li>Rich Jule Runtime API for C++</li>
-              <li>Compile to C++ IR</li>
-              <li>Minimimum cost for exchange to Jule</li>
-              <li>Extensioning Jule with C/C++</li>
-            </div>
+            <pre id="test-code" class="code text-base"></pre>
           </div>
         </div>
       </div>
+
     </div>
     <div class="bg-[var(--bg-primary)] h-20 rounded-br-full" />
     <div class="bg-[var(--bg-primary)] h-20 rounded-br-full w-[50%]" />

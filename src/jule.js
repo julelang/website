@@ -207,7 +207,7 @@ function jule(hljs) {
                     3: "title.class"
                 }
             },
-            FUNCTION_INVOKE
+            FUNCTION_INVOKE,
         ]
     };
 }
