@@ -201,7 +201,7 @@ fn main() {
     <div class="bg-[var(--bg-primary)] h-20 rounded-br-full w-[50%]" />
 
     <div class="max-w-screen-lg mx-auto px-5 py-20">
-      <div class="p-10 bg-[var(--bg-secondary)] bg-gradient-to-t from-slate-600 text-white rounded-3xl">
+      <div class="text-lg p-10 bg-[var(--bg-secondary)] bg-gradient-to-t from-slate-600 text-white rounded-3xl">
         <div class="font-semibold text-2xl">Open Source</div>
         Including important parts of Jule such as the reference compiler, standards library and API, is developed completely open source and free of charge, and its source code open at <a class="underline" href="https://github.com/julelang/jule">GitHub respository</a>, open to the contribution of the entire community.
         Many regular and non-regular contributors work together to make Jule more effective and stable.
@@ -218,7 +218,7 @@ fn main() {
     </div>
 
     <div class="transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 mb-20 bg-gradient-to-r from-blue-600 w-fit via-purple-500 to-orange-400">
-      <a href="/future-of-jule" class="text-transparent hover:cursor-pointer text-center font-semibold text-3xl">Future of Jule</a>
+      <a href="/future-of-jule" class="text-transparent hover:cursor-pointer text-center font-semibold text-4xl">Future of Jule</a>
     </div>
 
     <div class="bg-[steelblue] text-white">
