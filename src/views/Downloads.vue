@@ -134,7 +134,7 @@ export default {
       <table class="table-auto w-full whitespace-nowrap">
         <tr class="text-left bg-zinc-100 border-b border-zinc-400">
           <th class="p-2">Release</th>
-          <th class="p-2">Tag Name</th>
+          <th class="p-2">Builds</th>
           <th class="p-2">Date</th>
         </tr>
         <tr class="bg-zinc-100 even:bg-zinc-200" v-for="release in releases.slice(1, releases.length)">
@@ -142,8 +142,8 @@ export default {
             <router-link v-if="release.id" :to="{ name: 'release', params: { id: release.id } }">{{
               release.name }}</router-link>
           </td>
-          <td class="p-2">{{ release.tag_name }}</td>
-          <td class="p-2">{{ new Date(release.created_at).toISOString().replace('T', ' ').replace('Z', '').slice(0, 19) }}
+          <td class="p-2">{{ release.assets.length }}</td>
+          <td class="p-2">{{ new Date(release.created_at).toISOString().replace('T', ' ').replace('Z', '').slice(0, 10) }}
           </td>
         </tr>
       </table>

@@ -48,6 +48,8 @@ export default {
         <tr class="text-left bg-zinc-100 border-b border-zinc-400">
           <th class="p-2">File Name</th>
           <th class="p-2">Size</th>
+          <th class="p-2">OS</th>
+          <th class="p-2">Arch</th>
           <th class="p-2">Date</th>
         </tr>
         <tr class="bg-zinc-100 even:bg-zinc-200" v-for="file in release.assets">
@@ -55,7 +57,19 @@ export default {
             <a :href="file.browser_download_url">{{ file.name }}</a>
           </td>
           <td class="p-2">{{ (file.size / 1024 ** 2).toFixed(2) }}MB</td>
-          <td class="p-2">{{ new Date(release.created_at).toISOString().replace('T', ' ').replace('Z', '').slice(0, 19) }}
+          <td class="p-2">{{
+            file.name.includes("darwin") ? "macOS" :
+            file.name.includes("windows") ? "Windows" :
+            file.name.includes("linux") ? "Linux" :
+            "unknown"
+          }}</td>
+          <td class="p-2">{{
+            file.name.includes("i386") ? "x86" :
+            file.name.includes("arm64") ? "ARM64" :
+            file.name.includes("amd64") ? "x86-64" :
+            "unknown"
+          }}</td>
+          <td class="p-2">{{ new Date(release.created_at).toISOString().replace('T', ' ').replace('Z', '').slice(0, 10) }}
           </td>
         </tr>
       </table>
