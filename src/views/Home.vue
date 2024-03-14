@@ -16,7 +16,7 @@ export default {
 
 fn reverse(mut s: []int) {
     let mut i = 0
-    for i < s.len >> 1; i++ {
+    for i < s.len / 2; i++ {
         s.swap(i, s.len - i - 1)
     }
 }
@@ -106,15 +106,15 @@ fn main() {
 
     <div class="max-w-screen-lg mx-auto py-20 px-5 grid grid-cols-2 max-sm:grid-cols-1 gap-y-8 gap-x-10 leading-5">
       <div class="rounded-xl border-[2.8px] border-[slateblue] p-4">
-        <div class="font-semibold text-2xl mb-2 text-[slateblue]">Performance</div>
+        <div class="font-semibold text-2xl mb-2 text-[slateblue]">Performace</div>
         <div class="text-lg">Jule is extremely fast and memory efficient thanks to its efficient design and optimizing compiler.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[darkviolet] p-4">
-        <div class="font-semibold text-2xl mb-2 text-[darkviolet]">Safety</div>
+        <div class="font-semibold text-2xl mb-2 text-[darkviolet]">Safe</div>
         <div class="text-lg">Jule's static type system and principles disallows many errors during compile-time, and you have memory safety at runtime.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[teal] p-4">
-        <div class="font-semibold text-2xl mb-2 text-[teal]">Interoperability</div>
+        <div class="font-semibold text-2xl mb-2 text-[teal]">Collaborative</div>
         <div class="text-lg">Jule has an API written in C++ to develop C++ extensions for Jule and integrates beautifully with C, C++, Objective-C, and Objective-C++.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[olive] p-4">
@@ -161,7 +161,7 @@ fn main() {
                 Jule manages memory automatically at runtime.
                 It uses reference counting by default.
                 As a developer, you don't have to worry about memory leaks or not being able to predict memory management.
-                Jule exhibits completely deterministic and automatic memory management.
+                Jule provides completely deterministic and automatic memory management.
                 Just program freely.
                 <br><br>
                 Optionally, the standard library includes some implementations for managing memory.
