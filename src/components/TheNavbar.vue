@@ -9,9 +9,9 @@ import { RouterLink } from 'vue-router';
         <img class="w-14" src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png">
       </router-link>
       <div class="flex flex-wrap justify-center gap-10">
-        <a href="https://manual.jule.dev" target="_blank">Manual</a>
-        <router-link to="/community">Community</router-link>
-        <router-link to="/contribute">Contribute</router-link>
+        <a href="https://manual.jule.dev" target="_blank" class="hover:bg-[teal] duration-[0.3s] rounded-full pt-1 pl-2 pr-2 pb-1">Manual</a>
+        <router-link to="/community" class="hover:bg-[teal] duration-[0.3s] rounded-full pt-1 pl-2 pr-2 pb-1">Community</router-link>
+        <router-link to="/contribute" class="hover:bg-[teal] duration-[0.3s] rounded-full pt-1 pl-2 pr-2 pb-1">Contribute</router-link>
       </div>
     </div>
   </nav>
