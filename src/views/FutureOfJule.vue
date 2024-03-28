@@ -83,6 +83,8 @@
             <li>Extension Methods</li>
             <li>Field Support for Traits</li>
             <li>Default Implemented Methods for Traits</li>
+            <li>Generic Traits</li>
+            <li>Generic Methods for Traits</li>
             <li>Generic Type-Matching with Type Patterns</li>
             <li>Testing package and sub-packages via single test command</li>
             <li>Stdlib package for network such as HTTP or IP Listener</li>
@@ -94,13 +96,15 @@
             <li>Stdlib package that provides tiny data store</li>
             <li>Stdlib package that provides functionality for SQL databases</li>
             <li>Stdlib package that provides Jule-special encoding/decoding functionality</li>
+            <li>std::math::big: arbitrary-precision float support</li>
         </div>
       </div>
 
       <div class="text-xl mb-14">
         <div class="text-4xl mb-4 font-semibold">Tools & Utilities</div>
         Once Jule is mature enough and relatively stable, we want to provide some tools to developers.
-        Planned tools include ideas such as codename julefmt (a tool to format Jule source code), codename juledoc (a code documentation generator from source code and comment lines).
+        We developed julefmt which is code formatter for Jule source code written in Jule.
+        Planned tools include ideas such as codename juledoc (a code documentation generator from source code and comment lines).
         <br><br>
         Since developing tools for Jule is relatively easy, thanks to compiler packages in standard library, we think the community can also develop various tools and plugins for Jule and expand the ecosystem.
         To achieve this, we are trying to make the compiler packages in the standard library as easy to use as possible.

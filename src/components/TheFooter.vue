@@ -27,7 +27,7 @@ import { RouterLink } from 'vue-router';
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        Copyright © 2023 The Jule Team<br><a href="https://github.com/julelang/jule" target="_blank" class="underline">Source code</a> is licensed under <a href="https://github.com/julelang/jule/blob/master/LICENSE" target="_blank" class="underline">BSD-3-Clause license</a>
+        Copyright © {{new Date().getFullYear()}} The Jule Team<br><a href="https://github.com/julelang/jule" target="_blank" class="underline">Source code</a> is licensed under <a href="https://github.com/julelang/jule/blob/master/LICENSE" target="_blank" class="underline">BSD-3-Clause license</a>
       </span>
     </div>
   </footer>
