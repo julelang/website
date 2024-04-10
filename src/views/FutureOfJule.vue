@@ -75,7 +75,6 @@
         The items in the list are not ranked according to any criteria.
         <div class="mt-4 ml-4">
             <li>Conditional Compiler Directives</li>
-            <li>Sum Types</li>
             <li>Generic Constraits</li>
             <li>Unions</li>
             <li>Static Structure Fields</li>
