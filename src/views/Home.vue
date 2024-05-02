@@ -22,25 +22,26 @@ fn reverse(mut s: []int) {
 }
 
 #test
-fn test_reverse(mut t: &T) {
+fn testReverse(mut t: &T) {
     let mut s = [1, 2, 3, 4, 5]
     let r = [5, 4, 3, 2, 1]
     reverse(s)
     for i in s {
         if s[i] != r[i] {
-            t.errorf("index {} is not equal", i)
+            t.Errorf("index {} is not equal", i)
         }
     }
 }
 `, { language: 'jule' }).value;
 
     document.getElementById('comptime-code').innerHTML = hljs.highlight(
-`use std::math::big::{Int}
+`use big for std::math::big
+use fmt for std::fmt
 
-fn fast_even[T](x: T): bool {
+fn fastEven[T](x: T): bool {
     match type T {
-    | Int:
-        ret x.even()
+    | big::Int:
+        ret x.Even()
     | uint | int:
         ret x&1 != 1
     |:
@@ -49,38 +50,38 @@ fn fast_even[T](x: T): bool {
 }
 
 fn main() {
-    outln(fast_even(Int.new(20)))
-    outln(fast_even(int(20)))
-    outln(fast_even(uint(20)))
-    outln(fast_even(Int.new(23)))
-    outln(fast_even(int(23)))
-    outln(fast_even(uint(23)))
+    fmt::Println(fastEven(big::Int.New(20)))
+    fmt::Println(fastEven(int(20)))
+    fmt::Println(fastEven(uint(20)))
+    fmt::Println(fastEven(big::Int.New(23)))
+    fmt::Println(fastEven(int(23)))
+    fmt::Println(fastEven(uint(23)))
 }
 `, { language: 'jule' }).value;
 
     document.getElementById('memory-code').innerHTML = hljs.highlight(
 `use std::fs::{File}
-use std::fmt::{printf}
+use fmt for std::fmt
 use env for std::env
 use bytes for std::bytes
 
 fn main() {
-    let args = env::args()
+    let args = env::Args()
     if args.len == 1 {
         ret
     }
     let path = args[1]
-    let mut buf = File.read(path) else {
+    let mut buf = File.Read(path) else {
         outln("path could not read: " + path)
         ret
     }
     let mut n = 0
-    for _, part in bytes::split(buf, [' '], -1) {
+    for _, part in bytes::Split(buf, [' '], -1) {
         if part.len != 0 {
             n++
         }
     }
-    printf("{} contains {} word\\n", path, n)
+    fmt::Printf("{} contains {} word\\n", path, n)
 }
 `, { language: 'jule' }).value;
   },
