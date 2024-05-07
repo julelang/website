@@ -22,6 +22,7 @@ function jule(hljs) {
     const NUMBER_SUFFIX = "";
 
     const KEYWORDS = [
+        "map",
         "const",
         "ret",
         "type",
