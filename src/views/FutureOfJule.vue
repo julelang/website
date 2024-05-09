@@ -85,7 +85,6 @@
             <li>Generic Methods for Traits</li>
             <li>Generic Type-Matching with Type Patterns</li>
             <li>Testing package and sub-packages via single test command</li>
-            <li>Stdlib package for network such as HTTP or IP Listener</li>
             <li>Stdlib package to encode/decode JSON data</li>
             <li>Stdlib package to encode/decode XML data</li>
             <li>Stdlib package for region-based memory management</li>
@@ -94,6 +93,7 @@
             <li>Stdlib package that provides tiny data store</li>
             <li>Stdlib package that provides functionality for SQL databases</li>
             <li>Stdlib package that provides Jule-special encoding/decoding functionality</li>
+            <li>std::net: add HTTP and more utilities</li>
             <li>std::math::big: arbitrary-precision float support</li>
         </div>
       </div>

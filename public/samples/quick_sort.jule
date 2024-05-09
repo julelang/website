@@ -1,25 +1,22 @@
-fn quick_sort(mut s: []int): []int {
-    if s.len <= 1 {
+fn quickSort(mut s: []int): []int {
+    if len(s) <= 1 {
         ret s
     }
-
     let mut i = -1
-    let last = s[s.len-1]
+    let last = s[len(s)-1]
     for j in s {
         if s[j] <= last {
             i++
             s[i], s[j] = s[j], s[i]
         }
     }
-
-    quick_sort(s[:i])
-    quick_sort(s[i+1:])
-
+    quickSort(s[:i])
+    quickSort(s[i+1:])
     ret s
 }
 
 fn main() {
     let mut s = [9, 35, -0, 0, 98, 8935, -85, -9835, 64, 89]
-    s = quick_sort(s)
+    s = quickSort(s)
     outln(s)
 }

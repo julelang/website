@@ -16,8 +16,8 @@ export default {
 
 fn reverse(mut s: []int) {
     let mut i = 0
-    for i < s.len / 2; i++ {
-        s.swap(i, s.len - i - 1)
+    for i < len(s) / 2; i++ {
+        s.swap(i, len(s) - i - 1)
     }
 }
 
@@ -35,27 +35,30 @@ fn testReverse(mut t: &T) {
 `, { language: 'jule' }).value;
 
     document.getElementById('comptime-code').innerHTML = hljs.highlight(
-`use big for std::math::big
-use fmt for std::fmt
+`use fmt for std::fmt
 
-fn fastEven[T](x: T): bool {
-    match type T {
-    | big::Int:
-        ret x.Even()
-    | uint | int:
-        ret x&1 != 1
-    |:
-        panic("T is not supported")
+fn max[S: []E, E: comparable](s: S): E {
+    if len(s) == 0 {
+        match type E {
+        | int | uint | f64:
+            ret 0
+        |:
+            panic("len(s) == 0")
+        }
     }
+    let mut m = s[0]
+    for _, e in s[1:] {
+        if m < e {
+            m = e
+        }
+    }
+    ret m
 }
 
 fn main() {
-    fmt::Println(fastEven(big::Int.New(20)))
-    fmt::Println(fastEven(int(20)))
-    fmt::Println(fastEven(uint(20)))
-    fmt::Println(fastEven(big::Int.New(23)))
-    fmt::Println(fastEven(int(23)))
-    fmt::Println(fastEven(uint(23)))
+    let s = [90, 2, 5, 23, 87, 89, 49, 66, 97]
+    let m = max(s)
+    fmt::Println(m)
 }
 `, { language: 'jule' }).value;
 
@@ -67,7 +70,7 @@ use bytes for std::bytes
 
 fn main() {
     let args = env::Args()
-    if args.len == 1 {
+    if len(args) == 1 {
         ret
     }
     let path = args[1]
@@ -77,7 +80,7 @@ fn main() {
     }
     let mut n = 0
     for _, part in bytes::Split(buf, [' '], -1) {
-        if part.len != 0 {
+        if len(part) != 0 {
             n++
         }
     }
