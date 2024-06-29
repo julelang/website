@@ -151,6 +151,7 @@ fn main() {
                 <li>Match generics at compile-time</li>
                 <li>Imitate target platform at compile-time</li>
                 <li>Generate object code for another platform</li>
+                <li>Compile-time reflection</li>
               </div>
             <pre id="comptime-code" class="code text-base"></pre>
           </div>

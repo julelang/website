@@ -19,13 +19,13 @@
 
       <div class="text-xl mb-14">
         <div class="text-4xl mb-4 font-semibold">Compile Time</div>
-        Jule has some functionality at compile time. The most important of these is the evaluation of constant expressions.
+        Jule has some functionalities for compile-time. The most important of these is the evaluation of constant expressions, constant matching and standard comptime library provies much more.
         However, it is planned that Jule will have a better and improved compile-time capability in the future.
         <br><br>
-        Most of this functionality is planned to be designed as a package in the standard library.
+        Most of this functionality is planned to be designed as a package in the standard comptime library.
         Planned features include functionality such as reflection-like metadata collection, lookup in compiler structures, compile-time JSON encoding/decoding helper algorithms, and compiler metadata collection.
         <br><br>
-        In addition to improving the existing compile-time functionalities as much as possible, some new features can also be added. For example, in addition to evaluating constant expressions, constant functions can be designed that can be evaluated at compile time.
+        In addition to improving the existing compile-time functionalities as much as possible, some new features can also be added. For example, in addition to evaluating constant expressions, constant functions can be designed that can be evaluated at compile-time.
         But this is not a primary idea.
       </div>
 
@@ -94,7 +94,7 @@
             <li>Stdlib package that provides functionality for SQL databases</li>
             <li>Stdlib package that provides Jule-special encoding/decoding functionality</li>
             <li>std::net: add HTTP and more utilities</li>
-            <li>std::math::big: arbitrary-precision float support</li>
+            <li>std::math::big: arbitrary-precision floating-point support</li>
         </div>
       </div>
 
