@@ -62,3 +62,11 @@
 .hljs-number {
     color: #bd93f9;
 }
+
+.code-region {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(40, 40, 40);
+    color: white;
+    width: fit-content;
+}
