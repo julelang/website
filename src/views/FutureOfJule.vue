@@ -196,6 +196,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>Default Implemented Methods for Traits</li>
             <li>Generic Traits</li>
             <li>Generic Methods for Traits</li>
+            <li>Inheritance Support for Structures</li>
             <li>Generic Type-Matching with Type Patterns</li>
             <li>The "Self" Named Type Alias for Owner Structure Instance Available in Methods</li>
             <li>Enum Type Support for The Map Value Type</li>
@@ -263,9 +264,36 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>Methods defined within the scope of responsive mutability are immutable methods by default. That is, they cannot contain algorithms that will make changes to them because of immutable receiver, except for Interior Mutability.</li>
             <li>Responsive mutability only applies to return values. It should be allowed to return even if return values ​​pose a risk of mutability. Risky situations should be checked at points where the return value is used, such as assignments. Thus, responsiveness will be gained.</li>
           </div>
+          <br>
+          <b>Challanges of Responsive Mutability</b>
+          <br><br>
+          Implementing Responsive Mutability can provide many advantages. One of these is that it will enable developers to write more flexible code and maintain immutability more easily.
+          However, implementation has some difficulties and these gains must be achieved without significantly increasing compilation time.
+          <br><br>
+          Here are some cases that can significantly affect compilation time:
+          <div class="mt-4 ml-4">
+            <li>If the return parameters have identifiers, they should be allowed to be assigned, but no other mutable operations should be allowed.</li>
+            <li>If the return parameters have identifiers, the assignments must be followed to detect which ones should be responsive.</li>
+            <li>For returns statements, the compiler must perform additional analysis to understand which returned values ​​are risky and which should be responsive.</li>
+          </div>
+          <br>
+          Some restrictions could be introduced to solve these problems, but these restrictions would likely require sacrificing some capabilities of the language, such as return parameters with identifiers.
+          To make the analysis faster and to ease the burden on the compiler, it is necessary to reduce and alleviate the conditions that need to be checked.
+          <br><br>
+          <b>Pros of Responsive Mutability</b>
+          <div class="mt-4 ml-4">
+            <li>Structures will be able to return their fields more flexibly.</li>
+            <li>It allows internal mutable data of structures to be shared safely from a single point.</li>
+            <li>When developers work with mutable data for some immutable operations, they will not have to declare their methods or variables as mutable, even if they do not need to.</li>
+          </div>
+          <br>
+          <b>Cons of Responsive Mutability</b>
+          <div class="mt-4 ml-4">
+            <li>When the developer wants the value it returns to always be immutable, whether the struct is mutable or immutable, responsive mutability does not provide this.</li>
+          </div>
         </div>
       </div>
-
+      for in hello
       <div class="text-xl mb-14 pt-6 border-t-2 border-[var(--color-primary)]">
         <div class="text-3xl mb-4 font-semibold">Development Approach</div>
         There is no implementation date for when the planned features will be implemented.
