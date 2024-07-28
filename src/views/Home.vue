@@ -22,7 +22,7 @@ fn reverse(mut s: []int) {
 }
 
 #test
-fn testReverse(mut t: &T) {
+fn testReverse(t: &T) {
     let mut s = [1, 2, 3, 4, 5]
     let r = [5, 4, 3, 2, 1]
     reverse(s)
