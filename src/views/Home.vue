@@ -110,7 +110,7 @@ fn main() {
 
     <div class="max-w-screen-lg mx-auto py-20 px-5 grid grid-cols-2 max-sm:grid-cols-1 gap-y-8 gap-x-10 leading-5">
       <div class="rounded-xl border-[2.8px] border-[slateblue] p-4">
-        <div class="font-semibold text-2xl mb-2 text-[slateblue]">Performace</div>
+        <div class="font-semibold text-2xl mb-2 text-[slateblue]">Performance</div>
         <div class="text-lg">Jule is extremely fast and memory efficient thanks to its efficient design and optimizing compiler.</div>
       </div>
       <div class="rounded-xl border-[2.8px] border-[darkviolet] p-4">
