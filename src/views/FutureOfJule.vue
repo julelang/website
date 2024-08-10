@@ -17,7 +17,7 @@ export default {
 }
 
 impl Foo {
-    fn Buffer(mut~ self): []byte {
+    fn Buffer(mut~ self): (mut~ []byte) {
         ret self.buf
     }
 }`, { language: 'jule' }).value;
@@ -216,6 +216,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>std::net: add gRPC support</li>
             <li>std::process: Add pipe support for Cmd</li>
             <li>std::math::big: arbitrary-precision floating-point support</li>
+            <li>add stacktrace support</li>
         </div>
       </div>
 
@@ -240,7 +241,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           This may lead to the need for an immutable variable to be mutable because of a method that only returns a value.
           <br><br>
           To prevent this, the design addresses adding the necessary responsiveness to the methods through elegantly as far as possible designed syntax/semantic improvement.
-          After implementing this design, when a structure method returns a value to be used in an immutable variable, it should be able to return even fields of mutable type.
+          After implementing this design, when a structure method returns a value to be used in an immutable variable, it should be able to return even fields with mutable type.
           <br><br>
           <b>Example Implementation</b>
           <br><br>
@@ -273,7 +274,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           Here are some cases that can significantly affect compilation time:
           <div class="mt-4 ml-4">
             <li>If the return parameters have identifiers, they should be allowed to be assigned, but no other mutable operations should be allowed.</li>
-            <li>If the return parameters have identifiers, the assignments must be followed to detect which ones should be responsive.</li>
+            <li>If the return parameters have identifiers, the assignments must be followed to detect which ones should be responsive. Treating this as a direct analysis can be quite costly. For this reason, it is debatable that every responsive return expression should be marked with `mut~`. This can greatly ease the analysis burden.</li>
             <li>For returns statements, the compiler must perform additional analysis to understand which returned values ​​are risky and which should be responsive.</li>
           </div>
           <br>
@@ -289,11 +290,13 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           <br>
           <b>Cons of Responsive Mutability</b>
           <div class="mt-4 ml-4">
+            <li>It is not clear whether developers need such responsiveness.</li>
             <li>When the developer wants the value it returns to always be immutable, whether the struct is mutable or immutable, responsive mutability does not provide this.</li>
           </div>
         </div>
+
       </div>
-      for in hello
+
       <div class="text-xl mb-14 pt-6 border-t-2 border-[var(--color-primary)]">
         <div class="text-3xl mb-4 font-semibold">Development Approach</div>
         There is no implementation date for when the planned features will be implemented.
