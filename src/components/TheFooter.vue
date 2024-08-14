@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router';
 <template>
   <footer>
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-      <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="select-none sm:flex sm:items-center sm:justify-between">
           <router-link to="/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
               <img src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg" class="h-9" alt="Jule Logo" />
               <span class="self-center text-xl text-[var(--color-primary)] font-semibold whitespace-nowrap">Jule</span>

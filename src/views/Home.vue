@@ -15,38 +15,37 @@ export default {
 `use std::testing::{T}
 
 fn reverse(mut s: []int) {
-    let mut i = 0
+    mut i := 0
     for i < len(s) / 2; i++ {
-        s.swap(i, len(s) - i - 1)
+        s[i], s[len(s)-i-1] = s[len(s)-i-1], s[i]
     }
 }
 
 #test
 fn testReverse(t: &T) {
-    let mut s = [1, 2, 3, 4, 5]
-    let r = [5, 4, 3, 2, 1]
+    mut s := [1, 2, 3, 4, 5]
+    r := [5, 4, 3, 2, 1]
     reverse(s)
     for i in s {
         if s[i] != r[i] {
             t.Errorf("index {} is not equal", i)
         }
     }
-}
-`, { language: 'jule' }).value;
+}`, { language: 'jule' }).value;
 
     document.getElementById('comptime-code').innerHTML = hljs.highlight(
 `use fmt for std::fmt
 
 fn max[S: []E, E: comparable](s: S): E {
     if len(s) == 0 {
-        match type E {
+        const match type E {
         | int | uint | f64:
             ret 0
         |:
             panic("len(s) == 0")
         }
     }
-    let mut m = s[0]
+    mut m := s[0]
     for _, e in s[1:] {
         if m < e {
             m = e
@@ -56,11 +55,10 @@ fn max[S: []E, E: comparable](s: S): E {
 }
 
 fn main() {
-    let s = [90, 2, 5, 23, 87, 89, 49, 66, 97]
-    let m = max(s)
+    s := [90, 2, 5, 23, 87, 89, 49, 66, 97]
+    m := max(s)
     fmt::Println(m)
-}
-`, { language: 'jule' }).value;
+}`, { language: 'jule' }).value;
 
     document.getElementById('memory-code').innerHTML = hljs.highlight(
 `use std::fs::{File}
@@ -69,24 +67,23 @@ use env for std::env
 use bytes for std::bytes
 
 fn main() {
-    let args = env::Args()
+    args := env::Args()
     if len(args) == 1 {
         ret
     }
-    let path = args[1]
-    let mut buf = File.Read(path) else {
+    path := args[1]
+    mut buf := File.Read(path) else {
         outln("path could not read: " + path)
         ret
     }
-    let mut n = 0
+    mut n := 0
     for _, part in bytes::Split(buf, [' '], -1) {
         if len(part) != 0 {
             n++
         }
     }
     fmt::Printf("{} contains {} word\\n", path, n)
-}
-`, { language: 'jule' }).value;
+}`, { language: 'jule' }).value;
   },
 }
 </script>
@@ -101,8 +98,8 @@ fn main() {
           <div class="leading-7 text-xl">An effective programming language to build<br>efficient, fast, reliable and safe software.</div>
         </div>
         <div class="flexbox mt-8">
-          <router-link to="/downloads" class="py-2 px-7 bg-[var(--color-primary)] hover:bg-[teal] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] hover:border-[teal] rounded-xl">Download</router-link>
-          <a href="https://manual.jule.dev" class="ml-4 py-2 px-7 bg-transparent hover:bg-[var(--color-primary)] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] rounded-xl">Manual</a>
+          <router-link to="/downloads" class="select-none py-2 px-7 bg-[var(--color-primary)] hover:bg-[teal] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] hover:border-[teal] rounded-lg">Download</router-link>
+          <a href="https://manual.jule.dev" class="select-none ml-4 py-2 px-7 bg-transparent hover:bg-[var(--color-primary)] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] rounded-lg">Manual</a>
           <div class="ml-5 mt-4 font-light text-xs">Supported on Windows, macOS, and Linux</div>
         </div>
       </div>
@@ -222,7 +219,7 @@ fn main() {
       </div>
     </div>
 
-    <div class="transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 mb-20 bg-gradient-to-r from-blue-600 w-fit via-purple-500 to-orange-400">
+    <div class="transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 mb-20 bg-gradient-to-r from-blue-600 w-fit via-purple-500 to-orange-400 hover:bg-gradient-to-r hover:from-blue-900 hover:via-purple-700 hover:to-orange-500">
       <a href="/future-of-jule" class="text-transparent hover:cursor-pointer text-center font-semibold text-4xl">Future of Jule</a>
     </div>
 
@@ -236,8 +233,23 @@ fn main() {
         </div>
         <br><br>
         <div class="flex justify-center">
-          <router-link to="/downloads" class="py-2 px-7 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-darker)] duration-[0.3s] text-lg rounded-sms">Download</router-link>
-          <a href="https://manual.jule.dev" class="py-2 px-7 bg-[gray] hover:bg-[dimgray] duration-[0.3s] text-lg rounded-sm">Manual</a>
+          <router-link to="/downloads" class="select-none py-2 px-7 bg-[var(--color-secondary)] hover:bg-[goldenrod] duration-[0.3s] text-lg" style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;">Download</router-link>
+          <a href="https://manual.jule.dev" class="select-none py-2 px-7 bg-[lightseagreen] hover:bg-[darkturquoise] duration-[0.3s] text-lg" style="border-top-right-radius: 6px; border-bottom-right-radius: 6px;">Manual</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="max-w-screen-sm mx-auto p-5 mt-20 mb-10">
+        <div class="text-3xl text-center font-semibold">Looking for Source Code?</div>
+        <br>
+        <div class="text-lg text-center">
+          Jule is distributed as completely open source on GitHub under the terms of the BSD 3-Clause license.
+          Contribute to source code or just give a star to support Jule.
+        </div>
+        <br><br>
+        <div class="flex justify-center">
+          <a href="https://github.com/julelang/jule" class="select-none py-2 px-7 text-white bg-[--color-primary] hover:bg-[--bg-primary] duration-[0.3s] text-lg rounded-lg">GitHub Repository</a>
         </div>
       </div>
     </div>

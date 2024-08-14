@@ -32,10 +32,10 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
 <template>
   <main class="max-w-screen-lg mx-auto px-5 py-20">
     <center>
-      <div class="mb-20 transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 bg-gradient-to-r from-blue-600 w-fit via-purple-500 to-orange-400">
+      <img class="select-none mb-20 w-48 max-md:w-36 max-sm:w-32" src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png">
+      <div class="mb-52 transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 bg-gradient-to-r from-blue-900 w-fit via-purple-700 to-orange-500">
         <div class="text-8xl max-sm:text-6xl max-md:text-7xl font-bold text-transparent">Future of Jule</div>
       </div>
-      <img class="mb-52 w-48 max-md:w-36 max-sm:w-32" src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png">
     </center>
     <div class="text-xl mb-14">
         <div class="text-4xl mb-4 font-semibold">Introduction</div>
