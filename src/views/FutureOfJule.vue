@@ -203,7 +203,6 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>Reserved Copy Method for Structures Like C++'s Copy Constructors</li>
             <li>Pattern Support to Select Executed Tests for Test Compilations</li>
             <li>Testing package and sub-packages via single test command</li>
-            <li>Stdlib package to encode/decode JSON data</li>
             <li>Stdlib package to encode/decode XML data</li>
             <li>Stdlib package for region-based memory management</li>
             <li>Stdlib package for regular expressions</li>
@@ -217,6 +216,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>std::process: Add pipe support for Cmd</li>
             <li>std::math::big: arbitrary-precision floating-point support</li>
             <li>add stacktrace support</li>
+            <li>use fixed stack-size for all platforms</li>
         </div>
       </div>
 
