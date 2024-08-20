@@ -58,9 +58,10 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
         </div>
         <br>
         It has been decided that the comptime functions implemented within the scope of these rules will be implemented to existing syntax structures in minimal easy-to-understand semantic ways and that the functionalities will be largely provided by the standard library.
-        This standard library is available as <b><u>std::comptime</u></b>.
-        In addition to providing comptime functions, it was found appropriate for this library to provide some semantic tricks through structures existing in the language, such as functions, in order to support rule-compliant design.
-        For example, comptime iterations and the <b><u>comptime::Range</u></b> function trick.
+        This standard library is available as the <b><u>std::comptime</u></b>.
+        <br><br>
+        Jule actively provides comptime and in some cases uses it as one of the main design elements.
+        For example, in the <b><u>std::encoding::json</u></b> standard library package, it provide a JSON encoding/decoding algorithm designed entirely based on comptime.
         <br><br>
         <b>List of Planned Features</b>
         <div class="mt-4 ml-4">
@@ -74,6 +75,17 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           <li><b>Comptime Reflection</b> [✔]</li>
           <li><b>Comptime Evaluated Functions</b> [✕]</li>
         </div>
+      </div>
+
+      <div class="text-xl mb-14">
+        <div class="text-4xl mb-4 font-semibold">Memory Management</div>
+        Jule currently uses an RC (reference counting) based memory approach by default.
+        There is no other option, but RC can be turned off as an option.
+        But this causes memory leaks, especially in code that uses standard library packages because the standard library relies heavily on GC.
+        <br><br>
+        The current RC implementation includes some atomicity, but in most cases no serious impact on program performance is expected.
+        To make this better, it is planned to remove atomics but introduce non-annoying measures to prevent developers from making the least mistakes in this regard.
+        In addition, if it is possible to understand the scopes of types that exhibit RC at compile time, there is an additional idea of ​​compiler optimization that would eliminate the RC overhead.
       </div>
 
       <div class="text-xl mb-14">
