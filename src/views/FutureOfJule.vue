@@ -45,6 +45,20 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
       </div>
 
       <div class="text-xl mb-14">
+        <div class="text-4xl mb-4 font-semibold">Stability</div>
+        Since Jule is still in beta, there is no stability commitment.
+        Each new version may break the previous codes and incompatibilities may occur.
+        However, efforts are made to ensure that these are as few as possible.
+        Thus, the aim is to keep the need for beta users to review their code for compatibility between versions to a minimum.
+        <br><br>
+        Once Jule reaches a stable release, these are intended to be guaranteed from the first stable release;
+        Code between versions is guaranteed to be compatible. In other words, a release cannot break the codes written in previous versions.
+        It has the same unbreakability guarantee as the standard library compiler.
+        If existing packages are redesigned, the same public functions should be provided as much as possible and the underlying implicit implementation should be changed.
+        If this is not possible, versions such as V2 should be released.
+      </div>
+
+      <div class="text-xl mb-14">
         <div class="text-4xl mb-4 font-semibold">Compile Time</div>
         Compile-time is important to Jule. Built-in facilities should be provided to provide developers with many opportunities at compile time.
         These opportunities should be at a level that allows many gains, especially performance, when possible.
@@ -189,6 +203,20 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           <li><b>juledoc</b> [✕]: documentation generator from source code and comment lines</li>
           <li><b>jls</b> [✕]: language server implementation for the Jule</li>
         </div>
+      </div>
+
+      <div class="text-xl mb-14">
+        <div class="text-4xl mb-4 font-semibold">Compilation Process</div>
+        Jule currently compiles and analyzes the source code from scratch every time.
+        Although it is optimized to do this fairly quickly, compiling the entire code base from scratch every time can be tiring.
+        <br><br>
+        There is a built-in optimization idea to speed up the compilation process.
+        This idea is based on avoiding recompiling files that have already been compiled.
+        By compiling only modified packages, the compiler will skip packages that have already been compiled and have not been modified, which can significantly increase compilation time.
+        <br><br>
+        While this feature will one day be tried and tested, there is no prediction as to when.
+        The main priority is to develop the compiler and improve stability without increasing Jule's compilation time as much as possible.
+
       </div>
 
       <div class="text-xl mb-14">
