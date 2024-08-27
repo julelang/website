@@ -211,7 +211,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
         Although it is optimized to do this fairly quickly, compiling the entire code base from scratch every time can be tiring.
         <br><br>
         There is a built-in optimization idea to speed up the compilation process.
-        This idea is based on avoiding recompiling files that have already been compiled.
+        This idea is based on avoiding recompiling files that have already been compiled, so incremental compilation.
         By compiling only modified packages, the compiler will skip packages that have already been compiled and have not been modified, which can significantly increase compilation time.
         <br><br>
         While this feature will one day be tried and tested, there is no prediction as to when.
@@ -257,6 +257,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>std::math::big: arbitrary-precision floating-point support</li>
             <li>add stacktrace support</li>
             <li>use fixed stack-size for all platforms</li>
+            <li>support for linking dynamic libraries</li>
         </div>
       </div>
 
