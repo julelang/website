@@ -12,7 +12,7 @@ export default {
   },
   async mounted() {
     document.getElementById('test-code').innerHTML = hljs.highlight(
-`use std::testing::{T}
+`use "std/testing"
 
 fn reverse(mut s: []int) {
     mut i := 0
@@ -22,7 +22,7 @@ fn reverse(mut s: []int) {
 }
 
 #test
-fn testReverse(t: &T) {
+fn testReverse(t: &testing::T) {
     mut s := [1, 2, 3, 4, 5]
     r := [5, 4, 3, 2, 1]
     reverse(s)
@@ -34,7 +34,7 @@ fn testReverse(t: &T) {
 }`, { language: 'jule' }).value;
 
     document.getElementById('comptime-code').innerHTML = hljs.highlight(
-`use fmt for std::fmt
+`use "std/fmt"
 
 fn max[S: []E, E: comparable](s: S): E {
     if len(s) == 0 {
@@ -61,28 +61,28 @@ fn main() {
 }`, { language: 'jule' }).value;
 
     document.getElementById('memory-code').innerHTML = hljs.highlight(
-`use std::fs::{File}
-use fmt for std::fmt
-use env for std::env
-use bytes for std::bytes
+`use "std/bytes"
+use "std/env"
+use "std/fmt"
+use "std/fs"
 
 fn main() {
-    args := env::Args()
-    if len(args) == 1 {
-        ret
-    }
-    path := args[1]
-    mut buf := File.Read(path) else {
-        outln("path could not read: " + path)
-        ret
-    }
-    mut n := 0
-    for _, part in bytes::Split(buf, [' '], -1) {
-        if len(part) != 0 {
-            n++
-        }
-    }
-    fmt::Printf("{} contains {} word\\n", path, n)
+	args := env::Args()
+	if len(args) == 1 {
+		ret
+	}
+	path := args[1]
+	mut buf := fs::File.Read(path) else {
+		outln("path could not read: " + path)
+		ret
+	}
+	mut n := 0
+	for _, part in bytes::Split(buf, [' '], -1) {
+		if len(part) != 0 {
+			n++
+		}
+	}
+	fmt::Printf("{} contains {} word\\n", path, n)
 }`, { language: 'jule' }).value;
   },
 }
