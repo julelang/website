@@ -3,13 +3,13 @@ fn main() {
     for j <= 100; j++ {
         match {
         | j % 3 == 0 && j % 5 == 0:
-            outln("FizzBuzz")
+            println("FizzBuzz")
         | j % 3 == 0:
-            outln("Fizz")
+            println("Fizz")
         | j % 5 == 0:
-            outln("Buzz")
+            println("Buzz")
         |:
-            outln(j)
+            println(j)
         }
     }
 }

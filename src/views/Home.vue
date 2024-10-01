@@ -73,7 +73,7 @@ fn main() {
 	}
 	path := args[1]
 	mut buf := fs::File.Read(path) else {
-		outln("path could not read: " + path)
+		println("path could not read: " + path)
 		ret
 	}
 	mut n := 0

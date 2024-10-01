@@ -18,5 +18,5 @@ fn quickSort(mut s: []int): []int {
 fn main() {
     let mut s = [9, 35, -0, 0, 98, 8935, -85, -9835, 64, 89]
     s = quickSort(s)
-    outln(s)
+    println(s)
 }
