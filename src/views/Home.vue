@@ -62,17 +62,16 @@ fn main() {
 
     document.getElementById('memory-code').innerHTML = hljs.highlight(
 `use "std/bytes"
-use "std/env"
 use "std/fmt"
-use "std/fs"
+use "std/os"
 
 fn main() {
-	args := env::Args()
+	args := os::Args()
 	if len(args) == 1 {
 		ret
 	}
 	path := args[1]
-	mut buf := fs::File.Read(path) else {
+	mut buf := os::File.Read(path) else {
 		println("path could not read: " + path)
 		ret
 	}
@@ -82,7 +81,7 @@ fn main() {
 			n++
 		}
 	}
-	fmt::Printf("{} contains {} word\\n", path, n)
+	fmt::Printf("{} contains {} word\n", path, n)
 }`, { language: 'jule' }).value;
   },
 }
