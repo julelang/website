@@ -72,10 +72,10 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
         </div>
         <br>
         It has been decided that the comptime functions implemented within the scope of these rules will be implemented to existing syntax structures in minimal easy-to-understand semantic ways and that the functionalities will be largely provided by the standard library.
-        This standard library is available as the <b><u>std::comptime</u></b>.
+        This standard library is available as the <b><u>std/comptime</u></b>.
         <br><br>
         Jule actively provides comptime and in some cases uses it as one of the main design elements.
-        For example, in the <b><u>std::encoding::json</u></b> standard library package, it provide a JSON encoding/decoding algorithm designed entirely based on comptime.
+        For example, in the <b><u>std/encoding/json</u></b> standard library package, it provide a JSON encoding/decoding algorithm designed entirely based on comptime.
         <br><br>
         <b>List of Planned Features</b>
         <div class="mt-4 ml-4">
@@ -120,8 +120,9 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           <li><b>WaitGroup</b> (Like Go) [✔]</li>
           <li><b>Atomics</b> [✔]</li>
           <li><b>Mutex</b> [✔]</li>
-          <li><b>Semaphore</b> [✕]</li>
+          <li><b>Cond</b> (condition variable) [✕]</li>
           <li><b>Channels</b> (Like Go) [✕]</li>
+          <li><b>RWMutex</b> [✕]</li>
           <li><b>Green Threads</b> [✕]</li>
         </div>
       </div>
@@ -227,7 +228,6 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
         The items in the list are not ordered according to any criteria.
         <div class="mt-4 ml-4">
             <li>Conditional Compiler Directives</li>
-            <li>Channels (Like Go) for Concurrency</li>
             <li>Unions</li>
             <li>Static Non-Constant Structure Fields</li>
             <li>Structure Properties</li>
@@ -236,25 +236,25 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>Default Implemented Methods for Traits</li>
             <li>Generic Traits</li>
             <li>Generic Methods for Traits</li>
+            <li>Generic Strict Type Aliases</li>
             <li>Inheritance Support for Structures</li>
             <li>Generic Type-Matching with Type Patterns</li>
             <li>The "Self" Named Type Alias for Owner Structure Instance Available in Methods</li>
             <li>Enum Type Support for The Map Value Type</li>
-            <li>Reserved Copy Method for Structures Like C++'s Copy Constructors</li>
             <li>Pattern Support to Select Executed Tests for Test Compilations</li>
-            <li>Testing package and sub-packages via single test command</li>
+            <li>Test package and sub-packages via single test command</li>
             <li>Stdlib package to encode/decode XML data</li>
             <li>Stdlib package for region-based memory management</li>
             <li>Stdlib package for regular expressions</li>
-            <li>Stdlib package for StopWatch functionality</li>
             <li>Stdlib package that provides tiny data store</li>
             <li>Stdlib package that provides functionality for SQL databases</li>
             <li>Stdlib package that provides Jule-special encoding/decoding functionality</li>
-            <li>std::net: add HTTP support</li>
-            <li>std::net: add SMTP support</li>
-            <li>std::net: add gRPC support</li>
-            <li>std::process: Add pipe support for Cmd</li>
-            <li>std::math::big: arbitrary-precision floating-point support</li>
+            <li>std/time: add StopWatch</li>
+            <li>std/net: add HTTP support</li>
+            <li>std/net: add SMTP support</li>
+            <li>std/net: add gRPC support</li>
+            <li>std/os: Add pipe support for Cmd</li>
+            <li>std/math/big: arbitrary-precision floating-point support</li>
             <li>add stacktrace support</li>
             <li>use fixed stack-size for all platforms</li>
             <li>support for linking dynamic libraries</li>
