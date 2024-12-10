@@ -93,6 +93,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
 
       <div class="text-xl mb-14">
         <div class="text-4xl mb-4 font-semibold">Memory Management</div>
+        <div class="mb-1 font-bold">Reference Counting</div>
         Jule currently uses an RC (reference counting) based memory approach by default.
         There is no other option, but RC can be turned off as an option.
         But this causes memory leaks, especially in code that uses standard library packages because the standard library relies heavily on GC.
@@ -100,6 +101,14 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
         The current RC implementation includes some atomicity, but in most cases no serious impact on program performance is expected.
         To make this better, it is planned to remove atomics but introduce non-annoying measures to prevent developers from making the least mistakes in this regard.
         In addition, if it is possible to understand the scopes of types that exhibit RC at compile time, there is an additional idea of ​​compiler optimization that would eliminate the RC overhead.
+        <div class="mt-7 mb-1 font-bold">Memory Allocations</div>
+        Currently memory allocations are like simple malloc and free calls in C.
+        In the future, it is planned to improve these with special algorithms that are more performance-oriented and optimized for Jule.
+        There are already different libraries that do this for different languages.
+        To give an example, libraries such as TCMalloc for C/C++ can be given as an example.
+        <br><br>
+        Of course, according to Jule's development principles, we will not directly use any compatible libraries for the relevant back-end.
+        Even if inspiration is taken, the expectation is to implement allocation management optimized for Jule (and written in Jule, probably included in the runtime library).
       </div>
 
       <div class="text-xl mb-14">
@@ -120,10 +129,10 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           <li><b>WaitGroup</b> (Like Go) [✔]</li>
           <li><b>Atomics</b> [✔]</li>
           <li><b>Mutex</b> [✔]</li>
-          <li><b>Cond</b> (condition variable) [✕]</li>
-          <li><b>Channels</b> (Like Go) [✕]</li>
+          <li><b>Cond</b> (condition variable) [✔]</li>
           <li><b>RWMutex</b> [✕]</li>
-          <li><b>Green Threads</b> [✕]</li>
+          <li><b>Channels</b> (Like Go) [✕]</li>
+          <li><b>Green Threads / Coroutines</b> [✕]</li>
         </div>
       </div>
 
