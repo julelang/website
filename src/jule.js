@@ -51,6 +51,7 @@ function jule(hljs) {
         "defer",
         "static",
         "error",
+        "chan",
     ];
 
     const LITERALS = [
