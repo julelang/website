@@ -1,7 +1,7 @@
 <script>
 import { RouterLink } from 'vue-router';
 import Code from '../components/CodeBlock.vue'
-import VSCodeLogo from '../components/VScodeLogo.vue'
+import VSCodeLogo from '../components/VSCodeLogo.vue'
 import GitHubLogo from '../components/GitHubLogo.vue'
 import NeovimLogo from '../components/NeovimLogo.vue'
 import JuleLogo from '../components/JuleLogo.vue'
