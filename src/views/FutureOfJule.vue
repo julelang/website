@@ -1,6 +1,7 @@
 <script>
 import { RouterLink } from 'vue-router';
 import Code from '../components/CodeBlock.vue'
+import JuleLogo from '../components/JuleLogo.vue'
 import hljs from 'highlight.js';
 import jule from '../jule';
 
@@ -9,6 +10,7 @@ hljs.registerLanguage('jule', jule.jule);
 export default {
   components: {
     Code,
+    JuleLogo,
   },
   async mounted() {
     document.getElementById('responsive-mutability-1').innerHTML = hljs.highlight(
@@ -32,7 +34,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
 <template>
   <main class="max-w-screen-lg mx-auto px-5 py-20">
     <center>
-      <img class="select-none mb-20 w-48 max-md:w-36 max-sm:w-32" src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png">
+      <JuleLogo class="text-[slateblue] h-52 mb-10"></JuleLogo>
       <div class="mb-52 transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 bg-gradient-to-r from-blue-900 w-fit via-purple-700 to-orange-500">
         <div class="text-8xl max-sm:text-6xl max-md:text-7xl font-bold text-transparent">Future of Jule</div>
       </div>
@@ -126,13 +128,13 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           Legend: [✔] implemented, [✕] Not-In-WIP
           <br><br>
           <li><b>Native Threads</b> [✔]</li>
+          <li><b>Channels</b> (Like Go) [✔]</li>
           <li><b>WaitGroup</b> (Like Go) [✔]</li>
           <li><b>Atomics</b> [✔]</li>
           <li><b>Mutex</b> [✔]</li>
           <li><b>Cond</b> (condition variable) [✔]</li>
           <li><b>RWMutex</b> [✕]</li>
-          <li><b>Channels</b> (Like Go) [✕]</li>
-          <li><b>Green Threads / Coroutines</b> [✕]</li>
+          <li><b>Green Threads / Coroutines</b> (Like Go) [✕]</li>
         </div>
       </div>
 
