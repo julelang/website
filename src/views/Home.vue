@@ -42,8 +42,12 @@ export default {
       <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with friendly community. Ready for the help; language support for popular editors, official formatter tool and more.</div>
       <div class="mx-auto">
         <div class="flex justify-center">
-          <VSCodeLogo class="mt-4 text-black mx-2 h-8"></VSCodeLogo>
-          <NeovimLogo class="mt-4 text-black mx-2 h-8"></NeovimLogo>
+          <a href="https://github.com/julelang/vscode-jule" target="_blank">
+            <VSCodeLogo class="mt-4 text-black mx-2 h-8"></VSCodeLogo>
+          </a>
+          <a href="https://github.com/julelang/jule.nvim" target="_blank">
+            <NeovimLogo class="mt-4 text-black mx-2 h-8"></NeovimLogo>
+          </a>
         </div>
       </div>
     </div>
