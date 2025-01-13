@@ -31,7 +31,7 @@
       </li>
       <li>Constructive
         <ul class="ml-8">
-          <li>Stay focused, start a different disscussion to talk about something else.</li>
+          <li>Stay focused, start a different discussion to talk about something else.</li>
           <li>Don't just criticize, explain why you're criticizing and what you think.</li>
           <li>Do not disparage either party, especially when making a comparison. Do not display offensive, humiliating or
             sarcastic attitudes towards anything.</li>
