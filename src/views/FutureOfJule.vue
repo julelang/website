@@ -318,7 +318,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>Responsive mutability only applies to return values. It should be allowed to return even if return values ​​pose a risk of mutability. Risky situations should be checked at points where the return value is used, such as assignments. Thus, responsiveness will be gained.</li>
           </div>
           <br>
-          <b>Challanges of Responsive Mutability</b>
+          <b>Challenges of Responsive Mutability</b>
           <br><br>
           Implementing Responsive Mutability can provide many advantages. One of these is that it will enable developers to write more flexible code and maintain immutability more easily.
           However, implementation has some difficulties and these gains must be achieved without significantly increasing compilation time.

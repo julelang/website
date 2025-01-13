@@ -68,7 +68,7 @@ export default {
       <div class="max-w-screen-lg mx-auto px-5 mt-20 pb-20">
         <div class="text-lg p-10 bg-[var(--bg-secondary)] bg-gradient-to-t from-slate-600 text-white rounded-3xl">
           <div class="font-semibold text-2xl">Open Source</div>
-          Including important parts of Jule such as the reference compiler, standards library and API, is developed completely open source and free of charge, and its source code open at <a class="underline" href="https://github.com/julelang/jule">GitHub respository</a>, open to the contribution of the entire community.
+          Including important parts of Jule such as the reference compiler, standards library and API, is developed completely open source and free of charge, and its source code open at <a class="underline" href="https://github.com/julelang/jule">GitHub repository</a>, open to contributions from the entire community.
           Many regular and non-regular contributors work together to make Jule more effective and stable.
           <br><br>
           <div class="font-semibold text-2xl">Cross Platform</div>
