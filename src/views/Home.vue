@@ -91,7 +91,7 @@ export default {
           <a href="https://manual.jule.dev/std/flag" class="select-none font-light text-[lightsteelblue] text-xs m-auto pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/flag</a>
           <a href="https://manual.jule.dev/std/bufio" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/bufio</a>
           <a href="https://manual.jule.dev/std/math-big" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/math/big</a>
-          <a href="https://manual.jule.dev/std/encoding-csv" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/encoding/csv</a>
+          <a href="https://github.com/adamperkowski/jpu" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">adamperkowski/jpu</a>
         </div>
       </div>
       <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
@@ -101,6 +101,7 @@ export default {
           <div class="font-light text-sm mt-1 mb-3">Popular Apps / Packages</div>
           <a href="https://manual.jule.dev/std/net" class="select-none font-light text-[lightsteelblue] text-xs m-auto pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/net</a>
           <a href="https://manual.jule.dev/std/sync" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/sync</a>
+          <a href="https://github.com/adamperkowski/snapbox" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">adamperkowski/snapbox</a>
         </div>
       </div>
       <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
