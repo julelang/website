@@ -212,7 +212,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           Legend: [✔] implemented, [✕] Not-In-WIP
           <br><br>
           <li><b>julefmt</b> [✔]: Jule source code formatter</li>
-          <li><b>juledoc</b> [✕]: documentation generator from source code and comment lines</li>
+          <li><b>juledoc</b> [✔]: documentation generator from source code and comment lines</li>
           <li><b>jls</b> [✕]: language server implementation for the Jule</li>
         </div>
       </div>

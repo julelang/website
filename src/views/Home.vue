@@ -39,7 +39,7 @@ export default {
 
     <div class="max-w-screen-lg mx-auto mt-40 max-lg:mt-20">
       <div class="font-bold leading-7 text-center text-2xl">Easy and Friendly</div>
-      <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with friendly community. Ready for the help; language support for popular editors, official formatter tool and more.</div>
+      <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with friendly community. Ready for the help; language support for popular editors, official formatter tool, documentation generator and more.</div>
       <div class="mx-auto">
         <div class="flex justify-center">
           <a href="https://github.com/julelang/vscode-jule" target="_blank">
