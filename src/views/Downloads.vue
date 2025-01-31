@@ -92,7 +92,7 @@ export default {
 </script>
 
 <template>
-  <main class="max-w-screen-lg mx-auto px-5 py-20">
+  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-20">
     <div class="text-4xl font-bold text-center">Downloads</div>
     <br><br>
     <div class="flex flex-wrap items-center gap-x-2">

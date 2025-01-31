@@ -1,5 +1,5 @@
 <template>
-  <main class="max-w-screen-lg mx-auto px-5 py-20">
+  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-20">
     <div class="text-4xl font-bold text-center">Julenour Code of Conduct</div>
     <br><br>
     <div>Online communities allow people from many different backgrounds to come together. The Jule community are committed

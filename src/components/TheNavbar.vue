@@ -17,7 +17,7 @@ export default {
 
 <template>
   <nav :class="{ 'main-view': isMainView }" class="bg-[var(--bg-primary)] text-white">
-    <div class="max-w-screen-lg mx-auto py-3 px-5 flex justify-between items-center">
+    <div class="max-w-(--breakpoint-lg) mx-auto py-3 px-5 flex justify-between items-center">
       <router-link id="navbar-logo" to="/">
         <JuleLogo class="select-none text-white h-12" src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png"></JuleLogo>
       </router-link>
