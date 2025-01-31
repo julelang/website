@@ -1,5 +1,5 @@
 <template>
-  <main class="max-w-screen-lg mx-auto px-5 py-20">
+  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-20">
     <div class="text-4xl font-bold text-center">Contributing</div>
     <br><br>
     <div class="mb-1 text-2xl font-semibold">Before the Start</div>

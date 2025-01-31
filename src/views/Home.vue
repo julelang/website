@@ -24,7 +24,7 @@ export default {
   <main>
     <div class="bg-[var(--bg-primary)] pt-20 pb-10 text-white text-center">
       <JuleLogo class="text-white text-center mx-auto h-32"></JuleLogo>
-      <div class="max-w-screen-lg mx-auto py-7 px-5 justify-between items-center gap-2">
+      <div class="max-w-(--breakpoint-lg) mx-auto py-7 px-5 justify-between items-center gap-2">
         <div>
           <div class="mb-2 text-5xl font-semibold">Jule</div>
           <div class="leading-7 text-xl">An effective programming language to build<br>efficient, fast, reliable and safe software.</div>
@@ -37,7 +37,7 @@ export default {
       </div>
     </div>
 
-    <div class="max-w-screen-lg mx-auto mt-40 max-lg:mt-20">
+    <div class="max-w-(--breakpoint-lg) mx-auto mt-40 max-lg:mt-20">
       <div class="font-bold leading-7 text-center text-2xl">Easy and Friendly</div>
       <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with friendly community. Ready for the help; language support for popular editors, official formatter tool, documentation generator and more.</div>
       <div class="mx-auto">
@@ -56,8 +56,8 @@ export default {
       <svg viewBox="0 0 600 140" preserveAspectRatio="xMinYMin meet">
         <path d="M0,100 C150,180 450,20 600,100 L600,00 L0,0 Z" style="stroke: none; fill:white;"></path>
       </svg>
-      <div class="max-w-screen-lg m-0 p-0 mx-auto px-5 py-20 text-lg text-white">
-        <div class="transition-all duration-200 bg-clip-text max-w-screen-lg mx-auto px-5 bg-gradient-to-r from-blue-600 w-fit via-purple-500 to-orange-400 hover:bg-gradient-to-r hover:from-blue-900 hover:via-purple-700 hover:to-orange-500">
+      <div class="max-w-(--breakpoint-lg) m-0 p-0 mx-auto px-5 py-20 text-lg text-white">
+        <div class="transition-all duration-200 bg-clip-text max-w-(--breakpoint-lg) mx-auto px-5 bg-linear-to-r from-blue-600 w-fit via-purple-500 to-orange-400 hover:bg-linear-to-r hover:from-blue-900 hover:via-purple-700 hover:to-orange-500">
           <a href="/future-of-jule" class="text-transparent hover:cursor-pointer text-center font-semibold text-4xl">Future of Jule</a>
         </div>
         <div class="mt-2 text-center font-light text-xs">Contribute or give us a star to support</div>
@@ -65,8 +65,8 @@ export default {
           <GitHubLogo class="mt-2 text-white mx-auto h-6"></GitHubLogo>
         </a>
       </div>
-      <div class="max-w-screen-lg mx-auto px-5 mt-20 pb-20">
-        <div class="text-lg p-10 bg-[var(--bg-secondary)] bg-gradient-to-t from-slate-600 text-white rounded-3xl">
+      <div class="max-w-(--breakpoint-lg) mx-auto px-5 mt-20 pb-20">
+        <div class="text-lg p-10 bg-[var(--bg-secondary)] bg-linear-to-t from-slate-600 text-white rounded-3xl">
           <div class="font-semibold text-2xl">Open Source</div>
           Including important parts of Jule such as the reference compiler, standards library and API, is developed completely open source and free of charge, and its source code open at <a class="underline" href="https://github.com/julelang/jule">GitHub repository</a>, open to contributions from the entire community.
           Many regular and non-regular contributors work together to make Jule more effective and stable.
@@ -82,7 +82,7 @@ export default {
         </div>
       </div>
       <div class="font-bold mt-20 text-center text-white text-2xl">What's possible with Jule</div>
-      <div class="max-w-screen-lg mx-auto py-20 px-5 grid grid-cols-2 max-lg:grid-cols-1 gap-y-8 gap-x-10 leading-5">
+      <div class="max-w-(--breakpoint-lg) mx-auto py-20 px-5 grid grid-cols-2 max-lg:grid-cols-1 gap-y-8 gap-x-10 leading-5">
       <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
         <div class="font-semibold text-2xl p-4">General Purpose Programming</div>
         <div class="text-lg ml-4 mr-4">Develop command line applications or automation, do financial calculations, work with io, analysis data, use C/C++ code, whatever you want, Jule is flexible enough to keep up.</div>
