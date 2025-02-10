@@ -269,6 +269,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>add stacktrace support</li>
             <li>use fixed stack-size for all platforms</li>
             <li>support for linking dynamic libraries</li>
+            <li>Add verbose mode to the compiler</li>
         </div>
       </div>
 
