@@ -5,6 +5,7 @@ import VSCodeLogo from '../components/VSCodeLogo.vue'
 import GitHubLogo from '../components/GitHubLogo.vue'
 import NeovimLogo from '../components/NeovimLogo.vue'
 import EmacsLogo from '../components/EmacsLogo.vue'
+import EcodeLogo from '../components/EcodeLogo.vue'
 import JuleLogo from '../components/JuleLogo.vue'
 import Heart from '../components/Heart.vue'
 
@@ -16,6 +17,7 @@ export default {
     VSCodeLogo,
     NeovimLogo,
     EmacsLogo,
+    EcodeLogo,
     Heart,
   },
 }
@@ -52,6 +54,9 @@ export default {
           </a>
           <a href="https://github.com/julelang/jule-mode.el" target="_blank">
             <EmacsLogo class="mt-4 text-black mx-2 h-8"></EmacsLogo>
+          </a>
+          <a href="https://github.com/SpartanJ/ecode" target="_blank">
+            <EcodeLogo class="mt-4 text-black mx-2 h-8"></EcodeLogo>
           </a>
         </div>
       </div>
