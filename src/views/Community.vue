@@ -9,12 +9,12 @@
     </div>
     <br><br>
     <div class="flex flex-wrap justify-center gap-10">
-      <a href="https://github.com/julelang/jule" target="_blank" class="w-64 py-10 border-black border-2 rounded-lg text-center cursor-pointer duration-[0.3s] hover:text-white hover:bg-black hover:opacity-1">
+      <a href="https://github.com/julelang/jule" target="_blank" class="w-64 py-10 border-black border-2 rounded-lg text-center cursor-pointer duration-[0.3s] hover:text-white hover:bg-black">
         <font-awesome-icon icon="fa-brands fa-github" class="text-8xl" />
         <div class="my-10 font-semibold text-xl">GitHub</div>
         <div>Contribute to the codebase</div>
       </a>
-      <a href="https://discord.gg/XNSUUDuGGQ" target="_blank" class="w-64 py-10 border-black border-2 rounded-lg text-center cursor-pointer duration-[0.3s] hover:text-white hover:bg-black hover:opacity-1">
+      <a href="https://discord.gg/XNSUUDuGGQ" target="_blank" class="w-64 py-10 border-black border-2 rounded-lg text-center cursor-pointer duration-[0.3s] hover:text-white hover:bg-black">
         <font-awesome-icon icon="fa-brands fa-discord" class="text-8xl" />
         <div class="my-10 font-semibold text-xl">Discord</div>
         <div>Engage with other community members</div>
