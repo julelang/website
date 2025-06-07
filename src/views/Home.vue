@@ -8,6 +8,103 @@ import EmacsLogo from '../components/EmacsLogo.vue'
 import EcodeLogo from '../components/EcodeLogo.vue'
 import JuleLogo from '../components/JuleLogo.vue'
 import Heart from '../components/Heart.vue'
+import hljs from 'highlight.js';
+import jule from '../jule';
+
+hljs.registerLanguage('jule', jule.jule);
+
+// Descriptions for the codes.
+let description = [
+  `Jule introduces exceptional functions for error handling. They are must be handled immediately, should break algorithm or return value if needed; no deferred error handling!`,
+  `Jule supports modern concurrency principles on native threads; mutexes, condition variables, channels, select statements and etc. Spawn threads with a single keyword and elegant syntax.`,
+  `Jule provides powerful compile-time support; reflection, evaluation, matching, and more. Examine source files and types at comptime with no runtime cost!`,
+  `Jule can play with C/C++ code easily, provides an API for safe and simple experience. Just bind and use properly, do not port the whole code!`,
+]
+
+let code = [
+  `use "std/encoding/json"
+use "std/fmt"
+use "std/os"
+
+struct User {
+	Username: str \`json:"username"\`
+	Type:     str \`json:"type"\`
+}
+
+fn main() {
+	data := os::ReadFile("users.json") else {
+		fmt::Println("ReadFile error: ", error)
+		use []byte(\`[
+			{"username": "admin", "type": "admin"}
+		]\`)
+	}
+	let mut users: []User
+	json::Decode(data, users) else {
+		fmt::Println("JSON error: ", error)
+		ret
+	}
+	fmt::Println(users)
+}`,
+`use "std/fmt"
+use "std/time"
+
+fn thread(c: chan int, i: int) {
+	c <- i
+}
+
+fn main() {
+	c := make(chan int)
+	mut i := 0
+	for i < 10; i++ {
+		co thread(c, i)
+	}
+	for i > 0; i-- {
+		r := <-c
+		fmt::Println("thread #", r)
+	}
+}`,
+  `use "std/comptime"
+use "std/fmt"
+
+type Foo: int
+type Bar = int
+
+fn TypeToString[T](): str {
+	const typ = comptime::TypeOf(T)
+	ret typ.Str()
+}
+
+fn main() {
+	const file = comptime::File()
+	fmt::Println("testing in file: ", file.Path())
+	fmt::Println(TypeToString[Foo]()) // Foo
+	fmt::Println(TypeToString[Bar]()) // int
+}`,
+  `use integ "std/jule/integrated"
+use "std/mem"
+
+cpp use "<stdio.h>"
+
+#typedef
+cpp struct FILE{}
+
+type CharPtr = *integ::Char
+
+cpp unsafe fn fopen(CharPtr, CharPtr): *cpp.FILE
+cpp unsafe fn fwrite(*unsafe, uint, int, *cpp.FILE)
+cpp unsafe fn fclose(*cpp.FILE)
+
+fn main() {
+	path := integ::StrToBytes("foo.txt")
+	mode := integ::StrToBytes("w")
+	unsafe {
+		f := cpp.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
+		buf := []byte("hello world")
+		cpp.fwrite(&buf[0], mem::SizeOf(byte), len(buf), f)
+		cpp.fclose(f)
+	}
+}`,
+];
 
 export default {
   components: {
@@ -19,6 +116,57 @@ export default {
     EmacsLogo,
     EcodeLogo,
     Heart,
+  },
+  async mounted() {
+    // load syntax highlighting HTML from source code
+    code.forEach(function(value, index) {
+      code[index] = hljs.highlight(value, { language: 'jule', theme: "atom-one-dark" }).value
+    })
+
+    const elementCode = document.getElementById("code");
+    const elementDescription = document.getElementById("code-description");
+    const elementErrors = document.getElementById("errors");
+    const elementConcurrency = document.getElementById("concurrency");
+    const elementComptime = document.getElementById("comptime");
+    const elementInteroperability = document.getElementById("interoperability");
+
+    let codeElements = [
+      elementErrors,
+      elementConcurrency,
+      elementComptime,
+      elementInteroperability,
+    ]
+
+    function setActive(i) {
+      elementCode.innerHTML = code[i];
+      elementDescription.innerText = description[i];
+      codeElements.forEach(function(element, index) {
+        if (index == i) {
+          element.style.borderColor="teal";
+        } else {
+          element.style.borderColor="transparent";
+        }
+      })
+    }
+
+    elementErrors.addEventListener('click', function () {
+      setActive(codeElements.indexOf(elementErrors));
+    })
+
+    elementConcurrency.addEventListener('click', function () {
+      setActive(codeElements.indexOf(elementConcurrency));
+    })
+
+    elementComptime.addEventListener('click', function () {
+      setActive(codeElements.indexOf(elementComptime));
+    })
+
+    elementInteroperability.addEventListener('click', function () {
+      setActive(codeElements.indexOf(elementInteroperability));
+    })
+
+    // load default value state as "stdlib"
+    codeElements[0].click();
   },
 }
 </script>
@@ -42,8 +190,24 @@ export default {
     </div>
 
     <div class="max-w-(--breakpoint-lg) mx-auto mt-40 max-lg:mt-20">
-      <div class="font-bold leading-7 text-center text-2xl">Easy and Friendly</div>
-      <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with friendly community. Ready for the help; language support for popular editors, official formatter tool, documentation generator and more.</div>
+      <div class="font-bold leading-7 text-center text-3xl">Quick Look</div>
+      <div class="mx-auto">
+        <div class="flex justify-center mt-5 text-lg">
+          <div id="errors" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Errors</div>
+          <div id="concurrency" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Concurrency</div>
+          <div id="comptime" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Comptime</div>
+          <div id="interoperability" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Interoperability</div>
+        </div>
+        <div id="code-description" class="max-w-md mx-auto leading-7 mt-5 text-center text-xl"></div>
+        <div class="bg-[var(--bg-primary)] mt-5 text-white rounded-xl">
+        <pre id="code" class="p-4 overflow-auto"></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-(--breakpoint-lg) mx-auto mt-40 max-lg:mt-20">
+      <div class="font-bold leading-7 text-center text-3xl">Easy and Simple</div>
+      <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with well-documented manual and community. Ready for the help; language support for popular editors, official formatter tool, documentation generator and more.</div>
       <div class="mx-auto">
         <div class="flex justify-center">
           <a href="https://github.com/julelang/vscode-jule" target="_blank">
@@ -140,7 +304,7 @@ export default {
       <div class="font-bold text-center text-2xl">Community and Support</div>
       <Heart class="h-8 mt-2 text-center mx-auto"></Heart>
       <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">
-      The Jule community is active on Discord and GitHub Discussions. Friendly and ready to help.
+      The Jule community is active on Discord and GitHub Discussions. Ready to help.
       <br><br>
       Jule is distributed as completely open source on GitHub under the terms of the BSD 3-Clause license. Contribute to source code or just give a star to support Jule.</div>
       <div class="mx-auto mt-4">

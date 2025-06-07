@@ -49,9 +49,9 @@ function jule(hljs) {
         "unsafe",
         "mut",
         "defer",
-        "static",
         "error",
         "chan",
+        "select",
     ];
 
     const LITERALS = [
@@ -169,7 +169,6 @@ function jule(hljs) {
                 className: {
                     1: "keyword",
                     3: "keyword",
-                    4: "variable"
                 }
             },
             // must come before impl/for rule later
@@ -183,7 +182,6 @@ function jule(hljs) {
                 ],
                 className: {
                     1: "keyword",
-                    3: "variable",
                     5: "keyword"
                 }
             },
