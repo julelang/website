@@ -64,21 +64,36 @@ fn main() {
 	}
 }`,
   `use "std/comptime"
-use "std/fmt"
 
-type Foo: int
-type Bar = int
+struct FooBarBaz {
+    Foo: int
+    Bar: str
+    Baz: bool
+}
 
-fn TypeToString[T](): str {
-	const typ = comptime::TypeOf(T)
-	ret typ.Str()
+fn printPublicFields[T](x: T) {
+    const t = comptime::TypeOf(T)
+    const match {
+    | t.Kind() != comptime::Struct:
+        panic("type T is not a struct")
+    }
+    const fields = t.Decl().Fields()
+    const expr = comptime::ValueOf(x)
+    const for _, field in fields {
+        const match {
+        | field.Public():
+            println(expr.Field(field.Name()).Unwrap())
+        }
+    }
 }
 
 fn main() {
-	const file = comptime::File()
-	fmt::Println("testing in file: ", file.Path())
-	fmt::Println(TypeToString[Foo]()) // Foo
-	fmt::Println(TypeToString[Bar]()) // int
+    fbz := FooBarBaz{
+        Foo: 89,
+        Bar: "comptime",
+        Baz: true,
+    }
+    printPublicFields(fbz)
 }`,
   `use integ "std/jule/integrated"
 use "std/mem"
