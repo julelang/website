@@ -133,7 +133,7 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
           <li><b>Atomics</b> [✔]</li>
           <li><b>Mutex</b> [✔]</li>
           <li><b>Cond</b> (condition variable) [✔]</li>
-          <li><b>RWMutex</b> [✕]</li>
+          <li><b>RWMutex</b> [✔]</li>
           <li><b>Green Threads / Coroutines</b> (Like Go) [✕]</li>
         </div>
       </div>
@@ -240,10 +240,8 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
         <div class="mt-4 ml-4">
             <li>Conditional Compiler Directives</li>
             <li>Unions</li>
-            <li>Static Non-Constant Structure Fields</li>
             <li>Structure Properties</li>
             <li>Extension Methods</li>
-            <li>Field Support for Traits</li>
             <li>Default Implemented Methods for Traits</li>
             <li>Generic Traits</li>
             <li>Generic Methods for Traits</li>
@@ -264,10 +262,9 @@ let mut b = foo.Buffer()`, { language: 'jule' }).value;
             <li>std/net: add HTTP support</li>
             <li>std/net: add SMTP support</li>
             <li>std/net: add gRPC support</li>
-            <li>std/os: Add pipe support for Cmd</li>
             <li>std/math/big: arbitrary-precision floating-point support</li>
             <li>add stacktrace support</li>
-            <li>use fixed stack-size for all platforms</li>
+            <li>use common stack-size for all platforms</li>
             <li>support for linking dynamic libraries</li>
             <li>Add verbose mode to the compiler</li>
         </div>
