@@ -39,7 +39,7 @@ fn main() {
 		]\`)
 	}
 	let mut users: []User
-	json::Decode(data, users) else {
+	json::Decode(data, &users) else {
 		fmt::Println("JSON error: ", error)
 		ret
 	}
