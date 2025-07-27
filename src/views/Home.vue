@@ -277,9 +277,9 @@ export default {
         <div class="text-lg ml-4 mr-4">Develop command line applications or automation, do financial calculations, work with io, analysis data, use C/C++ code, whatever you want, Jule is flexible enough to keep up.</div>
         <div class="m-1 ml-4 mr-4 mb-4 p-2 rounded-br-lg rounded-bl-lg">
           <div class="font-light text-sm mt-1 mb-3">Popular Apps / Packages</div>
-          <a href="https://manual.jule.dev/std/flag" class="select-none font-light text-[lightsteelblue] text-xs m-auto pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/flag</a>
           <a href="https://manual.jule.dev/std/bufio" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/bufio</a>
           <a href="https://manual.jule.dev/std/math-big" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/math/big</a>
+          <a href="https://github.com/mertcandav/julenum" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">mertcandav/julenum</a>
           <a href="https://github.com/adamperkowski/jpu" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">adamperkowski/jpu</a>
         </div>
       </div>
