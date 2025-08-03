@@ -1,48 +1,54 @@
 <script>
-import TheBadge from '../components/TheBadge.vue'
+import TheBadge from "../components/TheBadge.vue";
 
 export default {
   components: {
-    TheBadge
+    TheBadge,
   },
   data() {
     return {
       release: [],
-      latest: false
-    }
+      latest: false,
+    };
   },
   mounted() {
     fetch(`https://api.github.com/repos/julelang/jule/releases/${this.$route.params.id}`)
-      .then(res => res.json())
-      .then(data => {
-        this.release = data
-      })
+      .then((res) => res.json())
+      .then((data) => {
+        this.release = data;
+      });
 
-    fetch('https://api.github.com/repos/julelang/jule/releases')
-      .then(res => res.json())
-      .then(data => {
+    fetch("https://api.github.com/repos/julelang/jule/releases")
+      .then((res) => res.json())
+      .then((data) => {
         if (data[0].id == this.release.id) {
-          this.latest = true
+          this.latest = true;
         }
-      })
-  }
-}
+      });
+  },
+};
 </script>
 
 <template>
-  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-20">
+  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-30">
     <div class="text-4xl font-bold text-center">Downloads</div>
-    <br><br>
+    <br /><br />
     <div class="flex flex-wrap items-center gap-x-2">
       <div class="text-2xl font-semibold">{{ release.name }}</div>
       <TheBadge v-if="latest" type="success" content="latest" />
       <TheBadge v-if="release.prerelease" type="warning" content="pre-release" />
     </div>
-    <div>Release notes are <a :href="'https://github.com/julelang/jule/releases/tag/' + release.tag_name"
-        target="_blank">here</a>.</div>
-    <br><br>
+    <div>
+      Release notes are
+      <a
+        :href="'https://github.com/julelang/jule/releases/tag/' + release.tag_name"
+        target="_blank"
+        >here</a
+      >.
+    </div>
+    <br /><br />
     <div class="text-2xl font-semibold">Files</div>
-    <br>
+    <br />
     <div class="overflow-auto h-60 h-fit">
       <table class="table-auto w-full whitespace-nowrap">
         <tr class="text-left bg-zinc-100 border-b border-zinc-400">
@@ -57,19 +63,36 @@ export default {
             <a :href="file.browser_download_url">{{ file.name }}</a>
           </td>
           <td class="p-2">{{ (file.size / 1024 ** 2).toFixed(2) }}MB</td>
-          <td class="p-2">{{
-            file.name.includes("darwin") ? "macOS" :
-            file.name.includes("windows") ? "Windows" :
-            file.name.includes("linux") ? "Linux" :
-            "unknown"
-          }}</td>
-          <td class="p-2">{{
-            file.name.includes("i386") ? "x86" :
-            file.name.includes("arm64") ? "ARM64" :
-            file.name.includes("amd64") ? "x86-64" :
-            "unknown"
-          }}</td>
-          <td class="p-2">{{ new Date(release.created_at).toISOString().replace('T', ' ').replace('Z', '').slice(0, 10) }}
+          <td class="p-2">
+            {{
+              file.name.includes("darwin")
+                ? "macOS"
+                : file.name.includes("windows")
+                ? "Windows"
+                : file.name.includes("linux")
+                ? "Linux"
+                : "unknown"
+            }}
+          </td>
+          <td class="p-2">
+            {{
+              file.name.includes("i386")
+                ? "x86"
+                : file.name.includes("arm64")
+                ? "ARM64"
+                : file.name.includes("amd64")
+                ? "x86-64"
+                : "unknown"
+            }}
+          </td>
+          <td class="p-2">
+            {{
+              new Date(release.created_at)
+                .toISOString()
+                .replace("T", " ")
+                .replace("Z", "")
+                .slice(0, 10)
+            }}
           </td>
         </tr>
       </table>

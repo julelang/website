@@ -69,3 +69,9 @@
     color: white;
     width: fit-content;
 }
+
+main,
+body {
+    background-color: var(--bg-primary);
+    color: whitesmoke;
+}

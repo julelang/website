@@ -9,6 +9,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -19,8 +20,8 @@
 }
 
 :root {
-  --bg-primary: #2F333D;
-  --bg-secondary: #707788;
+  --bg-primary: #1A1A1E;
+  --bg-secondary: #2F333D;
   --bg-tertiary: #EBEBEB;
 
   --color-primary: #5f7389;
