@@ -163,35 +163,47 @@ export default {
     <div class="text-2xl font-semibold">Older Releases</div>
     <br />
     <div class="overflow-auto h-60 h-fit">
-      <table class="table-auto w-full whitespace-nowrap">
-        <tr class="text-left bg-zinc-100 border-b border-zinc-400">
-          <th class="p-2">Release</th>
-          <th class="p-2">Builds</th>
-          <th class="p-2">Date</th>
-        </tr>
-        <tr
-          class="bg-zinc-100 even:bg-zinc-200"
-          v-for="release in releases.slice(1, releases.length)"
-        >
-          <td class="p-2">
-            <router-link
-              v-if="release.id"
-              :to="{ name: 'release', params: { id: release.id } }"
-              >{{ release.name }}</router-link
+      <div class="p-6">
+        <div class="overflow-x-auto rounded-lg shadow-lg bg-white">
+          <table
+            class="bg-[var(--bg-primary)] border border-[var(--bg-secondary)] min-w-full divide-y divide-[var(--bg-secondary)] text-sm text-left"
+          >
+            <thead
+              class="bg-[var(--bg-secondary)] text-white font-semibold uppercase tracking-wider text-xs"
             >
-          </td>
-          <td class="p-2">{{ release.assets.length }}</td>
-          <td class="p-2">
-            {{
-              new Date(release.created_at)
-                .toISOString()
-                .replace("T", " ")
-                .replace("Z", "")
-                .slice(0, 10)
-            }}
-          </td>
-        </tr>
-      </table>
+              <tr>
+                <th class="px-6 py-3">Release</th>
+                <th class="px-6 py-3">Builds</th>
+                <th class="px-6 py-3">Date</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-300 divide-y divide-[var(--bg-secondary)]">
+              <tr
+                class="hover:bg-gray-800"
+                v-for="release in releases.slice(1, releases.length)"
+              >
+                <td class="px-6 py-4">
+                  <router-link
+                    v-if="release.id"
+                    :to="{ name: 'release', params: { id: release.id } }"
+                    >{{ release.name }}</router-link
+                  >
+                </td>
+                <td class="px-6 py-4">{{ release.assets.length }}</td>
+                <td class="px-6 py-4">
+                  {{
+                    new Date(release.created_at)
+                      .toISOString()
+                      .replace("T", " ")
+                      .replace("Z", "")
+                      .slice(0, 10)
+                  }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </main>
 </template>
