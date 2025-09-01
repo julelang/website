@@ -1,123 +1,65 @@
 <script>
-import { RouterLink } from 'vue-router';
-import Code from '../components/CodeBlock.vue'
-import VSCodeLogo from '../components/VSCodeLogo.vue'
-import GitHubLogo from '../components/GitHubLogo.vue'
-import NeovimLogo from '../components/NeovimLogo.vue'
-import EmacsLogo from '../components/EmacsLogo.vue'
-import EcodeLogo from '../components/EcodeLogo.vue'
-import JuleLogo from '../components/JuleLogo.vue'
-import Heart from '../components/Heart.vue'
-import hljs from 'highlight.js';
-import jule from '../jule';
+import { RouterLink } from "vue-router";
+import Code from "../components/CodeBlock.vue";
+import VSCodeLogo from "../components/VSCodeLogo.vue";
+import GitHubLogo from "../components/GitHubLogo.vue";
+import NeovimLogo from "../components/NeovimLogo.vue";
+import EmacsLogo from "../components/EmacsLogo.vue";
+import EcodeLogo from "../components/EcodeLogo.vue";
+import JuleLogo from "../components/JuleLogo.vue";
+import Heart from "../components/Heart.vue";
+import hljs from "highlight.js";
+import jule from "../jule";
 
-hljs.registerLanguage('jule', jule.jule);
-
-// Descriptions for the codes.
-let description = [
-  `Jule introduces exceptional functions for error handling. They are must be handled immediately, should break algorithm or return value if needed; no deferred error handling!`,
-  `Jule supports modern concurrency principles on native threads; mutexes, condition variables, channels, select statements and etc. Spawn threads with a single keyword and elegant syntax.`,
-  `Jule provides powerful compile-time support; reflection, evaluation, matching, and more. Examine source files and types at comptime with no runtime cost!`,
-  `Jule can play with C/C++ code easily, provides an API for safe and simple experience. Just bind and use properly, do not port the whole code!`,
-]
+hljs.registerLanguage("jule", jule.jule);
 
 let code = [
-  `use "std/encoding/json"
-use "std/fmt"
-use "std/os"
-
-struct User {
-	Username: str \`json:"username"\`
-	Type:     str \`json:"type"\`
+  `let mut users: []User
+json::Decode(data, &users) else {
+  fmt::Println("JSON error: ", error)
+  ret
 }
-
-fn main() {
-	data := os::ReadFile("users.json") else {
-		fmt::Println("ReadFile error: ", error)
-		use []byte(\`[
-			{"username": "admin", "type": "admin"}
-		]\`)
-	}
-	let mut users: []User
-	json::Decode(data, &users) else {
-		fmt::Println("JSON error: ", error)
-		ret
-	}
-	fmt::Println(users)
+fmt::Println(users)`,
+  `c := make(chan int)
+mut i := 0
+for i < 10; i++ {
+  co fn() { c <- i }()
+}
+for i > 0; i-- {
+  fmt::Println("thread #", <-c)
 }`,
-`use "std/fmt"
-use "std/time"
-
-fn thread(c: chan int, i: int) {
-	c <- i
-}
-
-fn main() {
-	c := make(chan int)
-	mut i := 0
-	for i < 10; i++ {
-		co thread(c, i)
-	}
-	for i > 0; i-- {
-		r := <-c
-		fmt::Println("thread #", r)
-	}
+  `fn IsEnoughSpace[T](buf: T, n: int): bool {
+  const t = comptime::TypeOf(T)
+  const match t.Kind() {
+  | comptime::Slice:
+    ret n <= cap(buf)
+  | comptime::Array:
+    ret n <= len(buf)
+  }
 }`,
-  `use "std/comptime"
-
-struct FooBarBaz {
-    Foo: int
-    Bar: str
-    Baz: bool
-}
-
-fn printPublicFields[T](x: T) {
-    const t = comptime::TypeOf(T)
-    const match {
-    | t.Kind() != comptime::Struct:
-        panic("type T is not a struct")
-    }
-    const fields = t.Decl().Fields()
-    const expr = comptime::ValueOf(x)
-    const for _, field in fields {
-        const match {
-        | field.Public():
-            println(expr.Field(field.Name()).Unwrap())
-        }
-    }
-}
-
-fn main() {
-    fbz := FooBarBaz{
-        Foo: 89,
-        Bar: "comptime",
-        Baz: true,
-    }
-    printPublicFields(fbz)
+  `fn Write(path: str, data: []byte) {
+  path := integ::StrToBytes(path)
+  mode := integ::StrToBytes("w")
+  unsafe {
+    f := cpp.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
+    cpp.fwrite(&data[0], mem::SizeOf(byte), len(data), f)
+    cpp.fclose(f)
+  }
 }`,
-  `use integ "std/jule/integrated"
-use "std/mem"
-
-cpp use "<stdio.h>"
-
-#typedef
-cpp struct FILE{}
-
-type CharPtr = *integ::Char
-
-cpp unsafe fn fopen(CharPtr, CharPtr): *cpp.FILE
-cpp unsafe fn fwrite(*unsafe, uint, int, *cpp.FILE)
-cpp unsafe fn fclose(*cpp.FILE)
-
-fn main() {
-	path := integ::StrToBytes("foo.txt")
-	mode := integ::StrToBytes("w")
-	unsafe {
-		f := cpp.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
-		buf := []byte("hello world")
-		cpp.fwrite(&buf[0], mem::SizeOf(byte), len(buf), f)
-		cpp.fclose(f)
-	}
+  `fn main() {
+  mut i := new(int)
+  HandleCounter(i)
+  fmt::Println("Counter: ", *i)
+  // i is deallocated
+}`,
+  `#test
+fn testTicker(t: &testing::T) {
+  wantedTicks := 10
+  mut ticks := 0
+  Ticker(wantedTicks, &ticks)
+  if ticks != wantedTicks {
+    t.Errorf("got {}, expected {}", ticks, wantedTicks)
+  }
 }`,
 ];
 
@@ -134,198 +76,408 @@ export default {
   },
   async mounted() {
     // load syntax highlighting HTML from source code
-    code.forEach(function(value, index) {
-      code[index] = hljs.highlight(value, { language: 'jule', theme: "atom-one-dark" }).value
-    })
+    const highlight = function (value, index) {
+      return hljs.highlight(value, {
+        language: "jule",
+        theme: "atom-one-dark",
+      }).value;
+    };
 
-    const elementCode = document.getElementById("code");
-    const elementDescription = document.getElementById("code-description");
-    const elementErrors = document.getElementById("errors");
+    const elementErrorHandling = document.getElementById("error-handling");
     const elementConcurrency = document.getElementById("concurrency");
-    const elementComptime = document.getElementById("comptime");
+    const elementCompileTime = document.getElementById("compile-time");
     const elementInteroperability = document.getElementById("interoperability");
+    const elementMemoryManagement = document.getElementById("memory-management");
+    const elementWritingTests = document.getElementById("writing-tests");
 
-    let codeElements = [
-      elementErrors,
-      elementConcurrency,
-      elementComptime,
-      elementInteroperability,
-    ]
-
-    function setActive(i) {
-      elementCode.innerHTML = code[i];
-      elementDescription.innerText = description[i];
-      codeElements.forEach(function(element, index) {
-        if (index == i) {
-          element.style.borderColor="teal";
-        } else {
-          element.style.borderColor="transparent";
-        }
-      })
-    }
-
-    elementErrors.addEventListener('click', function () {
-      setActive(codeElements.indexOf(elementErrors));
-    })
-
-    elementConcurrency.addEventListener('click', function () {
-      setActive(codeElements.indexOf(elementConcurrency));
-    })
-
-    elementComptime.addEventListener('click', function () {
-      setActive(codeElements.indexOf(elementComptime));
-    })
-
-    elementInteroperability.addEventListener('click', function () {
-      setActive(codeElements.indexOf(elementInteroperability));
-    })
-
-    // load default value state as "stdlib"
-    codeElements[0].click();
+    elementErrorHandling.innerHTML = highlight(code[0]);
+    elementConcurrency.innerHTML = highlight(code[1]);
+    elementCompileTime.innerHTML = highlight(code[2]);
+    elementInteroperability.innerHTML = highlight(code[3]);
+    elementMemoryManagement.innerHTML = highlight(code[4]);
+    elementWritingTests.innerHTML = highlight(code[5]);
   },
-}
+};
 </script>
 
 <template>
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/Yukaii/github-highlightjs-themes/master/themes/github-dark-default.css">
+  <link
+    rel="stylesheet"
+    href="https://raw.githubusercontent.com/Yukaii/github-highlightjs-themes/master/themes/github-dark-default.css"
+  />
   <main>
-    <div class="bg-[var(--bg-primary)] pt-20 pb-10 text-white text-center">
-      <JuleLogo class="text-white text-center mx-auto h-32"></JuleLogo>
-      <div class="max-w-(--breakpoint-lg) mx-auto py-7 px-5 justify-between items-center gap-2">
-        <div>
-          <div class="mb-2 text-5xl font-semibold">Jule</div>
-          <div class="leading-7 text-xl">An effective programming language to build<br>efficient, fast, reliable and safe software.</div>
+    <div
+      class="flex items-center justify-center min-h-screen bg-[var(--bg-primary)] pt-20 pb-10 text-white text-center"
+    >
+      <div>
+        <JuleLogo class="text-white text-center mx-auto h-32"></JuleLogo>
+        <div
+          class="max-w-(--breakpoint-lg) mx-auto py-7 px-5 justify-between items-center gap-2"
+        >
+          <div>
+            <div class="mb-2 text-5xl font-semibold">Jule</div>
+            <div class="leading-7 text-xl">
+              Fast. Efficient. Safe. Simple.<br />
+              Programming language without noise.<br />
+            </div>
+          </div>
+          <div class="flex justify-center mt-8">
+            <router-link
+              to="/downloads"
+              class="flex items-center space-x-1 w-min select-none py-2 px-7 bg-[var(--color-primary)] hover:bg-[teal] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] hover:border-[teal] rounded-lg"
+            >
+              <span>Download</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transform transition-transform duration-200"
+                :class="{ 'rotate-270': openedIndex === index }"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </router-link>
+            <a
+              href="https://manual.jule.dev"
+              class="flex items-center space-x-1 w-max select-none ml-4 py-2 px-7 bg-transparent hover:bg-[var(--color-primary)] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] rounded-lg"
+            >
+              <span>Learn More</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 transform transition-transform duration-200"
+                :class="{ 'rotate-270': openedIndex === index }"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="flex justify-center ml-5 mt-4 font-light text-xs">
+            Supported on
+            <font-awesome-icon icon="fa-brands fa-windows" class="text-lg ml-2 mr-2" />
+            <font-awesome-icon icon="fa-brands fa-apple" class="text-lg mr-2" />
+            <font-awesome-icon icon="fa-brands fa-linux" class="text-lg" />
+          </div>
         </div>
-        <div class="flexbox mt-8">
-          <router-link to="/downloads" class="select-none py-2 px-7 bg-[var(--color-primary)] hover:bg-[teal] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] hover:border-[teal] rounded-lg">Download</router-link>
-          <a href="https://manual.jule.dev" class="select-none ml-4 py-2 px-7 bg-transparent hover:bg-[var(--color-primary)] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] rounded-lg">Manual</a>
-          <div class="ml-5 mt-4 font-light text-xs">Supported on Windows, macOS, and Linux</div>
+      </div>
+    </div>
+
+    <div class="max-w-(--breakpoint-lg) mx-auto max-lg:mt-20">
+      <div class="font-bold leading-7 text-center text-3xl mb-14">
+        Works with your stack
+      </div>
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-y-8 justify-center items-center text-center"
+      >
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-blue-900"
+        >
+          <font-awesome-icon icon="fa-brands fa-windows" class="text-3xl" />
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-slate-700"
+        >
+          <font-awesome-icon icon="fa-brands fa-apple" class="text-3xl" />
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-yellow-900"
+        >
+          <font-awesome-icon icon="fa-brands fa-linux" class="text-3xl" />
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-sky-900"
+        >
+          <VSCodeLogo class="mx-auto text-white h-7"></VSCodeLogo>
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-teal-900"
+        >
+          <NeovimLogo class="mx-auto text-white h-7"></NeovimLogo>
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-violet-900"
+        >
+          <EmacsLogo class="mx-auto text-white h-7"></EmacsLogo>
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-sky-800"
+        >
+          <EcodeLogo class="mx-auto text-white h-7"></EcodeLogo>
+        </div>
+        <div
+          class="rounded-xl w-[80px] border border-[var(--border-color,rgba(255,255,255,0.1))] bg-[var(--bg-primary,#18181b)] p-3 shadow-lg text-white mx-auto bg-linear-to-t from-gray-600"
+        >
+          <GitHubLogo class="mx-auto text-white h-7"></GitHubLogo>
         </div>
       </div>
     </div>
 
     <div class="max-w-(--breakpoint-lg) mx-auto mt-40 max-lg:mt-20">
       <div class="font-bold leading-7 text-center text-3xl">Quick Look</div>
-      <div class="mx-auto">
-        <div class="flex justify-center mt-5 text-lg">
-          <div id="errors" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Errors</div>
-          <div id="concurrency" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Concurrency</div>
-          <div id="comptime" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Comptime</div>
-          <div id="interoperability" class="duration-[0.3s] p-1 border-b-3 hover:cursor-pointer border-[transparent] font-[semibold]">Interoperability</div>
-        </div>
-        <div id="code-description" class="max-w-md mx-auto leading-7 mt-5 text-center text-xl"></div>
-        <div class="bg-[var(--bg-primary)] mt-5 text-white rounded-xl">
-        <pre id="code" class="p-4 overflow-auto"></pre>
-        </div>
+      <div class="mt-2 leading-7 text-center text-sm">
+        Example codes are simplified. Import, function and type alias declarations
+        removed.
       </div>
+      <section class="py-12 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+        <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
+          <!-- Card 1 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">Error Handling</h3>
+            <p class="text-gray-400 text-md">
+              Jule introduces exceptional functions for error handling. They are must be
+              handled immediately, should break algorithm or return value if needed; no
+              deferred error handling!
+            </p>
+            <pre id="error-handling" class="text-[14px] overflow-auto"></pre>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">Concurrency</h3>
+            <p class="text-gray-400 text-md">
+              Jule supports modern concurrency principles on native threads; mutexes,
+              condition variables, channels, select statements and etc. Spawn threads with
+              a single keyword and elegant syntax.
+            </p>
+            <pre id="concurrency" class="text-[14px] overflow-auto"></pre>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">Compile Time</h3>
+            <p class="text-gray-400 text-md">
+              Jule provides powerful compile-time support; reflection, evaluation,
+              matching, and more. Examine source files and types at comptime with no
+              runtime cost!
+            </p>
+            <pre id="compile-time" class="text-[14px] overflow-auto"></pre>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">Interoperability</h3>
+            <p class="text-gray-400 text-md">
+              Jule can play with C/C++ code easily, provides an API for safe and simple
+              experience. Just bind and use properly, do not port the whole code!
+            </p>
+            <pre id="interoperability" class="text-[14px] overflow-auto"></pre>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">Memory Management</h3>
+            <p class="text-gray-400 text-md">
+              Jule provides deterministic memory management based on reference counting.
+              Fast and efficient enough for most cases, suitable for real-time systems.
+            </p>
+            <pre id="memory-management" class="text-[14px] overflow-auto"></pre>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">Writing Tests</h3>
+            <p class="text-gray-400 text-md">
+              Jule provides built-in testing tools, empowered by the standard library.
+              Test your code easily and fast.
+            </p>
+            <pre id="writing-tests" class="text-[14px] overflow-auto"></pre>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="max-w-(--breakpoint-lg) mx-auto px-5 mt-20 pb-20">
+      <div
+        class="text-lg p-10 bg-[var(--bg-secondary)] bg-linear-to-t from-slate-600 text-white rounded-3xl"
+      >
+        <div class="font-semibold text-2xl">Open Source</div>
+        Including important parts of Jule such as the reference compiler, standards
+        library and API, is developed completely open source and free of charge, and its
+        source code open at
+        <a class="underline" href="https://github.com/julelang/jule">GitHub repository</a
+        >, open to contributions from the entire community. Many regular and non-regular
+        contributors work together to make Jule more effective and stable. <br /><br />
+        <div class="font-semibold text-2xl">Cross Platform</div>
+        Jule has a cross-platform implementation, supports popular operating systems such
+        as macOS, Linux, Windows and can generate code for popular architectures such as
+        arm64, amd64, and intel 386. It is actively designed to implement all competencies
+        cross-platform and focuses on a homogeneous experience. We're excited for it to
+        have broader platform support in the future.
+        <br /><br />
+        <div class="font-semibold text-2xl">Well Documented</div>
+        Jule has a well written and detailed manual. With each change on Jule, the manual
+        is often updated at the same time, and documentation of even the newest updates is
+        made available to the community immediately.
+      </div>
+    </div>
+
+    <div class="max-w-(--breakpoint-lg) m-0 p-0 mx-auto px-5 py-20 text-lg text-white">
+      <div
+        class="transition-all duration-200 bg-clip-text max-w-(--breakpoint-lg) mx-auto px-5 bg-linear-to-r from-blue-600 w-fit via-purple-500 to-orange-400 hover:bg-linear-to-r hover:from-blue-900 hover:via-purple-700 hover:to-orange-500"
+      >
+        <a
+          href="/future-of-jule"
+          class="relative inline-flex items-center justify-center px-6 py-2 text-white font-semibold rounded-full overflow-hidden group"
+        >
+          <span class="relative z-10">Future of Jule</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4 relative z-10 ml-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+
+          <!-- Initial gradient -->
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+          ></span>
+
+          <!-- Hover gradient -->
+          <span
+            class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+          ></span>
+        </a>
+      </div>
+      <div class="mt-2 text-center font-light text-xs">
+        Contribute or give us a star to support
+      </div>
+      <a href="https://github.com/julelang/jule">
+        <GitHubLogo class="mt-2 text-white mx-auto h-6"></GitHubLogo>
+      </a>
     </div>
 
     <div class="max-w-(--breakpoint-lg) mx-auto mt-40 max-lg:mt-20">
-      <div class="font-bold leading-7 text-center text-3xl">Easy and Simple</div>
-      <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">Jule is simple and easy to learn with well-documented manual and community. Ready for the help; language support for popular editors, official formatter tool, documentation generator and more.</div>
-      <div class="mx-auto">
-        <div class="flex justify-center">
-          <a href="https://github.com/julelang/vscode-jule" target="_blank">
-            <VSCodeLogo class="mt-4 text-black mx-2 h-8"></VSCodeLogo>
-          </a>
-          <a href="https://github.com/julelang/jule.nvim" target="_blank">
-            <NeovimLogo class="mt-4 text-black mx-2 h-8"></NeovimLogo>
-          </a>
-          <a href="https://github.com/julelang/jule-mode.el" target="_blank">
-            <EmacsLogo class="mt-4 text-black mx-2 h-8"></EmacsLogo>
-          </a>
-          <a href="https://github.com/SpartanJ/ecode" target="_blank">
-            <EcodeLogo class="mt-4 text-black mx-2 h-8"></EcodeLogo>
-          </a>
-        </div>
-      </div>
-    </div>
+      <div class="font-bold leading-7 text-center text-3xl">Built with Jule</div>
+      <section class="py-12 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+        <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
+          <!-- Card 1 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">
+              <a href="https://github.com/julelang/jule/tree/master/src/julec">JuleC</a>
+            </h3>
+            <p class="text-gray-400 text-md">
+              The official reference compiler of the Jule programming language. Written in
+              Pure Jule.
+            </p>
+          </div>
 
-    <div class="bg-[var(--bg-primary)]">
-      <svg viewBox="0 0 600 140" preserveAspectRatio="xMinYMin meet">
-        <path d="M0,100 C150,180 450,20 600,100 L600,00 L0,0 Z" style="stroke: none; fill:white;"></path>
-      </svg>
-      <div class="max-w-(--breakpoint-lg) m-0 p-0 mx-auto px-5 py-20 text-lg text-white">
-        <div class="transition-all duration-200 bg-clip-text max-w-(--breakpoint-lg) mx-auto px-5 bg-linear-to-r from-blue-600 w-fit via-purple-500 to-orange-400 hover:bg-linear-to-r hover:from-blue-900 hover:via-purple-700 hover:to-orange-500">
-          <a href="/future-of-jule" class="text-transparent hover:cursor-pointer text-center font-semibold text-4xl">Future of Jule</a>
-        </div>
-        <div class="mt-2 text-center font-light text-xs">Contribute or give us a star to support</div>
-        <a href="https://github.com/julelang/jule">
-          <GitHubLogo class="mt-2 text-white mx-auto h-6"></GitHubLogo>
-        </a>
-      </div>
-      <div class="max-w-(--breakpoint-lg) mx-auto px-5 mt-20 pb-20">
-        <div class="text-lg p-10 bg-[var(--bg-secondary)] bg-linear-to-t from-slate-600 text-white rounded-3xl">
-          <div class="font-semibold text-2xl">Open Source</div>
-          Including important parts of Jule such as the reference compiler, standards library and API, is developed completely open source and free of charge, and its source code open at <a class="underline" href="https://github.com/julelang/jule">GitHub repository</a>, open to contributions from the entire community.
-          Many regular and non-regular contributors work together to make Jule more effective and stable.
-          <br><br>
-          <div class="font-semibold text-2xl">Cross Platform</div>
-          Jule has a cross-platform implementation, supports popular operating systems such as macOS, Linux, Windows and can generate code for popular architectures such as arm64, amd64, and intel 386.
-          It is actively designed to implement all competencies cross-platform and focuses on a homogeneous experience.
-          We're excited for it to have broader platform support in the future.
-          <br><br>
-          <div class="font-semibold text-2xl">Well Documented</div>
-          Jule has a well written and detailed manual.
-          With each change on Jule, the manual is often updated at the same time, and documentation of even the newest updates is made available to the community immediately.
-        </div>
-      </div>
-      <div class="font-bold mt-20 text-center text-white text-2xl">What's possible with Jule</div>
-      <div class="max-w-(--breakpoint-lg) mx-auto py-20 px-5 grid grid-cols-2 max-lg:grid-cols-1 gap-y-8 gap-x-10 leading-5">
-      <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
-        <div class="font-semibold text-2xl p-4">General Purpose Programming</div>
-        <div class="text-lg ml-4 mr-4">Develop command line applications or automation, do financial calculations, work with io, analysis data, use C/C++ code, whatever you want, Jule is flexible enough to keep up.</div>
-        <div class="m-1 ml-4 mr-4 mb-4 p-2 rounded-br-lg rounded-bl-lg">
-          <div class="font-light text-sm mt-1 mb-3">Popular Apps / Packages</div>
-          <a href="https://manual.jule.dev/std/bufio" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/bufio</a>
-          <a href="https://manual.jule.dev/std/math-big" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/math/big</a>
-          <a href="https://github.com/mertcandav/julenum" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">mertcandav/julenum</a>
-          <a href="https://github.com/adamperkowski/jpu" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">adamperkowski/jpu</a>
-        </div>
-      </div>
-      <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
-        <div class="font-semibold text-2xl p-4">Network Programming</div>
-        <div class="text-lg ml-4 mr-4">Easily develop network programs with built-in concurrency, easy multithreading, and a standard library with powerful implementations for I/O, socket, URL, concurrency and more.</div>
-        <div class="m-1 ml-4 mr-4 mb-4 p-2 rounded-br-lg rounded-bl-lg">
-          <div class="font-light text-sm mt-1 mb-3">Popular Apps / Packages</div>
-          <a href="https://manual.jule.dev/std/net" class="select-none font-light text-[lightsteelblue] text-xs m-auto pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/net</a>
-          <a href="https://manual.jule.dev/std/sync" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/sync</a>
-          <a href="https://github.com/adamperkowski/snapbox" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">adamperkowski/snapbox</a>
-        </div>
-      </div>
-      <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
-        <div class="font-semibold text-2xl p-4">Systems Programming</div>
-        <div class="text-lg ml-4 mr-4">Program many system software such as game engines and compilers with the ease of low-level programming and powerful cross-platform standard library.</div>
-        <div class="m-1 ml-4 mr-4 mb-4 p-2 rounded-br-lg rounded-bl-lg">
-          <div class="font-light text-sm mt-1 mb-3">Popular Apps / Packages</div>
-          <a href="https://manual.jule.dev/tools/julec" class="select-none font-light text-[lightsteelblue] text-xs m-auto pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">julec</a>
-          <a href="https://manual.jule.dev/tools/julefmt" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">julefmt</a>
-          <a href="https://manual.jule.dev/std/os" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/os</a>
-          <a href="https://manual.jule.dev/std/sys" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/sys</a>
-        </div>
-      </div>
-      <div class="rounded-lg bg-[var(--bg-secondary)] text-white">
-        <div class="font-semibold text-2xl p-4">Compile-Time Empowered</div>
-        <div class="text-lg ml-4 mr-4">Thanks to the powerful compile time, perform tasks such as reflection, evaluation and type matching at compile time for fast data processing, and more.</div>
-        <div class="m-1 ml-4 mr-4 mb-4 p-2 rounded-br-lg rounded-bl-lg">
-          <div class="font-light text-sm mt-1 mb-3">Popular Apps / Packages</div>
-            <a href="https://manual.jule.dev/std/comptime" class="select-none font-light text-[lightsteelblue] text-xs m-auto pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/comptime</a>
-            <a href="https://manual.jule.dev/std/encoding-json" class="select-none font-light text-[lightsteelblue] text-xs ml-1 pt-1 pb-1 pl-2 pr-2 bg-black rounded-lg">std/encoding/json</a>
+          <!-- Card 2 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">
+              <a href="https://github.com/julelang/jule/tree/master/std"
+                >Standard Library</a
+              >
+            </h3>
+            <p class="text-gray-400 text-md">
+              The official standard library of the Jule programming language. Implemented
+              and optimized for Pure Jule.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">
+              <a href="https://github.com/mertcandav/julenum">julenum </a>
+            </h3>
+            <p class="text-gray-400 text-md">
+              A high-performance library for numerical methods and scientific computing in
+              Jule, written in Pure Jule.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">
+              <a href="https://github.com/mertcandav/ldb">LDB</a>
+            </h3>
+            <p class="text-gray-400 text-md">
+              Local, easy-to-use, thread-safe database for Jule, written in Pure Jule.
+            </p>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">
+              <a href="https://github.com/adamperkowski/jpu">JuleProtonUp</a>
+            </h3>
+            <p class="text-gray-400 text-md">
+              JuleProtonUp is a fast and lightweight ProtonUp alternative.
+            </p>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
+          >
+            <h3 class="text-lg font-semibold">
+              <a href="https://github.com/adamperkowski/snapbox">Snapbox</a>
+            </h3>
+            <p class="text-gray-400 text-md">HTTP Client Library for Jule.</p>
           </div>
         </div>
-      </div>
+      </section>
     </div>
-    <div class="bg-[cadetblue] text-white pt-20 pb-20">
+
+    <div class="bg-[cadetblue] text-white mt-20 pt-20 pb-20">
       <div class="font-bold text-center text-2xl">Community and Support</div>
       <Heart class="h-8 mt-2 text-center mx-auto"></Heart>
       <div class="max-w-md mx-auto leading-7 mt-8 text-center text-xl">
-      The Jule community is active on Discord and GitHub Discussions. Ready to help.
-      <br><br>
-      Jule is distributed as completely open source on GitHub under the terms of the BSD 3-Clause license. Contribute to source code or just give a star to support Jule.</div>
+        The Jule community is active on Discord and GitHub Discussions. Ready to help.
+        <br /><br />
+        Jule is distributed as completely open source on GitHub under the terms of the BSD
+        3-Clause license. Contribute to source code or just give a star to support Jule.
+      </div>
       <div class="mx-auto mt-4">
         <div class="flex justify-center">
-          <a href="https://github.com/julelang/jule"><GitHubLogo class="text-white mr-4 h-7"></GitHubLogo></a>
-          <a href="https://discord.gg/XNSUUDuGGQ"><font-awesome-icon icon="fa-brands fa-discord" class="mt-1 text-xl"/></a>
+          <a href="https://github.com/julelang/jule"
+            ><GitHubLogo class="text-white mr-4 h-7"></GitHubLogo
+          ></a>
+          <a href="https://discord.gg/XNSUUDuGGQ"
+            ><font-awesome-icon icon="fa-brands fa-discord" class="mt-1 text-xl"
+          /></a>
         </div>
       </div>
     </div>
