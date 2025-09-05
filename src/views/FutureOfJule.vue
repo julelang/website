@@ -280,6 +280,8 @@ let mut b = foo.Buffer()`,
           <b>juledoc</b> [✔]: documentation generator from source code and comment lines
         </li>
         <li><b>jls</b> [✕]: language server implementation for the Jule</li>
+        <li>Deadcode elimination tool [✕]</li>
+        <li>Cyclomatic complexity calculator tool [✕]</li>
       </div>
     </div>
 
