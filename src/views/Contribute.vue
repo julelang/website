@@ -29,7 +29,10 @@
           class="text-xl font-code"
           >api/</a
         >
-        <div>C++ API of JuleC.</div>
+        <div>API of JuleC.</div>
+        <div>
+          Implemented in C++ and provides interoperability helpers for the Jule programs.
+        </div>
       </li>
       <li>
         <a
@@ -43,9 +46,9 @@
           They are the documentation of JuleC (the Jule programming language, naturally).
         </div>
         <div>
-          Since this section is completely devoted to the website, please do what you need
+          Since this section is completely devoted to the manual, please do what you need
           to add by contributing to the
-          <a href="https://github.com/julelang/website" target="_blank">website.</a>
+          <a href="https://github.com/julelang/manual" target="_blank">manual.</a>
         </div>
       </li>
       <li>
@@ -64,7 +67,7 @@
           class="text-xl font-code"
           >std/</a
         >
-        <div class="mb-2">Standard library.</div>
+        <div class="mb-2">Source code of the standard library.</div>
 
         <ul class="ml-8">
           <li>
@@ -74,7 +77,7 @@
               class="text-xl font-code"
               >jule/</a
             >
-            <div class="mb-2">Compiler packages.</div>
+            <div class="mb-2">Public packages of the compiler and tools.</div>
             <ul class="ml-8">
               <li>
                 <a
@@ -92,29 +95,16 @@
                   class="text-xl font-code"
                   >build/</a
                 >
-                <div>Constants, functions or etc. for build steps and platforms.</div>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/julelang/jule/blob/master/std/jule/cmd"
-                  target="_blank"
-                  class="text-xl font-code"
-                  >cmd/</a
-                >
-                <div>Main source files.</div>
-                <div>
-                  The main source files of JuleC and other programs, if any, are located
-                  here.
-                </div>
+                <div>Environment and elementary helpers for the compilation process.</div>
               </li>
               <li>
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/constant"
                   target="_blank"
                   class="text-xl font-code"
-                  >constants/</a
+                  >constant/</a
                 >
-                <div>Functionalities for constant eval.</div>
+                <div>Elementary package to handle and eval constant expressions.</div>
                 <ul class="ml-8">
                   <li>
                     <a
@@ -123,19 +113,54 @@
                       class="text-xl font-code"
                       >lit/</a
                     >
-                    <div>Functionalities for literal eval.</div>
+                    <div>Literal handling such as rune or string literals.</div>
                   </li>
                 </ul>
               </li>
               <li>
                 <a
-                  href="https://github.com/julelang/jule/blob/master/std/jule/lex"
+                  href="https://github.com/julelang/jule/blob/master/std/jule/directive"
                   target="_blank"
                   class="text-xl font-code"
-                  >lex/</a
+                  >directive/</a
                 >
-                <div>Lexer (lexical analysis).</div>
-                <div>Segments Jule source code into tokens.</div>
+                <div>Elementary package for directives.</div>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/julelang/jule/blob/master/std/jule/dist"
+                  target="_blank"
+                  class="text-xl font-code"
+                  >dist/</a
+                >
+                <div>Elementary package for targets.</div>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/julelang/jule/blob/master/std/jule/importer"
+                  target="_blank"
+                  class="text-xl font-code"
+                  >importer/</a
+                >
+                <div>Default Jule importer.</div>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/julelang/jule/blob/master/std/jule/log"
+                  target="_blank"
+                  class="text-xl font-code"
+                  >log/</a
+                >
+                <div>Elementary package for logs.</div>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/julelang/jule/blob/master/std/jule/mod"
+                  target="_blank"
+                  class="text-xl font-code"
+                  >mod/</a
+                >
+                <div>Module file parsing and module handling.</div>
               </li>
               <li>
                 <a
@@ -154,9 +179,22 @@
                   class="text-xl font-code"
                   >sema/</a
                 >
-                <div>Semantic analysis.</div>
+                <div>
+                  Semantic analyzer and HIR (High-Level Intermediate Representation)
+                  components.
+                </div>
                 <div>Makes type checking, object binding.</div>
-                <div>Builds symbol table and IR tree.</div>
+                <div>Builds symbol table and HIR.</div>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/julelang/jule/blob/master/std/jule/token"
+                  target="_blank"
+                  class="text-xl font-code"
+                  >token/</a
+                >
+                <div>Lexer (lexical analysis) and token helpers.</div>
+                <div>Segments Jule source code into tokens.</div>
               </li>
               <li>
                 <a
@@ -165,6 +203,7 @@
                   class="text-xl font-code"
                   >types/</a
                 >
+                <div>Elementary package for types.</div>
                 <div>Functionalities for static type system.</div>
                 <div>Limit constants and type compatibility or etc.</div>
               </li>
@@ -179,7 +218,7 @@
           class="text-xl font-code"
           >tests/</a
         >
-        <div>Jule source codes for testing JuleC.</div>
+        <div>Jule source codes to test JuleC.</div>
       </li>
     </ul>
     <br />
