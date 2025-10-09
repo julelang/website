@@ -75,3 +75,7 @@ body {
     background-color: var(--bg-primary);
     color: whitesmoke;
 }
+
+main {
+    flex: 1;
+}

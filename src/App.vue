@@ -13,5 +13,5 @@ export default {
 <template>
   <TheNavbar />
   <RouterView />
-  <TheFooter />
+  <TheFooter id="footer" class="hidden shrink-0" />
 </template>
