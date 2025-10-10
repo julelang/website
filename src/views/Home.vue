@@ -147,7 +147,7 @@ export default {
               href="https://manual.jule.dev"
               class="flex items-center space-x-1 w-max select-none ml-4 py-2 px-7 bg-transparent hover:bg-[var(--color-primary)] duration-[0.3s] text-lg border-2 border-[var(--color-primary)] rounded-lg"
             >
-              <span>Learn More</span>
+              <span>Manual</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-4 w-4 transform transition-transform duration-200"
@@ -374,7 +374,7 @@ export default {
       <div class="mt-2 text-center font-light text-xs">
         Contribute or give us a star to support
       </div>
-      <a href="https://github.com/julelang/jule">
+      <a href="https://github.com/julelang/jule" aria-label="GitHub Repository">
         <GitHubLogo class="mt-2 text-white mx-auto h-6"></GitHubLogo>
       </a>
     </div>
@@ -472,12 +472,12 @@ export default {
       </div>
       <div class="mx-auto mt-4">
         <div class="flex justify-center">
-          <a href="https://github.com/julelang/jule"
-            ><GitHubLogo class="text-white mr-4 h-7"></GitHubLogo
-          ></a>
-          <a href="https://discord.gg/XNSUUDuGGQ"
-            ><font-awesome-icon icon="fa-brands fa-discord" class="mt-1 text-xl"
-          /></a>
+          <a href="https://github.com/julelang/jule" aria-label="GitHub Repository">
+            <GitHubLogo class="text-white mr-4 h-7"></GitHubLogo>
+          </a>
+          <a href="https://discord.gg/XNSUUDuGGQ" aria-label="Discord Server">
+            <font-awesome-icon icon="fa-brands fa-discord" class="mt-1 text-xl"/>
+          </a>
         </div>
       </div>
     </div>

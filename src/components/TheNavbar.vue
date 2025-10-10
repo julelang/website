@@ -4,7 +4,7 @@
     class="bg-[var(--bg-primary)] text-white px-6 py-4 shadow-md fixed w-full z-50 top-0"
   >
     <div class="max-w-7xl mx-auto flex items-center justify-between md:justify-start">
-      <router-link id="navbar-logo" class="mr-10" to="/">
+      <router-link id="navbar-logo" class="mr-10" to="/" aria-label="Home">
         <JuleLogo
           class="select-none text-white h-12"
           src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png"
