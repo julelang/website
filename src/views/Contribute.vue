@@ -2,17 +2,10 @@
   <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-30">
     <div class="text-4xl font-bold text-center">Contributing</div>
     <br /><br />
-    <div class="mb-1 text-2xl font-semibold">Before the Start</div>
-    <div class="underline">This guide is about contributing to JuleC.</div>
-    <br />
-    <div>All contributions to Jule, no matter how small or large, are welcome.</div>
+    <div>Thank you for considering contributing to the Jule project.</div>
     <div>
-      From a simple typo correction to a contribution to the code, all contributions are
-      welcome and appreciated.
-    </div>
-    <div>
-      Before you start contributing, you should familiarize yourself with the following
-      repository structure:
+      There are many ways to contribute, and even the smallest contribution is
+      appreciated.
     </div>
     <div class="my-2 p-1.5 border border-l-4 rounded-md border-yellow-500 bg-yellow-700">
       Read our <router-link to="/code-of-conduct">Code of Conduct</router-link> and
@@ -21,12 +14,75 @@
       >
       before doing anything.
     </div>
+    <div><b>The most common ways to contribute are:</b></div>
+    <ul>
+      <li>Contribution to the Ecosystem and Community</li>
+      <ul class="ml-8">
+        <li>Open-source community projects</li>
+        <li>Community documentation</li>
+        <li>Ecosystem contributions</li>
+      </ul>
+    </ul>
+    <ul>
+      <li>Contribution to the Jule Project</li>
+      <ul class="ml-8">
+        <li>Proposals and issues</li>
+        <li>Typos corrections</li>
+        <li>Contributions to The Manual</li>
+        <li>Codebase documentation contributions</li>
+        <li>Standard library contributions</li>
+        <li>Compiler contributions</li>
+        <li>Contribution to official ecosystem tools</li>
+      </ul>
+    </ul>
+    <br />
+    <div class="text-2xl mb-2">Contribution to The Ecosystem and Community</div>
+    <div>
+      This title covers contributions made with projects and other things that are not
+      directly part of the Jule project.
+    </div>
+    <br />
+    <div>
+      If your contribution is appropriate, it can be added to the
+      <a href="https://github.com/julelang/awesome-jule" target="_blank">Awesome Jule</a>
+      list upon your request. Simply open an `issue` in the repository, mention your
+      project, and request its addition.
+    </div>
+    <div class="text-xl mt-6 mb-2">Open-Source Community Projects</div>
+    <div>
+      One of the most common and easiest ways to support is to develop open-source
+      projects related to your field. Every project you develop with Jule contributes to
+      the growth of the ecosystem.
+    </div>
+    <div class="text-xl mt-6 mb-2">Community Documentation</div>
+    <div>
+      Although the Jule project has an official handbook, documentation written by the
+      community is also highly valued. Contributions such as a dedicated handbook for Jule
+      or documentation for different languages are greatly appreciated.
+    </div>
+    <div class="text-xl mt-6 mb-2">Ecosystem Contributions</div>
+    <div>
+      Developing direct language ecosystem tools is something done by the community in
+      many programming language ecosystems. Contributions such as developing alternatives
+      to official ecosystem tools or developing tools that do not yet exist are highly
+      valuable.
+    </div>
+    <div class="text-2xl mb-2 mt-6">Contribution to The Jule Project</div>
+    <div>
+      Ecosystem Contributions This section covers contributions to all official Jule
+      project and its components. The main repository includes the official reference
+      compiler, standard library, and API. There are also different official projects
+      available under the GitHub organization besides this main repository. <br /><br />
+      If you are considering contributing to the main repository, it is important to first
+      become familiar with the working directories. The tree below briefly describes the
+      structure of the project:
+    </div>
     <ul>
       <li>
         <a
           href="https://github.com/julelang/jule/blob/master/api"
           target="_blank"
-          class="text-xl font-code"
+          class="text-lg font-code"
           >api/</a
         >
         <div>API of JuleC.</div>
@@ -38,7 +94,7 @@
         <a
           href="https://github.com/julelang/jule/blob/master/docs"
           target="_blank"
-          class="text-xl font-code"
+          class="text-lg font-code"
           >docs/</a
         >
         <div>Documentations.</div>
@@ -55,35 +111,37 @@
         <a
           href="https://github.com/julelang/jule/blob/master/src/julec"
           target="_blank"
-          class="text-xl font-code"
+          class="text-lg font-code"
           >src/julec/</a
         >
         <div>Source codes of JuleC.</div>
+        <div>The README.md includes developer reference documentations.</div>
       </li>
       <li>
         <a
           href="https://github.com/julelang/jule/blob/master/std"
           target="_blank"
-          class="text-xl font-code"
+          class="text-lg font-code"
           >std/</a
         >
-        <div class="mb-2">Source code of the standard library.</div>
+        <div>Source code of the standard library.</div>
 
         <ul class="ml-8">
           <li>
             <a
               href="https://github.com/julelang/jule/blob/master/std/jule"
               target="_blank"
-              class="text-xl font-code"
+              class="text-lg font-code"
               >jule/</a
             >
-            <div class="mb-2">Public packages of the compiler and tools.</div>
+            <div>Public packages of the compiler and tools.</div>
+            <div>The README.md includes developer reference documentations.</div>
             <ul class="ml-8">
               <li>
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/ast"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >ast/</a
                 >
                 <div>The AST objects and tree.</div>
@@ -92,7 +150,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/build"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >build/</a
                 >
                 <div>Environment and elementary helpers for the compilation process.</div>
@@ -101,7 +159,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/constant"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >constant/</a
                 >
                 <div>Elementary package to handle and eval constant expressions.</div>
@@ -110,7 +168,7 @@
                     <a
                       href="https://github.com/julelang/jule/blob/master/std/jule/constant/lit"
                       target="_blank"
-                      class="text-xl font-code"
+                      class="text-lg font-code"
                       >lit/</a
                     >
                     <div>Literal handling such as rune or string literals.</div>
@@ -121,7 +179,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/directive"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >directive/</a
                 >
                 <div>Elementary package for directives.</div>
@@ -130,7 +188,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/dist"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >dist/</a
                 >
                 <div>Elementary package for targets.</div>
@@ -139,7 +197,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/importer"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >importer/</a
                 >
                 <div>Default Jule importer.</div>
@@ -148,7 +206,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/log"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >log/</a
                 >
                 <div>Elementary package for logs.</div>
@@ -157,7 +215,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/mod"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >mod/</a
                 >
                 <div>Module file parsing and module handling.</div>
@@ -166,7 +224,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/parser"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >parser/</a
                 >
                 <div>Parser.</div>
@@ -176,7 +234,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/sema"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >sema/</a
                 >
                 <div>
@@ -190,7 +248,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/token"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >token/</a
                 >
                 <div>Lexer (lexical analysis) and token helpers.</div>
@@ -200,7 +258,7 @@
                 <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/types"
                   target="_blank"
-                  class="text-xl font-code"
+                  class="text-lg font-code"
                   >types/</a
                 >
                 <div>Elementary package for types.</div>
@@ -215,60 +273,214 @@
         <a
           href="https://github.com/julelang/jule/blob/master/tests"
           target="_blank"
-          class="text-xl font-code"
+          class="text-lg font-code"
           >tests/</a
         >
         <div>Jule source codes to test JuleC.</div>
       </li>
     </ul>
     <br />
-    <div class="mb-1 text-2xl font-semibold">Rules</div>
-    <ul>
-      <li>It is important that the code is written and properly formatted.</li>
-      <li>Description lines should be legible and meaningful.</li>
-      <li>The code must be properly documented.</li>
-      <li>Commit messages should be understandable and expressive.</li>
-    </ul>
-    <br />
-    <div class="mb-1 text-2xl font-semibold">Get Fork</div>
+    <div class="text-xl mb-2">Proposals and Issues</div>
     <div>
-      Once you have your fork, you can work directly. But to make things easier, you can
-      open a branch in your own name. After making the changes in the fork you want to
-      work with, you can throw a pull request.
+      The best contributions to the Jule project come through various proposal and issue
+      reports. Issue reports make it easier to detect problems and speed up their
+      resolution, which is why reporting them is very important.
+      <br /><br />
+      Proposals are often very effective in recognizing what the community needs. When you
+      submit a proposal, you also start a discussion, and if it is received favorably, the
+      developer team or volunteer community members begin working on the implementation.
     </div>
-    <ul class="ml-8">
-      <li>
-        Very large changes are difficult to control and understand. Therefore, avoid
-        excessively large PR requests as much as possible.
-      </li>
-      <li>
-        Try not to make multiple changes within a single PR, a PR request should only
-        serve one change.
-      </li>
-    </ul>
-    <br />
-    <div class="mb-1 text-2xl font-semibold">Send Pull Request</div>
+    <div class="text-xl mt-6 mb-2">Contributions to The Manual</div>
     <div>
-      After making the contribution you want to make, you have reached the stage of
-      sending it as a PR request.
+      The manual is a detailed and educational official content about the Jule programming
+      language. It is the primary and recommended source for learning the language in
+      depth. Contributions to the manual take place through its dedicated repository.
     </div>
-    <div>Before send a PR:</div>
-    <ul class="ml-8">
-      <li>Be sure to document the necessary places in the code.</li>
-      <li>Make sure the code is readable.</li>
-    </ul>
-    <div>There are some points to be considered for an understandable PR:</div>
-    <ul class="ml-8">
-      <li>The PR title should be short and concise and give information about the PR.</li>
-      <li>
-        Changes should be noted in the PR statement, reviewers should understand the
-        purpose of PR.
-      </li>
-      <li>
-        If there are, possible errors and conflicts that may occur in the case of
-        combining the PR should be mentioned.
-      </li>
-    </ul>
+    <div class="text-xl mt-6 mb-2">Codebase documentation contributions</div>
+    <div>
+      The codebase is documented using two separate methods: code-level comments and
+      separate documentation. These two documentations are interwoven. The primary
+      documentation is done within the codebase using comment lines. Separate
+      documentation is usually used for more detailed or repetitive documentation needs.
+      Explanations in the separate documentation are referenced in the codebase.
+      <br /><br />
+      The project has two main separate documentations. These are for the public compiler
+      packages located within the standard library and for the official reference
+      compiler.
+    </div>
+    <div class="text-xl mt-6 mb-2">Standard library contributions</div>
+    <div>
+      Standard library contributions mostly involve changes to the codebase and
+      documentation in existing packages. Contributions to existing packages are reviewed
+      and concluded faster because the evaluation process is based on one fundamental
+      question: are these changes appropriate and necessary for this package?
+      <br /><br />
+      If you are adding a new package, its evaluation may take longer. If you are planning
+      to add a new package, it is recommended that you first open a proposal issue for it.
+      This topic is discussed under the issue, and if accepted, you can work on the PR.
+    </div>
+    <div class="text-xl mt-6 mb-2">Compiler contributions</div>
+    <div>
+      Compiler contributions are contributions made to the official reference compiler.
+      These contributions can directly cover the compiler's internal (i.e., not publicly
+      shared) code or the public packages included in the standard library.
+      <br /><br />
+      There is separate documentation for both parts. The tree showing the project
+      structure indicates where this documentation is located.
+      <br /><br />
+      If your contribution introduces changes to the documentation or requires
+      documentation, please ensure that you do them correctly, otherwise, it is quite
+      likely that your PR process will be extended, as you will be expected to make these
+      changes.
+    </div>
+    <div class="text-xl mt-6 mb-2">Contribution to Official Ecosystem Tools</div>
+    <div>
+      Official ecosystem tools are officially supported and developed tools included in
+      the Jule project. The most obvious examples of these are the julefmt and juledoc
+      tools. Contributions to these tools are also made through their specific
+      repositories.
+    </div>
+    <div class="text-2xl mt-6 mb-2">Contribution Process</div>
+    <div>
+      This section covers contributions made to the official repositories belonging to the
+      Jule project. If you are making a community contribution, you will mostly follow
+      your own process.
+    </div>
+    <div class="text-xl mt-6 mb-2">How to Read and Write Developer Documentation</div>
+    <div>
+      Before contributing, if you are making a change to the codebase, it is essential to
+      read the developer documentation. It is also very important to know how to read them
+      and how to write them when necessary.
+      <br /><br />
+      Developer documentation contains information that is very important, especially for
+      beginners. Any change you make in the codebase without reading them may lead to
+      unexpected things. If you are only improving the documentation, you need to know how
+      the documented parts work. Therefore, please read the necessary documentation first.
+      <br /><br />
+      Most of the documentation is done within the codebase, but in some cases, separate
+      documentations are used. These separate documentations are written with a specific
+      numbering and are referenced where needed within the codebase.
+      <br /><br />
+      For example, a reference in the codebase would look like this:
+      <div
+        class="my-2 p-1.5 w-max border border-l-4 rounded-md border-gray-500 bg-gray-700"
+      >
+        // See developer reference (4).
+      </div>
+      This indicates that you should look at the separate developer documentation numbered
+      4 and its sub-documentations, if any.
+      <br /><br />
+      Another example:
+      <div
+        class="my-2 p-1.5 w-max border border-l-4 rounded-md border-gray-500 bg-gray-700"
+      >
+        // See developer reference (3.8).
+      </div>
+      This indicates that you should look at the sub-documentation numbered 8 of the
+      separate developer documentation numbered 3.
+      <br /><br />
+      Sub-documentations mostly address different topics, and it is usually necessary to
+      read the main documentation as well. Therefore, references are mostly made to the
+      main documentation number.
+    </div>
+    <div class="text-xl mt-6 mb-2">PR Process</div>
+    <div>
+      If you are ready, you can work on the repository you plan to contribute to and open
+      a PR to submit your contribution to the development team.
+    </div>
+    <div class="text-lg mt-6 mb-2">Setting up your Workspace</div>
+    <div>
+      First, you should create a fork for the relevant repository. This gives you a copy
+      to work on. Then, you need to create a new branch on your fork. This branch should
+      be created with the change you are making and your username.
+      <br /><br />
+      Like the examples below:
+      <div
+        class="my-2 p-1.5 w-max border border-l-4 rounded-md border-gray-500 bg-gray-700"
+      >
+        mertcandav/update-memory-model
+        <br />
+        adamperkowski/fix-typo
+      </div>
+      You should make your changes on this branch and not go outside the scope. Try to
+      work on only one topic at a time.
+      <div class="mt-6 mb-2"><b>Maintainers Special</b></div>
+      <div>
+        If you are a maintainer, you can open a branch directly on the relevant
+        repository. Maintainers will not delete the branch you created after the PR is
+        finalized; if it is not needed, you must delete it yourself. If you think it
+        should remain, explain this in the relevant issue or PR text.
+        <br /><br />
+        If you do not delete it and it has not been decided that it is necessary, the
+        relevant branch may be deleted later at any time by a maintainer.
+      </div>
+    </div>
+    <div class="text-lg mt-6 mb-2">Commit Messages</div>
+    <div>
+      Your commit messages should be descriptive and clean. It is recommended to follow
+      the existing standard.
+      <br /><br />
+      If you are contributing to the main repository, you should label your changes
+      according to their scope:
+      <ul>
+        <li class="ml-6">
+          If you are working on the compiler's public packages or the runtime package, use
+          the package name as the label.
+        </li>
+        <li class="ml-6">
+          If you are working on a standard library package other than those, use the
+          package path directly.
+        </li>
+        <li class="ml-6">
+          If you are working on the internal compiler codebase, use compiler.
+        </li>
+        <li class="ml-6">
+          If you are significantly changing multiple public and internal compiler
+          packages, use compiler.
+        </li>
+        <li class="ml-6">
+          If you are contributing to the std/jule package, use the package path.
+        </li>
+        <li class="ml-6">
+          If you are making a change that concerns multiple packages, specify all packages
+          with a comma and the package path.
+        </li>
+      </ul>
+      <div class="mt-6">
+        Here are a few examples:
+        <div
+          class="my-2 p-1.5 w-max border border-l-4 rounded-md border-gray-500 bg-gray-700"
+        >
+          ast: rename Goto.Name as Goto.Label
+          <br />
+          sema: improve missing return statement analysis for infinite iterations
+          <br />
+          compiler: improve deadcode analysis for generic functions
+          <br />
+          runtime: optimize runtime map hasher
+          <br />
+          std/jule: update version
+          <br />
+          std/math/big: add Int
+          <br />
+          std/strings, std/bytes: add Contains
+        </div>
+      </div>
+    </div>
+    <div class="text-lg mt-6 mb-2">Review Process and Finalization</div>
+    <div>
+      Finally, when you are ready, open a PR and wait for it to be reviewed. Maintainers
+      will review your PR and request changes if necessary. Very large PRs have a high
+      probability of being rejected, so if you have to make a very large PR, discussing it
+      first with an issue is a good idea.
+      <br /><br />
+      If there are related issues, tag them in the PR text. Clearly explain what you
+      changed and exactly what you did in your PR text.
+      <br /><br />
+      Ultimately, your PR will either be accepted or definitively rejected. If you opened
+      a PR based on an already discussed issue, it is usually not rejected; if necessary
+      changes are requested, they are made, and then it is accepted.
+    </div>
   </main>
 </template>
 
