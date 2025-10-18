@@ -26,6 +26,7 @@
     <ul>
       <li>Contribution to the Jule Project</li>
       <ul class="ml-8">
+        <li>Give us a star on GitHub</li>
         <li>Proposals and issues</li>
         <li>Typos corrections</li>
         <li>Contributions to The Manual</li>
@@ -332,6 +333,66 @@
       documentation, please ensure that you do them correctly, otherwise, it is quite
       likely that your PR process will be extended, as you will be expected to make these
       changes.
+      <div class="text-lg mt-6 mb-2">Developer Environment and Scripts</div>
+      <div>
+        When developing the compiler, you typically need to recompile and test a temporary
+        version of your compiler to experience the changes. There are some ready-made
+        developer scripts to facilitate this. Your working directory should be
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          src/julec
+        </div>
+        . At this point, you can use two different types of scripts:
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          build
+        </div>
+        and
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          brun
+        </div>
+        scripts. <br /><br />
+        The `build` scripts only compile a developer version of the compiler. The
+        developer version is obtained with a quick compilation at the minimum optimization
+        level compared to a production build. It is created as
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          julec_dev
+        </div>
+        in the
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          bin
+        </div>
+        directory, where the compiler executable is located. At this point,
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          julec_dev
+        </div>
+        is your developer build compilation. You use this to test. <br /><br />
+        The
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          brun
+        </div>
+        scripts work exactly like the
+        <div
+          class="inline-block pl-1 pr-1 w-max border rounded-md border-gray-500 bg-gray-700"
+        >
+          build
+        </div>
+        scripts. Additionally, they take arguments and pass them directly to the generated
+        developer version of the compiler, allowing you to test immediately with a quick
+        command after compiling.
+      </div>
     </div>
     <div class="text-xl mt-6 mb-2">Contribution to Official Ecosystem Tools</div>
     <div>
