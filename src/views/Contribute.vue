@@ -1,6 +1,6 @@
 <template>
   <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-30">
-    <div class="text-4xl font-bold text-center">Contributing</div>
+    <div class="text-4xl font-bold text-center">Contributing Guidelines</div>
     <br /><br />
     <div>Thank you for considering contributing to the Jule project.</div>
     <div>
@@ -26,7 +26,10 @@
     <ul>
       <li>Contribution to the Jule Project</li>
       <ul class="ml-8">
-        <li>Give us a star on GitHub</li>
+        <li>
+          Give us a star on
+          <a href="https://github.com/julelang/jule" target="_blank">GitHub</a>
+        </li>
         <li>Proposals and issues</li>
         <li>Typos corrections</li>
         <li>Contributions to The Manual</li>
@@ -71,9 +74,19 @@
     <div class="text-2xl mb-2 mt-6">Contribution to The Jule Project</div>
     <div>
       Ecosystem Contributions This section covers contributions to all official Jule
-      project and its components. The main repository includes the official reference
-      compiler, standard library, and API. There are also different official projects
-      available under the GitHub organization besides this main repository. <br /><br />
+      project and its components. The
+      <a href="https://github.com/julelang/jule" target="_blank">main repository</a>
+      includes the official
+      <a href="https://github.com/julelang/jule/blob/master/src/julec" target="_blank"
+        >reference compiler</a
+      >,
+      <a href="https://github.com/julelang/jule/blob/master/std" target="_blank"
+        >standard library</a
+      >, and
+      <a href="https://github.com/julelang/jule/blob/master/api" target="_blank">API</a>.
+      There are also different official projects available under the
+      <a href="https://github.com/julelang" target="_blank">GitHub organization</a>
+      besides this main repository. <br /><br />
       If you are considering contributing to the main repository, it is important to first
       become familiar with the working directories. The tree below briefly describes the
       structure of the project:
