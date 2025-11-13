@@ -42,7 +42,7 @@ function jule(hljs) {
         "self",
         "trait",
         "impl",
-        "cpp",
+        "extern",
         "fall",
         "fn",
         "let",

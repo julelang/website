@@ -41,9 +41,9 @@ for i > 0; i-- {
   path := integ::StrToBytes(path)
   mode := integ::StrToBytes("w")
   unsafe {
-    f := cpp.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
-    cpp.fwrite(&data[0], mem::SizeOf(byte), len(data), f)
-    cpp.fclose(f)
+    f := extern.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
+    extern.fwrite(&data[0], mem::SizeOf(byte), len(data), f)
+    extern.fclose(f)
   }
 }`,
   `fn main() {
@@ -476,7 +476,7 @@ export default {
             <GitHubLogo class="text-white mr-4 h-7"></GitHubLogo>
           </a>
           <a href="https://discord.gg/XNSUUDuGGQ" aria-label="Discord Server">
-            <font-awesome-icon icon="fa-brands fa-discord" class="mt-1 text-xl"/>
+            <font-awesome-icon icon="fa-brands fa-discord" class="mt-1 text-xl" />
           </a>
         </div>
       </div>
