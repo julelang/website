@@ -77,8 +77,9 @@ import { RouterLink } from "vue-router";
     </div>
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-      Copyright © {{ new Date().getFullYear() }} The Jule Team<br />Source code is
-      licensed under
+      Copyright ©2023 The Jule Authors
+      <br />
+      Source code is licensed under
       <a
         href="https://github.com/julelang/jule/blob/master/LICENSE"
         target="_blank"
