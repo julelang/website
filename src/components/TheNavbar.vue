@@ -239,11 +239,6 @@ export default {
                   link: "/contribute",
                 },
                 {
-                  title: "Authors",
-                  desc: "Authors of the Jule Project",
-                  link: "/authors",
-                },
-                {
                   title: "LICENSE",
                   desc: "License of the Jule project.",
                   link: "https://github.com/julelang/jule/blob/master/LICENSE",
