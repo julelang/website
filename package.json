@@ -15,7 +15,7 @@
     "@fortawesome/vue-fontawesome": "^3.1.2",
     "highlight.js": "^11.9.0",
     "nprogress": "^0.2.0",
-    "vue": "^3.5.22",
+    "vue": "^3.5.25",
     "vue-router": "^4.6.3"
   },
   "devDependencies": {
