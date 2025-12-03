@@ -312,24 +312,20 @@ let mut b = foo.Buffer()`,
       <div class="mt-4 ml-4">
         <li>Conditional Compiler Directives</li>
         <li>Unions</li>
-        <li>Structure Properties</li>
         <li>Extension Methods</li>
         <li>Default Implemented Methods for Traits</li>
         <li>Generic Traits</li>
         <li>Generic Methods for Traits</li>
         <li>Generic Strict Type Aliases</li>
         <li>Inheritance Support for Structures</li>
-        <li>Generic Type-Matching with Type Patterns</li>
         <li>
           The "Self" Named Type Alias for Owner Structure Instance Available in Methods
         </li>
-        <li>Enum Type Support for The Map Value Type</li>
         <li>Pattern Support to Select Executed Tests for Test Compilations</li>
         <li>Test package and sub-packages via single test command</li>
         <li>Stdlib package to encode/decode XML data</li>
         <li>Stdlib package for region-based memory management</li>
         <li>Stdlib package for regular expressions</li>
-        <li>Stdlib package that provides tiny data store</li>
         <li>Stdlib package that provides functionality for SQL databases</li>
         <li>Stdlib package that provides Jule-special encoding/decoding functionality</li>
         <li>std/time: add StopWatch</li>
@@ -339,7 +335,10 @@ let mut b = foo.Buffer()`,
         <li>std/math/big: arbitrary-precision floating-point support</li>
         <li>add stacktrace support</li>
         <li>use common stack-size for all platforms</li>
-        <li>support for linking dynamic libraries</li>
+        <li>
+          support for linking dynamic libraries (like Windows DLL support) on UNIX-like
+          systems
+        </li>
         <li>Add verbose mode to the compiler</li>
       </div>
     </div>
