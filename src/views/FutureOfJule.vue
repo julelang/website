@@ -150,31 +150,30 @@ let mut b = foo.Buffer()`,
     </div>
 
     <div class="text-xl mb-14">
-      <div class="text-4xl mb-4 font-semibold">Concurrency & Threading</div>
-      Jule's concurrency is built-in in the current implementation and uses native
-      threads. In the future, we planned to offer native threads as an option and to
-      switch to using green threads by default.
-
+      <div class="text-4xl mb-4 font-semibold">Concurrency</div>
+      With Jule 0.2.0, coroutines were introduced. They operate in a stackless manner and
+      are managed by the runtime. The Jule runtime ships with an internal async runtime
+      and executes coroutines using a cooperative scheduler.
       <br /><br />
-      There is no implementation for coroutine or green threads. Although there is no plan
-      for coroutines, the implementation of green threads is welcomed and a study on this
-      may be initiated in the future. The strictest idea is that if green threads are
-      added, the built-in concurrent calls will be updated to start using green threads
-      instead of native threads and a functionality continues to be offered in the
-      standard library for native threads.
+      Previously, operating system threads were the fundamental unit of concurrency. They
+      are now used internally by the scheduler to execute coroutines concurrently. No
+      public OS thread API is exposed to developers.
+      <br /><br />
+      From this point on, our primary goal is to further optimize the scheduler. We aim to
+      improve stability and make using coroutines as easy as possible.
       <br /><br />
       <b>List of Planned Features</b>
       <div class="mt-4 ml-4">
         Legend: [✔] implemented, [✕] Not-In-WIP
         <br /><br />
-        <li><b>Native Threads</b> [✔]</li>
+        <li><b>Coroutines</b> [✔]</li>
+        <li><b>Native Threads</b> [✔] (not directly, managed by the runtime)</li>
         <li><b>Channels</b> (Like Go) [✔]</li>
         <li><b>WaitGroup</b> (Like Go) [✔]</li>
         <li><b>Atomics</b> [✔]</li>
         <li><b>Mutex</b> [✔]</li>
         <li><b>Cond</b> (condition variable) [✔]</li>
         <li><b>RWMutex</b> [✔]</li>
-        <li><b>Green Threads / Coroutines</b> (Like Go) [✕]</li>
       </div>
     </div>
 
