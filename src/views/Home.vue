@@ -23,10 +23,10 @@ fmt::Println(users)`,
   `c := make(chan int)
 mut i := 0
 for i < 10; i++ {
-  co fn() { c <- i }()
+  co async fn() { c <- i }()
 }
 for i > 0; i-- {
-  fmt::Println("thread #", <-c)
+  fmt::Println("coroutine #", <-c)
 }`,
   `fn IsEnoughSpace[T](buf: T, n: int): bool {
   const t = comptime::TypeOf(T)
@@ -252,9 +252,10 @@ export default {
           >
             <h3 class="text-lg font-semibold">Concurrency</h3>
             <p class="text-gray-400 text-md">
-              Jule supports modern concurrency principles on native threads; mutexes,
-              condition variables, channels, select statements and etc. Spawn threads with
-              a single keyword and elegant syntax.
+              Jule offers lightweight coroutines for concurrency powered by its own
+              scheduler. Write concurrent code with elegant syntax and without directly
+              dealing with OS threads, using mutexes, channels, select statements, and
+              more.
             </p>
             <pre id="concurrency" class="text-[14px] overflow-auto"></pre>
           </div>
@@ -276,12 +277,12 @@ export default {
           <div
             class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
           >
-            <h3 class="text-lg font-semibold">Interoperability</h3>
+            <h3 class="text-lg font-semibold">Writing Tests</h3>
             <p class="text-gray-400 text-md">
-              Jule can play with C/C++ code easily, provides an API for safe and simple
-              experience. Just bind and use properly, do not port the whole code!
+              Jule provides built-in testing tools, empowered by the standard library.
+              Test your code easily and fast.
             </p>
-            <pre id="interoperability" class="text-[14px] overflow-auto"></pre>
+            <pre id="writing-tests" class="text-[14px] overflow-auto"></pre>
           </div>
 
           <!-- Card 5 -->
@@ -300,12 +301,12 @@ export default {
           <div
             class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
           >
-            <h3 class="text-lg font-semibold">Writing Tests</h3>
+            <h3 class="text-lg font-semibold">Interoperability</h3>
             <p class="text-gray-400 text-md">
-              Jule provides built-in testing tools, empowered by the standard library.
-              Test your code easily and fast.
+              Jule can play with C/C++ code easily, provides an API for safe and simple
+              experience. Just bind and use properly, do not port the whole code!
             </p>
-            <pre id="writing-tests" class="text-[14px] overflow-auto"></pre>
+            <pre id="interoperability" class="text-[14px] overflow-auto"></pre>
           </div>
         </div>
       </section>
