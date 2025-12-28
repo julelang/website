@@ -162,7 +162,7 @@ function jule(hljs) {
                 begin: /[+\-*/%]=?|=|==|&|:=|!=|<|>|<=|>=|&&|\|\||!|<-/
             },
             {
-                className: 'meta',
+                className: 'built_in',
                 begin: '#!?',
                 end: '$',
                 contains: [

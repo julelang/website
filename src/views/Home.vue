@@ -243,7 +243,7 @@ export default {
               handled immediately, should break algorithm or return value if needed; no
               deferred error handling!
             </p>
-            <pre id="error-handling" class="text-[14px] overflow-auto"></pre>
+            <pre id="error-handling" class="code text-[14px] overflow-auto"></pre>
           </div>
 
           <!-- Card 2 -->
@@ -257,7 +257,7 @@ export default {
               dealing with OS threads, using mutexes, channels, select statements, and
               more.
             </p>
-            <pre id="concurrency" class="text-[14px] overflow-auto"></pre>
+            <pre id="concurrency" class="code text-[14px] overflow-auto"></pre>
           </div>
 
           <!-- Card 3 -->
@@ -270,7 +270,7 @@ export default {
               matching, and more. Examine source files and types at comptime with no
               runtime cost!
             </p>
-            <pre id="compile-time" class="text-[14px] overflow-auto"></pre>
+            <pre id="compile-time" class="code text-[14px] overflow-auto"></pre>
           </div>
 
           <!-- Card 4 -->
@@ -282,7 +282,7 @@ export default {
               Jule provides built-in testing tools, empowered by the standard library.
               Test your code easily and fast.
             </p>
-            <pre id="writing-tests" class="text-[14px] overflow-auto"></pre>
+            <pre id="writing-tests" class="code text-[14px] overflow-auto"></pre>
           </div>
 
           <!-- Card 5 -->
@@ -294,7 +294,7 @@ export default {
               Jule provides deterministic memory management based on reference counting.
               Fast and efficient enough for most cases, suitable for real-time systems.
             </p>
-            <pre id="memory-management" class="text-[14px] overflow-auto"></pre>
+            <pre id="memory-management" class="code text-[14px] overflow-auto"></pre>
           </div>
 
           <!-- Card 6 -->
@@ -306,7 +306,7 @@ export default {
               Jule can play with C/C++ code easily, provides an API for safe and simple
               experience. Just bind and use properly, do not port the whole code!
             </p>
-            <pre id="interoperability" class="text-[14px] overflow-auto"></pre>
+            <pre id="interoperability" class="code text-[14px] overflow-auto"></pre>
           </div>
         </div>
       </section>
