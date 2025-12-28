@@ -22,11 +22,11 @@ json::Decode(data, &users) else {
 fmt::Println(users)`,
   `c := make(chan int)
 mut i := 0
-for i < 10; i++ {
+for i < 1_000_000; i++ {
   co async fn() { c <- i }()
 }
-for i > 0; i-- {
-  fmt::Println("coroutine #", <-c)
+for v in c {
+  fmt::Println("coroutine #", v)
 }`,
   `fn IsEnoughSpace[T](buf: T, n: int): bool {
   const t = comptime::TypeOf(T)
@@ -38,8 +38,8 @@ for i > 0; i-- {
   }
 }`,
   `fn Write(path: str, data: []byte) {
-  path := integ::StrToBytes(path)
-  mode := integ::StrToBytes("w")
+  path := integ::BytesFromStr(path)
+  mode := integ::BytesFromStr("w")
   unsafe {
     f := extern.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
     extern.fwrite(&data[0], mem::SizeOf(byte), len(data), f)
@@ -115,10 +115,10 @@ export default {
           class="max-w-(--breakpoint-lg) mx-auto py-7 px-5 justify-between items-center gap-2"
         >
           <div>
-            <div class="mb-2 text-5xl font-semibold">Jule</div>
-            <div class="leading-7 text-xl">
-              Fast. Efficient. Safe. Simple.<br />
-              Programming language without noise.<br />
+            <div class="mb-8 text-5xl font-semibold">Jule</div>
+            <div class="leading-7 text-xl max-w-120">
+              Simple and safe programming language with built-in concurrency, first-class
+              C/C++ interoperability and powerful compile-time capabilities.
             </div>
           </div>
           <div class="flex justify-center mt-8">

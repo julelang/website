@@ -1,6 +1,6 @@
 /*
 Language: Jule
-Author: Mertcan DAVULCU
+Author: mertcandav
 Website: https://jule.dev
 Category: common, system
 */
@@ -52,6 +52,8 @@ function jule(hljs) {
         "error",
         "chan",
         "select",
+        "async",
+        "await",
     ];
 
     const LITERALS = [
@@ -148,9 +150,21 @@ function jule(hljs) {
                 }
             },
             {
+                begin: [
+                    /fn()/,
+                ],
+                className: {
+                    1: "keyword",
+                }
+            },
+            {
+                className: 'operator',
+                begin: /[+\-*/%]=?|=|==|&|:=|!=|<|>|<=|>=|&&|\|\||!|<-/
+            },
+            {
                 className: 'meta',
-                begin: '#!?\\[',
-                end: '\\]',
+                begin: '#!?',
+                end: '$',
                 contains: [
                     {
                         className: 'string',
