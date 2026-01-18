@@ -99,7 +99,7 @@
           class="text-lg font-code"
           >api/</a
         >
-        <div>API of JuleC.</div>
+        <div>API of julec.</div>
         <div>
           Implemented in C++ and provides interoperability helpers for the Jule programs.
         </div>
@@ -113,7 +113,7 @@
         >
         <div>Documentations.</div>
         <div>
-          They are the documentation of JuleC (the Jule programming language, naturally).
+          They are the documentation of julec (the Jule programming language, naturally).
         </div>
         <div>
           Since this section is completely devoted to the manual, please do what you need
@@ -128,7 +128,7 @@
           class="text-lg font-code"
           >src/julec/</a
         >
-        <div>Source codes of JuleC.</div>
+        <div>Source codes of julec.</div>
         <div>The README.md includes developer reference documentations.</div>
       </li>
       <li>
@@ -290,7 +290,7 @@
           class="text-lg font-code"
           >tests/</a
         >
-        <div>Jule source codes to test JuleC.</div>
+        <div>Jule source codes to test julec.</div>
       </li>
     </ul>
     <br />

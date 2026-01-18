@@ -389,7 +389,7 @@ export default {
             class="rounded-xl border border-[rgba(255,255,255,0.1)] bg-[var(--bg-primary,#18181b)] p-6 shadow-lg transition hover:shadow-xl hover:border-[rgba(255,255,255,0.2)] text-white flex flex-col gap-2 h-full"
           >
             <h3 class="text-lg font-semibold">
-              <a href="https://github.com/julelang/jule/tree/master/src/julec">JuleC</a>
+              <a href="https://github.com/julelang/jule/tree/master/src/julec">julec</a>
             </h3>
             <p class="text-gray-400 text-md">
               The official reference compiler of the Jule programming language. Written in
