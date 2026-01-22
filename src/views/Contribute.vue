@@ -303,6 +303,9 @@
       Proposals are often very effective in recognizing what the community needs. When you
       submit a proposal, you also start a discussion, and if it is received favorably, the
       developer team or volunteer community members begin working on the implementation.
+      <br /><br />
+      See the
+      <a href="#issue-and-pr-classification-guide">Issue and PR Classification Guide</a>.
     </div>
     <div class="text-xl mt-6 mb-2">Contributions to The Manual</div>
     <div>
@@ -495,51 +498,10 @@
       the existing standard.
       <br /><br />
       If you are contributing to the main repository, you should label your changes
-      according to their scope:
-      <ul>
-        <li class="ml-6">
-          If you are working on the compiler's public packages or the runtime package, use
-          the package name as the label.
-        </li>
-        <li class="ml-6">
-          If you are working on a standard library package other than those, use the
-          package path directly.
-        </li>
-        <li class="ml-6">
-          If you are working on the internal compiler codebase, use compiler.
-        </li>
-        <li class="ml-6">
-          If you are significantly changing multiple public and internal compiler
-          packages, use compiler.
-        </li>
-        <li class="ml-6">
-          If you are contributing to the std/jule package, use the package path.
-        </li>
-        <li class="ml-6">
-          If you are making a change that concerns multiple packages, specify all packages
-          with a comma and the package path.
-        </li>
-      </ul>
-      <div class="mt-6">
-        Here are a few examples:
-        <div
-          class="my-2 p-1.5 w-max border border-l-4 rounded-md border-gray-500 bg-gray-700"
-        >
-          ast: rename Goto.Name as Goto.Label
-          <br />
-          sema: improve missing return statement analysis for infinite iterations
-          <br />
-          compiler: improve deadcode analysis for generic functions
-          <br />
-          runtime: optimize runtime map hasher
-          <br />
-          std/jule: update version
-          <br />
-          std/math/big: add Int
-          <br />
-          std/strings, std/bytes: add Contains
-        </div>
-      </div>
+      according to their scope.
+      <br /><br />
+      See the
+      <a href="#issue-and-pr-classification-guide">Issue and PR Classification Guide</a>.
     </div>
     <div class="text-lg mt-6 mb-2">Review Process and Finalization</div>
     <div>
@@ -551,9 +513,115 @@
       If there are related issues, tag them in the PR text. Clearly explain what you
       changed and exactly what you did in your PR text.
       <br /><br />
-      Ultimately, your PR will either be accepted or definitively rejected. If you opened
-      a PR based on an already discussed issue, it is usually not rejected; if necessary
-      changes are requested, they are made, and then it is accepted.
+      Ultimately, your PR will either be merged or rejected. If you opened a PR based on
+      an already discussed issue, it is usually not rejected; if necessary changes are
+      requested, they are made, and then it is merged.
+      <br /><br />
+      See the
+      <a href="#issue-and-pr-classification-guide">Issue and PR Classification Guide</a>
+      for opening an issue or PR.
+    </div>
+    <div id="issue-and-pr-classification-guide" class="text-2xl mt-6 mb-2">
+      Issue and PR Classification Guide
+    </div>
+    <div>
+      There is a preferred pattern for pull-requests, Issue Tracker and commits. The
+      reason for this is to ensure consistency and to allow maintainers to understand the
+      scope just by reading the title. Maintainers would appreciate it if you followed
+      these rules.
+      <br /><br />
+      You should label your issue or PR according to it's scope:
+      <ul>
+        <li class="ml-6">
+          If you are making a change about language semantics, syntax or structure, use
+          "jule".
+        </li>
+        <li class="ml-6">If you are working on the all (possibly) files, use "all".</li>
+        <li class="ml-6">
+          If you are working on the compiler's public packages or the runtime package, use
+          the package name as the label.
+        </li>
+        <li class="ml-6">
+          If you are working on a standard library package other than those, use the
+          package path directly.
+        </li>
+        <li class="ml-6">
+          If you are working on the internal compiler codebase, use julec.
+        </li>
+        <li class="ml-6">
+          If you are significantly changing multiple public and internal compiler
+          packages, use julec.
+        </li>
+        <li class="ml-6">
+          If you are contributing to the std/jule package, use the plain package name.
+        </li>
+        <li class="ml-6">
+          If you are making a change that concerns multiple packages, specify all packages
+          with a comma and the package path.
+        </li>
+        <li class="ml-6">If you are making a change about C/C++ API, use "api".</li>
+        <li class="ml-6">Use "ci" or "ci/cd" for relevant changes.</li>
+        <li class="ml-6">
+          If you add, remove or something big on tests, use "tests" label. For specific
+          tests, use path of the tests as label.
+        </li>
+        <li class="ml-6">If you suggest a new tool, use "tool".</li>
+        <li class="ml-6">
+          Use a plain message without label for other topics in commits. Use the "other"
+          label in issues or pull-requests.
+        </li>
+      </ul>
+      <div class="mt-6">
+        Here are a few examples:
+        <div
+          class="my-2 p-1.5 w-max border border-l-4 rounded-md border-gray-500 bg-gray-700"
+        >
+          jule: mut instead of let mut
+          <br />
+          all: run julefmt
+          <br />
+          ast: rename Goto.Name as Goto.Label
+          <br />
+          sema: improve missing return statement analysis for infinite iterations
+          <br />
+          julec: improve deadcode analysis for generic functions
+          <br />
+          runtime: optimize runtime map hasher
+          <br />
+          jule: update version
+          <br />
+          std/math/big: add Int
+          <br />
+          std/strings, std/bytes: add Contains
+          <br />
+          api: use constexpr instead of inline constexpr for functions
+          <br />
+          tests: add slices
+          <br />
+          tests/slices: add tests for the built-in cap function
+          <br />
+          tool: julefmt
+          <br />
+          update README.md
+          <br />
+          fix typo in SECURITY.md
+        </div>
+        <br />
+        Do not use prefixes like "[PROPOSAL]" or "[BUG]" for proposals, bugs, etc.
+        <br /><br />
+        For proposals, it is recommended to first open an issue and, if it is accepted,
+        then open a PR.
+        <br />
+        However, if a PR is opened directly, a proposal issue may be requested if deemed
+        necessary.
+        <br /><br />
+        If you'd like some inspiration, here are a few examples:
+        <a href="https://github.com/julelang/jule/issues/128">#128</a>,
+        <a href="https://github.com/julelang/jule/issues/126">#126</a>,
+        <a href="https://github.com/julelang/jule/issues/34">#34</a>,
+        <a href="https://github.com/julelang/jule/issues/58">#58</a>,
+        <a href="https://github.com/julelang/jule/pull/118">#118</a>,
+      </div>
     </div>
   </main>
 </template>
