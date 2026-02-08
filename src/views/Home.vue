@@ -292,7 +292,6 @@ export default {
             <h3 class="text-lg font-semibold">Memory Management</h3>
             <p class="text-gray-400 text-md">
               Jule provides deterministic memory management based on reference counting.
-              Fast and efficient enough for most cases, suitable for real-time systems.
             </p>
             <pre id="memory-management" class="code text-[14px] overflow-auto"></pre>
           </div>
