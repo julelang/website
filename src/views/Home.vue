@@ -239,7 +239,7 @@ export default {
           >
             <h3 class="text-lg font-semibold">Error Handling</h3>
             <p class="text-gray-400 text-md">
-              Jule introduces exceptional functions for error handling. They are must be
+              Jule introduces exceptional functions for error handling. Errors must be
               handled immediately, should break algorithm or return value if needed; no
               deferred error handling!
             </p>
