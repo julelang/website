@@ -39,12 +39,8 @@ let mut b = foo.Buffer()`,
   <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-30">
     <center>
       <JuleLogo class="text-[gainsboro] h-52 mb-10"></JuleLogo>
-      <div
-        class="mb-52 transition-all duration-200 bg-clip-text max-w-(--breakpoint-lg) mx-auto px-5 bg-gradient-to-r from-pink-500 to-purple-600"
-      >
-        <div class="text-8xl max-sm:text-6xl max-md:text-7xl font-bold text-transparent">
-          Future of Jule
-        </div>
+      <div class="mx-auto mb-52 px-5 text-8xl max-sm:text-6xl max-md:text-7xl font-bold">
+        Future of Jule
       </div>
     </center>
     <div class="text-xl mb-14">
