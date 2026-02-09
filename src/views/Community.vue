@@ -6,9 +6,9 @@
       Contribute and get involved in our community
     </div>
     <div class="text-center">
-      There are plenty of ways to contribute in our community, whether you
+      There are plenty of ways to contribute to our community, whether you
       <br />
-      are a coder or not, you can help us in many ways like documenting.
+      are a coder or not, you can help us in many ways, like documenting.
     </div>
     <br /><br />
     <div class="flex flex-wrap justify-center gap-10">

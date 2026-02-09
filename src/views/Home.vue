@@ -240,8 +240,8 @@ export default {
             <h3 class="text-lg font-semibold">Error Handling</h3>
             <p class="text-gray-400 text-md">
               Jule introduces exceptional functions for error handling. Errors must be
-              handled immediately, should break algorithm or return value if needed; no
-              deferred error handling!
+              handled immediately, should break the algorithm, or return the value if
+              needed. No deferred error handling!
             </p>
             <pre id="error-handling" class="code text-[14px] overflow-auto"></pre>
           </div>
@@ -302,7 +302,7 @@ export default {
           >
             <h3 class="text-lg font-semibold">Interoperability</h3>
             <p class="text-gray-400 text-md">
-              Jule can play with C/C++ code easily, provides an API for safe and simple
+              Jule can play with C/C++ code easily, providing an API for a safe and simple
               experience. Just bind and use properly, do not port the whole code!
             </p>
             <pre id="interoperability" class="code text-[14px] overflow-auto"></pre>
@@ -316,9 +316,9 @@ export default {
         class="text-lg p-10 bg-[var(--bg-secondary)] bg-linear-to-t from-slate-600 text-white rounded-3xl"
       >
         <div class="font-semibold text-2xl">Open Source</div>
-        Including important parts of Jule such as the reference compiler, standards
-        library and API, is developed completely open source and free of charge, and its
-        source code open at
+        Including important parts of Jule, such as the reference compiler, standards
+        library and API, it is developed completely open source and free of charge, and
+        its source code is open in the
         <a class="underline" href="https://github.com/julelang/jule">GitHub repository</a
         >, open to contributions from the entire community. Many regular and non-regular
         contributors work together to make Jule more effective and stable. <br /><br />
@@ -326,13 +326,13 @@ export default {
         Jule has a cross-platform implementation, supports popular operating systems such
         as macOS, Linux, Windows and can generate code for popular architectures such as
         arm64, amd64, and intel 386. It is actively designed to implement all competencies
-        cross-platform and focuses on a homogeneous experience. We're excited for it to
+        cross-platform and focuses on a homogeneous experience. We're excited about it to
         have broader platform support in the future.
         <br /><br />
         <div class="font-semibold text-2xl">Well Documented</div>
         Jule has a well written and detailed manual. With each change on Jule, the manual
-        is often updated at the same time, and documentation of even the newest updates is
-        made available to the community immediately.
+        it is often updated at the same time, and documentation of even the newest updates
+        is made available to the community immediately.
       </div>
     </div>
 

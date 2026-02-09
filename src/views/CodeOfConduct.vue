@@ -4,22 +4,23 @@
     <br /><br />
     <div>
       Online communities allow people from many different backgrounds to come together.
-      The Jule community are committed providing an open, friendly, safe and welcoming
+      The Jule community are committed to providing an open, friendly, safe and welcoming
       environment for all, regardless of age, body size, disability, ethnicity, sex
-      characteristics, gender identity and expression, level of experience, education, of
+      characteristics, gender identity and expression, level of experience, education,
       socio-economic status, nationality, personal appearance, race, religion, or sexual
       identity and orientation or similar.
     </div>
     <br />
     <div>
-      The purpose of the code of conduct is to set a respectful, effective and productive
+      The purpose of the code of conduct is to set a respectful, effective, and productive
       standard of behavior for Jule contributors.
     </div>
     <br />
     <div>
-      Jule needs all the users and contributors to have a good and big community and for
-      it to be a successful project. Different ideas, views and disagreements are needed
-      for development and progress. However, disrespect is not acceptable.
+      Jule needs all the users and contributors to have a good and big community, and for
+      it is essential to ensure the project's success. Different ideas, views, and
+      disagreements are needed for development and progress. However, disrespect is not
+      acceptable.
     </div>
     <br />
     <div class="mb-1 text-2xl font-semibold">Julenour Characteristics</div>
@@ -113,7 +114,7 @@
     <div>
       Project maintainers have the right and responsibility to remove, edit, or reject
       comments, commits, code, wiki edits, issues, and other contributions that are not
-      aligned to this Code of Conduct, or to ban temporarily or permanently any
+      aligned with this Code of Conduct, or to ban temporarily or permanently any
       contributor for other behaviors that they deem inappropriate, threatening,
       offensive, or harmful.
     </div>
@@ -123,8 +124,8 @@
       Instances of abusive, harassing, or otherwise unacceptable behavior may be reported
       by contacting the project team at
       <a href="https://discord.com/invite/XNSUUDuGGQ">the Official Jule Discord Server</a
-      >. All complaints will be reviewed and investigated and will result in a response
-      that is deemed necessary and appropriate to the circumstances. The project team is
+      >. All complaints will be reviewed, investigated, and will result in a response that
+      is deemed necessary and appropriate to the circumstances. The project team is
       obligated to maintain confidentiality with regard to the reporter of an incident.
       Further details of specific enforcement policies may be posted separately.
     </div>

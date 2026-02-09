@@ -49,10 +49,10 @@ let mut b = foo.Buffer()`,
       is for Jule to become more stable and have a robust standard library. To make it
       easier for the community and official developers to develop any tools for Jule, a
       significant portion of Jule's official compiler is included in the standard library.
-      The standard library has important stages such as lexer, parser and semantic
-      analyzer and is suitable for use in tool development.
+      The standard library has important stages such as lexer, parser, and semantic
+      analyzer, and is suitable for use in tool development.
       <br /><br />
-      The syntax and language design of the Jule programming language has emerged and is
+      The syntax and language design of the Jule programming language have emerged and are
       not expected to undergo major changes. Expecting Jule developers not to make massive
       updates to their old code between releases. However, no commitment for that.
     </div>
@@ -60,15 +60,15 @@ let mut b = foo.Buffer()`,
     <div class="text-xl mb-14">
       <div class="text-4xl mb-4 font-semibold">Stability</div>
       Since Jule is still in beta, there is no stability commitment. Each new version may
-      break the previous codes and incompatibilities may occur. However, efforts are made
+      break the previous code and incompatibilities may occur. However, efforts are made
       to ensure that these are as few as possible. Thus, the aim is to keep the need for
       beta users to review their code for compatibility between versions to a minimum.
       <br /><br />
       Once Jule reaches a stable release, these are intended to be guaranteed from the
       first stable release; Code between versions is guaranteed to be compatible. In other
-      words, a release cannot break the codes written in previous versions. It has the
-      same unbreakability guarantee as the standard library compiler. If existing packages
-      are redesigned, the same public functions should be provided as much as possible and
+      words, a release cannot break the code written in previous versions. It has the same
+      unbreakability guarantee as the standard library compiler. If existing packages are
+      redesigned, the same public functions should be provided as much as possible, and
       the underlying implicit implementation should be changed. If this is not possible,
       versions such as V2 should be released.
     </div>
@@ -84,26 +84,26 @@ let mut b = foo.Buffer()`,
       <div class="mt-4 ml-4">
         <li>Avoid adding new syntax/keywords to the language.</li>
         <li>
-          Writing/reading comptime code should be provide similar experience as plain Jule
+          Writing/reading comptime code should provide a similar experience as plain Jule
           code as possible.
         </li>
         <li>
-          Supported by a sufficiently distinguishable semantics and does not compromise
+          Supported by a sufficiently distinguishable semantics, and does not compromise
           the clarity of the code.
         </li>
         <li>The effort required to distinguish comptime code should be minimal.</li>
       </div>
       <br />
       It has been decided that the comptime functions implemented within the scope of
-      these rules will be implemented to existing syntax structures in minimal
+      these rules will be implemented within existing syntax structures in minimal,
       easy-to-understand semantic ways and that the functionalities will be largely
       provided by the standard library. This standard library is available as the
       <b><u>std/comptime</u></b
       >. <br /><br />
-      Jule actively provides comptime and in some cases uses it as one of the main design
-      elements. For example, in the <b><u>std/encoding/json</u></b> standard library
-      package, it provide a JSON encoding/decoding algorithm designed entirely based on
-      comptime. <br /><br />
+      Jule actively provides comptime and, in some cases, uses it as one of the main
+      design elements. For example, in the <b><u>std/encoding/json</u></b> standard
+      library package, it provides a JSON encoding/decoding algorithm designed entirely
+      based on comptime. <br /><br />
       <b>List of Planned Features</b>
       <div class="mt-4 ml-4">
         Legend: [✔] implemented, [✕] Not-In-WIP
@@ -123,17 +123,17 @@ let mut b = foo.Buffer()`,
       <div class="mb-1 font-bold">Reference Counting</div>
       Jule currently uses an RC (reference counting) based memory approach by default.
       There is no other option, but RC can be turned off as an option. But this causes
-      memory leaks, especially in code that uses standard library packages because the
+      memory leaks, especially in code that uses standard library packages, because the
       standard library relies heavily on GC.
       <br /><br />
-      The current RC implementation includes some atomicity, but in most cases no serious
+      The current RC implementation includes some atomicity, but in most cases, no serious
       impact on program performance is expected. To make this better, it is planned to
       remove atomics but introduce non-annoying measures to prevent developers from making
       the least mistakes in this regard. In addition, if it is possible to understand the
       scopes of types that exhibit RC at compile time, there is an additional idea of
-      ​​compiler optimization that would eliminate the RC overhead.
+      compiler optimization that would eliminate the RC overhead.
       <div class="mt-7 mb-1 font-bold">Memory Allocations</div>
-      Currently memory allocations are like simple malloc and free calls in C. In the
+      Currently, memory allocations are like simple malloc and free calls in C. In the
       future, it is planned to improve these with special algorithms that are more
       performance-oriented and optimized for Jule. There are already different libraries
       that do this for different languages. To give an example, libraries such as TCMalloc
@@ -175,7 +175,7 @@ let mut b = foo.Buffer()`,
 
     <div class="text-xl mb-14">
       <div class="text-4xl mb-4 font-semibold">Archs & Platforms</div>
-      Jule currently supports some popular architectures and platforms. We working for
+      Jule currently supports some popular architectures and platforms. We are working for
       more support in the future and to improve support for already supported
       architectures and platforms.
       <br /><br />
@@ -208,32 +208,32 @@ let mut b = foo.Buffer()`,
 
     <div class="text-xl mb-14">
       <div class="text-4xl mb-4 font-semibold">Packages</div>
-      There is also the idea of ​​adding a package manager that ships with the official
+      There is also the idea of adding a package manager that ships with the official
       compiler at some stage. Jule's modern understanding of language and convenience
-      suggest that there should be a package manager that comes with the compiler. This
+      suggests that there should be a package manager that comes with the compiler. This
       package manager will provide management of non-standard library packages developed
       and published by the community.
       <br /><br />
       Packages are important structures for Jule because they help developers organize
       their code, manage dependencies, and create libraries. In the current
       implementation, there are two types of packages available to developers: packages
-      from the standard library and packages developed from Jule developers.
+      from the standard library and packages developed by Jule developers.
       <br /><br />
-      Standard packages are built-in by the compiler and are official packages. Developers
+      Standard packages are built into the compiler and are official packages. Developers
       can easily import standard packages in any Jule source code.
       <br /><br />
       But 3rd party packages require some effort. Modules are required to develop and use
       subpackages. Modules help better organize developed packages. To use 3rd party
-      packages, developers must create modules and place the package source codes in an
+      packages, developers must create modules and place the package source code in an
       appropriate directory in their project. Although this is a currently working
-      implementation, it has some difficulties such as dependency management.
+      implementation, it has some difficulties, such as dependency management.
       <br /><br />
       To avoid this, we aim to develop an official package manager, either included with
       the compiler or as a separate tool. This package manager should help developers by
       making it easier to obtain and manage packages. Although it is not a clearly planned
       approach, the package manager should avoid bloating the code base by adding direct
       dependencies to projects unless there are specific dependencies, and should position
-      the packages in a general area such as the standard library where the compiler can
+      the packages in a general area, such as the standard library, where the compiler can
       access them, thus making importing easier.
       <br /><br />
       Some issues are unclear, as issues such as how to distinguish packages from each
@@ -242,7 +242,7 @@ let mut b = foo.Buffer()`,
       <br /><br />
       <b>List of Planned Design Choices</b>
       <div class="mt-4 ml-4">
-        <li>Package manager comes integrated with compiler.</li>
+        <li>A package manager comes integrated with the compiler.</li>
         <li>
           Unless stated otherwise, dependencies are downloaded in a public directory and
           made available from there. Dependencies for each project should not be
@@ -262,9 +262,9 @@ let mut b = foo.Buffer()`,
       they will not be distributed internally to the compiler.
       <br /><br />
       Since developing tools for Jule is relatively easy, thanks to compiler packages in
-      standard library, we think the community can also develop various tools and plugins
-      for Jule and expand the ecosystem. To achieve this, we are trying to make the
-      compiler packages in the standard library as easy to use as possible.
+      the standard library, we think the community can also develop various tools and
+      plugins for Jule and expand the ecosystem. To achieve this, we are trying to make
+      the compiler packages in the standard library as easy to use as possible.
       <br /><br />
       <b>List of Planned Tools</b>
       <div class="mt-4 ml-4">
@@ -299,9 +299,9 @@ let mut b = foo.Buffer()`,
 
     <div class="text-xl mb-14">
       <div class="text-4xl mb-4 font-semibold">List of Planned Changes</div>
-      Here is a list of some ideas that have not been explained in detail but are in the
+      Here is a list of some ideas that have not been explained in detail, but are in the
       plans. The changes in this list include major changes such as syntax, semantics, and
-      standard library. These plans are not strictly accepted and exist only as ideas,
+      the standard library. These plans are not strictly accepted and exist only as ideas;
       they may be canceled or changed in the future for some reasons. The items in the
       list are not ordered according to any criteria.
       <div class="mt-4 ml-4">
@@ -340,9 +340,9 @@ let mut b = foo.Buffer()`,
 
     <div class="text-xl mb-14 pt-6 border-t-2 border-[var(--color-primary)]">
       <div class="text-4xl mb-4 font-semibold">Experimental & Theory</div>
-      This section contains experimental ideas, designs and theories. Whether they will be
-      implemented is uncertain and experimental, it needs to be well designed, implemented
-      and tested before implementation.
+      This section contains experimental ideas, designs, and theories. Whether they will
+      be implemented is uncertain and experimental, it needs to be well designed,
+      implemented, and tested before implementation.
 
       <div class="text-xl mt-8 mb-14">
         <div class="text-3xl mb-4 font-semibold">Responsive Mutability</div>
@@ -355,17 +355,16 @@ let mut b = foo.Buffer()`,
         would not be happy with it.
         <br /><br />
         This experimental design focuses on an approach that takes this intuition further.
-        The main design focus is on structure methods. In current implementation, a method
-        that returns a value must return mutable value. If the returned value is a
-        structure field, the self variable used must also be mutable. This may lead to the
-        need for an immutable variable to be mutable because of a method that only returns
-        a value.
+        The main design focus is on structure methods. In the current implementation, a
+        method that returns a value must return a mutable value. If the returned value is
+        a structure field, the self variable used must also be mutable. This may lead to
+        the need for an immutable variable to be mutable because of a method that only
+        returns a value.
         <br /><br />
         To prevent this, the design addresses adding the necessary responsiveness to the
-        methods through elegantly as far as possible designed syntax/semantic improvement.
-        After implementing this design, when a structure method returns a value to be used
-        in an immutable variable, it should be able to return even fields with mutable
-        type.
+        methods as elegantly as possible, and designs syntax/semantic improvement. After
+        implementing this design, when a structure method returns a value to be used in an
+        immutable variable, it should be able to return even fields with a mutable type.
         <br /><br />
         <b>Example Implementation</b>
         <br /><br />
@@ -409,7 +408,7 @@ let mut b = foo.Buffer()`,
           </li>
           <li>
             Responsive mutability only applies to return values. It should be allowed to
-            return even if return values ​​pose a risk of mutability. Risky situations
+            return even if return values pose a risk of mutability. Risky situations
             should be checked at points where the return value is used, such as
             assignments. Thus, responsiveness will be gained.
           </li>
@@ -419,7 +418,7 @@ let mut b = foo.Buffer()`,
         <br /><br />
         Implementing Responsive Mutability can provide many advantages. One of these is
         that it will enable developers to write more flexible code and maintain
-        immutability more easily. However, implementation has some difficulties and these
+        immutability more easily. However, implementation has some difficulties, and these
         gains must be achieved without significantly increasing compilation time.
         <br /><br />
         Here are some cases that can significantly affect compilation time:
@@ -437,7 +436,7 @@ let mut b = foo.Buffer()`,
           </li>
           <li>
             For returns statements, the compiler must perform additional analysis to
-            understand which returned values ​​are risky and which should be responsive.
+            understand which returned values are risky and which should be responsive.
           </li>
         </div>
         <br />
@@ -477,22 +476,21 @@ let mut b = foo.Buffer()`,
       <div class="text-3xl mb-4 font-semibold">Development Approach</div>
       There is no implementation date for when the planned features will be implemented.
       We don't want to implement a lot of things before Jule becomes stable and reliable
-      enough, this would result as end up with a lot of very fragile & buggy
-      implementations. We want to have as many well-implemented features and libraries as
-      possible, therefore the development process can be slow because of We are not
-      competent in everything, and for a good implementation, we first need to make sure
-      that we have enough knowledge. It is better to gain well-implemented libraries and
-      features with time cost, than to have fragile and buggy implementations and get a
-      lot of things quickly.
+      enough, as this would result in a lot of very fragile & buggy implementations. We
+      want to have as many well-implemented features and libraries as possible. The
+      development process can be slow because we are not competent in everything, and for
+      a good implementation, we first need to make sure that we have enough knowledge. It
+      is better to gain well-implemented libraries and features with time cost than to
+      have fragile and buggy implementations and get a lot of things quickly.
       <br /><br />
       Although our goal is well-implemented, we may make mistakes. You can join the
       community, report issues, or open a PR to speed up the development process, fix
-      bugs, and contribute in other matters.
+      bugs, and contribute to other matters.
       <br /><br />
       Although Jule has C/C++ interoperability, our priority is to develop the standard
       library packages and compiler with Pure Jule as much as possible. Integrating an
-      existing C/C++ library for a feature is not a welcomed idea. Instead, it is
-      preferred to design it as a 3rd-party binding library package.
+      existing C/C++ library for a feature is not a welcome idea. Instead, it is preferred
+      to design it as a 3rd-party binding library package.
     </div>
 
     <div class="text-xl mb-14 pt-6 border-t-2 border-[var(--color-primary)]">
