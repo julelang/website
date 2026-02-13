@@ -246,6 +246,17 @@
               </li>
               <li>
                 <a
+                  href="https://github.com/julelang/jule/blob/master/std/jule/resource"
+                  target="_blank"
+                  class="text-lg font-code"
+                  >resource/</a
+                >
+                <div>
+                  API for compile-time resources, such as compile-time included files.
+                </div>
+              </li>
+              <li>
+                <a
                   href="https://github.com/julelang/jule/blob/master/std/jule/sema"
                   target="_blank"
                   class="text-lg font-code"
