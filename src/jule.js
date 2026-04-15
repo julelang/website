@@ -50,6 +50,7 @@ function jule(hljs) {
         "mut",
         "defer",
         "error",
+        "throw",
         "chan",
         "select",
         "async",
@@ -71,8 +72,8 @@ function jule(hljs) {
         'copy',
         'append',
         'panic',
-        'assert',
-        'clone',
+        "delete",
+        "close",
     ];
 
     const TYPES = [
