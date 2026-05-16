@@ -24,7 +24,7 @@ function jule(hljs) {
     const KEYWORDS = [
         "map",
         "const",
-        "ret",
+        "return",
         "type",
         "for",
         "break",
@@ -92,7 +92,7 @@ function jule(hljs) {
         "rune",
         "f32",
         "f64",
-        "str",
+        "string",
         "bool",
         "any",
     ];

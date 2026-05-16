@@ -17,7 +17,7 @@ let code = [
   `let mut users: []User
 json::Decode(data, &users) else {
   fmt::Println("JSON error: ", error)
-  ret
+  return
 }
 fmt::Println(users)`,
   `c := make(chan int)
@@ -32,12 +32,12 @@ for v in c {
   const t = comptime::TypeOf(T)
   const match t.Kind() {
   | comptime::Slice:
-    ret n <= cap(buf)
+    return n <= cap(buf)
   | comptime::Array:
-    ret n <= len(buf)
+    return n <= len(buf)
   }
 }`,
-  `fn Write(path: str, data: []byte) {
+  `fn Write(path: string, data: []byte) {
   path := integ::BytesFromStr(path)
   mode := integ::BytesFromStr("w")
   unsafe {

@@ -20,7 +20,7 @@ export default {
 
 impl Foo {
     fn Buffer(mut~ self): (mut~ []byte) {
-        ret self.buf
+        return self.buf
     }
 }`,
       { language: "jule" }
