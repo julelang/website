@@ -75,7 +75,7 @@ export default {
                 <td class="px-6 py-4">{{ (file.size / 1024 ** 2).toFixed(2) }}MB</td>
                 <td class="px-6 py-4">
                   {{
-                    file.name.includes("darwin")
+                    file.name.includes("darwin") || file.name.includes("macos")
                       ? "macOS"
                       : file.name.includes("windows")
                       ? "Windows"
@@ -87,11 +87,11 @@ export default {
                 <td class="px-6 py-4">
                   {{
                     file.name.includes("i386")
-                      ? "x86"
+                      ? "intel 386"
                       : file.name.includes("arm64")
                       ? "ARM64"
                       : file.name.includes("amd64")
-                      ? "x86-64"
+                      ? "AMD64"
                       : "unknown"
                   }}
                 </td>
@@ -110,57 +110,6 @@ export default {
         </div>
       </div>
     </div>
-
-    <!--
-    <div class="overflow-auto h-60 h-fit">
-      <table class="table-auto w-full whitespace-nowrap">
-        <tr class="text-left bg-zinc-100 border-b border-zinc-400">
-          <th class="p-2">File Name</th>
-          <th class="p-2">Size</th>
-          <th class="p-2">OS</th>
-          <th class="p-2">Arch</th>
-          <th class="p-2">Date</th>
-        </tr>
-        <tr class="bg-zinc-100 even:bg-zinc-200" v-for="file in release.assets">
-          <td class="p-2">
-            <a :href="file.browser_download_url">{{ file.name }}</a>
-          </td>
-          <td class="p-2">{{ (file.size / 1024 ** 2).toFixed(2) }}MB</td>
-          <td class="p-2">
-            {{
-              file.name.includes("darwin")
-                ? "macOS"
-                : file.name.includes("windows")
-                ? "Windows"
-                : file.name.includes("linux")
-                ? "Linux"
-                : "unknown"
-            }}
-          </td>
-          <td class="p-2">
-            {{
-              file.name.includes("i386")
-                ? "x86"
-                : file.name.includes("arm64")
-                ? "ARM64"
-                : file.name.includes("amd64")
-                ? "x86-64"
-                : "unknown"
-            }}
-          </td>
-          <td class="p-2">
-            {{
-              new Date(release.created_at)
-                .toISOString()
-                .replace("T", " ")
-                .replace("Z", "")
-                .slice(0, 10)
-            }}
-          </td>
-        </tr>
-      </table>
-    </div>
-    -->
   </main>
 </template>
 

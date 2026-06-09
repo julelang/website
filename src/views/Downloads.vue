@@ -49,7 +49,7 @@ export default {
         os = null;
 
       if (macosPlatforms.indexOf(platform) !== -1) {
-        os = "Mac OS";
+        os = "macOS";
       } else if (windowsPlatforms.indexOf(platform) !== -1) {
         os = "Windows";
       } else {
@@ -61,8 +61,8 @@ export default {
     getAssets(os) {
       if (os == "Windows") {
         os = "windows";
-      } else if (os == "Mac OS") {
-        os = "darwin";
+      } else if (os == "macOS") {
+        os = "macos";
       } else {
         os = "linux";
       }
@@ -72,6 +72,8 @@ export default {
 
       for (let asset in assets) {
         if (assets[asset].name.includes(os)) {
+          os_assets.push(assets[asset]);
+        } else if (os == "macos" && assets[asset].name.includes("darwin")) {
           os_assets.push(assets[asset]);
         }
       }
@@ -122,7 +124,7 @@ export default {
           class="text-2xl"
         />
         <font-awesome-icon
-          v-if="getOS() == 'Mac OS'"
+          v-if="getOS() == 'macOS'"
           icon="fa-brands fa-apple"
           class="text-2xl"
         />

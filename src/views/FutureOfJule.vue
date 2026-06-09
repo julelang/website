@@ -197,7 +197,7 @@ let mut b = foo.Buffer()`,
         <br /><br />
         <li><b>Windows</b> [✔]</li>
         <li><b>Linux</b> [✔]</li>
-        <li><b>Darwin</b> [✔]</li>
+        <li><b>macOS</b> [✔]</li>
         <li><b>Solaris</b> [✕]</li>
         <li><b>FreeBSD</b> [✕]</li>
         <li><b>NetBSD</b> [✕]</li>
