@@ -38,8 +38,8 @@ for v in c {
   }
 }`,
   `fn Write(path: string, data: []byte) {
-  path := integ::BytesFromStr(path)
-  mode := integ::BytesFromStr("w")
+  path := integ::BytesFromString(path)
+  mode := integ::BytesFromString("w")
   unsafe {
     f := extern.fopen(CharPtr(&path[0]), CharPtr(&mode[0]))
     extern.fwrite(&data[0], mem::SizeOf(byte), len(data), f)
