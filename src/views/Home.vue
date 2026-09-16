@@ -15,7 +15,7 @@ hljs.registerLanguage("jule", jule.jule);
 
 let code = [
   `let mut users: []User
-json::Decode(data, &users) else {
+json::Decode(data, &users) catch {
   fmt::Println("JSON error: ", error)
   return
 }
