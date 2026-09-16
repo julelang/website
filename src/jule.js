@@ -37,7 +37,7 @@ function jule(hljs) {
         "goto",
         "enum",
         "struct",
-        "co",
+        "spawn",
         "match",
         "self",
         "trait",
@@ -53,8 +53,7 @@ function jule(hljs) {
         "throw",
         "chan",
         "select",
-        "async",
-        "await",
+        "catch"
     ];
 
     const LITERALS = [

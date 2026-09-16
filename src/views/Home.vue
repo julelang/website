@@ -22,11 +22,11 @@ json::Decode(data, &users) else {
 fmt::Println(users)`,
   `c := make(chan int)
 mut i := 0
-for i < 1_000_000; i++ {
-  co async fn() { c <- i }()
+for i < 1_000; i++ {
+  spawn fn() { c <- i }()
 }
 for v in c {
-  fmt::Println("coroutine #", v)
+  fmt::Println("thread #", v)
 }`,
   `fn IsEnoughSpace[T](buf: T, n: int): bool {
   const t = comptime::TypeOf(T)
@@ -252,10 +252,8 @@ export default {
           >
             <h3 class="text-lg font-semibold">Concurrency</h3>
             <p class="text-gray-400 text-md">
-              Jule offers lightweight coroutines for concurrency powered by its own
-              scheduler. Write concurrent code with elegant syntax and without directly
-              dealing with OS threads, using mutexes, channels, select statements, and
-              more.
+              Jule offers threads for concurrency. Write concurrent code with elegant
+              syntax, using mutexes, channels, select statements, and more.
             </p>
             <pre id="concurrency" class="code text-[14px] overflow-auto"></pre>
           </div>

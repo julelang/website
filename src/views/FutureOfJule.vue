@@ -147,23 +147,18 @@ let mut b = foo.Buffer()`,
 
     <div class="text-xl mb-14">
       <div class="text-4xl mb-4 font-semibold">Concurrency</div>
-      With Jule 0.2.0, coroutines were introduced. They operate in a stackless manner and
-      are managed by the runtime. The Jule runtime ships with an internal async runtime
-      and executes coroutines using a cooperative scheduler.
+      Historically, Jule adopted a thread-based concurrency model. Later, it transitioned
+      to a stackless coroutine model using `async/await` and utilized its own scheduler.
       <br /><br />
-      Previously, operating system threads were the fundamental unit of concurrency. They
-      are now used internally by the scheduler to execute coroutines concurrently. No
-      public OS thread API is exposed to developers.
-      <br /><br />
-      From this point on, our primary goal is to further optimize the scheduler. We aim to
-      improve stability and make using coroutines as easy as possible.
+      However, as this proved unsuitable for Jule over time, the approach was abandoned in
+      favor of returning to thread-based concurrency. Coroutines are not currently a
+      planned feature.
       <br /><br />
       <b>List of Planned Features</b>
       <div class="mt-4 ml-4">
         Legend: [✔] implemented, [✕] Not-In-WIP
         <br /><br />
-        <li><b>Coroutines</b> [✔]</li>
-        <li><b>Native Threads</b> [✔] (not directly, managed by the runtime)</li>
+        <li><b>Native Threads</b> [✔]</li>
         <li><b>Channels</b> (Like Go) [✔]</li>
         <li><b>WaitGroup</b> (Like Go) [✔]</li>
         <li><b>Atomics</b> [✔]</li>
