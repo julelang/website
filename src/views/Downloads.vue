@@ -73,7 +73,10 @@ export default {
       for (let asset in assets) {
         if (assets[asset].name.includes(os)) {
           os_assets.push(assets[asset]);
-        } else if (os == "macos" && assets[asset].name.includes("darwin")) {
+        } else if (
+          os == "macos" &&
+          (assets[asset].name.includes("darwin") || assets[asset].name.includes("macos"))
+        ) {
           os_assets.push(assets[asset]);
         }
       }
