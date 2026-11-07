@@ -1,46 +1,30 @@
-# Official Website of Jule
-The official website of [the Jule Programming Language](https://github.com/julelang/jule), live at <https://jule.dev>.
+# jule.dev website
 
-## Building the website
-### Gitpod
-Skip all of the steps below by using Gitpod, which automatically does it for you.
+The official website of the [Jule programming language](https://github.com/julelang/jule).
+Built with Vue 3, Vite and Tailwind CSS v4. Fonts are self-hosted (no external requests).
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/julelang/website)
+## Develop
 
-### Manually/locally
-1. Fork the repository [here](https://github.com/julelang/website/fork).
-2. Clone the forked repository.
-
-```bash
-git clone https://github.com/<your-username-here>/website
+```sh
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # outputs to dist/
+npm run preview
 ```
 
-3. Change the directory to the cloned repository.
+## Deploy (Vercel)
 
-```bash
-cd website
-```
+Import the repository in Vercel. The framework is detected as **Vite**
+(build: `npm run build`, output: `dist`). `vercel.json` already contains the SPA
+rewrite, cache headers and basic security headers.
 
-4. Install the required dependencies with [NPM](https://www.npmjs.com/).
+## Structure
 
-```bash
-npm ci
-```
+- `src/views/` pages (`Home`, `Downloads`, `Release`, `Community`, ...)
+- `src/content/*.html` long-form text of Future of Jule, Contributing and Code of Conduct. Edit these to change the copy.
+- `src/lib/nav.js` single source for navbar, footer and the Ctrl/⌘+K search
+- `src/lib/github.js` cached GitHub API client (releases, star count)
+- `src/styles/main.css` design tokens (colors, fonts, themes) and syntax highlight colors
+- `public/` favicon, OG image, robots.txt, sitemap.xml
 
-5. Build and compile the website.
-
-```bash
-npm run build
-```
-
-6. Run the website at port 5173.
-
-```bash
-npm run dev
-```
-
-That's it! :tada: You have successfully run the website locally.
-
-## License
-The repository is under the terms of the BSD-3 Clause license.\
-See the [`LICENSE`](https://github.com/julelang/website/blob/master/LICENSE) file for more information.
+The domain `https://jule.dev` is used in `index.html`, `public/sitemap.xml`, `public/robots.txt` and `src/router.js`; change it if needed.

@@ -1,393 +1,224 @@
+<script setup>
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
+import { useRoute } from "vue-router";
+import { ChevronDown, Menu, X, Star, ExternalLink } from "@lucide/vue";
+import JuleLogo from "./JuleLogo.vue";
+import BrandIcon from "./BrandIcon.vue";
+import ThemeToggle from "./ThemeToggle.vue";
+import { groups, isExternal } from "@/lib/nav.js";
+import { repo, loadRepo } from "@/lib/useRepo.js";
+import { formatCount } from "@/lib/github.js";
+
+const route = useRoute();
+
+const byTitle = (t) => groups.find((g) => g.title === t);
+const menus = [
+  { title: "Learn", groups: [byTitle("Learn")] },
+  { title: "Project", groups: [byTitle("Project"), byTitle("Tools")] },
+  { title: "Community", groups: [byTitle("Community")] },
+];
+
+const openMenu = ref(null);
+const mobile = ref(false);
+const scrolled = ref(false);
+const root = ref(null);
+let hoverTimer;
+
+const onScroll = () => (scrolled.value = window.scrollY > 8);
+const onDoc = (e) => {
+  if (root.value && !root.value.contains(e.target)) openMenu.value = null;
+};
+const onKey = (e) => {
+  if (e.key === "Escape") {
+    openMenu.value = null;
+    mobile.value = false;
+  }
+};
+function hover(i, on) {
+  if (!window.matchMedia("(hover: hover)").matches) return;
+  clearTimeout(hoverTimer);
+  hoverTimer = setTimeout(
+    () => (openMenu.value = on ? i : openMenu.value === i ? null : openMenu.value),
+    on ? 60 : 160
+  );
+}
+
+onMounted(() => {
+  loadRepo();
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  document.addEventListener("click", onDoc);
+  document.addEventListener("keydown", onKey);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScroll);
+  document.removeEventListener("click", onDoc);
+  document.removeEventListener("keydown", onKey);
+});
+watch(
+  () => route.fullPath,
+  () => {
+    openMenu.value = null;
+    mobile.value = false;
+  }
+);
+watch(mobile, (v) => (document.documentElement.style.overflow = v ? "hidden" : ""));
+</script>
+
 <template>
-  <nav
-    :class="{ 'main-view': isMainView }"
-    class="bg-[var(--bg-primary)] text-white px-6 py-4 shadow-md fixed w-full z-50 top-0"
+  <header
+    ref="root"
+    class="fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200"
+    :class="
+      scrolled || mobile
+        ? 'border-line bg-bg/85 backdrop-blur-xl'
+        : 'border-transparent bg-transparent'
+    "
   >
-    <div class="max-w-7xl mx-auto flex items-center justify-between md:justify-start">
-      <router-link id="navbar-logo" class="mr-10" to="/" aria-label="Home">
-        <JuleLogo
-          class="select-none text-white h-12"
-          src="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.png"
-        ></JuleLogo>
-      </router-link>
-
-      <!-- Hamburger -->
-      <button
-        @click="mobileMenuOpen = !mobileMenuOpen"
-        class="md:hidden focus:outline-none"
-      >
-        <svg
-          v-if="!mobileMenuOpen"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+    <nav class="container-x flex h-16 items-center gap-2" aria-label="Main">
+      <RouterLink to="/" class="mr-3 flex items-center gap-2.5" aria-label="Jule home">
+        <JuleLogo class="h-8 w-8 text-accent" />
+        <span class="font-display text-xl font-semibold tracking-tight text-fg"
+          >Jule</span
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      </RouterLink>
+
+      <ul class="hidden items-center gap-0.5 md:flex">
+        <li
+          v-for="(m, i) in menus"
+          :key="m.title"
+          class="relative"
+          @mouseenter="hover(i, true)"
+          @mouseleave="hover(i, false)"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-
-      <!-- Menu (desktop) -->
-      <ul class="hidden md:flex space-x-8">
-        <li v-for="(menu, index) in menus" :key="index" class="relative">
-          <div
-            @mouseenter="openMenu(index)"
-            @mouseleave="closeMenu(index)"
-            class="flex items-center space-x-1 cursor-pointer select-none"
-          >
-            <button
-              class="flex items-center space-x-1 hover:text-gray-300 focus:outline-none"
-              type="button"
-            >
-              <span>{{ menu.title }}</span>
-              <svg
-                v-if="menu.submenus"
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4 transform transition-transform duration-200"
-                :class="{ 'rotate-180': openedIndex === index }"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-
-            <!-- Dropdown -->
-            <transition name="fade-slide" appear>
-              <div
-                v-show="menu.submenus && openedIndex === index"
-                class="absolute top-full mt-2 bg-[var(--bg-primary)] rounded shadow-2xl min-w-[320px] p-4 z-50 left-0"
-              >
-                <div class="flex max-h-[500px] min-w-max">
-                  <div class="flex flex-wrap gap-8">
-                    <div
-                      v-for="(submenuGroup, subIndex) in menu.submenus"
-                      :key="subIndex"
-                      class="min-w-[140px]"
-                    >
-                      <h4 class="font-semibold mb-2 border-b border-gray-700 pb-1">
-                        {{ submenuGroup.groupTitle }}
-                      </h4>
-                      <ul class="space-y-1">
-                        <li
-                          v-for="(item, itemIndex) in submenuGroup.items"
-                          :key="itemIndex"
-                          class="hover:bg-gray-700 rounded p-1 cursor-pointer"
-                        >
-                          <a :href="item.link" rel="noopener noreferrer">
-                            <div class="flex flex-col">
-                              <div>{{ item.title }}</div>
-                              <small class="text-gray-400 text-xs mt-0.5">{{
-                                item.desc
-                              }}</small>
-                            </div>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </transition>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Menu (mobile) -->
-    <transition name="fade">
-      <div
-        v-if="mobileMenuOpen"
-        class="md:hidden mt-4 bg-[var(--bg-primary)] rounded p-4 space-y-4"
-      >
-        <div v-for="(menu, index) in menus" :key="'m' + index">
           <button
-            @click="toggleMobileMenu(index)"
-            class="w-full flex justify-between items-center font-semibold px-2 py-2 rounded hover:bg-gray-700 focus:outline-none"
+            type="button"
+            class="flex h-9 items-center gap-1 rounded-lg px-3 text-sm font-medium text-muted transition hover:text-fg"
+            :class="openMenu === i ? 'text-fg' : ''"
+            :aria-expanded="openMenu === i"
+            aria-haspopup="true"
+            @click="openMenu = openMenu === i ? null : i"
           >
-            {{ menu.title }}
-            <svg
-              v-if="menu.submenus"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 transition-transform duration-300"
-              :class="{ 'rotate-180': mobileOpenedIndex === index }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            {{ m.title }}
+            <ChevronDown
+              :size="15"
+              class="transition-transform"
+              :class="openMenu === i ? 'rotate-180' : ''"
+            />
           </button>
-
-          <transition name="slide-fade">
-            <div
-              v-if="menu.submenus && mobileOpenedIndex === index"
-              class="pl-4 mt-2 space-y-3 border-l border-gray-700"
-            >
-              <div
-                v-for="(submenuGroup, subIndex) in menu.submenus"
-                :key="'m-sub-' + subIndex"
-                class="flex flex-wrap gap-4"
-              >
-                <div class="min-w-[120px]">
-                  <h5 class="font-semibold mb-1">{{ submenuGroup.groupTitle }}</h5>
-                  <ul class="space-y-1">
-                    <li
-                      v-for="(item, itemIndex) in submenuGroup.items"
-                      :key="'m-item-' + itemIndex"
-                      class="hover:bg-gray-700 rounded p-1"
-                    >
-                      <a :href="item.link" rel="noopener noreferrer">
-                        <div class="flex flex-col">
-                          <div>{{ item.title }}</div>
-                          <small class="text-gray-400 text-xs mt-0.5">{{
-                            item.desc
-                          }}</small>
-                        </div>
-                      </a>
+          <div v-show="openMenu === i" class="absolute left-0 top-full pt-2">
+            <div class="facet" style="--facet-bg: var(--c-surface)">
+              <div class="facet-in flex gap-6 p-3">
+                <div v-for="g in m.groups" :key="g.title" class="w-64">
+                  <div class="px-3 pb-1 pt-2 text-xs font-medium text-dim">
+                    {{ g.title }}
+                  </div>
+                  <ul>
+                    <li v-for="item in g.items" :key="item.href">
+                      <component
+                        :is="isExternal(item.href) ? 'a' : 'RouterLink'"
+                        v-bind="
+                          isExternal(item.href)
+                            ? {
+                                href: item.href,
+                                target: '_blank',
+                                rel: 'noopener noreferrer',
+                              }
+                            : { to: item.href }
+                        "
+                        class="group block rounded-lg px-3 py-2 transition hover:bg-surface2"
+                      >
+                        <span
+                          class="flex items-center gap-1.5 text-sm font-medium text-fg"
+                        >
+                          {{ item.title }}
+                          <ExternalLink
+                            v-if="isExternal(item.href)"
+                            :size="12"
+                            class="text-dim opacity-0 transition group-hover:opacity-100"
+                          />
+                        </span>
+                        <span class="block text-xs leading-snug text-muted">{{
+                          item.desc
+                        }}</span>
+                      </component>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
-          </transition>
-        </div>
+          </div>
+        </li>
+        <li>
+          <RouterLink
+            to="/future-of-jule"
+            class="flex h-9 items-center rounded-lg px-3 text-sm font-medium text-muted transition hover:text-fg"
+            active-class="!text-fg"
+            >Future of Jule</RouterLink
+          >
+        </li>
+      </ul>
+
+      <div class="ml-auto flex items-center gap-2">
+        <a
+          href="https://github.com/julelang/jule"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden h-9 items-center gap-2 rounded-lg border border-line px-3 text-sm text-muted transition hover:border-accent hover:text-fg sm:flex"
+          aria-label="Jule on GitHub"
+        >
+          <BrandIcon name="github" class="text-base" />
+          <template v-if="repo">
+            <Star :size="13" class="text-accent" />
+            <span class="font-medium tabular-nums text-fg">{{
+              formatCount(repo.stargazers_count)
+            }}</span>
+          </template>
+        </a>
+        <ThemeToggle />
+        <RouterLink to="/downloads" class="btn btn-primary btn-sm hidden md:inline-flex"
+          >Download</RouterLink
+        >
+        <button
+          type="button"
+          class="grid h-9 w-9 place-items-center rounded-lg border border-line text-fg md:hidden"
+          :aria-expanded="mobile"
+          aria-label="Toggle menu"
+          @click="mobile = !mobile"
+        >
+          <X v-if="mobile" :size="18" />
+          <Menu v-else :size="18" />
+        </button>
       </div>
-    </transition>
-  </nav>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div
+      v-if="mobile"
+      class="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-bg px-5 pb-8 pt-4 md:hidden"
+    >
+      <div class="mb-5 flex gap-2">
+        <RouterLink to="/downloads" class="btn btn-primary flex-1">Download</RouterLink>
+      </div>
+      <div v-for="g in groups" :key="g.title" class="mb-5">
+        <div class="mb-1 text-xs font-medium text-dim">{{ g.title }}</div>
+        <ul>
+          <li v-for="item in g.items" :key="item.href">
+            <component
+              :is="isExternal(item.href) ? 'a' : 'RouterLink'"
+              v-bind="
+                isExternal(item.href)
+                  ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' }
+                  : { to: item.href }
+              "
+              class="flex items-center justify-between rounded-lg py-2.5 text-[0.95rem] font-medium text-fg"
+            >
+              {{ item.title }}
+              <ExternalLink v-if="isExternal(item.href)" :size="14" class="text-dim" />
+            </component>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
 </template>
-
-<script>
-import { computed } from "vue";
-import { RouterLink, useRoute } from "vue-router";
-import JuleLogo from "./JuleLogo.vue";
-
-export default {
-  name: "Navbar",
-  components: {
-    JuleLogo,
-  },
-  setup() {
-    const route = useRoute();
-    const isMainView = computed(() => route.path === "/");
-    return { isMainView };
-  },
-  data() {
-    return {
-      mobileMenuOpen: false,
-      openedIndex: null,
-      mobileOpenedIndex: null,
-      hoverTimeout: null,
-      menus: [
-        {
-          title: "Jule",
-          submenus: [
-            {
-              groupTitle: "Project",
-              items: [
-                {
-                  title: "Future Of Jule",
-                  desc: "Plans and features for the future.",
-                  link: "/future-of-jule",
-                },
-                {
-                  title: "Source Code",
-                  desc:
-                    "Source code of the reference compiler, standard library and API.",
-                  link: "https://github.com/julelang/jule",
-                },
-                {
-                  title: "Issue Tracker",
-                  desc: "Bug reports, proposals and security vulnerabilities",
-                  link: "https://github.com/julelang/jule/issues",
-                },
-                {
-                  title: "Contributing",
-                  desc: "Contributing guidelines.",
-                  link: "/contribute",
-                },
-                {
-                  title: "LICENSE",
-                  desc: "License of the Jule project.",
-                  link: "https://github.com/julelang/jule/blob/master/LICENSE",
-                },
-              ],
-            },
-            {
-              groupTitle: "Tools",
-              items: [
-                {
-                  title: "julefmt",
-                  desc: "Official source code formatter, written in Jule.",
-                  link: "https://github.com/julelang/julefmt",
-                },
-                {
-                  title: "juledoc",
-                  desc:
-                    "Official documentation generator from the source code, written in Jule.",
-                  link: "https://github.com/julelang/juledoc",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title: "Resources",
-          submenus: [
-            {
-              groupTitle: "Resources",
-              items: [
-                {
-                  title: "Manual",
-                  desc: "The official manual and key resource of the Jule.",
-                  link: "https://manual.jule.dev",
-                },
-                {
-                  title: "Getting Started",
-                  desc: "Start using Jule with a guide.",
-                  link: "https://manual.jule.dev/getting-started",
-                },
-                {
-                  title: "Awesome Jule",
-                  desc: "Awesome projects written in Jule and Jule-related.",
-                  link: "https://github.com/julelang/awesome-jule",
-                },
-                {
-                  title: "TheAlgorithms/Jule",
-                  desc: "Algorithms implemented in Jule.",
-                  link: "https://github.com/thealgorithms/jule",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title: "Community",
-          submenus: [
-            {
-              groupTitle: "Community",
-              items: [
-                {
-                  title: "GitHub Organization",
-                  desc: "The official GitHub Organization of the Jule project.",
-                  link: "https://github.com/julelang",
-                },
-                {
-                  title: "Discord",
-                  desc: "Join to the Official Discord Server.",
-                  link: "https://discord.gg/XNSUUDuGGQ",
-                },
-                {
-                  title: "Julenour Code of Conduct",
-                  desc: "Common charecteristics of every Julenour",
-                  link: "/code-of-conduct",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
-  },
-  methods: {
-    openMenu(index) {
-      if (this.hoverTimeout) {
-        clearTimeout(this.hoverTimeout);
-        this.hoverTimeout = null;
-      }
-      this.openedIndex = index;
-    },
-    closeMenu(index) {
-      this.hoverTimeout = setTimeout(() => {
-        if (this.openedIndex === index) this.openedIndex = null;
-        this.hoverTimeout = null;
-      }, 50);
-    },
-    toggleMobileMenu(index) {
-      this.mobileOpenedIndex = this.mobileOpenedIndex === index ? null : index;
-    },
-  },
-};
-</script>
-
-<style scoped>
-/* Minimal transition for fade and slide */
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-.slide-fade-enter-active {
-  transition: all 0.3s ease;
-  transform-origin: top;
-}
-.slide-fade-enter-from {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: all 0.25s ease;
-}
-.fade-slide-enter-from {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.fade-slide-enter-to {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-slide-leave-from {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.main-view #navbar-logo {
-  opacity: 0;
-  width: 0px;
-  margin-right: 0px;
-}
-</style>

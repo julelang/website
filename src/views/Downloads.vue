@@ -1,220 +1,167 @@
-<script>
-import { RouterLink } from "vue-router";
+<script setup>
+import { computed, onMounted } from "vue";
+import { ArrowRight, RotateCw, BookOpen } from "@lucide/vue";
+import AssetTable from "@/components/AssetTable.vue";
+import { releases, releasesError, loadReleases, retryReleases } from "@/lib/useRepo.js";
+import { formatDate } from "@/lib/github.js";
 
-import TheBadge from "../components/TheBadge.vue";
-
-export default {
-  components: {
-    TheBadge,
-  },
-  data() {
-    return {
-      releases: [],
-    };
-  },
-  methods: {
-    dropdownToggle() {
-      const items = document.getElementById("dropdown-items");
-      const button = document.getElementById("dropdown-button");
-
-      items.classList.toggle("hidden");
-
-      button.classList.toggle("rounded-b-sm");
-      button.classList.toggle("bg-[var(--color-primary-darker)]");
-    },
-    dropdownOff: function (event) {
-      const dropdown = document.getElementById("dropdown");
-      const items = document.getElementById("dropdown-items");
-      const button = document.getElementById("dropdown-button");
-
-      if (event.target !== dropdown && !dropdown.contains(event.target)) {
-        if (!items.classList.contains("hidden")) {
-          items.classList.add("hidden");
-        }
-
-        if (!button.classList.contains("rounded-b-sm")) {
-          button.classList.add("rounded-b-sm");
-        }
-
-        if (button.classList.contains("bg-[var(--color-primary-darker)]")) {
-          button.classList.remove("bg-[var(--color-primary-darker)]");
-        }
-      }
-    },
-    getOS() {
-      var platform =
-          window.navigator?.userAgentData?.platform || window.navigator.platform,
-        macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
-        windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
-        os = null;
-
-      if (macosPlatforms.indexOf(platform) !== -1) {
-        os = "macOS";
-      } else if (windowsPlatforms.indexOf(platform) !== -1) {
-        os = "Windows";
-      } else {
-        os = "Linux";
-      }
-
-      return os;
-    },
-    getAssets(os) {
-      if (os == "Windows") {
-        os = "windows";
-      } else if (os == "macOS") {
-        os = "macos";
-      } else {
-        os = "linux";
-      }
-
-      const assets = this.releases[0]?.assets;
-      let os_assets = [];
-
-      for (let asset in assets) {
-        if (assets[asset].name.includes(os)) {
-          os_assets.push(assets[asset]);
-        } else if (
-          os == "macos" &&
-          (assets[asset].name.includes("darwin") || assets[asset].name.includes("macos"))
-        ) {
-          os_assets.push(assets[asset]);
-        }
-      }
-
-      return os_assets;
-    },
-  },
-  mounted() {
-    fetch("https://api.github.com/repos/julelang/jule/releases")
-      .then((res) => res.json())
-      .then((data) => {
-        this.releases = data;
-      });
-
-    this.getAssets(this.getOS());
-    document.addEventListener("click", this.dropdownOff);
-  },
-};
+onMounted(loadReleases);
+const latest = computed(
+  () => releases.value?.find((r) => !r.prerelease && !r.draft) || releases.value?.[0]
+);
+const older = computed(() =>
+  (releases.value || []).filter((r) => r.id !== latest.value?.id)
+);
 </script>
 
 <template>
-  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-30">
-    <div class="text-4xl font-bold text-center">Downloads</div>
-    <br /><br />
-    <div class="flex flex-wrap items-center gap-x-2">
-      <div class="text-2xl font-semibold">{{ releases[0]?.name }}</div>
-      <TheBadge type="success" content="latest" />
-      <TheBadge v-if="releases[0]?.prerelease" type="warning" content="pre-release" />
-    </div>
-    <div>
-      Release notes are
-      <a
-        :href="'https://github.com/julelang/jule/releases/tag/' + releases[0]?.tag_name"
-        target="_blank"
-        >here</a
-      >.
-    </div>
-    <br />
-    <div id="dropdown" class="w-fit relative text-white">
-      <button
-        id="dropdown-button"
-        @click="dropdownToggle()"
-        class="px-7 py-2 flex items-center gap-x-5 bg-[var(--color-primary)] hover:bg-[var(--color-primary-darker)] duration-[0.3s] rounded-t-sm rounded-b-sm"
-      >
-        <font-awesome-icon
-          v-if="getOS() == 'Windows'"
-          icon="fa-brands fa-windows"
-          class="text-2xl"
-        />
-        <font-awesome-icon
-          v-if="getOS() == 'macOS'"
-          icon="fa-brands fa-apple"
-          class="text-2xl"
-        />
-        <font-awesome-icon
-          v-if="getOS() == 'Linux'"
-          icon="fa-brands fa-linux"
-          class="text-2xl"
-        />
-        <div class="flex flex-col text-left">
-          <div class="text-lg">Download</div>
-          <div class="text-[10px]">for {{ getOS() }}</div>
-        </div>
-        <font-awesome-icon icon="fa-solid fa-chevron-down" />
-      </button>
-      <div
-        id="dropdown-items"
-        class="hidden w-full absolute flex flex-col bg-[var(--color-primary)] rounded-b-sm text-sm"
-      >
-        <a
-          v-for="asset in getAssets(getOS())"
-          :href="asset.browser_download_url"
-          class="dropdown-item px-7 py-2 hover:bg-[var(--color-primary-darker)] duration-[0.3s]"
-          target="_blank"
-        >
-          {{ asset.name.split("-")[2].replace(".zip", "") }}
-        </a>
-      </div>
-    </div>
-    <div>
-      Isn't there a option you're looking for? Visit
-      <router-link
-        v-if="releases[0]?.id"
-        :to="{ name: 'release', params: { id: releases[0]?.id } }"
-        >release page</router-link
-      >.
-    </div>
-    <br /><br />
-    <div class="text-2xl font-semibold">Older Releases</div>
-    <br />
-    <div class="overflow-auto h-60 h-fit">
-      <div class="p-6">
-        <div class="overflow-x-auto rounded-lg shadow-lg bg-white">
-          <table
-            class="bg-[var(--bg-primary)] border border-[var(--bg-secondary)] min-w-full divide-y divide-[var(--bg-secondary)] text-sm text-left"
+  <main id="main">
+    <header class="border-b border-line bg-soft pb-14 pt-32 md:pt-40">
+      <div class="container-x">
+        <h1 class="font-display text-5xl font-semibold leading-[1.02] md:text-7xl">
+          Download Jule
+        </h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+          Pick your platform and grab the latest compiler build. New to Jule? The
+          <a class="link" href="https://manual.jule.dev/getting-started"
+            >Getting Started</a
           >
-            <thead
-              class="bg-[var(--bg-secondary)] text-white font-semibold uppercase tracking-wider text-xs"
-            >
-              <tr>
-                <th class="px-6 py-3">Release</th>
-                <th class="px-6 py-3">Builds</th>
-                <th class="px-6 py-3">Date</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-300 divide-y divide-[var(--bg-secondary)]">
-              <tr
-                class="hover:bg-gray-800"
-                v-for="release in releases.slice(1, releases.length)"
-              >
-                <td class="px-6 py-4">
-                  <router-link
-                    v-if="release.id"
-                    :to="{ name: 'release', params: { id: release.id } }"
-                    >{{ release.name }}</router-link
-                  >
-                </td>
-                <td class="px-6 py-4">{{ release.assets.length }}</td>
-                <td class="px-6 py-4">
-                  {{
-                    new Date(release.created_at)
-                      .toISOString()
-                      .replace("T", " ")
-                      .replace("Z", "")
-                      .slice(0, 10)
-                  }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          guide walks you through the first steps.
+        </p>
       </div>
+    </header>
+
+    <div class="container-x grid gap-14 py-14 lg:grid-cols-[minmax(0,1fr)_20rem]">
+      <div>
+        <!-- Error -->
+        <div v-if="releasesError" class="facet">
+          <div class="facet-in p-8">
+            <h2 class="font-display text-2xl font-semibold">Couldn’t load releases</h2>
+            <p class="mt-2 max-w-lg text-muted">
+              GitHub didn’t respond (it limits anonymous requests, so this can pass in a
+              few minutes). You can still get every build straight from GitHub.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <button type="button" class="btn btn-primary btn-sm" @click="retryReleases">
+                <RotateCw :size="15" /> Try again
+              </button>
+              <a
+                class="btn btn-ghost btn-sm"
+                href="https://github.com/julelang/jule/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Open releases on GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div
+          v-else-if="!releases"
+          class="space-y-4"
+          aria-busy="true"
+          aria-label="Loading releases"
+        >
+          <div class="skeleton h-9 w-56"></div>
+          <div class="skeleton h-10 w-72"></div>
+          <div class="skeleton h-40 w-full"></div>
+        </div>
+
+        <!-- Latest -->
+        <template v-else-if="latest">
+          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <h2 class="font-display text-3xl font-semibold">
+              {{ latest.name || latest.tag_name }}
+            </h2>
+            <span
+              class="rounded-full bg-surface2 px-2.5 py-0.5 text-xs font-medium text-ok"
+              >Latest</span
+            >
+            <span class="text-sm text-dim">{{
+              formatDate(latest.published_at || latest.created_at)
+            }}</span>
+          </div>
+          <RouterLink
+            :to="`/downloads/${latest.id}`"
+            class="link mt-2 inline-block text-sm"
+            >Release notes and all files</RouterLink
+          >
+          <div class="mt-6"><AssetTable :assets="latest.assets" /></div>
+          <p class="mt-4 text-sm text-dim">
+            Don’t see the option you’re looking for? Check the
+            <a
+              class="link"
+              :href="latest.html_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              >release page on GitHub</a
+            >.
+          </p>
+
+          <h2 class="mt-16 font-display text-2xl font-semibold">Older releases</h2>
+          <div class="mt-4 overflow-x-auto rounded-xl border border-line">
+            <table class="w-full min-w-[28rem] text-left text-sm">
+              <thead class="bg-surface text-dim">
+                <tr>
+                  <th class="px-5 py-3 font-medium">Release</th>
+                  <th class="px-5 py-3 font-medium">Builds</th>
+                  <th class="px-5 py-3 font-medium">Date</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-line bg-bg">
+                <tr v-for="r in older" :key="r.id" class="transition hover:bg-surface">
+                  <td class="px-5 py-3">
+                    <RouterLink
+                      :to="`/downloads/${r.id}`"
+                      class="inline-flex items-center gap-2 font-medium text-fg hover:text-accent"
+                    >
+                      {{ r.name || r.tag_name }}
+                      <span
+                        v-if="r.prerelease"
+                        class="rounded-full bg-surface2 px-2 py-0.5 text-xs font-normal text-warn"
+                        >Pre-release</span
+                      >
+                    </RouterLink>
+                  </td>
+                  <td class="px-5 py-3 text-muted">{{ r.assets.length }}</td>
+                  <td class="px-5 py-3 text-muted">
+                    {{ formatDate(r.published_at || r.created_at) }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </template>
+      </div>
+
+      <aside class="space-y-4 lg:pt-1">
+        <div class="facet">
+          <div class="facet-in p-6">
+            <BookOpen :size="22" class="text-accent" />
+            <h3 class="mt-3 font-display text-xl font-semibold">Next steps</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-muted">
+              Learn the language with the manual, or set up your editor.
+            </p>
+            <a
+              href="https://manual.jule.dev/getting-started"
+              class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent"
+              >Getting Started <ArrowRight :size="14"
+            /></a>
+          </div>
+        </div>
+        <div class="rounded-xl border border-line p-6 text-sm leading-relaxed text-muted">
+          Prefer building from source? The reference compiler is Pure Jule and lives in
+          the
+          <a
+            class="link"
+            href="https://github.com/julelang/jule"
+            target="_blank"
+            rel="noopener noreferrer"
+            >main repository</a
+          >.
+        </div>
+      </aside>
     </div>
   </main>
 </template>
-
-<style scoped>
-a:not(.dropdown-item) {
-  text-decoration: underline;
-}
-</style>

@@ -1,33 +1,53 @@
-<!DOCTYPE html>
-<html class="scroll-smooth h-full" lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Jule Programming Language</title>
-    <meta name="description" content="The official website of the Jule Programming Language.">
-    <meta name="image" content="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg">
-    <meta name="language" content="en-US">
-    <meta name="author" content="Jule Team">
-    <meta name="url" content="https://jule.dev">
-    <meta name="identifier-URL" content="https://jule.dev">
-    <meta name="keywords" content="jule, julec, julelang, jule lang, programming language, jule programming language">
+    <meta name="description" content="Jule is a simple and safe programming language with built-in concurrency, first-class C/C++ interoperability and powerful compile-time capabilities." />
+    <meta name="author" content="Jule Team" />
+    <meta name="keywords" content="jule, julec, julelang, jule lang, programming language, jule programming language, systems programming" />
+    <meta name="theme-color" content="#0b161a" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="canonical" href="https://jule.dev/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <meta name="twitter:title" content="The Jule Programming Language">
-    <meta name="twitter:description" content="The official website of the Jule Programming Language.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jule" />
+    <meta property="og:title" content="The Jule Programming Language" />
+    <meta property="og:description" content="Simple and safe systems programming with built-in concurrency, C/C++ interoperability and compile-time power." />
+    <meta property="og:url" content="https://jule.dev/" />
+    <meta property="og:image" content="https://jule.dev/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Jule Programming Language" />
+    <meta name="twitter:description" content="Simple and safe systems programming with built-in concurrency, C/C++ interoperability and compile-time power." />
+    <meta name="twitter:image" content="https://jule.dev/og.png" />
 
-    <meta property="og:title" content="The Jule Programming Language">
-    <meta property="og:description" content="The official website of the Jule Programming Language.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/julelang/resources/master/jule_icon.svg" />
-    <meta property="og:url" content="https://jule.dev">
-    <meta property="og:site_name" content="The Jule Programming Language">
-    <meta property="og:type" content="website">
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      (function () {
+        try {
+          var saved = localStorage.getItem('jule-theme')
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          var theme = saved || (dark ? 'dark' : 'light')
+          document.documentElement.setAttribute('data-theme', theme)
+          var m = document.querySelector('meta[name="theme-color"]')
+          if (m) m.setAttribute('content', theme === 'dark' ? '#0b161a' : '#f4f7f6')
+        } catch (e) {}
+      })()
+    </script>
   </head>
-
-  <body class="h-full">
-    <div id="app" class="min-h-screen flex flex-col"></div>
+  <body>
+    <div id="app"></div>
+    <noscript>
+      <p style="padding:2rem;font-family:system-ui">
+        The Jule website needs JavaScript. Meanwhile: <a href="https://manual.jule.dev">manual</a> ·
+        <a href="https://github.com/julelang/jule">source code</a> ·
+        <a href="https://discord.gg/XNSUUDuGGQ">Discord</a>.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

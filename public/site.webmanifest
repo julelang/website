@@ -1,0 +1,12 @@
+{
+  "name": "The Jule Programming Language",
+  "short_name": "Jule",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0f1318",
+  "theme_color": "#0f1318",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

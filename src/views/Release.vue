@@ -1,120 +1,111 @@
-<script>
-import TheBadge from "../components/TheBadge.vue";
+<script setup>
+import { ref, onMounted, watch } from "vue";
+import { useRoute } from "vue-router";
+import { ArrowLeft } from "@lucide/vue";
+import AssetTable from "@/components/AssetTable.vue";
+import { getRelease } from "@/lib/github.js";
+import { formatDate } from "@/lib/github.js";
+import { releases, loadReleases } from "@/lib/useRepo.js";
 
-export default {
-  components: {
-    TheBadge,
-  },
-  data() {
-    return {
-      release: [],
-      latest: false,
-    };
-  },
-  mounted() {
-    fetch(`https://api.github.com/repos/julelang/jule/releases/${this.$route.params.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.release = data;
-      });
+const route = useRoute();
+const release = ref(null);
+const notes = ref("");
+const error = ref(false);
 
-    fetch("https://api.github.com/repos/julelang/jule/releases")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data[0].id == this.release.id) {
-          this.latest = true;
-        }
+async function load() {
+  release.value = null;
+  notes.value = "";
+  error.value = false;
+  try {
+    const r = await getRelease(route.params.id);
+    release.value = r;
+    document.title = `${r.name || r.tag_name} · Jule`;
+    if (r.body) {
+      const [{ marked }, { default: DOMPurify }] = await Promise.all([
+        import("marked"),
+        import("dompurify"),
+      ]);
+      const clean = DOMPurify.sanitize(marked.parse(r.body, { gfm: true }), {
+        ADD_ATTR: ["target"],
       });
-  },
-};
+      notes.value = clean.replace(
+        /<a /g,
+        '<a target="_blank" rel="noopener noreferrer" '
+      );
+    }
+  } catch {
+    error.value = true;
+  }
+}
+onMounted(() => {
+  loadReleases();
+  load();
+});
+watch(() => route.params.id, load);
+const isLatest = () => releases.value?.[0]?.id === release.value?.id;
 </script>
 
 <template>
-  <main class="max-w-(--breakpoint-lg) mx-auto px-5 py-30">
-    <div class="text-4xl font-bold text-center">Downloads</div>
-    <br /><br />
-    <div class="flex flex-wrap items-center gap-x-2">
-      <div class="text-2xl font-semibold">{{ release.name }}</div>
-      <TheBadge v-if="latest" type="success" content="latest" />
-      <TheBadge v-if="release.prerelease" type="warning" content="pre-release" />
-    </div>
-    <div>
-      Release notes are
-      <a
-        :href="'https://github.com/julelang/jule/releases/tag/' + release.tag_name"
-        target="_blank"
-        >here</a
-      >.
-    </div>
-    <br /><br />
-    <div class="text-2xl font-semibold">Files</div>
-    <br />
-
-    <div class="overflow-auto h-60 h-fit">
-      <div class="p-6">
-        <div class="overflow-x-auto rounded-lg shadow-lg bg-white">
-          <table
-            class="bg-[var(--bg-primary)] border border-[var(--bg-secondary)] min-w-full divide-y divide-[var(--bg-secondary)] text-sm text-left"
-          >
-            <thead
-              class="bg-[var(--bg-secondary)] text-white font-semibold uppercase tracking-wider text-xs"
+  <main id="main">
+    <header class="border-b border-line bg-soft pb-12 pt-32 md:pt-36">
+      <div class="container-x">
+        <RouterLink
+          to="/downloads"
+          class="inline-flex items-center gap-1.5 text-sm text-muted hover:text-fg"
+          ><ArrowLeft :size="15" /> All downloads</RouterLink
+        >
+        <div v-if="release" class="mt-5">
+          <h1 class="font-display text-5xl font-semibold leading-[1.05] md:text-6xl">
+            {{ release.name || release.tag_name }}
+          </h1>
+          <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-dim">
+            <span>{{ formatDate(release.published_at || release.created_at) }}</span>
+            <span
+              v-if="isLatest()"
+              class="rounded-full bg-surface2 px-2.5 py-0.5 text-xs font-medium text-ok"
+              >Latest</span
             >
-              <tr>
-                <th class="px-6 py-3">File Name</th>
-                <th class="px-6 py-3">Size</th>
-                <th class="px-6 py-3">OS</th>
-                <th class="px-6 py-3">Arch</th>
-                <th class="px-6 py-3">Date</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-300 divide-y divide-[var(--bg-secondary)]">
-              <tr class="hover:bg-gray-800" v-for="file in release.assets">
-                <td class="px-6 py-4">
-                  <a :href="file.browser_download_url">{{ file.name }}</a>
-                </td>
-                <td class="px-6 py-4">{{ (file.size / 1024 ** 2).toFixed(2) }}MB</td>
-                <td class="px-6 py-4">
-                  {{
-                    file.name.includes("darwin") || file.name.includes("macos")
-                      ? "macOS"
-                      : file.name.includes("windows")
-                      ? "Windows"
-                      : file.name.includes("linux")
-                      ? "Linux"
-                      : "unknown"
-                  }}
-                </td>
-                <td class="px-6 py-4">
-                  {{
-                    file.name.includes("i386")
-                      ? "intel 386"
-                      : file.name.includes("arm64")
-                      ? "ARM64"
-                      : file.name.includes("amd64")
-                      ? "AMD64"
-                      : "unknown"
-                  }}
-                </td>
-                <td class="px-6 py-4">
-                  {{
-                    new Date(release.created_at)
-                      .toISOString()
-                      .replace("T", " ")
-                      .replace("Z", "")
-                      .slice(0, 10)
-                  }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <span
+              v-if="release.prerelease"
+              class="rounded-full bg-surface2 px-2.5 py-0.5 text-xs font-medium text-warn"
+              >Pre-release</span
+            >
+            <a
+              class="link"
+              :href="release.html_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View on GitHub</a
+            >
+          </div>
+        </div>
+        <div v-else-if="error" class="mt-5">
+          <h1 class="font-display text-4xl font-semibold">Release not found</h1>
+          <p class="mt-3 text-muted">
+            We couldn’t load this release. It may not exist, or GitHub is rate limiting
+            requests right now.
+          </p>
+        </div>
+        <div v-else class="mt-5 space-y-3">
+          <div class="skeleton h-12 w-80"></div>
+          <div class="skeleton h-5 w-48"></div>
         </div>
       </div>
+    </header>
+
+    <div
+      v-if="release"
+      class="container-x grid gap-14 py-14 lg:grid-cols-[minmax(0,1fr)_26rem]"
+    >
+      <section v-if="notes" aria-label="Release notes">
+        <h2 class="mb-4 font-display text-2xl font-semibold">Release notes</h2>
+        <div class="doc max-w-none" v-html="notes"></div>
+      </section>
+      <section v-else class="text-muted">This release has no notes.</section>
+      <section aria-label="Downloads">
+        <h2 class="mb-4 font-display text-2xl font-semibold">Downloads</h2>
+        <AssetTable :assets="release.assets" />
+      </section>
     </div>
   </main>
 </template>
-
-<style scoped>
-a {
-  text-decoration: underline;
-}
-</style>

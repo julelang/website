@@ -1,4 +1,6 @@
-node_modules/
-.vscode/
-dist/
+node_modules
+dist
+.vercel
+.vscode
+*.log
 .DS_Store
